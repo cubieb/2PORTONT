@@ -1,0 +1,475 @@
+if RTK_L34_ENABLE
+
+#
+# Apollo RomeDriver configuration
+#
+
+#choice
+#	prompt "Realtek RG Environment Selection"
+
+#config RG_API_RLE0371
+#	bool "RTK RG APIs for Chip A1"
+#	select APOLLO
+#	select APOLLO_DRIVER_TESTCHIP
+#	select APOLLO_RLE0371
+
+config RG_API_RLE0601
+        bool #"RTK RG APIs for Chip B0"
+	default y
+	select APOLLO
+#	select APOLLO_RLE0601
+
+#endchoice
+
+
+choice
+        prompt "Realtek RG API Type Selection"
+
+config APOLLO_ROMEDRIVER
+        bool "RomeDriver APIs"
+	select RG_LAYER2_SOFTWARE_LEARN
+
+config APOLLO_LITEROMEDRIVER
+        bool "Lite RomeDriver APIs"
+
+endchoice
+
+if RTL9602C_SERIES
+config APOLLOFE_DRIVER_TESTCHIP
+	bool "Realtek RG APOLLO FE test chip driver"
+	default y
+endif
+
+config RG_DEBUG
+	bool "Realtek RG debug tools"
+	default y
+
+config APOLLO_FPGA_PHY_TEST
+	bool "Realtek RG PHY FPGA testing"
+	default n
+
+#choice
+#	prompt "Realtek FPGA test"
+#	depends on APOLLO_FPGA_PHY_TEST
+#config APOLLO_MP_FPGA_TEST
+#	bool "MP FPGA"
+#
+#config APOLLO_DEMO_FPGA_TEST
+#	bool "Demo FPGA"
+#
+#endchoice
+
+config APOLLO_GPON_FPGATEST
+	bool "Realtek RG GPON FPGA testing"
+	#depends on APOLLO_FPGA_PHY_TEST && (APOLLO_DEMO_FPGA_TEST || APOLLO_MP_FPGA_TEST)
+	depends on APOLLO_FPGA_PHY_TEST
+	default n
+
+config RG_NAPT_TCP_AUTO_LEARN
+	bool "Realtek RG NAPT TCP auto learning by Forwarding Engine"
+	depends on APOLLO_ROMEDRIVER
+	default y
+
+config RG_NAPT_PORT_COLLISION_PREVENTION
+	bool "Realtek RG NAPT external port collision prevention"
+	depends on RG_NAPT_TCP_AUTO_LEARN
+	default y
+
+config RG_NAPT_UPNP_SUPPORT
+	bool "Realtek RG NAPT UPNP support by Forwarding Engine"
+	depends on RG_NAPT_TCP_AUTO_LEARN
+	select RG_NAPT_INBOUND_TRACKING
+	default y
+
+config RG_NAPT_VIRTUAL_SERVER_SUPPORT
+	bool "Realtek RG NAPT Virtual Server support by Forwarding Engine"
+	depends on RG_NAPT_TCP_AUTO_LEARN
+	select RG_NAPT_INBOUND_TRACKING
+	default y
+
+config RG_NAPT_DMZ_SUPPORT
+	bool "Realtek RG NAPT DMZ support by Forwarding Engine"
+	depends on RG_NAPT_TCP_AUTO_LEARN
+	select RG_NAPT_INBOUND_TRACKING
+	default y
+
+config RG_NAPT_ARP_AUTO_LEARN
+	bool "Realtek RG ARP auto learning by Forwarding Engine"
+	depends on APOLLO_ROMEDRIVER
+	default y
+
+config RG_IPV6_NEIGHBOR_AUTO_LEARN
+        bool "Realtek RG Neighbor auto learning by Forwarding Engine"
+        depends on APOLLO_ROMEDRIVER
+        default y
+
+config RG_WLAN_HWNAT_ACCELERATION
+	bool "Realtek RG Master CPU WLAN HWNAT acceleration"
+	depends on APOLLO_ROMEDRIVER
+	default y
+
+config RG_LAYER2_ARP_NEIGHBOR_AUTO_AGENT
+	bool "Realtek RG Layer 2, ARP, Neighbor auto learning"
+	depends on APOLLO_LITEROMEDRIVER
+	default n
+	---help---
+          This option will turn off hardware auto-learning, then
+	  the agent will sync layer 2 table between software and
+	  hardware, and handling ARP and IPv6 Neighbor protocol.
+
+config RG_NAPT_AUTO_AGEOUT
+	bool "Realtek RG NAPT auto age out by Forwarding Engine"
+	default y
+
+config RG_ARP_AUTO_AGEOUT
+	bool "Realtek RG ARP auto age out by Forwarding Engine"
+	default y
+
+config RG_CALLBACK
+        bool "Realtek RG callback function Enable"
+        default y
+
+config RG_CALLBACK_MULTI_WAN_DEVICE_NAME
+        string "The default device name of multi-WAN"
+        depends on RG_CALLBACK
+        default "nas0"
+
+config RG_CALLBACK_ENVIRONMENT_VARIABLE_PATH
+	string "The PATH environment variable when using call_usermodehelper"
+	depends on RG_CALLBACK
+	default "/sbin:/usr/sbin:/bin:/usr/bin"
+
+config RG_PPPOE_PASSTHROUGH
+        bool "Realtek RG PPPoE Passthrough Enable(Disabled ACL IPv6 DSCP pattern support)"
+        default y
+
+config RG_ACL_V6SIP_FILTER_BUT_DISABLE_V6ROUTING
+	bool "Realtek RG ACL HW IPv6 SIP filter Enable, but diable IPv6 DIP filter & IPv6 Routing"
+	default n
+
+config RG_PROFILE
+	bool "Realtek Profile Tools"
+	depends on APOLLO_ROMEDRIVER
+	default n
+
+
+
+
+#config RG_PPPOE_AND_VALN_ISSUE_PATCH
+#        bool "Realtek RG patch(using Stag) for HW PPPoE + VLAN have parsing bug."
+#        default y
+
+
+if !RTL_MULTI_ETH_WAN
+config RG_SIMPLE_PROTOCOL_STACK
+	bool "Realtek RG Simple Protocol Stack settings"
+	default n
+	---help---
+	  This option will set NIC driver as simple mode, let
+	  fwdEngine do all the work for it, either rx or tx.
+	  
+	  NOTICE:if this option is used, please rebuild user
+	  space application "spppd" for supporting simple protocol
+	  stack.
+endif
+
+config RG_IGMP_SNOOPING
+	bool "Realtek RG IGMP snooping functionality"
+	depends on APOLLO_ROMEDRIVER
+	default y
+	---help---
+	  This option will build IGMP snooping module in fwdEngine. 
+	  To use IGMP snooping, you should set "igmpSnoopingEnable"
+	  to 1 when calling rtk_rg_initParam_set.
+
+config RG_MLD_SNOOPING
+	bool "support IPv6 MLD snooping"
+	depends on RG_IGMP_SNOOPING
+	default y
+
+config RG_WMUX_SUPPORT
+	bool "Realtek RG implement WAN multiplex support"
+	depends on APOLLO_ROMEDRIVER
+	default y
+	---help---
+	  This option turn on wmux functionality in fwdEngine, use
+	  proc to configure virtual interface of WAN.
+
+menu  "Realtek RG implement Access WAN Limit functionality"
+
+config RG_ACCESSWAN_CATEGORY_PORTMASK
+	hex "LAN Portmask"
+	default 0x18f
+
+config RG_ACCESSWAN_TIMER_DELAY
+        int "ARP/Neighbor request timer period(mini-seconds)"
+        default 100
+endmenu
+
+config RG_IPV6_STATEFUL_ROUTING_SUPPORT
+	bool "Realtek RG implement IPV6 software stateful Routing support"
+	default n
+
+config RG_IPV6_NAPT_SUPPORT
+	bool "Realtek RG implement IPV6 software NAPT support"
+	depends on RG_IPV6_STATEFUL_ROUTING_SUPPORT
+	default n
+
+comment "Enable IPv6 software shortcut only for special case"
+	depends on RG_IPV6_SOFTWARE_SHORTCUT_SUPPORT
+
+config RG_IPV6_SOFTWARE_SHORTCUT_SUPPORT
+	bool "Realtek RG implement software IPv6 shortcut support"
+	depends on !RG_IPV6_STATEFUL_ROUTING_SUPPORT
+	default y
+
+config APOLLO
+	bool
+
+config APOLLO_DRIVER_TESTCHIP
+	bool
+
+config APOLLO_RLE0371
+	bool
+
+config APOLLO_RLE0601
+	bool
+
+config RG_NAPT_INBOUND_TRACKING
+	bool
+
+config RG_LAYER2_SOFTWARE_LEARN
+	bool
+config RG_ACL_V6SIP_FILTER_BUT_DISABLE_V6ROUTING
+	bool
+
+menu "romeDriver Extention Setting"
+config RG_IP_UNNUMBER
+	bool "enable ip unnumber tx pkts bypass fwdEngine"
+	default n
+
+config RG_QOS_DEF_SET
+	bool "set default internal priority"
+	default n
+
+config RG_SIMPLE_IGMP_v3
+	bool "suppport romedirver igmpv3 simply"
+	default n
+
+config RG_WAN_PORT_ISOLATE
+	bool "set wan port default pvid to vid 2(isolate wan port vlan)"
+	default n
+
+config RG_SW_NAPT_SIZE_L
+	bool "sw napt in and out table size is 65536"
+	default y
+
+config RG_HW_STP
+	bool "hw stp support"
+	default n
+
+config RG_SET_NIC_RX_TX_FUNC
+	bool "set nic rx and tx func when hwnat change"
+	default n
+endmenu
+
+endif #endif APOLLO
+
+# xDSL ==============================================================
+
+if RTL_8676HWNAT
+
+#
+# xDSL RomeDriver configuration
+#
+
+menuconfig XDSL_NEW_HWNAT_DRIVER
+        bool "Options for RomeDriver/LiteRomeDriver"
+        depends on NET && (RTL_819X || RTL_8676HWNAT)
+        default n
+        ---help---
+          You can say N here if you don't need to use RomeDriver.
+          If unsure, say Y.
+
+if XDSL_NEW_HWNAT_DRIVER
+
+#menu "Config RomeDriver/LiteRomeDriver Options"
+
+#choice
+#	prompt "Realtek RG Environment Selection"
+
+#config RG_API_RTL868S
+#       bool "RTK RG APIs for RTL8685S"
+#	default y
+#	select RTL_8685S_HWNAT
+
+#config RG_API_RTL8685
+#        bool "RTK RG APIs for RTL8685"
+#	default y
+#	select RTL8685
+
+#endchoice
+
+
+choice
+        prompt "Realtek RG API Type Selection"
+##not support lite romeDriver now
+#config XDSL_LITEROMEDRIVER
+#        bool "Lite RomeDriver APIs"
+config XDSL_ROMEDRIVER
+        bool "RomeDriver APIs"
+#	select RG_LAYER2_SOFTWARE_LEARN
+
+endchoice
+
+config RG_LAYER2_SOFTWARE_LEARN
+	bool "L2 software learn"
+	default y
+
+
+config XDSL_RG_DIAGSHELL
+	bool "Realtek RG diag shell support"
+	default y
+
+config RG_DEBUG
+	bool "Realtek RG debug tools"
+	default y
+
+##
+config RG_NAPT_TCP_AUTO_LEARN
+	depends on XDSL_ROMEDRIVER 
+	bool "Realtek RG NAPT TCP auto learning by Forwarding Engine"
+	default y
+
+config RG_WMUX_SUPPORT
+	bool "Realtek RG implement WAN multiplex support"
+	depends on XDSL_ROMEDRIVER
+	default y
+	---help---
+	  This option turn on wmux functionality in fwdEngine, use
+	  proc to configure virtual interface of WAN.
+
+config RG_NAPT_PORT_COLLISION_PREVENTION
+	bool "Realtek RG NAPT external port collision prevention"
+	depends on RG_NAPT_TCP_AUTO_LEARN 
+	default n
+
+config RG_NAPT_UPNP_SUPPORT
+	bool "Realtek RG NAPT UPNP support by Forwarding Engine"
+	depends on RG_NAPT_TCP_AUTO_LEARN
+	select RG_NAPT_INBOUND_TRACKING
+	default y
+
+config RG_NAPT_VIRTUAL_SERVER_SUPPORT
+	bool "Realtek RG NAPT Virtual Server support by Forwarding Engine"
+	depends on RG_NAPT_TCP_AUTO_LEARN
+	select RG_NAPT_INBOUND_TRACKING
+	default y
+
+config RG_NAPT_DMZ_SUPPORT
+	bool "Realtek RG NAPT DMZ support by Forwarding Engine"
+	depends on RG_NAPT_TCP_AUTO_LEARN
+	select RG_NAPT_INBOUND_TRACKING
+	default y
+
+##
+config RG_NAPT_ARP_AUTO_LEARN
+	bool "Realtek RG ARP auto learning by Forwarding Engine"
+	depends on XDSL_ROMEDRIVER
+	default y
+
+config RG_IPV6_NEIGHBOR_AUTO_LEARN
+        bool "Realtek RG Neighbor auto learning by Forwarding Engine"
+        depends on XDSL_ROMEDRIVER
+        default n
+
+#unsupport now
+#config RG_WLAN_HWNAT_ACCELERATION
+#	bool "Realtek RG Master CPU WLAN HWNAT acceleration"
+#	depends on XDSL_ROMEDRIVER
+#	default n
+
+config RG_LAYER2_ARP_NEIGHBOR_AUTO_AGENT
+	bool "Realtek RG Layer 2, ARP, Neighbor auto learning"
+	depends on XDSL_LITEROMEDRIVER
+	default n
+	---help---
+          This option will turn off hardware auto-learning, then
+	  the agent will sync layer 2 table between software and
+	  hardware, and handling ARP and IPv6 Neighbor protocol.
+
+config RG_NAPT_AUTO_AGEOUT
+	bool "Realtek RG NAPT auto age out by Forwarding Engine"
+	default y
+
+config RG_ARP_AUTO_AGEOUT
+	bool "Realtek RG ARP auto age out by Forwarding Engine"
+	default y
+
+config RG_CALLBACK
+        bool "Realtek RG callback function Enable"
+        default y
+
+config RG_CALLBACK_MULTI_WAN_DEVICE_NAME
+        string "The default device name of multi-WAN"
+        depends on RG_CALLBACK
+        default "nas0"
+
+config RG_CALLBACK_ENVIRONMENT_VARIABLE_PATH
+	string "The PATH environment variable when using call_usermodehelper"
+	depends on RG_CALLBACK
+	default "/sbin:/usr/sbin:/bin:/usr/bin"
+
+config RG_PPPOE_PASSTHROUGHT
+        bool "Realtek RG PPPoE Passthrought Enable(Disabled ACL IPv6 DSCP pattern support)"
+	depends on XDSL_ROMEDRIVER
+        default n
+
+config RG_ACL_V6SIP_FILTER_BUT_DISABLE_V6ROUTING
+	bool "Realtek RG ACL HW IPv6 SIP filter Enable, but diable IPv6 DIP filter & IPv6 Routing"
+	default n
+
+
+if !RTL_MULTI_ETH_WAN
+config RG_SIMPLE_PROTOCOL_STACK
+	bool "Realtek RG Simple Protocol Stack settings"
+	default n
+	---help---
+	  This option will set NIC driver as simple mode, let
+	  fwdEngine do all the work for it, either rx or tx.
+	  
+	  NOTICE:if this option is used, please rebuild user
+	  space application "spppd" for supporting simple protocol
+	  stack.
+endif
+
+#unsupport now
+#config RG_IGMP_SNOOPING
+#	bool "Realtek RG IGMP snooping functionality"
+#	depends on XDSL_ROMEDRIVER
+#	default n
+#	---help---
+#	  This option will build IGMP snooping module in fwdEngine. 
+#	  To use IGMP snooping, you should set "igmpSnoopingEnable"
+#	  to 1 when calling rtk_rg_initParam_set.
+
+#unsupport now
+#config RG_MLD_SNOOPING
+#	bool "support IPv6 MLD snooping"
+#	depends on RG_IGMP_SNOOPING
+#	default n
+
+
+config RG_NAPT_INBOUND_TRACKING
+	bool
+
+config RG_LAYER2_SOFTWARE_LEARN
+	bool
+config RG_ACL_V6SIP_FILTER_BUT_DISABLE_V6ROUTING
+	bool
+
+#endmenu
+
+endif
+
+endif #END of xDSL

@@ -1,0 +1,4 @@
+0x0001,"/tmp/contact.csv",10
+0x0002,"/tmp/call_log.csv",20
+0x0003,"/tmp/wakeup_call.csv",10
+0x0004,"/tmp/ringing_schedule.csv",10

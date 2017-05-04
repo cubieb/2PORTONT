@@ -1,0 +1,19 @@
+ConvertUTF.o: ConvertUTF.c \
+ /rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/string.h \
+ /rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/features.h \
+ /rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/bits/uClibc_config.h \
+ /rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/sys/cdefs.h \
+ /rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/include/stddef.h \
+ ConvertUTF.h
+
+/rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/string.h:
+
+/rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/features.h:
+
+/rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/bits/uClibc_config.h:
+
+/rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/sys/cdefs.h:
+
+/rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/include/stddef.h:
+
+ConvertUTF.h:

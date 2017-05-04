@@ -1,0 +1,253 @@
+mainmenu_option next_comment
+comment 'AudioCodes VoIP Suite'
+bool 'AudioCodes VOIP' CONFIG_AUDIOCODES_VOIP
+
+if [ "$CONFIG_AUDIOCODES_VOIP" == "y" ]; then
+   	choice 'SoC Selection' \
+	"RTL8186VA	CONFIG_AUDIOCODES_RTL8186VA \
+	 RTL8651BV	CONFIG_AUDIOCODES_RTL8651BV \
+	 RTL8651C	CONFIG_AUDIOCODES_RTL8651C \
+	 RTL8671VA	CONFIG_AUDIOCODES_RTL8671VA" RTL8186VA
+	 if [ "$CONFIG_AUDIOCODES_RTL8186VA" == "y" ]; then
+	   	define_bool ACL_RTL8186VA y
+	 fi
+	 if [ "$CONFIG_AUDIOCODES_RTL8651BV" == "y" ]; then
+	   	define_bool ACL_RTL8651BV y
+	 fi
+	 if [ "$CONFIG_AUDIOCODES_RTL8651C" == "y" ]; then
+	   	define_bool ACL_RTL8651C y
+	 fi
+	 if [ "$CONFIG_AUDIOCODES_RTL8671VA" == "y" ]; then
+	   	define_bool ACL_RTL8671VA y
+	 fi
+
+	 choice 'OS Selection' \
+	 "Linux-2.4.18	CONFIG_AUDIOCODES_LINUX_2_4_18 \
+	  uCLinux-2.4.x	CONFIG_AUDIOCODES_UCLINUX_2_4_X" Linux-2.4.18
+
+	 if [ "$CONFIG_AUDIOCODES_LINUX_2_4_18" == "y" ]; then
+	   	define_bool ACL_LINUX_2_4_18 y
+	 fi
+
+	if [ "$CONFIG_AUDIOCODES_UCLINUX_2_4_X" == "y" ]; then
+	   	define_bool ACL_UCLINUX_2_4_X y
+	 fi
+
+
+
+	bool 'AudioCodes VOIP Library Release' CONFIG_AUDIOCODES_VOIP_RELEASE
+
+	if [ "$CONFIG_AUDIOCODES_VOIP_RELEASE" == "y" ]; then
+		   define_bool      ACMW_LX y
+		   define_bool      AUDIOCODES_VOIP y
+		   define_bool      ACL_BYPASS y
+		   define_bool      ACL_RELEASE y
+		   define_bool      AUDIOCODES_VOIP_SIP y
+	else
+		bool 'AudioCodes VOIP Release Configuration' CONFIG_AUDIOCODES_VOIP_RELEASE_CONFIG
+		define_bool      ACMW_LX y
+		define_bool      AUDIOCODES_VOIP y
+		define_bool      ACL_BYPASS y
+
+		if [ "$CONFIG_AUDIOCODES_VOIP_RELEASE_CONFIG" == "y" ]; then
+		   	define_bool ACL_IBSGEN y
+		   	define_bool ACL_IBSDET y
+		   	define_bool ACL_G729 y
+		   	define_bool ACL_G723 y
+		   	define_bool ACL_G711_PLC_ENABLE y
+		   	define_bool ACL_G711_CNG_ENABLE y
+		   	define_bool ACL_LEC3 y
+		   	define_bool ACL_3WCONF y
+		   	define_bool ACL_RELAY y
+		   	define_bool ACL_ILBC  n
+		   	define_bool ACL_GSMFR n
+		   	define_bool ACL_AGC y
+			define_bool ACL_PLAYBACK y
+			define_bool ACL_CID y
+		   	define_bool ACL_RAM_LOGGER n
+		   	define_bool ACL_DEBUG n
+		   	define_bool ACL_PROFILER_STATUS n
+		   	define_bool ACL_PROFILER n
+		   	define_bool ACL_PROFILER_G729 n
+		   	define_bool ACL_PROFILER_G711 n
+		   	define_bool ACL_PROFILER_G723 n
+		   	define_bool ACL_PROFILER_LEC3 n
+		   	define_bool ACL_PROFILER_IBS_GEN n
+		   	define_bool ACL_PROFILER_IBS_DET n
+		   	define_bool ACL_PROFILER_RELAY n
+		   	define_bool ACL_PROFILER_ILBC n
+		   	define_bool ACL_PROFILER_GSMFR n
+		   	define_bool ACL_PROFILER_AGC n
+
+	   		bool 'AudioCodes with SIP' CONFIG_AUDIOCODES_VOIP_SIP
+			if [ "$CONFIG_AUDIOCODES_VOIP_SIP" == "y" ]; then
+	   			define_bool AUDIOCODES_VOIP_SIP y
+	   		else
+	   			define_bool AUDIOCODES_VOIP_SIP n
+   			fi
+
+		else
+		   comment '--------------- Modules ---------------'
+		   bool 'IBS Generator'  CONFIG_ACL_IBSGEN
+		   bool 'IBS Detector'   CONFIG_ACL_IBSDET
+		   bool 'G729'    	 CONFIG_ACL_G729
+		   if [ "$CONFIG_ACL_G729" = "y" ]; then
+		         bool '    G711 CNG'         CONFIG_ACL_G711_CNG
+		   fi
+		   bool 'G723'                       CONFIG_ACL_G723
+		   bool 'G711 PLC'                   CONFIG_ACL_G711_PLC
+		   bool 'LEC3'                       CONFIG_ACL_LEC3
+		   bool '3-Way Conference'           CONFIG_ACL_3WCONF
+		   bool 'Fax Relay and Caller ID'    CONFIG_ACL_RELAY
+		   bool 'iLBC' 			     CONFIG_ACL_ILBC
+		   bool 'GSM-FR' 		     CONFIG_ACL_GSMFR
+		   bool 'AGC' 		     		CONFIG_ACL_AGC
+		   bool 'Playback' 		     CONFIG_ACL_PLAYBACK
+		   bool 'Cid' 		     CONFIG_ACL_CID
+		   comment '--------------- QA ----------------------'
+		   bool '4 Wire Interface'   	     CONFIG_AUDIOCODES_4W_IF
+		   comment '--------------- Utilities ---------------'
+		   bool 'RAM Logger'     	     CONFIG_ACL_RAM_LOGGER
+		   bool 'Debug tracing'  	     CONFIG_ACL_DEBUG
+		   bool 'Profiling & Status tools'     	CONFIG_ACL_PROFILER_STATUS
+		   if [ "$CONFIG_ACL_PROFILER_STATUS" = "y" ]; then
+   		         bool '  Enable Profiler'         CONFIG_ACL_PROFILER
+			   if [ "$CONFIG_ACL_PROFILER" = "y" ]; then
+				  comment '----Low Level Profiling-----'
+			         bool '   G729'         CONFIG_ACL_PROFILER_G729
+			         bool '   G711'         CONFIG_ACL_PROFILER_G711
+	      		         bool '   G723'         CONFIG_ACL_PROFILER_G723
+			         bool '   LEC3'         CONFIG_ACL_PROFILER_LEC3
+			         bool '   IBS Generator'         CONFIG_ACL_PROFILER_IBS_GEN
+	      		         bool '   IBS Detection'         CONFIG_ACL_PROFILER_IBS_DET
+	      		         bool '   Fax Relay & CID'         CONFIG_ACL_PROFILER_RELAY
+	      		         bool '   ILBC'        			 CONFIG_ACL_PROFILER_ILBC
+			         bool '   GSM-FR'         		CONFIG_ACL_PROFILER_GSMFR
+			         bool '   AGC'         		CONFIG_ACL_PROFILER_AGC
+		         fi
+      		   fi
+
+		   define_bool      ACMW_LX y
+		   define_bool      AUDIOCODES_VOIP y
+		   define_bool      ACL_BYPASS y
+
+		   if [ "$CONFIG_ACL_IBSGEN" == "y" ]; then
+		   	define_bool ACL_IBSGEN y
+		   fi
+
+		   if [ "$CONFIG_ACL_IBSDET" == "y" ]; then
+		   	define_bool ACL_IBSDET y
+		   fi
+
+		   if [ "$CONFIG_ACL_G729" == "y" ]; then
+		   	define_bool ACL_G729 y
+		   fi
+
+		   if [ "$CONFIG_ACL_G723" == "y" ]; then
+		   	define_bool ACL_G723 y
+		   fi
+
+		   if [ "$CONFIG_ACL_G711_PLC" == "y" ]; then
+		   	define_bool ACL_G711_PLC_ENABLE y
+		   fi
+
+		   if [ "$CONFIG_ACL_G711_CNG" == "y" ]; then
+		   	define_bool ACL_G711_CNG_ENABLE y
+		   fi
+
+		   if [ "$CONFIG_ACL_LEC3" == "y" ]; then
+		   	define_bool ACL_LEC3 y
+		   fi
+
+		   if [ "$CONFIG_ACL_3WCONF" == "y" ]; then
+		   	define_bool ACL_3WCONF y
+		   fi
+
+		   if [ "$CONFIG_ACL_RELAY" == "y" ]; then
+		   	define_bool ACL_RELAY y
+		   fi
+
+		   if [ "$CONFIG_ACL_ILBC" == "y" ]; then
+		   	define_bool ACL_ILBC y
+		   fi
+
+		   if [ "$CONFIG_ACL_GSMFR" == "y" ]; then
+		   	define_bool ACL_GSMFR y
+		   fi
+
+		   if [ "$CONFIG_ACL_AGC" == "y" ]; then
+		   	define_bool ACL_AGC y
+		   fi
+
+		   if [ "$CONFIG_ACL_PLAYBACK" == "y" ]; then
+		   	define_bool ACL_PLAYBACK y
+		   fi
+
+		   if [ "$CONFIG_ACL_CID" == "y" ]; then
+		   	define_bool ACL_CID y
+		   fi
+		   
+		   if [ "$CONFIG_ACL_RAM_LOGGER" == "y" ]; then
+		   	define_bool ACL_RAM_LOGGER y
+		   fi
+
+		   if [ "$CONFIG_AUDIOCODES_4W_IF" == "y" ]; then
+		   	define_bool AUDIOCODES_4W_IF y
+		   fi
+		   if [ "$CONFIG_ACL_DEBUG" == "y" ]; then
+		   	define_bool ACL_DEBUG y
+		   fi
+
+		   if [ "$CONFIG_ACL_PROFILER_STATUS" == "y" ]; then
+		   	define_bool ACL_PROFILER_STATUS y
+		   fi
+
+		   if [ "$CONFIG_ACL_PROFILER" == "y" ]; then
+		   	define_bool ACL_PROFILER y
+		   fi
+
+		   if [ "$CONFIG_ACL_PROFILER_G729" == "y" ]; then
+		   	define_bool ACL_PROFILER_G729 y
+		   fi
+
+		   if [ "$CONFIG_ACL_PROFILER_G711" == "y" ]; then
+		   	define_bool ACL_PROFILER_G711 y
+		   fi
+
+		   if [ "$CONFIG_ACL_PROFILER_G723" == "y" ]; then
+		   	define_bool ACL_PROFILER_G723 y
+		   fi
+
+		   if [ "$CONFIG_ACL_PROFILER_LEC3" == "y" ]; then
+		   	define_bool ACL_PROFILER_LEC3 y
+		   fi
+
+		   if [ "$CONFIG_ACL_PROFILER_IBS_GEN" == "y" ]; then
+		   	define_bool ACL_PROFILER_IBS_GEN y
+		   fi
+
+		   if [ "$CONFIG_ACL_PROFILER_IBS_DET" == "y" ]; then
+		   	define_bool ACL_PROFILER_IBS_DET y
+		   fi
+
+		   if [ "$CONFIG_ACL_PROFILER_RELAY" == "y" ]; then
+		   	define_bool ACL_PROFILER_RELAY y
+		   fi
+
+		   if [ "$CONFIG_ACL_PROFILER_ILBC" == "y" ]; then
+		   	define_bool ACL_PROFILER_ILBC y
+		   fi
+
+		   if [ "$CONFIG_ACL_PROFILER_GSMFR" == "y" ]; then
+		   	define_bool ACL_PROFILER_GSMFR y
+		   fi
+  		   if [ "$CONFIG_ACL_PROFILER_AGC" == "y" ]; then
+		   	define_bool ACL_PROFILER_AGC y
+		   fi
+
+		fi
+	fi
+fi
+
+endmenu
+

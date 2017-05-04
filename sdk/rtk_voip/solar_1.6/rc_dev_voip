@@ -1,0 +1,14 @@
+
+mkdir -p /dev/voip
+/bin/mknod /dev/voip/dtmfdet0 c 243 76
+/bin/mknod /dev/voip/dtmfdet1 c 243 77
+/bin/mknod /dev/voip/ivr8k c 243 16
+/bin/mknod /dev/voip/mgr c 243 1
+/bin/mknod /dev/voip/pcmrx0 c 243 65
+/bin/mknod /dev/voip/pcmrx1 c 243 74
+/bin/mknod /dev/voip/pcmtx0 c 243 64
+/bin/mknod /dev/voip/pcmtx1 c 243 73
+
+/bin/mknod /dev/voip/ipc c 243 66
+/bin/mknod /dev/voip/log_ioctl c 243 40
+

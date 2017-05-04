@@ -1,0 +1,125 @@
+.\" Process this file with
+.\" groff -man -Tascii mepd.1
+.\"
+.TH OAMTOOL 1 "MAR 2012" Linux "User Manuals"
+.SH NAME
+oamtool \- ITU-T Y.1731 maintenance entity end-point daemon control tool
+.SH SYNOPSIS
+.B oamtool [--lmm
+.I MEP ID
+.B ] 
+.B [--dmm
+.I MEP ID
+.B ] 
+.B [--1dm
+.I MEP ID
+.B ] 
+.B [--ltm
+.I MEP ID 
+.B ] 
+.B [--tst
+.I MEP ID 
+.B ] 
+.B [--lck
+.I MEP ID 
+.B ] 
+.B [--remote
+.I MEP ID
+.B ] 
+.B [--show
+.B ] 
+.B [--count
+.I Count
+.B ] 
+.B [--pattern
+.I Pattern
+.B ] 
+.B [--octets
+.I Octets
+.B ] 
+.B [--until
+.B ] 
+.B [--interval
+.I Interval
+.B ] 
+
+.SH DESCRIPTION
+ 
+Primary function of Y.1731 OAM protocol is to provide fault detection
+services for Ethernet networks, such as loss of connectivity, bit
+errors, or timing deviations. Y.1731 pro-actively verifies the
+connectivity by monitoring OAM messages coming from remote entities in
+the network. Upon an error an alarm is raised.
+
+Y.1731 can perform in-service and out-of-service tests in order to
+diagnose the network. In-service tests can be used to verify the path
+integrity and for the identification of the on-path forwarding
+entities. Out-of-service tests can be used for tasks such as measuring
+the throughput of an unloaded path
+
+Y.1731 can measure the loss, one-way delay, two-way delay, delay
+variation, and throughput.
+
+.SH OPTIONS
+.IP "-lmm"
+Start loss measurement from this node towards the given MEP ID.
+.IP "--dmm"
+Start the delay measurements towards MEP ID
+.IP "--1dm"
+Start the one-way delay measurements towards MEP ID
+.IP "--ltm"
+Start the link trace towards the MEP ID
+.IP "--tst"
+Send a test signal towards the MEP ID
+.IP "--lck"
+We are configured for out-of-service test send LCKs
+.IP "--count"
+How many messages are sent.
+.IP "--pattern"
+What pattern is used for the TST (1 = Zeroes and 2 = PRBS)
+.IP "--octets"
+How long the TST pattern will be in octets.
+.IP "--until"
+The sending of test messages is continuous "until" this control is sent
+again. Please 
+.B NOTE 
+that this option usage overrides 
+.I count
+option. 
+.IP "--interval"
+What is the interval that the messages are sent.
+
+.SH NOTE
+Allowed values for the interval are 1 = 3,33ms, 2 = 10ms, 3 = 100ms, 4 = 1s, 5 = 10s, 6 = 1min, 7 = 10min, defaults to 1s.
+
+For LCK only 4 and 6 are the allowed intervals.
+
+Note that incorrect values for count and interval are defaulted. For
+count incorrect value (!(positive integer)) will result in one sent
+LBM and incorrect interval is substituted with one second interval.
+
+.SH EXAMPLE
+
+.B oamtool --lmm 2 --interval 4 --loop
+
+Would continuously send the LMMs to MEP ID 2 with 1 second interval.
+
+.B oamtool --lmm 2 --interval 4 --count 4
+
+Would tell the daemon to send 4 LMMs to MEP ID 2 with 1 second interval.
+
+.B oamtool --lmm 2 --interval 4
+
+Would send LMMs to MEP ID 2 with 1 second intervals.
+
+.SH BUGS
+See details about the current bugs from the tracker in URL
+https://vcs.hiit.fi/trac/GoodNet/
+
+.SH AUTHOR
+Samu Varjonen <samu dot varjonen at hiit dot fi>
+
+.SH "SEE ALSO"
+.BR oamd (1),
+.BR oamping (1)
+.BR oamtrace (1)

@@ -1,0 +1,6 @@
+# wrong specification in multiple option number occurrences
+
+option "limited-interval"     - "limited multiple option (with interval)" 
+	string optional multiple(1-3) # OK
+option "big-limited-interval" - "limited multiple option (with interval)" 
+	string optional multiple(-1-30) # WRONG

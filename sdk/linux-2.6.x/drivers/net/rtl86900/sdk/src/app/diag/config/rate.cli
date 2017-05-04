@@ -1,0 +1,434 @@
+//
+// Copyright (C) 2009 Realtek Semiconductor Corp.
+// All Rights Reserved.
+//
+// This program is the proprietary software of Realtek Semiconductor
+// Corporation and/or its licensors, and only be used, duplicated,
+// modified or distributed under the authorized license from Realtek.
+//
+// ANY USE OF THE SOFTWARE OTHER THAN AS AUTHORIZED UNDER
+// THIS LICENSE OR COPYRIGHT LAW IS PROHIBITED.
+//
+// $Revision: 39101 $
+// $Date: 2013-05-03 17:35:27 +0800 (Fri, 03 May 2013) $
+//
+// Purpose : Define diag shell commands for rate.
+//
+// Feature : The file have include the following module and sub-modules
+//           1) egress bandwidth commands.
+//           2) ingress bandwidth commands.
+//           3) storm control commands.
+//           4) share meter
+//
+
+//bandwidth configuration
+//get configuration
+//egress configuration
+//WFQ interframe gap information
+bandwidth get egress ifg
+
+//bandwidth configuration
+//get configuration
+//egress configuration
+//port list, <0-6>
+//all ports
+bandwidth get egress ( <PORT_LIST:port> | all )
+
+//bandwidth configuration
+//get configuration
+//egress configuration
+//port list, <0-6>
+//all ports
+//queue id
+//queue list, <0-7>
+//all queues
+bandwidth get egress ( <PORT_LIST:port> | all ) queue-id ( <PORT_LIST:qid> | all )
+
+//bandwidth configuration
+//get configuration
+//ingress configuration
+//rma-8899-igmp packets bypass
+//state configuration
+bandwidth get ingress bypass state
+
+//bandwidth configuration
+//get configuration
+//ingress configuration
+//flow-control
+//high threshold (unit 2^16 bytes)
+bandwidth get ingress flow-control high-threshold
+
+//bandwidth configuration
+//get configuration
+//ingress configuration
+//flow-control
+//low threshold (unit 2^16 bytes)
+bandwidth get ingress flow-control low-threshold
+
+//bandwidth configuration
+//get configuration
+//ingress configuration
+//flow-control
+//port list, <0-6>
+//all ports
+//state configuration
+bandwidth get ingress flow-control ( <PORT_LIST:port> | all ) state
+
+//bandwidth configuration
+//get configuration
+//ingress configuration
+//ifg
+//port list, <0-6>
+//all ports
+bandwidth get ingress ifg ( <PORT_LIST:port> | all )
+
+//bandwidth configuration
+//get configuration
+//ingress configuration
+//port list, <0-6>
+//all ports
+bandwidth get ingress ( <PORT_LIST:port> | all )
+
+//bandwidth configuration
+//set configuration
+//egress configuration
+//WFQ interframe gap
+//exclude
+//include
+bandwidth set egress ifg ( exclude | include )
+
+//bandwidth configuration
+//set configuration
+//egress configuration
+//port list, <0-6>
+//all ports
+//queue id configuration
+//queue id, <0~7>
+//average peak rate configuration
+//apr index, <0~7>
+bandwidth set egress ( <PORT_LIST:port> | all ) queue-id <UINT:qid> apr-index <UINT:apr>
+
+//bandwidth configuration
+//set configuration
+//egress configuration
+//port list, <0-6>
+//all ports
+//queue id configuration
+//queue id, <0~7>
+//apr state configuration
+//disable function
+//enable function
+bandwidth set egress ( <PORT_LIST:port> | all ) queue-id <UINT:qid> state ( disable | enable )
+
+//bandwidth configuration
+//set configuration
+//egress configuration
+//port list, <0-6>
+//all ports
+//state configuration
+//disable function
+bandwidth set egress ( <PORT_LIST:port> | all ) state disable
+
+//bandwidth configuration
+//set configuration
+//egress configuration
+//port list, <0-6>
+//all ports
+//state configuration
+//enable function
+//rate
+//rate vlaue (unit 8Kpbs), <8~1048568>
+bandwidth set egress ( <PORT_LIST:port> | all ) state enable rate <UINT:rate>
+
+//bandwidth configuration
+//set configuration
+//ingress configuration
+//rma-8899-igmp packets bypass
+//state configuration
+//disable function
+//enable function
+bandwidth set ingress bypass state ( disable | enable )
+
+//bandwidth configuration
+//set configuration
+//ingress configuration
+//flow-control
+//high threshold
+//threshold value (unit 2^16 bytes), <0~15>
+bandwidth set ingress flow-control high-threshold <UINT:thresh>
+
+//bandwidth configuration
+//set configuration
+//ingress configuration
+//flow-control
+//low threshold
+//threshold value (unit 2^16 bytes), <0~15>
+bandwidth set ingress flow-control low-threshold <UINT:thresh>
+
+//bandwidth configuration
+//set configuration
+//ingress configuration
+//flow-control
+//port list, <0-6>
+//all ports
+//state configuration
+//disable function
+//enable function
+bandwidth set ingress flow-control ( <PORT_LIST:port> | all ) state ( disable | enable )
+
+//bandwidth configuration
+//set configuration
+//ingress configuration
+//interframe gap
+//port list, <0-6>
+//all ports
+//exclude
+//include
+bandwidth set ingress ifg ( <PORT_LIST:port> | all ) ( exclude | include )
+
+//bandwidth configuration
+//set configuration
+//ingress configuration
+//port list, <0-6>
+//all ports
+//state configuration
+//disable function
+bandwidth set ingress ( <PORT_LIST:port> | all ) state disable
+
+//bandwidth configuration
+//set configuration
+//ingress configuration
+//port list, <0-6>
+//all ports
+//state configuration
+//enable function
+//rate
+//rate value (unit 8Kpbs), <0~1048568>
+bandwidth set ingress ( <PORT_LIST:port> | all ) state enable rate <UINT:rate>
+
+//shared meter configuration
+//get configuration
+//meter entry configuration
+//index, <0-31>
+meter get entry <MASK_LIST:index>
+
+//shared meter configuration
+//get configuration
+//meter entry configuration
+//index, <0-31>
+//burst size
+meter get entry <MASK_LIST:index> burst-size
+
+//shared meter configuration
+//get configuration
+//meter entry configuration
+//index, <0-31>
+//interframe gap state
+meter get entry <MASK_LIST:index> ifg
+
+//shared meter configuration
+//get configuration
+//meter entry configuration
+//index, <0-31>
+//meter exceed state
+meter get entry <MASK_LIST:index> meter-exceed
+
+//shared meter configuration
+//get configuration
+//bt_ctr tick time of the leaky bucket
+meter get bt_ctr
+
+//shared meter configuration
+//get configuration
+//bt_ctr tick time of the leaky bucket
+meter get pon_bt_ctr
+
+//shared meter configuration
+//get configuration
+//meter entry configuration
+//index, <0-31>
+//rate configuration
+meter get entry <MASK_LIST:index> rate
+
+//shared meter configuration
+//reset configuration
+//meter entry configuration
+//index, <0-31>
+//meter exceed state
+meter reset entry <MASK_LIST:index> meter-exceed
+
+//shared meter configuration
+//set configuration
+//meter entry configuration
+//index, <0-31>
+//burst size
+//bucket size(unit byte), <0~65535>
+meter set entry <MASK_LIST:index> burst-size <UINT:lb_size>
+
+//shared meter configuration
+//set configuration
+//meter entry configuration
+//index, <0-31>
+//interframe gap
+//exclude
+//include
+meter set entry <MASK_LIST:index> ifg ( exclude | include )
+
+//shared meter configuration
+//set configuration
+//bt_ctr configuration
+//period, <0~255>
+//tkn  configuration
+//tkn, <0~255>
+meter set bt_ctr tick_period <UINT:period> tkn <UINT:tkn>
+
+//shared meter configuration
+//set configuration
+//pon_bt_ctr configuration
+//period, <0~255>
+//tkn configuration
+//tkn, <0~255>
+meter set pon_bt_ctr tick_period <UINT:period> tkn <UINT:tkn>
+
+//shared meter configuration
+//set configuration
+//meter entry configuration
+//index, <0-31>
+//rate configuration
+//rate (unit 8Kpbs), <8~1048568>
+meter set entry <MASK_LIST:index> rate <UINT:rate>
+
+//storm-control configuration
+//get configuration
+//broadcast
+//multicast
+//unknown multicast
+//unknown unicast
+//port configuration
+//port list
+//all ports
+storm-control get ( broadcast | multicast | unknown-multicast | unknown-unicast ) port ( <PORT_LIST:ports> | all )
+
+//storm-control configuration
+//get configuration
+//broadcast
+//multicast
+//unknown multicast
+//unknown unicast
+//alternated function configuration
+storm-control get ( broadcast | multicast | unknown-multicast | unknown-unicast ) alternated
+
+//storm-control configuration
+//get configuration
+//igmp packet
+//bypass storm control configuration
+//state configuration
+storm-control get igmp bypass state
+
+#ifdef CMD_STORM_CONTROL_GET_RMA_CDP_CSSTP_BYPASS_STATE
+//storm-control configuration
+//get configuration
+//rma configuration
+//cisco discovery protocol configuration
+//cisco shared STP configuration
+//bypass storm control configuration
+//state configuration
+storm-control get rma ( cdp | csstp ) bypass state
+#endif
+
+#ifdef CMD_STORM_CONTROL_GET_RMA_LAYER2_RMA_TAIL_BYPASS_STATE
+//storm-control configuration
+//get configuration
+//rma configuration
+//layer2 rma configuration
+//tail of rma mac address, <0x00~0x2F>
+//bypass storm control configuration
+//state configuration
+storm-control get rma layer2 <UINT:rma_tail> bypass state
+#endif
+//storm-control configuration
+//set configuration
+//broadcast
+//multicast
+//unknown multicast
+//unknown unicast
+//port configuration
+//port list, <0-6>
+//all ports
+//state configuration
+//disable function
+storm-control set ( broadcast | multicast | unknown-multicast | unknown-unicast ) port ( <PORT_LIST:ports> | all ) state disable
+
+//storm-control configuration
+//set configuration
+//broadcast
+//multicast
+//unknown multicast
+//unknown unicast
+//port configuration
+//port list, <0-6>
+//all ports
+//state configuration
+//enable function
+//meter configuration
+//meter index, <0~31>
+storm-control set ( broadcast | multicast | unknown-multicast | unknown-unicast ) port ( <PORT_LIST:ports> | all ) state enable meter <UINT:index>
+
+//storm-control configuration
+//set configuration
+//broadcast
+//multicast
+//unknown multicast
+//unknown unicast
+//alternated function configuration
+//disable
+storm-control set ( broadcast | multicast | unknown-multicast | unknown-unicast ) alternated disable
+
+//storm-control configuration
+//set configuration
+//broadcast
+//multicast
+//unknown multicast
+//unknown unicast
+//alternated function configuration
+//enable
+//arp storm
+//dhcp storm
+//igmp/mdl strom
+storm-control set ( broadcast | multicast | unknown-multicast | unknown-unicast ) alternated enable ( arp-storm | dhcp-storm | igmp-mld-storm )
+
+//storm-control configuration
+//set configuration
+//igmp packet
+//bypass storm control configuration
+//state configuration
+//disable function
+//enable function
+storm-control set igmp bypass state ( disable | enable )
+
+#ifdef CMD_STORM_CONTROL_SET_RMA_CDP_CSSTP_BYPASS_STATE_DISABLE_ENABLE
+//storm-control configuration
+//set configuration
+//rma configuration
+//cisco discovery protocol configuration
+//cisco shared STP configuration
+//bypass storm control configuration
+//state configuration
+//disable function
+//enable function
+storm-control set rma ( cdp | csstp ) bypass state ( disable | enable )
+#endif
+
+#ifdef CMD_STORM_CONTROL_SET_RMA_LAYER2_RMA_TAIL_BYPASS_STATE_DISABLE_ENABLE
+//storm-control configuration
+//set configuration
+//rma configuration
+//layer2 rma configuration
+//tail of rma mac address, <0x00~0x2F>
+//bypass storm control configuration
+//state configuration
+//disable function
+//enable function
+storm-control set rma layer2 <UINT:rma_tail> bypass state ( disable | enable )
+#endif
+

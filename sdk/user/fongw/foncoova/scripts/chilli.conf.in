@@ -1,0 +1,9 @@
+# Fon ChilliSpot configuration file
+# Powered by FON (www.fon.com)
+radiusserver1 radius01.fon.com
+radiusserver2 radius02.fon.com 
+radiussecret garrafon
+uamserver https://www.fon.com/login/gateway/sec
+uamsecret garrafon
+uamallowed www.fon.com,www.paypal.com,www.paypalobjects.com,www.skype.com
+uamanydns

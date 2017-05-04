@@ -1,0 +1,95 @@
+# Copyright (C) 2012 Realtek Semiconductor Corp.
+#
+# Makefile for SDK Linux Kernel Modules
+#
+
+include $(APOLLODIR)/Compiler_Flag
+
+SDK_INCLUDE   = $(SDKDIR)/include
+SYS_INCLUDE   = $(SDKDIR)/system/include
+DRV_INCLUDE   = $(SDKDIR)/system/linux
+
+EXTRA_CFLAGS+= $(PON_CFLAGS)
+FLAGS+="-I$(SDK_INCLUDE) -I$(SYS_INCLUDE) -I$(DRV_INCLUDE)"
+RTK_LIB +="-L$(APOLLODIR)/object/src/app/lib -lrtk -lpthread"
+
+APPS:= diag_rtk
+
+ifeq ($(CONFIG_GPON_FEATURE),y)
+APPS+= pkt_redirect
+else
+ifeq ($(CONFIG_EPON_FEATURE),y)
+APPS+= pkt_redirect
+endif
+endif
+
+#ifeq ($(CONFIG_RTK_IGMP),y)
+#APPS+= rtk_igmp
+#endif
+
+ifeq ($(CONFIG_RTK_OMCI_V1),y)
+ifeq ($(CONFIG_KERNEL_2_6_30),y)
+OMCI_DIR= omci_v1_2_6_30
+else
+OMCI_DIR= omci_v1_3_18
+endif
+APPS+= omci_v1
+endif
+
+ifeq ($(CONFIG_RTK_IGMP),y)
+APPS+= rtk_igmp
+endif
+
+ifeq ($(CONFIG_RTK_OMCI_V2),y)
+APPS+= omci_v2
+endif
+
+APPS+= dbg_tool
+
+ifeq ($(CONFIG_RTK_OAM_V1),y)
+APPS+= epon_oam_v1
+endif
+
+ifeq ($(CONFIG_PON_DETECT_FEATURE),y)
+APPS+= pon_detect
+endif
+
+ifeq ($(CONFIG_SFP_APPLICATION),y)
+APPS+= sfp_app
+endif
+
+ifeq ($(CONFIG_EUROPA),m)
+APPS+= europa
+endif
+
+
+all:
+ifeq ($(CONFIG_RTK_OMCI_V1),y)
+	@if [ ! -d omci_v1 ] ; then \
+		ln -sfn $(OMCI_DIR) omci_v1; \
+	fi
+endif
+	for dir in $(APPS) ; do $(MAKE) -C $$dir FLAGS=$(FLAGS) PON_CFLAGS="$(PON_CFLAGS)" RTK_LIB=$(RTK_LIB) all || exit 1; done
+
+install:
+	for dir in $(APPS) ; do $(MAKE) -C $$dir BINDIR="../bin" RTK_LIB=$(RTK_LIB) install || exit 1; done
+	cp -af $(SDKDIR)/rtk.etc/insdrv.sh $(ROMFSDIR)/etc/
+	cp -af $(SDKDIR)/rtk.etc/runoam.sh $(ROMFSDIR)/etc/
+	cp -af $(SDKDIR)/rtk.etc/runsdk.sh $(ROMFSDIR)/etc/
+ifeq ($(CONFIG_LAN_SDS_FEATURE),y)
+	cp -af $(SDKDIR)/rtk.etc/runlansds.sh $(ROMFSDIR)/etc/
+endif
+ifeq ($(CONFIG_RTK_FT2_MODULE),y)
+	cp -af $(SDKDIR)/rtk.etc/eqc_test.sh $(ROMFSDIR)/etc/
+	cp -af $(SDKDIR)/rtk.etc/*.sh $(ROMFSDIR)/etc/
+endif
+
+clean:
+	for dir in $(APPS) ; do $(MAKE) -C $$dir clean || exit 1; done
+ifeq ($(CONFIG_RTK_OMCI_V1),y)
+	@if [ -L omci_v1 ] ; then \
+		unlink omci_v1 ; \
+	fi
+endif
+
+

@@ -1,0 +1,3 @@
+echo 'Turn on phy power...'
+bin/diag port set phy-force-power-down port all state disable
+/bin/echo 4096 > /proc/sys/vm/min_free_kbytes

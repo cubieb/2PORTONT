@@ -1,0 +1,1 @@
+cmd_drivers/net/rtl86900/sdk/src/module/ds_pkt_bcaster/dpbcaster.o := /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/rsdk-linux-ld  -m elf32btsmip   -r -o drivers/net/rtl86900/sdk/src/module/ds_pkt_bcaster/dpbcaster.o drivers/net/rtl86900/sdk/src/module/ds_pkt_bcaster/ds_pkt_bcaster.o 

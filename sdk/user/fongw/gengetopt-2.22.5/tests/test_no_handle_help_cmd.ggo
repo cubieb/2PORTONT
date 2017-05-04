@@ -1,0 +1,14 @@
+# test_no_handle_help_cmd.ggo
+
+# test no handle help and version options
+# use args in the .ggo file
+
+args "--no-handle-version --no-handle-help --no-handle-error --string-parser"
+
+package "test_no_handle_help"
+version "1.0"
+
+option "height"      - "this is the description of height" 
+        optional int
+        details="These are the details of option height"
+option "vavoom"      - "this is the description of vavoom" optional string

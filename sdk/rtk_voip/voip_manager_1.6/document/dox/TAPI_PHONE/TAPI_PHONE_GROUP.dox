@@ -1,0 +1,13 @@
+// ============================================================
+
+/**
+ * @page VOIP_PHONE_FXOFXS  FXS/FXO
+ * @ingroup TAPI_PHONE_GROUP 
+ * The analogue terminal adaptor (ATA) usually has FXS port, FXO port and Ethernet port. ,br>
+ * User can make call through internet or through PSTN. It is possible for an ATA to have two FXS ports. <br>
+ * In this case, each telephone will have individual phone number. By using the VoIP SDK, user can accomplish the FXS and FXO functions. <br>
+ * The following two functions will illustrate the use of these FXS APIs and FXO APIs.
+ * \htmlonly <br> <p align="center"> <b>Figure 12 The FXS and FXO diagram</b>   \endhtmlonly 	
+ * @image html TAPI_PHONE_GROUP_Figure_12.JPG
+ */ 
+ 

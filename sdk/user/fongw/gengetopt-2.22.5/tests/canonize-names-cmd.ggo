@@ -1,0 +1,8 @@
+# canonize_names-cmd.ggo
+
+# This tests how names are canonized ('-' must become '_')
+
+package "canonize_names"
+version "1.0"
+
+option  "foo"        i "foo option" int no

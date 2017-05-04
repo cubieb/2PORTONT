@@ -1,0 +1,17 @@
+@IF@ detailed_help @THEN@
+if (strcmp (long_options[option_index].name, "detailed-help") == 0) {
+  @parser_name@_print_detailed_help ();
+@ELSEIF@ full_help @THEN@
+if (strcmp (long_options[option_index].name, "full-help") == 0) {
+  @parser_name@_print_full_help ();
+@ELSE@
+@IF@ short_opt @THEN@
+case 'h':	/* Print help and exit.  */
+@ELSE@
+if (strcmp (long_options[option_index].name, "help") == 0) {
+@ENDIF@
+  @parser_name@_print_help ();
+@ENDIF@
+  @parser_name@_free (&local_args_info);
+  exit (EXIT_SUCCESS);@IF@ full_help or (not short_opt) @then@
+}@ENDIF@

@@ -1,0 +1,4 @@
+# enum type can only be used with options with values
+
+option "okenum"       - "values with enum type" values="foo","bar" enum
+option "notok"        - "wrong enum type" enum

@@ -1,0 +1,4 @@
+# test for problems in non flag options
+
+option "non-flag-ok"        - "non flag option OK" string default="foo"
+option "non-flag"        F "non flag option" on string default="foo"

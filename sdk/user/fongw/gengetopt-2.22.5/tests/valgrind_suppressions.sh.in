@@ -1,0 +1,62 @@
+#! @SHELL@
+# --------------------------------------------------------------------- #
+#
+#  Script to run some examples through VALGRIND and
+#  to suppress errors
+#
+#  Michael Hagemann <michael.hagemann@unibas.ch>
+#
+#  modified by Lorenzo Bettini <http://www.lorenzobettini.it>
+#
+# --------------------------------------------------------------------- #
+
+
+VG_PRG="@VALGRIND@"
+VG_ARGS="--tool=memcheck --num-callers=20 --leak-check=yes --leak-resolution=high --show-reachable=yes --suppressions=@srcdir@/suppressions.supp --gen-suppressions=yes"
+
+VGRIND="${VG_ENV} ${VG_PRG} ${VG_ARGS}"
+
+if test ! -x "${VG_PRG}"; then
+    echo Valgrind not found!  Check path.
+    exit 1
+fi
+
+# --------------------------------------------------------------------- #
+
+DATE=`date +"%Y-%m-%d_%H%M"`
+SUMMARY=valgrind_summary.log
+TMP_LOG=valgrind_tmp.log
+ERROR=0
+
+# --------------------------------------------------------------------- #
+
+vgrind () {
+    if test ! -x "$1" -o "$1" == `basename $0`; then
+	# echo "Skipping $1."
+	return
+    fi
+
+    echo -n "Running $* ..."
+    tmp_err=
+
+    if [[ $1 == *.sh ]]; then
+        eval $1 ${VGRIND}
+    else
+        eval ${VGRIND} $*
+    fi;
+
+}
+
+
+# --------------------------------------------------------------------- #
+
+for PROG in $*; do
+        vgrind @top_builddir@/tests/$PROG; 
+done
+
+
+# --------------------------------------------------------------------- #
+
+# cat ${SUMMARY}
+
+exit ${ERROR}

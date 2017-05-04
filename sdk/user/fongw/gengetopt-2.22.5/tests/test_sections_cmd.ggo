@@ -1,0 +1,22 @@
+# test_sections_cmd.ggo
+
+# test sections
+
+package "test_sections"
+version "1.0"
+
+option "string"      s "string option" string no
+option "int"         i "int option" int no
+section "First section.  This \"section\" definition has no description, since the description is in the definition itself, that is wrapped too"
+option "short"       S "short option" short no
+option "long"        l "long option" long no
+option "float"       f "float option" float no
+option "double"      d "double option" double no
+option "longdouble"  D "longdouble option" longdouble no
+section "Second section" sectiondesc="The following options belong to the second section\nby the way this second section also has this neat description, and it is quite long so it should require some kind of line wrapping, but don't worry: gengetopt will wrap it for you! ;-)"
+option "longlong"    L "longlong option" longlong no
+option "flag"        F "flag option" flag on
+option "function"    u "function option" no
+section "Last section"
+option "no-short"    - "no short option" no
+option "required"    r "required option" string yes

@@ -1,0 +1,337 @@
+process.o process.o: process.c ./config.h ./includes.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/string.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/features.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/uClibc_config.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/uClibc_arch_features.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/sys/cdefs.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/gcc/stddef.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/stdio.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/types.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/wordsize.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/kernel_types.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/typesizes.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/pthreadtypes.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/sched.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/uClibc_stdio.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/wchar.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/wchar.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/uClibc_mutex.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/pthread.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/sched.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/time.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/time.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/uClibc_clk_tck.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/signal.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/sigset.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/initspin.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/sigthread.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/uClibc_pthread.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/gcc/stdarg.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/stdio_lim.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/stdlib.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/waitflags.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/waitstatus.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/endian.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/endian.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/sys/types.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/sys/select.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/select.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/sys/sysmacros.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/alloca.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/syslog.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/sys/syslog.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/unistd.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/posix_opt.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/environments.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/confname.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/getopt.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/errno.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/errno.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/linux/errno.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/asm/errno.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/asm-generic/errno-base.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/signum.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/siginfo.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/sigaction.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/sigcontext.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/sgidefs.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/sigstack.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/ucontext.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/sys/ucontext.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/netdb.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/netinet/in.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/stdint.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/sys/socket.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/sys/uio.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/uio.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/socket.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/limits.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/gcc/limits.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/posix1_lim.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/local_lim.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/linux/limits.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/uClibc_local_lim.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/posix2_lim.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/xopen_lim.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/sockaddr.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/asm/socket.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/asm/sockios.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/asm/ioctl.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/in.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/byteswap.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/rpc/netdb.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/netdb.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/pwd.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/grp.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/inttypes.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/sys/param.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/linux/param.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/asm/param.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/sys/time.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/sys/ioctl.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/ioctls.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/asm/ioctls.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/ioctl-types.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/sys/ttydefaults.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/sys/stat.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/stat.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/fcntl.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/fcntl.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/netinet/ip6.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/netinet/icmp6.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/arpa/inet.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/sys/sysctl.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/linux/sysctl.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/linux/kernel.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/linux/types.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/net/if.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/net/if_arp.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/getopt.h \
+  ./radvd.h ./defaults.h \
+  /home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/linux/version.h
+
+./config.h:
+
+./includes.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/string.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/features.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/uClibc_config.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/uClibc_arch_features.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/sys/cdefs.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/gcc/stddef.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/stdio.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/types.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/wordsize.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/kernel_types.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/typesizes.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/pthreadtypes.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/sched.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/uClibc_stdio.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/wchar.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/wchar.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/uClibc_mutex.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/pthread.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/sched.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/time.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/time.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/uClibc_clk_tck.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/signal.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/sigset.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/initspin.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/sigthread.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/uClibc_pthread.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/gcc/stdarg.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/stdio_lim.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/stdlib.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/waitflags.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/waitstatus.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/endian.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/endian.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/sys/types.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/sys/select.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/select.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/sys/sysmacros.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/alloca.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/syslog.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/sys/syslog.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/unistd.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/posix_opt.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/environments.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/confname.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/getopt.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/errno.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/errno.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/linux/errno.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/asm/errno.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/asm-generic/errno-base.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/signum.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/siginfo.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/sigaction.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/sigcontext.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/sgidefs.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/sigstack.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/ucontext.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/sys/ucontext.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/netdb.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/netinet/in.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/stdint.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/sys/socket.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/sys/uio.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/uio.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/socket.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/limits.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/gcc/limits.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/posix1_lim.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/local_lim.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/linux/limits.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/uClibc_local_lim.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/posix2_lim.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/xopen_lim.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/sockaddr.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/asm/socket.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/asm/sockios.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/asm/ioctl.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/in.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/byteswap.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/rpc/netdb.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/netdb.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/pwd.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/grp.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/inttypes.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/sys/param.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/linux/param.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/asm/param.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/sys/time.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/sys/ioctl.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/ioctls.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/asm/ioctls.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/ioctl-types.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/sys/ttydefaults.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/sys/stat.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/stat.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/fcntl.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/bits/fcntl.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/netinet/ip6.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/netinet/icmp6.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/arpa/inet.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/sys/sysctl.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/linux/sysctl.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/linux/kernel.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/linux/types.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/net/if.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/net/if_arp.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/getopt.h:
+
+./radvd.h:
+
+./defaults.h:
+
+/home/scku/projects/rlxlinux-xDSL/toolchain/rsdk-1.3.6-5181-EB-2.6.19-xDSL-0.9.30/include/linux/version.h:

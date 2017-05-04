@@ -1,0 +1,2 @@
+args_info->@option_var_name@_given += local_args_info.@option_var_name@_given;
+local_args_info.@option_var_name@_given = 0;

@@ -1,0 +1,24 @@
+string-values="foob" # foobar
+string-values-def-argopt
+string-values-no-short="bar" # bar
+multistring-values="foo" # foo
+multistring-values="b" # bar
+multistring-values="bar" # bar
+multistring-values="foo" # foo
+multistring-values-def="bar" # bar
+multistring-values-def
+multistring-values-no-short="foo" # foo
+multistring-values-no-short="foo" # foo
+multistring-values-no-short="bar" # bar
+multistring-values-no-short="bar" # bar
+multistring-values-no-short="bar" # bar
+multistring-values-no-short="foo" # foo
+int-values="1" # 180
+int-values-m="1" # 1800
+int-values-m="27" # 2700
+values-first-enums-plus="-foo" # -foo
+values-multiple-enums="FI" # FIRST
+values-multiple-enums="S" # SECOND
+values-multiple-enums="T" # THIRD
+values-multiple-enums="FOURTH" # FOURTH
+file-save="test_values.save"

@@ -1,0 +1,87 @@
+// ============================================================
+
+/**
+ * @page VOIP_DSP_FAX FAX/MODEM tone detection
+ * @ingroup TAPI_DSP_FAX 
+ * The VoIP common codecs (G.729 and G.723) are not suitable for FAX or MODEM application.<br>
+ * This page introduce the FAX/MODEM tone detection. VoIP can switch to FoIP or MoIP after the FAX/MDM event.
+ * The FoIP can switch back to VoIP after FAX End event \ref rtk_GetFaxEndDetect.
+ * <br>There are two common groups of FAX (ITU T.30).
+ * - Group 3, up to 14400bps transfer rate
+ * - Super Group 3, up to 33600bps transfrer rate
+ *
+ * Group 3 can transmit through T.38 or T.30(G.711 pass-through) protocol. <br>
+ * Super Group 3 transmit through T.30(G.711 pass-through) protocol. <br>
+ * For more T.38 information see \ref TAPI_MEDIA_T38. <p>
+ * Common Modem Standard
+ * - ITU V.21 (300bps)
+ * - ITU V.22bis (1200-2400bps)
+ * - ITU V.23 (600-1200bps)
+ * - ITU V.27ter, ITU V.29, ITU V.17 (2400-14400bps). Used in Group 3 Fax, too.
+ * - ITU V.34, ITU V.90 (up to 5600bps)
+ * - Bell 103 (300bps), Bell 202 (1200bps)
+ *
+ * \htmlonly <p> <caption align="left"> <b> Figure . Do re-INVITE after fax or modem detection</b> </caption> 
+ * <font color=#0000A0> <pre> 
+ * uint32 fax_modem, fax_event;
+ * rtk_GetFaxModemEvent(0, &fax_modem, &fax_event, 0);
+ * if ( (fax_modem == FMS_FAX_LOW_SPEED) || (fax_modem == FMS_FAX_HIGH_SPEED) )
+ * {
+ * 	/*do FAX T.38 or pass-through re-INVITE*/
+ * 	...
+ * } else if ( fax_modem == FMS_MODEM_LOCAL ) {
+ * 	/*do Modem pass-through re-INVITE*/
+ * 	...
+ * }
+ * </pre> </font>  \endhtmlonly 
+ * The functions of \ref rtk_SetAnswerToneDet set detection of cng, ans, /ans, ansam, /ansam etc ...
+ * call \ref rtk_OnHookReinit to reinit the detection <br>
+ * The functions of \ref rtk_SetVbdEc set the Echo Canceller Mode for VBD (FAX/MODEM) application
+ * @section FAX_MODEM_Standards FAX/MODEM Tones, signals and events
+ * - @subpage fax_modem1 
+ * - @subpage fax_modem2
+ *
+ * <br> <b>Notes: Disable AGC and set proper volume in VBD(FAX/Modem) connection. </b>
+ * <br> Reference:
+ * - ITU T.30, T.38
+ * - ITU V.21, V.22bis, V.23
+ * - ITU V.27ter, V.29, V.17
+ * - ITU V.34, V.90
+ * - ITU V.8bis, V.25
+ * - Bell 103, 202
+ * - RFC 2833 - Internet Engineering Task Force
+ */ 
+
+/**
+ * @page fax_modem1 FAX Tones, signals and events 
+ * @section fax_1 CNG (Calling tone)
+ * 1100 Hz, ON for 0.5 second, OFF for 3 seconds.
+ * @section fax_2 CED (Called terminal identification answer tone,)
+ * 2100 Hz +/- 15 Hz tone, ON for 2.6 to 4.0 seconds.
+ * CCITT Recommendation V.23
+ * @section fax_3 DIS (Digital Identification Signal)
+ * Characterizes the standard ITU-T capabilities of the
+called terminal.
+ * @section fax_4 DCN (Disconnect)
+ * This command indicates the initiation of phase E (call release). This
+command requires no response.
+ */ 
+
+
+/**
+ * @page fax_modem2 Modem Tones, signals and events 
+ * @section modem_1 ANS answer tone
+ * 2100 +/- 15 Hz tone 
+ * @section modem_2 /ANS answer tone with phase reversals 
+ * This is the same signal as ANS, except that it reverses phase at an interval of 450 +/- 25 ms.
+ * @section modem_3 ANSam modified answer tone
+ * The modified answer tone (ANSam) is a sinewave signal at 2100 +/- 1 Hz without phase reversals, amplitude-modulated by a sinewave at 15 +/- 0.1 H
+ * @section modem_4 /ANSam modified answer tone with phase reversals
+ * The modified answer tone with phase reversals is a sinewave signal at 2100 +/- 1 Hz with phase reversals at intervals of 450 +/- 25 ms, amplitude-modulated by a sinewave at 15 +/- 0.1 Hz
+ * @section modem_5 BELL answer tone
+ * 2225Hz
+ * @section modem_6 V.22 USB1
+ * 2250Hz, V.22 Unscrambled binary 1
+ * @section modem_7 V8bis Cre tone
+ * 1375 + 2002Hz, Capabilities Request (CRe) is a dual-tone signal with tones at tones at 1375 Hz and 2002 Hz for 400 ms, followed by a single tone at 400 Hz for 100 ms
+ */

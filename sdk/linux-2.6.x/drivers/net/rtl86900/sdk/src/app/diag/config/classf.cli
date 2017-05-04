@@ -1,0 +1,342 @@
+//
+// Copyright (C) 2009 Realtek Semiconductor Corp.
+// All Rights Reserved.
+//
+// This program is the proprietary software of Realtek Semiconductor
+// Corporation and/or its licensors, and only be used, duplicated,
+// modified or distributed under the authorized license from Realtek.
+//
+// ANY USE OF THE SOFTWARE OTHER THAN AS AUTHORIZED UNDER
+// THIS LICENSE OR COPYRIGHT LAW IS PROHIBITED.
+//
+// $Revision: 39101 $
+// $Date: 2013-05-03 17:35:27 +0800 (Fri, 03 May 2013) $
+//
+// Purpose : Define diag shell commands for debug.
+//
+// Feature : The file have include the following module and sub-modules
+//           1) debug commands.
+//
+
+//classification configuration
+//show configuration
+//rule for configuration
+classify show rule
+
+//classification configuration
+//rule clear operation
+classify clear
+
+//classification configuration
+//add configuration
+//entry configuration
+//entry index, <0~511>
+classify add entry <UINT:entry>
+
+//classification configuration
+//delete configuration
+//entry configuration
+//entry index, <0~511>
+classify del entry <UINT:entry>
+
+//classification configuration
+//delete configuration
+//entry configuration
+//all entries
+classify del entry all
+
+//classification configuration
+//get configuation
+//entry configuration
+//entry index, <0~511>
+classify get entry <UINT:entry>
+
+//classification configuration
+//set configuration
+//rule configuration
+//diretction configuration
+//specify to upstream
+//specify to downstream
+classify set rule direction ( upstream | downstream )
+
+//classification configuration
+//set configuration
+//rule configuration
+//tos(up) or sid(down) configuration
+//data configuration
+//data, 8 bits
+//mask configuration
+//mask, 8 bits
+classify set rule tos-sid data <UINT:tos_sid_data> mask <UINT:tos_sid_mask>
+
+//classification configuration
+//set configuration
+//rule configuration
+//tag VID configuration
+//data configuration
+//VID data, 12 bits, 0~4095
+//mask configuration
+//VID mask, 12 bit
+classify set rule tag-vid data <UINT:vid_data> mask <UINT:vid_mask>
+
+//classification configuration
+//set configuration
+//rule configuration
+//tag priority configuration
+//data configuration
+//priority data, 3 bits, 0~7
+//mask configuration
+//priority mask, 3 bit
+classify set rule tag-priority data <UINT:priority_data> mask <UINT:priority_mask>
+
+//classification configuration
+//set configuration
+//rule configuration
+//internal priority configuration
+//data configuration
+//priority data, 3 bits, 0~7
+//mask configuration
+//priority mask, 3 bit
+classify set rule internal-priority data <UINT:priority_data> mask <UINT:priority_mask>
+
+//classification configuration
+//set configuration
+//rule configuration
+//Stag bit configuration
+//data configuration
+//s bit data, 1 bit
+//mask configuration
+//s bit mask, 1 bit
+classify set rule s-bit data <UINT:s_data> mask <UINT:s_mask>
+
+//classification configuration
+//set configuration
+//rule configuration
+//Ctag bit configuration
+//data configuration
+//c bit data, 1 bit
+//mask configuration
+//c bit mask, 1 bit
+classify set rule c-bit data <UINT:c_data> mask <UINT:c_mask>
+
+//classification configuration
+//set configuration
+//rule configuration
+//UNI configuration
+//data configuration
+//UNI data, 3 bits, 0-7
+//mask configuration
+//UNI mask, 3 bit
+classify set rule uni data <UINT:uni_data> mask <UINT:uni_mask>
+
+//classification configuration
+//set configuration
+//rule configuration
+//ether type configuration
+//data configuration
+//type data, 16 bits
+//mask configuration
+//type mask, 16 bit
+classify set rule ether-type data <UINT:type_data> mask <UINT:type_mask>
+
+//classification configuration
+//set configuration
+//opeartion configuration
+//entry configuration
+//entry number
+//upstream
+//downstream
+//hit
+//not hit
+classify set operation entry <UINT:entry> ( upstream | downstream ) ( hit | not )
+
+//classification configuration
+//get configuration
+//opeartion configuration
+//entry configuration
+//entry number
+//upstream
+//downstream
+classify get operation entry <UINT:entry> ( upstream | downstream )
+
+//classification configuration
+//set configuration
+//upstream action configuration
+//classification tag action configuration
+//specify to no operation
+//add classification tag which TPID as VS_TPID
+//add classification tag which TPID as 0x8100
+classify set us-action cs-act ( nop | vs-tpid | c-tpid )
+
+//classification configuration
+//set configuration
+//upstream action configuration
+//Ctag action configuration
+//specify to no operation
+//specify to add stag
+//specify to translation with C2S table
+//specify to transparent
+classify set us-action c-act ( nop | untag | c2s | transparent )
+
+//classification configuration
+//set configuration
+//upstream action configuration
+//classify tag VID action configuration
+//specify to assign classify tag VID
+//VID, 0~4095
+classify set us-action cs-vid-act assign <UINT:vid>
+
+//classification configuration
+//set configuration
+//upstream action configuration
+//classify tag VID action configuration
+//specify to copy from outer tag VID
+classify set us-action cs-vid-act copy
+
+//classification configuration
+//set configuration
+//upstream action configuration
+//Stag priority action configuration
+//specify to assign classify priority
+//priority, 0~7
+classify set us-action cs-priority-act assign <UINT:priority>
+
+//classification configuration
+//set configuration
+//upstream action configuration
+//classify tag priority action configuration
+//specify to copy from outer tag priority
+//specify to from internal priority
+classify set us-action cs-priority-act ( copy | internal-priority )
+
+//classification configuration
+//set configuration
+//upstream action configuration
+//SID action configuration
+//assign to stream ID
+//assign to queue ID
+//ID, 0~127
+classify set us-action sid-act ( sid | qid ) <UINT:id>
+
+//classification configuration
+//set configuration
+//downstream action configuration
+//classify tag action configuration
+//specify to no operation
+//specify to delete Stag
+classify set ds-action cs-act ( nop | del )
+
+//classification configuration
+//set configuration
+//downstream action configuration
+//classify tag action configuration
+//add classification tag which TPID as VS_TPID
+//assigned to tag VID
+//VID, 0~4095
+//assigned to tag priority
+//priority, 0~7
+classify set ds-action cs-act vs-tpid tag-vid <UINT:vid> tag-priority <UINT:priority>
+
+//classification configuration
+//set configuration
+//downstream action configuration
+//classify tag action configuration
+//add classification tag which TPID as 0x8100
+//assigned to tag VID
+//VID, 0~4095
+//assigned to tag PRI
+//priority, 0~7
+classify set ds-action cs-act c-tpid tag-vid <UINT:vid> tag-priority <UINT:priority>
+
+//classification configuration
+//set configuration
+//downstream action configuration
+//Ctag action configuration
+//specify to no operation
+//specify to tagging with TPID 0x8100
+//specify to VLAN translation with SP2C table
+//specify to transparent
+classify set ds-action c-act ( nop | c-tag | sp2c | transparent )
+
+//classification configuration
+//set configuration
+//downstream action configuration
+//Ctag VID action configuration
+//follow switch core
+//copy from Stag VID
+//egress CVID by LUT MAC VID learning
+classify set ds-action c-vid-act ( swcore | copy | lut )
+
+//classification configuration
+//set configuration
+//downstream action configuration
+//Ctag VID action configuration
+//assigned to CVID
+//CVID, 0~4095
+classify set ds-action c-vid-act assign <UINT:cvid>
+
+//classification configuration
+//set configuration
+//downstream action configuration
+//Ctag priority action configuration
+//follow switch core
+//copy from Stag priority
+classify set ds-action c-priority-act ( swcore | copy )
+
+//classification configuration
+//set configuration
+//downstream action configuration
+//Ctag priority action configuration
+//assigned to ctag priority
+//CPRI, 0~7
+classify set ds-action c-priority-act assign <UINT:priority>
+
+//classification configuration
+//set configuration
+//downstream action configuration
+//classification priority action configuration
+//follow switch core
+classify set ds-action cf-priority-act swcore
+
+//classification configuration
+//set configuration
+//downstream action configuration
+//classfication priority action configuration
+//Assigned to classification priority
+//CFPri, 0~7
+classify set ds-action cf-priority-act assign <UINT:priority>
+
+//classification configuration
+//set configuration
+//downstream action configuration
+//UNI action configuration
+//flooding port mask to UNI-MASK
+//forced forwarding
+//port configurtion
+//port list, <0-6>
+//all port without port 6
+//none port
+classify set ds-action uni-act ( flood | forced ) port ( <PORT_LIST:ports> | all | none )
+
+//classification configuration
+//show configuration
+//upstream action
+classify show us-action
+
+//classification configuration
+//show configuration
+//downstream action
+classify show ds-action
+
+//classification configuration
+//set configuration
+//upstream unmatch action
+//specify to drop
+//specify to permit as normal forwarding
+//specify to permit without PON forwarding
+classify set us-unmatch-act ( drop | permit | permit-without-pon )
+
+//classification configuration
+//get configuration
+//upstream unmatch action
+classify get us-unmatch-act

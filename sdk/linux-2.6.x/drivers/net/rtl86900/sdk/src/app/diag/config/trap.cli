@@ -1,0 +1,185 @@
+//
+// Copyright (C) 2011 Realtek Semiconductor Corp.
+// All Rights Reserved.
+//
+// This program is the proprietary software of Realtek Semiconductor
+// Corporation and/or its licensors, and only be used, duplicated,
+// modified or distributed under the authorized license from Realtek.
+//
+// ANY USE OF THE SOFTWARE OTHER THAN AS AUTHORIZED UNDER
+// THIS LICENSE OR COPYRIGHT LAW IS PROHIBITED.
+//
+// $Revision: 39101 $
+// $Date: 2013-05-03 17:35:27 +0800 (Fri, 03 May 2013) $
+//
+// Purpose : Define diag shell commands for trunk.
+//
+// Feature : The file have include the following module and sub-modules
+//           1) trap commands.
+//
+
+
+//trap configuration
+//set configuration
+//rma configuration
+//priority
+//priority value, <0~7>
+trap set rma priority <UINT:priority>
+
+//trap configuration
+//get configuration
+//rma configuration
+//priority
+trap get rma priority
+
+
+//trap configuration
+//set configuration
+//RMA configuration
+//layer2 RMA configuration
+//tail of RMA MAC address, <0x00~0x2f>
+//action
+//drop RMA packets
+//forward RMA packets
+//forward RMA packets exclude CPU port
+//trap RMA packets to CPU
+trap set rma layer2 <UINT:rma_tail> action ( drop | forward | forward-exclude-cpu | trap-to-cpu )
+
+//trap configuration
+//get configuration
+//RMA configuration
+//layer2 RMA configuration
+//tail of RMA MAC address, <0x00~0x2f>
+//action
+trap get rma layer2 <UINT:rma_tail> action
+
+//trap configuration
+//set configuration
+//RMA configuration
+//layer2 RMA configuration
+//tail of RMA MAC address, <0x00~0x2f>
+//VLAN leaky configuration
+//port isolation leaky configuration
+//keep c-vlan format
+//bypass storm filtering
+//state configuration
+//disable function
+//enable function
+trap set rma layer2 <UINT:rma_tail> ( vlan-leaky | isolation-leaky | keep-vlan-format | bypass-storm-control )  state ( disable | enable )
+
+//trap configuration
+//get configuration
+//RMA configuration
+//layer2 RMA configuration
+//tail of RMA MAC address, <0x00~0x2f>
+//VLAN leaky configuration
+//port isolation leaky configuration
+//keep c-vlan format
+//bypass storm filtering
+trap get rma layer2 <UINT:rma_tail> ( vlan-leaky | isolation-leaky | keep-vlan-format | bypass-storm-control )
+
+//trap configuration
+//set configuration
+//RMA configuration
+//cisco discovery protocol configuration
+//cisco shared STP configuration
+//action
+//drop RMA packets
+//forward RMA packets
+//forward RMA packets exclude CPU port
+//trap RMA packets to CPU
+trap set rma ( cdp | csstp ) action ( drop | forward | forward-exclude-cpu | trap-to-cpu )
+
+//trap configuration
+//get configuration
+//RMA configuration
+//cisco discovery protocol configuration
+//cisco shared STP configuration
+//action
+trap get rma ( cdp | csstp ) action
+
+//trap configuration
+//set configuration
+//RMA configuration
+//cisco discovery protocol configuration
+//cisco shared STP configuration
+//VLAN leaky configuration
+//port isolation leaky configuration
+//keep c-vlan format
+//bypass storm filtering
+//state configuration
+//disable function
+//enable function
+trap set rma ( cdp | csstp ) ( vlan-leaky | isolation-leaky | keep-vlan-format | bypass-storm-control )  state ( disable | enable )
+
+//trap configuration
+//set configuration
+//RMA configuration
+//cisco discovery protocol configuration
+//cisco shared STP configuration
+//VLAN leaky configuration
+//port isolation leaky configuration
+//keep c-vlan format
+//bypass storm filtering
+trap get rma ( cdp | csstp ) ( vlan-leaky | isolation-leaky | keep-vlan-format | bypass-storm-control )
+
+//trap configuration
+//set configuration
+//IGMP configuration
+//Per port IGMP/MLD configuration
+//port list, <0-6>
+//all port
+//IGMPv1
+//IGMPv2
+//IGMPv3
+//MLDv1
+//MLDv2
+//drop
+//forward
+//trap
+trap set igmp port ( <PORT_LIST:ports> | all ) ( igmpv1 | igmpv2 | igmpv3 | mldv1 | mldv2 ) ( drop | forward | trap-to-cpu )
+
+//trap configuration
+//get configuration
+//IGMP configuration
+//Per port IGMP/MLD configuration
+//port list, <0-6>
+//all port
+//IGMPv1
+//IGMPv2
+//IGMPv3
+//MLDv1
+//MLDv2
+trap get igmp port ( <PORT_LIST:ports> | all ) ( igmpv1 | igmpv2 | igmpv3 | mldv1 | mldv2 )
+
+//trap configuration
+//set configuration
+//IGMP MLD configuration
+//VLAN leaky configuration
+//port isolation leaky configuration
+//disable function
+//enable function
+trap set igmp ( vlan-leaky | isolation-leaky ) ( disable | enable )
+
+//trap configuration
+//get configuration
+//IGMP MLD configuration
+//VLAN leaky configuration
+//port isolation leaky configuration
+trap get igmp ( vlan-leaky | isolation-leaky )
+
+//trap configuration
+//set configuration
+//IGMP MLD configuration
+//Checksum Error configuration
+//Drop
+//Trap to CPU
+//Forward (Ignore checksum error)
+trap set igmp checksum-error ( drop | trap-to-cpu | forward )
+
+//trap configuration
+//get configuration
+//IGMP MLD configuration
+//Checksum Error configuration
+trap get igmp checksum-error
+

@@ -1,0 +1,3 @@
+START_CHILLI=1
+DHCPIF=eth0
+CONFFILE="/etc/chilli.conf"

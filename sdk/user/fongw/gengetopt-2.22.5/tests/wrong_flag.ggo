@@ -1,0 +1,4 @@
+# test for problems in flag options
+
+option "flag-ok"        f "flag option OK" on flag 
+option "flag"        F "flag option" on flag default="foo"

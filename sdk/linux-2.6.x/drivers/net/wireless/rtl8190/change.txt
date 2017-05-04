@@ -1,0 +1,2235 @@
+Change History
+==============
+
+** 2009-08-13 jimmylin **
+
+- Modify EDCA parameter for Intel clients
+  * Modify flow to fix the previos mistake.
+
+------------------------------------------------------------------------------
+
+** 2009-08-11 jimmylin **
+
+- Modify EDCA parameter for Intel clients
+  * Scott suggested to enlarge CW_MAX from 6 to 10 for more stable performance
+    with Intel clients in open space.
+
+- Enlarge retry limit from 0x20 to 0x30 by Scott
+
+------------------------------------------------------------------------------
+
+** 2009-08-10 jimmylin **
+
+- Decline ADDBA request in WEP and TKIP
+  * In WEP and TKIP, Intel will associate in G mode. But Intel will send N
+    rate packets and ADDBA request. We should decline the ADDBA request for
+    better IOT.
+    But with D-Link DWA-642, 642 will send ADDBA requests all the time.
+    Decline it's ADDBA request will degrade the throughput a little. WNR2000
+    did the same thing and got the same throughput, so we will do the same
+    reaction as WNR2000.
+
+------------------------------------------------------------------------------
+
+** 2009-08-05 jimmylin **
+
+- Fix Intel WEP IOT issue
+  * Can't enable TXOP with Intel in WEP mode
+
+------------------------------------------------------------------------------
+
+** 2009-07-30 brian **
+
+Prevent IRAM miss while mesh txsc
+
+------------------------------------------------------------------------------
+
+** 2009-07-30 Chris **
+
+1. Add mesh Rx shourtcut
+
+------------------------------------------------------------------------------
+
+** 2009-07-29 brian **
+
+1.Rearrange routine containing mesh to gain some space
+2.Fix mesh tx shortcut bug while 2 clients behind a proxy
+
+------------------------------------------------------------------------------
+
+** 2009-07-29 jimmylin **
+
+- Fix group key rekey fail issue
+  * Modified by David
+
+------------------------------------------------------------------------------
+
+** 2009-07-27 brian **
+
+- Make mesh support tx shortcut
+
+------------------------------------------------------------------------------
+
+** 2009-07-20 victorlo **
+
+- Refine 1T1R AP performance with 11n bcm stations, for 8192SE
+
+------------------------------------------------------------------------------
+
+** 2009-07-18 button **
+
+- modify for client mode IOT issue when using WEP or TKIP encryption
+
+8192s: no limit
+marvell: no limit
+8190:  up to MCS4, Aggregation off
+others: G rate, Aggregation off
+
+------------------------------------------------------------------------------
+
+** 2009-07-17 victorlo **
+
+- Disable SGI for virtual interfaces when root is fixrate
+
+------------------------------------------------------------------------------
+
+** 2009-07-16 Bert **
+
+- Clean up all cache used by bridge short-cut
+  while initial wireless root interface
+
+------------------------------------------------------------------------------
+
+** 2009-07-13 jimmylin **
+
+- Restrict N rates for legacy encryption station
+
+------------------------------------------------------------------------------
+
+** 2009-07-08 Button **
+
+- Add WAPI support.
+	To enable WAPI in menuconfig:
+	Network device support  --->
+		Wireless LAN (non-hamradio)  --->
+			[*]   WAPI support
+
+------------------------------------------------------------------------------
+
+** 2009-07-08 victorlo **
+
+- Add MCS7 and MCS15 SGI tx concurrent support, for 8192SE
+
+- Set rx capability up to MCS7 in HT IE for 1T1R, for 8192SE
+
+------------------------------------------------------------------------------
+
+** 2009-07-06 victorlo **
+
+- Refined STA_EXT related features
+
+------------------------------------------------------------------------------
+
+** 2009-07-06 jimmylin **
+
+- Add mib to use FW to send beacon for pure AP
+
+- Add baseband CCA hangup check
+
+- Fix bug of reading PHY parameters with beginning of "0X"
+
+------------------------------------------------------------------------------
+
+** 2009-06-23 victorlo **
+
+- Add auto RTS for Intel 20m stations to enhance TP, for 8192SE
+
+- Add MCS11 for high and middle range rssi, and MCS12 for low range rssi
+  in RA, for 8192SE
+
+------------------------------------------------------------------------------
+
+** 2009-06-17 victorlo **
+
+- Improve performance with RTS and TXOP enabled at short and
+  middle range for Atheros and Ralink stations, for 8192SE
+
+- Improve CCK CCA at long range, for 8192SE
+
+------------------------------------------------------------------------------
+
+** 2009-06-17 jimmylin **
+
+- Add mib to restrict TKIP and WEP in G rates
+
+- Enable code of WMM APSD
+  * Disable the function in default.
+
+- Add Baseband hang check every 5 second
+
+------------------------------------------------------------------------------
+
+** 2009-06-12 davidhsu **
+
+- Add a new define flag 'ADD_TX_POWER_BY_CMD' that allow user 
+  to increase Tx power by different rate through iwpriv cmd as:
+  ''iwpriv wlan0 set_mib txPowerPlus_cck=n" 
+  ''iwpriv wlan0 set_mib txPowerPlus_ofdm_x=n"
+  ''iwpriv wlan0 set_mib txPowerPlus_mcs_x=n".
+  When these commands are not set, driver will refer 'PHY_REG_PG.txt'
+  as default value to increase the Tx power.  
+
+------------------------------------------------------------------------------
+
+** 2009-06-11 Button **
+
+- high power parameters for external PA.
+  turn it on by setting "iwpriv wlan0 set_mib use_ext_pa=1" before driver open.
+
+------------------------------------------------------------------------------
+
+** 2009-06-11 victorlo **
+
+- Identify Intel stations
+
+------------------------------------------------------------------------------
+
+** 2009-06-01 button**
+
+- replace compile flag '_DOT11_MESH_MODE_' with 'CONFIG_RTK_MESH'
+
+------------------------------------------------------------------------------
+
+** 2009-05-27 davidhsu **
+
+- Add vlan support under kernel config CONFIG_RTK_VLAN_SUPPORT
+
+------------------------------------------------------------------------------
+
+** 2009-05-25 button**
+
+- use driver based PSK in client mode, refer to mantis #0000237 
+
+------------------------------------------------------------------------------
+
+** 2009-05-21 victorlo **
+
+- Add Wifi 11n 20/40 coexistance support, undefined as default
+
+------------------------------------------------------------------------------
+
+** 2009-05-18 Joshua **
+
+- Enable OFDM Anttena Switch even AP is under bgn mode
+
+------------------------------------------------------------------------------
+
+** 2009-05-18 jimmylin **
+
+- Fix bug of PS-Poll processing
+
+------------------------------------------------------------------------------
+
+** 2009-05-18 Joshua **
+
+- Add code for Extra Ant Switch (DIR-655 Clone).
+ * While turnning on EXT_ANT_DVRY flag in 8190n_cfg.h, the extra ant-switch
+   mechanism is used by default. User could turn it off by setting "iwpriv wlan0
+   set_mib ExtAntDvry=0".
+
+------------------------------------------------------------------------------
+
+** 2009-05-14 jimmylin **
+
+- Don't queue WDS and Mesh packet in Tx path by Button
+
+------------------------------------------------------------------------------
+
+** 2009-05-13 victorlo **
+
+- Add RIFS rx support on both 20/40 mode when wifi_specific, by jimmylin
+
+------------------------------------------------------------------------------
+
+** 2009-05-13 jimmylin **
+
+- Add Tx STBC support
+  * Due to firmware not ready, rate adaptive can't support 2SS rates and STBC
+    at the same time. At this stage, we will use the highest rate of MCS7 if
+    client likes to receive STBC packets while we enable Tx STBC.
+
+------------------------------------------------------------------------------
+
+** 2009-04-30 Joshua **
+
+- Add antenna switching mechanism, switch Tx Ant under BG mode or BGN mode
+  while there is a 1R sta connected.
+
+------------------------------------------------------------------------------
+
+** 2009-04-29 davidhsu **
+
+- When doing multicast 2 unicast converting, call priv_skb_copy() 
+   function, defined in Ethernet driver, to allocate skb buffer from
+   Ethernet private pool to fix out of memory issue in HD video 
+   streaming.
+
+------------------------------------------------------------------------------
+
+** 2009-04-23 Joshua **
+
+- Update firmware(v48) to fix MBSSID beacon problem (no beacon while enable
+  MBSSID).
+
+------------------------------------------------------------------------------
+
+** 2009-04-23 jimmylin **
+
+- Use s/w to calculate TKIP MIC in default
+
+------------------------------------------------------------------------------
+
+** 2009-04-22 jimmylin **
+
+- Fix access error of TID from Rx packets
+
+------------------------------------------------------------------------------
+
+** 2009-04-14 jimmylin **
+
+- Modify SSID field in hiddend AP for DEL
+
+------------------------------------------------------------------------------
+
+** 2009-04-14 Joshua **
+
+- Enable 1T2R(Path B), 1T1R, 1T1R(Path B)
+  *Use "iwpriv wlan0 set_mib pathB_1T=1" to set Tx path to pathB (before wlan
+driver is opened)
+  *HW_BOARD_ID=2 means 1T1R
+
+------------------------------------------------------------------------------
+
+** 2009-04-14 jimmylin **
+
+- Modify reorder control entry to 128
+
+- Modify Rx descriptor number of 16M config to 160
+
+------------------------------------------------------------------------------
+
+** 2009-04-08 Joshua **
+
+- Fix fixed-rate problem.
+
+------------------------------------------------------------------------------
+
+** 2009-04-08 Joshua **
+
+- Fix VXD_AP interface does not initialized problem while doing re-init.
+
+------------------------------------------------------------------------------
+
+** 2009-04-06 Joshua **
+
+- Modify EDCA for 8192s series.
+
+------------------------------------------------------------------------------
+
+** 2009-04-06 Joshua **
+
+- Update firmware version to v47.
+
+------------------------------------------------------------------------------
+
+** 2009-04-06 jimmylin **
+
+- Modify PSK data structure to avoid memory overlapping
+
+- Modify RF power adjust IO command
+
+------------------------------------------------------------------------------
+
+** 2009-04-01 victorlo **
+
+- Enable IQK by f/w for 8192SE
+
+- Enable power tracking in normal driver for 8192SE
+
+------------------------------------------------------------------------------
+
+** 2009-03-26 jimmylin **
+
+- Change re-init flow for KLD
+
+- Modify h/w init sequence by Scott for 8192SE
+
+------------------------------------------------------------------------------
+
+** 2009-03-25 jimmylin **
+
+- Try to improve system re-init stability
+
+- Add log for customer DEL
+
+------------------------------------------------------------------------------
+
+** 2009-03-24 jimmylin **
+
+- Patch for supporting Rtl8366
+
+- Add WDS idle state checking
+
+------------------------------------------------------------------------------
+
+** 2009-03-24 Joshua **
+
+- Add STA extension mechanism, which allows more than 32 STAs associated with
+  92SE AP.
+  * While turning on STA_EXT flag, use NUM_STAT and FW_NUM_STAT to specify
+    relative parameters.
+ 
+------------------------------------------------------------------------------
+
+** 2009-03-20 jimmylin **
+
+- Add h/w-skipping re-initialization
+
+------------------------------------------------------------------------------
+
+** 2009-03-17 jimmylin **
+
+- Fine tune performance with Intel4965 for 8190
+
+------------------------------------------------------------------------------
+
+** 2009-03-16 Joshua **
+
+- Refine power on sequence for warm reboot. But system is still not very
+  stable, refine the sequence is needed.
+
+------------------------------------------------------------------------------
+
+** 2009-03-16 jimmylin **
+
+- Fix system unstable when using static station buffer
+  * This is because we use page-aligned page pointer but we clear too large
+    memory of desc_buf.
+
+------------------------------------------------------------------------------
+
+** 2009-03-13 jimmylin **
+
+- Fix system unstable in OnAuth()
+  * The reason is that the original OnAuth() uses static variable of
+    (struct stat_info) and this structure is too large to corrupt the stack.
+    So I use kmalloc instead to replace static (struct stat_info).
+
+------------------------------------------------------------------------------
+
+** 2009-03-13 victorlo **
+
+- Enable power tracking in mp driver for 8192SE
+
+------------------------------------------------------------------------------
+
+** 2009-03-12 victorlo **
+
+- Enable RCK in normal driver for 8192SE
+
+------------------------------------------------------------------------------
+
+** 2009-03-10 victorlo **
+
+- Enable SI & PI interface auto-detect for RF read, for 8192SE
+
+------------------------------------------------------------------------------
+
+** 2009-03-05 Joshua **
+
+- Use software beacon instead of hardware beacon, which may cause inaccurate
+  beacon.
+
+------------------------------------------------------------------------------
+
+** 2009-03-02 Joshua **
+
+- Enable MCS7 Short GI while there are only 1R STA associated
+
+- If there are only 1R STA associated and RSSI > 40, use only antenna B as 
+  TX path. If rssi < 40 or there are 2R STA associated, use antenna A,B.
+
+------------------------------------------------------------------------------
+
+** 2009-02-26 jimmylin **
+
+- Add RF power adjust IO command
+
+------------------------------------------------------------------------------
+
+** 2009-02-27 victorlo **
+
+- Finetune 8192SE PCIe analog PHY characteristic, by Pei-Si Wu
+
+------------------------------------------------------------------------------
+
+** 2009-02-26 victorlo **
+
+- Enable AMSDU tx for 8190 & 8192E
+
+- Remove limit AMPDU receiving packet number for 8190
+
+- Set 8us AMPDU start spacing in ht ie as default, for Intel 5300 iot
+  with 8190
+
+- Refine init flow for vxd interface to avoid reset fail
+
+------------------------------------------------------------------------------
+
+** 2009-02-26 jimmylin **
+
+- Fix bug of reading Tx power array
+
+------------------------------------------------------------------------------
+
+** 2009-02-23 victorlo **
+
+- Add proprietary IE for 8192SE recognizing
+
+------------------------------------------------------------------------------
+
+** 2009-02-13 victorlo **
+
+- Add new mib to disable/enable support IP multicast->unicast
+
+------------------------------------------------------------------------------
+
+** 2009-02-12 pluswang **
+
+- Add MESH related code
+
+------------------------------------------------------------------------------
+
+** 2009-02-12 victorlo **
+
+- Add MP single tone ctx for 8192SE
+
+------------------------------------------------------------------------------
+
+** 2009-02-11 jimmylin **
+
+- Add new mib to functionally disable interface
+  * This mib is controlled by wlan scheduling.
+
+------------------------------------------------------------------------------
+
+** 2009-02-11 victorlo **
+
+- Refine MP for 8192SE
+  * Add new phy_reg_MP.txt
+  * Add dynamic RF settings for different channel, tx rate & bandwidth
+
+------------------------------------------------------------------------------
+
+** 2009-02-09 jimmylin **
+
+- Free all queued skb while station is expired longer than 5 seconds
+
+------------------------------------------------------------------------------
+
+** 2009-02-09 victorlo **
+
+- Enable RCK in MP for 8192SE
+
+------------------------------------------------------------------------------
+
+** 2009-02-06 jimmylin **
+
+- Free all queued skb while station is expired
+
+------------------------------------------------------------------------------
+
+** 2009-01-23 jimmylin **
+
+- Add Rx reorder control for sta-to-sta forwarding path
+
+------------------------------------------------------------------------------
+
+** 2009-01-23 victorlo **
+
+- Enable MBSSID for 8192SE
+  * undef MBSSID as default
+
+------------------------------------------------------------------------------
+
+** 2009-01-21 davidhsu **
+
+- Add a defined flag DELAY_REFILL_RX_BUF. When defined, it will not drop
+  rx packet immediately when rx buffer empty. Instead, it will indicate packet
+  to upper later until remaiding rx buffer is less than REFILL_THRESHOLD.
+  This mechanism will reduce pre-allocate rx buffer.
+
+------------------------------------------------------------------------------
+
+** 2009-01-21 jimmylin **
+
+- Add 1T2R support for 8192SE
+
+------------------------------------------------------------------------------
+
+** 2009-01-13 victorlo **
+
+- Enable tx rate reporting for 8192SE
+
+------------------------------------------------------------------------------
+
+** 2009-01-09 jimmylin **
+
+- Rearrange code for open source
+
+------------------------------------------------------------------------------
+
+** 2009-01-09 Joshua **
+
+- Update firmware to version 30, which is specially modified for TX high power
+  issue.
+- Driver is also modified for the firmware, using reg 0x364 to replace some 0x2c0
+  commands.
+
+------------------------------------------------------------------------------
+
+** 2009-01-08 jimmylin **
+
+- Avoid EDCA parameter of BE switching too frequently
+
+------------------------------------------------------------------------------
+
+** 2009-01-08 victorlo **
+
+- Refine WMM APSD for logo test
+
+------------------------------------------------------------------------------
+
+** 2009-01-08 davidhsu **
+
+- Enable PCI direct enable
+
+------------------------------------------------------------------------------
+
+** 2009-01-07 victorlo **
+
+- Refine 8192SE wifi logo test mib setting
+  * wifi_specific = 0, performance mode
+  * wifi_specific = 1, wifi mode
+  * wifi_specific = 2, auto mode which complies wifi requirements
+    and gives normal performance
+
+------------------------------------------------------------------------------
+
+** 2008-12-30 jimmylin **
+
+- Limit AMPDU receiving packet number to 15 for Intel 5300 w/o encryption
+  * It will affect Atheros and Ralink a little.
+
+- Fix unaligned access to RRSR for 8192SE
+
+------------------------------------------------------------------------------
+
+** 2008-12-29 Joshua **
+
+- Update MP Program
+  * Disable PATH B PA while using PATH A only mode.
+  * Now user could set power index while using continuous TX mode.
+
+------------------------------------------------------------------------------
+
+** 2008-12-26 jimmylin **
+
+- Limit auto channel selection to channel 7 for main channel in lower side
+
+------------------------------------------------------------------------------
+
+** 2008-12-26 victorlo **
+
+- Remark MACid signin in tx shortcut for 8192SE,
+  to avoid using wrong tx rate
+
+------------------------------------------------------------------------------
+
+** 2008-12-26 jimmylin **
+
+- Use one Tx descriptor in signin shortcut for 8192SE
+
+------------------------------------------------------------------------------
+
+** 2008-12-25 jimmylin **
+
+- Fix system crash when WDS with TKIP
+
+- Align Rx buffer to 32-byte alignment according to Scott
+
+------------------------------------------------------------------------------
+
+** 2008-12-25 davidhsu **
+
+- Use mips-16 for I-RAM
+
+- Increase tx descriptor size
+
+- Delete the code for 'QUE_TX_PACKET_WHEN_FULL'
+
+------------------------------------------------------------------------------
+
+** 2008-12-24 victorlo **
+
+- Add DIG for 8192SE
+
+------------------------------------------------------------------------------
+
+** 2008-12-24 jimmylin **
+
+- Set AMPDU spacing according to security and station
+
+------------------------------------------------------------------------------
+
+** 2008-12-23 victorlo **
+
+- Refine for 8192SE Wifi logo test
+
+------------------------------------------------------------------------------
+
+** 2008-12-23 davidhsu **
+
+- Add a define flag PRIV_STA_BUF to use local pool to manage sta buffer
+  for struct aid_obj, apsd_pkt_queue and WPA_STA_INFO. This will reduce
+  memory allocation overhead when multiple clients associated to AP.
+
+------------------------------------------------------------------------------
+
+** 2008-12-23 jimmylin **
+
+- Don't send RTS to Realtek client for 8192SE
+
+------------------------------------------------------------------------------
+
+** 2008-12-22 davidhsu **
+
+- Add an option to disable hidden AP during WPS.
+  * When mib "wsc_enable" is set to 4, it will disable hidden AP.
+  * When mib "wsc_enable" is set to 5, it will restore hidden AP setting.
+
+------------------------------------------------------------------------------
+
+** 2008-12-22 davidhsu **
+
+- Add customer specific LED control.
+  * Add a new value (10) in "led_type" mib. When it is set, blink LED1
+     On/Off in 1s interval when no traffic. If data is on-going, blink
+     LED1 as traffic loading.
+  * Add a new proc flag '/proc/wlan0/led' to control LED1.
+     When write '0' to disable LED, write '1' to enable LED, and write '2' to
+     restore original behavior.
+
+------------------------------------------------------------------------------
+
+** 2008-12-19 davidhsu **
+
+- Modify the handling for Tx descriptor of ring queue to allow the 
+  descriptor number could be any number under 8192SE.
+  * Increase Tx descriptor number from 512 -> 600 under 8192SE.
+    
+------------------------------------------------------------------------------
+
+** 2008-12-18 victorlo **
+
+- Let f/w handle RQPN init for 8192SE
+  * Default assign 2 page for bcn q when none is set
+
+------------------------------------------------------------------------------
+
+** 2008-12-18 joeylin **
+
+- fix the interoperability issue with Corega CG-WLCB54GL and Buffalo WLI_CB_AG54L 54Mbps NIC
+  ** change 4-way handshake message 1 retry count to 5 (original is 3)
+  ** adjust the Information Element sequence of Beacon and Porbe response
+
+------------------------------------------------------------------------------
+
+** 2008-12-18 jimmylin **
+
+- Modify to receive 4K AMSDU only and increase private skb number to 600
+
+------------------------------------------------------------------------------
+
+** 2008-12-16 davidhsu **
+
+- Comment out the code in ISR to mask ISR status with InterruptMask,
+  this code will cause TSF timer interrupt can't occur when TSF timer
+  is used in AMSDU transmission.
+
+- Define SUPPORT_TX_AMSDU in 8192SE default.
+
+------------------------------------------------------------------------------
+
+** 2008-12-16 jimmylin **
+
+- Hide unused MIB of 8192SE
+
+------------------------------------------------------------------------------
+
+** 2008-12-14 davidhsu **
+
+- Add a new defined flag 'QUE_TX_PACKET_WHEN_FULL' to queue tx
+  packet when tx descriptor is unavaliable
+
+------------------------------------------------------------------------------
+
+** 2008-12-12 Joshua **
+
+- Modify MP for new power index
+
+------------------------------------------------------------------------------
+
+** 2008-12-11 victorlo **
+
+- Signin power index into reg for 1SS & 2SS respectively for 8192SE
+
+------------------------------------------------------------------------------
+
+** 2008-12-10 Joshua **
+
+- Enable MP-TEST of 8192SE driver
+  * So far, MP program could send packet only. Carrier suppression and single tone are not implemented yet.
+  * Power setting mechanism would be changed latter.
+
+------------------------------------------------------------------------------
+
+** 2008-12-10 victorlo **
+
+- Disable dynamic Fsync switching for broadcom, for 8192SE
+
+------------------------------------------------------------------------------
+
+** 2008-12-09 victorlo **
+
+- Enable power enhance between rates respectively with PHY_REG_PG.txt
+  content for 8192SE
+
+------------------------------------------------------------------------------
+
+** 2008-12-09 jimmylin **
+
+- Add mib of bandwidth power difference
+
+------------------------------------------------------------------------------
+
+** 2008-12-08 victorlo **
+
+- Accept AES packets when ICV is set but not CRC32 in rx desc for 8192SE
+
+------------------------------------------------------------------------------
+
+** 2008-12-05 davidhsu **
+
+- Move 8190_rx_isr() routine to tasklet when 92SE is defined.
+
+------------------------------------------------------------------------------
+
+** 2008-12-05 victorlo **
+
+- Enable tx power control for 8192SE
+
+------------------------------------------------------------------------------
+
+** 2008-12-05 jimmylin **
+
+- Just send RTS to Realtek client
+
+------------------------------------------------------------------------------
+
+** 2008-12-05 victorlo **
+
+- Disable tx short GI when station cannot rx MCS15 for 8192SE
+
+------------------------------------------------------------------------------
+
+** 2008-12-04 victorlo **
+
+- Add rssi cal support to f/w for 8192SE
+  * Add first 8 stations h/w mac to A2 entry for f/w rssi cal
+  * Assign stations' rssi info other than the first 8 directly to f/w
+  * For client mode, directly assign station rssi info only
+
+------------------------------------------------------------------------------
+
+** 2008-12-02 victorlo **
+
+- Add poll bit checking for CAM read
+
+------------------------------------------------------------------------------
+
+** 2008-11-30 victorlo **
+
+- Enable support for multi-stations of different BGN band settings
+  for 8192SE
+
+------------------------------------------------------------------------------
+
+** 2008-11-28 victorlo **
+
+- Enable AMPDU rx, and tx rate MCS8~15, when privacy is WEP or TKIP
+  for 8192SE
+
+------------------------------------------------------------------------------
+
+** 2008-11-28 jimmylin **
+
+- Enable beacon hangup check for 8192SE
+
+------------------------------------------------------------------------------
+
+** 2008-11-27 jimmylin **
+
+- Give retry limit to some packets for 8192SE
+
+------------------------------------------------------------------------------
+
+** 2008-11-26 jimmylin **
+
+- Set initial rate for control frame to 24M
+
+- Add hw stopping routine for warn reboot fail issue
+
+------------------------------------------------------------------------------
+
+** 2008-11-25 jimmylin **
+
+- Enable h/w MIC calculation for 8192SE
+
+- Add Tx AGC offset setting for 8192SE
+
+------------------------------------------------------------------------------
+
+** 2008-11-25 davidhsu **
+
+- Add cli protection in rc timeout handler
+
+- Increase priviate skb number in 8196 platform
+
+- Disable aggressive EDCA setting via Realtek client in 8192SE
+
+- Set rc windows size to 256 as default
+
+------------------------------------------------------------------------------
+
+** 2008-11-21 jimmylin **
+
+- Add new RF parameters for 8192SE
+
+------------------------------------------------------------------------------
+
+** 2008-11-21 victorlo **
+
+- Enable CCK rate rssi reporting for 8192SE driver
+  * CCK rate rssi per rx path reporting is not supported
+
+------------------------------------------------------------------------------
+
+** 2008-11-20 jimmylin **
+
+- Enable repeater mode for 8192SE
+
+- Enable LED lightening for 8192SE
+
+- Don't let EAP packet go through Tx shortcut
+
+------------------------------------------------------------------------------
+
+** 2008-11-19 victorlo **
+
+- Enable rssi reporting for 8192SE driver
+  * CCK rate rssi reporting is not yet supported
+
+------------------------------------------------------------------------------
+
+** 2008-11-17 Joshua **
+
+- Enable client mode of 8192SE driver
+
+------------------------------------------------------------------------------
+
+** 2008-11-14 davidhsu **
+
+- Merge 8192SE firmware and config files into wlan driver. 'AP/rtl8192Pci'
+  directory has been moved to 'linux-2.4.18/drivers/net/rtl8190/rtl8192Pci'
+
+------------------------------------------------------------------------------
+
+** 2008-11-10 jimmylin **
+
+- Use PID notification instead of character device to indicate event to wlan
+  application for 8192SE
+
+------------------------------------------------------------------------------
+
+** 2008-11-07 jimmylin **
+
+- Fix bug of assigning RATid in Tx descriptor
+
+- Add retry limit for WDS peers
+
+------------------------------------------------------------------------------
+
+** 2008-11-07 victorlo **
+
+- Add time delay to avoid client mode assoc fail
+  * Time delay will occur when privacy sets as TKIP/AES, and
+    let client mode start assoc req after daemons are ready.
+
+- Clear RSN IE of VXD interface when startup
+  * Security mode would be different between interfaces, clear
+    RSN IE to avoid mistakenly use and display.
+
+------------------------------------------------------------------------------
+
+** 2008-11-06 jimmylin **
+
+- Modify size of pre-allocated data buffer
+  * To avoid buffer overlap issue. Try 8K AMSDU Rx for 8192SE
+
+------------------------------------------------------------------------------
+
+** 2008-10-31 Joshua **
+
+- Enable 8192SE security mode
+  * WEP, TKIP and AES are enabled.
+
+------------------------------------------------------------------------------
+
+** 2008-10-27 jimmylin **
+
+- Use AMPDU in pure client mode
+  * Originally we used MAC timer to do AMSDU packet queueing. But in client
+    mode, the TFS timer will synchronize to AP's TFS, so the TFS timer will
+    vary, and the AMSDU queueing will fail.
+
+------------------------------------------------------------------------------
+
+** 2008-10-27 Joshua **
+
+- Add RTL8192SE support
+
+------------------------------------------------------------------------------
+
+** 2008-10-20, jimmylin **
+
+- Add multicast-to-unicast entry to 8
+
+- Don't erase WPS MIB while hangup reset
+
+- Fix bug of calling enable_vxd_ap() in vxd client on association response
+
+------------------------------------------------------------------------------
+
+** 2008-10-17, jimmylin **
+
+- Fix core dump of repeater mode (Root: client, Vxd: AP)
+  * In repeater mode of root client and vxd AP, after root client connected to
+    another AP, it will call enable_vxd_ap() to open vxd AP interface. But
+    bridge.sh will open vxd AP interface, too. Then rtl8190_open() will have
+    reentry issue. Here we use cli to protect rtl8190_open() for vxd AP.
+
+------------------------------------------------------------------------------
+
+** 2008-10-07, victorlo **
+
+- Refine TXOP setting for Atheros 11n chipsets performance
+  * When rssi > 15, and a client donates more than 50% throughput,
+    Realtek clients have TXOP setting as 5e,
+    Broadcom and Marvell clients have TXOP setting as 2f,
+    Others have no TXOP setting
+
+------------------------------------------------------------------------------
+
+** 2008-10-02, jimmylin **
+
+- Reinit rate information in hangup reset procedure
+  * 8190n_osdep.c
+
+- Fix bug of memory compare in AMSDU process
+  * 8190n_rx.c
+
+- Fix bug of reusing txcfg in while loop in amsdu_timeout()
+  * 8190n_tx.c
+
+------------------------------------------------------------------------------
+
+** 2008-09-26, jimmylin **
+
+- Add Reorder control mechanism to client mode
+
+------------------------------------------------------------------------------
+
+** 2008-09-25, jimmylin **
+
+- Fix bug of loopback testing
+
+------------------------------------------------------------------------------
+
+** 2008-09-22, jimmylin **
+
+- Reply ADDBA rquest in B/G mode to fix IOT issue with D-Link DWA-642
+
+------------------------------------------------------------------------------
+
+** 2008-09-18, jimmylin **
+
+- Remove the use of unclear "LOW_QUEUE"
+
+------------------------------------------------------------------------------
+
+** 2008-09-10, victorlo **
+
+- Refine WDS modifications
+
+------------------------------------------------------------------------------
+
+** 2008-09-09, victorlo **
+
+- Refine WDS mode by informing capabilities between each others
+  * That helps to refine EDCA para for better performance
+
+------------------------------------------------------------------------------
+
+** 2008-09-09, jimmylin **
+
+- Fix bug of assigning wrong value of skb->tail
+
+------------------------------------------------------------------------------
+
+** 2008-09-03, victorlo **
+
+- Clear bandwidth and channel offset for b/g only as default
+
+------------------------------------------------------------------------------
+
+** 2008-09-02, victorlo **
+
+- Refine turbo mode EDCA reg setting flow
+
+------------------------------------------------------------------------------
+
+** 2008-08-27, jimmylin **
+
+- Fix bug of setting baseband register PHY_SetBBReg()
+  * Only delay 100us in 8192E on X86 platform
+
+- Enable dynamic CCK Tx power by RSSI in default of maximum
+
+------------------------------------------------------------------------------
+
+** 2008-08-27, davidhsu **
+
+- Add WEP static key for D-Link
+
+------------------------------------------------------------------------------
+
+** 2008-08-11, jimmylin **
+
+- Fine tune 2.3G by Arthur
+
+------------------------------------------------------------------------------
+
+** 2008-08-18, victorlo **
+
+- Rename the define RTL8192 to RTL8192E
+
+- Fix compiling warnings for RTL8192E
+
+- Refine RTL8192E driver to comply 1T2R only
+
+------------------------------------------------------------------------------
+
+** 2008-08-15, victorlo **
+
+- Fix compiling errors and warnings for RTL8192E
+
+------------------------------------------------------------------------------
+
+** 2008-08-12, victorlo **
+
+- Refine Realtek wake up on wlan magic packet format
+
+------------------------------------------------------------------------------
+
+** 2008-08-11, jimmylin **
+
+- Read PHY config file to get Tx AGC offset
+
+- Add 1T1R support
+
+- Add 2.3G support
+
+------------------------------------------------------------------------------
+
+** 2008-08-05, victorlo **
+
+- Double TXOP setting in EDCA, for 11n Realtek clients
+  * To enhance performance, AP will set double TXOP in EDCA parameter,
+    while there is a 11n Realtek client associated and donates more than
+    half of overall throughput.
+    TXOP will be reverted when there is no 11n Realtek client donates such
+    a throughtput.
+
+------------------------------------------------------------------------------
+
+** 2008-08-04, victorlo **
+
+- Fix bug of AES issue with Atheros chip sets on RTL8652 boards
+  * Atheros chip set clients do not announce AMPDU start spacing with 40M
+    mode AES setting, and will cause their crypto engine rx panic with data
+    rate MCS15.  For IOT, AP will add maximum start spacing at 40M mode AES
+    setting as default for Atheros clients.
+
+------------------------------------------------------------------------------
+
+** 2008-08-01, jimmylin **
+
+- Fix bug of Rx path selection
+  * The bug is that we will occasionally disable 3 Rx paths.
+
+------------------------------------------------------------------------------
+
+** 2008-07-30, jimmylin **
+
+- Add h/w MIC calculation code
+  * Because now the throughput is bound by TKIP encryption engine, use h/w
+    MIC will not help the throughput. For stability, we still use s/w MIC at
+    this stage.
+
+------------------------------------------------------------------------------
+
+** 2008-07-22, jimmylin **
+
+- Remove all VOIP related code
+  * According to Kenny Lin, we remove all VOIP related code (under defined of
+    CONFIG_RTK_VOIP_8186) first.
+
+- Free skb if it is not legal management frame under MBSSID
+  * In mgt_handler() of 8190n_sme.c
+
+- Avoid packet passed to wrong interface
+  * In init_rxdesc() of 8190n_rx.h
+
+------------------------------------------------------------------------------
+
+** 2008-07-18, jimmylin **
+
+- Fix bug of adjusting CCK swing index of Tx power tracking
+
+------------------------------------------------------------------------------
+
+** 2008-07-15, jimmylin **
+
+- Fine tune Rx path
+  * Because we have flushed cache of data buffer in rtl8190_rx_isr(), we don't
+    need to use uncached address of pframe in the succeeding procedure.
+
+------------------------------------------------------------------------------
+
+** 2008-07-14, jimmylin **
+
+- Check reasonalble range of target TSSI (ther_rfic)
+
+------------------------------------------------------------------------------
+
+** 2008-07-11, joeylin **
+
+- Change Tx power tracking register from 0x1ba/0x1bc to 0x136/0x134
+
+- Change reporting Tx rate register from 0x1dc to 0x13c
+
+------------------------------------------------------------------------------
+
+** 2008-07-07, jimmylin **
+
+- Add normal driver Tx power tracking mechanism
+
+------------------------------------------------------------------------------
+
+** 2008-07-04, victorlo **
+
+- Disassociate dynamic DC_TH of Fsync in regC38, from DIG on/off checking
+
+- Set rssi thresholds for dynamic DC_TH of Fsync in regC38 switching
+  * By new rssi thresholds and switching flow, deep droping issue of
+    performance around 75db to 85db attenuation is avoided
+
+------------------------------------------------------------------------------
+
+** 2008-07-03, victorlo **
+
+- Add Realtek proprietary wake up on wlan mode
+  * Enable by define RTK_WOW
+
+------------------------------------------------------------------------------
+
+** 2008-07-02, jimmylin **
+
+- Flush cache for firmware loading
+  * This can avoid loading wrong data of firmware to 8190 issue.
+
+- Get initial value of Tx AGC if this board is not calibrated
+
+------------------------------------------------------------------------------
+
+** 2008-06-27, davidhsu **
+
+- Fix the bug that driver will parse wrong AMSDU data in WDS encryption.
+
+------------------------------------------------------------------------------
+
+** 2008-06-25, michaello **
+
+- always support 802.11 SNMP MIB (SUPPORT_SNMP_MIB)
+
+------------------------------------------------------------------------------
+
+** 2008-06-25, jimmylin **
+
+- Use h/w CAM to do multicast encryption
+
+------------------------------------------------------------------------------
+
+** 2008-06-23, michaello **
+
+- Modify for SNMP support - CONFIG_RTL8190_SNMP_MIB
+
+------------------------------------------------------------------------------
+
+** 2008-06-23, davidhsu **
+
+- Use same private skb buffer number for both 10/100 and Giga Ethernet
+
+- Allocate skb buffer from kernel if private buffer run out during re-init
+
+- Comment out ISR status hangup check
+
+- Comment out the allocate for rx command descriptor
+
+------------------------------------------------------------------------------
+
+** 2008-06-19, jimmylin **
+
+- Use skb_copy to do multicast-to-unicast converting
+
+------------------------------------------------------------------------------
+
+** 2008-06-17, jimmylin **
+
+- Read firmware and PHY parameter files into pre-allocated buffer to avoid
+  reset fail
+
+- Reduce event queue size from 16 to 4 to reduce memory usage
+
+------------------------------------------------------------------------------
+
+** 2008-06-14, davidhsu **
+
+- Add a mechanism to buffer Tx packet when using AMPDU
+  * Add two mib "ampduMax" and "ampduTimeout" for max buffer
+     size and timeout. Default is 16000 and 400 (us).
+  * Modify reorder timer by using kernel timer because Timer1 has
+    been used by buffered AMPDU timer
+ * When mib "amsdu=0" and "ampdu=3", it will not use buffered AMPDU
+
+------------------------------------------------------------------------------
+
+** 2008-06-12, jimmylin **
+
+- Add MP Tx power tracking mechanism
+
+------------------------------------------------------------------------------
+
+** 2008-06-11, victorlo **
+
+- Disable CCK 2M in tx RATR bitmap
+  * By advice of SD3/Jerry, use CCK 2M as tx rate would cause rx
+    issue for the receiving side.
+
+------------------------------------------------------------------------------
+
+** 2008-06-06, jimmylin **
+
+- Merge driver for Linux 2.4 and 2.6
+
+------------------------------------------------------------------------------
+
+** 2008-06-05, jimmylin **
+
+- Check network type of target AP for client mode
+
+------------------------------------------------------------------------------
+
+** 2008-06-05, victorlo **
+
+- Refine dynamic DC_TH of Fsync in regC38 for non-BCM solution
+
+- Adjust rssi level of RATR table for CCK in bandwidth
+  20/40 respectively
+
+- Count rssi value of stations active in latest 60 sec
+  only, for DIG checking & Dynamic CCK tx power
+
+------------------------------------------------------------------------------
+
+** 2008-06-03, jimmylin **
+
+- Clarify the usage of mib "2ndchoffset"
+
+- Only allow root interface to set secondary channel offset
+
+- Merge driver for Linux 2.4 and 2.6
+
+- Don't enhance MCS power in 1T2R config
+
+------------------------------------------------------------------------------
+
+** 2008-05-30, davidhsu **
+
+- Add wlan tx rate adaptive
+
+------------------------------------------------------------------------------
+
+** 2008-05-30, jimmylin **
+
+- Give the initial value to pstat->rssi
+  * This can avoid the rate adaptive mechanism to always adjust rate from low
+    rate to high rate.
+
+- Sync mib_rf of VAP with the root AP
+
+------------------------------------------------------------------------------
+
+** 2008-05-28, jimmylin **
+
+- Enable dynamic CCK Tx power by RSSI in default
+  * Default enhanced index is 6.
+
+------------------------------------------------------------------------------
+
+** 2008-05-23, jimmylin **
+
+- Redefine the usage of legacySTADeny
+  * Now we set bitmap of band to legacySTADeny and deny the association if
+    sta is the band of legacySTADeny.
+
+- Don't use long slot time in giga board
+
+- Merge driver for Linux 2.4 and 2.6
+
+------------------------------------------------------------------------------
+
+** 2008-05-22, victorlo **
+
+- Refine hangup reset flow and modify Rx power initial gain
+  initial value while DIG off for stability
+
+------------------------------------------------------------------------------
+
+** 2008-05-22, jimmylin **
+
+- Refine Rx Reorder control and AMSDU timeout mechanism
+
+------------------------------------------------------------------------------
+
+** 2008-05-19, jimmylin **
+
+- Refine Rx Reorder control mechanism
+
+------------------------------------------------------------------------------
+
+** 2008-05-19, davidhsu **
+
+- Adjust f/w page number and tx-queue number to fix hangup issue
+  in msn login.
+
+------------------------------------------------------------------------------
+
+** 2008-05-16, jimmylin **
+
+- Fix bug of adding timer failed in AMSDU timeout
+
+------------------------------------------------------------------------------
+
+** 2008-05-15, jimmylin **
+
+- Fix Ad-hoc mode not linking in different network mode
+
+- Give lower retry limit to management frames
+
+------------------------------------------------------------------------------
+
+** 2008-05-14, victorlo **
+
+- Refine flow of updating RSSI value and AES debug info to f/w,
+  to avoid rate adaptive training re-start frequently
+
+------------------------------------------------------------------------------
+
+** 2008-05-12, jimmylin **
+
+- Don't send ADDBA response to Ralink AP in client mode to avoid Ralink AP
+  sending AMPDU in WEP/TKIP
+
+------------------------------------------------------------------------------
+
+** 2008-05-09, jimmylin **
+
+- Modify tuple cache to array by TID. This is to fix WPS issue with our
+  11n client.
+
+------------------------------------------------------------------------------
+
+** 2008-05-07, jimmylin **
+
+- Enable AMSDU MIC calculation
+
+------------------------------------------------------------------------------
+
+** 2008-05-02, victorlo **
+
+- Refine Add Rate Adaptive Tid flow, to avoid add fail
+
+- Pass RSSI of stations to f/w, to enhance f/w Rate Adaptive
+
+------------------------------------------------------------------------------
+
+** 2008-04-30, jimmylin **
+
+- Add dynamic CCK Tx power by RSSI
+
+- Add support of Cisco Discovery Protocol (CDP) format for AMSDU stripping
+
+- Modify RSSI average calculation
+
+------------------------------------------------------------------------------
+
+** 2008-04-29, victorlo **
+
+- Fine tune flow of AES rx issue fixing, for all kinds of
+  security mode
+
+------------------------------------------------------------------------------
+
+** 2008-04-29, jimmylin **
+
+- Merge driver for Linux 2.4 and 2.6 and fix compiling warning
+
+------------------------------------------------------------------------------
+
+** 2008-04-28, davidhsu **
+
+- Add two global functions set_wireless_LED_steady_on() and
+  recover_wireless_LED() in 8190n_sme.c to allow wlan LED be controlled
+  externally. It is designed for a customer request to share LED with WPS.
+
+------------------------------------------------------------------------------
+
+** 2008-04-25, jimmylin **
+
+- Add Rx path selection for CCK version 2
+  * CCK version 2 will operate if MIB "cck_sel_ver" is set to 2 or in B mode.
+
+------------------------------------------------------------------------------
+
+** 2008-04-22, jimmylin **
+
+- Get forced-AMPDU bit in Realtek IE and use AMPDU in AES
+  * Fix AES IOT with rtl8192u
+
+- Fine tune Rx path selection
+
+------------------------------------------------------------------------------
+
+** 2008-04-16, jimmylin **
+
+- Add Rx path selection for CCK
+
+------------------------------------------------------------------------------
+
+** 2008-04-15, victorlo **
+
+- Fix bug of 8190 AES rx issue
+
+- Add dynamic DC_TH of Fsync in regC38 for non-BCM solution
+
+------------------------------------------------------------------------------
+
+** 2008-04-10, victorlo **
+
+- Fix bug of 1T2R/2T4R auto detection fail
+
+------------------------------------------------------------------------------
+
+** 2008-04-08, jimmylin **
+
+- Add support of Cisco Discovery Protocol (CDP) format
+
+------------------------------------------------------------------------------
+
+** 2008-04-02, jimmylin **
+
+- Modify the ratio of RSSI smooth calculation
+
+- Modify difference threshold of Rx path selection
+
+------------------------------------------------------------------------------
+
+** 2008-04-01, jimmylin **
+
+- In multicast to unicast, use skb_copy instead of skb_clone for TKIP due to
+  MIC padding issue
+
+------------------------------------------------------------------------------
+
+** 2008-03-27, victorlo **
+
+- Add dynamic Tx power control, by jimmylin
+
+------------------------------------------------------------------------------
+
+** 2008-03-26, jimmylin **
+
+- Add dynamic Rx path selection by signal strength
+
+------------------------------------------------------------------------------
+
+** 2008-03-24, davidhsu **
+
+- Add supprt to convert IGMP multicast  to unicast packet
+  * Add a new define flag SUPPORT_TX_MCAST2UNI
+  * In kernel bridge module (defeined by MCAST_TO_UNICAST), it will snoop
+     IGMP join and delete message, and then call wlan driver IOCTL to
+     add/delete IGMP station.
+  * In driver tx, it will compare if DA is matched with registered multicast
+     address. If yes, it will convert multicast DA to associated STA mac addr.
+     Please note, it will not allow do 11n aggregation via converted packet.
+  * In client mode, when it receive a IP packet, it will compare if dst IP
+     is matched with registed multicast address. If yes, it will reverse DA
+     to multicast address.
+
+------------------------------------------------------------------------------
+
+** 2008-03-21, jimmylin **
+
+- Enlarge tuple cache size from 4 to 64
+  * This will help Tx and Rx get together.
+
+------------------------------------------------------------------------------
+
+** 2008-03-17, jimmylin **
+
+- Fix bug of aggregation assignment in client mode
+
+- Fix IOT issue with AP which supports 11n but doesn't support WMM
+  * If AP supports HT but doesn't support WMM, we assume it should support WMM
+  and use default WMM value.
+  * Also, if sta supports HT but doesn't support WMM, we assume it should
+  support WMM.
+
+- Response WMM Action request in client mode
+
+------------------------------------------------------------------------------
+
+** 2008-03-14, jimmylin **
+
+- Recognize AP client mode and don't use long slot time
+
+------------------------------------------------------------------------------
+
+** 2008-03-13, jimmylin **
+
+- Don't check legacy BSS if protection is disabled (in 11n mode)
+
+------------------------------------------------------------------------------
+
+** 2008-03-14, bradhuang **
+
+- Fix WPS interoperability issue
+  *In AP mode, if STA WPS IE is not included, and security is WEP mode,
+  set WIFI_WPS_JOIN bit on.
+
+------------------------------------------------------------------------------
+
+** 2008-03-12, victorlo **
+
+- Fix D-PATH initialization failed issue
+- Fix MIMO_TR_status checking failed issue
+- Refine PHY initialization flow
+
+------------------------------------------------------------------------------
+
+** 2008-03-11, jimmylin **
+
+- Modify Tx power differences and omit L-OFDM setting by Bryant
+  * Change the differences from (+3, +3, +5, +5, +11, +11, +14) to (+5, +5, +8,
+  +8, +11, +11, +14)
+
+------------------------------------------------------------------------------
+
+** 2008-03-10, jimmylin **
+
+- Modify Tx power differences by Willis
+  * Change the differences from (+0, +2, +4, +4, +8, +8, +8) to (+3, +3, +5,
+  +5, +11, +11, +14)
+
+- Add Multicast Rx dynamic mechanism
+
+------------------------------------------------------------------------------
+
+** 2008-03-07, jimmylin **
+
+- Don't mask MCS15 and MCS14 for 8190/8192 and 1T2R
+  * NIC driver will report not supporting MCS15 and MCS14 in association
+    request (after v1014). Just follow the association request.
+
+------------------------------------------------------------------------------
+
+** 2008-03-06, jimmylin **
+
+- Don't set CBSSID in RCR in site surveying when supporting MBSSID
+  * If we set CBSSID, we can only site survey the connected AP.
+
+------------------------------------------------------------------------------
+
+** 2008-03-04, jimmylin **
+
+- Fix MAC clone failed issue of client mode
+  * If we enable multiple BSSID function (bit27(EnMBID) of RCR), besides
+    MACID, we also need to update CAM.
+  * Fix Mantis item #0000030.
+
+------------------------------------------------------------------------------
+
+** 2008-02-29, jimmylin **
+
+- Increase retry limit in 11n mode
+  * If the mib of longretry and shortretry is 0, we will use different default
+    value for N mode and BG mode.
+
+- Change threshold of DIG dynamic On/Off mechanism by Jerry
+
+- Add 2T2R support
+
+------------------------------------------------------------------------------
+
+** 2008-02-27, jimmylin **
+
+- Turn on turbo mode on giga board or testing with 1T2R Realtek sta
+
+------------------------------------------------------------------------------
+
+** 2008-02-25, jimmylin **
+
+- Turn on MCS15~13 for Broadcom sta
+  * Don't need to mask high rates due to new rate adaptive parameters
+
+- Turn on turbo mode on 10/100 board
+
+------------------------------------------------------------------------------
+
+** 2008-02-21, jimmylin **
+
+- Fix bug of allocating sk buffer for 8K AMSDU receiving
+
+------------------------------------------------------------------------------
+
+** 2008-02-21, victorlo **
+
+- Fix Broadcom old version 11n chipsets iot issue, by switching frame
+  sync position in PHY register dynamically
+
+------------------------------------------------------------------------------
+
+** 2008-02-20, jimmylin **
+
+- Update tx rate only when the reported rate is in RA bitmap
+  * This can fix Marvell AES compatibility issue
+
+------------------------------------------------------------------------------
+
+** 2008-02-14, victorlo **
+
+- Refine PD_TH for different RSSI strength, to improve receiving ACK
+  at some high power situations
+
+------------------------------------------------------------------------------
+
+** 2008-02-14, jimmylin **
+
+- If sta is 8190/8192 and 1T2R, mask MCS15 and MCS14
+
+- Set RA bitmap after recognizing sta vendor
+
+------------------------------------------------------------------------------
+
+** 2008-02-13, jimmylin **
+
+- Give initial value to tpcache to avoid dropping the first packet
+
+------------------------------------------------------------------------------
+
+** 2008-02-04, jimmylin **
+
+- Modify Rx hang checking
+  * Shorten checking period by 1 second
+  * Change RCR to accept control frame while sending testing packet
+
+------------------------------------------------------------------------------
+
+** 2008-01-30, jimmylin **
+
+- Add turbo mode for WDS
+
+------------------------------------------------------------------------------
+
+** 2008-01-29, victorlo **
+
+- Announce maximum MCS13 Rx capability when 1T2R
+
+------------------------------------------------------------------------------
+
+** 2008-01-28, jimmylin **
+
+- Modify RF registers in normal driver and MP by Bryant
+
+------------------------------------------------------------------------------
+
+** 2008-01-27, david **
+
+- Fix some Ad-hoc issues
+  * Beacon frame transmission will be stopped (by assert CHECK_BSSID in RCR)
+  * Fix the issue of setting wrong header length in WMM
+  * Use key-mapping key for encryption
+
+- Fix WEP/TKIP encryption issue in WDS
+
+------------------------------------------------------------------------------
+
+** 2008-01-25, victorlo **
+
+- Announce maximum MCS13 Rx by HT_IE of Probe Response and Association
+  Response to Broadcom solutions, for throughput stability
+
+------------------------------------------------------------------------------
+
+** 2008-01-25, jimmylin **
+
+- Disable aggregation when security CAM is full
+
+------------------------------------------------------------------------------
+
+** 2008-01-24, jimmylin **
+
+- Disable ED_CCA in check_DIG_by_rssi() to sync to version 0117 by Jerry
+
+- Indicate packets in segment 1 on Rx reorder mechanism
+
+- Use AMPDU instead of AMSDU when security CAM is full
+
+------------------------------------------------------------------------------
+
+** 2008-01-22, david **
+
+- Use AMSDU/4K aggregation when tranmission WEP encryption packet
+  except broadcom AP
+
+- Fix the bug that AP client can't associate to AP in N mode in site-survey
+  connect
+
+------------------------------------------------------------------------------
+
+** 2008-01-22, jimmylin **
+
+- Fix bug of over using Tx descriptors when sending AMSDU to 8190 sta
+
+------------------------------------------------------------------------------
+
+** 2008-01-21, jimmylin **
+
+- Fix bug of sending timeout AMSDU while sta is in power save mode
+
+------------------------------------------------------------------------------
+
+** 2008-01-16, jimmylin **
+
+- Update sequence number of beacon and flush cache in update_beacon()
+
+------------------------------------------------------------------------------
+
+** 2008-01-15, jimmylin **
+
+- Add reading Tx power of C path
+
+- Add parsing buffer size in ADDBA request and response
+
+- Add MP C/D path Rx for 1X2 config
+
+------------------------------------------------------------------------------
+
+** 2008-01-11, davidhsu **
+
+- Enable WEP/TKIP support in 11n mode AP mode
+
+- Modify some kmalloc() flag to GFP_ATOMIC
+
+------------------------------------------------------------------------------
+
+** 2008-01-11, jimmylin **
+
+- Update rate bitmap according to Jerry
+  * Use MCS7~MCS5 instead of MCS11 for lower SNR requirement.
+
+------------------------------------------------------------------------------
+
+** 2008-01-10, victorlo **
+
+- Refine EDCA parameter turbo mode setting for b/g stations connected only
+- Use AMPDU tx as default except Realtek, Broadcom and Marvell chipsets
+
+------------------------------------------------------------------------------
+
+** 2008-01-10, jimmylin **
+
+- Use Null data instead of Add-BA to check Rx hang
+
+------------------------------------------------------------------------------
+
+** 2008-01-03, jimmylin **
+
+- Use lowest basic rate to send broadcast packets
+
+------------------------------------------------------------------------------
+
+** 2008-01-02, jimmylin **
+
+- Add group ID to classify traffic for multiple BSSID
+
+------------------------------------------------------------------------------
+
+** 2008-01-01, david **
+
+- Define a new kernel config "CONFIG_RTL8190_PRIV_SKB"
+  When defined, it will use skb + "local buffer" instead of kernel buffer to
+  reduce kernel memory utilization.
+
+- Modify local variables of rtl8190_firetx() to static to reduce stack size.
+  Try to fix issue of code dump randomly.
+
+------------------------------------------------------------------------------
+
+** 2007-12-26, david **
+
+- Fix WDS crash issue which induced in 1.2a
+
+------------------------------------------------------------------------------
+
+** 2007-12-25, jimmylin **
+
+- Add mib to limit support sta number
+
+------------------------------------------------------------------------------
+
+** 2007-12-24, jimmylin **
+
+- Add calculating 4-path rssi and snr for rf debugging
+
+------------------------------------------------------------------------------
+
+** 2007-12-24, victorlo **
+
+- With Jerry's advice, refine RSSI threshold of DIG dynamic On/Off mechanism,
+  for long range performance issue.
+
+- With PJ's advice, modify CW and TXOP limit of dynamic BE_switch_to_VI
+  function, refine AP HT_IE to AMPDU 32K Rx and default AMPDU 16K Tx
+  to other clients, for better performance.
+
+- Fall back software multicast queuing method to previous one, for system
+  stability.
+
+------------------------------------------------------------------------------
+
+** 2007-12-14, jimmylin **
+
+- Add MP single tone function
+
+------------------------------------------------------------------------------
+
+** 2007-12-12, jimmylin **
+
+- Align Rx command skbuff to 256-byte alignment for system stability
+
+- Report Rx command fail
+
+- Enable sending fixed rate packet while auto rate
+
+------------------------------------------------------------------------------
+
+** 2007-12-07, jimmylin **
+
+- Send CCK in control sideband instead of duplicate
+
+- Modify PHY init function according to version 1127
+
+- Add Rx command packet processing
+
+------------------------------------------------------------------------------
+
+** 2007-12-06, jimmylin **
+
+- Fix bug of packet queueing method for power save sta
+
+------------------------------------------------------------------------------
+
+** 2007-12-05, david **
+
+- Enable MBSSID in default.
+
+- Add guest access mib (guest_access) that it will not forward packet
+  between Ethernet and wlan. Only WAN and DNS query could passthrough
+  when this mib is asserted.
+
+- Add interrupt disable/enable protection when access skb queue
+
+- Deny legacy client association or deny to connect legacy AP when
+  deny_legacy mib is asserted for pure 11n mode.
+
+------------------------------------------------------------------------------
+
+** 2007-12-04, jimmylin **
+
+- Prepare dynamic AMSDU size adjustion
+
+- Fix bug of MP for CCK packet Tx
+
+------------------------------------------------------------------------------
+
+** 2007-12-03, jimmylin **
+
+- Add dynamic Tx bandwidth switching according to signal strength
+
+------------------------------------------------------------------------------
+
+** 2007-11-30, jimmylin **
+
+- Decrease default aggregation packet number of AMSDU to 15 to fix
+  compatibility issue with Linksys (Broadcom) NIC
+
+------------------------------------------------------------------------------
+
+** 2007-11-28, jimmylin **
+
+- Fix bug of AMSDU and reorder control timer overflow
+
+------------------------------------------------------------------------------
+
+** 2007-11-26, jimmylin **
+
+- Fix bug of AMSDU timer overflow
+
+- Refine reorder control mechanism
+
+- Use basic rate to send EAP packet for sure
+
+------------------------------------------------------------------------------
+
+** 2007-11-22, david **
+
+- Do not check rssi in assign_tx_rate() of 8190n_sme.c to fix the issue that
+  WDS entry may not have rssi value when calling, which will cause WDS tx
+  will not do aggregation.
+
+------------------------------------------------------------------------------
+
+** 2007-11-21, david **
+
+- Fix the bug that driver will use wrong 'priv' in amsdu_timeout() when vxd
+  interface is enabled.
+
+- Enable rx and beacon hangup
+
+- Fix reset failed issue when repeater mode is enabled.
+
+------------------------------------------------------------------------------
+
+** 2007-11-20, jimmylin **
+
+- Make clear of usage of band related variables
+
+------------------------------------------------------------------------------
+
+** 2007-11-14, jimmylin **
+
+- Remove restriction of aggregation packet number of AMSDU from 8190 sta
+
+------------------------------------------------------------------------------
+
+** 2007-11-13, jimmylin **
+
+- Issue de-authentication to all clients before interface shutdown
+  * In order to avoid that the client doesn't know to roam or reassociate when
+    AP changes bandwidth from 40M mode to 20M mode. In this case, AP can't
+    hear 40M data and don't know it should issue de-authentication.
+
+------------------------------------------------------------------------------
+
+** 2007-11-12, david **
+
+- Remove HT support when using TKIP or WEP encryption
+
+- Fix the auto channel bug when WPA/WPA2 is enabled
+
+------------------------------------------------------------------------------
+
+** 2007-11-12, jimmylin **
+
+- Add restriction of aggregation packet number of AMSDU to fix compatibility
+  issue with Marvell NIC
+
+------------------------------------------------------------------------------
+
+** 2007-11-09, jimmylin **
+
+- Add driver based MP functions
+  * Including H/W continuous Tx and carrier suppression.
+
+------------------------------------------------------------------------------
+
+** 2007-11-08, victorlo **
+
+- Add 2T4R and 1T2R HW Auto Detect
+
+------------------------------------------------------------------------------
+
+** 2007-11-06, jimmylin **
+
+- Add driver based MP functions
+  * H/W continuous Tx and carrier suppression are not finished yet.
+
+------------------------------------------------------------------------------
+
+** 2007-10-31, jimmylin **
+
+- When AMPDU and AMSDU are both enabled, assign aggregation method
+  automatically.
+
+- Add throughput monitoring for slottime switching vs. 8190 sta
+
+------------------------------------------------------------------------------
+
+** 2007-10-30, jimmylin **
+
+- Recognize HT IE of old form in association request
+  * Ralink USB send old form of HT IE so we need to recognize it, otherwise
+    we will treat it as a G mode station.
+
+- Fix bug of showing station info
+
+- Send ADDBA of TID 6 for working around for Netgear cardbus
+
+------------------------------------------------------------------------------
+
+** 2007-10-29, jimmylin **
+
+- Fix bug of dzqueue processing
+  * We called process_dzqueue() in DSR in old Rx flow, but we don't use DSR
+    right now. Call this function in ISR.
+
+- Modify rate adaptive bit map for 1T2R and G mode
+
+------------------------------------------------------------------------------
+
+** 2007-10-25, jimmylin **
+
+- Add old form for HT IE for compatibility issue
+
+- When aggregation is enabled, use AMSDU for Broadcom sta
+
+- Mark MCS15~13 for Broadcom sta
+
+- Adjust AMSDU timeout to 400us
+
+------------------------------------------------------------------------------
+
+** 2007-10-24, davidhsu **
+
+- Adjust init sequence and add some delay to fix reset fail issue
+  * Set bandwidth and channel must be done after MAC init is done
+  * Init beacon must be done after f/w is downloaded
+  * Write RF paramters during the reset of client mode scanning (??)
+
+- Fix the code dump issue during reset
+  * Do not set old fs handler during download f/w
+
+------------------------------------------------------------------------------
+
+** 2007-10-24, jimmylin **
+
+- Add BB/RF 1T2R configuration
+  * Enable by define CONFIG_1T2R
+
+- Enlarge AMPDU start spacing under encryption enabled
+  * Fix compatibility issue of AES encryption with Centrino 4965
+
+------------------------------------------------------------------------------
+
+** 2007-10-23, jimmylin **
+
+- Use RTS/CTS protection for AMPDU instead of CtsToSelf
+  * For compatibility issue with Netgear 121T (Marvell USB). If we send AMPDU
+    with CtsToSelf, 121T has the problem to send BA. So we roll back to send
+    RTS/CTS instead suggested by PJ.
+
+------------------------------------------------------------------------------
+
+** 2007-10-18, jimmylin **
+
+- Add Tx power control
+
+- Modify Realtek proprietary IE to new version
+
+------------------------------------------------------------------------------
+
+** 2007-10-12, victorlo **
+
+- Refine Rate Adaptive
+- Add DIG to driver
+- Backup and Restore PHY reg when reset
+
+------------------------------------------------------------------------------
+
+** 2007-10-02, jimmylin **
+
+- Fix core dump while receiving too large packets
+
+------------------------------------------------------------------------------
+
+** 2007-10-02, victorlo **
+
+- Refine ADDBA request
+
+------------------------------------------------------------------------------
+
+** 2007-10-01, jimmylin **
+
+- Rearrange cache flush mechanism
+  * Add a function of rtl_cache_sync_wback() to do cache flushing and writing
+    back in one place.
+
+- Fix bug of wrong sequence number of beacon
+  * Flush cache after updating beacon content.
+
+- Modify bandwidth setting according to Bryant
+

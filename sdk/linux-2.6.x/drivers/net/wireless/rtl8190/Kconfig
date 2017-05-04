@@ -1,0 +1,41 @@
+config RTL8190
+	tristate "Realtek 8190 wireless support"
+#	depends on PCI && NET_RADIO
+	---help---
+	  This is an experimental driver for rtl8190 wireless chip.
+config NET_WIRELESS_AGN
+        bool
+        depends on RTL8190
+        default y
+config	RTL8190_PRIV_SKB
+	depends on RTL8190
+	bool "private skb buffer management"
+	default y
+config RTL8192SE
+	tristate "Realtek 8192SE wireless support"
+#	depends on PCI && NET_RADIO
+	---help---
+	  This is an experimental driver for rtl8190 wireless chip.
+config NET_WIRELESS_AGN
+        bool
+        depends on RTL8192SE
+        default y
+config	RTL_WAPI_SUPPORT	
+	tristate "WAPI support"
+	depends on RTL8192SE
+config	RTL_WAPI_MODULE_SUPPORT
+	bool "enable WAPI module"
+	depends on RTL8192SE && RTL_WAPI_SUPPORT
+	default n
+config	RTL_4MFLASH_32MSDRAM
+	bool
+	depends on RTL8192SE && RTL_WAPI_SUPPORT
+	default y
+config	RTL_DYNAMIC_IRAM_MAPPING_FOR_WAPI 
+	bool
+	depends on RTL8192SE && RTL_WAPI_SUPPORT
+	default y
+config 	RTL_DYNAMIC_IRAM_MAPPING_FOR_WAPI_DEBUG
+	bool
+	depends on RTL8192SE && RTL_WAPI_SUPPORT && RTL_DYNAMIC_IRAM_MAPPING_FOR_WAPI
+	default n

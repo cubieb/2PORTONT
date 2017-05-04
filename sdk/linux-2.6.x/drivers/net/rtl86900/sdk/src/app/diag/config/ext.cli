@@ -1,0 +1,116 @@
+//
+// Copyright (C) 2011 Realtek Semiconductor Corp.
+// All Rights Reserved.
+//
+// This program is the proprietary software of Realtek Semiconductor
+// Corporation and/or its licensors, and only be used, duplicated,
+// modified or distributed under the authorized license from Realtek.
+//
+// ANY USE OF THE SOFTWARE OTHER THAN AS AUTHORIZED UNDER
+// THIS LICENSE OR COPYRIGHT LAW IS PROHIBITED.
+//
+// $Revision: 39101 $
+// $Date: 2013-05-03 17:35:27 +0800 (Fri, 03 May 2013) $
+//
+// Purpose : Define diag shell commands for trunk.
+//
+// Feature : The file have include the following module and sub-modules
+//           1) extension commands.
+//
+
+//port configuration
+//get configuration
+//special-congest
+//port list, <0-6>
+//all port
+port get special-congest ( <PORT_LIST:ports> | all )
+
+//port configuration
+//get configuration
+//special-congest
+//port list, <0-6>
+//all port
+//indicator
+port get special-congest ( <PORT_LIST:ports> | all ) indicator
+
+//port configuration
+//set configuration
+//special-congest
+//port list, <0-6>
+//all port
+//sustain-timer
+//second, <0~15>
+port set special-congest ( <PORT_LIST:ports> | all ) sustain-timer <UINT:second>
+
+//port configuration
+//clear configuration
+//special-congest
+//port list, <0-6>
+//all port
+//indicator
+port clear special-congest ( <PORT_LIST:ports> | all ) indicator
+
+//iol configuration
+//set configuration
+//max length 1518 or 1522
+//state configuration
+//disable function
+//enable function
+iol set max-length state ( disable | enable )
+
+//iol configuration
+//get configuration
+//max length 1518 or 1522
+iol get max-length
+
+//iol configuration
+//set configuration
+//error length checking
+//state configuration
+//disable function
+//enable function
+iol set error-length state ( disable | enable )
+
+//iol configuration
+//get configuration
+//error length checking
+iol get error-length
+
+//iol configuration
+//set configuration
+//drop atfer 16 collision
+//state configuration
+//disable function
+//enable function
+iol set drop-16-collision state ( disable | enable )
+
+//iol configuration
+//get configuration
+//drop atfer 16 collision
+iol get drop-16-collision
+
+//parser configuration
+//set configuration
+//field selector configuration
+//index configuration
+//index, <0~15>
+//format configuration
+//default
+//raw packet
+//llc packet
+//arp packet
+//ipv4 packet
+//ipv6 packet
+//ip payload
+//l4 payload
+//offset configuration
+//offset, <0~255>
+parser set field-seletor index <UINT:index> format ( default | raw | llc | arp | ipv4-header | ipv6-header | ip-payload | l4-payload ) offset <UINT:offset>
+
+//parser configuration
+//get configuration
+//field selector configuration
+//index configuration
+//index, <0~15>
+parser get field-seletor index <UINT:index> 
+

@@ -1,0 +1,5 @@
+if (args_info->@group_var_name@_group_counter @Comparison_rule@)
+  {
+    fprintf (stderr, "%s: %d options of group @group_name@ were given. @number_required@ is required%s.\n", @package_var_name@, args_info->@group_var_name@_group_counter, (additional_error ? additional_error : ""));
+    error = 1;
+  }

@@ -1,0 +1,1 @@
+int @group_name@_@name@_counter; /**< @@brief Counter for @name@ @group_name@ */

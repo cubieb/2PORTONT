@@ -1,0 +1,4 @@
+# T-Mobile NL (Huawei E352)
+TargetVendor=0x12d1
+TargetProductList="1506,150f,151d"
+HuaweiNewMode=1

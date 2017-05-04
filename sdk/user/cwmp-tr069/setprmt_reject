@@ -1,0 +1,13 @@
+# Examples of SetParameterValues reject list
+# Uncomment following lines start with #InternetGatewayDevice for testing.
+
+# Full parameter name
+#InternetGatewayDevice.LANDevice.1.WLANConfiguration.2.SSID
+
+# {i} can match any string
+#InternetGatewayDevice.LANDevice.1.WLANConfiguration.{i}.BeaconAdvertisementEnabled
+#InternetGatewayDevice.LANDevice.{i}.WLANConfiguration.{i}.SSIDAdvertisementEnabled
+
+# Partial path is also acceptable
+#InternetGatewayDevice.Services.Voice.
+

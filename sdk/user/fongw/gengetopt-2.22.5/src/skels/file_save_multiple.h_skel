@@ -1,0 +1,5 @@
+@IF@ has_arg @THEN@
+write_multiple_into_file(outfile, args_info->@opt_var@_given, "@opt_name@", args_info->@opt_var@_orig, @values@);
+@ELSE@
+write_multiple_into_file(outfile, args_info->@opt_var@_given, "@opt_name@", 0, 0);
+@ENDIF@

@@ -1,0 +1,5 @@
+Name: usbutils
+Description: USB device database
+Version: 0.84
+
+usbids=/home/jiunming/uClinux/uClinux-dist26-090715/user/usbtools/preinstall/share/usb.ids

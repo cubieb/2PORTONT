@@ -1,0 +1,93 @@
+#!/bin/sh
+
+ROOTDIR=`pwd`
+LIBSTRIPDIR="$ROOTDIR/tools/libstrip"
+ROMFS="$ROOTDIR/romfs"
+ROMLIB="$ROOTDIR/romfs/lib"
+LIBCDIR="$ROOTDIR/uClibc/lib"
+TOOLCHAINDIR="/opt/toolchain_mips_nofpu"
+#TOOLCHAINDIR="/rsdk-1.2.8/linux/uclibc"
+
+LIBGCC="$TOOLCHAINDIR/lib/gcc-lib/mips-linux-uclibc/3.3.5/libgcc.a"
+#LIBGCC="$TOOLCHAINDIR/lib/gcc-lib/mips-linux/3.2.3-1.2.8/libgcc.a"
+
+LIBC="$LIBCDIR/libc.a"
+LIBCRYPT="$LIBCDIR/libcrypt.a"
+LIBM="$LIBCDIR/libm.a"
+LIBNSL="$LIBCDIR/libnsl.a"
+LIBPTHREAD="$LIBCDIR/libpthread.a"
+LIBRESOLV="$LIBCDIR/libresolv.a"
+LIBUTIL="$LIBCDIR/libutil.a"
+LIBMIB="$ROOTDIR/user/boa/src/LINUX/libmib.a"
+LIBMINIUPNP="$ROOTDIR/user/mini_upnp/mini_upnp.a"
+LIBSSL="$ROOTDIR/lib/libssl/libssl.a"
+SSL_VER="0.9.8"
+LIBCRYPTO="$ROOTDIR/lib/libssl/libcrypto.a"
+CRYPTO_VER="0.9.8"
+LIBLIST="$LIBC $LIBCRYPT $LIBM $LIBNSL $LIBPTHREAD $LIBRESOLV $LIBUTIL $LIBRESOLV"
+MAJOR_VERSION="0.9.26"
+
+LD="$TOOLCHAINDIR/bin/mips-linux-ld -Os"
+#LD="$TOOLCHAINDIR/bin/mips-linux-ld"
+LDSCRIPT="$TOOLCHAINDIR/lib/ldscripts/elf32btsmip.xs"
+INTERPDIR="$ROOTDIR/lib/uClibc/libc/misc/internals/interp.o"
+LDOPTIONS="-shared --warn-common --warn-once -z combreloc -s -nostdlib --script=$LDSCRIPT --no-whole-archive $INTERPDIR"
+
+#First parse unresolved symbols in execution files
+if [ -e temp1 ]; then
+	rm temp1
+fi
+
+#FILES=`ls $ROMLIB/../bin`
+FILES=`find $ROMFS/bin \( -type d -o -type f -o -type b -o -type c -o -type l \) -print | file -f - | grep ELF |  grep "shared" | cut -d':' -f1`
+
+for i in $FILES; do
+	$LIBSTRIPDIR/list_dynamic_symbol $i >> temp1
+done
+function gensym() {
+	sort temp1 | uniq > temp
+	sed 's/^/-u /' temp > symbols
+	LISYM=`cat symbols`
+}
+gensym
+rm temp; #bn=`ls $LIBCDIR/*.a`
+#for i in $bn; do
+for i in $LIBLIST; do
+	basename $i >> temp
+done
+LIBFILES=`cat temp`
+sed 's/..$//' temp > temp1
+REALNAME=(`cat temp1 | sed "s/$/-$MAJOR_VERSION.so /"`)
+SONAME=(`cat temp1 | sed 's/$/.so.0 /'`)
+rm temp1; rm temp; rm symbols; cd $ROMLIB
+function genlib() {
+	count=0
+	for i in $LIBFILES; do
+		if [ $i != "libc.a" ]; then
+			$LD $LDOPTIONS -soname=${SONAME[$count]} -o ${REALNAME[$count]} $LISYM $LIBCDIR/$i
+		else
+			$LD $LDOPTIONS -soname=${SONAME[$count]} -o libuClibc-$MAJOR_VERSION.so $LISYM $LIBCDIR/$i $LIBGCC
+		fi
+		count=$[ count + 1 ]
+	done
+	$LD $LDOPTIONS -soname=libmib.so.0 -o libmib.so $LISYM $LIBMIB
+	$LD $LDOPTIONS -o mini_upnp.so $LISYM $LIBMINIUPNP
+	if [ -f $LIBCRYPTO ] ; then
+		$LD $LDOPTIONS -o libcrypto.so.$CRYPTO_VER $LISYM $LIBCRYPTO ;
+	fi
+	if [ -f $LIBSSL ] ; then
+	$LD $LDOPTIONS -o libssl.so.$SSL_VER $LISYM $LIBSSL
+	fi
+}
+genlib
+ln -sf libmib.so libmib.so.0
+#Second parse unresolved symbols in libraries
+FILES=`ls *.so`
+if [ -f $LIBSSL ] ; then
+	FILES+=" libcrypto.so.$CRYPTO_VER libssl.so.$SSL_VER" ;
+fi
+for i in $FILES; do
+	$LIBSTRIPDIR/list_dynamic_symbol $i >> temp1
+done
+gensym; genlib
+rm temp; rm temp1; rm symbols; cd $ROOTDIR

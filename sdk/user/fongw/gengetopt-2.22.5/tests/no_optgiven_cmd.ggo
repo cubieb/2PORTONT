@@ -1,0 +1,10 @@
+# no_optgiven_cmd.ggo
+
+# This test an input file with some required options
+
+package "no_optgiven"
+version "1.0"
+
+args "--no-handle-error -u"
+
+option  "foo"        i "foo option" int yes

@@ -1,0 +1,197 @@
+// ============================================================
+
+/**
+ * @page VOIP_DSP_CID_FSK FSK
+ * @ingroup TAPI_DSP_CID_FSK 
+ * Frequency-shift keying (FSK) is mainly used for caller ID applications. <br> There are several types of FSK There are listed as following:
+ * - 1.	ETSI FSK (formed by the European Telecommunications -1 and -2) 
+ *  - For ETSI Caller-ID support in France, Germany, Norway, Italy, Spain, South Africa, Turkey, and UK (CCA)
+ *  - Standards: ETS 300 788-1 (Type I), ETS 300 788-2 (Type II)
+ * - 2.	Bellcore FSK (formed by the Telcordia Technologies)
+ *  - For Telcordia Caller-ID support in North America Australia, China, Hong Kong, and Singapore
+ *  - Standards: Telcordia GR-30-CORE
+ * - 3.	BT FSK (formed by the British Telecom)
+ *  - For ETSI Caller-ID support in UK (British Telecom)
+ *  - Standards: British Telecomm SIN227, SIN242
+ * - 4.	NTT FSK 
+ *  - For NTT FSK Caller-ID support in Japan
+ *  - Standards: Nippon Telegraph & Telephone Corporation standard
+ * @section Standards Standards/Recommendations
+ * - @subpage fsk1 
+ * - @subpage fsk2 
+ * - @subpage fsk3 
+ * - @subpage fsk4 
+ *
+ * @section VMWI
+ * Voice Message Waiting Indicator (VMWI) is the feature of the illuminate of LED on select telephone to notify the voice mail messages.  
+ */ 
+
+/**
+ * @page fsk1 ETSI FSK 
+ * @section fsk1_0 ETS 300 778-1
+ * This European Telecommunication Standard (ETS) specifies the electrical characteristics, the functional
+ * characteristics and the corresponding conformance tests for Terminal Equipment (TE) for connection to
+ * the network termination points of a Public Switched Telephone Network (PSTN) interface providing a
+ * Protocol over the local loop for display and related services based on the protocols defined in
+ * ETS 300 659-1.
+ * @section fsk1_1 Signalling format
+ * Data transmission to the TE is by means of the Frequency Shift Keying (FSK) method based upon
+ * CCITT Recommendation V.23
+ * @section fsk1_2 Signalling frequencies
+ * The TE shall be capable of correctly receiving FSK signalling tones within the following
+ * frequency ranges; <br>
+ * - mark frequency: 1300 Hz +/-1.5 %
+ * - space frequency: 2100 Hz +/- 1.5 % at a rate of 1200 bits/s +/- 1 %.
+ * @section fsk1_3 Signalling levels
+ * The TE shall be capable of correctly receiving FSK signalling tones with levels within the range -8 to -36 dBV <br>
+ * A twist between the mark and space tones not exceeding 6 dB
+ * @section fsk1_4 Data transmission associated with ringing
+ * The data transmission can either precede the normal ring pattern or occur
+ * during the first long silent period during normal ring pattern <br>
+ * @subsection fsk1_5 Data transmission prior to ringing
+ * the TE shall correctly detect one or more of the following types of TAS: 
+ * - Dual Tone Alerting Signal (DT-AS)
+ * - Ringing Pulse Alerting Signal (RP-AS)
+ * - A line reversal followed by a Dual Tone Alerting Signal (DT-AS)
+ *
+ * @subsubsection fsk1_5_1 Dual Tone Alerting Signal (DT-AS)
+ * \htmlonly <br> <p align="left"> <b>DT-AS signal characteristics</b>   \endhtmlonly
+ * - Nominal frequencies: 2130 Hz and 2750 Hz +/- 0.5 %
+ * - Signal level: -9 to -40 dBV/tone
+ * - Twist: 6 dB max
+ * - Duration: 100 ms  +/- 10 ms
+ * 
+ * \htmlonly <br> <p align="center"> <b>Dual Tone Alerting Signal (DT-AS) preceding the FSK data transmission</b>   \endhtmlonly
+ * @image html TAPI_DSP_CID_FSK_DT_AS.JPG
+ *
+ * @subsubsection fsk1_5_2 Ringing Pulse Alerting Signal (RP-AS) 
+ * \htmlonly <br> <p align="center"> <b>Ringing Pulse Alerting Signal (RP-AS) preceding the FSK data transmission</b>   \endhtmlonly
+ * @image html TAPI_DSP_CID_FSK_RP_AS.JPG
+ * @subsubsection fsk1_5_3 Line reversal followed by a DT-AS 
+ * \htmlonly <br> <p align="center"> <b>Line reversal followed by Dual Tone Alerting Signal (DT-AS) preceding the FSK transmission</b>   \endhtmlonly
+ * @image html TAPI_DSP_CID_FSK_LR_DTAS.JPG
+ * @subsection fsk1_6 Data transmission during ringing
+ * For TE intended to operate with data transmission during ringing, the TE shall correctly
+ * detect a first ring pattern with a duration of 350 ms to 1 200 ms and an amplitude in the range 30 V rms to
+ * 90 V rms, at a frequency of 25 Hz and/or 50 Hz <BR>  
+ * -  T5: From first ring pattern to start of FSK data transmission
+ *  <br> 2000ms > T5 >= 500ms
+ * - T6: From end of FSK data transmission to second ring pattern
+ *  <br> T6 >= 200ms 
+ * \htmlonly <br> <p align="center"> <b>Data transmission during ringing</b>   \endhtmlonly
+ * @image html TAPI_DSP_CID_FSK_during_ringing.JPG
+ * @section fsk1_7 Data transmission not associated with ringing 
+ * For TE intended to operate where data transmission is not associated with ringing.
+ * @section fsk1_8 Timing parameters
+ * The values of timing parameters T0, T1, T2, T3, T4, T5, T6 and T7 are defined in ETS 300 659-1. The definitions are shown below.
+ 
+ * \htmlonly <br> <p align="center"> <b>Timing parameters</b>   \endhtmlonly 
+ * @image html TAPI_DSP_CID_FSK_Timing.JPG
+ */ 
+ 
+/**
+ * @page fsk2 Bellcore FSK
+ * @section fsk2_0 Standards
+ * For Telcordia Caller-ID support in North America Australia, China, Hong Kong, and Singapore, Telcordia Technologies (formerly Bellcore) GR-30-CORE.  
+ * @section fsk2_1 Type-1  
+ * \htmlonly <br> <p align="center"> <b>Bellcore On-Hook Data Transmission Associated with Ringing</b>   \endhtmlonly 
+ * @image html TAPI_DSP_CID_Bellcore_FSK_Type_I.JPG 
+ * @section fsk2_2 Type-2  
+ * \htmlonly <br> <p align="center"> <b>Bellcore Off-Hook Data Transmission</b>   \endhtmlonly 
+ * @image html TAPI_DSP_CID_Bellcore_FSK_Type_II.JPG
+ */
+ 
+/**
+ * @page fsk3 BT FSK
+ * @section fsk3_0 Standards
+ * For ETSI Caller-ID support in UK (British Telecom), British Telecomm SIN227, SIN242 <br>
+ * SIN242: Terminal Equipment Requirements <br>
+ * SIN227: SERVICE DESCRIPTION
+ * @section fsk3_1 Type-1 (IDLE STATE, DOWN STREAM SIGNALLING)   
+ * @subsection fsk3_1_2 Physical Layer
+ * \htmlonly <br> <p align="center"> <b>CLI Idle State, Down Stream signalling. Sequence of events</b>   \endhtmlonly
+ * @image html TAPI_DSP_CID_BT_FSK_Idle_State.JPG
+ * @subsection fsk3_1_3 Datalink Layer
+ * TE shall recognise ITU-T Recommendation V.23 FSK signalling
+ * The received V.23 FSK signalling may vary between the values shown in below.
+ *  \htmlonly <br> <p align="center">
+ * <table border=1 width=45% style="border-collapse:collapse;" borderColor=black > 
+ * <td align=left>Mark (logic 1)frequency</td> <td align=left>1280.5 Hz</td> <td align=left>1319.5 Hz</td> <tr>  
+ * <td align=left>Space (logic 0)frequency</td> <td align=left>2069.5 Hz</td> <td align=left>2131.5 Hz</td> <tr>  
+ * <td align=left>Mark level</td> <td align=left>-40 dBV</td> <td align=left>-14 dBV</td> <tr>  
+ * <td align=left>Space level</td> <td align=left>-36 dBV</td> <td align=left>-8 dBV</td> <tr>  
+ * <td align=left>Total power of extraneous signals in the voice band (300-3400 Hz)</td> <td align=left>-64 dBV</td> <td align=left>-34 dBV</td> <tr>  
+ * <td align=left>Transmission rate</td> <td align=left>1188 baud</td> <td align=left>1212 baud</td> <tr>   
+ * </table> \endhtmlonly  
+ * @subsubsection fsk3_1_3_1 Channel Seizure
+ * Valid CLI signals are sent to the TE with the channel seizure set to 96 bits.
+ * @subsubsection fsk3_1_3_2 Mark Signal
+ * Valid CLI signals are sent to the TE with the mark signal set to 55 bits.
+ * @subsubsection fsk3_1_3_3 Idle State Tone Alert Signal
+ * Valid CLI signals are sent to the TE with the idle state tone alert signal set in turn to the values of each case in below tables.
+ *  \htmlonly <br> <p align="center"> <b>Idle State Tone Alert - Single Tone Detection</b> 
+ * <table border=1 width=55% style="border-collapse:collapse;" borderColor=black > 
+ * <td align=left><b>Case</b></td> <td align=left><b>frequency (Hz)</b></td> <td align=left><b>level</b></td> <td align=left><b>duration</b></td><td align=left><b>validity</b></td><tr>  
+ * <td align=left>1</td> <td align=left>2110 or 2720</td> <td align=left>-2.2 dBV</td> <td align=left>90ms</td><td align=left>valid</td><tr>  
+ * <td align=left>2</td> <td align=left>2150 or 2780</td> <td align=left>-2.2 dBV</td> <td align=left>110 ms</td><td align=left>valid</td><tr>  
+ * <td align=left>3</td> <td align=left>2110 or 2720</td> <td align=left>-40 dBV</td> <td align=left>90ms</td><td align=left>valid</td><tr>  
+ * <td align=left>4</td> <td align=left>2150 or 2780</td> <td align=left>-40 dBV</td> <td align=left>110 ms</td><td align=left>valid</td><tr>  
+ * </table> <br>
+ * <p align="center"> <b>Idle State Tone Alert Signal - Dual Tone Detection</b> 
+ * <table border=1 width=55% style="border-collapse:collapse;" borderColor=black > 
+ * <td align=left><b>Case</b></td> <td align=left><b>frequency (Hz)</b></td><td align=left><b>level(total)</b></td><td align=left><b>twist*</b></td> <td align=left><b>duration</b></td><td align=left><b>validity</b></td><tr>  
+ * <td align=left>1</td> <td align=left>2110 and 2745</td> <td align=left>-2.2 dBV</td><td align=left>7dB</td><td align=left>90ms</td><td align=left>valid</td><tr>  
+ * <td align=left>2</td> <td align=left>2150 and 2780</td> <td align=left>-2.2 dBV</td><td align=left>7dB</td><td align=left>110 ms</td><td align=left>valid</td><tr>  
+ * <td align=left>3</td> <td align=left>2110 and 2745</td> <td align=left>-40 dBV</td><td align=left>7dB</td><td align=left>90ms</td><td align=left>valid</td><tr>  
+ * <td align=left>4</td> <td align=left>2150 and 2780</td> <td align=left>-40 dBV</td><td align=left>7dB</td><td align=left>110 ms</td><td align=left>valid</td><tr>  
+ * </table> 
+ * \endhtmlonly   
+ * <br><br>
+ * @section fsk3_2 Type-2 (LOOP STATE SIGNALLING) 
+ * @subsection fsk3_2_1 Physical Layer
+ * \htmlonly<p align="center"> <b>CLI Loop State. Sequence of events</b>   \endhtmlonly
+ * @image html TAPI_DSP_CID_BT_FSK_Loop_State.JPG
+ * @subsection fsk3_2_2 Loop State Tone Alert Signal 
+ *  \htmlonly <br> <p align="center"> <b>Received Characteristics of Loop State Alert Signal</b>  
+ * <table border=1 width=40% style="border-collapse:collapse;" borderColor=black >   
+ * <td align=left>Frequencies</td> <td align=left>2130 Hz and 2750 Hz +/- 0.6%</td><tr>  
+ * <td align=left>Received signal level</td> <td align=left>-8 dBV to -40 dBV</td><tr>  
+ * <td align=left>Signal Level differential</td> <td align=left>up to 7 dB</td><tr>  
+ * <td align=left>Duration</td> <td align=left>80 to 85ms</td><tr>  
+ * </table>  \endhtmlonly    
+ * @subsection fsk3_2_3 Datalink Layer(Basic Mode)
+ * TE shall recognise V.23 FSK signalling. The received V.23 FSK signalling may vary between the values shown in below table. 
+ *  \htmlonly <br> <p align="center"> <b>Received Characteristics of V.23 Signals</b>  
+ * <table border=1 width=35% style="border-collapse:collapse;" borderColor=black >   
+ * <td align=left>Mark (logic 1)frequency</td> <td align=left>1280.5 Hz</td><td align=left>1319.5 Hz</td><tr>  
+ * <td align=left>Space (logic 0)frequency</td> <td align=left>2069.5 Hz</td><td align=left>2131.5 Hz</td><tr>  
+ * <td align=left>Mark level</td> <td align=left>-40 dBV</td><td align=left>-14 dBV</td><tr>  
+ * <td align=left>Space level</td> <td align=left>-36 dBV</td><td align=left>-8 dBV</td><tr>  
+ * <td align=left>Mark level</td> <td align=left>-40 dBV</td><td align=left>-14 dBV</td><tr>  
+ * <td align=left>Transmission rate</td> <td align=left>1188 baud</td><td align=left>1212 baud</td><tr>  
+ * </table>  \endhtmlonly     
+ * @subsubsection fsk3_2_3_1 Channel Seizure
+ * Channel seizure is not sent for Loop State signalling.
+ * @subsubsection fsk3_2_3_2 Mark Signal
+ * The TE shall respond correctly when the Mark is set to 55ms
+ * @subsubsection fsk3_2_3_3 Acknowledge Signal (ACK)
+ * The TE shall detect the Tone Alert and respond by sending an ACK signal. <br>
+ * The ACK signal is the Dual Tone Multi Frequency (DTMF) Digit "D"  and shall be 65 - 75ms in duration.
+ */
+ 
+/**
+ * @page fsk4 NTT FSK 
+ * @section fsk4_0 Standards
+ * For NT FSK Caller-ID support in Japan, Nippon Telegraph & Telephone Corporation standard
+ * @section fsk4_1 Signalling
+ * Applies to ITU-T Recommendation V.23 
+ *  \htmlonly <br> <p align="center"> <b>Signal Standards</b>  
+ * <table border=1 width=30% style="border-collapse:collapse;" borderColor=black >    
+ * <td align=left>Item</td> <td align=left>Contents</td><tr>  
+ * <td align=left>Line frequency</td> <td align=left>Fo 1700 Hz (Characteristic frequency)<br>Fz 1300 Hz (1, mark)<br>Fa 2100 Hz (0, space)</td><tr>  
+ * <td align=left>Frequency offset</td> <td align=left>Fa, Fz: +/- 10 Hz</td><tr>  
+ * <td align=left>Allowable frequency offset</td> <td align=left>Central frequency<br>Fo = (Fa + Fz)/2:  +/- 10Hz<br>
+ * Difference in frequency<br> Fa - Fz:  +/- 20 Hz</td><tr>   
+ * <td align=left>Output level</td> <td align=left>-14 dBm ~ -32 dBm</td><tr>  
+ * </table>  \endhtmlonly    
+ */

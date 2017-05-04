@@ -1,0 +1,220 @@
+
+RTP_NAME		=	oRTP
+LINPHONE_NAME	=	linphone
+EXOSIP_NAME		=	exosip
+SIP_NAME		=	osip
+
+RTP_PATH		=	$(VOIP_SRC)/$(RTP_NAME)
+LINPHONE_PATH	=	$(VOIP_SRC)/$(LINPHONE_NAME)
+EXOSIP_PATH		=	$(VOIP_SRC)/$(EXOSIP_NAME)
+SIP_PATH		=	$(VOIP_SRC)/$(SIP_NAME)
+
+RTP_LIB			=	$(RTP_PATH)/lib$(RTP_NAME)_$(DEBUG_O_RELEASE).a
+LINPHONE_LIB	=	$(LINPHONE_PATH)/lib$(LINPHONE_NAME)_$(DEBUG_O_RELEASE).a
+EXOSIP_LIB		=	$(EXOSIP_PATH)/lib$(EXOSIP_NAME)_$(DEBUG_O_RELEASE).a
+SIP_LIB			=	$(SIP_PATH)/lib$(SIP_NAME)_$(DEBUG_O_RELEASE).a
+
+OBJ_DIR			=	obj.$(DEBUG_O_RELEASE)
+
+
+STUN_PATH		=	$(VOIP_SRC)/stun
+STUN_LIB		=	$(STUN_PATH)/libstun.a
+
+IVR_PATH		=	$(VOIP_SRC)/ivr
+IVR_LIB			=	$(IVR_PATH)/libivr.a
+
+DIALPLAN_PATH	=	$(VOIP_SRC)/dialplan
+DIALPLAN_LIB	=	$(DIALPLAN_PATH)/libdialplan.a
+
+DNS_PATH		=	$(VOIP_SRC)/dns
+DNS_LIB			=	$(DNS_PATH)/libdns.a
+
+#MANAGER_LIB		=	$(MANAGER_PATH)/libvoip_manager.a
+MANAGER_LIB		=	-L$(MANAGER_PATH) -lvoip_manager
+
+IP_PHONE_PATH	=	$(VOIP_APP)/ui
+
+ATA_SYSTEM_PATH	=	$(VOIP_SRC)/system
+ATA_SYSTEM_LIB	=	$(ATA_SYSTEM_PATH)/system.a
+
+NETLINK_PATH	=	$(VOIP_SRC)/netlink
+
+FWUPDATE_PATH	=	$(VOIP_SRC)/fwupdate
+
+DECT_SITEL_PATH	=	$(VOIP_SRC)/../dect_sitel/sc1445x_src/SiDECT/
+#----------------------------------------------------------------------
+# initial flag, compiler, assembler and linker
+#
+#					-Wmissing-declarations -Wmissing-prototypes -Wnested-externs -Wpointer-arith	\
+
+CFLAGS			+=	-g -O2 -Wall -Wcast-align -Wchar-subscripts -Wformat -Winline -Wstrict-prototypes	\
+					-Wnested-externs -Wpointer-arith	\
+					$(DEBUG) $(INCLUDE) -D_GNU_SOURCE
+
+ifeq ($(THREAD_ENABLE),YES)
+EXTRACFLAGS		+=	-pthread -D_REENTRANT -DUSE_PTHREADS \
+					-DHAVE_SEMAPHORE_H -DHAVE_PTH_PTHREAD_H -DHAVE_PTHREAD -DOSIP_MT	\
+					-DHAVE_CONFIG_H -DHAVE_CTYPE_H -DHAVE_DLFCN_H -DHAVE_FCNTL_H -DHAVE_STDINT_H	\
+					-DHAVE_STRING_H -DHAVE_SYSLOG_H -DSM -DHAVE_SYS_SELECT_H -DHAVE_SYS_STAT_H		\
+					-DHAVE_SYS_TIME_H -DHAVE_SYS_TYPES_H -DHAVE_UNISTD_H -DHAVE_TIME_H				\
+					-DHAVE_STPCPY -DSTDC_HEADERS -DHAVE_STRNDUP -DFIX_REGISTER_TIME
+else
+EXTRACFLAGS		+=	-DDISABLE_THREAD \
+					-DHAVE_CONFIG_H -DHAVE_CTYPE_H -DHAVE_DLFCN_H -DHAVE_FCNTL_H -DHAVE_STDINT_H	\
+					-DHAVE_STRING_H -DHAVE_SYSLOG_H -DSM -DHAVE_SYS_SELECT_H -DHAVE_SYS_STAT_H		\
+					-DHAVE_SYS_TIME_H -DHAVE_SYS_TYPES_H -DHAVE_UNISTD_H -DHAVE_TIME_H				\
+					-DHAVE_STPCPY -DSTDC_HEADERS -DHAVE_STRNDUP -DFIX_REGISTER_TIME
+endif
+
+EXTRACFLAGS		+=	-DPATH_MAX=100 -DLINE_MAX_LEN=100
+
+# EXTRACFLAGS	+= -pipe -O2
+
+LDFLAGS			+=	-L$(LINPHONE_PATH) -L$(RTP_PATH) -L$(EXOSIP_PATH) -L$(SIP_PARSER_PATH)	\
+					-L$(SIP_PATH) \
+					-L$(STUN_PATH) -L$(MANAGER_PATH) -L$(IVR_PATH) -L$(DIALPLAN_PATH) -L$(DNS_PATH) -L$(ATA_SYSTEM_PATH) 
+
+ifeq ($(CONFIG_RTK_VOIP_DRIVERS_ATA_DECT),y)
+LDFLAGS			+=	-lpthread -ldl
+endif
+
+#----------------------------------------------------------------------
+# Options for include
+#
+
+INCLUDE			+=	-I$(SIP_PATH) -I$(RTP_PATH) -I$(EXOSIP_PATH) -I$(LINPHONE_PATH) \
+					-I$(STUN_PATH) -I$(VOIP_APP)/includes \
+					-I$(IVR_PATH) -I$(DIALPLAN_PATH) -I$(DNS_PATH) -I$(ATA_SYSTEM_PATH)
+
+LIBS			+=	$(LINPHONE_LIB) $(RTP_LIB) $(EXOSIP_LIB) $(SIP_LIB) \
+					$(STUN_LIB) $(MANAGER_LIB)  
+
+ifeq ($(THREAD_ENABLE),YES)
+LIBS			+= -lpthread
+endif
+
+ifeq ($(CONFIG_RTK_VOIP_IVR),y)
+LIBS			+= $(IVR_LIB)
+endif
+
+ifneq ($(BUILD_DIALPLAN), 0)
+LIBS			+= $(DIALPLAN_LIB)
+endif
+
+ifeq ($(RTK_DNS), YES)
+LIBS			+= $(DNS_LIB)
+endif
+
+LIBS			+= $(ATA_SYSTEM_LIB)
+
+ifeq ($(CONFIG_RTK_VOIP_IP_PHONE),y)
+INCLUDE			+= -I$(IP_PHONE_PATH)/include
+endif
+
+ifeq ($(CONFIG_RTK_VOIP_DECT_SITEL_SUPPORT),y)
+INCLUDE			+= -I$(DECT_SITEL_PATH)
+endif
+
+
+#+++++added by jack for sip-tls+++++
+ifeq ($(CONFIG_RTK_VOIP_SIP_TLS),y)
+OPENSSL_PATH = $(VOIP_SRC)/../../openssl-0.9.7d/
+INCLUDE			+= -I$(OPENSSL_PATH)/include
+LIBS 				+= $(OPENSSL_PATH)/libssl.a $(OPENSSL_PATH)/libcrypto.a
+endif
+#-----end-----
+
+#----------------------------------------------------------------------
+# Options for platform
+#
+
+#LDFLAGS += --static
+
+#----------------------------------------------------------------------
+# Options for flag
+#
+
+ifeq ($(SESSION),TWO)
+	EXTRACFLAGS	+= -DMAX_SS=2
+else
+	EXTRACFLAGS	+= -DMAX_SS=1
+endif
+
+ifeq ($(OS),FEDORA)
+	EXTRACFLAGS	+= -D__FEDORA_COMPLIER
+endif
+
+#EXTRACFLAGS     += -DFSK_BT2RING	#define FSK_BT2RING to support FSK caller ID between 1st and 2nd ring.
+					#Not define, FSK caller ID before 1st ring.
+
+ifeq ($(DEBUG_O_RELEASE),debug)
+	CFLAGS		+=  -DRTK_DEBUG
+	CFLAGS		+=	-DENABLE_TRACE 
+	CFLAGS		+=  -DMUTEX_DEBUG
+	CFLAGS		+=  -DMALLOC_DEBUG -DMEMWATCH -DMEMWATCH_STDIO
+#	CFLAGS		+=  -DMEASURE_TIME
+	LIBS		+=  $(VOIP_SRC)/build/memwatch.c
+	INCLUDE		+=  -I$(VOIP_SRC)/build/
+else
+	CFLAGS		+=  -DRTK_DEBUG
+#	CFLAGS		+=	-DENABLE_TRACE
+#	CFLAGS		+=	-finstrument-functions
+#	LIBS		+=  $(VOIP_SRC)/build/backtrace.c
+endif
+
+#					-DFIX_RESPONSE_TIME
+#					-DAUTO_RESOURCE
+CFLAGS			+=	-DNEW_CONTACT_RULE		\
+					-DCOMPACT_RTP			\
+					-DFIX_MEMORY_LEAK		\
+					-DFIX_MUTEX				\
+					-DWAN_INTERFACE=\"$(WAN_INTERFACE)\" \
+					-DSUPPORT_SJPHONE		\
+					-DFIX_PACKET_ORDER		\
+					-DRTK_FIX_QOP			\
+					-DWATCH_DOG				\
+					-DNEW_STUN				\
+					-DSIP_PING				\
+					-DDYNAMIC_PAYLOAD		\
+					-DRTK_FIX_ROUTE			\
+					-DCHECK_RESOURCE		\
+					-DCHECK_LOOPBACK		\
+					-DRTK_FIX				\
+
+CFLAGS	+=	-DATTENDED_TRANSFER
+#+++added by Jack Chan for Planet transfer+++
+CFLAGS  +=	-DPLANET_TRANSFER
+#---end---
+CFLAGS	+=	-DMULTI_PROXY
+CFLAGS	+=	-DBYPASS_RELAY
+
+ifneq ($(BUILD_DIALPLAN), 0)
+	CONFIG_RTK_VOIP_DIALPLAN = y
+	CFLAGS += -DCONFIG_RTK_VOIP_DIALPLAN
+else	
+	CONFIG_RTK_VOIP_DIALPLAN = n
+endif
+
+ifeq ($(RTK_DNS), YES)
+	CFLAGS += -DRTK_DNS
+endif
+
+# for TR-069
+ifeq ($(CONFIG_APP_TR104), y)
+	TR104_PATH = $(VOIP_SRC)/../tr104
+	CWMPEVT = cwmpevt.o
+	CFLAGS += -DCONFIG_APP_TR104
+	CFLAGS += -I$(TR104_PATH)
+endif
+
+XCC = $(CC)
+
+#----------------------------------------------------------------------
+# compiler rules
+#
+
+.PHONY: all clean
+
+$(OBJ_DIR)/%.o: %.c
+	$(XCC) -c -o $@ $(CFLAGS) $(EXTRACFLAGS) $<
+	$(XCC) -M $(CFLAGS) $(EXTRACFLAGS) $< | sed -e "s#^$(*F).o[ :]*#$(@D)\/$(*F).o : #" > $(@:.o=.d)

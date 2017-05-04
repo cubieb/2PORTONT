@@ -1,0 +1,352 @@
+#------------------------------------------------------------------------------
+# This file is provided under a dual BSD/GPLv2 license.  When using or 
+# redistributing this file, you may do so under either license.
+#
+# GPL LICENSE SUMMARY
+#
+# Copyright(c) 2009 Intel Corporation. All rights reserved.
+#
+# This program is free software; you can redistribute it and/or modify 
+# it under the terms of version 2 of the GNU General Public License as
+# published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful, but 
+# WITHOUT ANY WARRANTY; without even the implied warranty of 
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU 
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License 
+# along with this program; if not, write to the Free Software 
+# Foundation, Inc., 51 Franklin St - Fifth Floor, Boston, MA 02110-1301 USA.
+# The full GNU General Public License is included in this distribution 
+# in the file called LICENSE.GPL.
+#
+# Contact Information:
+#      Intel Corporation
+#      2200 Mission College Blvd.
+#      Santa Clara, CA  97052
+#
+# BSD LICENSE 
+#
+# Copyright(c) 2009 Intel Corporation. All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without 
+# modification, are permitted provided that the following conditions 
+# are met:
+#
+#   - Redistributions of source code must retain the above copyright 
+#     notice, this list of conditions and the following disclaimer.
+#   - Redistributions in binary form must reproduce the above copyright 
+#     notice, this list of conditions and the following disclaimer in 
+#     the documentation and/or other materials provided with the 
+#     distribution.
+#   - Neither the name of Intel Corporation nor the names of its 
+#     contributors may be used to endorse or promote products derived 
+#     from this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 
+# "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT 
+# LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR 
+# A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT 
+# OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
+# SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT 
+# LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, 
+# DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY 
+# THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT 
+# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
+# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#------------------------------------------------------------------------------
+#
+# rtl8192cd
+#
+# Makefile for the Linux Wireless network device drivers.
+#
+
+ifndef RTK_WIFI_8192CD_ROOT
+export RTK_WIFI_8192CD_ROOT=$(shell cd ../.. && pwd)
+export RTK_WIFI_8192CD_SRC=$(shell pwd)
+endif
+include $(RTK_WIFI_8192CD_ROOT)/Makefile.kernel
+
+PWD := $(RTK_WIFI_8192CD_SRC)
+
+############################## Chose your Platform ####################################v
+# _PC_ , _BRLADLIGHT_ , _PUMA6_
+
+CONFIG_PLATFORM := _PUMA6_
+
+ifeq ($(CONFIG_PLATFORM),_PC_)
+	EXTRA_CFLAGS += -D_PC_  
+	EXTRA_CFLAGS += -D_LITTLE_ENDIAN_
+	EXTRA_CFLAGS += -DSMP_SYNC
+
+	SUBARCH := $(shell uname -m | sed -e s/i.86/i386/)
+	ARCH ?= $(SUBARCH)
+	CROSS_COMPILE ?=
+	KVER  := $(shell uname -r)
+	KSRC := /lib/modules/$(KVER)/build
+endif
+
+ifeq ($(CONFIG_PLATFORM),_BRLADLIGHT_)
+	EXTRA_CFLAGS += -D_BROADLIGHT_BSP_
+	EXTRA_CFLAGS += -D_BROADLIGHT_FASTPATH_
+	EXTRA_CFLAGS += -D_BIG_ENDIAN_
+	#EXTRA_CFLAGS += -DSMP_SYNC
+	
+	ARCH=mips
+	CROSS_COMPILE=mips-wrs-linux-gnu-mips_74k_softfp-glibc_small-
+	KSRC = /home/timmy/project/broadlight/lilac-linux-2.6.34.8
+endif
+
+ifeq ($(CONFIG_PLATFORM),_PUMA6_)
+	EXTRA_CFLAGS += -D_PUMA6_
+	EXTRA_CFLAGS += -D_LITTLE_ENDIAN_
+	EXTRA_CFLAGS += -DSMP_SYNC
+	EXTRA_CFLAGS += -DCONFIG_PCI
+	
+#	ARCH=arm
+#	CROSS_COMPILE=/home/timmy/project/puma-6/sdk_4.0.0.25_ATOM_E/IntelCE-28.0.12253.322476/build_i686/staging_dir/bin/i686-cm-linux-
+#	KSRC = /home/timmy/project/puma-6/sdk/source/kernel/ti/linux-2.6.39.3/src
+#	KSRC = /home/timmy/project/puma-6/sdk_4.0.0.25_ATOM_E/IntelCE-28.0.12253.322476/project_build_i686/IntelCE/kernel-28.0.12253.322476/kernel_source/linux-2.6.39
+endif
+
+#EXTRA_CFLAGS += -DCONFIG_USE_PCIE_SLOT_0
+
+####################################### chip support ##########################
+CONFIG_RTL_92C_SUPPORT :=n
+CONFIG_RTL_92D_SUPPORT :=n
+CONFIG_RTL_DUAL_PCIESLOT_BIWLAN_D :=n
+CONFIG_RTL_88E_SUPPORT :=n
+CONFIG_RTL_8812_SUPPORT :=y
+CONFIG_RTL_ODM_WLAN_DRIVER :=y
+
+ifeq ($(CONFIG_RTL_92C_SUPPORT),y)
+  RTL_WLAN_DATA_DIR := data
+  EXTRA_CFLAGS += -DCONFIG_RTL_92C_SUPPORT
+endif
+  
+ifeq ($(CONFIG_RTL_92D_SUPPORT),y)
+  RTL_WLAN_DATA_DIR_D := data_92d
+  EXTRA_CFLAGS += -DCONFIG_RTL_92D_SUPPORT
+  EXTRA_CFLAGS += -DCONFIG_RTL_92D_DMDP
+endif
+
+ifeq ($(CONFIG_RTL_88E_SUPPORT),y)
+  RTL_WLAN_DATA_DIR_E := data_88e
+  EXTRA_CFLAGS += -DCONFIG_RTL_88E_SUPPORT
+endif
+
+ifeq ($(CONFIG_RTL_8812_SUPPORT),y)
+  RTL_WLAN_DATA_DIR_8812 := data_8812
+  EXTRA_CFLAGS += -DCONFIG_RTL_8812_SUPPORT
+  #EXTRA_CFLAGS += -DCONFIG_SLOT_0_8812
+endif
+
+###############################################################################
+
+EXTRA_CFLAGS += -DCONFIG_ENABLE_EFUSE
+
+EXTRA_CFLAGS += -DCONFIG_RTL_VAP_SUPPORT
+EXTRA_CFLAGS += -DCONFIG_RTL_WDS_SUPPORT
+EXTRA_CFLAGS += -DCONFIG_RTL_CLIENT_MODE_SUPPORT
+EXTRA_CFLAGS += -DCONFIG_RTL_REPEATER_MODE_SUPPORT
+
+EXTRA_CFLAGS += -DCONFIG_WIRELESS_LAN_MODULE
+
+EXTRA_CFLAGS += -DNOT_RTK_BSP
+EXTRA_CFLAGS += -DTMP_PROC_GPIO
+EXTRA_CFLAGS += -D_FULLY_WIFI_IGMP_SNOOPING_SUPPORT_
+
+#EXTRA_CFLAGS += -DCONFIG_RTL_DUAL_PCIESLOT_BIWLAN
+#EXTRA_CFLAGS += -DMP_TEST
+#EXTRA_CFLAGS += -DCONFIG_PROC_FS
+#EXTRA_CFLAGS += -DCONFIG_SYSFS
+#EXTRA_CFLAGS += -DCONFIG_PRINTK
+#EXTRA_CFLAGS += -DCONFIG_PHY_EAT_40MHZ
+#EXTRA_CFLAGS += -DCONFIG_HIGH_POWER_EXT_PA
+
+EXTRA_CFLAGS += -DCONFIG_HIGH_POWER_EXT_LNA
+
+MODULE_NAME := rtl8192cd
+TARGET=rtl8192cd.ko
+
+SRCS_TXT = $(addprefix $(src)/data_,$(notdir $(patsubst %.txt,%.c,$(wildcard $(src)/$(RTL_WLAN_DATA_DIR)/*.txt))))
+SRCS_BIN = $(addprefix $(src)/data_,$(notdir $(patsubst %.bin,%.c,$(wildcard $(src)/$(RTL_WLAN_DATA_DIR)/*.bin))))
+SRCS_TXT += $(addprefix $(src)/data_,$(notdir $(patsubst %.txt,%.c,$(wildcard $(src)/$(RTL_WLAN_DATA_DIR_D)/*.txt))))
+SRCS_BIN += $(addprefix $(src)/data_,$(notdir $(patsubst %.bin,%.c,$(wildcard $(src)/$(RTL_WLAN_DATA_DIR_D)/*.bin))))
+SRCS_TXT += $(addprefix $(src)/data_,$(notdir $(patsubst %.txt,%.c,$(wildcard $(src)/$(RTL_WLAN_DATA_DIR_E)/*.txt))))
+SRCS_BIN += $(addprefix $(src)/data_,$(notdir $(patsubst %.bin,%.c,$(wildcard $(src)/$(RTL_WLAN_DATA_DIR_E)/*.bin))))
+SRCS_TXT += $(addprefix $(src)/data_,$(notdir $(patsubst %.txt,%.c,$(wildcard $(src)/$(RTL_WLAN_DATA_DIR_8812)/*.txt))))
+SRCS_BIN += $(addprefix $(src)/data_,$(notdir $(patsubst %.bin,%.c,$(wildcard $(src)/$(RTL_WLAN_DATA_DIR_8812)/*.bin))))
+
+obj-m += $(MODULE_NAME).o
+
+$(MODULE_NAME)-objs +=\
+	8192cd_tx.o\
+	8192cd_rx.o\
+	8192cd_osdep.o\
+	8192cd_sme.o\
+	8192cd_util.o\
+	8192d_hw.o\
+	8192cd_hw.o\
+	8192cd_security.o\
+	8192cd_tkip.o\
+	8192cd_aes.o\
+	8192cd_proc.o\
+	8192cd_br_ext.o\
+	8192cd_eeprom.o\
+	8192cd_mp.o\
+	8192cd_psk.o\
+	8192cd_ioctl.o\
+	1x_kmsm_aes.o\
+	1x_kmsm_hmac.o\
+	1x_md5c.o\
+	1x_rc4.o\
+	8192cd_mib.o\
+	8192cd_dmem.o\
+	8192cd_host.o\
+	8192cd_led.o\
+	8192cd_dfs.o\
+	romeperf.o\
+	HalDMOutSrc.o
+
+ifeq ($(CONFIG_RTL_88E_SUPPORT),y)
+$(MODULE_NAME)-objs += HalPwrSeqCmd.o\
+		Hal8188EPwrSeq.o\
+		8188e_hw.o 
+	ifeq ($(CONFIG_RTL_ODM_WLAN_DRIVER),y)
+		$(MODULE_NAME)-objs += \
+	                OUTSRC/rtl8188e/HalHWImg8188E_BB.o\
+	                OUTSRC/rtl8188e/HalHWImg8188E_MAC.o\
+	                OUTSRC/rtl8188e/HalHWImg8188E_RF.o\
+	                OUTSRC/rtl8188e/odm_RegConfig8188E.o\
+	                OUTSRC/rtl8188e/Hal8188ERateAdaptive.o\
+	                OUTSRC/rtl8188e/odm_RTL8188E.o\
+	                OUTSRC/rtl8188e/HalPhyRf_8188e.o		
+	else
+		$(MODULE_NAME)-objs += Hal8192CDMOutSrc.o \
+        $(MODULE_NAME)-objs += RateAdaptive.o 
+    endif
+	endif
+
+	ifeq ($(CONFIG_RTL_8812_SUPPORT),y)
+	       $(MODULE_NAME)-objs += HalPwrSeqCmd.o\
+                Hal8812PwrSeq.o\
+                8812_hw.o\
+                8812_vht_gen.o
+		ifeq ($(CONFIG_RTL_ODM_WLAN_DRIVER),y)
+        $(MODULE_NAME)-objs +=  OUTSRC/rtl8812a/HalPhyRf_8812A.o
+		endif
+endif
+
+		ifeq ($(CONFIG_RTL_92C_SUPPORT),y)
+			$(MODULE_NAME)-objs += Hal8192CDMOutSrc.o
+		endif
+ifeq ($(CONFIG_RTL_92D_SUPPORT),y)
+		$(MODULE_NAME)-objs += Hal8192CDMOutSrc.o
+	endif
+
+ifeq ($(CONFIG_RTL_ODM_WLAN_DRIVER),y)
+    $(MODULE_NAME)-objs += \
+       OUTSRC/odm.o \
+       OUTSRC/odm_debug.o\
+       OUTSRC/odm_interface.o\
+       OUTSRC/odm_HWConfig.o\
+       OUTSRC/HalPhyRf.o
+       EXTRA_CFLAGS += -I$(src) -I$(src)/OUTSRC
+endif
+
+
+####################################### feature support ##########################
+
+CONFIG_RTL_WAPI_SUPPORT :=n
+CONFIG_RTL8192CD :=n
+
+ifeq ($(CONFIG_RTL_WAPI_SUPPORT),y)
+EXTRA_CFLAGS += -DCONFIG_RTL_WAPI_SUPPORT
+$(MODULE_NAME)-objs += wapi_wai.o wapiCrypto.o
+endif
+
+ifeq ($(CONFIG_RTL8192CD),y)
+EXTRA_CFLAGS += -DCONFIG_RTL8192CD
+endif
+
+ifeq ($(CONFIG_RTL_COMAPI_CFGFILE),y)
+    $(MODULE_NAME)-objs += 8192cd_comapi.o
+endif
+
+ifeq ($(CONFIG_RTL_P2P_SUPPORT),y)	
+    $(MODULE_NAME)-objs += 8192cd_p2p.o
+endif
+
+ifeq ($(CONFIG_RTL_COMAPI_WLTOOLS),y)
+    $(MODULE_NAME)-objs += 8192cd_comapi.o
+endif
+
+#For Hostapd
+ifeq ($(CONFIG_RTL_HOSTAPD_SUPPORT),y)
+    $(MODULE_NAME)-objs += 8192cd_comapi.o
+    $(MODULE_NAME)-objs += 8192cd_net80211.o
+    $(MODULE_NAME)-objs += 8192cd_psk_hapd.o
+endif
+
+ifeq ($(CONFIG_RTL8672),y)
+    $(MODULE_NAME)-objs += rtl8672_port.o
+    EXTRA_CFLAGS += -DCONFIG_RTL8196B -DCONFIG_RTL8196C -DCONFIG_RTL8196B_GW -DCONFIG_RTL8196C_TESTCHIP_PATCH -D_MP_TELNET_SUPPORT_
+    EXTRA_CFLAGS += -DCONFIG_COMPAT_NET_DEV_OPS
+endif
+
+###############################################################################
+
+.PHONY: all debug clean install install_dev install_target FORCE
+
+all: $(TARGET)
+
+$(TARGET): FORCE
+	@echo '--- build the $(TARGET) module'
+	make -C $(KDIR)  M=$(PWD) MODFLAGS="$(INCLUDES) $(EXTRA_CFLAGS)"  modules 
+	$(CROSS_COMPILE)strip --strip-debug $(TARGET)
+	cp $(TARGET) $(RTK_WIFI_LIB)/modules
+	mv Module.symvers rtl8192cd.symvers
+
+debug: EXTRA_CFLAGS +=-DDEBUG -g -O0
+debug: all
+
+clean:
+	@if [ -e $(KDIR) ] ; then \
+		make -C $(KDIR) M=$(PWD) MODFLAGS="$(INCLUDES) $(EXTRA_CFLAGS)" clean; \
+	fi
+	rm -f .*.cmd
+	rm -rf Module.symvers rtl8192cd.symvers
+
+install: install_dev install_target
+
+install_dev:
+
+install_target:
+	mkdir -p $(FSROOT)/lib/modules
+	cp -pd $(TARGET) $(FSROOT)/lib/modules
+	mkdir -p $(BUILD_DEST)/kernel/module.symvers/
+	cp -pd rtl8192cd.symvers $(BUILD_DEST)/kernel/module.symvers/rtl8192cd
+
+#
+#Build C code for TXT or BIN file
+#
+$(obj)/8192cd_hw.o :   $(SRCS_TXT) $(SRCS_BIN)
+
+$(obj)/data_%.c: $(src)/$(RTL_WLAN_DATA_DIR)/%.txt FORCE
+	@$(obj)/bin2c.pl $(notdir $(basename $@)) < $< > $@
+$(obj)/data_%.c: $(src)/$(RTL_WLAN_DATA_DIR)/%.bin FORCE
+	@$(obj)/bin2c.pl $(notdir $(basename $@)) < $< > $@
+$(obj)/data_%.c: $(src)/$(RTL_WLAN_DATA_DIR_D)/%.txt FORCE
+	@$(obj)/bin2c.pl $(notdir $(basename $@)) < $< > $@
+$(obj)/data_%.c: $(src)/$(RTL_WLAN_DATA_DIR_D)/%.bin FORCE
+	@$(obj)/bin2c.pl $(notdir $(basename $@)) < $< > $@
+$(obj)/data_%.c: $(src)/$(RTL_WLAN_DATA_DIR_E)/%.txt FORCE
+	@$(obj)/bin2c.pl $(notdir $(basename $@)) < $< > $@
+$(obj)/data_%.c: $(src)/$(RTL_WLAN_DATA_DIR_E)/%.bin FORCE
+	@$(obj)/bin2c.pl $(notdir $(basename $@)) < $< > $@
+$(obj)/data_%.c: $(src)/$(RTL_WLAN_DATA_DIR_8812)/%.txt FORCE
+	@$(obj)/bin2c.pl $(notdir $(basename $@)) < $< > $@
+$(obj)/data_%.c: $(src)/$(RTL_WLAN_DATA_DIR_8812)/%.bin FORCE
+	@$(obj)/bin2c.pl $(notdir $(basename $@)) < $< > $@

@@ -1,0 +1,16 @@
+
+TOPDIR  = $(shell pwd)
+
+.PHONE: checkout part
+
+part:
+	
+checkout:
+	cvs -d :pserver:172.21.70.21:/usr/local/dslrepos co uClinux-dist linux-2.6.19-test rtkvoip
+	mv linux-2.6.19-test uClinux-dist/linux-2.6.x
+	rm -rf uClinux-dist/linux-2.4.x 
+	rm -rf uClinux-dist/linux-2.6.x/rtk_voip
+	mv rtkvoip/kernel-2.6/rtk_voip uClinux-dist/linux-2.6.x
+	rm -rf rtkvoip
+	
+

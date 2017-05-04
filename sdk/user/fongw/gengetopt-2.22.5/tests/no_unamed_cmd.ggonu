@@ -1,0 +1,8 @@
+# no_unamed_cmd.ggo
+
+# This test an input file processed without --unamed-opt but with a string
+
+package "no_unamed"
+version "1.0"
+
+option  "foo"        i "foo string option" string no

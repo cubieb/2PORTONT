@@ -1,0 +1,8 @@
+# $(CROSS_COMPILE) stands for prefix of your own toolkt.
+# Modify it so $(CROSS_COMPILE)gcc points to your compiler,
+# and rename `toolkit_path.in.sample' to `toolkit_path.in'.
+#
+# Since content of the file  differs from users to users,
+# ** THOU SHALL NOT COMMIT toolkit_path.in TO REPOSITORY! **
+#CROSS_COMPILE?=/share/rlx/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/bin/rsdk-linux-
+#PLR_INC?=/home/bohungwu/apollo/otto/release

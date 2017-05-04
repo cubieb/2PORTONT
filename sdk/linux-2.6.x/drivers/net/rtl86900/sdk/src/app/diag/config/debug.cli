@@ -1,0 +1,790 @@
+//
+// Copyright (C) 2009 Realtek Semiconductor Corp.
+// All Rights Reserved.
+//
+// This program is the proprietary software of Realtek Semiconductor
+// Corporation and/or its licensors, and only be used, duplicated,
+// modified or distributed under the authorized license from Realtek.
+//
+// ANY USE OF THE SOFTWARE OTHER THAN AS AUTHORIZED UNDER
+// THIS LICENSE OR COPYRIGHT LAW IS PROHIBITED.
+//
+// $Revision: 42769 $
+// $Date: 2013-09-12 13:21:00 +0800 (Thu, 12 Sep 2013) $
+//
+// Purpose : Define diag shell commands for debug.
+//
+// Feature : The file have include the following module and sub-modules
+//           1) debug commands.
+//
+
+
+//debug configuration
+//batch execution
+//cmd a
+//loop count
+debug batch a <UINT:loop>
+
+//debug configuration
+//batch execution
+//cmd A
+//loop count
+debug batch A <UINT:loop>
+
+//debug configuration
+//batch execution
+//cmd w
+//register number
+//msb
+//lsb
+//write data
+debug batch w <UINT:reg> <UINT:msb> <UINT:lsb> <HEX:data>
+
+//debug configuration
+//batch execution
+//cmd W
+//register number
+//msb
+//lsb
+//write data
+debug batch W <UINT:reg> <UINT:msb> <UINT:lsb> <HEX:data>
+
+//debug configuration
+//batch execution
+//cmd r
+//register number
+//msb
+//lsb
+debug batch r <UINT:reg> <UINT:msb> <UINT:lsb>
+
+//debug configuration
+//batch execution
+//cmd R
+//register number
+//msb
+//lsb
+debug batch R <UINT:reg> <UINT:msb> <UINT:lsb>
+
+//debug configuration
+//batch execution
+//set phy id
+//phy id
+debug batch phy <UINT:phyid>
+
+//debug configuration
+//batch execution
+//list current cmds
+debug batch list
+
+//debug configuration
+//batch execution
+//execute cmd
+//enable debug print
+debug batch execute { debug }
+
+//debug configuration
+//dump configuration
+//header stamp after information
+//header stamp before information
+//hsa debug information
+debug dump ( hsa | hsb | hsd )
+
+//debug configuration
+//dump configuration
+//hsa debug information
+//port configuration
+//port, <0-6>
+debug dump hsd port <UINT:port>
+
+//debug configuration
+//dump configuration
+//hsa debug information
+//lastest tx hsa debug information
+debug dump hsd lastest
+
+//debug configuration
+//packet operation for mac
+//packet rx operations
+//dump last packet and descriptor
+//maximum dump size
+debug packet rx dump { <UINT:byte> }
+
+//debug configuration
+//packet operation for mac
+//packet rx operations
+//dump last packet of specified start and length
+//start byte to be dump
+//length to be dump(default is 1)
+debug packet rx dump-length <UINT:start> { <UINT:length> }
+
+//debug configuration
+//packet operation for mac
+//packet rx operations
+//dump last packet and descriptor
+//6266 chip parsing
+//6266 fpga parsing
+debug packet rx mode ( chip | fpga )
+
+//debug configuration
+//packet operation for mac
+//packet rx operations
+//clear last packet and descriptor
+debug packet rx clear
+
+//debug configuration
+//packet operation for mac
+//packet rx operations
+//enable rx packet copy
+//disable rx packet copy
+debug packet rx { enable | disable }
+
+//debug configuration
+//packet operation for mac
+//packet tx operations
+//set operation
+//packet data
+//position to start setting
+//hex values of packet
+debug packet tx set pkt <UINT:pos> <STRING:data>
+
+//debug configuration
+//packet operation for mac
+//packet tx operations
+//set operation
+//mac address operation
+//destination mac address
+//source mac address
+debug packet tx set addr <MACADDR:da> <MACADDR:sa>
+
+//debug configuration
+//packet operation for mac
+//packet tx operations
+//set operation
+//l2 payload of packet
+//position to start setting
+//hex values of packet payload right after source address
+debug packet tx set l2payload <UINT:pos> <STRING:payload>
+
+//debug configuration
+//packet operation for mac
+//packet tx operations
+//set operation
+//repeat padding operation
+//start repeat position
+//end repeat position(or zero)
+//total packet length after padding repeated data
+debug packet tx set padding <UINT:start> <UINT:end> <UINT:pkt_len>
+
+//debug configuration
+//packet operation for mac
+//packet tx operations
+//get operation
+//dump the current packet content to be sent
+//maximum length to be dump
+debug packet tx get preview { <UINT:length> }
+
+//debug configuration
+//packet operation for mac
+//packet tx operations
+//clear packet buffer
+debug packet tx clear
+
+//debug configuration
+//packet operation for mac
+//packet tx operations
+//send the packet in the buffer
+//number of packets send repeatly
+debug packet tx send { <UINT:count> }
+
+//debug configuration
+//packet operation for mac
+//packet tx operations
+//set operation
+//cpu tag configuration
+//l3 check sum
+//enable
+//disable
+debug packet tx set cputag l3cs ( enable | disable )
+
+//debug configuration
+//packet operation for mac
+//packet tx operations
+//set operation
+//cpu tag configuration
+//l4 check sum
+//enable
+//disable
+debug packet tx set cputag l4cs ( enable | disable )
+
+//debug configuration
+//packet operation for mac
+//packet tx operations
+//set operation
+//cpu tag configuration
+//keep format
+//enable
+//disable
+debug packet tx set cputag keep ( enable | disable )
+
+//debug configuration
+//packet operation for mac
+//packet tx operations
+//set operation
+//cpu tag configuration
+//learning
+//enable
+//disable
+debug packet tx set cputag learning ( enable | disable )
+
+//debug configuration
+//packet operation for mac
+//packet tx operations
+//set operation
+//cpu tag configuration
+//l2 bridge
+//enable
+//disable
+debug packet tx set cputag l2br ( enable | disable )
+
+//debug configuration
+//packet operation for mac
+//packet tx operations
+//set operation
+//cpu tag configuration
+//l34 keep
+//enable
+//disable
+debug packet tx set cputag l34keep ( enable | disable )
+
+//debug configuration
+//packet operation for mac
+//packet tx operations
+//set operation
+//cpu tag configuration
+//efid
+//enable
+//disable
+//efid value
+debug packet tx set cputag efid ( enable | disable ) <UINT:efid>
+
+//debug configuration
+//packet operation for mac
+//packet tx operations
+//set operation
+//cpu tag configuration
+//priority selection
+//enable
+//disable
+//priority value
+debug packet tx set cputag prisel ( enable | disable ) <UINT:priority>
+
+//debug configuration
+//packet operation for mac
+//packet tx operations
+//set operation
+//cpu tag configuration
+//vlan selection
+//enable
+//disable
+debug packet tx set cputag vsel ( enable | disable )
+
+//debug configuration
+//packet operation for mac
+//packet tx operations
+//set operation
+//cpu tag configuration
+//tx port mask or vlan selection index
+//value of tx port mask or vlan selection index
+debug packet tx set cputag txmask_vidx <UINT:value>
+
+//debug configuration
+//packet operation for mac
+//packet tx operations
+//set operation
+//cpu tag configuration
+//force pon forward
+//enable
+//disable
+//pon stream id
+debug packet tx set cputag psel ( enable | disable ) <UINT:streamid>
+
+//debug configuration
+//packet operation for mac
+//packet tx operations
+//set operation
+//cpu tag configuration
+//pppoe action
+//intact 0b00
+//add pppoe header 0b01
+//remove pppoe header 0b10
+//remarking pppoe switch tx mac action 0b11
+//pppoe index for add and remarking
+debug packet tx set cputag pppoeact ( intact | addhdr | removehdr | remarking ) <UINT:index>
+
+//debug configuration
+//packet operation for mac
+//packet tx operations
+//set operation
+//cpu tag configuration
+//extension source port
+//extension source port
+debug packet tx set cputag extspa <UINT:port>
+
+//debug configuration
+//packet operation for mac
+//packet tx operations
+//set operation
+//cpu tag configuration
+//clear all cpu tag field
+debug packet tx set cputag clear
+
+//debug configuration
+//packet operation for mac
+//packet tx operations
+//get operation
+//dump cpu tag configuration
+debug packet tx get cputag
+
+//debug configuration
+//dump configuration
+//packet process information
+//PPI index, <0-6>
+debug dump ppi <UINT:index>
+
+//debug configuration
+//get configuration
+//log information
+debug get log
+
+//debug configuration
+//set configuration
+//log information
+//state configuration
+//disable function
+//enable function
+debug set log state ( disable | enable )
+
+//debug configuration
+//set configuration
+//log information
+//level of log
+//level <0-8>
+debug set log level <UINT:value>
+
+//debug configuration
+//set configuration
+//log information
+//mask of log
+//bit mask
+debug set log level-mask <UINT:bitmask>
+
+//debug configuration
+//set configuration
+//log information
+//configure type of level
+//configure by level
+//configure by level mask
+debug set log level-type ( level | level-mask )
+
+//debug configuration
+//set configuration
+//log information
+//log format
+//normal display
+//detail display
+debug set log format ( normal | detail )
+
+//debug configuration
+//set configuration
+//log information
+//component module
+//module mask HEX
+debug set log module <UINT64:bitmask>
+
+//debug configuration
+//set configuration
+//memory configuration
+//register address
+//register value
+debug set memory <UINT:address> <UINT:value>
+
+//debug configuration
+//get configuration
+//memory register
+//register address
+//number of words
+debug get memory <UINT:address> { <UINT:words> }
+
+//debug configuration
+//set configuration
+//soc memory configuration
+//soc memory
+//memory value
+debug set soc-memory <UINT:address> <UINT:value>
+
+//debug configuration
+//get configuration
+//soc memory
+//memory address
+//number of words
+debug get soc-memory <UINT:address> { <UINT:words> }
+
+//debug configuration
+//set configuration
+//table configuration
+//table index
+//entry address
+debug get table <UINT:table_idx> <UINT:address>
+
+//debug configuration
+//Initial rtk API
+debug rtk-init
+
+//debug configuration
+//Initial fpga test relative asic setting
+debug fpga-init
+
+
+
+
+//debug configuration
+//set configuration
+//phy configuration
+//phy id
+//register address
+//register value
+debug set phy <UINT:phy_id> <UINT:reg_address> <UINT:value>
+
+//debug configuration
+//get configuration
+//phy configuration
+//phy id
+//register address
+//register value
+debug get phy <UINT:phy_id> <UINT:reg_address>
+
+//debug configuration
+//set configuration
+//indirect phy configuration
+//phy id
+//register address
+//register value
+debug set ind_phy <UINT:phy_id> <UINT:reg_address> <UINT:value>
+
+//debug configuration
+//get configuration
+//indirect phy configuration
+//phy id
+//register address
+//register value
+debug get ind_phy <UINT:phy_id> <UINT:reg_address>
+
+//debug configuration
+//set configuration
+//asic register configuration
+//debug dump configuration
+//enable dump mode
+//disable dump mode
+debug set register dump ( enable | disable )
+
+//debug configuration
+//get configuration
+//version information
+//detail information
+debug get version { detail }
+
+
+
+//debug configuration
+//packet generate function
+//read configuration
+//offset
+debug pkt-gen read <UINT:offset>
+
+//debug configuration
+//packet generate function
+//write configuration
+//offset
+//data
+debug pkt-gen write <UINT:offset> <UINT:data>
+
+
+//debug configuration
+//set configuration
+//virtual mac function
+//port configuration
+//port list, <0-6>
+//all port
+//virtual mac state
+//enable virtual MAC mode
+//disable virtual MAC mode
+debug set virtual-mac port ( <PORT_LIST:ports> | all ) state ( enable | disable )
+
+//debug configuration
+//virtual mac function
+//virtual mac TX
+//port configuration
+//port <0~6>
+debug virtual-mac tx port <UINT:port>
+
+//debug configuration
+//virtual mac function
+//virtual mac RX
+//port configuration
+//port <0~6>
+debug virtual-mac rx port <UINT:port>
+
+//debug configuration
+//register read write test
+//register
+//register address
+//test pattern
+//test pattern value
+//test loop count
+//count
+debug register-rw-test register <UINT:address> data <UINT:value> count <UINT:count>
+
+
+#ifdef CMD_DEBUG_SET_PRINT_PORT_MUX_MUX
+//debug configuration
+//set configuration
+//printer board mux function
+//mux, <0-3>
+debug set print-port-mux <UINT:mux>
+#endif
+
+//debug configuration
+//set configuration
+//dbgo_wrap_gphy
+//dbgo_sys_gen
+//dbgo_ctrlckt 
+//dbgo_misc
+//dbg_rrcp_o
+//dbg_rldp_o
+debug set ( dbgo_wrap_gphy | dbgo_sys_gen | dbgo_ctrlckt | dbgo_misc | dbg_rrcp_o | dbg_rldp_o )
+
+//debug configuration
+//set configuration
+//dbg_led_o
+//dbg_rtct_o
+//dbg_mib_o
+//dbg_phy_sts_o
+//dbg_intrpt_o
+//dbg_afbk_o
+//dbg_diag_o
+//dbgo_hwpkt
+//dbgo_efuse 
+debug set ( dbg_led_o | dbg_rtct_o | dbg_mib_o | dbg_phy_sts_o | dbg_intrpt_o | dbg_afbk_o | dbg_diag_o | dbgo_hwpkt | dbgo_efuse )
+
+//debug configuration
+//set configuration
+//dbgo_wrap_sds
+//dbgo_chip_clk_gen_0
+//dbgo_chip_clk_gen_1
+//dbgo_chip_clk_gen_2
+//dbgo_chip_rst_gen 
+debug set ( dbgo_wrap_sds | dbgo_chip_clk_gen_0 | dbgo_chip_clk_gen_1 | dbgo_chip_clk_gen_2 | dbgo_chip_rst_gen )
+
+//debug configuration
+//set configuration
+//dbgo_chip_misc
+//dbgo_cfgif
+//dbgo_soc
+//dbgo_ssc
+//dbgo_pll_root
+//dbgo_ponctrl
+//dbgo_clkctrl 
+debug set ( dbgo_chip_misc | dbgo_cfgif | dbgo_soc | dbgo_ssc | dbgo_pll_root | dbgo_ponctrl | dbgo_clkctrl )
+
+//debug configuration
+//set configuration
+//dbgo_rstgen
+//dbgo_clkgen
+//dbgo_sw_lxslv
+//PLLTOUT 
+debug set ( dbgo_rstgen | dbgo_clkgen | dbgo_sw_lxslv | PLLTOUT )
+
+//debug configuration
+//set configuration
+//dbgo_regctrl
+debug set dbgo_regctrl 
+
+//debug configuration
+//set configuration
+//dbgo_regctrl
+//dbgo_swarb
+//dbgo_gphyarb
+//dbgo_smimst
+//dbgo_iicmst
+//dbgo_iicmst_1
+//bits[3:0]
+//data
+debug set dbgo_regctrl ( dbgo_swarb | dbgo_gphyarb | dbgo_smimst | dbgo_iicmst | dbgo_iicmst_1 ) bits-3-0 <UINT:bits_3_0>
+
+//debug configuration
+//set configuration
+//dbgo_fctrl
+debug set dbgo_fctrl
+
+//debug configuration
+//set configuration
+//dbgo_fctrl
+//dbgo_ingress
+//dbgo_egress
+//bits[3:0]
+//data
+debug set dbgo_fctrl ( dbgo_ingress | dbgo_egress ) bits-3-0 <UINT:bits_3_0>
+
+//debug configuration
+//set configuration
+//dbgo_swcore_cen
+debug set dbgo_swcore_cen
+
+//debug configuration
+//set configuration
+//dbgo_swcore_cen
+//dbgo_sel_sch
+//dbgo_sel_outq
+//dbgo_sel_mtr
+//dbgo_sel_hsactrl
+//dbgo_sel_inq
+//dbgo_sel_out_drp 
+//bits[7:0]
+//data
+debug set dbgo_swcore_cen ( dbgo_sel_sch | dbgo_sel_outq | dbgo_sel_mtr | dbgo_sel_hsactrl | dbgo_sel_inq | dbgo_sel_out_drp ) bits-7-0 <UINT:bits_7_0>
+
+//debug configuration
+//set configuration
+//dbgo_swcore_cen
+//dbgo_sel_sch_pon
+//dbg_dpm_o
+//dbg_l2_o
+//dbg_acl_o
+//dbg_misc_o 
+//bits[7:0]
+//data
+debug set dbgo_swcore_cen ( dbgo_sel_sch_pon | dbg_dpm_o | dbg_l2_o | dbg_acl_o | dbg_misc_o ) bits-7-0 <UINT:bits_7_0>
+
+//debug configuration
+//set configuration
+//dbgo_mac
+debug set dbgo_mac
+
+//debug configuration
+//set configuration
+//dbgo_mac
+//p0_dbgo_tx
+//p0_dbgo_rx
+//p0_dbgo_eee
+//bits[7:0]
+//data
+debug set dbgo_mac ( p0_dbgo_tx | p0_dbgo_rx | p0_dbgo_eee ) bits-7-0 <UINT:bits_7_0>
+
+//debug configuration
+//set configuration
+//dbgo_mac
+//p1_dbgo_tx
+//p1_dbgo_rx
+//p1_dbgo_eee
+//bits[7:0]
+//data
+debug set dbgo_mac ( p1_dbgo_tx | p1_dbgo_rx | p1_dbgo_eee ) bits-7-0 <UINT:bits_7_0>
+
+//debug configuration
+//set configuration
+//dbgo_mac
+//p2_dbgo_tx
+//p2_dbgo_rx
+//p2_dbgo_eee
+//bits[7:0]
+//data
+debug set dbgo_mac ( p2_dbgo_tx | p2_dbgo_rx | p2_dbgo_eee ) bits-7-0 <UINT:bits_7_0>
+
+//debug configuration
+//set configuration
+//dbgo_mac
+//p3_dbgo_tx
+//p3_dbgo_rx
+//p3_dbgo_eee
+//bits[7:0]
+//data
+debug set dbgo_mac ( p3_dbgo_tx | p3_dbgo_rx | p3_dbgo_eee ) bits-7-0 <UINT:bits_7_0>
+
+//debug configuration
+//set configuration
+//dbgo_mac
+//p4_dbgo_tx
+//p4_dbgo_rx
+//p4_dbgo_eee
+//bits[7:0]
+//data
+debug set dbgo_mac ( p4_dbgo_tx | p4_dbgo_rx | p4_dbgo_eee ) bits-7-0 <UINT:bits_7_0>
+
+//debug configuration
+//set configuration
+//dbgo_mac
+//p5_dbgo_tx
+//p5_dbgo_rx
+//p5_dbgo_eee
+//bits[7:0]
+//data
+debug set dbgo_mac ( p5_dbgo_tx | p5_dbgo_rx | p5_dbgo_eee ) bits-7-0 <UINT:bits_7_0>
+
+//debug configuration
+//set configuration
+//dbgo_mac
+//p6_dbgo_tx
+//p6_dbgo_rx
+//p6_dbgo_eee
+//bits[7:0]
+//data
+debug set dbgo_mac ( p6_dbgo_tx | p6_dbgo_rx | p6_dbgo_eee ) bits-7-0 <UINT:bits_7_0>
+
+
+//debug configuration
+//get configuration
+//hsb
+//latch mode configuration
+debug get hsb latch-mode
+
+
+//debug configuration
+//set configuration
+//hsb
+//latch mode configuration
+//all
+//none
+//first-drop
+//first-pass
+//first-trap
+//drop
+//trap
+//acl 
+debug set hsb latch-mode ( all | none | first-drop | first-pass | first-trap | drop | trap | acl )
+
+//debug configuration
+//get configuration
+//bond chip mode
+debug get bond-chip-mode
+
+//debug configuration
+//analog patch
+//phy patch
+//phy eee patch
+//pon patch
+//usb patch
+//sata patch
+//pcie patch
+//voip patch
+debug analog-patch ( phy | eee-phy | pon | usb | sata | pcie | voip )
+
+//debug configuration
+//set configuration
+//dbgo_m1_0
+//dbgo_m1_1
+//dbgo_m1_2
+//dbgo_m1_3
+//dbgo_m1_4
+debug set ( dbgo_m1_0 | dbgo_m1_1 | dbgo_m1_2 | dbgo_m1_3 | dbgo_m1_4 )
+
+

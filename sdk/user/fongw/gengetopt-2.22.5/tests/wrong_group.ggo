@@ -1,0 +1,5 @@
+# test for problems in group options
+
+defgroup "foogroup"
+groupoption "group-ok"        f "flag option OK" string group="foogroup"
+option "group"        F "flag option" string group="foogroup"

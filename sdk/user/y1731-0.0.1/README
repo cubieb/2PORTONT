@@ -1,0 +1,74 @@
+General Information
+-------------------
+
+The purpose of this file is to collect the building, installation,
+and configuration procedures for the open source Y.1731 implementation. 
+
+This file will be updated to mirror the changes in the source code.
+
+Installation
+------------
+
+Pre-installed packages needed for the building: doxygen, and exuberant-ctags.
+
+Folders (by default have to exist) and files in them:
+/usr/local/etc/oam/config.xml
+/usr/local/etc/oam/meg.xml 
+
+These files can be copied from the source tarball and they 
+are prefixed as example-*.xml
+
+You can also use command line switch -c [name] to override the configuration file location. Same applies for the meg.xml with command line switch -m [name]
+
+"make all" will build the binaries.
+
+Note that there is a LIBS variable that contains
+static option that is present to circumvent the fact that my build
+machine has newer version of GLIBC than current version (0.8.5) of
+Voyage Linux. This is not necessary in other situations.
+
+"make install" Will build all binaries and install all but sources.
+/usr/local/etc/oam/ is the default configuration location
+/usr/local/sbin/ is the default binary directory 
+/usr/share/man/man1 will contain the man pages.
+
+"make uninstall" will remove all but the configuration files
+
+"make purge" will remove all including the configuration files
+
+"make binball" will compile all and create a tarbal containing all
+plus the executables. 
+
+"make tarball" will clean the directory and create a tarball of the sources.
+
+This is software. Beware.
+
+Usage
+-----          
+
+See the man files in the doc/ folder and the configuration
+files for the configuration help.
+
+Files
+-----
+README             - This file.
+HACKING            - Coding guidelines.
+AUTHORS            - List of authors.
+COPYING            - The License.
+example-config.xml - Configuration options for oamd and this MEPs identity.
+example-meg.xml    - Identities of other participants in the MEG.
+
+How to Report a Bug
+-------------------
+
+Bugs are tracked and reported in the Goodnet tracker in URL
+https://vcs.hiit.fi/trac/GoodNet/. Unfortunately it is still a private
+tracker. Or by sending me email (see below).
+
+Disclaimer
+----------
+
+There is no warranty, expressed or implied, associated with this product.
+Use at your own risk.
+
+Samu Varjonen <samu.varjonen[at]hiit.fi>

@@ -1,0 +1,7 @@
+$ $Id: set31,v 1.1.1.1 2003/08/18 05:40:16 kaohj Exp $
+$ vms.termcap.c
+$set 31 
+1 Can't open TERMCAP: [%s]\n
+2 Can't open %s.\n
+3 Found %s in %s.\n
+4 No match found for %s in file %s\n

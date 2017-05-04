@@ -1,0 +1,200 @@
+#!/usr/bin/perl -w
+
+# Copyright (C) 2004, 2005 Philipp Benner
+#
+# This file is part of UpdateDD - http://updatedd.philipp-benner.de.
+#
+# UpdateDD is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# any later version.
+#
+# UpdateDD is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with UpdateDD; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+use strict;
+
+use constant CONFIG_FILE	=> "./updatedd-wrapper.conf";
+
+if(!defined($ARGV[0])) {
+    die "wrong usage";
+}
+
+my $prefix = $ARGV[0];
+my $config = <<"EOCONFIG";
+# updatedd-wrapper configuration file
+#
+# Enter your logins here with 'alias = "user:pass";'.
+# You have to use quotations marks when your login includes special characters.
+#
+
+login {
+
+	changeip_1	= "user:pass";
+	dyndns_1	= "user:pass";
+	eurodyndns_1	= "user:pass";
+	hn_1		= "user:pass";
+	noip_1		= "user:pass";
+	ods_1		= "user:pass";
+	ovh_1		= "user:pass";
+	regfish_1	= "TOKEN=token";
+	regfish_2	= "STD=user:pass";
+	tzo_1		= "user:pass";
+
+};
+
+#
+# below are the configurations of your services...
+#
+# Each block has to start with SERVICE(active OR disabled)
+#
+# Example:
+#
+# ovh(active)    	Ovh is the name of the service, this can be set
+#			to active like here or to disabled.
+#			If it is set to disabled the following block will be ignored.
+#
+# A block has to include the following arguments:
+#
+#	login		your name for the login specified at 'login { }'
+#
+#	hostnames	your hostnames without `http://'
+#			(space seperated and use quotations marks!)
+#
+# The following options can be included:
+#
+#	ip-addr		ipv4:`/path/to/script` OR ipv6:`/path/to/script`
+#			The script should print the ip address to stdout. This
+#			option is highly recommend, because
+#			the ip address won't be cached without it!
+#			See $prefix/share/updatedd/ for additional scripts.
+#
+#	use-syslog	print messages to syslog (yes or no, default is yes)
+#
+#	options		extra options for the service
+#			(see 'updatedd <service> -- --help' for help)
+#
+#	force		this will force the update of your ddns record
+#			(cache entries will be ignored)
+#
+# Notice that a block for a service can appear more than once!
+#
+# Please refer to the updatedd documentation (http://updatedd.philippp-benner.de).
+#
+
+changeip(disabled) {
+
+	login		= changeip_1;
+	hostnames	= "test.changeip.org host2.changeip.org";
+	ip-addr		= ipv4:`$prefix/share/updatedd/ipserv.pl changeip`;
+	use-syslog	= yes;
+#	options		= "--offline";
+#	force;
+
+}
+
+#
+# For a full list of dyndns options see:
+# http://www.dyndns.org/developers/specs/syntax.html
+#
+#  If you have your own domain name using the dyndns custom dns service,
+#  you will need to include "--system custom" in the options.
+#
+
+dyndns(disabled) {
+
+	login		= dyndns_1;
+	hostnames	= "host1.dyndns.org host2.dyndns.org";
+	ip-addr		= ipv4:`$prefix/share/updatedd/ipserv.pl dyndns`;
+	use-syslog	= yes;
+	options		= "--with-backmx --wildcard on";
+#	force;
+
+}
+
+eurodyndns(disabled) {
+
+	login		= eurodyndns_1;
+	hostnames	= "host1.eurodyndns.org host2.eurodyndns.org";
+	ip-addr		= ipv4:`$prefix/share/updatedd/ipserv.pl eurodyndns`;
+	use-syslog	= yes;
+	options		= "--with-backmx --wildcard on";
+#	force;
+
+}
+
+hn(disabled) {
+
+	login		= hn_1;
+	hostnames	= "host1.hn.org host2.hn.org";
+	ip-addr		= ipv4:`$prefix/share/updatedd/ipserv.pl hn`;
+	use-syslog	= yes;
+#	force;
+
+}
+
+noip(disabled) {
+
+	login		= noip_1;
+	hostnames	= "host1.noip.org host2.noip.org";
+	ip-addr		= ipv4:`$prefix/share/updatedd/ipserv.pl noip`;
+	use-syslog	= yes;
+#	force;
+
+}
+
+ods(disabled) {
+
+	login		= ods_1;
+	hostnames	= "host1.ods.org host2.ods.org";
+	ip-addr		= ipv4:`$prefix/share/updatedd/interface.pl ppp0`;
+	use-syslog	= yes;
+#	force;
+
+}
+
+ovh(disabled) {
+
+	login		= ovh_1;
+	hostnames	= "host1.org host2.org";
+	ip-addr		= ipv4:`$prefix/share/updatedd/interface.pl ppp0`;
+	use-syslog	= yes;
+#	force;
+
+}
+
+regfish(disabled) {
+
+	login		= regfish_1;
+	hostnames	= "host1.org host2.org";
+	ip-addr		= ipv4:`$prefix/share/updatedd/ipserv.pl regfish`;
+	use-syslog	= yes;
+	options		= "--ismx";
+#	force;
+
+}
+
+tzo(disabled) {
+
+	login		= tzo_1;
+	hostnames	= "host1.tzo.com host2.tzo.com";
+	ip-addr		= ipv4:`$prefix/share/updatedd/ipserv.pl tzo`;
+	use-syslog	= yes;
+#	force;
+
+}
+
+EOCONFIG
+
+open(CONFIG, ">", CONFIG_FILE)
+    or die "could not open ".CONFIG_FILE.": $!";
+
+print(CONFIG $config);
+
+close(CONFIG);

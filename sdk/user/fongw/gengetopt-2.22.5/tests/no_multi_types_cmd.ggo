@@ -1,0 +1,8 @@
+package "no multi types"
+version "0.1"
+purpose "Has multiple options none of which has type"
+
+option "test" t "This is a test option" int typestr="A test value" 
+default="5" no
+
+option "multi" - "This is a multi option with no type" multiple optional

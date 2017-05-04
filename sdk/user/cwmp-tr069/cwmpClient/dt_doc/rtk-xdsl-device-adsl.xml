@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  RTK xDSL device type instance document wiht xDSL profiles. (Based on Device:2.2)
+
+  Summary:
+    RTK xDSL device type instance. Profiles included ADSL:1, ATMLink:1
+  
+  Version History:
+    *2013-08-30: Initial version. Generate using report.pl with some modifications.
+-->
+<dt:document xmlns:dt="urn:broadband-forum-org:cwmp:devicetype-1-0"
+             xmlns:dmr="urn:broadband-forum-org:cwmp:datamodel-report-0-1"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="urn:broadband-forum-org:cwmp:devicetype-1-0 http://www.broadband-forum.org/cwmp/cwmp-devicetype-1-0.xsd urn:broadband-forum-org:cwmp:datamodel-report-0-1 http://www.broadband-forum.org/cwmp/cwmp-datamodel-report.xsd"
+             deviceType="urn:rtk-xdsl:device-1-0-0">
+  <import file="tr-181-2-2-0.xml" spec="urn:broadband-forum-org:tr-181-2-2-0">
+    <model name="Device:2.2"/>
+  </import>
+  <model ref="Device:2.2">
+    <object ref="Device." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+    </object>
+    <object ref="Device.Services." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0"/>
+    <object ref="Device.DSL." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <parameter ref="LineNumberOfEntries" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="ChannelNumberOfEntries" access="readOnly" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.DSL.Line.{i}." access="readOnly" minEntries="0" maxEntries="unbounded" dmr:version="2.0" dmr:fixedObject="true">
+      <parameter ref="Enable" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Status" access="readOnly" dmr:version="2.0"/>
+      <!--parameter ref="Alias" access="readWrite" dmr:version="2.0"/-->
+      <parameter ref="Name" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="LastChange" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="Upstream" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="FirmwareVersion" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="LinkStatus" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="StandardsSupported" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="StandardUsed" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="LineEncoding" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="UpstreamMaxBitRate" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="DownstreamMaxBitRate" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="UpstreamNoiseMargin" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="DownstreamNoiseMargin" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="UpstreamAttenuation" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="DownstreamAttenuation" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="UpstreamPower" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="DownstreamPower" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="XTURVendor" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="XTURCountry" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="XTUCVendor" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="XTUCCountry" access="readOnly" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.DSL.Line.{i}.Stats." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <parameter ref="BytesSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="BytesReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="PacketsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="PacketsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="ErrorsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="ErrorsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="TotalStart" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="ShowtimeStart" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.DSL.Line.{i}.Stats.Total." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <parameter ref="ErroredSecs" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="SeverelyErroredSecs" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.DSL.Line.{i}.Stats.Showtime." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <parameter ref="ErroredSecs" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="SeverelyErroredSecs" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.DSL.Line.{i}.TestParams." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <parameter ref="HLOGpsds" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="HLOGpsus" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="HLOGMTds" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="HLOGMTus" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="QLNpsds" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="QLNpsus" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="QLNMTds" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="QLNMTus" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="SNRpsds" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="SNRpsus" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="SNRMTds" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="SNRMTus" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="LATNds" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="LATNus" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="SATNds" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="SATNus" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.DSL.Channel.{i}." access="readOnly" minEntries="0" maxEntries="unbounded" dmr:version="2.0" dmr:fixedObject="true">
+      <parameter ref="Enable" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Status" access="readOnly" dmr:version="2.0"/>
+      <!--parameter ref="Alias" access="readWrite" dmr:version="2.0"/-->
+      <parameter ref="Name" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="LastChange" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="LowerLayers" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="LinkEncapsulationSupported" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="LinkEncapsulationUsed" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="UpstreamCurrRate" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="DownstreamCurrRate" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.DSL.Channel.{i}.Stats." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <parameter ref="BytesSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="BytesReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="PacketsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="PacketsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="ErrorsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="ErrorsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="TotalStart" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="ShowtimeStart" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.DSL.Channel.{i}.Stats.Total." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <parameter ref="XTURFECErrors" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="XTUCFECErrors" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="XTURHECErrors" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="XTUCHECErrors" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="XTURCRCErrors" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="XTUCCRCErrors" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.DSL.Channel.{i}.Stats.Showtime." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <parameter ref="XTURFECErrors" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="XTUCFECErrors" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="XTURHECErrors" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="XTUCHECErrors" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="XTURCRCErrors" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="XTUCCRCErrors" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.DSL.Diagnostics.ADSLLineTest." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <parameter ref="DiagnosticsState" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Interface" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="ACTPSDds" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="ACTPSDus" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="ACTATPds" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="ACTATPus" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="HLINSCds" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="HLINSCus" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="HLOGpsds" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="HLOGpsus" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="HLOGMTds" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="HLOGMTus" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="LATNpbds" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="LATNpbus" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="SATNds" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="SATNus" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="HLINpsds" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="HLINpsus" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="QLNpsds" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="QLNpsus" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="QLNMTds" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="QLNMTus" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="SNRpsds" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="SNRpsus" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="SNRMTds" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="SNRMTus" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="BITSpsds" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.ATM." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <parameter ref="LinkNumberOfEntries" access="readOnly" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.ATM.Link.{i}." access="createDelete" minEntries="0" maxEntries="unbounded" dmr:version="2.0">
+      <parameter ref="Enable" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Status" access="readOnly" dmr:version="2.0"/>
+      <!--parameter ref="Alias" access="readWrite" dmr:version="2.0"/-->
+      <parameter ref="Name" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="LastChange" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="LowerLayers" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="LinkType" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="DestinationAddress" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Encapsulation" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="FCSPreserved" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="VCSearchList" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="AAL" access="readOnly" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.ATM.Link.{i}.Stats." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <parameter ref="BytesSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="BytesReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="PacketsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="PacketsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="ErrorsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="ErrorsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="UnicastPacketsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="UnicastPacketsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="DiscardPacketsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="DiscardPacketsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="MulticastPacketsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="MulticastPacketsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="BroadcastPacketsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="BroadcastPacketsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="UnknownProtoPacketsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="TransmittedBlocks" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="ReceivedBlocks" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="CRCErrors" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="HECErrors" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.ATM.Diagnostics.F5Loopback." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <parameter ref="DiagnosticsState" access="readWrite" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="Interface" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="NumberOfRepetitions" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Timeout" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="SuccessCount" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="FailureCount" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="AverageResponseTime" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="MinimumResponseTime" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="MaximumResponseTime" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+    </object>
+  </model>
+</dt:document>

@@ -1,0 +1,119 @@
+// ----------------------------------------------------------------
+// --------------------------- Examples ---------------------------
+// ----------------------------------------------------------------
+/**
+ * @example ring.c
+ * Example for FXS Ring 1 second in channel 0
+ */
+
+/**
+ * @example rtp.c
+ * Example for send RTP
+ */
+
+/**
+ * @example rtp_v6.c
+ * Example for send RTP over IPv6
+ */
+
+/**
+ * @example t38_v6.c
+ * Example for send t38 over IPv6
+ */
+
+/**
+ * @example phone.c
+ * Example for basic phone operation.
+ */
+
+/*
+ * @example daa.c
+ * Example for FXO operation.
+ */
+
+/**
+ * @example caller_id.c
+ * Example for caller id operation.
+ */
+
+/**
+ * @example fxs.c
+ * Example for FXS operation.
+*/
+
+/**
+ * @example custom_tone.c
+ * Example for customize tone operation.
+*/
+
+/**
+ * @example fskgen.c
+ * Example for FSK Caller ID Generation
+ */
+
+/**
+ * @example vmwigen.c
+ * Example for VMWI FSK Generation
+ */
+ 
+/**
+ * @example tone_usa.c
+ * Example for tone configuration
+ */
+ 
+/**
+ * @example conference.c
+ * Example for conference
+ */
+
+/**
+ * @example fxo.c
+ * Example for FXO operation
+ */
+
+/**
+ * @example gain_test.c
+ * Example for AGC gain operation
+ */
+
+/**
+ * @example dtmfdet_dump.c
+ * Example for DTMF detection threshold setting
+ */
+
+/**
+ * @example dis_tone.c
+ * Example for dis-connect tone detection parameters setting
+ */
+ 
+ /**
+ * @example pulse_dial.c
+ * Example for FXO Pulse Dial Generation
+ */
+ 
+ /**
+ * @example send_2833.c
+ * Example for RFC2833 Transmission
+ */
+ 
+/**
+ * @example proslic_set.c
+ * Example for Set the Silab Proslic parameters
+ */
+
+/**
+ * @example dtmf_det_cfg.c
+ * Example for set DTMF detection parameters
+ */
+
+// ----------------------------------------------------------------
+// ---------------------------- Others ----------------------------
+// ----------------------------------------------------------------
+
+/*
+ * @page ISSUE Known Issue
+ */
+
+/*
+ * @page TODO Todo List
+ */

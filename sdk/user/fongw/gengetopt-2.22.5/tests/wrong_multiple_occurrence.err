@@ -1,0 +1,3 @@
+wrong_multiple_occurrence.ggo:6: syntax error -
+wrong_multiple_occurrence.ggo:6: 	string optional multiple(-1-30) # WRONG
+wrong_multiple_occurrence.ggo:6:                                     ^

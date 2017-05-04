@@ -1,0 +1,8 @@
+#
+#pollo RomeDriver configuration
+#
+
+if RTK_L34_ENABLE
+source "drivers/net/rtl86900/romeDriver/Kconfig"
+endif #RTK_L34_ENABLE
+

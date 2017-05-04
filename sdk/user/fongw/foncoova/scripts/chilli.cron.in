@@ -1,0 +1,24 @@
+#! /bin/sh
+# zonap cron script
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+START_CHILLI=0
+START_FONGW=0
+
+if [ -f /etc/default/chilli ] ; then
+   . /etc/default/chilli
+fi
+
+if [ "$START_CHILLI" != "1" ] ; then
+   exit 0
+fi
+
+if [ -f /etc/default/fongw ] ; then
+   . /etc/default/fongw
+fi
+
+if [ "$START_FONGW" != "1" ] ; then
+   echo "Fongw default off. Look at /etc/default/fongw"
+   exit 0
+fi
+
+/etc/init.d/chilli radconfig || true

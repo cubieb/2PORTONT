@@ -1,0 +1,9 @@
+// ============================================================
+
+/**
+ * @page VOIP_DSP_IVR IVR
+ * @ingroup TAPI_DSP_IVR 
+ * The interactive voice response (IVR) is the pre-recorded or the dynamically generated audio for system information such as IP, 
+ * default gateway and phone number. On the other hand user can configure the system by passing the special combination of keys. <br>
+ * This function is very useful when web interface malfunctions.
+ */ 

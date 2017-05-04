@@ -1,0 +1,8 @@
+long="150000000"
+float="150.217"
+flag
+function
+opt-arg
+opt-arg-short
+required="foo"
+file-save="test_all_opts.save"

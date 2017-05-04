@@ -1,0 +1,84 @@
+vsntp Installation and Running Procedure
+
+ 1. Compilation and Installation Procedure
+
+    vsntp uses standard GNU autoconf to compile and install:
+
+     1. Download, unzip and untar the vsntp package:
+
+      % tar xzf vsntp-x.x.x.tar.gz
+
+     2. Go into its directory:
+
+      % cd vsntp-x.x.x
+
+     3. Configure with ./configure:
+
+      % ./configure
+
+     4. Compile with make:
+
+      % make
+
+        The resulted executable will be named "vsntp".
+
+     5. You need to be root in order to install vsntp:
+
+      % su
+      Password:
+      #
+
+     6. You can simply copy vsntp to the appropriate directory:
+
+      # cp vsntp /usr/local/sbin
+
+        Or, you can run automatic install:
+
+      # make install
+
+        You can reduce the size of the installed executable by
+        stripping off debug symbols inside:
+
+      # make install-strip
+
+        By default vsntp will be installed in /usr/local/sbin .
+
+ 2. Compilation and Installation Options
+
+    GNU autoconf configure provides the following options:
+
+  --prefix=PREFIX	install architecture-independent files in PREFIX
+			[/usr/local]
+  --exec-prefix=EPREFIX	install architecture-dependent files in EPREFIX
+			[PREFIX]
+
+  --bindir=DIR		user executables [EPREFIX/bin]
+  --sbindir=DIR		system admin executables [EPREFIX/sbin]
+  --libexecdir=DIR	program executables [EPREFIX/libexec]
+  --datadir=DIR		read-only architecture-independent data [PREFIX/share]
+  --sysconfdir=DIR	read-only single-machine data [PREFIX/etc]
+  --sharedstatedir=DIR	modifiable architecture-independent data [PREFIX/com]
+  --localstatedir=DIR	modifiable single-machine data [PREFIX/var]
+  --libdir=DIR		object code libraries [EPREFIX/lib]
+  --includedir=DIR	C header files [PREFIX/include]
+  --oldincludedir=DIR	C header files for non-gcc [/usr/include]
+  --infodir=DIR		info documentation [PREFIX/info]
+  --mandir=DIR		man documentation [PREFIX/man]
+
+    Type `./configure --help' for a detailed list of compilation options.
+
+ 3. Run
+
+    You need to be root to run vsntp.  vsntp uses settimeofday() to
+set the system time.  settimeofday() requires root privilege.
+
+    To start vsntp, just specify your NTP server:
+
+      # vsntp my.ntp.server.com
+
+    vsntp writes its PID in /var/run/vsntp.pid.  To stop vsntp,
+kill it by its PID:
+
+      # kill `cat /var/run/vsntp.pid`
+
+    The PID file location can be changed with the `-p' switch.

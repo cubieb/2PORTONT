@@ -1,0 +1,10 @@
+package "no multi strings"
+version "0.1"
+purpose "Has multiple options none of which are strings"
+
+# inspired by Dave Swegen
+
+option "test" t "This is a test option" int typestr="A test value" 
+default="5" no
+
+option "multi" - "This is a multi option" int typestr="Multivalue" multiple no

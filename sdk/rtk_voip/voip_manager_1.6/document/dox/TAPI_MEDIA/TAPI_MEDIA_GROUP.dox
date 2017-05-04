@@ -1,0 +1,50 @@
+// ============================================================
+ 
+/**
+ * @page The_ VoIP Session Interface
+ * @ingroup TAPI_MEDIA_GROUP
+ * Realtek TAPI has three kinds of  network connections (RTP, RTCP and T.38). Those connections has four steps: <br>
+ * 1. Open Connection: Establish a network connection. <br>
+ * 2. Start Codec: Set the payload type what you want to select the codec.<br>
+ * 3. Start Connection: Call a TAPI of start conection to start sending/receiving. <br>
+ * 4. Close Connection/Stop Codec: Close the network connection and its codec to inactive the seesion. <br>
+ * @note  1. Because the kernal space design considerations, each of these four steps can only be set <b>SEQUENTIALLY</b>.<br>
+ *        2. Each step can not be reused during VoIP session setup.<br>
+ *        3. For Start Connection and Close Connection/Stop Codec TAPI, RTP and RTCP share the same function.
+ * Close Connection/Stop Codec: Close the network connection and its codec to inactive the seesion. <br> <br>
+ *           For example: Establish RTP session connection and then close it. Each of these four steps <b>MUST</b> be set <b>SEQUENTIALLY</b>.<br>
+ *           <b>Establish RTP session connection:</b><br>
+ *           \htmlonly  <font color=#FF0000>
+ *           1. rtk_SetRtcpConfig() <br>2. rtk_SetRtpPayloadType() <br>3. rtk_SetRtpSessionState(sendreceive) <br>
+ *           </font> \endhtmlonly
+ *           The RTP session has been established at this time. <br><br>
+ *           <b>Close RTP connection:</b><br>  \htmlonly  <font color=#FF0000>4. rtk_SetRtpSessionState(inactive) <br></font> \endhtmlonly
+ *           The RTP session will be closed and its codec invalid. 
+ *
+ *  \htmlonly  <font color=#000000> <br> <br>
+ * <table border=1 width=90% style="border-collapse:collapse;" borderColor=black > 
+ * <td> </td> <td align=center><b>RTP</b></td> <td align=center><b>RTCP</b></td> <td align=center><b>T.38</b></td><tr>  
+ * <td align=left><b>Open Connection </b></td> <td align=left>rtk_SetRtpConfig(rtp_config_t*) </td>
+ * <td align=left>rtk_SetRtcpConfig(rtcp_config_t *) </td>  <td align=left>rtk_SetT38UdpConfig(t38udp_config_t*) </td><tr> 
+ * <td align=left><b>Start Codec</b> </td> <td align=left>rtk_SetRtpPayloadType(payloadtype_config_t*)</td> 
+ * <td align=left>N/A </td> <td align=left>rtk_SetT38PayloadType(t38_payloadtype_config_t *)</td><tr>
+ * <td align=left><b>Start Connection</b></td> 
+ * <td colspan=2 align=center>rtk_SetRtpSessionState( chid, sid, state )<br>state = rtp_session_sendrecv</td> <td align=left>N/A </td><tr>
+ * <td align=left><b>Close Connection /<br>Stop Codec</b></td> 
+ * <td colspan=2 align=center>rtk_SetRtpSessionState( chid, sid, state )<br>state = rtp_session_inactive </td> <td align=left>rtk_SetSessionInactive( chid, sid ) </td> <tr>   
+ * </table> </font> \endhtmlonly 
+ * 
+ * @section v2 VoIP Session  
+ * The VoIP session is a part of VoIP interface. Each channel contains two sessions: Session0 and Session1. <br>
+ * There are four modules in each session. The four modules are 
+ * - Tone
+ * - RTP
+ * - DTMF
+ * - FAX
+ *
+ * The Figure 18 shows an example of the phone A initials a call to phone B with session 0, then phone A hold phone B and makes a call with session 1.
+ *  \htmlonly <br> <p align="center"> <b>Figure 18 Phone A call with different sessions to phone B and Phone C</b>   </p> \endhtmlonly
+ * @image html TAPI_MEDIA_GROUP_Figure_18.JPG  
+ *  \htmlonly <br> <p align="center"> <b>Figure 19 Each channel (port) contains two sessions: Session0 and Session1</b>   </p> \endhtmlonly
+ * @image html TAPI_MEDIA_GROUP_Figure_19.JPG 
+ */

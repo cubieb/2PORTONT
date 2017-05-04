@@ -1,0 +1,297 @@
+ROOTDIR    := $(shell pwd)
+
+IMGDIR     := $(ROOTDIR)/dual_linux_images
+CONFIG_PRODUCT ?= luna
+HINT_MSG := config.luna.hint.in
+
+ifneq ($(MAKECMDGOALS:preconfig2630_%=preconfig2630),preconfig2630)
+include .config
+ifneq ($(CONFIG_LUNA_DUAL_LINUX),y)
+$(error $(DLMAKEFILE) is for "Luna Dual Linux" only)
+endif
+else
+ifeq ($(CONFIG_PRODUCT),luna)
+PRECFGDIR  := $(ROOTDIR)/vendors/Realtek/$(CONFIG_PRODUCT)/conf2630/$(MAKECMDGOALS:preconfig2630_%=%)
+else
+PRECFGDIR  := $(ROOTDIR)/vendors/Realtek/$(CONFIG_PRODUCT)/conf2630
+endif
+export PRECFGDIR
+endif
+
+
+# DLMAKEFILE := $(firstword $(MAKEFILE_LIST))
+# DLMAKE      = $(MAKE) -f $(DLMAKEFILE)
+DLMAKEFILE := LDLUFSMakefile
+DLMAKE     := make -f $(DLMAKEFILE)
+
+include .config
+BUSYBOX_DEFAULT := busybox-1.12.4
+PRECFGDIR ?= $(ROOTDIR)/vendors/Realtek/$(CONFIG_PRODUCT)/conf2630/$(CONFIG_PRD_SIGNATURE)_$(CONFIG_PRJ_SIGNATURE)
+
+# Specific for master/slave
+# MCFG/SCFG name must be same as LDLMakefile
+MB           := master_build
+MRW          := master_rw
+MASTERDIR    := $(ROOTDIR)/$(MB)
+MASTERDIR_RW := $(ROOTDIR)/$(MRW)
+MLINUXDIR   := $(MASTERDIR)/linux-2.6.x
+MBUSYBOXDIR := $(MASTERDIR)/user/busybox-1.12.4
+MROMFSDIR   := $(MASTERDIR)/romfs
+MCFG	    := luna.master.cfg.tar
+
+SB           := slave_build
+SRW          := slave_rw
+SLAVEDIR     := $(ROOTDIR)/$(SB)
+SLAVEDIR_RW  := $(ROOTDIR)/$(SRW)
+SLINUXDIR   := $(SLAVEDIR)/linux-2.6.x
+SBUSYBOXDIR := $(SLAVEDIR)/user/busybox-1.12.4
+SROMFSDIR   := $(SLAVEDIR)/romfs
+SCFG	    := luna.slave.cfg.tar
+
+CFG	:= cfg_$(CONFIG_PRD_SIGNATURE)_$(CONFIG_PRJ_SIGNATURE).tar
+SCROSS_COMPILE := $(SLAVEDIR)/toolkit/bin/rsdk-linux-
+SMAKEBZBOX := $(MAKE) ARCH=mips CROSS_COMPILE=$(SCROSS_COMPILE)
+RAMFSLST := $(SLINUXDIR)/luna_slave_initramfs.lst
+BUILD_IN_UNIONFS := build_in_unionfs
+
+export BUILD_IN_UNIONFS
+
+ifeq ($(CONFIG_PRODUCT),luna)
+MAKE_TARGET:= subdirs romfs rcX modules modules_install
+else
+MAKE_TARGET:= subdirs romfs modules modules_install
+endif
+
+.PHONY: all
+all: setup_global_env ufs_reset $(IMGDIR)/luna_master.uImage 
+	cp $(MASTERDIR)/rootfs $(IMGDIR)/luna_master.rootfs
+	$(DLMAKE) ufs_clean 
+
+# Change path to $(1), and execute command based on $(2).
+EXECMD = cd $(1) && \
+         MYCMD=`cat $(2) | head -n 1 | cut -d ' ' -f3- | sed -e 's|\"||g'` && \
+         $${MYCMD}
+
+
+.PHONY: slave_elf
+slave_elf:
+	$(MAKE) -C $(SLAVEDIR) $(MAKE_TARGET) || $(DLMAKE) alert_error
+# lstrip requires RSDK in $(PATH)
+	PATH=$(dir $(SCROSS_COMPILE)):$(PATH) && $(SCROSS_COMPILE)lstrip $(SROMFSDIR)
+# generate ramfs list from romfs
+	$(DLMAKE) gen_ramfs_list
+# generate CPIO on romfs, again
+	$(call EXECMD,$(SLINUXDIR),usr/.initramfs_data.cpio.cmd)
+	$(call EXECMD,$(SLINUXDIR),usr/.initramfs_data.o.cmd)
+	$(call EXECMD,$(SLINUXDIR),usr/.built-in.o.cmd)
+# link vmlinux, again
+	$(call EXECMD,$(SLINUXDIR),.vmlinux.cmd)
+	cp $(SLINUXDIR)/vmlinux $@
+
+# $(IMGDIR)/luna_slave.img: $(IMGDIR)/luna_slave.out
+$(IMGDIR)/luna_slave.img: slave_elf
+	$(SCROSS_COMPILE)objcopy --gap-fill=0xff -O binary $^ $@
+
+# produce image for master
+$(IMGDIR)/luna_master.uImage: $(IMGDIR)/luna_slave.img
+	mkdir -p $(MROMFSDIR)/image && cp $^ $(MROMFSDIR)/image
+	$(MAKE) -C $(MASTERDIR) busybox_check $(MAKE_TARGET) image vmimg || $(DLMAKE) alert_error
+	cd $(MASTERDIR) && cp ./linux-2.6.x/vmlinux $(IMGDIR)/luna_master.out
+	cd $(MASTERDIR) && cp ./linux-2.6.x/uImage $@
+
+.PHONY: clean
+clean: ufs_reset
+	$(MAKE) -C $(MASTERDIR) clean || $(DLMAKE) alert_error
+	$(MAKE) -C $(SLAVEDIR) clean || $(DLMAKE) alert_error
+	@echo '' > $(RAMFSLST)
+	$(DLMAKE) ufs_clean
+	
+.PHONY: ufs_clean
+ufs_clean: 
+	@if [ "`mount | grep $(MASTERDIR)`" ];  then \
+	  echo "Umount master build directories."; \
+	  fusermount -u $(MASTERDIR); \
+	fi 
+	@if [ "`mount | grep $(SLAVEDIR)`" ];  then  \
+	  echo "Umount slave build directories."; \
+	  fusermount -u $(SLAVEDIR); \
+	fi
+
+.PHONY: distclean
+distclean: ufs_clean 
+	@echo "Deleting image master/slave build directories"
+	@rm -rf $(IMGDIR) $(MASTERDIR) $(MASTERDIR_RW) $(SLAVEDIR_RW) $(SLAVEDIR)
+	
+.PHONY: ufs_reset 
+ufs_reset: ufs_clean prepare_mbuild prepare_sbuild
+
+
+.PHONY: prepare_mbuild
+prepare_mbuild:
+	@echo "Preparing build directory for master"
+	@[ -d $(MASTERDIR) ]    || mkdir -p $(MASTERDIR)
+	@[ -d $(MASTERDIR_RW) ] || mkdir -p $(MASTERDIR_RW)
+	@unionfs-fuse -o cow -o allow_other,use_ino,suid,dev,nonempty $(MASTERDIR_RW)=RW:$(ROOTDIR)=RO $(MASTERDIR)
+	# Hide MASTERDIR/MASTERDIR_RW/SLAVEDIR/SLAVEDIR_RW from the unioned MASTERDIR
+	@[ -d $(MASTERDIR_RW)/.unionfs/$(MB)_HIDDEN~ ]  || mkdir -p $(MASTERDIR_RW)/.unionfs/$(MB)_HIDDEN~
+	@[ -d $(MASTERDIR_RW)/.unionfs/$(MRW)_HIDDEN~ ] || mkdir -p $(MASTERDIR_RW)/.unionfs/$(MRW)_HIDDEN~
+	@[ -d $(MASTERDIR_RW)/.unionfs/$(SB)_HIDDEN~ ]  || mkdir -p $(MASTERDIR_RW)/.unionfs/$(SB)_HIDDEN~
+	@[ -d $(MASTERDIR_RW)/.unionfs/$(SRW)_HIDDEN~ ] || mkdir -p $(MASTERDIR_RW)/.unionfs/$(SRW)_HIDDEN~
+
+.PHONY: prepare_sbuild
+prepare_sbuild:
+	@echo "Preparing build directory for slave"
+	@[ -d $(SLAVEDIR) ]    || mkdir -p $(SLAVEDIR)
+	@[ -d $(SLAVEDIR_RW) ] || mkdir -p $(SLAVEDIR_RW)
+	@unionfs-fuse -o cow -o allow_other,use_ino,suid,dev,nonempty $(SLAVEDIR_RW)=RW:$(ROOTDIR)=RO $(SLAVEDIR)
+	# Hide MASTERDIR/MASTERDIR_RW/SLAVEDIR/SLAVEDIR_RW from the unioned SLAVEDIR
+	@[ -d $(SLAVEDIR_RW)/.unionfs/$(MB)_HIDDEN~ ]  || mkdir -p $(SLAVEDIR_RW)/.unionfs/$(MB)_HIDDEN~
+	@[ -d $(SLAVEDIR_RW)/.unionfs/$(MRW)_HIDDEN~ ] || mkdir -p $(SLAVEDIR_RW)/.unionfs/$(MRW)_HIDDEN~
+	@[ -d $(SLAVEDIR_RW)/.unionfs/$(SB)_HIDDEN~ ]  || mkdir -p $(SLAVEDIR_RW)/.unionfs/$(SB)_HIDDEN~
+	@[ -d $(SLAVEDIR_RW)/.unionfs/$(SRW)_HIDDEN~ ] || mkdir -p $(SLAVEDIR_RW)/.unionfs/$(SRW)_HIDDEN~
+
+.PHONY: preconfig2630_%
+preconfig2630_%: ufs_clean
+	@echo "Configuration $* dual linux... "
+ifeq ($(CONFIG_PRODUCT),luna)
+	@cp $(ROOTDIR)/vendors/Realtek/$(CONFIG_PRODUCT)/conf2630/$*/master/config .config
+# Consumer can define his own default mib setting by modifing config/config_default.xml
+	@[ -f config/config_default.xml ] && mv config/config_default.xml config/config_default.xml.backup; \
+	[ -f config/config_default_hs.xml ] && mv config/config_default_hs.xml config/config_default_hs.xml.backup; \
+	cp $(PRECFGDIR)/config_default.xml config/config_default.xml ; \
+	cp $(PRECFGDIR)/config_default_hs.xml config/config_default_hs.xml ;
+else
+	@cp $(PRECFGDIR)/config_luna_dual_linux .config
+endif	
+	@rm -f *_loaded
+	@touch $@_loaded
+	$(DLMAKE) prepare_mbuild prepare_sbuild setup_master_env setup_slave_env ufs_clean
+	@echo "$@ done"
+
+.PHONY: menuconfig
+menuconfig: ufs_reset
+	make menuconfig_phase1	
+	$(DLMAKE) dual_linux_menuconfig
+	$(DLMAKE) dual_linux_menuconfig2 || $(DLMAKE) alert_error
+	$(DLMAKE) ufs_clean 
+
+.PHONY: setup_global_env
+setup_global_env: 
+	[ -d $(IMGDIR) ] || mkdir -p $(IMGDIR)
+
+.PHONY: setup_master_env
+setup_master_env:
+	@rm -f $(MASTERDIR)/toolkit && ln -fs $(CONFIG_RSDK_DIR_MASTER) $(MASTERDIR)/toolkit
+ifeq ($(CONFIG_PRODUCT),luna)
+	@cp $(PRECFGDIR)/master/config_kernel $(MLINUXDIR)/.config	
+	@cp $(PRECFGDIR)/master/config_user $(MASTERDIR)/config/.config
+#	@cp $(PRECFGDIR)/master/config_busybox $(MBUSYBOXDIR)/.config
+	@if [ -f $(ROOTDIR)/config/config_bb_ver.sh ]; then \
+			$(ROOTDIR)/config/config_bb_ver.sh "master" $(PRECFGDIR) $(MASTERDIR) $(MASTERDIR)/config/.config $(BUSYBOX_DEFAULT) $(MASTERDIR); \
+	fi
+	@cp $(PRECFGDIR)/master/board.c $(MLINUXDIR)/arch/rlx/bsp_rtl8686/board.c 
+	@if [ -f $(PRECFGDIR)/luna_cfg.h ]; then \
+		cp $(PRECFGDIR)/luna_cfg.h $(MLINUXDIR)/include/soc/ ; \
+	else \
+		echo '/* dummy file */' > $(MLINUXDIR)/include/soc/luna_cfg.h ; \
+	fi
+else 
+	@cp $(PRECFGDIR)/config_kernel_luna_master  $(MLINUXDIR)/.config
+	@cp $(PRECFGDIR)/config_user_luna_master    $(MASTERDIR)/config/.config
+	@cp $(PRECFGDIR)/config_busybox_luna_master $(MBUSYBOXDIR)/.config
+	@if [ -f $(PRECFGDIR)/board-master.c ]; then cp $(PRECFGDIR)/board-master.c $(MLINUXDIR)/arch/rlx/bsp_rtl8686/board.c ; fi
+endif
+	@if [ -f $(PRECFGDIR)/soc.h ]; then cp $(PRECFGDIR)/soc.h $(MLINUXDIR)/include/soc/soc.h ; fi
+
+
+.PHONY: setup_slave_env
+setup_slave_env:
+	@rm -f $(SLAVEDIR)/toolkit && ln -fs $(CONFIG_RSDK_DIR_SLAVE) $(SLAVEDIR)/toolkit
+ifeq ($(CONFIG_PRODUCT),luna)
+	@cp $(PRECFGDIR)/slave/config_kernel $(SLINUXDIR)/.config 
+	@cp $(PRECFGDIR)/slave/config_user $(SLAVEDIR)/config/.config
+#	@cp $(PRECFGDIR)/slave/config_busybox $(SBUSYBOXDIR)/.config
+	@if [ -f $(ROOTDIR)/config/config_bb_ver.sh ]; then \
+			$(ROOTDIR)/config/config_bb_ver.sh "slave" $(PRECFGDIR) $(SLAVEDIR) $(SLAVEDIR)/config/.config $(BUSYBOX_DEFAULT) $(SLAVEDIR); \
+	fi
+	@cp $(PRECFGDIR)/slave/board.c $(SLINUXDIR)/arch/rlx/bsp_luna_slave/board.c 
+	@if [ -f $(PRECFGDIR)/luna_cfg.h ]; then \
+		cp $(PRECFGDIR)/luna_cfg.h $(SLINUXDIR)/include/soc/ ; \
+	else \
+		echo '/* dummy file */' > $(SLINUXDIR)/include/soc/luna_cfg.h ; \
+	fi
+else
+	@cp $(PRECFGDIR)/config_kernel_luna_slave   $(SLINUXDIR)/.config
+	@cp $(PRECFGDIR)/config_user_luna_slave     $(SLAVEDIR)/config/.config
+	@cp $(PRECFGDIR)/config_busybox_luna_slave  $(SBUSYBOXDIR)/.config
+	@if [ -f $(PRECFGDIR)/board-slave.c ]; then cp $(PRECFGDIR)/board-slave.c $(SLINUXDIR)/arch/rlx/bsp_luna_slave/board.c ; fi
+endif
+	@if [ -f $(PRECFGDIR)/soc.h ]; then cp $(PRECFGDIR)/soc.h $(SLINUXDIR)/include/soc/soc.h ; fi
+
+	@[ -d $(SROMFSDIR) ] || mkdir -p $(SROMFSDIR)
+	@echo '' > $(RAMFSLST)
+
+.PHONY: dual_linux_menuconfig
+dual_linux_menuconfig:
+# master
+	echo "comment 'Configuring for Master'" > $(MASTERDIR)/$(HINT_MSG)
+	cd $(MASTERDIR) && make menuconfig_phase2 && make menuconfig_phase3
+	@ln -sf $(MASTERDIR)/.config  $(SLAVEDIR)/.config 
+# slave
+	echo "comment 'Configuring for Slave'" > $(SLAVEDIR)/$(HINT_MSG)
+	if egrep "^CONFIG_DEFAULTS_SLAVE_KERNEL=y" $(SLAVEDIR)/.config > /dev/null; then \
+		cd $(SLAVEDIR) && $(MAKE) linux_menuconfig; \
+	fi
+	if egrep "^CONFIG_DEFAULTS_SLAVE_VENDOR=y" $(SLAVEDIR)/.config > /dev/null; then \
+		cd $(SLAVEDIR) && $(MAKE) config_menuconfig; \
+	fi
+
+.PHONY: dual_linux_menuconfig2
+dual_linux_menuconfig2:
+	$(eval BUSYBOXDIR_TAR := $(SLAVEDIR)/$(shell $(SLAVEDIR)/config/config_bb_ver.sh dir $(PRECFGDIR) $(SLAVEDIR) $(SLAVEDIR)/config/.config  $(BUSYBOX_DEFAULT)))
+	@echo BUSYBOXDIR_TAR=$(BUSYBOXDIR_TAR)
+	if egrep "^CONFIG_MCONF_SLAVE_BZBOX=y" $(SLAVEDIR)/.config > /dev/null; then \
+		cd $(SLAVEDIR) && $(SMAKEBZBOX) -C $(BUSYBOXDIR_TAR) menuconfig; \
+	fi
+	config/setconfig final
+
+.PHONY: gen_ramfs_list
+gen_ramfs_list:
+	cd $(SLINUXDIR) && \
+		/bin/bash scripts/gen_initramfs_list.sh $(SROMFSDIR) > $(RAMFSLST) && \
+		echo "nod /dev/console 644 0 0 c 5 1" >> $(RAMFSLST)
+
+.PHONY: config_backup
+config_backup: ufs_reset
+	@$(MAKE) -C $(MASTERDIR) config_backup CFG=../$(MCFG) 
+	@$(MAKE) -C $(SLAVEDIR) config_backup CFG=../$(SCFG)
+	@tar cf $(CFG) $(MCFG) $(SCFG) 
+	@rm $(MCFG) $(SCFG)
+	@echo "Backup the dual-configs in $(CFG) done"
+	$(DLMAKE) ufs_clean
+
+.PHONY: config_restore
+config_restore: ufs_reset
+	@tar xfm $(CFG)
+	@$(MAKE) config_restore CFG=$(MCFG) ROOTDIR=$(MASTERDIR) 
+	@$(MAKE) config_restore CFG=$(SCFG) ROOTDIR=$(SLAVEDIR) 
+# dual linux use the same one root .config in top layer
+# and we can NOT remove it in union folder (so un-mount first)
+	@cp $(MASTERDIR)/.config . 
+	$(DLMAKE) ufs_clean 
+	@rm $(MASTERDIR_RW)/.config $(SLAVEDIR_RW)/.config $(MCFG) $(SCFG)
+	
+.PHONY: alert_error
+alert_error: 
+	@echo ""
+	@echo " ************************* There are something wrong ************************* "
+	@echo ""
+	@echo " Please check error(s) and then make again!   " 
+	@echo " Note-  " 
+	@echo " Without a successful build, the unionfs-fuse mount point will not be removed."
+	@echo " If you plan to proceed without fixing the error(s), please run "
+	@echo " 'make -f LDLUFSMakefile ufs_clean' to un-mount the unionfs-fuse node."  
+	@echo ""
+	@echo " ***************************************************************************** "
+	exit 1;
+

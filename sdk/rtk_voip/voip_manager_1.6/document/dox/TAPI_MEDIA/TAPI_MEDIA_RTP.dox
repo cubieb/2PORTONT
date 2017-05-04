@@ -1,0 +1,93 @@
+// ============================================================
+  
+/**
+ * @page media_RTP  VoIP Session - RTP
+ * @ingroup TAPI_MEDIA_RTP 
+ * The RTP configuration includes RTP and RTCP. For RTP, the developer can set 
+ * the payload type as g.911, g.722, g.723, g.726, g.729, AMR, GSM and iLBC etc. <p>
+ * There are 5 states for session state. 
+ * - rtp_session_undefined
+ * - rtp_session_inactive
+ * - rtp_session_sendonly
+ * - rtp_session_recvonly
+ * - rtp_session_sendrecv
+ *
+ * Both RTP sessions are transmitting when session state 
+ * is set to be rtp_session_sendrecv. In hold case, the holding peer will set 
+ * rtp_session_sendonly which means to stop receiving the voice data through RTP 
+ * while the held peer will set rtp_session_recvonly which means to stop sending 
+ * the voice data through RTP. In this case, only the held peer can hear the 
+ * voice data form holding peer. The music on hold can be achieved by this way. 
+ * The rtp_session_inactive can be used for both peers stop sending and receiving
+ * any voice data. The structure of rtp_config is shown as Table 6<p>
+ *
+ *  \htmlonly <br> <p align="left"><b> Table 6. The variable of rtp configur   </b>
+ * <table border=1 width=45% style="border-collapse:collapse;" borderColor=black > 
+ * <td align=left><b>Member</b></td> <td align=left><b>Variable type</b></td> <td align=left><b>Description</b></td> <tr>   
+ * <td align=left>Chid</td> <td align=left>uint32</td> <td align=left>Channel ID</td> <tr> 
+ * <td align=left>Sid</td> <td align=left>uint32</td> <td align=left>Session ID</td> <tr> 
+ * <td align=left>IsTcp</td> <td align=left>uint32</td> <td align=left>Tcp=1 udp=0</td> <tr> 
+ * <td align=left>RemIp</td> <td align=left>uint32</td> <td align=left>Remote IP</td> <tr> 
+ * <td align=left>RemPort</td> <td align=left>uint16</td> <td align=left>Remote port</td> <tr> 
+ * <td align=left>ExtIp</td> <td align=left>uint32</td> <td align=left>Local IP</td> <tr> 
+ * <td align=left>ExtPort</td> <td align=left>uint16</td> <td align=left>Local port</td> <tr> 
+ * <td align=left>Tos</td> <td align=left>uint8</td> <td align=left>QoS</td> <tr> 
+ * <td align=left>rfc2833_payload_type_local</td> <td align=left>uint16</td> <td align=left>Local RFC2833 payload type</td> <tr> 
+ * <td align=left>rfc2833_payload_type_remote</td> <td align=left>uint16</td> <td align=left>Remote RFC2833 payload type</td> <tr> 
+ * <td align=left>RemoteSrtpKey</td> <td align=left>unsigned char</td> <td align=left>Remote srtp key</td> <tr> 
+ * <td align=left>LocalSrtpKey</td> <td align=left>unsigned char</td> <td align=left>Local srtp key</td> <tr> 
+ * <td align=left>RemoteCryptAlg</td> <td align=left>Int</td> <td align=left>Remote crypt algorithm</td> <tr> 
+ * <td align=left>LocalCryptAlg</td> <td align=left>Int</td> <td align=left>Local crypt algorithm</td> <tr> 
+ * </table> \endhtmlonly 
+ * <p>
+ * The member rfc2833_payload_type_local and rfc2833_payload_type_remote of this structure MUST be set from application 
+ * to make sure that the RFC2833 behavior of DSP works fine. <br>
+ * If local or remote side doesn't support RFC2833, application should set it to ZERO, otherwise, set to the supported payload type of 
+ * local and remote side. Application should negotiate with another VoIP user agent to decide the remote RFC2833 payload type.<br>
+ * The Realtek VoIP SDK supports both symmetric RTP and non-symmetric RTP. The transmitting RTP port different form the receiving 
+ * RTP port is said to be non-symmetric RTP.
+ *
+ * @section  rtp2 RTP payload type  
+ * payload type values in the range 96-127 may be defined dynamically through a 
+ * conference control protocol. The payload type range marked 'reserved' has 
+ * been set aside so that RTCP and RTP packets can be reliably distinguished.<br>
+ * <br>Payload types (PT) for standard audio and video encodings
+ * \htmlonly 
+ * <pre><tt>
+ *     PT         encoding      audio/video    clock rate    
+ *                name          (A/V)          (Hz)          
+ *     ____________________________________________________
+ *     0          PCMU          A               8000         
+ *     1          1016          A               8000        
+ *     2          G721          A               8000       
+ *     3          GSM           A               8000       
+ *     4          unassigned    A               8000      
+ *     5          DVI4          A               8000     
+ *     6          DVI4          A              16000   
+ *     7          LPC           A               8000   
+ *     8          PCMA          A               8000  
+ *     9          G722          A               8000 
+ *     10         L16           A              44100
+ *     11         L16           A              44100
+ *     12         unassigned    A
+ *     13         unassigned    A
+ *     14         MPA           A              90000 
+ *     15         G728          A               8000 
+ *     16--23     unassigned    A
+ *     24         unassigned    V
+ *     25         CelB          V              90000
+ *     26         JPEG          V              90000
+ *     27         unassigned    V
+ *     28         nv            V              90000
+ *     29         unassigned    V
+ *     30         unassigned    V
+ *     31         H261          V              90000
+ *     32         MPV           V              90000
+ *     33         MP2T          AV             90000
+ *     34--71     unassigned    -
+ *     72--76     reserved      N/A            N/A    
+ *     77--95     unassigned    -
+ *     96--127    dynamic       -
+ * </tt></pre>
+ * \endhtmlonly 
+ */

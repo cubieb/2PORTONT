@@ -1,0 +1,43 @@
+This one is from a C++ program
+Try to launch me with some options
+(type sample1 --help for the complete list)
+For example: ./sample1 *.* --funct-opt
+sample1 2.0
+
+Usage: sample1 -iINT|--int-opt=INT [-h|--help] [--detailed-help] [--full-help] 
+         [-V|--version] [-sfilename|--str-opt=filename] [-mINT|--my-opt=INT] 
+         [--flag-opt] [-F|--funct-opt] [--long-opt=LONG] [--def-opt=STRING] 
+         [--enum-opt=STRING] [-DINT|--dependant=INT] [FILES]...
+
+  -h, --help              Print help and exit
+      --detailed-help     Print help, including all details and hidden options, 
+                            and exit
+      --full-help         Print help, including hidden options, and exit
+  -V, --version           Print version and exit
+  -s, --str-opt=filename  A string option, for a filename
+
+A brief text description before the other options.
+
+  -m, --my-opt=INT        Another integer option, this time the description of 
+                            the option should be "quite" long to require 
+                            wrapping... possibly more than one wrapping :-) 
+                            especially if I
+                            require a line break
+  -i, --int-opt=INT       A int option (mandatory)
+
+
+more involved options:
+  the following options
+  are more complex
+      --flag-opt          A flag option  (default=off)
+  -F, --funct-opt         A function option
+
+last option section:
+      --long-opt=LONG     A long option
+      --def-opt=STRING    A string option with default  (default=`Hello')
+      --enum-opt=STRING   A string option with list of values  (possible 
+                            values="foo", "bar", "hello", "bye" 
+                            default=`hello')
+  -D, --dependant=INT     option that depends on str-opt
+
+An ending text.

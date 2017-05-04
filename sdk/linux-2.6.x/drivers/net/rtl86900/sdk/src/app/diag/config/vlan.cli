@@ -1,0 +1,581 @@
+//
+// Copyright (C) 2011 Realtek Semiconductor Corp.
+// All Rights Reserved.
+//
+// This program is the proprietary software of Realtek Semiconductor
+// Corporation and/or its licensors, and only be used, duplicated,
+// modified or distributed under the authorized license from Realtek.
+//
+// ANY USE OF THE SOFTWARE OTHER THAN AS AUTHORIZED UNDER
+// THIS LICENSE OR COPYRIGHT LAW IS PROHIBITED.
+//
+// $Revision: 39101 $
+// $Date: 2013-05-03 17:35:27 +0800 (Fri, 03 May 2013) $
+//
+// Purpose : Define diag shell commands for layer2.
+//
+// Feature : The file have include the following module and sub-modules
+//           1) layer2 commands.
+//
+
+//vlan configuration
+//destroy VLAN
+//all VLAN
+vlan destroy all
+
+//vlan configuration
+//destroy VLAN
+//all VLAN
+//set all port to untag member
+vlan destroy all untag
+
+
+
+//vlan configuration
+//destroy VLAN
+//vlan member configuration
+//all 32 vlan member configuration
+vlan destroy entry all
+
+//vlan configuration
+//destroy VLAN
+//vlan member configuration
+//vidx, <0~31>
+vlan destroy entry <UINT:index>
+
+//l2 table configuration
+//destroy VLAN
+//vid configuration
+//vlan id, <0~4095>
+vlan destroy vid <UINT:vid>
+
+//vlan configuration
+//get configuration
+//accept frame type
+//port configuration
+//port list, <0-6>
+//all port
+vlan get accept-frame-type port ( <PORT_LIST:ports> | all ) 
+
+//vlan configuration
+//get configuration
+//vlan tag real keep function
+//egress port configuration
+//ports, <0-6>
+//all ports
+//ingress port configuration
+//ports, <0-6>
+//all ports
+//state of egress keep
+vlan get egress-keep port ( <PORT_LIST:egr_ports> | all ) ingress-port ( <PORT_LIST:igr_ports> | all ) state
+
+//vlan configuration
+//get configuration
+//ingress filter
+//port configuration
+//ports, <0-6>
+//all ports
+//state configuration
+vlan get ingress-filter port ( <PORT_LIST:ports> | all ) state
+
+//vlan configuration
+//get configuration
+//vlan member configuration
+//vlan mbr index, <0~31>
+vlan get entry <UINT:index>
+
+
+//vlan configuration
+//get configuration
+//vlan member configuration
+//all entry
+vlan get entry all
+
+//vlan configuration
+//get configuration
+//protocol VLAN configuration
+//protocol group
+//group index, <0~3>
+vlan get protocol-vlan group <UINT:index> 
+
+//vlan configuration
+//set configuration
+//config port based vid
+//port configuration
+//ports, <0-6>
+//all ports
+//vlan entry index 
+vlan get pvid port ( <PORT_LIST:ports> | all ) vlan_index
+
+//vlan configuration
+//get configuration
+//config dsl port based vid
+//VC port configuration
+//ports, <0-15>
+//all ports
+//vlan entry index 
+vlan get vc_pvid port ( <PORT_LIST:ports> | dsl_all ) vlan_index
+
+//vlan configuration
+//get configuration
+//config extention port based vid
+//extention port configuration
+//ports, <1-5>
+//vlan entry index 
+vlan get ext_pvid port <PORT_LIST:ports> vlan_index
+
+
+//vlan configuration
+//get configuration
+//vlan function state
+vlan get state 
+
+//vlan configuration
+//get configuration
+//egress Tag mode
+//port configuration
+//ports, <0-6>
+//all ports
+vlan get tag-mode port ( <PORT_LIST:ports> | all ) 
+
+//vlan configuration
+//get configuration
+//transparent function configuration
+//state of vlan transparent
+vlan get transparent state
+
+//vlan configuration
+//get configuration
+//vlan treat configuration
+//vid configuration
+//vid 0
+//vid 4095
+//vlan treat type
+vlan get vlan-treat vid ( 0 | 4095 ) type
+
+//vlan configuration
+//set configuration
+//vlan entry
+//vid configuration
+//vlan id, <0~4095>
+vlan get vlan vid <UINT:vid>
+
+//vlan configuration
+//set configuration
+//accept frame type
+//port configuration
+//port list, <0-6>
+//all port
+//accept all type frame
+//accept tag only frame
+//accept untag only frame
+//accept 1p and 1Q tag only frame
+vlan set accept-frame-type port ( <PORT_LIST:ports> | all ) ( all | tagged-only | untagged-only | tagged-1p-1q-only )
+
+//vlan configuration
+//set configuration
+//vlan tag real keep function
+//egress port configuration
+//ports, <0-6>
+//all ports
+//ingress port configuration
+//ports, <0-6>
+//all ports
+//state of egress keep
+//enable egress keep function
+//disable egress keep function
+vlan set egress-keep port ( <PORT_LIST:egr_ports> | all ) ingress-port ( <PORT_LIST:igr_ports> | all ) state ( enable | disable )
+
+//vlan configuration
+//set configuration
+//ingress filter
+//port configuration
+//ports, <0-6>
+//all ports
+//state configuration
+//enable function
+//disable function
+vlan set ingress-filter port ( <PORT_LIST:ports> | all ) state ( enable | disable )
+
+//vlan configuration
+//set configuration
+//vlan member configuration
+//vlan mbr index, <0~31>
+//evid configuration
+//enhanced VLAN id, <0~8191>
+vlan set entry <UINT:index> evid <UINT:evid>
+
+//vlan configuration
+//set configuration
+//vlan member configuration
+//vlan mbr index, <0~31>
+//FID configuration
+//filter id, <0~15>
+vlan set entry <UINT:index> filter-id <UINT:fid>
+
+//vlan configuration
+//set configuration
+//vlan member configuration
+//vlan mbr index, <0~31>
+//set member port
+//member ports, <0-6>
+vlan set entry <UINT:index> member <PORT_LIST:member_ports>
+
+
+//vlan configuration
+//set configuration
+//vlan member configuration
+//vlan mbr index, <0~31>
+//set dsl member port
+//member ports, <0-15>
+vlan set entry <UINT:index> dsl_member <PORT_LIST:dls_member_ports>
+
+
+//vlan configuration
+//set configuration
+//vlan member configuration
+//vlan mbr index, <0~31>
+//set extention member port
+//member ports, <0-5>
+vlan set entry <UINT:index> ext_member <PORT_LIST:ext_member_ports>
+
+//vlan configuration
+//set configuration
+//vlan member configuration
+//vlan mbr index, <0~31>
+//vlan based policing conguration
+//disable vlan based policing
+vlan set entry <UINT:index> policing disable
+
+//vlan configuration
+//set configuration
+//vlan member configuration
+//vlan mbr index, <0~31>
+//vlan based policing conguration
+//enable vlan based policing
+//meter index configuration
+//meter index, <0~31>
+vlan set entry <UINT:index> policing enable meter_index <UINT:meter_index>
+
+//vlan configuration
+//set configuration
+//vlan member configuration
+//vlan mbr index, <0~31>
+//vlan based priority configuration
+//disable vlan-based priority
+vlan set entry <UINT:index> vlan-based-pri disable
+
+//vlan configuration
+//set configuration
+//vlan member configuration
+//vlan mbr index, <0~31>
+//vlan based priority configuration
+//enable vlan-based priority
+//priority configuration
+//priority, <0~7>
+vlan set entry <UINT:index> vlan-based-pri enable priority <UINT:pri> 
+
+//vlan configuration
+//set configuration
+//protocol VLAN configuration
+//protocol group
+//group index, <0~3>
+//frame type
+//ethernet
+//snap
+//llc-OTHER
+//frame type value (example 0x8899)
+vlan set protocol-vlan group <UINT:index> frame-type ( ethernet | snap | llc-other ) <UINT:frame_type>
+
+//vlan configuration
+//get configuration
+//protocol VLAN configuration
+//port configuration
+//ports, <0-6>
+//all ports
+vlan get protocol-vlan port ( <PORT_LIST:ports> | all )
+
+//vlan configuration
+//set configuration
+//protocol VLAN configuration
+//port configuration
+//ports, <0-6>
+//all ports
+//config action of group
+//group index, <0~3>
+//state of protocol-vlan
+//enable function
+//disable function
+vlan set protocol-vlan port ( <PORT_LIST:ports> | all ) group <UINT:index> state ( enable | disable )
+
+//vlan configuration
+//set configuration
+//protocol VLAN configuration
+//port configuration
+//ports, <0-6>
+//all ports
+//config action of group
+//group index, <0~3>
+//vlan member configuration index
+//vidx, <0~31>
+//priority configuration
+//priority, <0~7>
+vlan set protocol-vlan port ( <PORT_LIST:ports> | all ) group <UINT:index> vlan_index <UINT:vidx> priority <UINT:pri>
+
+//vlan configuration
+//set configuration
+//config port based vid
+//port configuration
+//ports, <0-6>
+//all ports
+//vlan entry index
+//vidx, <0~31>
+vlan set pvid port ( <PORT_LIST:ports> | all ) vlan_index <UINT:vidx>
+
+//vlan configuration
+//set configuration
+//config dsl port based vid
+//port configuration
+//ports, <0-15>
+//all ports
+//vlan entry index
+//vidx, <0~31>
+vlan set vc_pvid port ( <PORT_LIST:ports> | dsl_all ) vlan_index <UINT:vidx>
+
+//vlan configuration
+//set configuration
+//config extention port based vid
+//extention port configuration
+//ports, <1-5>
+//vlan entry index
+//vidx, <0~31>
+vlan set ext_pvid port <PORT_LIST:ports> vlan_index <UINT:vidx>
+
+//vlan configuration
+//set configuration
+//vlan function state
+//enable function
+//disable function
+vlan set state ( enable | disable )
+
+//vlan configuration
+//set configuration
+//egress Tag mode
+//port configuration
+//ports, <0-6>
+//all ports
+//follow VLAN table
+//keep original VLAN format
+//priority tag format(VID is 0)
+vlan set tag-mode port ( <PORT_LIST:ports> | all ) ( original | keep-format | priority-tag )
+
+//vlan configuration
+//set configuration
+//transparent function configuration
+//state of vlan transparent
+//enable vlan transparent function
+//disable vlan transparent function
+vlan set transparent state ( enable | disable )
+
+//vlan configuration
+//set configuration
+//vlan treat configuration
+//vid configuration
+//vid 0
+//vid 4095
+//vlan treat type
+//tagging frame
+//un-tagging frame
+vlan set vlan-treat vid ( 0 | 4095 ) type ( tagging | un-tagging )
+
+//vlan configuration
+//set configuration
+//vlan entry
+//vid configuration
+//vlan id, <0~4095>
+//FID configuration
+//filter id, <0~15>
+vlan set vlan vid <UINT:vid> filter-id <UINT:fid>
+
+//vlan configuration
+//set configuration
+//vlan entry
+//vid configuration
+//vlan id, <0~4095>
+//hash mode
+//ivl mode
+//svl mode
+vlan set vlan vid <UINT:vid> hash-mode ( ivl | svl ) 
+
+//vlan configuration
+//set configuration
+//vlan member configuration
+//vidx configuration
+//vlan mbr index, <0~31>
+//set member port
+//member ports, <0-6>
+//dsl configuration
+//dsl vc list, <0-15>
+//all
+//ext configuration
+//ext port list, <0-5>
+//all
+vlan set vlan vid <UINT:vid> member <PORT_LIST:member_ports> dsl ( <PORT_LIST:dsl> | dsl_all ) ext ( <PORT_LIST:ext> | ext_all ) 
+
+//vlan configuration
+//set configuration
+//vlan entry
+//vid configuration
+//vlan id, <0~4095>
+//set member port
+//member ports, <0-6>
+//set tag ports
+//tag member ports, <0-6>
+//none tagged member ports
+vlan set vlan vid <UINT:vid> member <PORT_LIST:member_ports> tag_mbr ( <PORT_LIST:tagged_ports> | none )
+
+//vlan configuration
+//set configuration
+//vlan entry
+//vid configuration
+//vlan id, <0~4095>
+//set member port
+//member ports, <0-6>
+//set tag ports
+//tag member ports, <0-6>
+//none tagged member ports
+//dsl configuration
+//dsl vc list, <0-15>
+//all
+//ext configuration
+//ext port list, <0-5>
+//all
+vlan set vlan vid <UINT:vid> member <PORT_LIST:member_ports> tag_mbr ( <PORT_LIST:tagged_ports> | none ) dsl ( <PORT_LIST:dsl> | dsl_all ) ext ( <PORT_LIST:ext> | ext_all ) 
+
+//vlan configuration
+//set configuration
+//vlan entry
+//vid configuration
+//vlan id, <0~4095>
+//vlan based policing conguration
+//disable vlan based policing
+vlan set vlan vid <UINT:vid> policing disable
+
+//vlan configuration
+//set configuration
+//vlan entry
+//vid configuration
+//vlan id, <0~4095>
+//vlan based policing conguration
+//enable vlan based policing
+//meter index configuration
+//meter index, <0~31>
+vlan set vlan vid <UINT:vid> policing enable meter_index <UINT:index>
+
+//vlan configuration
+//set configuration
+//vlan entry
+//vid configuration
+//vlan id, <0~4095>
+//vlan based priority configuration
+//disable vlan-based priority
+vlan set vlan vid <UINT:vid> vlan-based-pri disable
+
+//vlan configuration
+//set configuration
+//vlan entry
+//vid configuration
+//vlan id, <0~4095>
+//vlan based priority configuration
+//enable vlan-based priority
+//priority configuration
+//priority, <0~7>
+vlan set vlan vid <UINT:vid> vlan-based-pri enable priority <UINT:pri> 
+
+
+//vlan configuration
+//get configuration
+//Keep ingress tag CFI
+vlan get cfi-keep 
+
+//vlan configuration
+//get configuration
+//Keep ingress tag CFI
+//Always egress CFI=0
+//Keep ingress tag CFI value to egress tag
+vlan set cfi-keep ( cfi_to_0 | keep_cfi )
+
+
+
+//vlan configuration
+//set configuration
+//vlan port based fid configuration
+//port configuration
+//ports, <0-6>
+//all ports
+//enable conguration
+//fid configuration
+//fid, <0~15>
+vlan set port-based-fid port ( <PORT_LIST:ports> | all ) enable fid <UINT:fid>
+
+
+//vlan configuration
+//set configuration
+//vlan port based fid configuration
+//port configuration
+//ports, <0-6>
+//all ports
+//disable conguration
+vlan set port-based-fid port ( <PORT_LIST:ports> | all ) disable
+
+//vlan configuration
+//get configuration
+//vlan port based fid configuration
+//port configuration
+//ports, <0-6>
+//all ports
+vlan get port-based-fid port ( <PORT_LIST:ports> | all )
+
+
+
+//vlan configuration
+//set configuration
+//vlan port based priority configuration
+//port configuration
+//ports, <0-6>
+//all ports
+//priority configuration
+//priority, <0~7>
+vlan set port-based-pri port ( <PORT_LIST:ports> | all ) priority <UINT:pri>
+
+//vlan configuration
+//get configuration
+//vlan port based priority configuration
+//port configuration
+//ports, <0-6>
+//all ports
+vlan get port-based-pri port ( <PORT_LIST:ports> | all )
+
+//vlan configuration
+//set configuration
+//leaky configuration
+//ip multicast
+//port configuration
+//ports, <0-6>
+//all ports
+//state of vlan transparent
+//enable vlan transparent function
+//disable vlan transparent function
+vlan set leaky ip-mcast port ( <PORT_LIST:ports> | all ) state ( enable | disable )
+
+//vlan configuration
+//get configuration
+//leaky configuration
+//ip multicast
+//port configuration
+//ports, <0-6>
+//all ports
+//state of vlan transparent
+vlan get leaky ip-mcast port ( <PORT_LIST:ports> | all ) state
+
+

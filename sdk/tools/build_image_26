@@ -1,0 +1,78 @@
+#!/bin/sh
+
+# assuming we are in uClinux-dist
+ROOTDIR=`pwd`
+LINUXDIR=${ROOTDIR}/linux-2.6.x
+PRODUCTDIR=${ROOTDIR}/vendors/Realtek/RTL8670
+IMAGEDIR=image
+
+clean_all() 
+{
+	cd ${LINUXDIR}
+	./build.sh clean
+	cd ..
+	make clean	
+	rm -f rootfs
+}
+
+###
+create_devnode() 
+{
+	mkdir -p romfs
+	cd romfs
+	sudo tar xzvf ../dev.tgz
+	cd ..
+}
+
+make_rom() 
+{
+	cd ${LINUXDIR}
+	./mkrom.sh
+	cd ..
+}
+
+### prepare directoris
+mkdir -p ${IMAGEDIR}
+
+make_1pwifi() {
+	cp ${PRODUCTDIR}/combo/config .config
+	cp ${PRODUCTDIR}/1Pwifi/config_kernel ${LINUXDIR}/.config
+	cp ${PRODUCTDIR}/1Pwifi/config_user config/.config
+	yes "" | make config
+	make 
+	make_rom
+	mv ${LINUXDIR}/vm.img ${IMAGEDIR}/vm-1pwifi.img
+	
+	clean_all
+}
+
+make_4pwifi() 
+{
+	cp ${PRODUCTDIR}/combo/config .config
+	cp ${PRODUCTDIR}/4Pwifi/config_kernel ${LINUXDIR}/.config
+	cp ${PRODUCTDIR}/4Pwifi/config_user config/.config
+	yes "" | make config
+	make 
+	make_rom
+	mv ${LINUXDIR}/vm.img ${IMAGEDIR}/vm-4pwifi.img
+	
+	clean_all
+}
+
+make_iad() 
+{
+	cp ${PRODUCTDIR}/combo/config .config
+	cp ${PRODUCTDIR}/voip-iad/config-kernel2.6 ${LINUXDIR}/.config
+	cp ${PRODUCTDIR}/voip-iad/config-user config/.config
+	yes "" | make config
+	make 
+	make_rom
+	mv ${LINUXDIR}/vm.img ${IMAGEDIR}/vm-iad.img
+	
+	clean_all
+}
+
+create_devnode
+make_1pwifi
+make_4pwifi
+make_iad

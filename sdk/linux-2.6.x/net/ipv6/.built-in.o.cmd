@@ -1,0 +1,1 @@
+cmd_net/ipv6/built-in.o :=  /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/rsdk-linux-ld  -m elf32btsmip   -r -o net/ipv6/built-in.o net/ipv6/ipv6.o net/ipv6/tunnel6.o net/ipv6/netfilter/built-in.o net/ipv6/sit.o net/ipv6/ip6_tunnel.o net/ipv6/addrconf_core.o net/ipv6/exthdrs_core.o net/ipv6/inet6_hashtables.o 

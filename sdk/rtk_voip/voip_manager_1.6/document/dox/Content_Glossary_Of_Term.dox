@@ -1,0 +1,72 @@
+// ============================================================
+
+/*! @page RTK_Appendix_A Glossary of Terms
+ * - Attenuation: The loss of power of a transmitted signal as it travels over a wire. 
+ * - Bit: A binary digit, with the value of -0 or -1. 
+ * - Boot: Start a device. 
+ * - Bps: Bits per second. 
+ * - Bridge: A device that links local or remote area networks together, forwarding packets based on a MAC address (compare with router). 
+ * - Broadband: Communication channels operating at transmission rates in excess of 64 Kbps.
+ * - Broadcast: The simultaneous transmission to two or more communication devices.
+ * - Buffer: A temporary storage used to compensate for a difference in the rate of flow of data.
+ * - Busy: A device's operational state, when the device is occupied with processing a call.
+ * - Byte: Eight bits arranged in sequence.
+ * - Channel: A bi-directional communications pathway between a host server and a client.
+ * - Circuit: A logical connection between two devices.
+ * - COM port: A computer's serial communications port.
+ * - Data rate: The speed measured in bits per second that data is transferred over the carrier line. 
+ * - Default: A pre-defined original value. 
+ * - DHCP server: A server that dynamically allocates network addresses and delivers configuration parameters to host. 
+ * - DHCP: Dynamic Host Configuration Protocol. A TCP/IP protocol that enables a network connected to the Internet to automatically assign a temporary IP address to a host when the host connects to the network. 
+ * - DNS: Domain Name Server. A server retains the addresses and routing information for TCP/IP PAT users.
+ * - Download: To receive a file over a network (compare with upload). 
+ * - Driver: A software module that provides an interface between a network interface card and the upper-layer protocol software running on a computer.
+ * - DSP: Digital Signal Processor. The microprocessor handles line signaling in a modem. 
+ * - Ethernet: A standard protocol (IEEE 802.3) for a 10-Mb/s baseband local area network (PAT) bus that supports high-speed communication among systems. It operates at the Physical Layer of the OSI Model. 
+ * - ETSI: European Telecommunications Standards Institute. 
+ * - Filter: A configuration that stops the flow of certain type's data frames. 
+ * - Firmware: Software that has been temporarily or permanently loaded into ROM. 
+ * - FTP: File Transfer Protocol. A TCP/IP standard protocol for transferring files. 
+ * - Gateway: A communications device that connects two different networks. 
+ * - Host: An addressable computer connected to a network. 
+ * - Hub: A device that serves as the central location for attaching wires form workstations. 
+ * - IP address: Internet Protocol address. The decimal-numeric, fixed-length address assigned to an Internet host. 
+ * - ISP: Internet Service Provider. An organization that provides access to the Internet. 
+ * - ITU: International Telecommunications Union. The telecommunications agency of the United Nations. 
+ * - IVR: A software application that accepts a combination of voice telephone input and touchtone keypad selection and provides appropriate responses in the form of voice, fax, callback, email and perhaps other media.
+ * - LAN: Local Area Network. A LAN is a data communications system that lies within a limited spatial area, has a specific user group, and has a specific topology. 
+ * - MAC address: Media Access Control address. The unique fixed address of a piece of hardware, normally set at the time of manufacture and used in PAT protocols. 
+ * - MAC: Medium Access Control, a protocol for determining which device has access to the network at any one time. 
+ * - Modem: Modulator Demodulator. A device used to convert a digital signal into an analog signal and vice-versa so that data can be transmitted over a telephone line. 
+ * - NAT: Network Address Translation is a transparent routing function that translates a Private IP address on a PAT into a Public address that can be used in a public network. 
+ * - Network address: The network portion of an IP address. 
+ * - Network protocol: Network protocols encapsulate and forward data packets from one interface to another. 
+ * - NIC: A Network Interface Card is a card installed in a device to provide network communication capabilities to and from that device. 
+ * - Noise: Unwanted interference to a transmitted signal by an outside source. 
+ * - PPP: Point-to-Point Protocol. A protocol (RFC 1661) for transmitting packets over serial links between devices made by the same or different manufacturers. 
+ * - PPPoE: Point-to-Point Protocol over Ethernet. A method for establishing sessions and encapsulating PPP packets over an Ethernet, specified by RFC 2516. 
+ * - PPTP: Point-to-Point Tunneling Protocol. An extension of Point-to-Point Protocol used to create virtual private networks between PCs. 
+ * - Protocol: A set of rules that govern the transmission of data between interconnected devices to maintain or improve communication. 
+ * - Proxy server: Provides a list of items available on other servers to increase the availability and speed of retrieving that information. 
+ * - PSTN: Public Switched Telephone Network. The standard telephone network. 
+ * - QoS: Quality of Service. The expected data loss or latency. 
+ * - RFC: Request for Comments. Documents published by the Internet Engineering Task Force pertaining to Internet protocols and policies. 
+ * - RJ11: A 6-position jack used with dial networks and telephone sets. 
+ * - RJ45: An 8-position jack used with programmable dial networks. 
+ * - Router: Protocol-dependent device that connects subnets together. Routers operate at the network layer (layer 3) of the ISO Open Systems Interconnection--Reference Model. 
+ * - RS-232: a low-speed, 25-position, DCE/DTE interface. 
+ * - Server: Hardware or software that offers a specific service, such as database management, to a client. 
+ * - STP: Shielded Twisted Pair. Telephone wire that is wrapped in a sheath to eliminate external interference. 
+ * - Subnet address: The subnet portion of an IP address. 
+ * - Subnet mask: A number that identifies the subnet portion of a network address, so that IP addresses can be shared on a local area network. 
+ * - Subnet: An independent network segment, that is, it has the same network address, but its subnet address is different. 
+ * - Switch: A data switch connects computing devices to host computers, enabling multiple devices to share a limited number of ports. An electrical switch is a device for making, breaking, or changing the connections in an electrical circuit. 
+ * - TCP/IP: Transmission control protocol/Internet protocol, a set of protocols that govern peer-to-peer connectivity functions for local and wide area networks. 
+ * - Throughput: The number of bits, characters, or blocks that are able to pass through a data communication system. 
+ * - UDP: User Datagram Protocol. A connectionless protocol that converts data messages generated by an application into packets to be sent over IP. 
+ * - upload: To receive a file transmitted over a network. 
+ * - URL: Uniform Resource Locator. An Internet standard addressing protocol for describing the location and access method of a resource on the Internet. 
+ * - USB: Universal Serial Bus. A bi-directional, isochronous, serial interface for adding dynamically connectable peripheral devices, without the need for a reboot. 
+ * - VPN: Virtual Private Network. A network implemented over a public network that is made "private" by use of encryption. 
+ * - WAN: Wide area network. A communications network that connects geographically separated areas (Compare with LAN).
+ */ 

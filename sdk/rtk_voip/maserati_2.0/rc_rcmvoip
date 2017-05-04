@@ -1,0 +1,9 @@
+if [ -x "/bin/ivrserver" ]; then	
+	echo "solar ivrserver..."
+	ivrserver&
+fi
+
+if [ -x "/bin/solar" ]; then
+        echo "solar staring..."
+        solar&
+fi

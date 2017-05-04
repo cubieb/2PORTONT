@@ -1,0 +1,541 @@
+
+init.gdb:     file format elf32-tradbigmips
+init.gdb
+architecture: mips:3000, flags 0x00000112:
+EXEC_P, HAS_SYMS, D_PAGED
+start address 0x00400020
+
+Program Header:
+    LOAD off    0x00001000 vaddr 0x00000000 paddr 0x00000000 align 2**12
+         filesz 0x00000000 memsz 0x00000000 flags r--
+    LOAD off    0x00001000 vaddr 0x00400000 paddr 0x00400000 align 2**12
+         filesz 0x000004e0 memsz 0x000004e0 flags rwx
+private flags = 5: [no abi set] [mips1] [not 32bitmode]
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000420  00400000  00400000  00001000  2**4
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         000000c0  00400420  00400420  00001420  2**4
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000000  004004e0  004004e0  000014e0  2**4
+                  ALLOC
+  3 .junk         00000000  00000000  00000000  00001000  2**4
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  4 .comment      000000a2  00000000  00000000  000014e0  2**0
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000060  00000000  00000000  00001588  2**3
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_pubnames 00000055  00000000  00000000  000015e8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_info   000021c6  00000000  00000000  0000163d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_abbrev 000002dd  00000000  00000000  00003803  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_line   0000048e  00000000  00000000  00003ae0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_frame  00000064  00000000  00000000  00003f70  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_str    00002113  00000000  00000000  00003fd4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .pdr          000001a0  00000000  00000000  000060e8  2**2
+                  CONTENTS, READONLY
+ 13 .mdebug.abi32 00000000  00000000  00000000  00006288  2**0
+                  CONTENTS, READONLY
+SYMBOL TABLE:
+00400000 l    d  .text	00000000 
+00400420 l    d  .data	00000000 
+004004e0 l    d  .bss	00000000 
+00000000 l    d  .junk	00000000 
+00000000 l    d  .comment	00000000 
+00000000 l    d  .debug_aranges	00000000 
+00000000 l    d  .debug_pubnames	00000000 
+00000000 l    d  .debug_info	00000000 
+00000000 l    d  .debug_abbrev	00000000 
+00000000 l    d  .debug_line	00000000 
+00000000 l    d  .debug_frame	00000000 
+00000000 l    d  .debug_str	00000000 
+00000000 l    d  .pdr	00000000 
+00000000 l    d  .mdebug.abi32	00000000 
+00000000 l    d  *ABS*	00000000 
+00000000 l    d  *ABS*	00000000 
+00000000 l    d  *ABS*	00000000 
+00000000 l    df *ABS*	00000000 initfini.c
+00000000 l    df *ABS*	00000000 crti.S
+00000000 l    df *ABS*	00000000 <command line>
+00000000 l    df *ABS*	00000000 <built-in>
+00000000 l    df *ABS*	00000000 crti.S
+00000000 l    df *ABS*	00000000 initfini.c
+00000000 l    df *ABS*	00000000 crtn.S
+00000000 l    df *ABS*	00000000 <command line>
+00000000 l    df *ABS*	00000000 <built-in>
+00000000 l    df *ABS*	00000000 crtn.S
+00000000 l    df *ABS*	00000000 crt0.S
+00000000 l    df *ABS*	00000000 crt0.S
+00000000 l    df *ABS*	00000000 crt0.S
+00000000 l    df *ABS*	00000000 <command line>
+00000000 l    df *ABS*	00000000 <built-in>
+00000000 l    df *ABS*	00000000 crt0.S
+00400068 l       .text	00000000 hlt
+00400070 l       .text	00000000 L_dummy_main_reference
+00000000 l    df *ABS*	00000000 simpleinit.c
+00000000 l    df *ABS*	00000000 __uClibc_main.c
+00000000 l    df *ABS*	00000000 atexit.c
+00000000 l    df *ABS*	00000000 _exit.c
+00000000 l    df *ABS*	00000000 __errno_location.c
+00000000 l    df *ABS*	00000000 weaks.c
+00000000 l    df *ABS*	00000000 errno.c
+00400378  w    F .text	00000000 pthread_cond_signal
+00000000       O *UND*	00000000 _gp_disp
+00400378  w    F .text	00000000 pthread_mutexattr_gettype
+00400378  w    F .text	00000000 pthread_attr_destroy
+00400378  w    F .text	00000000 pthread_attr_getstacksize
+00400378  w    F .text	00000000 __pthread_once
+004003a0 g     F .text	00000000 __pthread_return_void
+00400378  w    F .text	00000000 pthread_rwlock_rdlock
+00400378  w    F .text	00000000 pthread_attr_init
+00400378  w    F .text	00000000 pthread_rwlock_init
+00400340  w    F .text	00000000 pthread_exit
+004004c4 g     O .data	00000004 _h_errno
+00400378  w    F .text	00000000 pthread_rwlockattr_setpshared
+004004c0  w    O .data	00000004 errno
+00400420 g       .text	00000000 _etext
+004004e0 g       .bss	00000000 _sbss
+00400420 g       .data	00000000 _gp
+00400378  w    F .text	00000000 pthread_condattr_init
+00400378  w    F .text	00000000 pthread_attr_getstackaddr
+00400378  w    F .text	00000000 pthread_mutexattr_destroy
+0040038c  w    F .text	00000000 pthread_equal
+00400378  w    F .text	00000000 pthread_attr_getscope
+00400378  w    F .text	00000000 pthread_rwlock_destroy
+00400420 g       .data	00000000 _sdata
+00400378  w    F .text	00000000 pthread_rwlock_unlock
+00400378  w    F .text	00000000 pthread_attr_getinheritsched
+00400490 g     O .data	00000004 __environ
+00400378  w    F .text	00000000 pthread_attr_getschedpolicy
+004003c0 g     F .text	00000000 _init
+00400378  w    F .text	00000000 pthread_attr_setstackaddr
+00400378  w    F .text	00000000 pthread_getschedparam
+004004e0 g       .bss	00000000 _ebss
+00400378  w    F .text	00000000 pthread_setcancelstate
+00400378  w    F .text	00000000 pthread_getcancelstate
+004004c4  w    O .data	00000004 h_errno
+004004a0 g     O .data	00000004 __exit_cleanup
+00400378  w    F .text	00000000 pthread_condattr_destroy
+00400378  w    F .text	00000000 pthread_attr_setscope
+00400490  w    O .data	00000004 environ
+00400378  w    F .text	00000000 pthread_cond_broadcast
+004004e0 g       .bss	00000000 end
+00400378  w    F .text	00000000 pthread_attr_setinheritsched
+00400020 g     F .text	00000000 __start
+00400378  w    F .text	00000000 pthread_setschedparam
+004003a0  w    F .text	00000000 __pthread_initialize_minimal
+00400378  w    F .text	00000000 pthread_setconcurrency
+00400378  w    F .text	00000000 pthread_attr_setstacksize
+00400378  w    F .text	00000000 pthread_rwlock_wrlock
+00400378  w    F .text	00000000 pthread_rwlockattr_getpshared
+004004a4 g     O .data	00000018 mylock
+00400378  w    F .text	00000000 pthread_cond_init
+00400378  w    F .text	00000000 pthread_rwlockattr_init
+00400090 g     F .text	00000000 __uClibc_main
+004004e0 g       .bss	00000000 __bss_start
+00400080 g     F .text	00000000 main
+00400378  w    F .text	00000000 pthread_mutexattr_settype
+00400378  w    F .text	00000000 pthread_attr_getdetachstate
+00400378  w    F .text	00000000 pthread_mutex_unlock
+00400420 g       .data	00000000 data_start
+00000000  w      *UND*	00000000 __h_errno_location
+004003ec g     F .text	00000000 _fini
+00000000  w      *UND*	00000000 atexit
+00400378  w    F .text	00000000 pthread_rwlockattr_destroy
+00000000  w      *UND*	00000000 _stdio_term
+00400378  w    F .text	00000000 pthread_rwlock_trywrlock
+00400378  w    F .text	00000000 pthread_rwlock_tryrdlock
+00400378 g     F .text	00000000 __pthread_return_0
+00400378  w    F .text	00000000 pthread_self
+00400378  w    F .text	00000000 pthread_setcanceltype
+00400378  w    F .text	00000000 pthread_mutexattr_init
+004004e0 g       .data	00000000 _edata
+00400420 g     O .data	00000000 _GLOBAL_OFFSET_TABLE_
+004004e0 g       .bss	00000000 _end
+00400378  w    F .text	00000000 pthread_mutex_destroy
+0040038c g     F .text	00000000 __pthread_return_1
+00400378  w    F .text	00000000 pthread_mutex_lock
+00400378  w    F .text	00000000 pthread_cond_wait
+00400320  w    F .text	00000000 __errno_location
+004001e0 g     F .text	00000000 exit
+00000000  w      *UND*	00000000 _stdio_init
+00400378  w    F .text	00000000 pthread_mutex_trylock
+004004c0 g     O .data	00000004 _errno
+00400378  w    F .text	00000000 pthread_cond_destroy
+00400378  w    F .text	00000000 pthread_attr_setschedpolicy
+004002b0 g     F .text	00000000 _exit
+00400378  w    F .text	00000000 pthread_mutex_init
+00400004 g       .text	00000000 _stext
+00400420 g       .data	00000000 __data_start
+00400378  w    F .text	00000000 pthread_attr_setschedparam
+00400378  w    F .text	00000000 pthread_attr_setdetachstate
+00400378  w    F .text	00000000 pthread_getconcurrency
+00400378  w    F .text	00000000 pthread_cond_timedwait
+00400378  w    F .text	00000000 pthread_attr_getschedparam
+
+
+Disassembly of section .text:
+
+00400000 <_stext-0x4>:
+  400000:	00000000 	nop
+
+00400004 <_stext>:
+  400004:	b2000170 	0xb2000170
+  400008:	00000000 	nop
+  40000c:	00000000 	nop
+  400010:	00000000 	nop
+  400014:	00000000 	nop
+  400018:	00007fff 	0x7fff
+  40001c:	00000000 	nop
+
+00400020 <__start>:
+  400020:	04100001 	bltzal	zero,400028 <__start+0x8>
+  400024:	00000000 	nop
+  400028:	3c1c0000 	lui	gp,0x0
+  40002c:	279c03f8 	addiu	gp,gp,1016
+  400030:	039fe021 	addu	gp,gp,ra
+  400034:	0000f821 	move	ra,zero
+  400038:	8fa40000 	lw	a0,0(sp)
+  40003c:	27a50004 	addiu	a1,sp,4
+  400040:	24860001 	addiu	a2,a0,1
+  400044:	00063080 	sll	a2,a2,0x2
+  400048:	00c53020 	add	a2,a2,a1
+  40004c:	3c08ffff 	lui	t0,0xffff
+  400050:	3508fff8 	ori	t0,t0,0xfff8
+  400054:	03a8e824 	and	sp,sp,t0
+  400058:	8f990048 	lw	t9,72(gp)
+  40005c:	00000000 	nop
+  400060:	0320f809 	jalr	t9
+  400064:	00000000 	nop
+
+00400068 <hlt>:
+  400068:	1000ffff 	b	400068 <hlt>
+  40006c:	00000000 	nop
+
+00400070 <L_dummy_main_reference>:
+  400070:	00400080 	0x400080
+  400074:	00000000 	nop
+  400078:	00000000 	nop
+  40007c:	00000000 	nop
+
+00400080 <main>:
+  400080:	1000ffff 	b	400080 <main>
+  400084:	00000000 	nop
+  400088:	00000000 	nop
+  40008c:	00000000 	nop
+
+00400090 <__uClibc_main>:
+  400090:	3c1c0000 	lui	gp,0x0
+  400094:	279c0390 	addiu	gp,gp,912
+  400098:	0399e021 	addu	gp,gp,t9
+  40009c:	27bdffd0 	addiu	sp,sp,-48
+  4000a0:	afbc0010 	sw	gp,16(sp)
+  4000a4:	8f820058 	lw	v0,88(gp)
+  4000a8:	00000000 	nop
+  4000ac:	8c420000 	lw	v0,0(v0)
+  4000b0:	afb20020 	sw	s2,32(sp)
+  4000b4:	afb1001c 	sw	s1,28(sp)
+  4000b8:	afb00018 	sw	s0,24(sp)
+  4000bc:	afbf0028 	sw	ra,40(sp)
+  4000c0:	afbc0024 	sw	gp,36(sp)
+  4000c4:	00808821 	move	s1,a0
+  4000c8:	00a09021 	move	s2,a1
+  4000cc:	14400004 	bnez	v0,4000e0 <__uClibc_main+0x50>
+  4000d0:	00c08021 	move	s0,a2
+  4000d4:	8f810058 	lw	at,88(gp)
+  4000d8:	00000000 	nop
+  4000dc:	ac260000 	sw	a2,0(at)
+  4000e0:	8f820020 	lw	v0,32(gp)
+  4000e4:	00000000 	nop
+  4000e8:	10400006 	beqz	v0,400104 <__uClibc_main+0x74>
+  4000ec:	00000000 	nop
+  4000f0:	0040c821 	move	t9,v0
+  4000f4:	0320f809 	jalr	t9
+  4000f8:	00000000 	nop
+  4000fc:	8fbc0010 	lw	gp,16(sp)
+  400100:	00000000 	nop
+  400104:	8f840038 	lw	a0,56(gp)
+  400108:	00000000 	nop
+  40010c:	1080000a 	beqz	a0,400138 <__uClibc_main+0xa8>
+  400110:	00000000 	nop
+  400114:	8f820034 	lw	v0,52(gp)
+  400118:	00000000 	nop
+  40011c:	10400006 	beqz	v0,400138 <__uClibc_main+0xa8>
+  400120:	00000000 	nop
+  400124:	0040c821 	move	t9,v0
+  400128:	0320f809 	jalr	t9
+  40012c:	00000000 	nop
+  400130:	8fbc0010 	lw	gp,16(sp)
+  400134:	00000000 	nop
+  400138:	8f820054 	lw	v0,84(gp)
+  40013c:	00000000 	nop
+  400140:	10400006 	beqz	v0,40015c <__uClibc_main+0xcc>
+  400144:	00000000 	nop
+  400148:	0040c821 	move	t9,v0
+  40014c:	0320f809 	jalr	t9
+  400150:	00000000 	nop
+  400154:	8fbc0010 	lw	gp,16(sp)
+  400158:	00000000 	nop
+  40015c:	8f820028 	lw	v0,40(gp)
+  400160:	00000000 	nop
+  400164:	10400006 	beqz	v0,400180 <__uClibc_main+0xf0>
+  400168:	00000000 	nop
+  40016c:	0040c821 	move	t9,v0
+  400170:	0320f809 	jalr	t9
+  400174:	00000000 	nop
+  400178:	8fbc0010 	lw	gp,16(sp)
+  40017c:	ac400000 	sw	zero,0(v0)
+  400180:	8f82003c 	lw	v0,60(gp)
+  400184:	00000000 	nop
+  400188:	10400007 	beqz	v0,4001a8 <__uClibc_main+0x118>
+  40018c:	02202021 	move	a0,s1
+  400190:	0040c821 	move	t9,v0
+  400194:	0320f809 	jalr	t9
+  400198:	00000000 	nop
+  40019c:	8fbc0010 	lw	gp,16(sp)
+  4001a0:	ac400000 	sw	zero,0(v0)
+  4001a4:	02202021 	move	a0,s1
+  4001a8:	02402821 	move	a1,s2
+  4001ac:	02003021 	move	a2,s0
+  4001b0:	8f990044 	lw	t9,68(gp)
+  4001b4:	00000000 	nop
+  4001b8:	0320f809 	jalr	t9
+  4001bc:	00000000 	nop
+  4001c0:	8fbc0010 	lw	gp,16(sp)
+  4001c4:	00402021 	move	a0,v0
+  4001c8:	8f990024 	lw	t9,36(gp)
+  4001cc:	00000000 	nop
+  4001d0:	0320f809 	jalr	t9
+  4001d4:	00000000 	nop
+  4001d8:	8fbc0010 	lw	gp,16(sp)
+  4001dc:	00000000 	nop
+
+004001e0 <exit>:
+  4001e0:	3c1c0000 	lui	gp,0x0
+  4001e4:	279c0240 	addiu	gp,gp,576
+  4001e8:	0399e021 	addu	gp,gp,t9
+  4001ec:	27bdffd8 	addiu	sp,sp,-40
+  4001f0:	afbc0010 	sw	gp,16(sp)
+  4001f4:	afb00018 	sw	s0,24(sp)
+  4001f8:	8f90004c 	lw	s0,76(gp)
+  4001fc:	afb1001c 	sw	s1,28(sp)
+  400200:	00808821 	move	s1,a0
+  400204:	02002021 	move	a0,s0
+  400208:	afbf0024 	sw	ra,36(sp)
+  40020c:	afbc0020 	sw	gp,32(sp)
+  400210:	8f99002c 	lw	t9,44(gp)
+  400214:	00000000 	nop
+  400218:	0320f809 	jalr	t9
+  40021c:	00000000 	nop
+  400220:	8fbc0010 	lw	gp,16(sp)
+  400224:	00000000 	nop
+  400228:	8f820050 	lw	v0,80(gp)
+  40022c:	00000000 	nop
+  400230:	8c420000 	lw	v0,0(v0)
+  400234:	00000000 	nop
+  400238:	10400007 	beqz	v0,400258 <exit+0x78>
+  40023c:	02002021 	move	a0,s0
+  400240:	02202021 	move	a0,s1
+  400244:	0040c821 	move	t9,v0
+  400248:	0320f809 	jalr	t9
+  40024c:	00000000 	nop
+  400250:	8fbc0010 	lw	gp,16(sp)
+  400254:	02002021 	move	a0,s0
+  400258:	8f990040 	lw	t9,64(gp)
+  40025c:	00000000 	nop
+  400260:	0320f809 	jalr	t9
+  400264:	00000000 	nop
+  400268:	8fbc0010 	lw	gp,16(sp)
+  40026c:	00000000 	nop
+  400270:	8f820030 	lw	v0,48(gp)
+  400274:	00000000 	nop
+  400278:	10400006 	beqz	v0,400294 <exit+0xb4>
+  40027c:	02202021 	move	a0,s1
+  400280:	0040c821 	move	t9,v0
+  400284:	0320f809 	jalr	t9
+  400288:	00000000 	nop
+  40028c:	8fbc0010 	lw	gp,16(sp)
+  400290:	02202021 	move	a0,s1
+  400294:	8f99001c 	lw	t9,28(gp)
+  400298:	00000000 	nop
+  40029c:	0320f809 	jalr	t9
+  4002a0:	00000000 	nop
+  4002a4:	8fbc0010 	lw	gp,16(sp)
+  4002a8:	00000000 	nop
+  4002ac:	00000000 	nop
+
+004002b0 <_exit>:
+  4002b0:	3c1c0000 	lui	gp,0x0
+  4002b4:	279c0170 	addiu	gp,gp,368
+  4002b8:	0399e021 	addu	gp,gp,t9
+  4002bc:	27bdffd8 	addiu	sp,sp,-40
+  4002c0:	afbc0010 	sw	gp,16(sp)
+  4002c4:	afbf0020 	sw	ra,32(sp)
+  4002c8:	afbc001c 	sw	gp,28(sp)
+  4002cc:	afb00018 	sw	s0,24(sp)
+  4002d0:	00801821 	move	v1,a0
+  4002d4:	00602021 	move	a0,v1
+  4002d8:	24020fa1 	li	v0,4001
+  4002dc:	0000000c 	syscall
+  4002e0:	00408021 	move	s0,v0
+  4002e4:	00e01821 	move	v1,a3
+  4002e8:	10600007 	beqz	v1,400308 <_exit+0x58>
+  4002ec:	00000000 	nop
+  4002f0:	8f990028 	lw	t9,40(gp)
+  4002f4:	00000000 	nop
+  4002f8:	0320f809 	jalr	t9
+  4002fc:	00000000 	nop
+  400300:	8fbc0010 	lw	gp,16(sp)
+  400304:	ac500000 	sw	s0,0(v0)
+  400308:	8fbf0020 	lw	ra,32(sp)
+  40030c:	8fb00018 	lw	s0,24(sp)
+  400310:	03e00008 	jr	ra
+  400314:	27bd0028 	addiu	sp,sp,40
+  400318:	00000000 	nop
+  40031c:	00000000 	nop
+
+00400320 <__errno_location>:
+  400320:	3c1c0000 	lui	gp,0x0
+  400324:	279c0100 	addiu	gp,gp,256
+  400328:	0399e021 	addu	gp,gp,t9
+  40032c:	8f82005c 	lw	v0,92(gp)
+  400330:	03e00008 	jr	ra
+  400334:	00000000 	nop
+  400338:	00000000 	nop
+  40033c:	00000000 	nop
+
+00400340 <pthread_exit>:
+  400340:	3c1c0000 	lui	gp,0x0
+  400344:	279c00e0 	addiu	gp,gp,224
+  400348:	0399e021 	addu	gp,gp,t9
+  40034c:	27bdffe0 	addiu	sp,sp,-32
+  400350:	afbc0010 	sw	gp,16(sp)
+  400354:	00002021 	move	a0,zero
+  400358:	afbf001c 	sw	ra,28(sp)
+  40035c:	afbc0018 	sw	gp,24(sp)
+  400360:	8f990024 	lw	t9,36(gp)
+  400364:	00000000 	nop
+  400368:	0320f809 	jalr	t9
+  40036c:	00000000 	nop
+  400370:	8fbc0010 	lw	gp,16(sp)
+  400374:	00000000 	nop
+
+00400378 <__pthread_return_0>:
+  400378:	3c1c0000 	lui	gp,0x0
+  40037c:	279c00a8 	addiu	gp,gp,168
+  400380:	0399e021 	addu	gp,gp,t9
+  400384:	03e00008 	jr	ra
+  400388:	00001021 	move	v0,zero
+
+0040038c <__pthread_return_1>:
+  40038c:	3c1c0000 	lui	gp,0x0
+  400390:	279c0094 	addiu	gp,gp,148
+  400394:	0399e021 	addu	gp,gp,t9
+  400398:	03e00008 	jr	ra
+  40039c:	24020001 	li	v0,1
+
+004003a0 <__pthread_return_void>:
+  4003a0:	3c1c0000 	lui	gp,0x0
+  4003a4:	279c0080 	addiu	gp,gp,128
+  4003a8:	0399e021 	addu	gp,gp,t9
+  4003ac:	03e00008 	jr	ra
+  4003b0:	00000000 	nop
+  4003b4:	00000000 	nop
+  4003b8:	00000000 	nop
+  4003bc:	00000000 	nop
+
+004003c0 <_init>:
+  4003c0:	3c1c0000 	lui	gp,0x0
+  4003c4:	279c0060 	addiu	gp,gp,96
+  4003c8:	0399e021 	addu	gp,gp,t9
+  4003cc:	27bdffe0 	addiu	sp,sp,-32
+  4003d0:	afbc0010 	sw	gp,16(sp)
+  4003d4:	afbf001c 	sw	ra,28(sp)
+  4003d8:	afbc0018 	sw	gp,24(sp)
+  4003dc:	8fbf001c 	lw	ra,28(sp)
+  4003e0:	00000000 	nop
+  4003e4:	03e00008 	jr	ra
+  4003e8:	27bd0020 	addiu	sp,sp,32
+
+004003ec <_fini>:
+  4003ec:	3c1c0000 	lui	gp,0x0
+  4003f0:	279c0034 	addiu	gp,gp,52
+  4003f4:	0399e021 	addu	gp,gp,t9
+  4003f8:	27bdffe0 	addiu	sp,sp,-32
+  4003fc:	afbc0010 	sw	gp,16(sp)
+  400400:	afbf001c 	sw	ra,28(sp)
+  400404:	afbc0018 	sw	gp,24(sp)
+  400408:	8fbf001c 	lw	ra,28(sp)
+  40040c:	00000000 	nop
+  400410:	03e00008 	jr	ra
+  400414:	27bd0020 	addiu	sp,sp,32
+  400418:	00000000 	nop
+  40041c:	00000000 	nop
+Disassembly of section .data:
+
+00400420 <_GLOBAL_OFFSET_TABLE_>:
+  400420:	00000000 	nop
+  400424:	80000000 	lb	zero,0(zero)
+  400428:	00000000 	nop
+  40042c:	00000000 	nop
+  400430:	00000000 	nop
+  400434:	00000000 	nop
+  400438:	00000000 	nop
+  40043c:	004002b0 	0x4002b0
+  400440:	00000000 	nop
+  400444:	004001e0 	0x4001e0
+  400448:	00400320 	0x400320
+  40044c:	00400378 	0x400378
+  400450:	00000000 	nop
+  400454:	00000000 	nop
+  400458:	004003ec 	0x4003ec
+  40045c:	00000000 	nop
+  400460:	00400378 	0x400378
+  400464:	00400080 	0x400080
+  400468:	00400090 	0x400090
+  40046c:	004004a4 	0x4004a4
+  400470:	004004a0 	0x4004a0
+  400474:	004003c0 	0x4003c0
+  400478:	00400490 	0x400490
+  40047c:	004004c0 	0x4004c0
+  400480:	ffffffff 	0xffffffff
+  400484:	00000000 	nop
+  400488:	00000000 	nop
+  40048c:	00000000 	nop
+
+00400490 <__environ>:
+  400490:	00000000 	nop
+  400494:	00000000 	nop
+  400498:	00000000 	nop
+  40049c:	00000000 	nop
+
+004004a0 <__exit_cleanup>:
+  4004a0:	00000000 	nop
+
+004004a4 <mylock>:
+  4004a4:	00000000 	nop
+  4004a8:	00000000 	nop
+  4004ac:	00000000 	nop
+  4004b0:	00000001 	0x1
+  4004b4:	00000000 	nop
+  4004b8:	00000000 	nop
+  4004bc:	00000000 	nop
+
+004004c0 <_errno>:
+  4004c0:	00000000 	nop
+
+004004c4 <_h_errno>:
+  4004c4:	00000000 	nop
+  4004c8:	00000000 	nop
+  4004cc:	00000000 	nop
+  4004d0:	00000000 	nop
+  4004d4:	00000000 	nop
+  4004d8:	00000000 	nop
+  4004dc:	00000000 	nop
+Disassembly of section .junk:

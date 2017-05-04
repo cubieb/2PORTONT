@@ -1,0 +1,27 @@
+package "test_modes"
+version "1.0"
+
+section "some non mode options"
+
+option "no-mode" N "a generic option not beloging to any mode" optional
+option "no-mode2" - "another generic option not beloging to any mode" string optional
+
+section "some modes just for testing"
+
+defmode "mode 2"
+defmode "my mode"
+defmode "mode1" modedesc="any option of this mode is in contrast with any \
+option of the other mode\nNotice that this description is quite long so \
+it may spawn many lines...              \
+fortunately gengetopt will wrap it for you :-)"
+
+modeoption "opta" a "string a" multiple mode="mode1" optional
+modeoption "optA" A "string A" string argoptional mode="mode1" required
+modeoption "optAmul" M "string M" 
+        argoptional string mode="mode1" multiple optional
+modeoption "optb" b "string b" mode="mode1" optional
+
+modeoption "optc" - "string c" mode="mode 2" optional
+modeoption "optd" d "string d" mode="mode 2" required
+
+modeoption "mopt" m "option of my mode" int optional mode="my mode" optional

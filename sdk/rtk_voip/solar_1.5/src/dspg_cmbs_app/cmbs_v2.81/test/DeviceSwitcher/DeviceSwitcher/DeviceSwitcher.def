@@ -1,0 +1,7 @@
+; DeviceSwitcher.def : Declares the module parameters for the DLL.
+
+LIBRARY      "DeviceSwitcher"
+
+EXPORTS
+	LoadDeviceSwitcher
+	UnLoadDeviceSwitcher

@@ -1,0 +1,13 @@
+./cvs_diff:< 			pskb->len = pfrinfo->pktlen;
+./8190n_util.h:	return (struct rx_frinfo *)((unsigned long)(pskb->data) - sizeof(struct rx_frinfo));
+./8190n_util.h:	return (UINT8 *)((UINT)(pfrinfo->pskb->data));
+./8190n_rx.c://			pskb->data += pfrinfo->rxbuf_shift;
+./8190n_rx.c:					pskb->data -= (pfrinfo->rxbuf_shift + pfrinfo->driver_info_size);
+./8190n_rx.c:					pskb->tail -= (pfrinfo->rxbuf_shift + pfrinfo->driver_info_size);
+./8190n_rx.c:					pskb->data -= (pfrinfo->rxbuf_shift + pfrinfo->driver_info_size);
+./8190n_rx.c:					pskb->tail -= (pfrinfo->rxbuf_shift + pfrinfo->driver_info_size);
+./8190n_rx.c:			if(pskb->data[0] == 0xb0)
+./8190n_rx.c:				printk("Auth:%d, %d, %d, %d, %x\n", pfrinfo->pktlen, pfrinfo->driver_info_size, pskb->len, pfrinfo->rxbuf_shift, pskb->data);
+./8190n_rx.c:				printHex(pskb->data, pskb->len);
+./8190n_rx.h:	offset = 0x20 - ((((unsigned long)pskb->data) + sizeof(struct rx_frinfo)) & 0x1f);	// need 32 byte aligned
+./8190n_rx.h:	phw->rx_infoL[i].paddr = get_physical_addr(priv, pskb->data, (MAX_RX_BUF_LEN - sizeof(struct rx_frinfo)), PCI_DMA_FROMDEVICE);

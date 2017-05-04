@@ -1,0 +1,3 @@
+
+/bin/mknod /dev/dsp_console c 253 0
+

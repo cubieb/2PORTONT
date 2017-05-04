@@ -1,0 +1,69 @@
+//
+// Copyright (C) 2011 Realtek Semiconductor Corp.
+// All Rights Reserved.
+//
+// This program is the proprietary software of Realtek Semiconductor
+// Corporation and/or its licensors, and only be used, duplicated,
+// modified or distributed under the authorized license from Realtek.
+//
+// ANY USE OF THE SOFTWARE OTHER THAN AS AUTHORIZED UNDER
+// THIS LICENSE OR COPYRIGHT LAW IS PROHIBITED.
+//
+// $Revision: 39101 $
+// $Date: 2013-05-03 17:35:27 +0800 (Fri, 03 May 2013) $
+//
+// Purpose : Define diag shell commands for trunk.
+//
+// Feature : The file have include the following module and sub-modules
+//           1) CPU commands.
+//
+
+//trap configuration
+//set configuration
+//CPU aware port configurtion
+//port list, <0-6>
+//all port without port 6
+//none port
+cpu set aware-port ( <PORT_LIST:ports> | all | none )
+
+//trap configuration
+//get configuration
+//CPU aware port configurtion
+cpu get aware-port
+
+//trap configuration
+//set configuration
+//tag format configurtion
+//Apollo format
+//normal format
+cpu set tag-format ( apollo | normal )
+
+//trap configuration
+//get configuration
+//tag format configurtion
+cpu get tag-format
+
+//trap configuration
+//set configuration
+//DSL state configurtion
+//specify to enable state
+//specify to disable state
+cpu set dsl-state ( enable | disable )
+
+//trap configuration
+//get configuration
+//DSL state configurtion
+cpu get dsl-state
+
+//trap configuration
+//set configuration
+//trap target insert state configurtion
+//specify to enable state
+//specify to disable state
+cpu set trap-insert-tag ( enable | disable )
+
+//trap configuration
+//get configuration
+//trap target insert state configurtion
+cpu get trap-insert-tag
+

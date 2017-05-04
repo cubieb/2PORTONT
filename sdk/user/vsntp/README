@@ -1,0 +1,70 @@
+vsntp README
+
+    See INSTALL for details on how to install and run vsntp.
+
+Obtaining the Newest Information
+
+    vsntp's official website is at...
+
+      SourceForge's home site: http://vsntp.sourceforge.net/
+      SourceForge's project page: https://sourceforge.net/projects/vsntp/
+      Tavern IMACAT's page: http://www.imacat.idv.tw/tech/vsntp.html
+
+    You can always download the newest version of vsntp from...
+
+      SourceForge: https://sourceforge.net/project/showfiles.php?group_id=99098
+      Tavern IMACAT's FTP: ftp://ftp.imacat.idv.tw/pub/vsntp/
+
+    imacat's PGP public key is at...
+
+      SourceForge: http://vsntp.sourceforge.net/pgpkey.asc
+      Tavern IMACAT's: http://www.imacat.idv.tw/me/pgpkey.asc
+
+Introduction:
+
+    vsntp is an SNTP client daemon for machines without a sane system
+time.  The word "vsntp" stands for "SNTP for Virtual PC".  It was
+originally designed for my GNU/Linux server running on Connectix
+Virtual PC.  It runs according to RFC 1769 SNTP, connecting the NTP
+server on UDP port 123.  It has only been compiled and run on
+GNU/Linux before.
+
+    Without Virtual PC Additions, the system time on Virtual PC is
+completely insane.  It's RTC (Real Time Clock, or CMOS time, or
+hardware clock) is software emulated, which does not seems to be
+running.  The GNU/Linux kernel hardly maintains a system time itself.
+With smooth run it goes 4 seconds ahead per minute, which is nearly
+1.5 hours per day.  That is insane.  You can even tell it with your
+eyes.
+
+    David L. Mills' ntp does not work here.  It uses a method that
+learns the clock frequency drift first, and adjust the kerenl clock
+with adjtimex() so that time adjustment goes smoothly, from the point
+of view of system and applications.  This assumes an existing fix-
+speed system clock.  But this is not the case of Virtual PC.  The
+system clock on Virtual PC is software emulated.  It can be faster
+or slower now and then, depending on the load of the hosting machine.
+There is no fixed clock speed.  The frequency drift does not exist,
+then.  It dooms to fail to measure it.
+
+    There is an sntp client that comes with David L. Mills' ntp
+package.  It is suggested to be run from crontab.  But crontab runs
+by minutes, and Virtual PC goes 4 seconds ahead per minute.  Rolling
+back 4 seconds every minute is insane for most applications.  It also
+increases system load heavily to run one instance per minute.
+
+    vsntp is a workaround on this.  It runs as a daemon to eliminates
+the additional system load on every synchronization. It uses
+settimeofday() to synchronize the time.  It synchronizes the time
+with an arbitrary interval, so that time can be accurate within a
+second.
+
+    There are some defects.  Synchronizing the time too often
+introduces heavy network load.  It introduces heavy load on the
+target NTP server, too.  You should have a working NTP server nearby
+that is owned by you.  Also, since settimeofday() is called so often,
+high-accurate time operations like timer, etc., may not run
+correctly.
+
+    This is my first daemon, my first socket program and my first
+public-released C program.  Any comment or suggestion is welcome. ^_*'

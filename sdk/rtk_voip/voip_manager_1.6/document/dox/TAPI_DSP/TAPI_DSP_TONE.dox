@@ -1,0 +1,36 @@
+// ============================================================
+
+/**
+ * @page VOIP_DSP_CID_Tone VoIP Session - Tone
+ * @ingroup TAPI_DSP_TONE 
+ * The tone table locates in "/linux_kernel/rtk_voip/voip_dsp/dsp_r0/dspparam.c". Developer can access the table and modify the setting of tones. <br>
+ * The Table 5 shows the different tones in tone table. <p>
+ *  \htmlonly <br>
+ * <p align="left"> <b>Table 5. Tone table</b> </p  > 
+ * <table border=1 width=40% style="border-collapse:collapse;" borderColor=black > 
+ * <td align=center><b>Number</b></td> <td align=center><b>Tone Name</b></td><tr> 
+ * <td align=center>1</td> <td align=left>Dial tone</td><tr> 
+ * <td align=center>2</td> <td align=left>Stutter-dial tone</td><tr> 
+ * <td align=center>3</td> <td align=left>Message waiting tone</td><tr> 
+ * <td align=center>4</td> <td align=left>Confirmation tone</td><tr> 
+ * <td align=center>5</td> <td align=left>Ring-back tone</td><tr> 
+ * <td align=center>6</td> <td align=left>Busy tone</td><tr> 
+ * <td align=center>7</td> <td align=left>Congestion tone</td><tr> 
+ * <td align=center>8</td> <td align=left>Roh tone</td><tr>
+ * <td align=center>9</td> <td align=left>Double ringback tone</td><tr> 
+ * <td align=center>10</td> <td align=left>Sit-no circuit tone</td><tr> 
+ * <td align=center>11</td> <td align=left>Site-intercept tone</td><tr> 
+ * <td align=center>12</td> <td align=left>Sit-vacant tone</td><tr> 
+ * <td align=center>13</td> <td align=left>Sit-reorder tone</td><tr> 
+ * <td align=center>14</td> <td align=left>Calling cord with event tone</td><tr> 
+ * <td align=center>15</td> <td align=left>Calling card tone</td><tr> 
+ * <td align=center>16</td> <td align=left>Call waiting #1 tone</td><tr>
+ * <td align=center>17</td> <td align=left>Call waiting #2 tone</td><tr> 
+ * <td align=center>18</td> <td align=left>Call waiting #4 tone</td><tr> 
+ * <td align=center>19</td> <td align=left>Call waiting #4 tone</td><tr> 
+ * <td align=center>20</td> <td align=left>Ingress ringback tone</td><tr> 
+ * </table>\endhtmlonly 
+ * <p>The tone is various in different countries. The VoIP SDK pre-defined the tones using in these countries. <br>
+ * These countries include USA, UK, Australia, Hong Kong, Japan, Sweden, Germany, France, Taiwan, Belgium, Finland, Italy and China. <br>
+ * Beside this users can set their custom tone they like.
+ */ 

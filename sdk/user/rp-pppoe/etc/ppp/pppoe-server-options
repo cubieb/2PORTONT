@@ -1,0 +1,6 @@
+# PPP options for the PPPoE server
+require-pap
+ipcp-accept-remote 
+ 
+lcp-echo-interval 20
+lcp-echo-failure 3

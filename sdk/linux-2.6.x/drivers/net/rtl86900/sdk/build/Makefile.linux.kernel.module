@@ -1,0 +1,123 @@
+# Copyright (C) 2012 Realtek Semiconductor Corp.
+#
+# Makefile for SDK Linux Kernel Modules
+#
+
+include $(APOLLODIR)/Compiler_Flag
+
+SDK_INCLUDE   = $(SDKDIR)/include
+SYS_INCLUDE   = $(SDKDIR)/system/include
+DRV_INCLUDE   = $(SDKDIR)/system/linux
+PR_INCLUDE    = $(SDKDIR)/src/module/pkt_redirect
+
+EXTRA_CFLAGS=$(PON_CFLAGS)
+
+FLAGS+="-I$(SDK_INCLUDE) -I$(SYS_INCLUDE) -I$(DRV_INCLUDE) -I$(PR_INCLUDE) -I$(SDK_INCLUDE)/hal/chipdef/apollo -I$(KERNEL_DIR)/drivers/net"
+
+ifeq ($(CONFIG_MODULE_BUILD_IN),y)
+BUILD_MODE=y
+else
+BUILD_MODE=m
+endif
+
+
+MODULES:=
+
+ifeq ($(CONFIG_GPON_FEATURE),y)
+ifeq ($(CONFIG_GPON_VERSION),2)
+MODULES+= gpon
+obj-$(BUILD_MODE)+=gpon/
+endif
+endif
+
+#MODULES+= europa
+
+ifeq ($(CONFIG_RTK_L34_DEMO),y)
+MODULES += netvd
+obj-$(BUILD_MODE)+=netvd/
+endif
+
+ifeq ($(CONFIG_RTK_L34_DEMO),m)
+MODULES +=netvd
+obj-$(BUILD_MODE)+=netvd/
+endif
+
+# Add for redirect packet from kernal <-> user space
+ifeq ($(CONFIG_SDK_MODULES),y)
+MODULES += pkt_redirect
+obj-$(BUILD_MODE)+=pkt_redirect/
+endif
+
+# Interrupt broadcaster
+ifeq ($(CONFIG_SDK_MODULES),y)
+MODULES += intr_bcaster
+obj-$(BUILD_MODE)+=intr_bcaster/
+endif
+
+ifeq ($(CONFIG_RLDP_FEATURE),y)
+MODULES += rldp_detect
+obj-m+=rldp_detect/
+endif
+
+# DS packet broadcaster
+ifeq ($(CONFIG_SDK_MODULES),y)
+MODULES += ds_pkt_bcaster
+obj-$(BUILD_MODE)+=ds_pkt_bcaster/
+endif
+
+# EPON modules
+ifeq ($(CONFIG_EPON_FEATURE),y)
+MODULES += epon_drv
+obj-m+=epon_drv/
+MODULES += epon_polling
+obj-$(BUILD_MODE)+= epon_polling/
+MODULES += epon_mpcp
+obj-$(BUILD_MODE)+= epon_mpcp/
+endif
+
+# Fiber support
+ifeq ($(CONFIG_FIBER_FEATURE),y)
+MODULES += fiber
+obj-$(BUILD_MODE)+= fiber/
+endif
+
+# Dying Gasp support
+ifeq ($(CONFIG_DYING_GASP_FEATURE),y)
+MODULES += dying_gasp
+obj-$(BUILD_MODE)+= dying_gasp/
+endif
+
+#Factory Test
+ifeq ($(CONFIG_RTK_FT2_MODULE),y)
+MODULES += ft2
+obj-$(BUILD_MODE)+= ft2/
+endif
+
+#Europa
+#ifeq ($(CONFIG_EUROPA_FEATURE),y)
+#MODULES += europa_drv
+#obj-$(BUILD_MODE)+= europa_drv/
+#endif
+
+#Lan serdes
+ifeq ($(CONFIG_LAN_SDS_FEATURE),y)
+MODULES += lan_sds
+obj-$(BUILD_MODE) += lan_sds/
+endif
+
+ifeq ($(CONFIG_MODULE_BUILD_IN),y)
+
+all:
+install:
+clean:
+
+else
+all:
+	for dir in $(MODULES) ; do $(MAKE) -C $$dir FLAGS=$(FLAGS) all || exit 1; done
+
+install:
+	for dir in $(MODULES) ; do $(MAKE) -C $$dir install || exit 1; done
+
+clean:
+	for dir in $(MODULES) ; do $(MAKE) -C $$dir clean || exit 1; done
+endif

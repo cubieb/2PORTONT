@@ -1,0 +1,165 @@
+# Top level hierarchy
+prefix = /usr/local
+exec_prefix = ${prefix}
+# Pathname of directory to install the binary
+sbindir = ${exec_prefix}/sbin
+# Pathname of directory to install the man page
+mandir = ${prefix}/share/man
+
+# VPATH
+srcdir = .
+
+
+#
+# You shouldn't need to edit anything below here.
+#
+
+#CC = mips-linux-uclibc-gcc 
+PROG = tcpdump
+CCOPT = -O2
+INCLS = -I. -I./../libpcap -I$(srcdir)/missing
+DEFS = -DHAVE_CONFIG_H  -I./../libpcap  -I$(srcdir)/missing  -D_U_="__attribute__((unused))"
+
+# Standard CFLAGS
+CFLAGS = $(CCOPT) $(DEFS) $(INCLS)
+
+# Standard LDFLAGS
+LDFLAGS = -L. 
+
+# Standard LIBS
+#LIBS = -lcrypto ./../libpcap/libpcap.a 
+LIBS = ./../libpcap/libpcap.a
+
+INSTALL = /usr/bin/install -c
+INSTALL_PROGRAM = ${INSTALL}
+INSTALL_DATA = ${INSTALL} -m 644
+
+# Explicitly define compilation rule since SunOS 4's make doesn't like gcc.
+# Also, gcc does not remove the .o before forking 'as', which can be a
+# problem if you don't own the file but can write to the directory.
+.c.o:
+	@rm -f $@
+	$(CC) $(CFLAGS) -c $(srcdir)/$*.c
+
+CSRC =	addrtoname.c af.c cpack.c gmpls.c oui.c gmt2local.c ipproto.c \
+        nlpid.c l2vpn.c machdep.c parsenfsfh.c \
+	print-802_11.c print-ap1394.c print-ah.c print-arcnet.c \
+	print-aodv.c print-arp.c print-ascii.c print-atalk.c print-atm.c \
+	print-beep.c print-bfd.c print-bgp.c print-bootp.c print-cdp.c \
+	print-chdlc.c print-cip.c print-cnfp.c print-dccp.c print-decnet.c \
+	print-domain.c print-dvmrp.c print-enc.c print-egp.c \
+	print-eap.c print-eigrp.c\
+	print-esp.c print-ether.c print-fddi.c print-fr.c \
+	print-gre.c print-hsrp.c print-icmp.c print-igmp.c \
+	print-igrp.c print-ip.c print-ipcomp.c print-ipfc.c \
+	print-ipx.c print-isakmp.c print-isoclns.c print-juniper.c print-krb.c \
+	print-l2tp.c print-lane.c print-ldp.c print-llc.c \
+        print-lmp.c print-lspping.c \
+	print-lwres.c print-mobile.c print-mpls.c print-msdp.c \
+	print-nfs.c print-ntp.c print-null.c print-olsr.c print-ospf.c \
+	print-pgm.c print-pim.c print-ppp.c print-pppoe.c \
+	print-pptp.c print-radius.c print-raw.c print-rip.c \
+	print-rsvp.c print-rx.c print-sctp.c print-sip.c print-sl.c print-sll.c \
+	print-slow.c print-snmp.c print-stp.c print-sunatm.c print-sunrpc.c \
+	print-symantec.c print-syslog.c print-tcp.c print-telnet.c print-tftp.c \
+	print-timed.c print-token.c print-udp.c print-vjc.c print-vrrp.c \
+	print-wb.c print-zephyr.c setsignal.c tcpdump.c util.c
+
+LOCALSRC = print-ip6.c print-ip6opts.c print-mobility.c print-ripng.c print-icmp6.c print-frag6.c print-rt6.c print-ospf6.c print-dhcp6.c print-smb.c smbutil.c 
+GENSRC = version.c
+LIBOBJS =  ${LIBOBJDIR}strlcat$U.o ${LIBOBJDIR}strlcpy$U.o ${LIBOBJDIR}datalinks$U.o ${LIBOBJDIR}dlnames$U.o ${LIBOBJDIR}pcap_dump_ftell$U.o ${LIBOBJDIR}bpf_dump$U.o
+
+SRC =	$(CSRC) $(GENSRC) $(LOCALSRC)
+
+# We would like to say "OBJ = $(SRC:.c=.o)" but Ultrix's make cannot
+# hack the extra indirection
+OBJ =	$(CSRC:.c=.o) $(GENSRC:.c=.o) $(LOCALSRC:.c=.o) $(LIBOBJS)
+HDR =   addrtoname.h appletalk.h bootp.h cpack.h dccp.h decnet.h \
+	ethertype.h extract.h fddi.h gmt2local.h igrp.h interface.h \
+	ipx.h llc.h machdep.h mib.h nfsfh.h nfsv2.h ntp.h ospf.h \
+	setsignal.h \
+	gnuc.h ipsec_doi.h isakmp.h l2tp.h nameser.h \
+	netbios.h oakley.h ospf6.h pf.h ppp.h route6d.h
+
+TAGHDR = \
+	/usr/include/arpa/tftp.h \
+	/usr/include/net/if_arp.h \
+	/usr/include/net/slip.h \
+	/usr/include/netinet/if_ether.h \
+	/usr/include/netinet/in.h \
+	/usr/include/netinet/ip_icmp.h \
+	/usr/include/netinet/tcp.h \
+	/usr/include/netinet/udp.h \
+	/usr/include/protocols/routed.h
+
+TAGFILES = $(SRC) $(HDR) $(TAGHDR)
+
+CLEANFILES = $(PROG) $(OBJ) $(GENSRC)
+
+all: $(PROG)
+
+$(PROG): $(OBJ) ./../libpcap/libpcap.a
+	@rm -f $@
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(OBJ) $(LIBS)
+
+datalinks.o: $(srcdir)/missing/datalinks.c
+	$(CC) $(CFLAGS) -o $@ -c $(srcdir)/missing/datalinks.c
+dlnames.o: $(srcdir)/missing/dlnames.c
+	$(CC) $(CFLAGS) -o $@ -c $(srcdir)/missing/dlnames.c
+getnameinfo.o: $(srcdir)/missing/getnameinfo.c
+	$(CC) $(CFLAGS) -o $@ -c $(srcdir)/missing/getnameinfo.c
+getaddrinfo.o: $(srcdir)/missing/getaddrinfo.c
+	$(CC) $(CFLAGS) -o $@ -c $(srcdir)/missing/getaddrinfo.c
+inet_pton.o: $(srcdir)/missing/inet_pton.c
+	$(CC) $(CFLAGS) -o $@ -c $(srcdir)/missing/inet_pton.c
+inet_ntop.o: $(srcdir)/missing/inet_ntop.c
+	$(CC) $(CFLAGS) -o $@ -c $(srcdir)/missing/inet_ntop.c
+inet_aton.o: $(srcdir)/missing/inet_aton.c
+	$(CC) $(CFLAGS) -o $@ -c $(srcdir)/missing/inet_aton.c
+snprintf.o: $(srcdir)/missing/snprintf.c
+	$(CC) $(CFLAGS) -o $@ -c $(srcdir)/missing/snprintf.c
+strlcat.o: $(srcdir)/missing/strlcat.c
+	$(CC) $(CFLAGS) -o $@ -c $(srcdir)/missing/strlcat.c
+strlcpy.o: $(srcdir)/missing/strlcpy.c
+	$(CC) $(CFLAGS) -o $@ -c $(srcdir)/missing/strlcpy.c
+strsep.o: $(srcdir)/missing/strsep.c
+	$(CC) $(CFLAGS) -o $@ -c $(srcdir)/missing/strsep.c
+
+version.o: version.c
+	$(CC) $(CFLAGS) -c version.c
+
+version.c: $(srcdir)/VERSION
+	@rm -f $@
+	sed -e 's/.*/char version[] = "&";/' $(srcdir)/VERSION > $@
+
+install:
+
+romfs:
+	$(ROMFSINST) /bin/$(PROG)
+
+uninstall:
+	rm -f $(DESTDIR)$(sbindir)/$(PROG)
+	rm -f $(DESTDIR)$(mandir)/man1/$(PROG).1
+
+lint: $(GENSRC)
+	lint -hbxn $(SRC) | \
+	    grep -v 'struct/union .* never defined' | \
+	    grep -v 'possible pointer alignment problem'
+
+clean:
+	rm -f $(CLEANFILES)
+
+distclean:
+	rm -f $(CLEANFILES) Makefile config.cache config.log config.status \
+	    config.h gnuc.h os-proto.h stamp-h stamp-h.in
+
+tags: $(TAGFILES)
+	ctags -wtd $(TAGFILES)
+
+releasetar:
+	@cwd=`pwd` ; dir=`basename $$cwd` ; name=$(PROG)-`cat VERSION` ; \
+	   list="" ; make distclean; cd ..; mkdir -p n; cd n; ln -s ../$$dir $$name; \
+	   tar -c -z -f $$name.tar.gz $$name/. ;
+
+depend: $(GENSRC)
+	${srcdir}/mkdep -c $(CC) $(DEFS) $(INCLS) $(SRC)

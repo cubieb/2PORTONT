@@ -1,0 +1,14 @@
+package "test_groups"
+version "1.0"
+
+section "some groups just for testing"
+
+defgroup "my grp2"
+defgroup "grp1" groupdesc="an option of this group is required\nNotice that this description is quite long so it may spawn many lines...              fortunately gengetopt will wrap it for you :-)" required
+groupoption "opta" a "string a" multiple group="grp1"
+groupoption "optA" A "string A" string argoptional group="grp1" 
+groupoption "optAmul" M "string M" argoptional string group="grp1" multiple
+groupoption "optb" b "string b" group="grp1"
+groupoption "optc" - "string c" group="my grp2"
+groupoption "optd" d "string d" group="my grp2"
+

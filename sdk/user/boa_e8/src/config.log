@@ -1,0 +1,42 @@
+This file contains any messages produced by compilers while
+running configure, to aid debugging if configure makes a mistake.
+
+configure:526: checking for flex
+configure:559: checking for yywrap in -lfl
+configure:605: checking for bison
+configure:637: checking for gcc
+configure:714: checking whether the C compiler (gcc  ) works
+configure:728: gcc -o conftest    conftest.c  1>&5
+configure:748: checking whether the C compiler (gcc  ) is a cross-compiler
+configure:753: checking whether we are using GNU C
+configure:777: checking whether gcc accepts -g
+configure:805: checking how to run the C preprocessor
+configure:870: checking for gunzip
+configure:904: checking for gethostbyname in -lnsl
+configure:951: checking for bind in -lsocket
+configure:1003: checking for dirent.h that defines DIR
+configure:1041: checking for opendir in -ldir
+configure:1124: checking for ANSI C header files
+configure:1228: checking for sys/wait.h that is POSIX.1 compatible
+configure:1273: checking for fcntl.h
+configure:1273: checking for limits.h
+configure:1273: checking for sys/time.h
+configure:1273: checking for unistd.h
+configure:1311: checking for working const
+configure:1386: checking for uid_t in sys/types.h
+configure:1420: checking for pid_t
+configure:1453: checking for size_t
+configure:1486: checking whether time.h and sys/time.h may both be included
+configure:1521: checking whether struct tm is in sys/time.h or time.h
+configure:1556: checking for 8-bit clean memcmp
+configure:1595: checking for unistd.h
+configure:1634: checking for getpagesize
+configure:1687: checking for working mmap
+configure:1858: checking whether setvbuf arguments are reversed
+configure:1906: checking for getcwd
+configure:1906: checking for gethostname
+configure:1906: checking for mkdir
+configure:1906: checking for select
+configure:1906: checking for socket
+configure:1906: checking for strdup
+configure:1906: checking for strstr

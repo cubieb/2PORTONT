@@ -1,0 +1,5 @@
+# test for problems in group options: groupoption without group specification
+
+defgroup "foogroup"
+groupoption "group-ok"        f "flag option OK" string 
+option "group"        F "flag option" string 

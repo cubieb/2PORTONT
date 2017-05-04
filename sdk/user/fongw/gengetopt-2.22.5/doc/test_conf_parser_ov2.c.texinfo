@@ -1,0 +1,60 @@
+@c Generator: GNU source-highlight, by Lorenzo Bettini, http://www.gnu.org/software/src-highlite
+@example
+@r{@i{/* test_conf_parser_ov2.c test */}}
+
+@r{@i{/* test all kinds of options and the conf file parser */}}
+@r{@i{/* differently from test_conf_parser_ov.c, first scan the conf file and}}
+@r{@i{   then the command line */}}
+
+@b{#include} @t{<stdlib.h>}
+@b{#include} @t{<stdio.h>}
+
+@b{#include} @t{"test_conf_parser_cmd.h"}
+
+@b{static} @b{struct} my_args_info args_info;
+
+@b{int}
+main (@b{int} argc, @b{char} **argv)
+@{
+  @b{struct} test_conf_parser_cmd_parser_params *params;
+  
+  @r{@i{/* initialize the parameters structure */}}
+  params = test_conf_parser_cmd_parser_params_create();
+  
+  @r{@i{/* }}
+@r{@i{     initialize args_info, but don't check for required options}}
+@r{@i{     NOTICE: the other fields are initialized to their default values}}
+@r{@i{  */}}
+  params->check_required = 0;
+
+  @r{@i{/* call the config file parser */}}
+  @b{if} (test_conf_parser_cmd_parser_config_file
+      (@t{"../../tests/test_conf2.conf"}, &args_info, params) != 0)
+    exit(1);
+
+  @r{@i{/* }}
+@r{@i{     override config file options,}}
+@r{@i{     do not initialize args_info, check for required options.}}
+@r{@i{  */}}
+  params->initialize = 0;
+  params->override = 1;
+  params->check_required = 1;
+
+  @r{@i{/* call the command line parser */}}
+  @b{if} (test_conf_parser_cmd_parser_ext (argc, argv, &args_info, params) != 0)
+    exit(1) ;
+
+  printf (@t{"value of required: %s}\n@t{"}, args_info.required_arg);
+  printf (@t{"value of string: %s}\n@t{"}, args_info.string_arg);
+  printf (@t{"value of no-short_given: %d}\n@t{"}, args_info.no_short_given);
+  printf (@t{"value of int: %d}\n@t{"}, args_info.int_arg);
+  printf (@t{"value of float: %f}\n@t{"}, args_info.float_arg);
+
+  @r{@i{/* release memory */}}
+  test_conf_parser_cmd_parser_free (&args_info);
+  free (params);
+
+  @b{return} 0;
+@}
+
+@end example

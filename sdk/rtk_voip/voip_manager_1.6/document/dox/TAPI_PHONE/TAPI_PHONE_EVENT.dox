@@ -1,0 +1,39 @@
+// ============================================================
+
+/**
+ * @page VOIP_PHONE_Event Events 
+ * @ingroup TAPI_PHONE_EVENT 
+ * The interfaces in this group are used to retrieve or flush events, whose 
+ * type are DTMF, hook (SLIC/DAA), energy, DECT, FAX/Modem, RFC2833, and DSP. <br> 
+ * We also provide a 'fd' named @ref g_VoIP_Mgr_FD to help select() waiting 
+ * for events, and call manager (e.g. SIP) can use it to handle events quickly. <br>
+ * <br>
+ * There are two sets of interfaces, and main difference is usage convention 
+ * that retrieves events centrally or distributively. <br>
+ * In case of central usage convention, call manager retrieve events in its 
+ * main loop, and do reaction to an event. <br>
+ * In case of distributive usage convention, a certain state uses interfaces 
+ * to retrieve desired events. A scenario may be: <br>
+ *  - 1. Standby state: Only wait for off-hook event. <br>
+ *  - 2. Dialing state: Only wait for DTMF events to dial. <br>
+ *  - 3. Conversation state: Only wait for on-hook event. 
+ * 
+ * In fact, our kernel implement central usage convention, and distributive one 
+ * is a set of wrapper to be compatible with older interfaces. 
+ * Thus, one should decide to choose one according to call manager architecture. 
+ * <br>
+ * Two sets of functions are summarized as following: <br>
+ * 1. central usage convention
+ *  - @ref rtk_GetVoIPEvent 
+ *  - @ref rtk_FlushVoIPEvent 
+ * 
+ * 2. distributive usage convention
+ *  - @ref rtk_GetSlicEvent 
+ *  - @ref rtk_GetDaaEvent
+ *  - @ref rtk_GetDectEvent 
+ *  - @ref rtk_GetDspEvent 
+ *  - @ref rtk_SetFlushFifo 
+ *
+ * 
+ */ 
+

@@ -1,0 +1,72 @@
+.\" Process this file with
+.\" groff -man -Tascii oamd.1
+.\"
+.TH OAMD 1 "MAR 2012" Linux "User Manuals"
+.SH NAME
+oamd \- ITU-T Y.1731 maintenance entity end-point daemon
+.SH SYNOPSIS
+.B oamd [-c
+.I path to alternative configuration XML file
+.B ]
+.B [-m
+.I path to alternative meg XML file
+.B ]
+.B [-x
+.I server MEP, i.e., turn of the CCM sending.
+.B ]
+.B [-i
+.I MIP.
+.B ]
+.B [-n
+.I Put 0 for the timeout poll/select, i.e., no-block (only for test purposes)
+.B ]
+.B [-s select/poll
+.I Switch between select, and poll (only for test purposes)
+.B ]
+.B ...
+.SH DESCRIPTION
+.B 
+Primary function of Y.1731 OAM protocol is to provide fault detection
+services for Ethernet networks, such as loss of connectivity, bit
+errors, or timing deviations. Y.1731 pro-actively verifies the
+connectivity by monitoring OAM messages coming from remote entities in
+the network. Upon an error an alarm is raised.
+
+Y.1731 can perform in-service and out-of-service tests in order to
+diagnose the network. In-service tests can be used to verify the path
+integrity and for the identification of the on-path forwarding
+entities. Out-of-service tests can be used for tasks such as measuring
+the throughput of an unloaded path
+
+Y.1731 can measure the loss, one-way delay, two-way delay, delay
+variation, and throughput.
+
+.SH OPTIONS
+.IP -c
+Path to alternate configuration XML file.
+.IP -m
+Path to alternate MEG XML file.
+.IP -x
+server MEP, i.e., turn of the CCM sending.
+.IP -i
+MIP.
+.IP -s
+Switch between select, and poll.
+.SH NOTE
+The level of the debug printing and location can be changed in the
+config.xml. More information about that in the configuration file.
+
+.SH NOTE 
+Use this only with dynamic setting set to off or to id in config
+
+.SH BUGS
+See details about the current bugs from the tracker in URL
+https://vcs.hiit.fi/trac/GoodNet/
+
+.SH AUTHOR
+Samu Varjonen <samu dot varjonen at hiit dot fi>
+
+.SH "SEE ALSO"
+.BR oamtool (1),
+.BR oamping (1)
+.BR oamtrace (1)

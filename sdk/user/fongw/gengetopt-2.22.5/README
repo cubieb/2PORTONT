@@ -1,0 +1,72 @@
+
+  GNU Gengetopt
+
+This program generates a C function that uses /getopt_long/ function to
+parse the command line options, to validate them and fills a /struct/ .
+
+Thus your program can now handle options such as:
+
+myprog --input foo.c -o foo.o --no-tabs -i 100 *.class
+
+And both long options (those that start with --) and short options
+(start with - and consist of only one character) can be handled. For
+standards about short and long options you may want to take a look at
+the GNU Coding Standards <http://www.gnu.org/prep/standards_toc.html> .
+
+gengetopt is *free software*. Please see the file LICENSE and COPYING
+for details.
+Notice that: Use of gengetopt _does not impose any particular license on
+the generated code: the code generated is not under any license_.
+
+For installation, please read the INSTALL file.
+
+For documentation, please read the info documentation.
+
+gengetopt is perfect if you are too lazy (like me) to write all stuff
+required to call getopt_long, and when you have a
+program and wish it took options.
+
+Generated code works if you use /GNU Autoconf/ or /GNU Automake/ .
+
+Gengetopt has originally been written by *Roberto Arturo Tena Sanchez*
+<arturo@directmail.org <mailto:arturo@directmail.org>>, and currently
+maintained by *Lorenzo Bettini* http://www.lorenzobettini.it .
+
+Gengetopt is a GNU <http://www.gnu.org> program and its main home page
+is at GNU site:
+http://www.gnu.org/software/gengetopt/gengetopt.html
+
+    Download
+
+You can download it from GNU's ftp site:
+ftp://ftp.gnu.org/gnu/gengetopt/ or from one of its mirrors (see
+http://www.gnu.org/prep/ftp.html ).
+
+    Anonymous Git Checkout
+
+This project's git repository can be checked out through 
+the following clone instruction:
+
+     git clone git://git.savannah.gnu.org/gengetopt.git
+
+Further instructions can be found at the address:
+
+http://savannah.gnu.org/projects/gengetopt.
+
+And the git repository can also browsed on-line at
+
+http://git.savannah.gnu.org/cgit/gengetopt.git.
+
+Since version 2.22.4 of Gengetopt the CVS repository was 
+dismissed in favor of Git (http://git-scm.com/). 
+
+
+
+*Lorenzo Bettini*
+http://www.lorenzobettini.it
+
+gengetopt is free software. See the file LICENSE and COPYING for copying
+conditions. Anyway we won't get offended if you send us a postcard :-)
+
+C/C++ files are formatted with /GNU Source-highlight/
+(http://www.gnu.org/software/src-highlite/ ) by Lorenzo Bettini.

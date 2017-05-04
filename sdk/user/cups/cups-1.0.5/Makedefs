@@ -1,0 +1,138 @@
+#
+# "$Id: Makedefs.in,v 1.1 2011/02/22 15:28:56 cathy Exp $"
+#
+#   Common makefile definitions for the Common UNIX Printing System (CUPS).
+#
+#   Generated automatically from Makedefs.in by configure.
+#
+#   Copyright 1997-1999 by Easy Software Products, all rights reserved.
+#
+#   These coded instructions, statements, and computer programs are the
+#   property of Easy Software Products and are protected by Federal
+#   copyright law.  Distribution and use rights are outlined in the file
+#   "LICENSE.txt" which should have been included with this file.  If this
+#   file is missing or damaged please contact Easy Software Products
+#   at:
+#
+#       Attn: CUPS Licensing Information
+#       Easy Software Products
+#       44141 Airport View Drive, Suite 204
+#       Hollywood, Maryland 20636-3111 USA
+#
+#       Voice: (301) 373-9603
+#       EMail: cups-info@cups.org
+#         WWW: http://www.cups.org
+#
+
+#
+# Programs...
+#
+
+AR	=	/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/rsdk-linux-ar
+AWK	=	mawk
+CC	=	/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/rsdk-linux-gcc 
+CHMOD	=	/bin/chmod
+CP	=	/bin/cp
+DSO	=	$(CC) -Wl,-soname,$@ -shared $(OPTIM) -o
+HTMLDOC	=	
+LN	=	/bin/ln -sf
+MKDIR	=	/bin/mkdir -p
+MV	=	/bin/mv
+NROFF	=	/usr/bin/nroff
+PACK	=	/bin/gzip -fv9
+RANLIB	=	/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/rsdk-linux-ranlib
+RM	=	/bin/rm -f
+SED	=	/bin/sed
+SHELL	=	/bin/sh
+
+#
+# Libraries...
+#
+
+LIBCUPS	=	libcups.so.1
+LIBCUPSIMAGE =	libcupsimage.so.1
+LIBJPEG	=	
+LIBPNG	=	
+LIBTIFF	=	
+LIBZ	=	
+
+#
+# Program options...
+#
+# OPTIM   defines the common compiler optimization/debugging options.
+# OPTIONS defines other compile-time options (currently only -dDEBUG for
+#         extra debug info)
+#
+
+ARFLAGS	=	crvs
+CFLAGS	=	-D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -DUSE_LIBMD5 -I/home/gangadhar/2PORTONT/sdk/include -I/home/gangadhar/2PORTONT/sdk/lib/libmd5 -Dlinux -D__linux__ -Dunix -DEMBED -D_USE_RSDK_WRAPPER_ -D_LINUX_2_6_ -D_LINUX_2_6_30_ -include linux/config.h -I/home/gangadhar/2PORTONT/sdk -include /home/gangadhar/2PORTONT/sdk/autoconf.h -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/system/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/romeDriver -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/tr142/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/src/app/omci_v1/API $(OPTIM) -I.. $(OPTIONS)
+DSOLIBS	=	$(LIBJPEG) $(LIBPNG) $(LIBTIFF) $(LIBZ)
+IMGLIBS	=	 -lm
+LDFLAGS	=	 -L/home/gangadhar/2PORTONT/sdk/lib/librtk -L/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/object/src/app/lib $(OPTIM)
+LIBS	=	-L../cups -lcups $(NETLIBS) -ldl -lcrypt 
+NETLIBS	=	 -lnsl
+OPTIM	=	-fPIC -O2
+OPTIONS	=
+
+#
+# Formatted man page extension...
+#
+
+CAT	=	gz
+
+#
+# Directories...
+#
+# The first section uses the GNU names (which are *extremely*
+# difficult to find in a makefile because they are lowercase...)
+# We have to define these first because autoconf uses ${prefix}
+# and ${exec_prefix} for most of the other directories...
+#
+# This is immediately followed by definition in ALL CAPS for the
+# needed directories...
+#
+
+bindir		=	${exec_prefix}/bin
+datadir		=	${prefix}/share
+exec_prefix	=	${prefix}
+includedir	=	${prefix}/include
+infodir		=	${prefix}/info
+libdir		=	${exec_prefix}/lib
+libexecdir	=	${exec_prefix}/libexec
+localstatedir	=	${prefix}/var
+mandir		=	${prefix}/man
+oldincludedir	=	/usr/include
+prefix		=	/usr
+sbindir		=	${exec_prefix}/sbin
+sharedstatedir	=	${prefix}/com
+srcdir		=	.
+sysconfdir	=	${prefix}/etc
+top_srcdir	=	.
+
+BINDIR		=	${exec_prefix}/bin
+DATADIR		=	/usr/share/cups
+INCLUDEDIR	=	$(includedir)
+LIBDIR		=	$(libdir)
+LOCALEDIR	= 	/usr/share/locale
+MANDIR		=	${prefix}/man
+SBINDIR		=	${exec_prefix}/sbin
+SERVERROOT	= 	/var/cups
+
+#
+# Rules...
+#
+
+.SILENT:
+.SUFFIXES:	.a .c .gz .h .o .z .1 .5 .8
+.c.o:
+	echo Compiling $<...
+	$(CC) $(CFLAGS) -c $<
+.1.z .5.z .8.z .1.gz .5.gz .8.gz:
+	echo Formatting $<...
+	$(NROFF) -man $< >t
+	$(PACK) t
+	-mv t.$(CAT) $@
+
+#
+# End of "$Id: Makedefs.in,v 1.1 2011/02/22 15:28:56 cathy Exp $"
+#

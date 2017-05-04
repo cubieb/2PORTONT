@@ -1,0 +1,14 @@
+RG_MODULE_DIR:=rg
+RG_MODULE_INCLUDE:=$(APOLLODIR)/romeDriver
+
+RG_FLAG:= -I$(RG_MODULE_INCLUDE) -I$(APOLLODIR)/sdk/src/app/diag_rtk/include
+
+RG_MODULE_OBJ:= 
+RG_MODULE_OBJ+= $(RG_MODULE_DIR)/rtk_rg_internal.o
+RG_MODULE_OBJ+= $(RG_MODULE_DIR)/rtk_rg_fwdEngine.o
+RG_MODULE_OBJ+= $(RG_MODULE_DIR)/rtk_rg_liteRomeDriver.o
+RG_MODULE_OBJ+= $(RG_MODULE_DIR)/rtk_rg_debug.o
+
+RG_FLAG+= -DCONFIG_APOLLO
+
+

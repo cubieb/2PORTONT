@@ -1,0 +1,95 @@
+﻿/*html {overflow-y: scroll}*/
+a {
+    color: #5e5e5e;
+    text-decoration: none;
+}
+body {
+    font: 12px/1.4 Arial,toTahoma,Helvetica,sans-serif;
+    background: #ebebeb;
+}
+input, select, textarea {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0 3px;
+}
+input[type="text"],input[type="password"],select{
+    border: 1px solid #7e9db9;
+    padding: 1px;
+    margin-left: 5px;
+    height: 22px;
+    font-size: 12px;
+    font-weight: normal;
+}
+/**start clear fix**/
+.clearfix:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+.clearfix {
+    display: inline-block;
+}
+* html .clearfix {
+    height: 1%;
+}
+.clearfix {
+    display: block;
+}
+.button_inline{
+    float: left;
+    padding-right: 10px;
+}
+
+/**start common table**/
+.data_common {
+    padding: 8px;
+    background: #fff;
+    border: 1px solid #D3D3D3;
+    border-top: 0;
+}
+.data_common_notitle{
+    border-top: 1px solid #D3D3D3;
+    margin-top: 10px;
+}
+.data_common_center{
+    text-align: center;
+}
+.data_common table {
+    border-collapse: separate;
+    width: 100%;
+    border-spacing: 2px;
+    background: #fff;
+}
+.data_common table td,
+.data_common table th {
+    background: #F5F5F5;
+    padding: 8px 6px;
+}
+.data_common table th {
+    font-weight: bold;
+}
+.data_common table th em{
+    font-weight: normal;
+    color: #666;
+}
+.data_vertical table {
+    border-spacing: 1px;
+}
+.data_vertical table th {
+    background: #e5e5e5;
+    padding: 5px 3px;
+}
+.data_vertical table th,
+.data_vertical table td {
+    text-align: center;
+	font-size: 11px;
+	padding: 5px 1px;
+}
+.data_vertical table td{
+	/*width: 30px;*/
+}
+/**end common table**/

@@ -1,0 +1,9 @@
+# test_redef_help_cmd.ggo
+
+# test redefinition of help and version options
+
+package "test_redef_help"
+version "1.0"
+
+option "height"      h "height" no
+option "vavoom"      V "vavoom instead of version" no

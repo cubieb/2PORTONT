@@ -1,0 +1,5 @@
+#! @SHELL@
+
+# the next program must exit with error
+
+if $* ./test_multiple_parsers --first-cmd="-M400 -a10 --multi 100\,200\,300" --second-cmd="-a20 -b10 --my-multi=a\,b\,c\,d\,e\,f" -F"-M500 -M600" -S"--my-multi g"; then true; else false; fi

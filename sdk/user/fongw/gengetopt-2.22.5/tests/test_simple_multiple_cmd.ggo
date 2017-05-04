@@ -1,0 +1,8 @@
+package "test_simple_multiple"
+version "1.0"
+
+# test_simple_multiple_cmd.ggo
+
+# test options that can be given more than once
+
+option "string"      s "string option" string default="foo" optional multiple

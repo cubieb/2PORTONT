@@ -1,0 +1,6 @@
+#! @SHELL@
+
+# the next program must exit with error
+
+if $* ./test_values -s fo ; then false; else if $* ./test_values -S fooa ; then false; else if $* ./test_values --string-values-no-short fooa ; then false; else if $* ./test_values --multistring-values-no-short bar,fooa ; then false; else true; fi fi fi fi
+

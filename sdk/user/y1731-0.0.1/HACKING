@@ -1,0 +1,693 @@
+ABOUT THIS DOCUMENT
+===================
+
+This document contains a number of rules for the GoodNet project and
+related projects. The intention of this document is to provide
+everyone with a common understanding of the standards and rules in
+the project. Please read these rules carefully. With your first
+commit to the project repository you implicitly indicate that you
+read and understood all of the rules in this document.
+
+The intention of this document is not to make your life as a programmer
+harder. On the contrary: everyone wants and deserves to work with
+good code. Only if you (you personally) adhere to the following
+rules, we can ensure code quality and joy while working with the
+code. You are in this project for two reasons: to learn and to work.
+Take your time to learn how to do things properly and take your time
+to do things properly. Reading this document completely is your
+first step towards this.
+
+This document is a working document. Feel free to add more information
+if you feel that we missed an important topic. Put your name to the
+list of authors above if you made a considerable addition.
+
+EVERYTHING in this document is important. We would not take the
+effort to write anything down if we wouldn't care about it with
+every pore. Please read every single line in this document. It may
+take some time but it will help you to fit into the project neatly.
+
+TODO
+====
+
+- xx
+
+
+HOWTO svn VCS
+=============
+
+C CODING QUALITY
+================
+
+GoodNet is a project written in C. There are several best practices
+and language constructs in C that can help you improve your code
+quality considerably. Since everyone in this project depends on the
+quality of your code we expect you to write it carefully as much
+as you expect everyone else to write their code carefully. No one
+likes to work in a mess. Please don't leave one.
+
+Some of the following programming guidelines (marked with an *) are
+taken from a book by Robert Martin: "Clean Code". Ask your adviser
+for the book if you want to read more. Some rules are basic C
+programming best practices and some are even standard C language
+constructs. Take your time to go through these rules. They will
+help you become a better programmer and they will protect you from
+messy code.
+
+  The boy scout rule*
+  -------------------
+
+  "Leave the camping ground cleaner than you found it". This is a
+  simple yet powerful rule. We try to work with code in a professional
+  manner. However, you may encounter code parts that can be improved.
+  Don't take these code parts as justification to also produce messy
+  code but improve them. Try to leave the code in a better shape
+  than you encountered it. Your efforts will be noticed by
+  your adviser and will not be forgotten.
+
+  The compiler is your friend:
+  ----------------------------
+
+  The gcc compiler is a great tool that can save you hours of
+  run-time debugging if you decide to listen to it. In this project
+  we use a number of gcc warning options that will provide you
+  detailed warning output in some cases in which the compiler
+  suspects something is wrong. Since we use -Werror these warnings
+  will be treated as errors, breaking compilation. Be sure to handle
+  these warnings in a proper way because otherwise you may mask
+  serious errors and will make them really hard to debug. Just doing
+  a change to silence the compiler is not an option because the
+  code will soon break and the code base will deteriorate. Instead
+  you should try to understand the underlying problem that the
+  compiler complains about (not the symptom). Let me make an example:
+
+    Cast align warnings tell you whenever two structs that are not
+    compatible are assigned and casted. There are two things you
+    can do about a cast align warning. You can either cast the
+    source struct to void* and the compiler will not notice the
+    problem anymore and won't produce the warning. Although this
+    option suppresses the warning, this is NOT intended programmer
+    behavior. The right way to do it is to look at the structs,
+    read about the problem in Internet resources, think about the
+    problem and rearrange the structs using unions and such. Although
+    this takes some time you will have a proper solution to the
+    problem and you will not have ugly surprises (e.g., hard to
+    track run time errors.)
+
+  So the main point of the above section is: Don't take the easy
+  path that only treats the symptom. Cure the cause. This will save
+  you trouble in the long run. Listen to the compiler and take its
+  warnings seriously.
+
+  Tell your friend (the compiler) what you are doing
+  --------------------------------------------------
+
+  C has a number of language constructs that do not provide
+  functionality but rather enable the compiler to do some sanity
+  checks on your and others' codes. These little helpers are the
+  keywords "static" and "const" in function definitions/declarations.
+  If you have only been working in small projects (e.g. homework
+  assignments) you probably haven't really used these mechanisms
+  because you don't see the necessity. However in larger projects
+  that live for quite some time, these keywords are not just useful
+  but essential because they can help the compiler detect errors
+  that happen when different persons work with the same code base.
+  Learn what these keywords do and use them appropriately! A short
+  explanation will help you understand why we rely on these little
+  helpers.
+
+    Const: const tells the compiler that something is not supposed
+    to be changed. It can be applied to variables and function
+    parameters. When writing a new function, take some time to
+    consider which input parameters may be changed within this
+    functions and which shouldn't be changed. Add const wherever
+    you believe that a parameter should not be touched. Use const
+    generously!  Const can help you to discover errors like unwanted
+    modification of variables, function calls with mixed up function
+    parameters, etc. Missing a const is considered an error although
+    the code works. Please take care.
+
+    Static functions: Making a function static tells the compiler
+    that it is only used in the C file in which it is defined. This
+    makes it easy for the compiler to find functions that are used
+    nowhere. Funding unused functions can be very hard in code that
+    is maintained by a number of people. Unused functions are dead
+    code that is not tested anymore. They should be removed because
+    someone could try to use them again not knowing that the function
+    wasn't tested for months and does something slightly wrong.
+    Moreover, the keyword static tells other programmers: Stop! You
+    are not supposed to use this function in another file. This
+    helps programmers to identify the functionality that is supposed
+    to be used within a module and the functionality that the module
+    (C file) provides as interface.This distinction is essential
+    if you try to maintain data integrity (cf. Section about Header
+    files).
+
+  Please make sure that you help the compiler and your co-workers
+  in doing a good job. Use const and static properly.
+
+  Header Files
+  ------------
+
+  Since C headers are included from many other files, the contents
+  of the *.h files must be selected carefully. Otherwise the global
+  namespace of C is polluted with tons of globally visible declarations
+  and definitions. These globally visible declarations and definitions
+  are not bad in the first place but they make working with a C
+  project, understanding the project, and maintaining the project
+  a pain.
+
+  A header file serves a single purpose: it is an interface. It
+  declares symbols for EVERY file that include the *.h file so that
+  the compiler knows what's in the *.c file. Three things that a
+  header file is NOT. A) An overview of the contents of the .c file
+  and B) a good place to define stuff that's used in the .c file,
+  C) a good place to make forward declarations for the C file.
+  Hence, header files should ONLY contain things of the *.c file
+  that are used by OTHER *.c files. Don't put stuff in the header
+  file that is used only in the C file. Put that stuff in the C
+  file and make it static.
+
+  Selectively putting stuff into header files helps understanding
+  the code because people can just look at the header file and see
+  what functions they are supposed to use when working with that
+  header file. Everything in there is free for use and you don't
+  have to worry that you mess up by calling the wrong functions.
+
+  Selectively putting stuff into header files also prevents namespace
+  conflicts.
+
+  Copy & paste and external code
+  ------------------------------
+
+  Copying code from somewhere else (within the project as well as
+  from outside the project) is a bad habit and an absolute no-go.
+  First, copying from within the project is a sign of poor software
+  design. If you need a particular piece of code in a different
+  context consider generalizing the function that provides the code
+  instead of just copying it. Copy & paste programming leads to
+  duplicated code. Duplicated code is often redundant and doubles
+  the maintenance overhead. Moreover, copied code often does not solve
+  the problem well and uses names and types that are not appropriate
+  for solving the problem. Copy & pasting code is bad. Don't do it.
+  If you feel the urge to copy code from somewhere within the
+  project, ask your adviser first!
+
+  Copying code from outside the project is even worse. By doing it,
+  you inject code for which someone else can claim authorship into
+  the project. We try to keep our licensing situation (GPL, LGPL,
+  etc.) as straightforward as possible. Mixing code from different
+  (possibly unknown) sources with unknown or incompatible licenses
+  puts the whole project in jeopardy. This applies to code from
+  other projects but also to example code found in wikis and forums.
+  If you think you need to copy code from somewhere else inform your
+  adviser about it BEFORE you do it. Please take this very seriously.
+
+  On naming*
+  ----------
+
+  Names (function names, file names, parameter names, variable
+  names) are important: It's one of the core task of a programmer
+  to use good names. Names should be consistent with the rest of
+  the code base.
+
+  Names should convey the intention of the code. Names should be
+  unambiguous (show real differences between things)
+
+  Be careful with unspecific names containing words like info, data,
+  etc. they just confuse people. Be as specific as possible.
+
+  Use shorter names for things that are only used in a very restricted
+  context (just a few lines). The larger the context, the longer
+  the names - things should not be ambiguous in a large context.
+  Single letter names (i, j, k, ...) are reserved for integer counter
+  variables only.
+
+  We use underscores (_) to structure names - No camelCaps!
+
+  On Functions*
+  -------------
+
+  Functions should be short - period. Long functions are a sign
+  that you try to do too much within a function. Long functions are
+  error magnets because they are hard to understand and they lack
+  proper problem boundaries. They are a pain to maintain, ... you
+  got it: they are pure evil. Try to keep your functions simple and
+  short. If you write a function with more than 30 lines: reconsider
+  and try to split it up into sub-functions. If you write a function
+  with more 50 lines tell your adviser about it and discuss its
+  necessity with him. As usual you will find functions with more
+  than 50 lines in the code. The existence of these behemoth functions
+  is, of course, no justification for introducing more long functions
+  but an encouragement to split up these monsters.
+
+  Likewise, functions with many arguments are error magnets, too.
+  Again they are hard to maintain, provoke errors, ... and are evil,
+  too. If you feel the need to write a function with more than four
+  parameters: reconsider and try to find out why you have so many
+  parameters there. If you write a function with six or more
+  parameters, inform you adviser.
+
+  Short functions with good names are easy to understand, make
+  finding errors simpler and help to prevent bugs and bad code.
+  Everyone else dislikes long functions as much as you do. Don't
+  pester others with them.
+
+  On Types
+  ---------
+
+  Be very careful which type you use for a variable. Be very careful
+  about the signedness of a variable. Short, int, and long are
+  signed types by default, meaning that they are designed to hold
+  positive and NEGATIVE values. Don't use signed types if you only
+  expect positive values. Mismatches in signedness are often the
+  cause for security weaknesses like buffer overflows.
+
+  Use typedefs where appropriate. However, note that typedefs are
+  not a tool for saving keystrokes. Don't define typedefs as
+  shorthands for structs. Use typedefs when you want to convey
+  additional semantics. Sometimes typedefs are useful (e.g. for a
+  special data type for which the concrete type may change in the
+  future (short, long) or if a generic type would be misleading:
+  some things stored as ints are not necessarily integers.
+
+  Prefer enums over long lists of preprocessor defines. The compiler
+  will see the enums and it can give you useful hints. In general,
+  prefer to not use the preprocessor but the compiler. The compiler
+  is much smarter.  Rather use global constants than preprocessor
+  defines. They are typed and help the compiler make smart choices.
+
+  On Magic Numbers
+  ----------------
+
+  Magic numbers are numbers that pop up in the code without context.
+  Almost every number you find in code can be considered a magic
+  number. Let me give an example.
+
+    unsigned int special_prize[52];
+    unsigned int extra_winner;
+    unsigned int i;
+
+    extra_winner = rand() % 52;
+
+    for (i = 0; i < 52; i++) {
+        special_prize[i] = extra_winner;
+    }
+
+  What does the number 52 stand for? Is the first 52 related to the
+  second one? If I decide to choose the winner from 56 numbers do
+  I have to change the second occurrence of 52 as well? 52 is
+  obviously a magic number. The use of definitions and constants
+  can make the code much easier to understand:
+
+    unsigned int special_prize[WEEKS_PER_YEAR];
+    unsigned int extra_winner;
+    unsigned int i;
+
+    extra_winner = rand() % NUM_CLIENTS;
+
+    for (i = 0; i < WEEKS_PER_YEAR; i++) {
+        special_prize[i] = extra_winner;
+    }
+
+  If a programmer had changed all occurrences of 52 in the first
+  example above to 56 the result would have been pure nonsense. In
+  the second example it is clear what happens. The example shows
+  an extreme case of a magic number but small numbers like 1 and 2
+  can also be magic numbers.
+
+  Another bad thing about magic numbers is that it is hard to grep
+  or search for them. Try to grep for 1 or 2 in your source tree.
+  You'll find way too much. If you use a good constant name you can
+  easily search for it and identify the relevant code parts.
+
+  Therefore: NO magic numbers. Nowhere.
+
+CODING STYLE
+============
+
+C code formatting and style:
+----------------------------
+
+This project uses the Kernighan & Ritchie (K&R) coding style in the
+one true brace style (1TBS) variant. Indentation width is four
+spaces.
+
+K&R style was chosen because it is the most common style and the
+one used by the creators of C. Insisting on another style is thus
+inherently heretical.
+
+Here is a quick reminder of what K&R style means in practice:
+
+- spacing:
+  In general use spaces generously, i.e. place a space
+
+    * between keywords and '(' (except for sizeof),
+    * between ')' and '{',
+    * around operators (+, *, /, &, &&, ||, etc.),
+    * after ',' - for example in function arguments.
+
+  but avoid spaces
+
+    * between function names and '(',
+    * inside '()'.
+
+- brace placement:
+  Opening braces should be kept on the same line as the corresponding
+  statement, except for functions where the opening brace is placed
+  on the next line.
+
+  Optional '{}' for control statements (if/for/while/..) should
+  always be added.  This is the 1TBS variant of K&R style.
+
+- case statements are not indented separately, they remain at the
+  same level as the corresponding switch statement.
+
+- The function type should be kept on the same line as the function
+  name.
+
+In addition to K&R style
+------------------------
+
+- line length:
+  Long lines (>80 characters) should be broken at suitable places if
+  and only if doing so improves readability. Broken lines should not
+  be mechanically indented by four spaces. Instead they should be
+  indented for optimum readability. For example function arguments
+  placed on the next line should align with the first character
+  after the '('.
+
+- prettyprinting:
+  In cases where this improves readability, vertical alignment
+  around operators etc. should be applied.
+
+Remember that code should be formatted consistently to aid readability,
+especially for people unfamiliar with the code.
+
+If in doubt you can use the uncrustify tool to format code for you.
+It should do the right thing. A suitable configuration file that
+was used to initially reformat y1731 can be found in
+'tools/dot_uncrustify.cfg'.
+
+Here is an example piece of C code to showcase K&R style as used
+in y1731. Pay special attention to spacing and the placement of
+parentheses:
+
+
+#include <stddef.h>     // System #includes come first, use <> and
+                        // are separated by an empty line from
+#include "header.h"     // local #includes, which use "".
+
+struct whatever {
+    /* Observe how the variable names and the stars are aligned. */
+    int            var;
+    float         *var2;
+    char          *var3;
+    struct ip_pkt  pkt;
+}
+
+/* Function declarations are broken down to avoid overly long lines. */
+static void a_function_with_a_long_name(struct ip_pkt *pkt,
+                                        struct opaque op,
+                                        int value)
+{
+    int i;
+
+    /* Notice that the = signs are aligned. */
+    pkt->destination_addr = local_destination;
+    pkt->source_addr      = local_source;
+    pkt->other_member    += value;
+
+    switch (value) {
+    case CONSTANT_FOO:
+        transmogrify(value);
+    case CONSTANT_BAR:
+        inspect(&pkt);
+    }
+
+    /* Note where spaces are placed and left out in this block. */
+    if (value <= CONSTANT1 && value >= CONSTANT2) {
+        some_function(addr, op, value);
+    } else {
+        for (i = 0; i < 100; i++) {
+            some_other_function(addr + i, hl / i,
+                                strange_name_function(sizeof(op.member)));
+        }
+    }
+}
+
+CODING CONVENTIONS
+==================
+
+- Do NOT use typedefs for structures, enumerations or pointers.
+  Typedefs, in these situations, do NOT improve code readability.
+
+- Comment only in English. Do not use special characters (umlauts,
+  accents, etc.) even if your name contains one and you add your
+  name to the authors list. Use ASCII compatible workarounds. This
+  may have some ugly side effects with some editors.
+
+- There should be a doxygen header for EVERY function (see
+  DOCUMENTATION)
+
+- Don't invent your own coding style. It will give the code an
+  ununified look.
+
+- Use under_scores instead of CamelCase
+
+- y1731 code should use the prefix "y1731_" in all functions and
+  global variables
+
+- Use global variables only with GOOD reason. Ask your adviser
+  before introducing a new global variable.
+
+- USE ASCII encoding, no fancy symbols!
+
+- Do not make unreadable code by nesting code too much:
+
+  if (foo) {
+      if (bar) {
+          if (hello) {
+              confuse_me();
+          }
+      }
+  }
+
+  Instead, join the conditional expressions (foo && bar && hello)
+  or use goto (goto skip;). However, use goto only for error handling.
+
+- Declare variables right after beginning brace, not in the middle
+  of the code:
+
+  int foo {
+      int i;  /* integers declared in the beginning of the function */
+      char c;
+
+      bar();
+
+      for (i = 0; i < 100; i++) {
+          int x; /* This is fine because it is after the beginning
+                  * brace of the loop. */
+          hello(i, x);
+      }
+  }
+
+- All functions should return an error value instead of "ok" value. That, is
+  zero for success and non-zero for failure.
+
+EMACS
+=====
+
+To adjust emacs to the right spacing conventions for the code, you can
+add the following lines to your .emacs configuration file:
+
+(setq c-default-style "k&r")
+(setq-default c-basic-offset 4)
+(setq-default indent-tabs-mode nil)
+
+DEBUGGING
+=========
+
+XXX TODO
+
+COMMENTING AND DOCUMENTING THE CODE
+===================================
+
+Doxygen is now used for documenting y1731. Manual for how to use doxygen
+documentation, is found from here:
+http://www.stack.nl/~dimitri/doxygen/manual.html
+
+To create doxygen documentation in HTML format, execute "make doxygen".
+Doxygen will create documentation under doc/doxy/html.
+You can view the generated documentation with
+"firefox doc/doxy/html/index.html"
+
+The aforementioned Doxygen manual has detailed instructions on how to document
+the code. We go the basics through next.
+
+First of all, Doxygen supports different commenting styles. We use the JavaDoc
+style in this project. In this style, every Doxygen comment starts and ends with
+constant character sequence. To start a commenting block use "\**", and to end a
+commenting block use "*/". Example 1:
+
+/** The number of items in the list. */
+int count;
+
+In example 1 we have a variable named count to which we wish to add a Doxygen
+comment "The number of items in the list." As a general rule, a Doxygen comment
+is bound to the next item. So if in Example 1 we would have had "int count2"
+just after count, the Doxygen comment would have been bound only to "int count".
+
+If you wish to add a Doxygen comment on the same line that the variable is,
+you'll have to to put an additional "<" marker in the comment block. Example 2:
+
+int count; /**< The number of items in the list. */
+
+This has the same effect as Example 1. Remember that the comment with the "<"
+marker has to start from the same line as the variable. Using the special marker
+"<" one can comment also structure members. Example 3:
+
+/** A OAM FROM parameter. */
+struct oam_from {
+     oam_tlv_type_t type;         /**< type code for the parameter */
+     oam_tlv_len_t  length;       /**< length of the parameter contents in bytes
+ */
+     uint8_t        address[16];  /**< IPv6 address */
+} __attribute__ ((packed));
+
+Here the whole structure gets Doxygen comment "A OAM FROM parameter", and the
+members get commented as illustrated. The structure members can also be
+commented using the plain /** ... */ comment block by placing the comment block
+on the line before the member, but the "<" marker saves some space. This does it
+for variable commenting, lets move onto function commenting. Example 4.
+
+/**
+ * Sets a type for a host association. Sets the type for a host association
+ * and validates the type number. If the type number is illegal, the @c entry
+ * is left untouched.
+ *
+ * @param entry       a pointer to a host association entry.
+ * @param type_number a type number to be set for @c entry.
+ * @return            zero on success, non-zero else.
+ * @note              the entry must not be NULL
+ * @see               oam_clear_type()
+ */
+int oam_set_type(oam_ha_t *entry, int type_number);
+
+Notice how that whole commenting is just before the function block. The
+function commenting block contains three elements, the brief description, the
+description and the special commands starting with "@". The brief description
+is the first comment line which ends at the first dot followed by a space or new
+line. Thus, in example 4 the brief description is "Sets a type for a host
+association." The description consists of the brief description and the rest of
+the lines following the brief description before the special commands.
+
+The special commands comment the function parameters and the return value.
+Furthermore an extra note is added to this comment with "@note" and a reference
+to a related function with "@see". Notice how we refer to the function
+parameters in the description text with the special command "@c" Including this
+special command is by no way obligatory. It only makes the next word to be
+rendered using Courier instead of the default font. However, be careful not to
+add your own special commands by accidentally typing something like @entry.
+
+Function comment blocks must be placed to the c-source file.  Doxygen
+comment blocks have a tendency to bloat the code. Generally, if
+possible, place the doxygen comment in the header file instead of the
+c-file.  This applies to all Doxygen comments, not just function
+comments.
+
+Doxygen includes a special tag for todo items. The todo tag is "@todo". The todo
+tag can be placed anywhere in the code. When placed inside of a function, the
+todo item becomes a todo item for the respective function. When placed outside
+of a function, the todo item becomes a todo item for the whole file. To create
+a todo item for a variable, insert a @todo inside the variable's Doxygen comment
+block.
+
+Example 5 is an example of an todo item placed inside a function, in the middle
+of the code. Hence, this becomes a todo item for the whole function. Doxygen
+maintains a list that contains all the todo items of the project. Example 5.
+
+OAM_DEBUG("outgoing UPDATE ID=%u\n", update_id_out);
+/** @todo Handle this case. */
+if (update_id_out==0) {
+
+Entire files can be commented with the "@file" special tag as illustrated in
+Example 6. From example 6 we notice that Doxygen comments can also include
+simple HTML.
+
+/**@file
+ * This file defines various functions for handling OAM messages.
+ *
+ * @author  John Doe
+ * @version 1.0
+ * @date    11.01.2008
+ * @note    Distributed under <a href="http://www.gnu.org/licenses/gpl.txt">GNU/
+GPL</a>.
+ */
+
+Sometimes you can find yourself in a situation where you have a large number of
+repetitive comments. Say that you have similar type definitions which are nicely
+aligned in a header file. You could, of course, insert a normal Doxygen comment
+before (or after, using "<") every definition, but you just don't want to break
+the alignment for comments sake. lib/core/protodefs.h is a good example of
+that kind of file.
+
+To help in a situation like this, the y1731 project has a special file just for
+doxygen comments, i.e. it has no code whatsoever. The file is doc/doxygen.h.
+We can target comments from this file to another files using the "@file" special
+command. For example, to insert a Doxygen comment for the definition of
+OAM_NTF_INVALID_SYNTAX located in lib/oam/core/protodefs.h you can add the
+following comment block in doc/doxygen.h, example 7.
+
+/**
+ * @file lib/core/protodefs.h
+ * @def  OAM_NTF_INVALID_SYNTAX
+ *       Indicates that the OAM message received was invalid because...
+ */
+
+doc/doxygen.h is also a good place for declaring groups. Groups are declared
+with the "@defgroup" special tag. Example 8.
+
+/** @defgroup notification NOTIFICATION parameter values */
+
+To add members to a group, use the "@addtogroup" special tag together with the
+group name. Moreover, you need to use the special tag "@{" to start inclusion,
+and the special tag "@}" to stop the inclusion. example 9 illustrates how we can
+add members to the group declared in example 8.
+
+/** @addtogroup notification
+ * @{
+ */
+#define OAM_NTF_UNSUPPORTED_CRITICAL_PARAMETER_TYPE 1
+#define OAM_NTF_INVALID_SYNTAX                      7
+/* @} */
+
+The general JavaDoc style guide applies to y1731 project. This style guide is
+available at:
+http://java.sun.com/j2se/javadoc/writingdoccomments/index.html
+
+Remember that normal non-Doxygen comments are always valid. Thus if you need
+to comment something more specific to the code, use the regular
+
+/* comment here. */
+
+and
+
+// end of line comment here.
+
+commenting style.
+
+SUBMITTING PATCHES
+==================
+
+y1731 is still work in progress. The code is being constantly developed
+and it may be difficult to merge your contribution to the y1731 code.
+If you still want to submit patches to the y1731 project, build your
+patches against the main branch.  Please try the test matrix below at
+least partially before you contribute.
+
+
+CREATING A TARBALL OF THE SOURCE CODE
+=====================================
+
+There is a "make tarball" target which builds a tarball of the y1731 source
+code. It includes only the files which are necessary. 

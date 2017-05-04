@@ -1,0 +1,3 @@
+# wrong numeric value "hhh"
+
+option "noarg"       n "multiple option with no arg" values="180","hhh" int

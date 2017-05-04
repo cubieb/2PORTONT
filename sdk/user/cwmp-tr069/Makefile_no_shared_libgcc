@@ -1,0 +1,31 @@
+
+.EXPORT_ALL_VARIABLES:
+
+CWMP_ROOT=$(shell pwd)
+GSOAP_DIR=gsoaplib
+ALLSRC_ROOT=$(CWMP_ROOT)/../..
+
+CFLAGS = -mips1 -msoft-float -fPIC -Dlinux -D__linux__ -Dunix -DEMBED -I$(ALLSRC_ROOT)/include -nostdinc -I$(ALLSRC_ROOT)/lib/uClibc/include -I$(ALLSRC_ROOT)/lib/libcrypt -I$(ALLSRC_ROOT)/lib/zlib -I$(ALLSRC_ROOT) -idirafter /opt/toolchain_mips_nofpu/bin-ccache/../lib/gcc-lib/mips-linux-uclibc/3.3.5/include -I$(ALLSRC_ROOT)/linux-2.4.x/include
+CPPFLAGS = -I$(ALLSRC_ROOT)/lib/libssl/include
+LDFLAGS = -nostartfiles $(ALLSRC_ROOT)/lib/uClibc/lib/crt0.o -L$(ALLSRC_ROOT)/lib/uClibc/ -L$(ALLSRC_ROOT)/lib/uClibc/lib -L$(ALLSRC_ROOT)/lib/libm -L$(ALLSRC_ROOT)/lib/libnet -L$(ALLSRC_ROOT)/lib/libdes -L$(ALLSRC_ROOT)/lib/libaes -L$(ALLSRC_ROOT)/lib/libpcap -L$(ALLSRC_ROOT)/lib/libcrypt_old -L$(ALLSRC_ROOT)/lib/libssl
+
+all:
+	if [ ! -d _install ]; then mkdir _install; fi
+	if [ ! -f $(GSOAP_DIR)/config.h ]; then \
+	cd $(GSOAP_DIR); ./configure --host=mips-linux --prefix=$(CWMP_ROOT)/_install; \
+	fi
+	$(MAKE) -C $(GSOAP_DIR)
+	#$(MAKE) -C $(GSOAP_DIR) install
+
+romfs:
+	cp -f $(CWMP_ROOT)/$(GSOAP_DIR)/soapcpp2/samples/cwmp/cwmpClient $(CWMP_ROOT)/../../romfs/bin
+	cp -f $(CWMP_ROOT)/$(GSOAP_DIR)/soapcpp2/samples/cwmp/client.pem $(CWMP_ROOT)/../../romfs/etc
+	cp -f $(CWMP_ROOT)/$(GSOAP_DIR)/soapcpp2/samples/cwmp/cacert.pem $(CWMP_ROOT)/../../romfs/etc
+	if [ ! -h $(CWMP_ROOT)/../../romfs/etc/resolv.conf ]; then \
+		ln -s /var/resolv.conf $(CWMP_ROOT)/../../romfs/etc; \
+	fi
+
+clean:
+	$(MAKE) -C $(GSOAP_DIR) clean
+	rm -rf _install/
+	rm -f  $(GSOAP_DIR)/config.h

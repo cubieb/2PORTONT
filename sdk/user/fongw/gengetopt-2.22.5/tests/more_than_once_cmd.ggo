@@ -1,0 +1,9 @@
+# more_than_once_cmd.ggo
+
+# To test the call of the command line parser more than once
+
+package "more_than_once"
+version "1.0"
+
+option  "foo"        f "foo option" int no
+option  "bar"        b "bar option" string no

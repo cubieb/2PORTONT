@@ -1,0 +1,324 @@
+2/11/09
+1. Fix codec config file handling for iLBC
+
+2/11/09
+1. Fix blind transfer 
+2. Fix crash in ims
+3. Working iLBC
+
+30/10/09
+1. ntp client init moved to leave more time after system init
+2. IMS fixes
+3. Net radio. Fix for correct transfer of audio bytes when alsa does not consume them all
+
+29/10/09
+1. Fix crash in tft configuration
+2. Fix dial from boa and console
+3. Fix bug in tls support
+
+27/10/09
+1. Fix bug in codec negotiation
+2. Fix bug duringswitching between adjacent calls while one call is on hold and another is talking
+3. Fix crash in internet radio play button press while already playing
+
+26/10/09
+1. Disable openssl build due to space limitations
+2. Update specific MMI files for dotmatrix lcd
+3. Updated romfs.tgz with new siphone application
+
+26/10/09
+1. Fix aec init value
+2. Fix ata build error in batch build (erase cflags_tft dependencies in makefile)
+
+23/10/09
+1. Fix config and build scripts due to errors in batch build
+2. Fix call log dial
+
+23/10/09
+1. Fixed IP mode (v4 or v6) selection through main menu settings
+
+22/10/09
+1. Prepare linux config files for batch build
+2. Add color to fonts
+3. Optimize audio path selection in TFT configuration
+4. Updated lcd driver dua to sw bug in dma
+5. Added support for iLBC (partial). Scheduler is missing
+
+20/10/09
+1. IMS with chat screen added
+2. Dial plans api added (not yet supported except for ATA configuration)
+3. Added dial in low end phone form the phone book screen
+
+19/10/09
+1. Fix ortp config file to select either ipv6 or ipv4 according to linux net configuration
+
+16/10/09
+1. Added IPv6 support (partial support)
+2. Fix line and sip account selections in TFT mmi
+3. Fix memory leaks during image loading
+4. Fix various compile warnings
+5. Fix boa install scripts to correctly copy photo directory
+
+14/10/09
+1. Broadsoft certified SIP UA
+2. TFT MMI interface with integrated functions
+	Functions are:
+		Presence at phone book entries
+		Subscribe
+		Insant Message send, IMS read
+		Internet radio list
+		Vcard with photos
+		RSS weather info
+		Optimized editor
+3. Text LCD improvements		
+4. SIPIT 25 issues fixed
+5. TLS improvements
+6. Added a default phone booke entrie
+
+11/9/09
+1. Fix tcp port issue during tls negotiation with server
+
+11/9/09
+1. Changes in exosip lib for init tls certificates
+2. Added opensips created certificates in storage files
+
+10/9/09
+1. Erase from git, automatically created openssl files
+
+10/9/09
+1. exosip updated to 3.3.0
+2. Fix curl lib configuration script due to ssl lib include errors
+3. Updated TFT_GUI project. Still under development...
+4. Added new ata setting for fax_mode and dial plans.
+5. Increase timer items (MAX_TIMER_ITEMS) to 20. TFT_GUI will use the upper 10
+6. Added TLS support (partial, only outgoing calls supported)
+7. Fix openssl lib config file
+
+31/8/09
+1. Added fixes to mcu for vad/cng support
+
+14/8/09
+1. Various fixes due to build errors at TFT support
+2. Fix build error in srtp lib when build for SC14450
+
+13/8/09
+1. Added ring volume control at TUI MMI
+
+13/8/09
+1. Updated lcd_ili9325_fb and fb driver to support region update
+2. Added pcm channel init when 4 ata are used
+3. Fixed attended transfer bug
+4. Change names in specific mispelled variables for TUI
+5. New directory TFT_GUI added
+6. Added new GUI for TFT
+7. Added new configuration api for phone book and net applications
+8. Erased not used codecs at audio config files
+9. 3 new libs (libjpeg, libfreetype and libungif) added to be used with TFT
+10. Added ptime auto detection support
+11. Added 5 way conference handling support in TUI MMI
+
+31/7/09
+1. Erased T38 patch which was sending commands to DSP every 3 packets. Problem was fixed at DSP
+
+30/7/09
+1. Changed mcu_bridge function to first read data from alsa and then write to alsa, due to T38 support incompatibility
+2. Added new optimized srtp lib authentication functions
+3. Fixed ata + natalie configuration to support upto 6 devices in total. Before it was upto 4.
+
+23/7/09
+1. Erased 5way conference in siphone due to MMI incompatibilities. It can only be used for testing.
+2. Fixed conference with 1 internal and 1 external at natalie dect
+
+23/7/09
+1. Added support to 5 way conference in siphone
+2. Fix dect call control for conference with internal call
+
+22/7/09
+1. Fix srtp clean procedure
+
+21/7/09
+1. Fix G729 with 4 srtp connections
+2. Srtp authentication optimizations
+
+17/7/09
+1. Fix broadcast incoming crash
+
+17/7/09
+1. Added fixes for T38
+2. Added MMI state machine fixes
+3. Added hw srtp fixes
+4. Changed scripts from #! /bin/sh to #! /bin/bash due to system incompatibilities
+
+15/7/09
+1. New T38 lib added
+
+14/7/09
+1. Added fixes for 4 channel support
+2. Added fixes for T38 support
+
+13/7/09
+1. Added support for 4 channel connections  
+
+10/7/09
+1. Added fixes for T38
+2. Added fixes for dect internal calls
+
+9/7/09
+1. Bug fix at internal call sm
+
+9/7/09
+1. Added support to pcm inband dtmf tones 
+2. Added more star codes at dect design
+3. Added internal call at dect design
+4. Fix double key press for entering trnsfr
+
+7/7/09
+1. Fix bug in attended transfer
+2. Fix build error in phone configuration
+
+1/7/09
+1. Update makefile with new LDFLAGS
+2. Added VAD support
+3. Added comfort noise support
+4. Fix ata bug when fxs code was inlcuded
+
+30/6/09
+1. Added support to internet radio
+2. Added support to presence
+3. Added support to subscribe
+4. Audio path selection state machine optimized
+
+15/7/09
+1. T38 fixes added
+
+29/5/09
+1. Audio path selection improved
+2. Registration functions separeted to new file for adding future development
+3. Time in call logs added
+
+6/5/09
+1. Added si_print function to control print settings to either file, stdio or syslog
+2. Added print log settings to config files
+3. Added block anonymous and hide ID support
+4. Fixed audio path selection control
+
+24/4/09
+1. Fix TUI menu codec selection
+2. Various bug fixes in ata+natalie and ata+cvm design for correct audio channel selection
+3. New linux config files added
+4. Change natalie-lmx output power settings
+
+21/4/09
+1. Fix dect broadcast call handling issues
+
+16/4/09
+1. Added partial support for tls
+2. Fix bug at two parallel incoming calls in dect, if one was broadcast
+
+15/4/09
+1. Phone book with vcard supported
+2. Add protection tou ortp resync
+
+15/4/09
+1. Fixed dect incoming call to a greater than 3 account
+
+14/4/09
+1. Added open listen audio mode support
+2. Added presence initial api. Still no presence application
+3. Added IM support to boa
+4. Stabilizing rssfeed
+5. Interface to console application updated
+6. Fix dect out of range problem
+
+14/4/09
+1. Minor change
+
+14/4/09
+1. Fix a crash on siphone due to account definition problem
+
+14/4/09
+1. Disable ntpclient due to problem with dect init
+
+13/4/09
+1. Added ntp client support
+
+13/4/09
+1. Minor fixes in include files for successful build
+
+13/4/09
+1. Minor fixes
+
+10/4/09
+1. Bug fix for kernel crash after multiple osip transactions
+
+10/4/09
+1. Add lcd info messages for Dect headset reg info
+2. Max supported accounts for DECT changed from 3 to 7. 7th account is the broadcast account
+3. Added equivalent configuration files to support all new accounts
+4. Added LEDs for Natalie registration info
+5. Various Dect call control fixes
+6. Various siphone bug fixes
+7. Added check to reject call if dect handset is unreachable
+
+31/3/09
+1. Add fix in Text LCD driver for scrolling
+2. Return -O2 optimization for ortp lib. Bug fixed
+3. Add fix in ortp callback function
+4. Add fix at GUI SRTP Menu operation selection
+5. Add fix at wrong SDP codec negotiation after an incoming call
+6. Add fix at second account incoming call
+
+26/3/09
+1. Disable -O2 optimization in ortp lib, due to conference crash
+2. Minor changes in MMI functions
+
+23/3/09
+1. Add fix in ata for parsing dial string
+2. Add fix in dect for ata+dect design
+
+20/3/09
+1. Fix build error in ata design
+
+19/3/09
+1. Fix install_UA for cvm build
+
+16/3/09
+1. Added minor change to dect callcontrol
+2. Bug fixes at GUI 
+
+13/03/09
+1. Add display info at headset registration
+2. Added debug print handling function to mcu files
+
+12/03/09
+1. Added srtp support
+2. Fixed call transfer through SIP Server
+3. Fixed conference termination with hookon
+4. Added pthread_detach function to all pthreads
+5. Added optimization compile options to libraries srtp, ortp, alsa, osip and RssFeed
+6. Changed part of libsrtp sha1.c to support optimizations
+7. Changed build and install scripts. New build script (build_UA.sh) 
+	cheks linux configuration and builds the equivalent UA application. 
+	New install script (intall_UA.sh) checks for any builded application 
+	at UA application path and installs it to romfs, if any. 
+8. Added support to Instant Message
+9. Added numbers to when typing in letters mode
+ 
+27/02/09
+1. Fixed various memory leaks
+2. Added delete dect handset function to MMI
+3. Added new build script
+
+27/02/09
+1. Fixed call release during ringing
+
+13/02/09
+1. Changes in TUI for lcd backlight control
+2. Fixed release reason number at msg callback to the interfcae entities
+3. Fixed ata+dect account distinguish 
+4. Fixed pcm tone generation bug in amb_api.c (set USE_PCM instead of LEGERITY flags)
+
+12/02/09
+1. New sipphone sw commited. Start logging changes
+
+

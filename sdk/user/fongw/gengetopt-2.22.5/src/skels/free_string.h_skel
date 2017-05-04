@@ -1,0 +1,4 @@
+@IF@ has_string_type @THEN@
+free_string_field (&(@structure@->@opt_var@_arg));
+@ENDIF@
+free_string_field (&(@structure@->@opt_var@_orig));

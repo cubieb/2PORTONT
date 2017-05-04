@@ -1,0 +1,1 @@
+cmd_arch/rlx/lib/built-in.o :=  /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/rsdk-linux-ld  -m elf32btsmip   -r -o arch/rlx/lib/built-in.o arch/rlx/lib/iomap.o arch/rlx/lib/rlx_dump_tlb.o arch/rlx/lib/ashldi3.o arch/rlx/lib/ashrdi3.o arch/rlx/lib/cmpdi2.o arch/rlx/lib/lshrdi3.o arch/rlx/lib/ucmpdi2.o 

@@ -1,0 +1,18 @@
+#!/bin/sh -v
+
+# commands to try the C++ example:
+
+gengetopt -isample1.ggo -Fcmdline1 --long-help -u 
+c++ -o main1 main1.cc cmdline1.c
+./main1 --help
+
+# commands to try the C example: 
+
+gengetopt --input=sample2.ggo --func-name=my_cmdline_parser --file-name=cmdline2 --unamed-opts
+gcc -o main2 main2.c cmdline2.c -DMY_CMDLINE_PARSER_PACKAGE=\"sample2\" -DMY_CMDLINE_PARSER_VERSION=\"2.0\"
+./main2 -h
+
+# commands to try the manual help
+
+gengetopt --input=test_manual_help_cmd.ggo --func-name=test_manual_help_cmd_parser --file-name=test_manual_help_cmd --no-help --no-version
+gcc -o test_manual_help test_manual_help.c test_manual_help_cmd.c

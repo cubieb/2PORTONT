@@ -1,0 +1,5 @@
+<Config Name="ROOT">
+ <Dir Name="HW_MIB_TABLE">
+   <Value Name="PON_MODE" Value="1"/>
+ </Dir>
+</Config>

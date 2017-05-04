@@ -1,0 +1,5 @@
+@IF@ shared @THEN@
+@target@[@index@] = @IF@ last @THEN@ 0; @ELSE@ @from@[@full_index@];@endif@
+@ELSE@
+"@helpstring@",
+@ENDIF@

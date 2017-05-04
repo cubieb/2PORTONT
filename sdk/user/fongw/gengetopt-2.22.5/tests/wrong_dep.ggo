@@ -1,0 +1,8 @@
+# test for problems in dependences: missing dependant option
+# and depends on itself
+
+option "depok"       - "option depends on opt1" dependon="opt1" string no
+option "opt1"        f "flag option OK" flag on
+option "wrongdep"        F "depends on undefined option" string default="foo" dependon="foo"
+option "deponself"        - "depends on itself" string default="foo" dependon="deponself"
+option "opt2"        - "flag option OK" flag on

@@ -1,0 +1,136 @@
+#
+# Serial device configuration
+#
+# $Id: Kconfig,v 1.3 2011/09/01 12:27:48 tsaitc Exp $
+#
+
+menu "Serial drivers"
+
+#
+# The new 8250/16550 serial drivers
+config SERIAL_8250
+	tristate "8250/16550 and compatible serial support"
+	select SERIAL_CORE
+	---help---
+	  This selects whether you want to include the driver for the standard
+	  serial ports.  The standard answer is Y.  People who might say N
+	  here are those that are setting up dedicated Ethernet WWW/FTP
+	  servers, or users that have one of the various bus mice instead of a
+	  serial mouse and don't intend to use their machine's standard serial
+	  port for anything.  (Note that the Cyclades and Stallion multi
+	  serial port drivers do not need this driver built in for them to
+	  work.)
+
+	  To compile this driver as a module, choose M here: the
+	  module will be called 8250.
+	  [WARNING: Do not compile this driver as a module if you are using
+	  non-standard serial ports, since the configuration information will
+	  be lost when the driver is unloaded.  This limitation may be lifted
+	  in the future.]
+
+	  BTW1: If you have a mouseman serial mouse which is not recognized by
+	  the X window system, try running gpm first.
+
+	  BTW2: If you intend to use a software modem (also called Winmodem)
+	  under Linux, forget it.  These modems are crippled and require
+	  proprietary drivers which are only available under Windows.
+
+	  Most people will say Y or M here, so that they can use serial mice,
+	  modems and similar devices connecting to the standard serial ports.
+
+config SERIAL_8250_CONSOLE
+	bool "Console on 8250/16550 and compatible serial port"
+	depends on SERIAL_8250=y
+	select SERIAL_CORE_CONSOLE
+	---help---
+	  If you say Y here, it will be possible to use a serial port as the
+	  system console (the system console is the device which receives all
+	  kernel messages and warnings and which allows logins in single user
+	  mode). This could be useful if some terminal or printer is connected
+	  to that serial port.
+
+	  Even if you say Y here, the currently visible virtual console
+	  (/dev/tty0) will still be used as the system console by default, but
+	  you can alter that using a kernel command line option such as
+	  "console=ttyS1". (Try "man bootparam" or see the documentation of
+	  your boot loader (grub or lilo or loadlin) about how to pass options
+	  to the kernel at boot time.)
+
+	  If you don't have a VGA card installed and you say Y here, the
+	  kernel will automatically use the first serial line, /dev/ttyS0, as
+	  system console.
+
+	  If unsure, say N.
+
+config RTL867X_NETLOG 
+	bool "netlogger 867x "
+	depends on SERIAL_8250=y
+config RTL8696_ICCLOG
+	bool "icclogger 8696"
+	depends on SERIAL_8250=y
+
+config SERIAL_8250_NR_UARTS
+	int "Maximum number of 8250/16550 serial ports"
+	depends on SERIAL_8250
+	default "4"
+	help
+	  Set this to the number of serial ports you want the driver
+	  to support.  This includes any ports discovered via ACPI or
+	  PCI enumeration and any ports that may be added at run-time
+	  via hot-plug, or any ISA multi-port serial cards.
+
+config SERIAL_8250_RUNTIME_UARTS
+	int "Number of 8250/16550 serial ports to register at runtime"
+	depends on SERIAL_8250
+	range 0 SERIAL_8250_NR_UARTS
+	default "4"
+	help
+	  Set this to the maximum number of serial ports you want
+	  the kernel to register at boot time.  This can be overridden
+	  with the module parameter "nr_uarts", or boot-time parameter
+	  8250.nr_uarts
+
+config SERIAL_8250_EXTENDED
+	bool "Extended 8250/16550 serial driver options"
+	depends on SERIAL_8250
+	help
+	  If you wish to use any non-standard features of the standard "dumb"
+	  driver, say Y here. This includes HUB6 support, shared serial
+	  interrupts, special multiport support, support for more than the
+	  four COM 1/2/3/4 boards, etc.
+
+	  Note that the answer to this question won't directly affect the
+	  kernel: saying N will just cause the configurator to skip all
+	  the questions about serial driver options. If unsure, say N.
+
+config SERIAL_8250_MANY_PORTS
+	bool "Support more than 4 legacy serial ports"
+	depends on SERIAL_8250_EXTENDED && !IA64
+	help
+	  Say Y here if you have dumb serial boards other than the four
+	  standard COM 1/2/3/4 ports. This may happen if you have an AST
+	  FourPort, Accent Async, Boca (read the Boca mini-HOWTO, available
+	  from <http://www.tldp.org/docs.html#howto>), or other custom
+	  serial port hardware which acts similar to standard serial port
+	  hardware. If you only use the standard COM 1/2/3/4 ports, you can
+	  say N here to save some memory. You can also say Y if you have an
+	  "intelligent" multiport card such as Cyclades, Digiboards, etc.
+
+config SERIAL_8250_SHARE_IRQ
+	bool "Support for sharing serial interrupts"
+	depends on SERIAL_8250_EXTENDED
+	help
+	  Some serial boards have hardware support which allows multiple dumb
+	  serial ports on the same board to share a single IRQ. To enable
+	  support for this in the serial driver, say Y here.
+
+config SERIAL_CORE
+	tristate
+
+config SERIAL_CORE_CONSOLE
+	bool
+
+config CONSOLE_POLL
+	bool
+
+endmenu

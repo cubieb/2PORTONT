@@ -1,0 +1,11 @@
+prefix=/home/jiunming/uClinux/uClinux-dist26-090715/user/usbtools/preinstall
+exec_prefix=/home/jiunming/uClinux/uClinux-dist26-090715/user/usbtools/preinstall
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: libusb
+Description: USB access library
+Version: 0.1.12
+Libs: -L${libdir} -lusb
+Cflags: -I${includedir}
+

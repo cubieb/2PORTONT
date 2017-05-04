@@ -1,0 +1,10 @@
+static void
+reset_group_@name@(struct @args_info@ *args_info)
+{
+  if (! args_info->@name@_group_counter)
+    return;
+  
+  @body@
+  args_info->@name@_group_counter = 0;
+}
+

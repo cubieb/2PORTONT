@@ -1,0 +1,72 @@
+/* simpleinit.c - poe@daimi.aau.dk */
+/* Version 1.21 */
+
+/* gerg@snapgear.com -- modified for direct console support DEC/1999 */
+
+#define _GNU_SOURCE	/* For crypt() and termios defines */
+
+#include <sys/types.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <limits.h>
+#include <stdio.h>
+#include <fcntl.h>
+#include <string.h>
+#include <signal.h>
+#include <pwd.h>
+#include <sys/file.h>
+#include <sys/wait.h>
+#include <sys/stat.h>
+#include <sys/termios.h>
+#include <sys/ioctl.h>
+#include <sys/uio.h>
+#include <linux/version.h>
+#include <utmp.h>
+#include <errno.h>
+#include <termios.h>
+#ifdef SHADOW_PWD
+#include <shadow.h>
+#endif
+
+
+#if __GNU_LIBRARY__ > 5
+#include <sys/reboot.h>
+#endif
+
+#include "pathnames.h"
+
+#define CMDSIZ 80	/* max size of a line in inittab */
+#define NUMCMD 16	/* max number of lines in inittab */
+#define NUMTOK 10	/* max number of tokens in inittab command */
+
+#define TESTTIME  90	/* Threshold time for detecting "fast" spawning processes */
+#define MAXSPAWN  5	/* Number of rapid respawns that counts as too fast */
+#define SLEEPTIME 30	/* Fast spawn hold off period */
+#define DELAYTIME 5	/* Time between successive runs of a process */
+
+#define MAXTRIES 3	/* number of tries allowed when giving the password */
+
+#define RUN_RC		/* Use a console if possible */
+
+#ifdef INCLUDE_TIMEZONE
+char tzone[CMDSIZ];
+#endif
+/* #define DEBUGGING */
+
+/* Define this if you want init to ignore the termcap field in inittab for
+   console ttys. */
+/* #define SPECIAL_CONSOLE_TERM */
+volatile int i;
+int main(int argc, char *argv[])
+{
+	i =0;
+	for (;;)
+	{
+		printf("i =  %d\n",i);
+		i++;
+		i++;
+		sleep(1);
+		i++;
+		
+	}
+}	

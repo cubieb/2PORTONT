@@ -1,0 +1,5 @@
+#define GETTEXT_PACKAGE "linphone"
+#define PACKAGE_LOCALE_DIR "/usr"
+#define LINPHONE_VERSION "1.0.1"
+#define PACKAGE_SOUND_DIR "/usr"
+#define ORTP_VERSION		"0.7.0"

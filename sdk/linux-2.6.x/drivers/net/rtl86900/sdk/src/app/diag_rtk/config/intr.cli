@@ -1,0 +1,167 @@
+//
+// Copyright (C) 2011 Realtek Semiconductor Corp.
+// All Rights Reserved.
+//
+// This program is the proprietary software of Realtek Semiconductor
+// Corporation and/or its licensors, and only be used, duplicated,
+// modified or distributed under the authorized license from Realtek.
+//
+// ANY USE OF THE SOFTWARE OTHER THAN AS AUTHORIZED UNDER
+// THIS LICENSE OR COPYRIGHT LAW IS PROHIBITED.
+//
+// $Revision:
+// $Date: 2015-03-26 17:41:11 +0800 (Thu, 26 Mar 2015) $
+//
+// Purpose : Define diag shell commands for trunk.
+//
+// Feature : The file have include the following module and sub-modules
+//           1) interrupt commands.
+//
+
+//interrupt configuration
+//initial
+interrupt init
+
+//interrupt configuration
+//set configuration
+//mask-reg configuration
+//all interrupt
+//link change
+//meter exceed
+//learn over
+//speed change
+//special congestion
+//loop detection
+//cable diagnostic finish
+//acl action
+//gphy interrupt
+//serdes interrupt
+//fiber mode GPON interrupt
+//fiber mode EPON interrupt
+//egress PTP event message interrupt
+//dying gasp interrupt
+//thermal alarm  interrupt
+//adc alarm interrupt
+//eeprom 110 to 118 interrupt
+//eeprom 128 to 247 interrupt
+//switch packet buffer interrupt
+//debut output interrupt
+//smart card interrupt
+//switch error interrupt
+//state configuration
+//disable
+//enable
+interrupt set mask ( all | link-change | meter-exceed | learn-over | speed-change | special-congestion | loop-detection | cable-diag | acl | gphy | serdes | gpon | epon | ptp | dying-gasp | thermal | adc | eeprom110to118 | eeprom128to247 | pktbuffer-error | debug | smart-card | switch-error ) state ( disable | enable )
+
+//interrupt configuration
+//set configuration
+//mask-reg configuration
+//all interrupt
+//link change
+//meter exceed
+//learn over
+//speed change
+//special congestion
+//loop detection
+//cable diagnostic finish
+//acl action
+//gphy interrupt
+//serdes interrupt
+//fiber mode GPON interrupt
+//fiber mode EPON interrupt
+//egress PTP event message interrupt
+//dying gasp interrupt
+//thermal alarm  interrupt
+//adc alarm interrupt
+//eeprom 110 to 118 interrupt
+//eeprom 128 to 247 interrupt
+//switch packet buffer interrupt
+//debut output interrupt
+//smart card interrupt
+//switch error interrupt
+//state
+interrupt get mask ( all | link-change | meter-exceed | learn-over | speed-change | special-congestion | loop-detection | cable-diag | acl | gphy | serdes | gpon | epon | ptp | dying-gasp | thermal | adc | eeprom110to118 | eeprom128to247 | pktbuffer-error | debug | smart-card | switch-error ) state
+
+//interrupt configuration
+//get configuration
+//status-reg configuration
+//all interrupt
+//link change
+//meter exceed
+//learn over
+//speed change
+//special congestion
+//loop detection
+//cable diagnostic finish
+//acl action
+//gphy interrupt
+//serdes interrupt
+//fiber mode GPON interrupt
+//fiber mode EPON interrupt
+//egress PTP event message interrupt
+//dying gasp interrupt
+//thermal alarm  interrupt
+//adc alarm interrupt
+//eeprom 110 to 118 interrupt
+//eeprom 128 to 247 interrupt
+//switch packet buffer interrupt
+//debut output interrupt
+//smart card interrupt
+//switch error interrupt
+interrupt get status ( all | link-change | meter-exceed | learn-over | speed-change | special-congestion | loop-detection | cable-diag | acl | gphy | serdes | gpon | epon | ptp | dying-gasp | thermal | adc | eeprom110to118 | eeprom128to247 | pktbuffer-error | debug | smart-card | switch-error )
+
+//interrupt configuration
+//clear configuration
+//status-reg configuration
+//all interrupt
+//link change
+//meter exceed
+//learn over
+//speed change
+//special congestion
+//loop detection
+//cable diagnostic finish
+//acl action
+//gphy interrupt
+//serdes interrupt
+//fiber mode GPON interrupt
+//fiber mode EPON interrupt
+//egress PTP event message interrupt
+//dying gasp interrupt
+//thermal alarm  interrupt
+//adc alarm interrupt
+//eeprom 110 to 118 interrupt
+//eeprom 128 to 247 interrupt
+//switch packet buffer interrupt
+//debut output interrupt
+//smart card interrupt
+//switch error interrupt
+interrupt clear status ( all | link-change | meter-exceed | learn-over | speed-change | special-congestion | loop-detection | cable-diag | acl | gphy | serdes | gpon | epon | ptp | dying-gasp | thermal | adc | eeprom110to118 | eeprom128to247 | pktbuffer-error | debug | smart-card | switch-error )
+
+//interrupt configuration
+//get configuration
+//status configuration
+//speed change
+//link up interrupt
+//link down interrupt
+interrupt get status ( speed-change | link-up | link-down | gphy ) detail
+
+//interrupt configuration
+//clear configuration
+//status configuration
+//speed change
+//link up interrupt
+//link down interrupt
+interrupt clear status ( speed-change | link-up | link-down | gphy ) detail
+
+//interrupt configuration
+//set configuration
+//polarity configuration
+//specify to high
+//specify to low
+interrupt set polarity ( high | low )
+
+//interrupt configuration
+//get configuration
+//polarity configuration
+interrupt get polarity

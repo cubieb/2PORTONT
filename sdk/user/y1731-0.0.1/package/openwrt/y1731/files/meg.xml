@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<participants>
+  <meg>
+    <mep name="aravis" id="2">
+      <mac>00:22:68:1b:d7:dd</mac>
+      <ifname>eth0</ifname>
+    </mep>
+  </meg>
+</participants>
+
+  <!-- NOTE keep the comments after the XML as the parser may not like them -->
+ 
+  <!-- This file is intended to list the other participants in the MEG.
+       Every entity is defining its own information in the config.xml.
+       *This is just for the other participants*
+    -->
+
+  <!-- mep: 
+       name - Name of the MEP (not used in code) 
+    -->
+
+  <!-- allowed values for interval:
+       1 = 3,33ms, 
+       2 = 10ms, 
+       3 = 100ms
+       4 = 1s, 
+       5 = 10s, 
+       6 = 1min, 
+       7 = 10min, 
+       defaults to 1s
+    -->
+
+  <!-- mac:
+       MAC of the MEP
+    -->
+
+  <!-- ifname:
+       Interface where the MEP can be reached 
+    -->

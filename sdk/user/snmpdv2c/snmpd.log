@@ -1,0 +1,5 @@
+Warning: no access control information configured.
+  It's unlikely this agent can serve any useful purpose in this state.
+  Run "snmpconf -g basic_setup" to help you configure the snmpd.conf file for this agent.
+Creating directory: /home/hrchen/snmpd/net-snmp
+NET-SNMP version 5.1

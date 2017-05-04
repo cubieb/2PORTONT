@@ -1,0 +1,13 @@
+// ============================================================
+
+/**
+ * @page MISC 
+ * @ingroup TAPI_NETWORK_MISC
+ * This group includes some networking API used by VoIP function. <br><br>
+ * <b> rtk_GetPortLinkStatus</b><br>
+ * This API provide the status of ethernet port connection. <br> 
+ * LAN Port Status: bit 0-3, WAN Port Status: bit 4 <br>
+ * Value 1 means that the port is connected.<br> 
+ * 
+ *
+ */

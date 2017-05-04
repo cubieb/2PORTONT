@@ -1,0 +1,70 @@
+mainmenu_name 'uClinux Configuration'
+mainmenu_option next_comment
+comment 'Target Platform Selection'
+comment 'Choose a Vendor/Product combination.'
+choice 'Vendor/Product' "Realtek/luna CONFIG_DEFAULTS_REALTEK_LUNA \
+" SecureEdge/SecureEdgeVPN
+	bool 'Dual Linux' CONFIG_LUNA_DUAL_LINUX
+comment 'Kernel is linux-2.6.x'
+define_bool CONFIG_DEFAULTS_KERNEL_2_6 y
+if [ "$CONFIG_DEFAULTS_KERNEL_2_6" = "y" ]; then
+	choice 'LINUX Kernel 2.6 Version'	"2.6.19         CONFIG_KERNEL_2_6_19
+						 2.6.30         CONFIG_KERNEL_2_6_30
+						"2.6.19
+fi
+	bool 'Use RSDK-Wrapper Toolchain'	CONFIG_USE_RSDK_WRAPPER
+	if [ "$CONFIG_LUNA_DUAL_LINUX" = "y" ]; then
+		string 'RSDK Toolchain Path for Master' CONFIG_RSDK_DIR_MASTER
+		string 'RSDK Toolchain Path for Slave'  CONFIG_RSDK_DIR_SLAVE
+	else
+		string 'RSDK Toolchain Path'	CONFIG_RSDK_DIR
+	fi
+bool 'Customize Kernel Settings' CONFIG_DEFAULTS_KERNEL
+bool 'Customize Vendor/User Settings' CONFIG_DEFAULTS_VENDOR
+#Added by Mason Yu. for ipv6
+bool 'Config Busybox Settings'     CONFIG_MCONF_BZBOX
+if [ "$CONFIG_LUNA_DUAL_LINUX" = "y" ]; then
+	bool 'Customize Slave Kernel Settings'        CONFIG_DEFAULTS_SLAVE_KERNEL
+	bool 'Customize Slave Vendor/User Settings'   CONFIG_DEFAULTS_SLAVE_VENDOR
+	bool 'Customize Slave Busybox Setting' CONFIG_MCONF_SLAVE_BZBOX
+fi
+bool 'Tiny Image'                CONFIG_IMAGE_TINY
+bool 'VoIP IPC DSP Architecture' CONFIG_VOIP_IPC_DSP_ARCHITECTURE
+choice 'Otto Prelaoder Version'	"None        CONFIG_PLR_NONE
+				 1.X         CONFIG_USE_PRELOADER_PARAMETERS
+				 3.X         CONFIG_PLR_3X
+				"None
+if [ "$CONFIG_USE_PRELOADER_PARAMETERS" = "y" ]; then
+	define_bool CONFIG_PLR_1X y
+fi
+bool 'Luna trunk only'           CONFIG_LUNA
+if [ "$CONFIG_LUNA_DUAL_LINUX" != "y" ]; then
+bool 'Luna memory auto distribution' CONFIG_LUNA_MEMORY_AUTO_DETECTION
+else
+define_bool CONFIG_LUNA_MEMORY_AUTO_DETECTION n
+fi
+
+if [ "$CONFIG_LUNA_MEMORY_AUTO_DETECTION" = "y" ] && [ "$CONFIG_VOIP_IPC_DSP_ARCHITECTURE" = "y" ]; then
+#	hex  "RTL8686 CPU MEM Size" CONFIG_RTL8686_CPU_MEM_SIZE 0x03800000
+	hex  "RTL8686 IPC MEM Size" CONFIG_RTL8686_IPC_MEM_SIZE 0x00100000
+	hex  "RTL8686 DSP MEM Size" CONFIG_RTL8686_DSP_MEM_SIZE 0x00700000
+fi
+if [ "$CONFIG_LUNA_MEMORY_AUTO_DETECTION" != "y" ] && [ "$CONFIG_VOIP_IPC_DSP_ARCHITECTURE" = "y" ]; then
+	comment "RTL8686 IPC Shared Memory Setting"
+	if [ "$CONFIG_LUNA_DUAL_LINUX" = "y" ]; then
+        hex  "RTL8686 CPU MEM Base" CONFIG_RTL8686_CPU_MEM_BASE 0x00000000
+        hex  "RTL8686 CPU MEM Size" CONFIG_RTL8686_CPU_MEM_SIZE 0x02800000
+        hex  "RTL8686 IPC MEM Base" CONFIG_RTL8686_IPC_MEM_BASE 0x02800000
+        hex  "RTL8686 IPC MEM Size" CONFIG_RTL8686_IPC_MEM_SIZE 0x00100000
+        hex  "RTL8686 DSP MEM Base" CONFIG_RTL8686_DSP_MEM_BASE 0x02900000
+        hex  "RTL8686 DSP MEM Size" CONFIG_RTL8686_DSP_MEM_SIZE 0x01700000
+	else
+	hex  "RTL8686 CPU MEM Base" CONFIG_RTL8686_CPU_MEM_BASE 0x00000000
+	hex  "RTL8686 CPU MEM Size" CONFIG_RTL8686_CPU_MEM_SIZE 0x03800000
+	hex  "RTL8686 IPC MEM Base" CONFIG_RTL8686_IPC_MEM_BASE 0x03800000
+	hex  "RTL8686 IPC MEM Size" CONFIG_RTL8686_IPC_MEM_SIZE 0x00100000
+	hex  "RTL8686 DSP MEM Base" CONFIG_RTL8686_DSP_MEM_BASE 0x03900000
+	hex  "RTL8686 DSP MEM Size" CONFIG_RTL8686_DSP_MEM_SIZE 0x00700000
+	fi
+fi
+endmenu

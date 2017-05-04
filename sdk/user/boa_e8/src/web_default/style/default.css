@@ -1,0 +1,131 @@
+/* CSS Document */
+BODY
+{
+	MARGIN: 0px; 
+	PADDING-RIGHT: 0px; 
+	PADDING-LEFT: 0px; 
+	PADDING-TOP: 0px; 
+	PADDING-BOTTOM: 0px; 
+	FONT-SIZE: 12px; 
+	TEXT-ALIGN: center;
+	background-color:#FFFFFF;
+}
+
+TABLE.flat
+{
+	border-collapse:collapse;
+	border-style:groove;
+	padding-left:2px;
+	padding-right:2px;
+}
+
+TR.hd 
+{
+	background-color:#F4F4F4;
+}
+TR.hdb 
+{
+	background-color:#F4F4F4;
+	font-weight: bold;
+}
+TR.sep
+{
+	display:none;
+}
+
+TD 
+{	
+	FONT-SIZE: 12px; 
+	LINE-HEIGHT: 150%;
+}
+TD.hd
+{
+	background-color:#F4F4F4;
+}
+TD.hdb 
+{
+	background-color:#F4F4F4;
+	font-weight: bold;
+}
+
+IFRAME
+{
+	BORDER-RIGHT: thin groove;
+	BORDER-TOP: thin groove;
+	BORDER-LEFT: thin groove;
+	BORDER-BOTTOM: thin groove;
+}
+
+A:LINK 
+{
+	COLOR: #000000;
+	TEXT-DECORATION: none;
+}
+A:VISITED 
+{
+	COLOR: #000000;
+    TEXT-DECORATION: none;
+}
+A:HOVER 
+{
+	COLOR: #CC6600;
+	TEXT-DECORATION: none;
+}
+
+HR.sep
+{
+	color:#B5B5E6;
+}
+
+DIV.tip
+{
+}
+
+INPUT.button
+{
+	padding-left:8px;
+	padding-right:8px;
+	padding-top:2px;
+}
+
+.TABLE-REC
+{
+	cellspacing:0;
+	cellpadding:0; 
+	padding-left:6px;
+	border:1px;
+	background-color:#FFFFFF;
+	border-collapse:collapse;
+	bordercolor:#CCCCCC;
+}
+
+.top-td{
+	 font-size:12px;
+	 color:black;
+	 background-color:#EDDBC6;
+ }
+
+.table-td{
+	padding-left:6px;
+}
+
+.TR-NORMAL
+{
+	CURSOR:	default;
+	FONT-SIZE:12px;
+	BACKGROUND-COLOR: #FFFFFF;
+}
+
+.TR-SELECT
+{
+	CURSOR: default;
+	FONT-SIZE:12px;
+	BACKGROUND-COLOR: #99CCFF;
+}
+
+.TR-HOT
+{
+	CURSOR:	hand;
+	FONT-SIZE:12px;
+	BACKGROUND-COLOR: #FFFFFF;
+}

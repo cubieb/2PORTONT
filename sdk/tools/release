@@ -1,0 +1,118 @@
+#!/bin/sh
+
+##
+## Release script
+## contact yachang@realtek.com.tw for any question.
+##
+
+ROOTDIR=`pwd`
+LINUXDIR=${ROOTDIR}/linux-2.6.x
+WIRELESSDIR=${LINUXDIR}/drivers/usb/net/rtl8187su
+SARDIR=${LINUXDIR}/drivers/867x_sar
+FASTPATHDIR=${LINUXDIR}/net/ipv4/fastpath
+NETDIR=${LINUXDIR}/net
+PRODUCTDIR=${ROOTDIR}/vendors/Realtek/RTL8670
+
+prepare_Makefile() 
+{
+	echo "Change Makefiles..."
+	mv ${WIRELESSDIR}/Makefile.release ${WIRELESSDIR}/Makefile
+	mv ${SARDIR}/Makefile.release ${SARDIR}/Makefile
+	mv ${FASTPATHDIR}/Makefile.release ${FASTPATHDIR}/Makefile
+	mv ${NETDIR}/Makefile.release ${NETDIR}/Makefile
+}
+
+remove_protected_files() 
+{
+	echo "Clean protected files..."
+	rm -f ${WIRELESSDIR}/*.o ${WIRELESSDIR}/*.c
+	rm -f ${SARDIR}/ra8670.c
+	rm -f ${FASTPATHDIR}/fastpath_core.c
+	rm -rf ${ROOTDIR}/user/cwmp-tr069/gsoaplib ${ROOTDIR}/user/cwmp-tr069/matrixssl-1-8-3-open
+}
+
+remove_tmp_files()
+{
+	echo "Clean temporary files..."
+	find ${ROOTDIR} -name '*.o' | xargs rm -f	
+	rm -f ${LINUXDIR}/linux ${LINUXDIR}/make*.log ${LINUXDIR}/vm* ${LINUXDIR}/rootfs ${LINUXDIR}/System.map
+	rm -f ${ROOTDIR}/user/boa/default_web_id
+	find ${ROOTDIR} -name CVS -type d | xargs rm -rf
+	find ${ROOTDIR} -type l | xargs rm -f	
+}
+
+make_clean() 
+{
+	echo "Cleanup Kernel and User..."
+	make linux_clean
+	make clean	
+}
+
+make_1pWifi() 
+{
+	echo "Making 1P_WIFI..."
+	make_clean
+	cp ${PRODUCTDIR}/combo/config .config
+	cp ${PRODUCTDIR}/1Pwifi/config_kernel ${LINUXDIR}/.config
+	cp ${PRODUCTDIR}/1Pwifi/config_user config/.config
+	yes "" | make config
+	make linux
+}
+
+make_4pWifi() {
+	echo "Making 4P_WIFI..."
+	make_clean
+	cp ${PRODUCTDIR}/combo/config .config
+	cp ${PRODUCTDIR}/4Pwifi/config_kernel ${LINUXDIR}/.config
+	cp ${PRODUCTDIR}/4Pwifi/config_user config/.config
+	yes "" | make config
+	make linux
+}
+
+make_IAD() {
+	echo "Making IAD..."
+	make_clean
+	cp ${PRODUCTDIR}/combo/config .config
+	cp ${PRODUCTDIR}/voip-iad/config-kernel2.6 ${LINUXDIR}/.config
+	cp ${PRODUCTDIR}/voip-iad/config-user config/.config
+	yes "" | make config
+	make linux
+}
+
+verify_works() {
+	echo "Verify..."
+	# check if protected files are truly gone.
+	
+	
+	# check library exists	
+}
+
+##### Main Body ####
+
+cp ${PRODUCTDIR}/combo/config .config
+cp ${PRODUCTDIR}/1Pwifi/config_kernel ${LINUXDIR}/.config
+cp ${PRODUCTDIR}/1Pwifi/config_user config/.config
+yes "" | make config
+
+
+make_1pWifi
+# Backup file... No pkt processor, no ext switch
+mv ${FASTPATHDIR}/fastpath.o ${FASTPATHDIR}/fp_nopkt.lib
+mv ${SARDIR}/ra8670.o ${SARDIR}/ra8670_noext.lib
+mv ${WIRELESSDIR}/wireless_rtl8187su.o ${WIRELESSDIR}/wireless_rtl8187su_noext.lib
+
+
+make_4pWifi
+# Backup file... with pkt processor, ext switch
+mv ${FASTPATHDIR}/fastpath.o ${FASTPATHDIR}/fp_pkt.lib
+mv ${SARDIR}/ra8670.o ${SARDIR}/ra8670_ext.lib
+mv ${WIRELESSDIR}/wireless_rtl8187su.o ${WIRELESSDIR}/wireless_rtl8187su_ext.lib
+
+make_IAD
+
+make 
+
+make_clean
+prepare_Makefile
+remove_protected_files
+remove_tmp_files

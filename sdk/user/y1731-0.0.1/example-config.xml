@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<me>
+  <meg name="testmeg" id="megid123" level="7" max="16" />
+  <myid name="wel-36" id="1"/>
+  <config log="stderr" loglevel="all" pulses="5" dynamic="off" />
+  <ccd use="off" ip="127.0.0.1" port="8080" />
+  <ccm precision="ms" period="10" one-way-loss-measurement="on" />
+  <lt ttl="10" />
+  <ais precision="s" period="1" />   
+  <lck precision="s" period="1" />  
+  <mcc oui="00:22:68" />
+  <lm used="off" precision="ms" period="100" warning="10" error="20" samples="30" th_warning="40" th_error="50"/> 
+  <dm used="off" optional_fields="on" precision="ms" period="100" warning="10" error="20" samples="30" th_warning="40" th_error="50" />  
+  <exclude ifs="br0,wlan0-vap0,wlan0-vap1,wlan0-vap2,wlan0-vap3,pwlan0,eth0.2,eth0.3,eth0.4,eth0.5,sit0,ip6tnl0" />
+</me> 
+
+  <!-- meg: 
+       name  - Name for the MEG (not used in code)
+       id    - MEG ID of the MEG that this node belongs to 
+       level - MEG level of this node
+       max   - For how many nodes do we reserve memory at maximum
+    -->
+
+  <!-- myid: 
+       name - Name for the MEE (Not used in code)
+       id   - ID of this ME
+
+  <!-- config:  
+       Log      - stderr or syslog 
+       Loglevel - all, medium, xtra, none 
+       Pulses   - Number of multicast ccm pulses on startup 0 to 32 default 5 
+       Dynamic  - Do we wan to use dynamic participant finding or 
+                  read the meg.xml for participants and on what granularity:
+                  If set to "off" the daemon reads the meg.xml for all information,
+                  if set to "on" meg.xml is not read, 
+                  if set to "id" only the valid MEP IDs are read from the meg.xml
+                  and other information is disgarded (remember that
+                  also dynamic with "id"s needs pulses). 
+                  NOTE use off when running as MIP.
+       Ccd      - Do we try to send messages to the central server: no
+                  or yes
+    -->
+
+  <!-- ccm/ais/lck period/precision: 
+       3.33ms (protection switching default) 
+       10ms, 
+       100ms (performance monitoring default), 
+       1s (fault management default), 
+       10s, 
+       1min, 
+       10min 
+    --> 
+
+  <!-- ccm:
+       one-way-loss-measurement - Are the counters sent or not RxFC TxFC etc. yes/no 
+    -->
+ 
+  <!-- lt:
+       ttl - time-to-live in hops 
+    -->  
+  <!-- ais:
+       allowed periods - 1 s or 1 min 
+    -->
+  <!-- lck:
+       allowed periods - 1 s or 1 min 
+    -->  
+  <!-- lm:
+       used       - on/off
+       precision  - See ccm/ais/lck period/precision 
+       period     - See ccm/ais/lck period/precision
+       warning    - What is the warning limit
+       error      - What is the error limit
+       samples    - How many samples in the reference period
+       th_warning - How many times the error limit can be exceeded in
+                    the given reference period.
+       th_error   - How many times the error limit can be exceeded in
+                    the given reference period.
+    -->
+  <!-- dm:
+       used            - on/off
+       optional_fields - Do we fill the optional fields or the 
+                         driver/equipment, on = We fill the fields 
+       precision       - See ccm/ais/lck period/precision 
+       period          - See ccm/ais/lck period/precision
+       warning         - What is the warning limit
+       error           - What is the error limit
+       samples         - How many samples in the reference period
+       th_warning      - How many times the error limit can be exceeded in
+                         the given reference period.
+       th_error        - How many times the error limit can be exceeded in
+                         the given reference period.
+    -->
+  <!-- exclude:
+       ifs - There might be reasons of not using some IFs for
+             multicast or other purposes mention the name of the IF
+             here, e.g. ifs="virbr0,virbr2".
+    -->

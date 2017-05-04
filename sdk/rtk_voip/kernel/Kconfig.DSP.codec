@@ -1,0 +1,69 @@
+# ---------------------------------------------------------------------
+# DSP - codec  
+		
+comment "Speech CODECs"
+
+config	RTK_VOIP_G729AB
+	def_bool y
+
+config	RTK_VOIP_G7231
+	def_bool y
+
+config	RTK_VOIP_AMR_NB
+	def_bool n
+	depends on REALTEK_VOIP
+
+config	RTK_VOIP_RTK_VOIP_SPEEX_NB
+	def_bool n
+	depends on REALTEK_VOIP
+
+config 	RTK_VOIP_G726
+	def_bool y
+	depends on REALTEK_VOIP
+
+config	RTK_VOIP_GSMFR
+	def_bool y
+	depends on REALTEK_VOIP
+
+config  RTK_VOIP_ILBC
+	def_bool y
+	depends on REALTEK_VOIP
+
+config	RTK_VOIP_G722
+	def_bool y
+	depends on REALTEK_VOIP
+
+config	RTK_VOIP_G7111
+	def_bool n
+	depends on REALTEK_VOIP
+
+config	RTK_VOIP_T38
+	def_bool y
+		
+config	RTK_VOIP_PCM_LINEAR_8K
+	bool
+	default n
+		
+config	RTK_VOIP_PCM_LINEAR_16K
+	bool
+	default n
+		
+config	RTK_VOIP_SILENCE
+	bool
+	default y
+
+config RTK_VOIP_USE_ITUT_G7111_BASOP
+	bool
+	default n
+	depends on RTK_VOIP_G7111
+
+config RTK_VOIP_USE_ITU_G722_BASOP
+	bool
+	default n
+	depends on RTK_VOIP_G722
+
+config RTK_VOIP_G722_ITU_USE
+	bool
+	default y
+	depends on RTK_VOIP_G722
+

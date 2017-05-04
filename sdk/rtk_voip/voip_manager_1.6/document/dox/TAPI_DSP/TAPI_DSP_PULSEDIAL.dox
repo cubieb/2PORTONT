@@ -1,0 +1,19 @@
+// ============================================================
+
+/**
+ * @page VOIP_DSP_PULSE_DIAL Pulse Dial
+ * @ingroup TAPI_DSP_PULSEDIAL 
+ * \htmlonly <br> <p align="center"> <b>Pulse Dial operation diagram</b>   \endhtmlonly
+ * @image html TAPI_DSP_Pulse_Dial_Figure_01.JPG
+ * \htmlonly <br> Within the US, EIA Standard RS-470 details the specifications for pulse dialing. 
+ * In general, the pulse repetition rate must be between 8 and 11 pulses per second (PPS).
+ * The exact allowable range is dependent upon the type of capacitance used in the telephone's protective network.
+ * The Percent Break (the % of time that a Break state is maintained within a pulse) can be in the range of 58% to 64% (61% nominal), 
+ * depending upon the type of Zener diode breakdown voltage used within the telephone's protective network. 
+ * Assuming a PPS rate of 10, a the nominal length of the Break time will be 61 msec.<br>
+ * Note: <br>
+ * The "0" key will output 10 pulses, taking approximately 1 second to transmit (at 10 PPS).<br>
+ * The "5" key will take approximately 0.5 second (at 10 PPS). 
+ * \endhtmlonly
+ */ 
+

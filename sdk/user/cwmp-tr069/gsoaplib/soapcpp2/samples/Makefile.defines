@@ -1,0 +1,26 @@
+## common defines for Makefiles for the gsoap samples
+##
+
+AM_CFLAGS=-D$(platform)
+AM_CXXFLAGS=-D$(platform)
+INCLUDES=-I$(top_builddir)/soapcpp2 -I$(top_builddir)/soapcpp2/plugin
+SOAP=$(top_builddir)/soapcpp2/src/soapcpp2
+
+SOAP_NS_DEF=ns.nsmap ns.wsdl
+
+SOAP_H_FILES=soapH.h soapStub.h 
+
+SOAP_FLAGS=-I$(top_builddir)/soapcpp2/import
+
+SOAP_C_CLIENT=soapClient.c soapC.c
+SOAP_C_SERVER=soapServer.c soapC.c
+SOAP_C_LIB=$(top_builddir)/soapcpp2/libgsoap.a
+SOAP_C_LIB_CK=$(top_builddir)/soapcpp2/libgsoapck.a
+SOAP_C_LIB_SSL=$(top_builddir)/soapcpp2/libgsoapssl.a
+
+SOAP_CPP_CLIENT=soapClient.cpp soapC.cpp
+SOAP_CPP_SERVER=soapServer.cpp soapC.cpp
+SOAP_CPP_LIB=$(top_builddir)/soapcpp2/libgsoap++.a
+SOAP_CPP_LIB_CK=$(top_builddir)/soapcpp2/libgsoapck++.a
+
+

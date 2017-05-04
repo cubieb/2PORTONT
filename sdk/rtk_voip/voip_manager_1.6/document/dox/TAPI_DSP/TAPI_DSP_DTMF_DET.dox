@@ -1,0 +1,19 @@
+// ============================================================
+ 
+/**
+ * @page VOIP_DSP_DTMF_DET DTMF_DET
+ * @ingroup TAPI_DSP_DTMF_DET
+ * Dual-tone multi-frequency (DTMF) is a signal used in telecommunication. <br>
+ * There are 12 DTMF signals and each of these is made up of two tones. According to the frequency, 
+ * the tones forming the DTMF signal can be classified into two groups.
+ *  \htmlonly <br>
+ * <p  align="left"> <b>Table 4. The DTMF keypad frequencies </b> </p >
+ * <table border=1 width=30% style="border-collapse:collapse;" borderColor=black > 
+ * <td></td> <td align=center>1209 Hz</td> <td align=center>1336 Hz</td> <td align=center>1477 Hz</td><tr> 
+ * <td align=center>697 Hz</td> <td align=center>1</td> <td align=center>2</td> <td align=center>3</td><tr> 
+ * <td align=center>770 Hz</td> <td align=center>4</td> <td align=center>5</td> <td align=center>6</td><tr> 
+ * <td align=center>852 Hz</td> <td align=center>7</td> <td align=center>8</td> <td align=center>9</td><tr> 
+ * <td align=center>941 Hz</td> <td align=center>*</td> <td align=center>0</td> <td align=center>#</td><tr> 
+ * </table>\endhtmlonly 
+ */ 
+ 

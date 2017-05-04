@@ -1,0 +1,76 @@
+This file is licensed to you under the license specified in the included file
+`COPYING'. Look there for further details.
+
+
+GENERAL TASKS:
+
+* Generate C++ code
+
+* Generate Java code
+
+The current maintainer is taking patches. See the file `AUTHORS'.
+
+Implement synonyms
+
+Should - be always interpreted as the standard output
+
+Generate code that uses Argp
+
+Duplicate options: A @dfn{duplicate option} is an option that, like a
+multiple option, may be specified more than once, but for which only
+the last use is significant.   The classic example is the @option{-O}
+switch present in most C compilers:
+
+maintainer-mode
+
+CLEANING
+
+- code duplication in check_option and create_option in gengetopt.cc
+
+TESTS
+
+generate in the code also a test main with a string containing the test
+arguments and then in the main, check that the results are as expected.
+
+avoid to touch sample1.ggo and sample2.ggo for make check in doc.
+
+check whether --show-help correctly handles escaped newlines
+
+check also detailed and full help for \\n and text
+
+TEXT BUG:
+
+section         "Section 1" 
+option          "str-opt"   s "A string option, for a filename"
+	optional 
+	string typestr="filename"
+text            "      explain more about the string option"
+section         "Section 2" 
+option          "int-opt"   i "A int option"  int optional 
+
+In this case text will be printed after Section 2 and before int-opt
+since the text is set in the option during gengetopt_check_option, while
+it should be set during the parsing:
+when text is encountered if there's already an option parsed
+we should set its text_after.
+But we should be careful not to set the same text after an option and
+before another one: after setting a text_after we should set current text to 0.
+And what if the text is after a section?
+If we had set the current text to 0 there should be no problems.
+
+Probably it's better to have "option parts" and distinguishing
+between standard options, sections, text, modes, etc.
+This requires some refactoring!
+But would this work for sections with only hidden options? No I guess.
+
+Possible fix found by setting the text in the parser
+- apply the current_option solution to other options (mode and group)
+- deal with text coming after a section (check current_section), but this would not
+  work in case there more text occurrences?  It should, test it.
+  and reset to 0 parsed_a_section after having parsed an option.
+- but do this also for modes and groups?
+
+Probably we should avoid to check whether the option after a section is hidden:
+does a section with only hidden options make sense?
+Yes probably it's better to keep this feature.
+

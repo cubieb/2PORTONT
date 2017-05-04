@@ -1,0 +1,87 @@
+//
+// Copyright (C) 2011 Realtek Semiconductor Corp.
+// All Rights Reserved.
+//
+// This program is the proprietary software of Realtek Semiconductor
+// Corporation and/or its licensors, and only be used, duplicated,
+// modified or distributed under the authorized license from Realtek.
+//
+// ANY USE OF THE SOFTWARE OTHER THAN AS AUTHORIZED UNDER
+// THIS LICENSE OR COPYRIGHT LAW IS PROHIBITED.
+//
+// $Revision: 39101 $
+// $Date: 2013-05-03 17:35:27 +0800 (Fri, 03 May 2013) $
+//
+// Purpose : Define diag shell commands for trunk.
+//
+// Feature : The file have include the following module and sub-modules
+//           1) OAM commands.
+//
+
+//OAM configuration
+//dump configuration
+oam dump
+
+//OAM configuration
+//get configuration
+//multiplexer configuration
+//port configuration
+//port list, <0-6>
+//all ports
+oam get multiplexer port ( <PORT_LIST:port> | all )
+
+//OAM configuration
+//get configuration
+//parser configuration
+//port configuration
+//port list, <0-6>
+//all ports
+oam get parser port ( <PORT_LIST:port> | all )
+
+//OAM configuration
+//get configuration
+//state configuration
+oam get state
+
+//OAM configuration
+//set configuration
+//multiplexer configuration
+//port configuration
+//port list, <0-6>
+//all ports
+//action configuration
+//forwarding packets
+//discarding packets
+//transmitting packets from cpu only
+oam set multiplexer port ( <PORT_LIST:port> | all ) action ( forward | discard | from-cpu-only )
+
+//OAM configuration
+//set configuration
+//parser configuration
+//port configuration
+//port list, <0-6>
+//all ports
+//action configuration
+//forwarding packets
+//loopback packets and drop crc/failed packets
+//discarding packets
+oam set parser port ( <PORT_LIST:port> | all ) action ( forward | loopback | discard )
+
+//OAM configuration
+//set configuration
+//state configuration
+//disable oam function
+//enable oam function
+oam set state ( disable | enable ) 
+
+//OAM configuration
+//set configuration
+//trap priority configuration
+//priority value, <0~7>
+oam set trap-priority <UINT:priority>
+
+//OAM configuration
+//get configuration
+//trap priority configuration
+oam get trap-priority
+

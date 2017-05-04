@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  RTK xDSL device type instance document wiht WLAN profiles. (Based on Device:2.2)
+
+  Summary:
+    RTK xDSL device type instance. Profiles included WiFiRadio:1, WiFiSSID:1.
+  
+  Version History:
+    *2013-08-30: Initial version. Generate using report.pl with some modifications.
+-->
+<dt:document xmlns:dt="urn:broadband-forum-org:cwmp:devicetype-1-0"
+             xmlns:dmr="urn:broadband-forum-org:cwmp:datamodel-report-0-1"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="urn:broadband-forum-org:cwmp:devicetype-1-0 http://www.broadband-forum.org/cwmp/cwmp-devicetype-1-0.xsd urn:broadband-forum-org:cwmp:datamodel-report-0-1 http://www.broadband-forum.org/cwmp/cwmp-datamodel-report.xsd"
+             deviceType="urn:rtk-xdsl:device-1-0-0">
+  <import file="tr-181-2-2-0.xml" spec="urn:broadband-forum-org:tr-181-2-2-0">
+    <model name="Device:2.2"/>
+  </import>
+  <model ref="Device:2.2">
+    <object ref="Device." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+    </object>
+    <object ref="Device.Services." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0"/>
+    <object ref="Device.WiFi." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <parameter ref="RadioNumberOfEntries" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="SSIDNumberOfEntries" access="readOnly" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.WiFi.Radio.{i}." access="readOnly" minEntries="0" maxEntries="unbounded" dmr:version="2.0" dmr:fixedObject="true">
+      <parameter ref="Enable" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Status" access="readOnly" dmr:version="2.0"/>
+      <!--parameter ref="Alias" access="readWrite" dmr:version="2.0"/-->
+      <parameter ref="Name" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="Upstream" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="MaxBitRate" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="SupportedFrequencyBands" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="OperatingFrequencyBand" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="SupportedStandards" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="OperatingStandards" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="PossibleChannels" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="ChannelsInUse" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="Channel" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="AutoChannelSupported" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="AutoChannelEnable" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="ExtensionChannel" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="GuardInterval" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="MCS" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="TransmitPowerSupported" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="TransmitPower" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="IEEE80211hSupported" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="IEEE80211hEnabled" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="RegulatoryDomain" access="readWrite" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.WiFi.Radio.{i}.Stats." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <parameter ref="BytesSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="BytesReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="PacketsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="PacketsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="ErrorsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="ErrorsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.WiFi.SSID.{i}." access="readOnly" minEntries="0" maxEntries="unbounded" dmr:version="2.0">
+      <parameter ref="Enable" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Status" access="readOnly" dmr:version="2.0"/>
+      <!--parameter ref="Alias" access="readWrite" dmr:version="2.0"/-->
+      <parameter ref="Name" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="LowerLayers" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="BSSID" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="MACAddress" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="SSID" access="readWrite" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.WiFi.SSID.{i}.Stats." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <parameter ref="BytesSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="BytesReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="PacketsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="PacketsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="ErrorsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="ErrorsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.WiFi.AccessPoint.{i}." access="readOnly" minEntries="0" maxEntries="unbounded" dmr:version="2.0">
+      <parameter ref="Enable" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Status" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="SSIDReference" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="SSIDAdvertisementEnabled" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="WMMCapability" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="UAPSDCapability" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="WMMEnable" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="UAPSDEnable" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="AssociatedDeviceNumberOfEntries" access="readOnly" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.WiFi.AccessPoint.{i}.Security." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <parameter ref="ModesSupported" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="ModeEnabled" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="WEPKey" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="PreSharedKey" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="KeyPassphrase" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="RekeyingInterval" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="RadiusServerIPAddr" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="RadiusServerPort" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="RadiusSecret" access="readWrite" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.WiFi.AccessPoint.{i}.WPS." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <parameter ref="Enable" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="ConfigMethodsSupported" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="ConfigMethodsEnabled" access="readOnly" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.WiFi.AccessPoint.{i}.AssociatedDevice.{i}." access="readOnly" minEntries="0" maxEntries="unbounded" dmr:version="2.0">
+      <parameter ref="MACAddress" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="AuthenticationState" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="LastDataDownlinkRate" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="LastDataUplinkRate" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+    </object>
+  </model>
+</dt:document>

@@ -1,0 +1,1 @@
+cmd_net/netfilter/nf_conntrack_h323.o := /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/rsdk-linux-ld  -m elf32btsmip   -r -o net/netfilter/nf_conntrack_h323.o net/netfilter/nf_conntrack_h323_main.o net/netfilter/nf_conntrack_h323_asn1.o 

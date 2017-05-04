@@ -1,0 +1,76 @@
+.\" Process this file with
+.\" groff -man -Tascii mepd.1
+.\"
+.TH OAMPING 1 "MAR 2012" Linux "User Manuals"
+.SH NAME
+oamping \- ITU-T Y.1731 stand-alone LBM pinger.
+.SH SYNOPSIS
+.B oamping [--mac
+.I MAC
+.B ] 
+.B [--mel
+.I MEG level
+.B ] 
+.B [--count
+.I Count
+.B ] 
+.B [--interval
+.I Interval
+.B ] 
+.B [--iifindex
+.I IF index
+.B ] 
+
+.SH DESCRIPTION
+ 
+Primary function of Y.1731 OAM protocol is to provide fault detection
+services for Ethernet networks, such as loss of connectivity, bit
+errors, or timing deviations. Y.1731 pro-actively verifies the
+connectivity by monitoring OAM messages coming from remote entities in
+the network. Upon an error an alarm is raised.
+
+Y.1731 can perform in-service and out-of-service tests in order to
+diagnose the network. In-service tests can be used to verify the path
+integrity and for the identification of the on-path forwarding
+entities. Out-of-service tests can be used for tasks such as measuring
+the throughput of an unloaded path
+
+Y.1731 can measure the loss, one-way delay, two-way delay, delay
+variation, and throughput.
+
+.SH OPTIONS
+.IP "--mac"
+MAC address of the target.
+.IP "--mel"
+MEL level of the target.
+.IP "--count"
+How many LBMs are we sending.
+.IP "--interval" 
+The sending interval in usec.
+.IP "--iifindex" 
+The IF index used for sending.
+
+.SH EXAMPLE
+
+.B oamping --mac 11:22:33:44:55:66 --mel 4 --count 10 --interval 3330
+
+Would send ten LBMs to 11:22::33:44:55:66 on MEG level 4 in 3.33 ms intervals.
+
+.SH NOTE
+Remember the interval restrictions 3.33 ms, 1 ms, 10 ms,
+etc. Although, the interval allows more fine grained intervals.
+
+This program uses the extended p^2 algorithm to report on more than
+2*3+3 observations. The quantiles estimated are MIN, 0.25, 0.5, 0.75, MAX
+
+.SH BUGS
+See details about the current bugs from the tracker in URL
+https://vcs.hiit.fi/trac/GoodNet/
+
+.SH AUTHOR
+Samu Varjonen <samu dot varjonen at hiit dot fi>
+
+.SH "SEE ALSO"
+.BR oamd (1),
+.BR oamtool (1)
+.BR oamtrace (1)

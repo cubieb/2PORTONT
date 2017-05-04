@@ -1,0 +1,175 @@
+
+
+ROOTDIR=$(shell pwd)
+LINUXBASE := $(shell if [ -d linux-2.6.x ]; then echo linux-2.6.x; \
+	else echo linux-2.4.x; fi)
+LINUXDIR := $(ROOTDIR)/$(LINUXBASE)
+USERDIR=$(ROOTDIR)/user
+ifeq ($(LINUXBASE),linux-2.4.x)
+SARDIR=$(LINUXDIR)/drivers/atm
+else
+RTL8187DIR=$(LINUXDIR)/drivers/usb/net/rtl8187su
+RTL8192DIR=$(LINUXDIR)/drivers/usb/net/8192su
+RTL8190DIR=$(LINUXDIR)/drivers/net/wireless/rtl8190
+SARDIR=$(LINUXDIR)/drivers/867x_sar
+endif
+FASTPATHDIR=$(LINUXDIR)/net/ipv4/fastpath
+NETDIR=$(LINUXDIR)/net
+PKTPROCDIR=$(LINUXDIR)/drivers/net/packet_processor
+PRODUCTDIR=$(ROOTDIR)/vendors/Realtek/RTL8670
+
+# backuplib $1=target
+define backuplib
+		[ -f $1.lib ] || mv $1.o $1.lib
+endef
+
+define maketarget
+	echo "uc26 target: $1"; \
+	echo "Cleanup Kernel and User..."; \
+	make linux-2.6.x_clean; \
+	make clean;	\
+	echo "Making $1...";	\
+	cp $2 .config; \
+	cp $3 $(LINUXDIR)/.config; \
+	cp $4 config/.config; \
+	yes "" | make config; \
+	make linux;
+endef
+
+.PHONY: help 
+help:
+	@echo "Available targets:"
+	@echo "  all: create release SDK"
+
+.PHONY: prepare_Makefile 
+prepare_Makefile:
+	@echo "Change Makefiles..."
+	@if [ -d linux-2.6.x ]; then \
+		mv $(RTL8187DIR)/Makefile.release $(RTL8187DIR)/Makefile; \
+		mv $(RTL8192DIR)/Makefile.release $(RTL8192DIR)/Makefile; \
+		mv $(SARDIR)/Makefile.release $(SARDIR)/Makefile; \
+		mv $(FASTPATHDIR)/Makefile.release $(FASTPATHDIR)/Makefile; \
+		mv $(USERDIR)/rtk_voip/Makefile.release $(USERDIR)/rtk_voip/Makefile; \
+		mv $(PKTPROCDIR)/Makefile.release $(PKTPROCDIR)/Makefile; \
+	else \
+		mv $(SARDIR)/Makefile.release $(SARDIR)/Makefile; \
+		mv $(FASTPATHDIR)/Makefile.release $(FASTPATHDIR)/Makefile; \
+		mv $(NETDIR)/Makefile.release $(NETDIR)/Makefile; \
+	fi
+
+.PHONY: remove_protected_files
+remove_protected_files:
+	@echo "Clean protected files..."
+	@if [ -d linux-2.6.x ]; then \
+		find $(RTL8187DIR) -not -name 8185ag_sme.c -a -not -name 8185ag_usb.c -a -name '*.c' | xargs rm -f; \
+		rm -f $(RTL8192DIR)/*.c; \
+		rm -f $(RTL8190DIR)/*.c; \
+		rm -f $(SARDIR)/ra8670.c; \
+		rm -f $(FASTPATHDIR)/fastpath_core.c; \
+		rm -rf $(ROOTDIR)/user/cwmp-tr069/gsoaplib $(ROOTDIR)/user/cwmp-tr069/matrixssl-1-8-3-open; \
+		find $(PKTPROCDIR)  -not -name rtl8672pp_extsw.c -a -name '*.c' | xargs rm -f; \
+		rm -rf $(USERDIR)/rtk_voip/src/build; \
+		rm -rf $(USERDIR)/rtk_voip/src/dns; \
+		rm -rf $(USERDIR)/rtk_voip/src/ivr/*.c; \
+		rm -rf $(USERDIR)/rtk_voip/src/ivr/*.h; \
+		rm -rf $(USERDIR)/rtk_voip/src/oRTP; \
+		rm -rf $(USERDIR)/rtk_voip/src/linphone; \
+		rm -rf $(USERDIR)/rtk_voip/src/osip; \
+		rm -rf $(USERDIR)/rtk_voip/src/stun; \
+		rm -rf $(USERDIR)/rtk_voip/src/dialplan; \
+		rm -rf $(USERDIR)/rtk_voip/src/exosip; \
+		rm -rf $(USERDIR)/rtk_voip/src/mediastreamer; \
+		rm -rf $(USERDIR)/rtk_voip/src/tools; \
+	else \
+		rm -f $(SARDIR)/ra8670.c; \
+		rm -f $(FASTPATHDIR)/fastpath_core.c; \
+		rm -rf $(ROOTDIR)/user/cwmp-tr069/gsoaplib $(ROOTDIR)/user/cwmp-tr069/matrixssl-1-8-3-open; \
+	fi
+
+.PHONY: remove_tmp_files
+remove_tmp_files:
+	@echo "Clean temporary files..."
+	find $(ROOTDIR) -name '*.o' | xargs rm -f	
+	rm -f $(LINUXDIR)/linux $(LINUXDIR)/make*.log $(LINUXDIR)/vm* $(LINUXDIR)/rootfs $(LINUXDIR)/System.map
+	rm -f $(ROOTDIR)/user/boa/default_web_id
+	#find $(ROOTDIR) -name CVS -type d | xargs rm -rf
+	find $(ROOTDIR) -type l | xargs rm -f
+	rm -f $(ROOTDIR)/rootfs
+	@if [ -d linux-2.4.x ]; then \
+		touch $(ROOTDIR)/rootfs; \
+		find $(ROOTDIR) -name .depend | xargs rm -f; \
+		find $(ROOTDIR) -name '*.flags' | xargs rm -f; \
+	fi
+
+.PHONY: make_clean
+make_clean:
+	@echo "Cleanup Kernel and User..."
+	@if [ -d linux-2.6.x ]; then \
+		make linux-2.6.x_clean; \
+		make clean; \
+	else \
+		make linux-2.4.x_clean; \
+		make clean; \
+	fi
+
+verify_works:
+	@secho "Verify..."
+	# check if protected files are truly gone.	
+	# check library exists	
+
+
+##### Main Body ####
+.PHONY: do_provisioning
+do_provisioning:
+	@if [ -d linux-2.6.x ]; then \
+		cp $(PRODUCTDIR)/combo/config .config; \
+		cp $(PRODUCTDIR)/1Pwifi/config_kernel $(LINUXDIR)/.config; \
+		cp $(PRODUCTDIR)/1Pwifi/config_user config/.config; \
+		yes "" | make config; \
+	else \
+		cp $(PRODUCTDIR)/release_2.4/config .config; \
+		cp $(PRODUCTDIR)/release_2.4/config_user config/.config; \
+		yes "" | make config; \
+	fi
+
+.PHONY: do_make_1pwifi
+do_make_1pwifi:
+	$(call maketarget,\
+		1PWifi_VOIP,\
+		$(PRODUCTDIR)/combo/config,\
+		$(PRODUCTDIR)/release/cfg_kern1,\
+		$(PRODUCTDIR)/release/cfg_user)
+	# Backup file... No pkt processor, no ext switch
+	$(call backuplib,$(FASTPATHDIR)/fastpath)
+	$(call backuplib,$(SARDIR)/ra8670)
+	$(call backuplib,$(RTL8187DIR)/wireless_rtl8187su)
+
+.PHONY: do_make_11n
+do_make_11n:
+	$(call maketarget,\
+		4P_11n,\
+		$(PRODUCTDIR)/combo/config,\
+		$(PRODUCTDIR)/4Pwifi_11n/config_kernel,\
+		$(PRODUCTDIR)/4Pwifi_11n/config_user)
+	$(call backuplib,$(FASTPATHDIR)/fastpath)
+	$(call backuplib,$(SARDIR)/ra8670)
+	$(call backuplib,$(RTL8192DIR)/8192su)
+	$(call backuplib,$(PKTPROCDIR)/packet_processor)
+	
+	
+.PHONY: do_all_1 do_all_2 all
+do_all_1: do_provisioning do_make_1pwifi do_make_11n  
+	make
+
+do_all_2: do_all_1 prepare_Makefile make_clean remove_protected_files remove_tmp_files
+#do_all_2: do_all_1 
+
+do_all_3: do_provisioning do_make_target prepare_Makefile make_clean remove_protected_files remove_tmp_files
+
+ifeq ($(LINUXBASE),linux-2.6.x)
+all: do_all_2
+else
+all: do_all_3
+endif
+
+

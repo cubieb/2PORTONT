@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  RTK xDSL device type instance document wiht xDSL profiles. (Based on Device:2.2)
+
+  Summary:
+    RTK xDSL device type instance. Profiles included PTMLink:1
+  
+  Version History:
+    *2013-08-30: Initial version. Generate using report.pl with some modifications.
+-->
+<dt:document xmlns:dt="urn:broadband-forum-org:cwmp:devicetype-1-0"
+             xmlns:dmr="urn:broadband-forum-org:cwmp:datamodel-report-0-1"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="urn:broadband-forum-org:cwmp:devicetype-1-0 http://www.broadband-forum.org/cwmp/cwmp-devicetype-1-0.xsd urn:broadband-forum-org:cwmp:datamodel-report-0-1 http://www.broadband-forum.org/cwmp/cwmp-datamodel-report.xsd"
+             deviceType="urn:rtk-xdsl:device-1-0-0">
+    <import file="tr-181-2-2-0.xml" spec="urn:broadband-forum-org:tr-181-2-2-0">
+    <model name="Device:2.2"/>
+  </import>
+  <model ref="Device:2.2">
+    <object ref="Device." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+    </object>
+    <object ref="Device.Services." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0"/>
+    <object ref="Device.PTM." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <parameter ref="LinkNumberOfEntries" access="readOnly" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.PTM.Link.{i}." access="createDelete" minEntries="0" maxEntries="unbounded" dmr:version="2.0">
+      <parameter ref="Enable" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Status" access="readOnly" dmr:version="2.0"/>
+      <!--parameter ref="Alias" access="readWrite" dmr:version="2.0"/-->
+      <parameter ref="Name" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="LastChange" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <!--parameter ref="LowerLayers" access="readWrite" dmr:version="2.0"/-->
+      <parameter ref="LowerLayers" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="MACAddress" access="readOnly" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.PTM.Link.{i}.Stats." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <parameter ref="BytesSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="BytesReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="PacketsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="PacketsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="ErrorsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="ErrorsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="UnicastPacketsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="UnicastPacketsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="DiscardPacketsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="DiscardPacketsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="MulticastPacketsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="MulticastPacketsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="BroadcastPacketsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="BroadcastPacketsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="UnknownProtoPacketsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+    </object>
+  </model>
+</dt:document>

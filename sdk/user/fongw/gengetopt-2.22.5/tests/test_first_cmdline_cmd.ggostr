@@ -1,0 +1,4 @@
+# test for multiple parsers, this is the first command line file
+
+option "option-a" a "option a of the first command line to parse" optional int
+option "multi" M "multiple option of the first command line to parse" optional string multiple

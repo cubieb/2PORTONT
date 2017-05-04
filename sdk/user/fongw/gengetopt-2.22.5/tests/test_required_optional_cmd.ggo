@@ -1,0 +1,16 @@
+# this contains some options with the required/optional flag specified
+# and some without it.  This is used to test --default-optional
+
+package "required_or_optional"
+version "0.1"
+
+section "This contains options with specified required/optional"
+
+option "required" - "required specified" string required
+option "optional" - "optional specified" string optional
+
+section "This contains options with NON specified required/optional"
+
+option "non-specified" - "non specified whether optional or required" string
+option "non-specified2" - "non specified whether optional or required" string
+

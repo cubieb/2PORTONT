@@ -1,0 +1,29 @@
+// ============================================================
+
+/**
+ * @page media_RFC2833 VoIP Session - DTMF 
+ * @ingroup TAPI_MEDIA_RFC2833
+ * There are three modes for DTMF. 
+ * - RFC2833
+ * - SIP INFO 
+ * - Inband 
+ *
+ * For RFC2833 mode, DTMF message is sent through RTP<br>
+ * While DTMF message is sent through SIP info for SIP info mode. <br>
+ * The Figure 20 shows the SIP info message for DTMF 5 with an indicated duration of 160 milliseconds.
+ *
+ * \htmlonly <br> <caption align="left"> <b>Figure 20 SIP info message for DTMF</b> </caption>  
+ * <font color=#0000A0> <pre> 
+ * INFO sip:7007471000@example.com SIP/2.0 
+ * Via: SIP/2.0/UDP alice.uk.example.com:5060 
+ * From: <sip:7007471234@alice.uk.example.com>;tag=d3f423d 
+ * To: <sip:7007471000@example.com>;tag=8942 
+ * Call-ID: 312352@myphone
+ * CSeq: 5 INFO 
+ * Content-Length: 24 
+ * Content-Type: application/dtmf-relay 
+ * 
+ * Signal=5 
+ * Duration=160   
+ * </pre> </font>  \endhtmlonly 
+ */

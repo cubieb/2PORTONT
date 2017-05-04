@@ -1,0 +1,38 @@
+.Dd Sun, 13 Apr 2003 00:24:32 +0200
+.Dt RHOSTS 5
+.Sh NAME
+.Pa $HOME/.rhosts
+.Nd allow
+.Nm rlogin ,
+.Nm rsh
+and
+.Nm rcp
+connections to the local machine without a password.
+.Sh DESCRIPTION
+The
+.Pa .rhosts
+file can allow specific remote users and/or hosts to execute commands on the local machine.
+The file uses the following format:
+.Pp
+.D1 Ar host Op Ar user Li | Li @ Ns Ar group
+.Pp
+Such an entry grants password-free access for the user with
+the login name
+.Ar user
+from
+.Ar host .
+If no 
+.Ar user
+is specified, the user must have the same login name on the remote host and the local host.
+For security reasons you should always use the FQDN of the hostname and not the short hostname.
+Netgroups can be specified by preceeding the
+.Ar group
+by an @ sign.
+.Pp
+The
+.Pa .rhosts
+file must be owned by the user or root, and writable only by the owner.
+.Sh SEE ALSO
+.Xr rsh 1 ,
+.Xr rlogin 1 ,
+.Xr rcp 1 .

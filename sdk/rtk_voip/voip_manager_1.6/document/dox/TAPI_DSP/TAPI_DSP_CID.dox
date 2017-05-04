@@ -1,0 +1,19 @@
+// ============================================================
+
+/**
+ * @page VOIP_DSP_CID FXS-Caller ID
+ * @ingroup TAPI_DSP_CID 
+ * The Caller-ID will display in the callee's phone during the ringing signal. It can be classified into two categories. <br>
+ * One is DTMF mode and the other is FSK mode. <br>For DTMF mode, there are three kinds of DTMF.  
+ * - Inband 
+ * - SIP INFO 
+ * - RFC2833 
+ *
+ * For FSK mode, there are four kinds of FSK. 
+ * - \ref fsk2 
+ * - \ref fsk1 
+ * - \ref fsk3 
+ * - \ref fsk4 
+ */ 
+ 
+

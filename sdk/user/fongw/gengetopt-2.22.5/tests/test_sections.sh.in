@@ -1,0 +1,5 @@
+#! @SHELL@
+
+# the next program must simply print the help
+
+if $* ./test_sections --help ; then true; else false; fi

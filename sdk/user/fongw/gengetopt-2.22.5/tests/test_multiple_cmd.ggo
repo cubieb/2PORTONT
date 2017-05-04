@@ -1,0 +1,24 @@
+package "test_multiple"
+version "1.0"
+
+# test_multiple_cmd.ggo
+
+# test options that can be given more than once
+
+option "string"      s "string option" string default="foo" optional multiple
+option "int"         i "int option" int required multiple
+option "short"       S "short option" short optional multiple
+option "long"        l "long option" long optional multiple
+option "longlong"        - "long long option" longlong optional multiple
+option "limited"     L "limited multiple option" string optional multiple(3)
+option "limited-interval"     - "limited multiple option (with interval)" string optional multiple(1-3)
+option "big-limited-interval"     - "limited multiple option (with interval)" string optional multiple(1-30)
+option "limited-open-right"     - "limited multiple option (with interval right open)" string optional multiple(3-)
+option "limited-open-left"     - "limited multiple option (with interval left open)" string optional multiple(-3)
+option "float"       f "float option" float default="15000" optional multiple
+option "no-short-opt" - "string option with no short" string optional multiple
+option "noarg"       n "multiple option with no arg" no multiple
+option "noarg-noshort"       - "multiple option with no arg and no short" no multiple
+option "optarg"   M "multi with optional args" string typestr="ID" no argoptional multiple
+option "optarg-noshort"   - "multi with optional args and no short" string typestr="ID" no argoptional multiple
+option "file-save"   - "save the passed options into a file" string no

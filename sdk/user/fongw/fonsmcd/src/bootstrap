@@ -1,0 +1,51 @@
+#!/bin/bash
+#
+# 20060627 Pablo Martin Medrano <pablo@fon.com>
+#
+# Calls proper programs to create configure script and Makefile.in files.
+# if run with the --clean option, bootstrap removes the files it generates.
+
+function run_silent
+{
+	$@ > /tmp/$$log 2>&1
+	if [ $? -ne 0 ]; then
+		cat /tmp/$$log
+		rm /tmp/$$log
+		return 1
+	fi
+	rm /tmp/$$log
+	return 0
+}
+# obtains optional parameters
+PROFILE="NONE"
+while test x"$1" != x; do
+	if test "$1" = "--help"; then
+		echo "Usage: bootstrap.sh [--configure | --clean | --compile PROFILE]"
+		exit 0
+	elif test "$1" = "--clean"; then
+		rm -fr aclocal.m4 autom4te.cache build cscope.out 
+		rm -fr Makefile.in config.h.in configure
+		rm -fr config.log tags
+		rm -f server/etc/fonucs.xml.dump
+		rm -f server/etc/fonucs.bin
+		rm -f server/etc/fonucs.bin.dump
+		rm -fR .configaux/
+		exit 0
+	fi
+	shift
+done
+
+# create missing directories
+for i in .configaux build; do
+! test -d $i && { mkdir -p $i || exit $?; }
+done
+
+# run autotools
+echo "Running autotools:"
+echo "..aclocal."; run_silent aclocal || exit $?
+echo "..libtoolizing."; run_silent libtoolize --force --copy || exit $?
+echo "..autoconf."; run_silent autoconf --force || exit $?
+echo "..autoheader"; run_silent autoheader || exit $?
+echo "..automake."; run_silent automake --add-missing --foreign || exit $?
+
+

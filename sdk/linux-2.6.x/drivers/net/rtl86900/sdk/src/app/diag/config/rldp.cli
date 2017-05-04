@@ -1,0 +1,221 @@
+//
+// Copyright (C) 2011 Realtek Semiconductor Corp.
+// All Rights Reserved.
+//
+// This program is the proprietary software of Realtek Semiconductor
+// Corporation and/or its licensors, and only be used, duplicated,
+// modified or distributed under the authorized license from Realtek.
+//
+// ANY USE OF THE SOFTWARE OTHER THAN AS AUTHORIZED UNDER
+// THIS LICENSE OR COPYRIGHT LAW IS PROHIBITED.
+//
+// $Revision: 39101 $
+// $Date: 2013-05-03 17:35:27 +0800 (Fri, 03 May 2013) $
+//
+// Purpose : Define diag shell commands for RLDP.
+//
+// Feature : The file have include the following module and sub-modules
+//           1) RLDP commands.
+//
+
+//RLDP configuration
+//dump configuration
+rldp dump
+
+//RLDP configuration
+//set configuration
+//state configuration
+//disable RLDP function
+//enable RLDP function
+rldp set state ( disable | enable )
+
+//RLDP configuration
+//get configuration
+//state configuration
+rldp get state
+
+//RLDP configuration
+//set configuration
+//descriptor run out configuration
+//not drop RLDP packet besides DSC run out
+//drop RLDP packet besides DSC run out
+rldp set runout ( not-drop | drop )
+
+//RLDP configuration
+//get configuration
+//descriptor run out configuration
+rldp get runout
+
+//RLDP configuration
+//set configuration
+//trigger mode configuration
+//SA moving mode
+//periodic mode
+rldp set trigger ( sa-moving | periodic )
+
+//RLDP configuration
+//get configuration
+//trigger mode configuration
+rldp get trigger
+
+//RLDP configuration
+//set configuration
+//LED & Buzzer indication configuration
+//ASIC
+//CPU
+rldp set indicate ( asic | cpu )
+
+//RLDP configuration
+//get configuration
+//LED & Buzzer indication configuration
+rldp get indicate
+
+//RLDP configuration
+//set configuration
+//compare type configuration
+//compare SA + magic number
+//compare SA + magic number + identifier
+rldp set compare ( no-identifier | identifier )
+
+//RLDP configuration
+//get configuration
+//compare type configuration
+rldp get compare
+
+//RLDP configuration
+//set configuration
+//protocol handle type configuration
+//ASIC handle
+//CPU handle
+rldp set handle ( asic | cpu )
+
+//RLDP configuration
+//get configuration
+//protocol handle type configuration
+rldp get handle
+
+//RLDP configuration
+//set configuration
+//regenerate random number configuration
+rldp set genrandom
+
+//RLDP configuration
+//set configuration
+//check state
+//looped state
+//interval between 2 re-tries
+//time (unit: ms)
+rldp set ( check | loop ) period <UINT:time>
+
+//RLDP configuration
+//get configuration
+//check state
+//looped state
+//interval between 2 re-tries
+rldp get ( check | loop ) period
+
+//RLDP configuration
+//set configuration
+//check state
+//looped state
+//re-tries number
+//count
+rldp set ( check | loop ) number <UINT:count>
+
+//RLDP configuration
+//get configuration
+//check state
+//looped state
+//re-tries number
+rldp get ( check | loop ) number
+
+//RLDP configuration
+//set configuration
+//magic number configuration
+//number
+rldp set magic <MACADDR:number>
+
+//RLDP configuration
+//get configuration
+//magic number configuration
+rldp get magic
+
+//RLDP configuration
+//get configuration
+//random number configuration
+rldp get random
+
+//RLDP configuration
+//set configuration
+//port configuration
+//port list , <0-1,3-5> 
+//all ports
+//state configuration
+//disable RLDP function
+//enable RLDP function
+rldp set port ( <PORT_LIST:port> | all ) state ( disable | enable )
+
+//RLDP configuration
+//get configuration
+//port configuration
+//port list , <0-1,3-5> 
+//all ports
+//state configuration
+rldp get port ( <PORT_LIST:port> | all ) state
+
+//RLDP configuration
+//set configuration
+//port configuration
+//port list , <0-1,3-5> 
+//all ports
+//loop status entering clear configuration
+//loop status leaving clear configuration
+rldp set port ( <PORT_LIST:port> | all ) ( enter-clear | leave-clear )
+
+
+//RLDP configuration
+//get configuration
+//port configuration
+//port list , <0-1,3-5> 
+//all ports
+//loop status for port (enter, leave, looping)
+rldp get port ( <PORT_LIST:port> | all ) status
+
+//RLDP configuration
+//set configuration
+//port configuration
+//port list , <0-1,3-5> 
+//all ports
+//loop state by CPU control
+//none-looping 
+//looping
+rldp set port ( <PORT_LIST:port> | all ) ctrl-loop ( none-looping | looping )
+
+//RLDP configuration
+//get configuration
+//port configuration
+//port list , <0-1,3-5> 
+//all ports
+//loop state by CPU control
+rldp get port ( <PORT_LIST:port> | all ) ctrl-loop
+
+//RLDP configuration
+//get configuration
+//port configuration
+//port list , <0-1,3-5> 
+//all ports
+//looped port id
+rldp get port ( <PORT_LIST:port> | all ) loop-port
+
+//RLPP configuration
+//set configuration
+//trap to CPU configuration
+//disable RLDP function
+//enable RLDP function
+rlpp set trap ( disable | enable )
+
+//RLPP configuration
+//get configuration
+//trap configuration
+rlpp get trap
+

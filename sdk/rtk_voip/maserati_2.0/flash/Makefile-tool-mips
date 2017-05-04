@@ -1,0 +1,34 @@
+include ../.linux_config
+
+OBJS = voip_flash_mib.mips.o voip_flash_tool.mips.o
+LIBS = libvoip_flash_tool.mips.a
+
+CFLAGS = -g -Wall -I../includes -I../ui/include -I../../boa/apmib
+ifeq ($(CONFIG_RTK_VOIP_PACKAGE_867X), y)
+CFLAGS += -I../../boa/src/LINUX
+endif
+LDFLAGS = --static
+
+ifneq ($(BUILD_DIALPLAN), 0)
+CFLAGS += -DCONFIG_RTK_VOIP_DIALPLAN
+endif
+
+DEPENDENCY	= $(OBJS:.o=.d)
+
+all: $(LIBS) 
+
+$(LIBS): $(OBJS)
+	$(AR) rcs $@ $^
+
+#%.o: %.c
+#	$(CC) -c -o $@ $(CFLAGS) $<
+#	$(CC) -M $(CFLAGS) $< | sed -e "s#^$(*F).o[ :]*#$(@D)\/$(*F).o : #" > $(@:.o=.d)
+
+%.mips.o: %.c
+	$(CC) -c -o $@ $(CFLAGS) $<
+	$(CC) -M $(CFLAGS) $< | sed -e "s#^$(*F).mips.o[ :]*#$(@D)\/$(*F).mips.o : #" > $(@:.mips.o=.mips.d)
+
+clean:
+	rm -f $(LIBS) $(OBJS) *.mips.d
+
+-include $(DEPENDENCY)

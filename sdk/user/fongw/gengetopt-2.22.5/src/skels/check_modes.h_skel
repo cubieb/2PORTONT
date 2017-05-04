@@ -1,0 +1,7 @@
+if (args_info->@mode1_name@_mode_counter && args_info->@mode2_name@_mode_counter) {
+  int @mode1_name@_given[] = {@mode1_given_fields@ -1};
+  const char *@mode1_name@_desc[] = {@mode1_options@ 0};
+  int @mode2_name@_given[] = {@mode2_given_fields@ -1};
+  const char *@mode2_name@_desc[] = {@mode2_options@ 0};
+  error += check_modes(@mode1_name@_given, @mode1_name@_desc, @mode2_name@_given, @mode2_name@_desc);
+}

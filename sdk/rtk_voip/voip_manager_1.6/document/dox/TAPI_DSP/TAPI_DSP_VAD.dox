@@ -1,0 +1,21 @@
+// ============================================================
+
+/**
+ * @page TAPI_DSP_VAD VAD
+ * @ingroup TAPI_DSP_VAD 
+ * Voice Activity Detection (VAD) is a technique to detect whether voice is active, and  
+ * one of its goals is to DTX (Discontinue Transmition) to reduce traffic. 
+ * There is a special packet named Silence Insertion Descriptor(SID) between 
+ * voice and DTX packets, and it tells receiver DTX following SID. <br>
+ * Thus, a scenario may be 'voice ... voice SID DTX .... DTX voice'. 
+ * <p>
+ * This feature is related to codec, and support list is: 
+ * - G.711: yes 
+ * - G.722: yes 
+ * - G.723: yes
+ * - G.726: yes
+ * - G.729: yes
+ * - GSM-FR: no
+ * - iLBC 20/30ms: no
+ * 
+ */ 

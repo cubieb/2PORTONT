@@ -1,0 +1,4 @@
+# newlines escaped in options
+option          "format"    F 
+"this is the \\nformat used for find -printf"  optional 
+string typestr="fmt" default="%p\\t%s\\n"

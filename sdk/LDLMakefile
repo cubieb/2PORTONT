@@ -1,0 +1,255 @@
+ROOTDIR    := $(shell pwd)
+
+ifneq ($(MAKECMDGOALS:preconfig2630_%=preconfig2630),preconfig2630)
+	include .config
+	ifneq ($(CONFIG_LUNA_DUAL_LINUX),y)
+$(error $(DLMAKEFILE) is for "Luna Dual Linux" only)
+	endif
+endif
+
+IMGDIR     := $(ROOTDIR)/dual_linux_images
+TMPDIR     := $(ROOTDIR)/temp
+ROMFSDIR   := $(ROOTDIR)/romfs
+CONFIG_PRODUCT ?=luna
+ifeq ($(CONFIG_PRODUCT),luna)
+CONFIG_PRD_SIGNATURE ?= DL8696RG
+CONFIG_PRJ_SIGNATURE ?= demo
+PRECFGDIR  := $(ROOTDIR)/vendors/Realtek/$(CONFIG_PRODUCT)/conf2630/$(CONFIG_PRD_SIGNATURE)_$(CONFIG_PRJ_SIGNATURE)
+else
+PRECFGDIR  := $(ROOTDIR)/vendors/Realtek/$(CONFIG_PRODUCT)/conf2630
+endif
+LINUXDIR   := $(ROOTDIR)/linux-2.6.x
+BUSYBOX_DEFAULT = busybox-1.12.4
+BUSYBOXDIR = $(ROOTDIR)/user/$(BUSYBOX_DEFAULT)
+CONFIG_CONFIG = $(ROOTDIR)/config/.config
+
+CROSS_COMPILE := $(ROOTDIR)/toolkit/bin/rsdk-linux-
+
+MCFG     := $(TMPDIR)/luna.master.cfg.tgz
+SCFG     := $(TMPDIR)/luna.slave.cfg.tgz
+CFG	 := cfg_$(CONFIG_PRD_SIGNATURE)_$(CONFIG_PRJ_SIGNATURE).tar
+RAMFSLST := $(LINUXDIR)/luna_slave_initramfs.lst
+HINT_MSG := $(ROOTDIR)/config.luna.hint.in
+
+# DLMAKEFILE := $(firstword $(MAKEFILE_LIST))
+# DLMAKE      = $(MAKE) -f $(DLMAKEFILE)
+DLMAKEFILE := LDLMakefile
+DLMAKE     := make -f $(DLMAKEFILE)
+
+MAKEBZBOX = $(MAKE) ARCH=mips CROSS_COMPILE=$(CROSS_COMPILE)
+
+#./user/busybox-1.12.4/.config \
+
+SWAP_LIST := ./config/autoconf.h ./config/.config ./linux-2.6.x/.config
+
+# ./linux-2.6.x/include/linux/autoconf.h is updated from ./linux-2.6.x/.config when being re-built
+
+.PHONY: all
+all: setup_global_env $(IMGDIR)/luna_master.uImage
+	cp $(ROOTDIR)/rootfs $(IMGDIR)/luna_master.rootfs
+
+# Change path to $(1), and execute command based on $(2).
+EXECMD = cd $(1) && \
+         MYCMD=`cat $(2) | head -n 1 | cut -d ' ' -f3- | sed -e 's|\"||g'` && \
+         $${MYCMD}
+
+$(IMGDIR)/luna_slave.out:
+	$(DLMAKE) setup_slave_env
+	make subdirs
+	make romfs
+ifeq ($(CONFIG_PRODUCT),luna)
+	make rcX
+endif
+	make modules
+	make modules_install
+# lstrip requires RSDK in $(PATH)
+	PATH=$(dir $(CROSS_COMPILE)):$(PATH) && $(CROSS_COMPILE)lstrip $(ROMFSDIR)
+# generate ramfs list from romfs
+	$(DLMAKE) gen_ramfs_list
+# generate CPIO on romfs, again
+	$(call EXECMD,$(LINUXDIR),usr/.initramfs_data.cpio.cmd)
+	$(call EXECMD,$(LINUXDIR),usr/.initramfs_data.o.cmd)
+	$(call EXECMD,$(LINUXDIR),usr/.built-in.o.cmd)
+# link vmlinux, again
+	$(call EXECMD,$(LINUXDIR),.vmlinux.cmd)
+	cp $(LINUXDIR)/vmlinux $@
+
+$(IMGDIR)/luna_slave.img: $(IMGDIR)/luna_slave.out
+	$(CROSS_COMPILE)objcopy --gap-fill=0xff -O binary $^ $@
+
+# produce image for master
+$(IMGDIR)/luna_master.uImage: $(IMGDIR)/luna_slave.img
+	$(DLMAKE) uclinux_clean 
+	$(DLMAKE) setup_master_env
+	make busybox_check
+	make subdirs
+	mkdir -p $(ROMFSDIR)/image && cp $^ $(ROMFSDIR)/image
+	make romfs
+ifeq ($(CONFIG_PRODUCT),luna)
+	make rcX
+endif
+	make modules
+	make modules_install
+	make image
+	make vmimg
+	cp ./linux-2.6.x/vmlinux $(IMGDIR)/luna_master.out
+	cp ./linux-2.6.x/uImage $@
+
+.PHONY: ldl_clean
+ldl_clean:
+	rm -f $(IMGDIR)/* toolkit $(MCFG) $(SCFG)
+	echo '' > $(HINT_MSG)
+
+.PHONY: clean
+clean: ldl_clean uclinux_clean
+
+
+.PHONY: preconfig2630_%
+preconfig2630_%: $(TMPDIR) ldl_clean
+	@echo -n "Configuration $* dual linux... "
+ifeq ($(CONFIG_PRODUCT),luna)
+	@cp $(ROOTDIR)/vendors/Realtek/$(CONFIG_PRODUCT)/conf2630/$*/master/config .config
+# Consumer can define his own default mib setting by modifing config/config_default.xml
+	[ -f config/config_default.xml ] && mv config/config_default.xml config/config_default.xml.backup; \
+        [ -f config/config_default_hs.xml ] && mv config/config_default_hs.xml config/config_default_hs.xml.backup; \
+        cp $(ROOTDIR)/vendors/Realtek/$(CONFIG_PRODUCT)/conf2630/$*/config_default.xml config/config_default.xml ; \
+        cp $(ROOTDIR)/vendors/Realtek/$(CONFIG_PRODUCT)/conf2630/$*/config_default_hs.xml config/config_default_hs.xml ;
+else
+	@cp $(PRECFGDIR)/config_$* .config
+endif
+	@rm -f *_loaded
+	@touch $@_loaded
+	@echo "done"
+
+.PHONY: menuconfig
+menuconfig: $(TMPDIR)
+	make menuconfig_phase1
+	$(DLMAKE) dual_linux_menuconfig
+	$(DLMAKE) dual_linux_menuconfig_tar
+	$(DLMAKE) dual_linux_menuconfig_slave
+	$(DLMAKE) dual_linux_menuconfig_slave_phase2
+	$(DLMAKE) dual_linux_menuconfig_slave_tar
+	@config/setconfig final
+
+$(TMPDIR):
+	mkdir -p $@
+
+.PHONY: setup_global_env
+setup_global_env: uclinux_clean
+	mkdir -p $(ROMFSDIR)
+	rm -rf $(IMGDIR) && mkdir -p $(IMGDIR)
+	echo '' > $(RAMFSLST)
+
+.PHONY: setup_master_env
+setup_master_env:
+	rm -f ./toolkit && ln -fs $(CONFIG_RSDK_DIR_MASTER) ./toolkit
+ifeq ($(CONFIG_PRODUCT),luna)	
+	cp $(PRECFGDIR)/master/config_kernel $(LINUXDIR)/.config
+	cp $(PRECFGDIR)/master/config_user config/.config
+	if [ -f $(ROOTDIR)/config/config_bb_ver.sh ]; then \
+			$(ROOTDIR)/config/config_bb_ver.sh "master" $(PRECFGDIR) $(ROOTDIR) $(CONFIG_CONFIG) $(BUSYBOX_DEFAULT); \
+	fi
+	if [ -f $(PRECFGDIR)/soc.h ]; then \
+		cp $(PRECFGDIR)/soc.h $(LINUXDIR)/include/soc/soc.h ; \
+	fi	
+	if [ -f $(PRECFGDIR)/luna_cfg.h ]; then \
+		cp -a $(PRECFGDIR)/luna_cfg.h $(LINUXDIR)/include/soc/ ; \
+	else \
+		echo '/* dummy file */' > $(LINUXDIR)/include/soc/luna_cfg.h ; \
+	fi	
+	if [ -f $(PRECFGDIR)/master/board.c ]; then \
+		cp $(PRECFGDIR)/master/board.c $(LINUXDIR)/arch/rlx/bsp_rtl8686/board.c ; \
+	fi	
+		
+else
+	cp $(PRECFGDIR)/config_kernel_luna_master  $(LINUXDIR)/.config
+	cp $(PRECFGDIR)/config_user_luna_master    config/.config
+	cp $(PRECFGDIR)/config_busybox_luna_master $(BUSYBOXDIR)/.config
+endif
+	if [ -f $(MCFG) ]; then tar xvzfm $(MCFG) . ; fi
+
+.PHONY: setup_slave_env
+setup_slave_env:
+	rm -f ./toolkit && ln -fs $(CONFIG_RSDK_DIR_SLAVE) ./toolkit
+ifeq ($(CONFIG_PRODUCT),luna)	
+	cp $(PRECFGDIR)/slave/config_kernel $(LINUXDIR)/.config
+	cp $(PRECFGDIR)/slave/config_user config/.config
+	if [ -f $(ROOTDIR)/config/config_bb_ver.sh ]; then \
+			$(ROOTDIR)/config/config_bb_ver.sh "slave" $(PRECFGDIR) $(ROOTDIR) $(CONFIG_CONFIG) $(BUSYBOX_DEFAULT); \
+	fi
+	if [ -f $(PRECFGDIR)/soc.h ]; then \
+		cp $(PRECFGDIR)/soc.h $(LINUXDIR)/include/soc/soc.h ; \
+	fi
+	if [ -f $(PRECFGDIR)/slave/board.c ]; then \
+		cp $(PRECFGDIR)/slave/board.c $(LINUXDIR)/arch/rlx/bsp_luna_slave/board.c ; \
+	fi
+else
+	cp $(PRECFGDIR)/config_kernel_luna_slave   $(LINUXDIR)/.config
+	cp $(PRECFGDIR)/config_user_luna_slave     config/.config
+	cp $(PRECFGDIR)/config_busybox_luna_slave  $(BUSYBOXDIR)/.config
+endif
+	if [ -f $(SCFG) ]; then tar xvzfm $(SCFG) . ; fi
+
+.PHONY: dual_linux_menuconfig
+dual_linux_menuconfig:
+# master
+	$(DLMAKE) setup_master_env
+	echo "comment 'Configuring for Master'" > $(HINT_MSG)
+	make menuconfig_phase2
+	make menuconfig_phase3
+	make busybox_check
+
+.PHONY: dual_linux_menuconfig_tar
+dual_linux_menuconfig_tar:
+	$(eval BUSYBOXDIR_TAR := $(shell $(ROOTDIR)/config/config_bb_ver.sh dir $(PRECFGDIR) $(ROOTDIR) $(CONFIG_CONFIG) $(BUSYBOX_DEFAULT)))
+	@echo BUSYBOXDIR_TAR=$(BUSYBOXDIR_TAR)
+	tar cvzf $(MCFG) $(SWAP_LIST) ./$(BUSYBOXDIR_TAR)/.config
+
+.PHONY: dual_linux_menuconfig_slave
+dual_linux_menuconfig_slave:
+# slave
+	$(DLMAKE) setup_slave_env
+	echo "comment 'Configuring for Slave'" > $(HINT_MSG)
+	if egrep "^CONFIG_DEFAULTS_SLAVE_KERNEL=y" .config > /dev/null; then \
+		$(MAKE) linux_menuconfig; \
+	fi
+	if egrep "^CONFIG_DEFAULTS_SLAVE_VENDOR=y" .config > /dev/null; then \
+		$(MAKE) config_menuconfig; \
+	fi
+
+.PHONY: dual_linux_menuconfig_slave_phase2
+dual_linux_menuconfig_slave_phase2:
+	$(eval BUSYBOXDIR_TAR := $(ROOTDIR)/$(shell $(ROOTDIR)/config/config_bb_ver.sh dir $(PRECFGDIR) $(ROOTDIR) $(CONFIG_CONFIG) $(BUSYBOX_DEFAULT)))
+	@echo BUSYBOXDIR_TAR=$(BUSYBOXDIR_TAR)
+	if egrep "^CONFIG_MCONF_SLAVE_BZBOX=y" .config > /dev/null; then \
+		$(MAKEBZBOX) -C $(BUSYBOXDIR_TAR) menuconfig; \
+	fi
+
+.PHONY: dual_linux_menuconfig_slave_tar
+dual_linux_menuconfig_slave_tar:
+	$(eval BUSYBOXDIR_TAR := $(shell $(ROOTDIR)/config/config_bb_ver.sh dir $(PRECFGDIR) $(ROOTDIR) $(CONFIG_CONFIG) $(BUSYBOX_DEFAULT)))
+	@echo BUSYBOXDIR_TAR=$(BUSYBOXDIR_TAR)
+	tar cvzf $(SCFG) $(SWAP_LIST)  ./$(BUSYBOXDIR_TAR)/.config
+	echo '' > $(HINT_MSG)
+
+.PHONY: config_backup
+config_backup:
+	@tar cf $(CFG) -C $(TMPDIR) $(patsubst $(TMPDIR)/%, % ,$(MCFG)) $(patsubst $(TMPDIR)/%, % ,$(SCFG))
+	@tar -rvf $(CFG) .config 
+	@echo "Backup the dual-configs in $(CFG) done"
+
+.PHONY: config_restore
+config_restore:
+	tar xfm $(CFG) -C $(TMPDIR)
+	@mv $(TMPDIR)/.config $(ROOTDIR)	
+	@echo "Restore the dual-configs to $(TMPDIR) done!"
+
+.PHONY: gen_ramfs_list
+gen_ramfs_list:
+	cd $(LINUXDIR) && \
+		/bin/bash scripts/gen_initramfs_list.sh $(ROMFSDIR) > $(RAMFSLST) && \
+		echo "nod /dev/console 644 0 0 c 5 1" >> $(RAMFSLST)
+
+.PHONY: uclinux_clean
+uclinux_clean:
+	$(MAKE) clean

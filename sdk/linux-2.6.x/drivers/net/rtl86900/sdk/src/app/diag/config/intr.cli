@@ -1,0 +1,140 @@
+//
+// Copyright (C) 2011 Realtek Semiconductor Corp.
+// All Rights Reserved.
+//
+// This program is the proprietary software of Realtek Semiconductor
+// Corporation and/or its licensors, and only be used, duplicated,
+// modified or distributed under the authorized license from Realtek.
+//
+// ANY USE OF THE SOFTWARE OTHER THAN AS AUTHORIZED UNDER
+// THIS LICENSE OR COPYRIGHT LAW IS PROHIBITED.
+//
+// $Revision: 39101 $
+// $Date: 2013-05-03 17:35:27 +0800 (Fri, 03 May 2013) $
+//
+// Purpose : Define diag shell commands for trunk.
+//
+// Feature : The file have include the following module and sub-modules
+//           1) interrupt commands.
+//
+
+//interrupt configuration
+//set configuration
+//imr configuration
+//all interrupt
+//link change
+//meter exceed
+//learn over
+//speed change
+//special congestion
+//loop detection
+//cable diagnostic finish
+//acl action
+//gphy interrupt
+//serdes interrupt
+//fiber mode GPON interrupt
+//fiber mode EPON interrupt
+//egress PTP event message interrupt
+//gying gasp interrupt
+//thermal alarm  interrupt
+//adc alarm interrupt
+//state configuration
+//disable
+//enable
+interrupt set imr ( all | link-change | meter-exceed | learn-over | speed-change | special-congestion | loop-detection | cable-diag | acl | gphy | serdes | gpon | epon | ptp | dying-gasp | thermal | adc ) state ( disable | enable )
+
+//interrupt configuration
+//set configuration
+//imr configuration
+//all interrupt
+//link change
+//meter exceed
+//learn over
+//speed change
+//special congestion
+//loop detection
+//cable diagnostic finish
+//acl action
+//gphy interrupt
+//serdes interrupt
+//fiber mode GPON interrupt
+//fiber mode EPON interrupt
+//egress PTP event message interrupt
+//gying gasp interrupt
+//thermal alarm  interrupt
+//adc alarm interrupt
+interrupt get imr ( all | link-change | meter-exceed | learn-over | speed-change | special-congestion | loop-detection | cable-diag | acl | gphy | serdes | gpon | epon | ptp | dying-gasp | thermal | adc )
+
+//interrupt configuration
+//get configuration
+//ims configuration
+//all interrupt
+//link change
+//meter exceed
+//learn over
+//speed change
+//special congestion
+//loop detection
+//cable diagnostic finish
+//acl action
+//gphy interrupt
+//serdes interrupt
+//fiber mode GPON interrupt
+//fiber mode EPON interrupt
+//egress PTP event message interrupt
+//gying gasp interrupt
+//thermal alarm  interrupt
+//adc alarm interrupt
+interrupt get ims ( all | link-change | meter-exceed | learn-over | speed-change | special-congestion | loop-detection | cable-diag | acl | gphy | serdes | gpon | epon | ptp | dying-gasp | thermal | adc )
+
+//interrupt configuration
+//clear configuration
+//ims configuration
+//all interrupt
+//link change
+//meter exceed
+//learn over
+//speed change
+//special congestion
+//loop detection
+//cable diagnostic finish
+//acl action
+//gphy interrupt
+//serdes interrupt
+//fiber mode GPON interrupt
+//fiber mode EPON interrupt
+//egress PTP event message interrupt
+//gying gasp interrupt
+//thermal alarm  interrupt
+//adc alarm interrupt
+interrupt clear ims ( all | link-change | meter-exceed | learn-over | speed-change | special-congestion | loop-detection | cable-diag | acl | gphy | serdes | gpon | epon | ptp | dying-gasp | thermal | adc )
+
+//interrupt configuration
+//get configuration
+//status configuration
+//speed change
+//link up interrupt
+//link down interrupt
+//gphy interrupt
+interrupt get status ( speed-change | link-up | link-down | gphy )
+
+//interrupt configuration
+//clear configuration
+//status configuration
+//speed change
+//link up interrupt
+//link down interrupt
+//gphy interrupt
+interrupt clear status ( speed-change | link-up | link-down | gphy )
+
+//interrupt configuration
+//set configuration
+//polarity configuration
+//specify to high
+//specify to low
+interrupt set polarity ( high | low )
+
+//interrupt configuration
+//get configuration
+//polarity configuration
+interrupt get polarity

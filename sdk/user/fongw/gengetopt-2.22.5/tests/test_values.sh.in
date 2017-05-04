@@ -1,0 +1,5 @@
+#! @SHELL@
+
+# test values for options
+
+$* ./test_values -s foob -S foo --string-values-no-short bar --multistring-values-no-short "foo" -S b --multistring-values-no-short "foo","bar" -S bar,foo --multistring-values-no-short "bar" --multistring-values-no-short "bar","foo" --string-values-def-argopt --multistring-values-def="bar" --multistring-values-def -I 1 -i 1 -WFI -I27 -WS,T,FOURTH --file-save="test_values.save" --values-first-enums-plus="-foo"

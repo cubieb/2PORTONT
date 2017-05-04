@@ -1,0 +1,53 @@
+// ============================================================
+ 
+/**
+ * @page VOIP_DSP_CID_DTMF DTMF
+ * @ingroup TAPI_DSP_CID_DTMF 
+ * Dual-tone multi-frequency (DTMF) is a signal used in telecommunication. <br>
+ * There are 12 DTMF signals and each of these is made up of two tones. According to the frequency, 
+ * the tones forming the DTMF signal can be classified into two groups.
+ *  \htmlonly <br>
+ * <p  align="left"> <b>Table 4. The DTMF keypad frequencies </b> </p >
+ * <table border=1 width=30% style="border-collapse:collapse;" borderColor=black > 
+ * <td></td> <td align=center>1209 Hz</td> <td align=center>1336 Hz</td> <td align=center>1477 Hz</td><tr> 
+ * <td align=center>697 Hz</td> <td align=center>1</td> <td align=center>2</td> <td align=center>3</td><tr> 
+ * <td align=center>770 Hz</td> <td align=center>4</td> <td align=center>5</td> <td align=center>6</td><tr> 
+ * <td align=center>852 Hz</td> <td align=center>7</td> <td align=center>8</td> <td align=center>9</td><tr> 
+ * <td align=center>941 Hz</td> <td align=center>*</td> <td align=center>0</td> <td align=center>#</td><tr> 
+ * </table>\endhtmlonly 
+ * \htmlonly <br> <p align="center"> <b>DTMF Caller ID Transmission</b> \endhtmlonly
+ * @image html TAPI_DSP_CID_DTMF_Timing.JPG
+ * @page VOIP_DSP_CID_DTMF_STD DTMF Caller ID Standard
+ * @ingroup TAPI_DSP_CID_DTMF
+ * \htmlonly <br>
+ * ETSI ETS 300 659-1 (2001) Annex. B <br><br>
+ * <dl>
+ * <dt>1. <b>Line seizure phase </b><br>
+ * <dd>In case of an incoming call to a subscriber, the exchange shall seize the corresponding subscriber line for the
+ * <dd>terminating call. The line seizure may or may not be indicated to the subscriber line by means of a polarity reversal.<br>
+ * <dd>NOTE: Return to idle polarity, if applicable, may take place after the information transfer phase.<br><br>
+ * <dt>2. <b>Alerting phase </b><br>
+ * <dd>When data transmission prior to ringing is used the first ring pattern shall be sent only after completion of the
+ * <dd>transmission of the display information. <br><br>
+ * <dd>When data transmission during ringing is used, the codes shall be sent during the first long silent period between the
+ * <dd>first and the second ring patterns. <br><br>
+ * <dd>Further the normal basic call signalling procedures shall apply. <br><br>
+ * <dt>3. <b>Information transfer phase </b><br>
+ * <dd>Information transfer shall take place in association with ringing. Two methods are possible: <br>
+ * <dd> - data transmission prior to ringing <br>
+ * <dd> - data transmission during ringing <br><br>
+ * <dd>The sending of display information depends on the subscription option between user and network operator. The
+ * <dd>information shall be transmitted by the LE over the seized line to the TE using the DTMF codes, according to
+ * <dd>ES 201 235 [3], as specified below. The LE shall start sending within a predefined time range, not defined here, after
+ * <dd>line seizure. If the call is answered during transmission of the display information, the call shall be regarded, by the LE,
+ * <dd>as being answered and the LE shall then stop any DTMF transmission and through-connect the call.<br><br>
+ * <dd>The start code for calling number shall be either DTMF "A" or "D". <br><br>
+ * <dd>The start code for redirecting number shall be DTMF "D". <br><br>
+ * <dd>The start code for information values shall be DTMF "B". <br><br>
+ * <dd>The information may be sent in any order and shall always end with DTMF "C". <br><br>
+ * <dd>Below are shown some examples of how the transfer of information may look.<br><br>
+ * </dl>
+ * \endhtmlonly <br>
+ * @image html TAPI_DSP_CID_DTMF_EXAMPLE.JPG
+ */ 
+ 

@@ -1,0 +1,115 @@
+
+DISTRIBUTION NOTES
+
+To install gSOAP, unpack the archive. You will get the following files:
+
+README.txt	read this first
+NOTES.txt	this file
+changelog.html	changes
+license.html	gSOAP public license (HTML)
+license.pdf	gSOAP public license (PDF)
+gpl.txt		GPL license
+soapcpp2	executable gSOAP 2 compiler
+wsdl2h		executable gSOAP WSDL parser
+soapdoc2.html	documentation (HTML)
+soapdoc2.pdf	documentation (PDF)
+stdsoap2.h	header file for stdsoap2.c[pp]
+stdsoap2.c	library and gSOAP runtime
+stdsoap2.cpp	library (identical to stdsoap2.c)
+dom.html	gSOAP DOM parser (HTML)
+dom.pdf		gSOAP DOM parser (PDF)
+dom.h		header file for dom.c
+dom.c		C DOM parser
+dom++.h		header file for dom++.cpp
+dom++.cpp	C++ DOM parser
+typemap.dat	XML schema to C/C++ type mapper for wsdl2h WSDL parser
+
+... and the following subdirectories:
+
+samples		examples
+extras		(contributed) extras
+import		#import-ed header files for soapcpp2 compiler
+plugin		plug-in examples
+custom		custom serializers for various data types
+mod_gsoap	Apache mod_gsoap, IIS, and WinInet support
+src		gSOAP compiler sources
+wsdl		WSDL parser sources
+
+Examples are included in the 'samples' subdirectory. The examples are:
+
+DIRECTORY			DESCRIPTION
+calc:				Simple calculator client and server
+ck:				HTTP cookie client and server
+components/c, components/cpp:	Multiple clients/services in one executable
+dime:				DIME attachment client and server
+events:				Asynchronous one-way messaging
+factory:			Remote object factory and simple ORB
+factorytest:			Test client for remote object factory
+googleapi:			Google Web API client
+listing:			XMethod service listing client
+localtime:			Get localtime client
+lu:				Linear solver client and server
+magic:				Magic Squares client and server
+mtom:				MTOM attachment client and server
+oneliners:			Several one-liner clients and services
+polytest:			Polymorphic object exchange
+quote:				Get delayed stock quote
+quote2:				Get delayed stock quote (SOAP async messages)
+quote3:				Get delayed stock quote (with Stock class)
+quote4:				Get delayed stock quote (using XML DOM)
+quotex:				Combined client/server example in one
+router:				Router of HTTP messages over TCP/IP
+rss:				RSS 0.91, 0.92, and 2.0 server
+ssl:				HTTPS/SSL example (requires OpenSSL)
+udp:				SOAP-over-UDP example client and server
+varparam:			Variable polymorphic parameters client/server
+webserver:			Stand-alone Web server with a lot of features
+xml-rpc:			XML-RPC support
+
+To build the example services and clients, type "make" in the 'samples'
+directory (Sun Solaris users should type "make -f MakefileSolaris"). See
+also http://www.cs.fsu.edu/~engelen/soapexamples.html
+for details and explanations for some of these examples.
+
+For Windows users, the archive includes 'magic_VC' and 'quote_VC' Visual
+Studio projects in the 'samples' directory.
+
+For Mac users, the archive includes a 'quote_MAC_ProjBuild' Project Builder
+example in the 'samples' directory.
+
+To try the SSL-secure SOAP server, install OpenSSL and change the occurrences
+of "linprog2.cs.fsu.edu" in sslclient.c and sslserver.c to the machine name
+(or machine IP) you are using. Example .pem files are included but you need to
+create your own .pem files (see OpenSSL documentation).
+
+The sslclient and sslserver codes can then be build as follows:
+
+soapcpp2 -c ssl.h
+gcc -DWITH_OPENSSL -o sslclient sslclient.c stdsoap2.c soapC.c soapClient.c -lssl -lcrypto
+gcc -DWITH_OPENSSL -o sslserver sslserver.c stdsoap2.c soapC.c soapServer.c -lssl -lcrypto -lpthread
+
+The 'gsoap_mod' directory includes Apache 1.x and 2.0 mods for gSOAP, IIS, and
+WinInet support. WinInet allows gsoap to use the WinInet API instead of calls
+to the socket API. The primary benefit of this arrangement is that "if IE
+works, your program will work". There is no need to read proxy settings from
+the registry, deal with proxy configuration scripts, etc. Changes in the
+"Internet Options" dialog box will immediately take effect in your program.
+Additionally, this will allow gsoap to handle forms of authentication not yet
+supported natively, such as NTLM (Integrated Windows Authentication), etc.
+
+Contributions are included in the 'extras' directory:
+
+ckdb.h ckdb.c:
+HTTP cookie database load and store operations for persistant cookie support.
+Cookies are saved in XML format using gSOAP's serializers.
+
+ckdbtest.h ckdbtest.c:
+Test client program for cookie database.
+
+soapdefs.h logging.cpp:
+C++ message logging with streams.
+
+DISCLAIMER: WE TRY OUR BEST TO PROVIDE YOU WITH "REAL-WORLD" EXAMPLES BUT WE
+CANNOT GUARANTEE THAT ALL CLIENT EXAMPLES CAN CONNECT TO THIRD PARTY WEB
+SERVICES WHEN THESE SERVICES ARE DOWN OR HAVE BEEN REMOVED.
+

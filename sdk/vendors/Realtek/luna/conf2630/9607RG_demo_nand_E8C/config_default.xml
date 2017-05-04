@@ -1,0 +1,6 @@
+<Config Name="ROOT">
+	<Dir Name="MIB_TABLE">
+		<Value Name="DEVICE_TYPE" Value="1"/>
+		<Value Name="DUAL_MGMT_MODE" Value="1"/>
+	</Dir>
+</Config>

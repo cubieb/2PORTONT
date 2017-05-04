@@ -1,0 +1,3 @@
+/etc/scripts/reset_default.sh
+configd&
+systemd&

@@ -1,0 +1,2 @@
+if (args_info->@given@)
+  write_into_file(outfile, "@opt_name@", @IF@ arg:string = "" @THEN@ 0, 0 @ELSE@ args_info->@arg@, @values@@ENDIF@);

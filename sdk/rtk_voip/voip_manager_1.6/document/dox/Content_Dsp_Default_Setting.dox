@@ -1,0 +1,42 @@
+// ============================================================
+
+/*! @page RTK_VOIP_DSP_Default_Setting DSP Default Setting
+ * 
+ * - Line Echo Cancellation Tail Length: 2 msec with non-linear linear process
+ * - Jitter Buffer Control
+ *  - Min. delay:   40 ms
+ *  - Max. delay: 200 ms
+ *  - Optimization factor: 1
+ * - Voice Active Detection(VAD): Disable 
+ * - Packet loss concealment(PLC): Enable
+ * - Auto Gain Control:
+ *  - Speaker AGC: Disable
+ *  - Speaker AGC Required Level: Level 1 (up to level 8)
+ *  - Speaker AGC Gain Up: 6 dB
+ *  - Speaker AGC Gain Down: 6 dB
+ *  - MIC AGC: default Disable
+ *  - MIC AGC Required Level: 1 (up to level 8)
+ *  - MIC AGC Gain Up: 6 dB
+ *  - MIC AGC Gain Down: 6 dB
+ * -  Voice Gain: 
+ *  - Speaker (Tx): 0dB
+ *  - MIC(Rx): 0dB
+ * - Caller ID Generation: 
+ *  - Software Caller ID generation (Hardware mode is not supported now)
+ *  - Caller ID before 1st Ring as default
+ *  - No Polarity Reversal before Caller ID
+ *  - No Short Ring before Caller ID
+ *  - No Alert Tone before Caller ID
+ *  - DTMF Caller ID:
+ *   - Start digit: A
+ *   - End digit: C
+ *  - FSK Caller ID:
+ *   - Bellcore as default
+ *   - No Date, Time, and Name
+ * - Caller ID detection: default detect DTMF caller ID only
+ * - DTMF mode: Inband DTMF
+ * - Tone of Country: TAIWAN
+ * - Flash Hook Time: 100 msec ~ 300 msec
+ *
+ */ 
+

@@ -1,0 +1,19 @@
+interface br0
+{
+        AdvSendAdvert on;
+        AdvRetransTimer 1000;
+        prefix 3ffe:501:ffff:100::/64
+        {
+                AdvOnLink on;
+                AdvAutonomous on;
+        };             
+};
+
+interface br0
+{
+        AdvSendAdvert on;
+        AdvRetransTimer 1000;
+        prefix 3ffe:501:ffff:100::/64
+        {
+        };                     
+};

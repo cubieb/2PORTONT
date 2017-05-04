@@ -1,0 +1,123 @@
+bitfield.o: bitfield.c \
+ /rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/assert.h \
+ /rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/features.h \
+ /rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/bits/uClibc_config.h \
+ /rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/sys/cdefs.h \
+ /rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/stdlib.h \
+ /rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/include/stddef.h \
+ /rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/sys/types.h \
+ /rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/bits/types.h \
+ /rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/bits/wordsize.h \
+ /rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/bits/typesizes.h \
+ /rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/time.h \
+ /rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/endian.h \
+ /rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/bits/endian.h \
+ /rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/byteswap.h \
+ /rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/bits/byteswap.h \
+ /rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/bits/byteswap-common.h \
+ /rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/sys/select.h \
+ /rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/bits/select.h \
+ /rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/bits/sigset.h \
+ /rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/bits/time.h \
+ /rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/sys/sysmacros.h \
+ /rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/bits/pthreadtypes.h \
+ /rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/bits/sched.h \
+ /rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/alloca.h \
+ /rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/string.h \
+ transmission.h \
+ /rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/inttypes.h \
+ /rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/stdint.h \
+ /rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/bits/wchar.h \
+ /rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/bits/uClibc_clk_tck.h \
+ /rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/include/stdbool.h \
+ bitfield.h utils.h \
+ /rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/include-fixed/limits.h \
+ /rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/include-fixed/syslimits.h \
+ /rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/limits.h \
+ /rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/bits/posix1_lim.h \
+ /rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/bits/local_lim.h \
+ /rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/linux/limits.h \
+ /rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/bits/uClibc_local_lim.h \
+ /rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/bits/posix2_lim.h
+
+/rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/assert.h:
+
+/rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/features.h:
+
+/rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/bits/uClibc_config.h:
+
+/rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/sys/cdefs.h:
+
+/rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/stdlib.h:
+
+/rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/include/stddef.h:
+
+/rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/sys/types.h:
+
+/rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/bits/types.h:
+
+/rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/bits/wordsize.h:
+
+/rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/bits/typesizes.h:
+
+/rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/time.h:
+
+/rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/endian.h:
+
+/rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/bits/endian.h:
+
+/rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/byteswap.h:
+
+/rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/bits/byteswap.h:
+
+/rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/bits/byteswap-common.h:
+
+/rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/sys/select.h:
+
+/rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/bits/select.h:
+
+/rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/bits/sigset.h:
+
+/rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/bits/time.h:
+
+/rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/sys/sysmacros.h:
+
+/rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/bits/pthreadtypes.h:
+
+/rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/bits/sched.h:
+
+/rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/alloca.h:
+
+/rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/string.h:
+
+transmission.h:
+
+/rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/inttypes.h:
+
+/rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/stdint.h:
+
+/rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/bits/wchar.h:
+
+/rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/bits/uClibc_clk_tck.h:
+
+/rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/include/stdbool.h:
+
+bitfield.h:
+
+utils.h:
+
+/rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/include-fixed/limits.h:
+
+/rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/include-fixed/syslimits.h:
+
+/rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/limits.h:
+
+/rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/bits/posix1_lim.h:
+
+/rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/bits/local_lim.h:
+
+/rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/linux/limits.h:
+
+/rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/bits/uClibc_local_lim.h:
+
+/rsdk-4.4.7-5281-EB-2.6.30-0.9.33-m32utb-140606/bin/../lib/gcc/mips-linux-uclibc/4.4.7/../../../../mips-linux-uclibc/include/bits/posix2_lim.h:

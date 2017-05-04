@@ -1,0 +1,15 @@
+echo "run rcm voip script..."
+
+if [ -x "/bin/voip_def_init" ]; then
+	voip_def_init
+fi
+
+#if [ -x "/bin/wait_dsp" ]; then
+#	wait_dsp
+#else
+#	echo "no wait_dsp, so force to sleep 5 seconds..."
+#	sleep 5
+#fi
+
+echo "start watch dog"
+/bin/voip_gwdt /etc/app.gwdt &

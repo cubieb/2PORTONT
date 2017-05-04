@@ -1,0 +1,6 @@
+@IF@ has_arg @THEN@
+args_info->@name@_@suffix@ = @value@;
+@ENDIF@
+@IF@ has_orig @THEN@
+args_info->@name@_orig = NULL;
+@ENDIF@

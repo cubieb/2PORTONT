@@ -1,0 +1,169 @@
+fname init.elf
+pname init.gdb
+TEXT -> vma=400000 len=480
+        lma=400000 clen=0 oo=480 ap=0 fp=0
+DATA -> vma=400480 len=e0
+        lma=400480 clen=0 oo=e0 ap=0 fp=0
+BSS  -> vma=400560 len=10
+        lma=400560 clen=0 oo=10 ap=0 fp=0
+./elf2flt.c(0x11a): output_relocs(abs_bfd=0x812b908,synbols=0x812c9a8,number_of_symbols=0x79n_relocs=bfffeff8,text=8138810,text_len=1152,data=8138c98,data_len=224)
+SYMBOL TABLE:
+  NAME=  VALUE=0x0
+  NAME=  VALUE=0x0
+  NAME=  VALUE=0x0
+  NAME=  VALUE=0x0
+  NAME=  VALUE=0x0
+  NAME=  VALUE=0x0
+  NAME=  VALUE=0x0
+  NAME=  VALUE=0x0
+  NAME=  VALUE=0x0
+  NAME=  VALUE=0x0
+  NAME=initfini.c  VALUE=0x0
+  NAME=crti.S  VALUE=0x0
+  NAME=<command line>  VALUE=0x0
+  NAME=<built-in>  VALUE=0x0
+  NAME=crti.S  VALUE=0x0
+  NAME=initfini.c  VALUE=0x0
+  NAME=crtn.S  VALUE=0x0
+  NAME=<command line>  VALUE=0x0
+  NAME=<built-in>  VALUE=0x0
+  NAME=crtn.S  VALUE=0x0
+  NAME=crt0.S  VALUE=0x0
+  NAME=crt0.S  VALUE=0x0
+  NAME=crt0.S  VALUE=0x0
+  NAME=<command line>  VALUE=0x0
+  NAME=<built-in>  VALUE=0x0
+  NAME=crt0.S  VALUE=0x0
+  NAME=simpleinit.c  VALUE=0x0
+  NAME=pthread_cond_signal  VALUE=0x3d8
+  NAME=_gp_disp  VALUE=0x0
+  NAME=pthread_mutexattr_gettype  VALUE=0x3d8
+  NAME=pthread_attr_destroy  VALUE=0x3d8
+  NAME=pthread_attr_getstacksize  VALUE=0x3d8
+  NAME=__pthread_once  VALUE=0x3d8
+  NAME=__pthread_return_void  VALUE=0x400
+  NAME=pthread_rwlock_rdlock  VALUE=0x3d8
+  NAME=pthread_attr_init  VALUE=0x3d8
+  NAME=pthread_rwlock_init  VALUE=0x3d8
+  NAME=pthread_exit  VALUE=0x3a0
+  NAME=_h_errno  VALUE=0xc4
+  NAME=pthread_rwlockattr_setpshared  VALUE=0x3d8
+  NAME=errno  VALUE=0xc0
+  NAME=_etext  VALUE=0x480
+  NAME=_sbss  VALUE=0x0
+  NAME=_gp  VALUE=0x0
+  NAME=pthread_condattr_init  VALUE=0x3d8
+  NAME=pthread_attr_getstackaddr  VALUE=0x3d8
+  NAME=pthread_mutexattr_destroy  VALUE=0x3d8
+  NAME=pthread_equal  VALUE=0x3ec
+  NAME=pthread_attr_getscope  VALUE=0x3d8
+  NAME=pthread_rwlock_destroy  VALUE=0x3d8
+  NAME=_sdata  VALUE=0x0
+  NAME=pthread_rwlock_unlock  VALUE=0x3d8
+  NAME=pthread_attr_getinheritsched  VALUE=0x3d8
+  NAME=__environ  VALUE=0x90
+  NAME=pthread_attr_getschedpolicy  VALUE=0x3d8
+  NAME=_init  VALUE=0x420
+  NAME=pthread_attr_setstackaddr  VALUE=0x3d8
+  NAME=pthread_getschedparam  VALUE=0x3d8
+  NAME=_ebss  VALUE=0x10
+  NAME=pthread_setcancelstate  VALUE=0x3d8
+  NAME=pthread_getcancelstate  VALUE=0x3d8
+  NAME=h_errno  VALUE=0xc4
+  NAME=__exit_cleanup  VALUE=0xa0
+  NAME=pthread_condattr_destroy  VALUE=0x3d8
+  NAME=pthread_attr_setscope  VALUE=0x3d8
+  NAME=environ  VALUE=0x90
+  NAME=pthread_cond_broadcast  VALUE=0x3d8
+  NAME=end  VALUE=0x10
+  NAME=pthread_attr_setinheritsched  VALUE=0x3d8
+  NAME=__start  VALUE=0x20
+  NAME=pthread_setschedparam  VALUE=0x3d8
+  NAME=i  VALUE=0x0
+  NAME=__pthread_initialize_minimal  VALUE=0x400
+  NAME=pthread_setconcurrency  VALUE=0x3d8
+  NAME=pthread_attr_setstacksize  VALUE=0x3d8
+  NAME=pthread_rwlock_wrlock  VALUE=0x3d8
+  NAME=pthread_rwlockattr_getpshared  VALUE=0x3d8
+  NAME=mylock  VALUE=0xa4
+  NAME=pthread_cond_init  VALUE=0x3d8
+  NAME=pthread_rwlockattr_init  VALUE=0x3d8
+  NAME=__uClibc_main  VALUE=0xf0
+  NAME=__bss_start  VALUE=0x0
+  NAME=main  VALUE=0x80
+  NAME=pthread_mutexattr_settype  VALUE=0x3d8
+  NAME=pthread_attr_getdetachstate  VALUE=0x3d8
+  NAME=pthread_mutex_unlock  VALUE=0x3d8
+  NAME=data_start  VALUE=0x0
+  NAME=__h_errno_location  VALUE=0x0
+  NAME=_fini  VALUE=0x44c
+  NAME=atexit  VALUE=0x0
+  NAME=pthread_rwlockattr_destroy  VALUE=0x3d8
+  NAME=_stdio_term  VALUE=0x0
+  NAME=pthread_rwlock_trywrlock  VALUE=0x3d8
+  NAME=pthread_rwlock_tryrdlock  VALUE=0x3d8
+  NAME=__pthread_return_0  VALUE=0x3d8
+  NAME=pthread_self  VALUE=0x3d8
+  NAME=pthread_setcanceltype  VALUE=0x3d8
+  NAME=pthread_mutexattr_init  VALUE=0x3d8
+  NAME=_edata  VALUE=0xe0
+  NAME=_GLOBAL_OFFSET_TABLE_  VALUE=0x0
+  NAME=_end  VALUE=0x10
+  NAME=pthread_mutex_destroy  VALUE=0x3d8
+  NAME=__pthread_return_1  VALUE=0x3ec
+  NAME=pthread_mutex_lock  VALUE=0x3d8
+  NAME=pthread_cond_wait  VALUE=0x3d8
+  NAME=__errno_location  VALUE=0x380
+  NAME=exit  VALUE=0x240
+  NAME=_stdio_init  VALUE=0x0
+  NAME=pthread_mutex_trylock  VALUE=0x3d8
+  NAME=_errno  VALUE=0xc0
+  NAME=pthread_cond_destroy  VALUE=0x3d8
+  NAME=pthread_attr_setschedpolicy  VALUE=0x3d8
+  NAME=_exit  VALUE=0x310
+  NAME=pthread_mutex_init  VALUE=0x3d8
+  NAME=_stext  VALUE=0x4
+  NAME=__data_start  VALUE=0x0
+  NAME=pthread_attr_setschedparam  VALUE=0x3d8
+  NAME=pthread_attr_setdetachstate  VALUE=0x3d8
+  NAME=pthread_getconcurrency  VALUE=0x3d8
+  NAME=pthread_cond_timedwait  VALUE=0x3d8
+  NAME=pthread_attr_getschedparam  VALUE=0x3d8
+
+GOT table contains 32 entries (128 bytes)
+datalen inreloc: 96
+p_data[0] ffffffff
+p_data[1] 00000000
+p_data[2] 00000000
+p_data[3] 00000000
+p_data[4] 00000000
+p_data[5] 00000000
+p_data[6] 00000000
+p_data[7] 00000000
+p_data[8] 00000000
+p_data[9] 00000000
+p_data[10] 00000000
+p_data[11] 00000000
+p_data[12] 01000000
+p_data[13] 00000000
+p_data[14] 00000000
+p_data[15] 00000000
+p_data[16] 00000000
+p_data[17] 00000000
+p_data[18] 00000000
+p_data[19] 00000000
+p_data[20] 00000000
+p_data[21] 00000000
+p_data[22] 00000000
+p_data[23] 00000000
+true data_offset: 0
+SECTION: .text [812db34]: flags=233 vma=400000
+SECTION: .data [812dbec]: flags=243 vma=400480
+ RELOCS: .data [8130aa4]: flags=243 vma=400480
+SECTION: .bss [812dca4]: flags=1 vma=400560
+SECTION: .junk [812dd5c]: flags=253 vma=0
+SECTION: .comment [812de14]: flags=210 vma=0
+SECTION: .pdr [812decc]: flags=210 vma=0
+SECTION: .mdebug.abi32 [812df84]: flags=210 vma=0
+No relocations in code!
+SIZE: .text=0x0480, .data=0x00e0, .bss=0x0010

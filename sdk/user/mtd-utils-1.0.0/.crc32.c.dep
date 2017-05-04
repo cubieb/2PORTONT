@@ -1,0 +1,10 @@
+crc32.o: crc32.c /home/gangadhar/2PORTONT/sdk/include/linux/config.h \
+ /home/gangadhar/2PORTONT/sdk/include/linux/autoconf.h \
+ /home/gangadhar/2PORTONT/sdk/autoconf.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/stdint.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/features.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/uClibc_config.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/uClibc_arch_features.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/sys/cdefs.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/wchar.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/wordsize.h

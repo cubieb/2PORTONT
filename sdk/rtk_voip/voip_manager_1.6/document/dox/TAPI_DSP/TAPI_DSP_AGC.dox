@@ -1,0 +1,26 @@
+// ============================================================
+
+/**
+ * @page VOIP_DSP_AGC Voice Gain
+ * @ingroup TAPI_DSP_AGC
+ * User can set up the volumes of the speaker and microphone by call the function of \ref rtk_SetVoiceGain
+ * \htmlonly <br> <p align="left"> Example: Set the channel 0 for 0dB speaker and microphone: 
+ * <font color=#0000A0> <pre> 
+ * rtk_SetVoiceGain(0, 0, 0);
+ * </pre>  </font> \endhtmlonly
+ * @section AGC AGC(Automatic Gain Control)
+ * AGC(Automatic gain control) is a feature that deals with the fact that the volume may vary by a large amount between different users. The AGC provides a way to adjust a signal to a reference volume. 
+ * This is useful for voice over IP because it removes the need for manual adjustment of the voice gain. 
+ * \htmlonly <br> <p align="left"> Example: Enable the channel 0 Speaker agc target -25dB, max gain 6dB, min gain -6dB, adaptive threshold -55 dB  : 
+ * <font color=#0000A0> <pre> 
+ * rtk_SetSpkAgc(0, 1, 55);
+ * rtk_SetSpkAgcLvl(0, 0);
+ * rtk_SetSpkAgcGup(0, 5);
+ * rtk_SetSpkAgcGdown(0, 5);
+ * </pre>  </font> 
+ * The corresponding functions of microphone are the same as speaker.	\endhtmlonly
+ * \htmlonly <br> <p align="center"> <b>AGC(Automatic gain control) Exapmle</b>   \endhtmlonly 
+ * @image html TAPI_DSP_AGC_AGC.JPG
+ * <b>Notes: disable AGC in fax or modem application.</b>
+ */ 
+

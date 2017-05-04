@@ -1,0 +1,74 @@
+.TH "UPDATEDD-WRAPPER" "1" "March 2004" "Philipp Benner" "User Commands"
+.SH "NAME"
+updatedd-wrapper \- config- and cachefile support for updatedd
+.SH SYNOPSIS
+.B updatedd-wrapper
+.I "[OPTION]..."
+.SH "DESCRIPTION"
+Updatedd-wrapper is a perl program to execute updatedd. It uses
+a configuration file with c-like syntax and a cache file for ip
+addresses to prevent that a update with the same address will be
+executed twice.
+.SH "OPTIONS"
+.TP
+.B \-c <path>
+Use an alternative configuration file.
+.br
+Defaults:
+.br
+/etc/updatedd-wrapper.conf
+.br
+/usr/etc/updatedd-wrapper.conf
+.br
+/usr/local/etc/updatedd-wrapper.conf
+.TP
+.B \-f
+Force update of all records (do not check cached ip addresses).
+.TP
+.B \-i <secs>
+Wait n seconds after a failed update until a new attempt will be tried.
+.TP
+.B \-r <num>
+Number of retries when an update failed.
+This is only for updates that failed with return code 1 (warnings),
+for example connection problems or not enough memory.
+.TP
+.B \-s
+Print commands to stdout instead of executing updatedd.
+This option may be used to check whether updatedd-wrapper reads
+the configuration file correctly.
+.TP
+.B \-t <path>
+Usually /tmp/updatedd-wrapper-<uid>.cache will be used as
+cache-file, but you can specify another one with this option.
+.TP
+.B \-y
+Print update status of all accounts to syslog.
+The configuration in updatedd-wrapper.conf will be passed over.
+.TP
+.B \-\-help
+Print help and exit.
+.TP
+.B \-\-version
+Print version information and exit.
+.SH "AUTHOR"
+Written by Philipp Benner <mail@philipp-benner.de>.
+.SH "REPORTING BUGS"
+Report bugs to <updatedd@philipp-benner.de>.
+.SH "COPYRIGHT"
+Copyright (C) 2004 Philipp Benner.
+.br
+This is free software; see the source for copying conditions.  There is
+NO  warranty;  not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR
+PURPOSE.
+.SH "FILES"
+etc/updatedd-wrapper.conf
+.br
+
+/tmp/updatedd-wrapper-<uid>.cache
+.SH "SEE ALSO"
+Look at /usr/share/doc/updatedd for further documentation
+(distributed by updatedd-doc) and at /usr/share/updatedd
+for additional scripts.
+.TP
+.I updatedd(1), updatedd-wrapper.conf(5)

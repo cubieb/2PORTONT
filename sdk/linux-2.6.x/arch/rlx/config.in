@@ -1,0 +1,498 @@
+#config RTL_819X
+#	def_bool y
+
+#config RTL_8196C
+#	def_bool y
+
+#
+# Processor Config
+#
+config ARCH_32BIT
+  bool 
+  default y
+
+config ARCH_LUNA_SLAVE
+  bool
+  default n
+
+config ARCH_CPU_RLX5181
+  bool 
+  default n
+
+config ARCH_CPU_RLX4181
+  bool
+  depends on RTL8681
+  default n
+
+config ARCH_CPU_RLX5281
+  bool
+  depends on RTL8676
+  default n
+
+config ARCH_CPU_EB
+  bool 
+  default y
+
+config ARCH_CPU_EL
+  bool 
+  default n
+
+config ARCH_CPU_RADIAX
+  bool 
+  default n
+
+config ARCH_CPU_SLEEP
+  bool
+  default n
+
+config ARCH_CPU_ULS
+  bool 
+  default y
+
+config ARCH_CPU_TLS
+  bool
+  default y if ARCH_CPU_RLX5281
+  default n
+
+config ARCH_CPU_LLSC
+  bool 
+  default y if ARCH_CPU_RLX5281
+  default n
+
+config ARCH_CPU_SYNC
+  bool
+  default n
+
+config ARCH_CACHE_WBC
+  bool 
+  default y
+
+config ARCH_CACHE_L2
+  bool 
+  default n
+
+config ARCH_IRQ_CPU
+  bool 
+  default y
+
+config ARCH_IRQ_VEC
+  bool 
+  default y
+
+config ARCH_BUS_USB
+  bool 
+  default n
+
+config ARCH_BUS_PCI
+  bool 
+  default y
+
+config ARCH_BUS_PCI_MSI
+  bool
+  default n
+
+source "../config.luna.hint.in"
+#
+# System Config
+#
+menu "System Configuration"
+
+source "arch/rlx/bsp_rtl8686/Kconfig"
+
+choice
+	prompt "System Type"
+	default RTL8672
+
+config RTL8672
+	bool "Realtek RTL8672 board"
+	select CPU_BIG_ENDIAN
+	help
+	  This enables supports for RTL8672-based boards          
+endchoice
+
+choice
+	prompt "Realtek SoC"
+	default RTL8672_SOC
+	
+config RTL8672_SOC
+	bool "RTL8672"
+
+config RTL8676
+	bool "RTL8676"
+	select ARCH_CPU_RLX5281
+	select ARCH_CPU_SYNC
+	
+config RTL8686
+	bool "RTL8686"
+	select ARCH_CPU_RLX5281
+	
+config RTL8681
+	bool "RTL8681"
+	select ARCH_CPU_RLX4181
+
+endchoice	
+
+choice
+	prompt "Target CPU"
+	default ARCH_CPU_RLX5281
+  depends on RTL8686
+
+config ARCH_CPU_RLX5281
+	bool "ARCH_CPU_RLX5281"
+	select ARCH_CPU_SYNC
+
+config ARCH_CPU_RLX5181
+	bool "ARCH_CPU_RLX5181"
+	select ARCH_LUNA_SLAVE
+
+endchoice
+
+# KERNE_STACK_SIZE = PAGE_SIZE<<KERNEL_STACK_SIZE_ORDER
+config KERNEL_STACK_SIZE_ORDER
+	int "Kenel Stack Size Order Configuration"
+	default "2"
+	help
+	  With Page Size 4K
+	  1 for 8K kenel stack size
+	  2 for 16K kernel stack size
+	  3 for 32K kernel stack size
+	  etc...
+
+
+
+choice
+	prompt "Flash Size"
+	depends on RTL8672
+	default 4M_FLASH
+
+config 2M_FLASH
+	bool "2M"
+
+config 4M_FLASH
+	bool "4M"
+
+config	8M_FLASH
+	bool "8M"
+
+config	16M_FLASH
+	bool "16M"
+#ccwei
+config	32M_FLASH
+	bool "32M"
+endchoice
+
+config FLASH_SIZE
+	hex
+	default "200000" if 2M_FLASH
+	default "400000" if 4M_FLASH
+	default "800000" if 8M_FLASH
+	default "1000000" if 16M_FLASH
+	default "2000000" if 32M_FLASH
+	default "400000"
+	
+config SPANSION_16M_FLASH
+	bool "Support for SPANSION 16M FLASH"
+	depends on RTL8672
+
+config EOC
+	bool "Support for DSL EOC channel"
+	depends on DEV_xDSL
+
+config E8B
+	bool "Support for CTC E8B requirement"
+
+config BHS
+	bool "Support for Telefonica BHS requirement"
+
+config APOLLO_MP_TEST
+        bool "Support for Mass Production Test, led, push button, etc."
+
+choice
+	prompt "Root Image Policy"
+	default SINGLE_IMAGE
+	
+config	SINGLE_IMAGE
+	bool "Single Image"
+	---help---
+	  One normal image in a specified partition is available, kernel
+	  mounts root according to the command line. Another small image is
+	  located in another partition which will be loaded if this normal
+	  image is failed. It's bootcode's responsibility to select a correct
+	  image to boot.
+
+config	DOUBLE_IMAGE
+	bool "Double Image"
+	---help---
+	Two identical normal images each in its specified partition are
+	available, kernel mounts root according to the flash parameter
+	(writed by bootcode). Bootcode will boot another image if the selected
+	image is failed.
+endchoice
+
+choice	
+	prompt "IMEM Size"
+	depends on RTL8672
+	default	IMEM_4K
+
+config	IMEM_4K
+	bool "4K"
+
+config	IMEM_16K
+	bool "16K"
+
+config	IMEM_32K
+	bool "32K"
+
+config	IMEM_64K
+	bool "64K"
+
+endchoice
+
+choice	
+	prompt "IMEM1 Size"
+	depends on ARCH_CPU_RLX5281
+	default	IMEM1_32K
+
+config	IMEM1_4K
+	bool "4K"
+
+config	IMEM1_16K
+	bool "16K"
+
+config	IMEM1_32K
+	bool "32K"
+
+config	IMEM1_64K
+	bool "64K"
+
+endchoice
+
+config IMEM_SIZE
+	hex
+	default "10000" if IMEM_64K
+	default "8000" if IMEM_32K
+	default "4000" if IMEM_16K
+	default "1000"
+	
+config IMEM1_SIZE
+	hex
+	default "10000" if IMEM1_64K
+	default "8000" if IMEM1_32K
+	default "4000" if IMEM1_16K
+	default "1000"
+
+choice
+	prompt "LED Style"
+	depends on RTL8672 
+	default GPIO_LED_TR068
+	
+config GPIO_LED_TR068
+	bool "TR068"
+endchoice
+
+config RTL8672_SW_USB_LED
+	tristate "Support Software USB LED"
+	depends on USB_RTL8672_SUPPORT
+
+config SW_USB_LED0
+	bool "Software USB LED 0"
+	depends on RTL8672_SW_USB_LED
+
+config SW_USB_LED1
+        bool "Software USB LED 1"
+        depends on RTL8672_SW_USB_LED
+
+config  CT_PUSHKEYEVENT
+    bool "Support push key event"
+
+config	WPS_LED
+	 bool "Support WPS LED"
+	depends on WIFI_SIMPLE_CONFIG
+        depends on RTL8672
+
+config ONE_WPS_LED
+	bool "Only one WPS LED"
+	depends on WPS_LED
+
+choice
+	prompt "Hardware Board"
+	depends on RTL8672 && !RTL8686 && !RTL8681
+	default BOARD_000
+	
+config BOARD_000
+	bool "Board000 - default"
+
+config BOARD_001
+	bool "Board001 - combo - 1P"
+	
+config BOARD_002
+	bool "Board002 - E8B - 4P Wifi"
+
+config BOARD_003
+	bool "Board003 - 4P Wifi"
+
+config BOARD_003v6
+        bool "Board003v6 - 4P Wifi"
+
+config BOARD_004
+	bool "Board004 - BGA 356 IAD board"
+
+config BOARD_005
+        bool "Board005 - RLE0315 4P Wifi"
+
+config BOARD_006
+        bool "Board006 - RTL8672 RL6166 IAD"
+
+config BOARD_007
+        bool "Board007 - RTL8676 4P Wifi"
+
+config BOARD_008
+        bool "Board008 - RTL8676 IAD"
+
+config BOARD_009
+        bool "Board009 - RTL8676PN IAD 176pin"
+
+config BOARD_010
+	bool "Board010 - RTL8676P IAD 164pin"
+
+config BOARD_011
+        bool "Board011"
+
+config BOARD_012
+	bool "Board012"
+	
+endchoice
+
+
+config CONFIG_PRODUCT
+    string
+    option env="CONFIG_PRODUCT"
+    default "Should not be userd"
+
+if CONFIG_PRODUCT != "luna"
+choice
+	prompt "Hardware Board"
+	depends on RTL8686 && !RTL8681
+	default RTL8686_BOARD_001
+	
+config RTL8686_BOARD_001
+	bool "Board001 - default"
+
+config RTL8686_BOARD_002
+	bool "Board002 - rtl8696 demo board"
+
+config RTL8686_BOARD_003
+        bool "Board003 - rtl86907 v0.1a demo board"
+
+config RTL8686_BOARD_004
+        bool "Board004 - rtl86907(6266) v0.1a demo board"
+
+config RTL8686_BOARD_005
+        bool "Board005 - rtl8696(0601) pcie reset gpio 22"
+
+config RTL8686_BOARD_SLAVE
+        bool "Board setting for rtl8696 slave cpu"
+
+endchoice
+endif
+
+choice
+	prompt "Hardware Board"
+	depends on RTL8681
+	default RTL8681_BOARD_001
+
+config RTL8681_BOARD_001
+	bool "Board001 - default"
+
+endchoice	
+
+choice
+	prompt "UART selection"
+	depends on RTL8672
+	default USE_UART1 if (BOARD_006 || RTL8676)
+	default USE_UART0
+
+config USE_UART0
+	bool "Use UART0"
+
+config USE_UART1
+	bool "Use UART1"
+
+config CPU0_DIS_UART
+        bool "Disable"
+        help
+		CPU0 Disable UART
+
+endchoice
+
+# ---------------------------------------------------------------------
+# CPU1 UART Selection
+
+comment "CPU1 UART Selection"
+config CPU1_DSP_SELECTION
+choice
+	prompt "CPU1 UART Selection"
+	default CPU1_DIS_UART
+	help
+		CPU1 UART Selection
+config CPU1_UART0
+	depends on USE_UART1
+        bool "Use UART0"
+        help
+                CPU1 Use UART0
+config CPU1_UART1
+	depends on USE_UART0
+	bool "Use UART1"
+	help
+                CPU1 Use UART1
+config CPU1_UART2
+        bool "Use UART2"
+        help
+                CPU1 Using UART2
+config CPU1_UART3
+	bool "Use UART3"
+	help
+		CPU1 Use UART3
+config CPU1_DIS_UART
+        bool "Disable"
+        help
+		CPU1 Disable UART
+endchoice
+
+config CPU1_UART_BASE_ADDR
+	hex
+	default 0xB8002000 if CPU1_UART0
+	default 0xB8002100 if CPU1_UART1
+	default 0xB8002200 if CPU1_UART2
+	default 0xB8002300 if CPU1_UART3
+	default 0          if CPU1_DIS_UART
+
+config MEM_LIMITATION
+        bool "Memory size limitation"
+        default n
+
+config DEV_xDSL
+	bool "xDsl device"
+	default y
+
+config KEEP_BOOTCODE_CONFIG
+	bool "Keep the configuration at bootloader"
+	depends on RTL8681
+	default n
+	help
+		Keep the configuration at bootloader (mac, ip addr, ip mask, and ...)
+		NFBI slave bootloader in SRAM has an area to save configuration
+		User-space progroms can use these information to setup network.
+		(SRAM area may be used for other purpose)
+
+config RTK_CP3_PERF
+        bool "CP3 Performance Profile API"
+        default n
+
+
+config RGMII_RESET_PROCESS
+	bool "RGMII Reset Process"
+	default n
+
+endmenu
+

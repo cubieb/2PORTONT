@@ -1,0 +1,219 @@
+//security configuration
+//get configuration
+//attack prevent
+//action configuration
+security get attack-prevent action
+
+//security configuration
+//get configuration
+//attack prevent
+//damc = smac
+//sip = dip (land attach)
+//sport = dport (blat attacks)
+//SYN and FIN bits set in the packet
+//Xmascan
+//NULL Scan Attacks
+//SYN packets with sport less than 1024
+//check minimum TCP header
+//action configuration
+security get attack-prevent ( daeqsa-deny | land-deny | blat-deny | synfin-deny | xma-deny | nullscan-deny | tcphdr-min-check | syn-sportl1024-deny ) action
+
+//security configuration
+//get configuration
+//attack prevent
+//damc = smac
+//sip = dip (land attach)
+//sport = dport (blat attacks)
+//SYN and FIN bits set in the packet
+//Xmascan
+//NULL Scan Attacks
+//SYN packets with sport less than 1024
+//check minimum TCP header
+//state configuration
+security get attack-prevent ( daeqsa-deny | land-deny | blat-deny | synfin-deny | xma-deny | nullscan-deny | tcphdr-min-check | syn-sportl1024-deny ) state
+
+//security configuration
+//get configuration
+//attack prevent
+//dsl configuration
+//dsl vc list, <0-15>
+//all
+//state configuration
+security get attack-prevent dsl ( <PORT_LIST:dsl> | dsl_all ) state
+
+//security configuration
+//get configuration
+//attack prevent
+//port configuration
+//port list, <0-6>
+//all
+//state configuration
+security get attack-prevent port ( <PORT_LIST:port> | all ) state
+
+//security configuration
+//get configuration
+//attack prevent
+//state configuration
+security get attack-prevent state
+
+//security configuration
+//get configuration
+//attack prevent
+//syn flood
+//fin flood
+//icmp flood
+//action configuration
+security get attack-prevent ( syn-flood | fin-flood | icmp-flood ) action
+
+//security configuration
+//get configuration
+//attack prevent
+//syn flood
+//fin flood
+//icmp flood
+//state configuration
+security get attack-prevent ( syn-flood | fin-flood | icmp-flood ) state
+
+//security configuration
+//get configuration
+//attack prevent
+//syn flood
+//fin flood
+//icmp flood
+//threshold configuration
+security get attack-prevent ( syn-flood | fin-flood | icmp-flood ) threshold
+
+//security configuration
+//get configuration
+//attack prevent
+//TCP fragment packet with offset=1
+//fragmented ICMP packets
+//Ping of Death Attacks
+//UDP bomb
+//SYN with data
+//action configuration
+security get attack-prevent ( tcp-frag-off-min-check | icmp-frag-pkts-deny | pod-deny | udp-bomb | syn-with-data ) action
+
+//security configuration
+//get configuration
+//attack prevent
+//TCP fragment packet with offset=1
+//fragmented ICMP packets
+//Ping of Death Attacks
+//UDP bomb
+//SYN with data
+//state configuration
+security get attack-prevent ( tcp-frag-off-min-check | icmp-frag-pkts-deny | pod-deny | udp-bomb | syn-with-data ) state
+
+//security configuration
+//set configuration
+//attack prevent
+//damc = smac
+//sip = dip (land attach)
+//sport = dport (blat attacks)
+//SYN and FIN bits set in the packet
+//Xmascan
+//NULL Scan Attacks
+//SYN packets with sport less than 1024
+//check minimum TCP header
+//action
+//drop
+//trap-to-cpu
+security set attack-prevent ( daeqsa-deny | land-deny | blat-deny | synfin-deny | xma-deny | nullscan-deny | tcphdr-min-check | syn-sportl1024-deny ) action ( drop | trap-to-cpu )
+
+//security configuration
+//set configuration
+//attack prevent
+//damc = smac
+//sip = dip (land attach)
+//sport = dport (blat attacks)
+//SYN and FIN bits set in the packet
+//Xmascan
+//NULL Scan Attacks
+//SYN packets with sport less than 1024
+//check minimum TCP header
+//state configuration
+//disable
+//enable
+security set attack-prevent ( daeqsa-deny | land-deny | blat-deny | synfin-deny | xma-deny | nullscan-deny | tcphdr-min-check | syn-sportl1024-deny ) state ( disable | enable )
+
+//security configuration
+//set configuration
+//attack prevent
+//dsl configuration
+//dsl vc list, <0-15>
+//all
+//state configuration
+//disable function
+//enable function
+security set attack-prevent dsl ( <PORT_LIST:dsl> | dsl_all ) state ( disable | enable )
+
+//security configuration
+//set configuration
+//attack prevent
+//port configuration
+//port list, <0-6>
+//all
+//state configuration
+//disable function
+//enable function
+security set attack-prevent port ( <PORT_LIST:port> | all ) state ( disable | enable )
+
+//security configuration
+//set configuration
+//attack prevent
+//syn flood
+//fin flood
+//icmp flood
+//action
+//drop
+//trap-to-cpu
+security set attack-prevent ( syn-flood | fin-flood | icmp-flood ) action ( drop | trap-to-cpu )
+
+//security configuration
+//set configuration
+//attack prevent
+//syn flood
+//fin flood
+//icmp flood
+//state configuration
+//disable
+//enable
+security set attack-prevent ( syn-flood | fin-flood | icmp-flood ) state ( disable | enable )
+
+//security configuration
+//set configuration
+//attack prevent
+//syn flood
+//fin flood
+//icmp flood
+//threshold configuration
+//packets per 1ms, <0~255>
+security set attack-prevent ( syn-flood | fin-flood | icmp-flood ) threshold <UINT:th>
+
+//security configuration
+//set configuration
+//attack prevent
+//TCP fragment packet with offset=1
+//fragmented ICMP packets
+//Ping of Death Attacks
+//UDP bomb
+//SYN with data
+//action
+//drop
+//trap-to-cpu
+security set attack-prevent ( tcp-frag-off-min-check | icmp-frag-pkts-deny | pod-deny | udp-bomb | syn-with-data ) action ( drop | trap-to-cpu )
+
+//security configuration
+//set configuration
+//attack prevent
+//TCP fragment packet with offset=1
+//fragmented ICMP packets
+//Ping of Death Attacks
+//UDP bomb
+//SYN with data
+//state configuration
+//disable
+//enable
+security set attack-prevent ( tcp-frag-off-min-check | icmp-frag-pkts-deny | pod-deny | udp-bomb | syn-with-data ) state ( disable | enable )
+

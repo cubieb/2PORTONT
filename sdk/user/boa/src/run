@@ -1,0 +1,6 @@
+#!/bin/bash
+make
+killall boa
+#/home/tysu/boa/src/boa -c /home/tysu/boa/src &
+echo "/home/tysu/boa/src/boa -c /home/tysu/boa/src &"
+

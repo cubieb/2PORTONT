@@ -1,0 +1,111 @@
+.TH "UPDATEDD-WRAPPER.CONF" "5" "March 2004" "Philipp Benner" "Configuration Files"
+.SH "NAME"
+updatedd\-wrapper.conf \- configuration file for updatedd\-wrapper
+.SH "DESCRIPTION"
+.LP 
+This is the configuration file of updatedd\-wrapper, a perl program
+to execute updatedd.
+.br 
+By default it is at
+.I /etc,
+.I /usr/etc
+or
+.I /usr/local/etc.
+
+This file simply consists of two kinds of blocks which starts with '{' and ends
+with '}'. The first kind is the login block which should only appear once. It
+contains your login information and has to be at the beginning of the file.
+The syntax within this block is as follows:
+.br 
+alias = "login";
+.br 
+Alias is just an identifier for your login. Mostly "login" should be "user:pass",
+but look at `updatedd <service> \-\- \-\-help' to be sure, because there are some
+exceptions like regfish. Notice that each line has to end with ';'.
+
+The second kind of blocks is the service block which tells updatedd\-wrapper
+what account should be updated and how it should be updated.
+This block type can appear as often as you want. It has to start with the
+name of the service and after that 'active' or 'disabled' in brackets.
+On disabled the block will be ignored by updatedd\-wrapper.
+.br 
+
+Each block has to contain the following arguments:
+.br 
+.TP 
+.B login
+with an alias for your login
+.TP 
+.B hostnames
+hostnames without 'http://' to update (space seperated and in quotation marks)
+.TP 
+The following options can be included:
+.TP 
+.B ip\-addr
+ipv4:`/path/to/script` OR ipv6:`/path/to/script`
+.br 
+The script should print the ip address to stdout. This
+option is highly recommend, because
+the ip address won't be cached without it!
+.br 
+.I See /usr/[local/]share/updatedd/ for additional scripts.
+.TP 
+.B use\-syslog
+print messages to syslog (yes or no, default is yes)
+.TP 
+.B options
+extra options for the service
+(see 'updatedd <service> \-\- \-\-help' for help)
+.TP 
+.B force
+this will force the update of your ddns record
+(cache entries will be ignored)
+
+.SH "EXAMPLES"
+.nf 
+login {
+	dyndns_1   = "user:pass";
+	regfish_1  = "TOKEN=token";
+	regfish_2  = "STD=user:pass";
+	ods_1      = "user:pass";
+};
+
+dyndns(active) {
+	login      = dyndns_1;
+	hostnames  = "host1.dyndns.org host2.dyndns.org";
+	ip\-addr    = ipv4:`/usr/local/share/updatedd/ipserv.pl dyndns`;
+	use\-syslog = yes;
+	options    = "\-\-with\-backmx \-\-wildcard on";
+#	force;
+}
+regfish(active) {
+	login      = regfish_1;
+	hostnames  = "host1.org host2.org";
+	ip\-addr    = ipv4:`/usr/local/share/updatedd/ipserv.pl regfish`;
+	use\-syslog = yes;
+	options    = "\-\-ismx";
+#	force;
+}
+regfish(active) {
+	login      = regfish_2;
+	hostnames  = "host3.org";
+	ip\-addr    = ipv4:`/usr/local/share/updatedd/ipserv.pl regfish`;
+	use\-syslog = no;
+#	force;
+}
+ods(disabled) {
+	login      = ods_1;
+	hostnames  = "host1.ods.org host2.ods.org";
+	ip\-addr    = ipv4:`/usr/local/share/updatedd/interface.pl ppp0`;
+	use\-syslog = yes;
+#	force;
+}
+.fi 
+.SH "FILES"
+etc/updatedd\-wrapper.conf
+.SH "SEE ALSO"
+Look at /usr/share/doc/updatedd for further documentation
+(distributed by updatedd\-doc) and at /usr/share/updatedd
+for additional scripts.
+.TP 
+.I updatedd(1), updatedd\-wrapper(1)

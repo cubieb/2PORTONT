@@ -1,0 +1,263 @@
+/**
+ * @mainpage VoIP Interface
+ *
+ * @brief The Interface for VoIP Application.
+ *
+ * @section versoin Version History
+ * \htmlonly  
+ * <font color=#000000>
+ * <table border=1 width=500 style="border-collapse:collapse;"borderColor=black >  
+ * <td align=left><b>Ver</b></td> <td align=left><b>Date</b></td> <td align=left><b>Note</b></td> <tr>  
+ * <td align=left>2.5.2</td> <td align=left>05/20/2011</td> <td align=left>2.5.2 SDK release</td> <tr>  
+ * <td align=left>X.X.X</td> <td align=left>04/13/2012</td> <td align=left>X.X.X SDK release</td> <tr>  
+ * </table> 
+ * </font> 
+ * \endhtmlonly  
+ *
+ *
+ * @section Preface
+ * This document describes the Realtek  Telephone API (TAPI) for the telephony features is used in Realtek  VoIP products. <br>
+ * In this guide, it also provides example programs to demonstrate the various features of Realtek TAPI.
+ *
+ * @subsection Preface-1 Document Organization 
+ * UNDER CONSTRUCTION !!!
+ * @subsection Preface-2 Related Documentation
+ * Realtek VoIP User Guide <br>
+ * Realtek VoIP Solution SDK Manual 
+ * <p><hr>  
+ * \htmlonly 
+ * <H1>Contents</H1>
+ * \endhtmlonly
+ * @subpage RTK_VOIP_Intro 
+ *
+ * @subpage RTK_VOIP_Support_Feature
+ * 
+ * @subpage RTK_VOIP_BLOCKS
+ *
+ * @subpage RTK_Appendix_A 
+ * 
+ * <p><br><br>
+ * @author Realtek VoIP team
+ * @warning This document for 
+ * \htmlonly 
+ * <font color=#157DEC> Copyright &copy 2012 Realtek Semiconductor Corp. All rights Reserved. </font> 
+ * \endhtmlonly 
+ */
+
+// -------------------------------------------------------------------------------
+// ---------------------------------- Main Group ---------------------------------
+// -------------------------------------------------------------------------------
+
+/**
+ * @defgroup TAPI_PHONE_GROUP Phone
+ * @brief The Phone Interface.
+ */
+
+/**
+ * @defgroup TAPI_DSP_GROUP DSP
+ * @brief The DSP Interface.
+ */
+ 
+/**
+ * @defgroup TAPI_MEDIA_GROUP MEDIA
+ * @brief The Media Interface.
+ */
+
+/**
+ * @defgroup TAPI_NETWORK_GROUP NETWORK
+ * @brief The Network Interface.
+ */
+
+/**
+ * @defgroup TAPI_OBSOLETE_GROUP Obsolete APIs
+ * @brief The Obsolete APIs.
+ */
+ 
+// -------------------------------------------------------------------------------
+// ------------------------------ VOIP_PHONE Group -------------------------------
+// -------------------------------------------------------------------------------
+
+/**
+ * @defgroup TAPI_PHONE_STATE TAPI_PHONE - State
+ * @brief The TAPI Phone State Interface.
+ * @ingroup TAPI_PHONE_GROUP
+ */
+
+/**
+ * @defgroup TAPI_PHONE_PCM TAPI_PHONE - PCM
+ * @brief The PCM Interface.
+ * @ingroup TAPI_PHONE_GROUP
+ */
+ 
+/**
+ * @defgroup TAPI_PHONE_FXS TAPI_PHONE - FXS
+ * @brief The FXS Interface.
+ * When the platform is with virtual DAA, the FXS interface is used.
+ * @ingroup TAPI_PHONE_GROUP
+ */
+
+/**
+ * @defgroup TAPI_PHONE_FXO TAPI_PHONE - FXO
+ * @brief The FXO Interface.
+ * @ingroup TAPI_PHONE_GROUP
+ */
+
+/**
+ * @defgroup TAPI_PHONE_EVENT TAPI_PHONE - Event
+ * @brief The Phone Events Interface.
+ * @ingroup TAPI_PHONE_GROUP
+ */
+
+/**
+ * @defgroup TAPI_PHONE_DEBUG TAPI_PHONE - Debug
+ * @brief The Phone Debug Interface.
+ * @ingroup TAPI_PHONE_GROUP
+ */
+
+ /**
+ * @defgroup TAPI_PHONE_MISC TAPI_PHONE - Misc
+ * @brief The Phone Miscellaneous Interface.
+ * @ingroup TAPI_PHONE_GROUP
+ */
+ 
+// -------------------------------------------------------------------------------
+// -------------------------------- TAPI_DSP Group -------------------------------
+// -------------------------------------------------------------------------------
+
+/**
+ * @defgroup TAPI_DSP_INIT TAPI_DSP - Initialization
+ * @brief The DSP Initialization Interface.
+ * @ingroup TAPI_DSP_GROUP
+ */
+
+/**
+ * @defgroup TAPI_DSP_EC TAPI_DSP - Echo Canceller
+ * @brief The Echo Canceller Setting Interface.
+ * @ingroup TAPI_DSP_GROUP
+ */
+
+/**
+ * @defgroup TAPI_DSP_VAD TAPI_DSP - VAD
+ * @brief The VAD Setting Interface.
+ * @ingroup TAPI_DSP_GROUP
+ */
+ 
+/**
+ * @defgroup TAPI_DSP_AGC TAPI_DSP - AGC
+ * @brief The AGC Setting Interface.
+ * @ingroup TAPI_DSP_GROUP
+ */
+ 
+/**
+ * @defgroup TAPI_DSP_FAX TAPI_DSP - FAX
+ * @brief The FAX Interface.
+ * @ingroup TAPI_DSP_GROUP
+ */
+ 
+/**
+ * @defgroup TAPI_DSP_TONE TAPI_DSP - Tone
+ * @brief The Tone Interface.
+ * @ingroup TAPI_DSP_GROUP
+ */
+ 
+/**
+ * @defgroup TAPI_DSP_IVR TAPI_DSP - IVR
+ * @brief The IVR Interface.
+ * @ingroup TAPI_DSP_GROUP
+ */
+ 
+/**
+ * @defgroup TAPI_DSP_CID TAPI_DSP - Caller ID
+ * @brief The Caller ID Interface.
+ * @ingroup TAPI_DSP_GROUP
+ */
+ 
+/**
+ * @defgroup TAPI_DSP_CID_FSK TAPI_DSP - Caller ID for FSK
+ * @brief The Caller ID for FSK Interface.
+ * @ingroup TAPI_DSP_GROUP
+ */
+
+/**
+ * @defgroup TAPI_DSP_CID_DTMF TAPI_DSP - Caller ID for DTMF
+ * @brief The Caller ID for DTMF Interface.
+ * @ingroup TAPI_DSP_GROUP
+ */
+ 
+/**
+ * @defgroup TAPI_DSP_PULSEDIAL TAPI_DSP - Pulse Dial
+ * @brief The Pulse Dial Interface.
+ * @ingroup TAPI_DSP_GROUP
+ */
+ 
+/**
+ * @defgroup TAPI_DSP_MEDIA TAPI_DSP - Media
+ * @brief The DSP Media Interface.
+ * @ingroup TAPI_DSP_GROUP
+ */
+ 
+ 
+// -------------------------------------------------------------------------------
+// ------------------------------- VOIP_MEDIA Group ------------------------------
+// -------------------------------------------------------------------------------
+
+/**
+ * @defgroup TAPI_MEDIA TAPI_MEDIA
+ * @brief The Media Interface.
+ * @ingroup TAPI_MEDIA_GROUP
+ */
+
+/**
+ * @defgroup TAPI_MEDIA_RTP TAPI_MEDIA - RTP
+ * @brief The Media RTP Interface.
+ * @ingroup TAPI_MEDIA_GROUP
+ */
+ 
+/**
+ * @defgroup TAPI_MEDIA_RFC2833  TAPI_MEDIA - RFC2833
+ * @brief The Media RFC2833 Interface.
+ * @ingroup TAPI_MEDIA_GROUP
+ */
+ 
+/**
+ * @defgroup TAPI_MEDIA_T38 TAPI_MEDIA - T.38
+ * @brief The Media T.38 Interface.
+ * @ingroup TAPI_MEDIA_GROUP
+ */
+ 
+/**
+ * @defgroup TAPI_MEDIA_MISC TAPI_MEDIA - Misc
+ * @brief The Media Miscellaneous Interface.
+ * @ingroup TAPI_MEDIA_GROUP
+ */
+ 
+
+// -------------------------------------------------------------------------------
+// -------------------------------- VOIP_NET Group -------------------------------
+// -------------------------------------------------------------------------------
+ 
+/**
+ * @defgroup TAPI_NETWORK_QOS TAPI_NETWORK - QoS 
+ * @brief The Network QoS Interface.
+ * @ingroup TAPI_NETWORK_GROUP
+ */
+ 
+/**
+ * @defgroup TAPI_NETWORK_MISC TAPI_NETWORK - Misc
+ * @brief The Network Miscellaneous Interface.
+ * @ingroup TAPI_NETWORK_GROUP
+ */
+
+
+
+/*! @page RTK_VOIP_BLOCKS VoIP Blocks
+ *  - @subpage RTK_VOIP_DSP_Default_Setting 
+ *  - @subpage RTK_VOIP_Development 
+ */
+
+
+
+
+
+
+

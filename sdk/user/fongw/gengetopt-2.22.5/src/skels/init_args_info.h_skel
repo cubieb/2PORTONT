@@ -1,0 +1,5 @@
+args_info->@var_arg@_help = @help_strings@[@num@] ;
+@IF@ multiple @THEN@
+args_info->@var_arg@_min = @min@;
+args_info->@var_arg@_max = @max@;
+@ENDIF@

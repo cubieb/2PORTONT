@@ -1,0 +1,6 @@
+$ $Id: set25,v 1.1.1.1 2003/08/18 05:40:16 kaohj Exp $
+$ tc.sig.c
+$set 25 
+1 ourwait %d\n
+2 errore: bsd_signal(%d) segnale fuori intervallo\n
+3 errore: bsd_signal(%d) - sigaction fallita, errno %d\n

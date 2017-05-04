@@ -1,0 +1,45 @@
+
+extern void ebt_802_3_init(void);
+extern void ebt_nat_init(void);
+extern void ebt_arp_init(void);
+extern void ebt_arpreply_init(void);
+extern void ebt_ip_init(void);
+extern void ebt_standard_init(void);
+extern void ebt_log_init(void);
+extern void ebt_redirect_init(void);
+extern void ebt_vlan_init(void);
+extern void ebt_mark_m_init(void);
+extern void ebt_mark_init(void);
+extern void ebt_pkttype_init(void);
+extern void ebt_stp_init(void);
+extern void ebt_among_init(void);
+extern void ebt_limit_init(void);
+extern void ebt_ulog_init(void);
+extern void ebt_ip6_init(void);
+extern void ebt_ftos_init(void);
+extern void ebt_filter_init(void);
+extern void ebt_nat_init(void);
+extern void ebt_broute_init(void);
+void init_extensions(void) {
+	ebt_802_3_init();
+	ebt_nat_init();
+	ebt_arp_init();
+	ebt_arpreply_init();
+	ebt_ip_init();
+	ebt_standard_init();
+	ebt_log_init();
+	ebt_redirect_init();
+	ebt_vlan_init();
+	ebt_mark_m_init();
+	ebt_mark_init();
+	ebt_pkttype_init();
+	ebt_stp_init();
+	ebt_among_init();
+	ebt_limit_init();
+	ebt_ulog_init();
+	ebt_ip6_init();
+	ebt_ftos_init();
+	ebtable_filter_init();
+	ebtable_nat_init();
+	ebtable_broute_init();
+}

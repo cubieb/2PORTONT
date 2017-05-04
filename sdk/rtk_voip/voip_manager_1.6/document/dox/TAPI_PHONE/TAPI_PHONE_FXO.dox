@@ -1,0 +1,29 @@
+// ============================================================
+
+/**
+ * @page VOIP_PHONE_FXO FXO
+ * @ingroup TAPI_PHONE_FXO 
+ * As a caller, an FXO device initiates a call by going off-hook to seize the telephone line or DTMF which identity the destination to be called. <br>
+ * As a callee, an FXO device receives a call by detecting the ring voltage supplied by the FXS device or going off-hook to answer the call. <br> 
+ * The phone connecting to FXS can make a call to PSTN. This can be achieved by connecting to the FXO. <br>
+ * The FXO, infect, acts as a converter to transfer the data between FXS and PSTN. 
+ * The Figure 14 shows the conceptual architecture for FXS making call to PSTN. As the FXS makes a call to PSTN, 
+ * it sends the SIP message of INVITE to FXO. <br>After the FXO received the INVITE message, it calls the function of \ref rtk_FxoRingOn and the kernel 
+ * will response with off_hook. <br>Calling the function of GetFXOEvent can get the status of the FXO. <br>
+ * The FXO then responses with the 200 OK SIP message and the FXS sends its ACK to FXO. The connection of RTP is built up between FXO and FXS.
+ * \htmlonly <br> <p align="center"> <b>14. Internal connection for FXO to FXS</b>   \endhtmlonly    
+ * @image html TAPI_PHONE_FXO_Figure_14.JPG
+ * \htmlonly <br> <p align="center"> <b>15. The SIP negoriation for FXO and FXS</b>   \endhtmlonly    
+ * @image html TAPI_PHONE_FXO_Figure_15.JPG	
+ * <p>As the phone of the PSTN calls the phone of FXS in the ATA, the FXO will send the signal of off hook and do the SIP negotiation with FXS. <br>
+ * The connection of RTP between FXO and FXS is built up. The FXO acts as a sipua that can do negotiation with the other sipua such as softphone
+ * \htmlonly <br> <p align="center"> <b>16. The FXO calls the sipua</b>   \endhtmlonly    
+ * @image html TAPI_PHONE_FXO_Figure_16.JPG	
+ * <p>The virtual DAA different form real DAA acts as relay between PSTN and FXS. The function of getFXSEvent can get the five statuses. <br>
+ * They are off-hook, on hook, DTMF, RingOn and RingOff.
+  * \htmlonly <br> <p align="center"> <b>17. Virtual DAA</b>   \endhtmlonly    
+ * @image html TAPI_PHONE_FXO_Figure_17.JPG
+ */ 
+
+
+

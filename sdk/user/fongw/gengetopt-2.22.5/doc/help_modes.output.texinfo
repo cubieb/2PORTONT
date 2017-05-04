@@ -1,0 +1,32 @@
+test_modes 1.0
+
+Usage: test_modes [-h|--help] [-V|--version] [-N|--no-mode] [--no-mode2=STRING]
+  or : test_modes -d|--optd [--optc]
+  or : test_modes -ASTRING|--optA=STRING [-a|--opta] 
+         [-MSTRING|--optAmul=STRING] [-b|--optb]
+  or : test_modes [-mINT|--mopt=INT]
+
+  -h, --help              Print help and exit
+  -V, --version           Print version and exit
+
+some non mode options:
+  -N, --no-mode           a generic option not beloging to any mode
+      --no-mode2=STRING   another generic option not beloging to any mode
+
+some modes just for testing:
+
+ Mode: mode1
+  any option of this mode is in contrast with any option of the other mode
+  Notice that this description is quite long so it may spawn many lines...      
+          fortunately gengetopt will wrap it for you :-)
+  -a, --opta              string a
+  -A, --optA[=STRING]     string A
+  -M, --optAmul[=STRING]  string M
+  -b, --optb              string b
+
+ Mode: mode 2
+      --optc              string c
+  -d, --optd              string d
+
+ Mode: my mode
+  -m, --mopt=INT          option of my mode

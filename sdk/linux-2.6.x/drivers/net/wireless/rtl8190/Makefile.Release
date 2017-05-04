@@ -1,0 +1,4 @@
+subdir-$(CONFIG_RTL8192SE)      += rtl8192Pci
+obj-$(CONFIG_RTL8192SE)         += rtl8192Pci/
+obj-$(CONFIG_RTL8190) += rtl8190.o
+obj-$(CONFIG_RTL8192SE) += rtl8190.o

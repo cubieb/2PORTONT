@@ -1,0 +1,57 @@
+@c Generator: GNU source-highlight, by Lorenzo Bettini, http://www.gnu.org/software/src-highlite
+@example
+@b{#include} @t{<stdio.h>}
+@b{#include} @t{<stdlib.h>}
+
+@b{#include} @t{"test_main_cmdline_cmd.h"}
+@b{#include} @t{"test_first_cmdline_cmd.h"}
+@b{#include} @t{"test_second_cmdline_cmd.h"}
+
+@b{int}
+main(@b{int} argc, @b{char} **argv)
+@{
+  @b{struct} gengetopt_args_info main_args_info;
+  @b{struct} test_first_cmdline_cmd_struct first_args_info;
+  @b{struct} test_second_cmdline_cmd_struct second_args_info;
+  @b{int} exit_code = 0;
+  @b{unsigned} @b{int} i, j;
+
+  @b{if} (test_main_cmdline_cmd_parser (argc, argv, &main_args_info) != 0) @{
+    exit_code = 1;
+    @b{return} exit_code;
+  @}
+
+  @b{for} (j = 0; j < main_args_info.second_cmd_given; ++j) @{
+    printf(@t{"second cmdline: %s}\n@t{"}, main_args_info.second_cmd_arg[j]);
+    @b{if} (test_second_cmdline_cmd_parser_string 
+       (main_args_info.second_cmd_arg[j], &second_args_info, argv[0]) == 0) @{
+      @b{if} (second_args_info.option_a_given)
+       printf(@t{"  --option-a: %s}\n@t{"}, second_args_info.option_a_arg);
+      @b{if} (second_args_info.option_b_given)
+       printf(@t{"  --option-b: %s}\n@t{"}, second_args_info.option_b_arg);
+      @b{for} (i = 0; i < second_args_info.my_multi_given; ++i)
+       printf(@t{"  --my-multi: %s}\n@t{"}, second_args_info.my_multi_arg[i]);
+
+      test_second_cmdline_cmd_parser_free (&second_args_info);
+    @}
+  @}
+
+  @b{for} (j = 0; j < main_args_info.first_cmd_given; ++j) @{
+    printf(@t{"first cmdline: %s}\n@t{"}, main_args_info.first_cmd_arg[j]);
+    @b{if} (test_first_cmdline_cmd_parser_string 
+       (main_args_info.first_cmd_arg[j], &first_args_info, argv[0]) == 0) @{
+      @b{if} (first_args_info.option_a_given)
+       printf(@t{"  --option-a: %d}\n@t{"}, first_args_info.option_a_arg);
+      @b{for} (i = 0; i < first_args_info.multi_given; ++i)
+       printf(@t{"  --multi: %s}\n@t{"}, first_args_info.multi_arg[i]);
+
+      test_first_cmdline_cmd_parser_free (&first_args_info);
+    @}
+  @}
+
+  test_main_cmdline_cmd_parser_free (&main_args_info);
+
+  @b{return} exit_code;
+@}
+
+@end example

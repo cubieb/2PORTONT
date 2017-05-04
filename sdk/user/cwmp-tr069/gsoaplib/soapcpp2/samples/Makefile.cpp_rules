@@ -1,0 +1,12 @@
+## common Makefile rules for building the C++ - soap samples
+##
+
+SOAP_CPP_SRC=$(SOAP_CPP_CLIENT) soapServer.cpp $(SOAP_H_FILES) $(SOAP_NS)
+
+$(SOAP_CPP_SRC) : $(SOAPHEADER)
+	$(SOAP) $(SOAP_FLAGS) $< 
+
+LDADD=$(SOAP_CPP_LIB) $(SAMPLE_EXTRA_LIBS)
+BUILT_SOURCES=$(SOAP_CPP_SRC) 
+CLEANFILES=$(SOAP_CPP_SRC) *.req.xml *.res.xml *.wsdl *.nsmap *.xsd *Proxy\.h *~
+

@@ -1,0 +1,1 @@
+cmd_net/sched/built-in.o :=  /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/rsdk-linux-ld  -m elf32btsmip   -r -o net/sched/built-in.o net/sched/sch_generic.o net/sched/sch_api.o net/sched/sch_blackhole.o net/sched/cls_api.o net/sched/sch_fifo.o net/sched/sch_htb.o net/sched/sch_prio.o net/sched/cls_u32.o net/sched/cls_fw.o 

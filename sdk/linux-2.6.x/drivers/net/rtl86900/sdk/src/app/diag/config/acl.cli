@@ -1,0 +1,922 @@
+//
+// Copyright (C) 2011 Realtek Semiconductor Corp.
+// All Rights Reserved.
+//
+// This program is the proprietary software of Realtek Semiconductor
+// Corporation and/or its licensors, and only be used, duplicated,
+// modified or distributed under the authorized license from Realtek.
+//
+// ANY USE OF THE SOFTWARE OTHER THAN AS AUTHORIZED UNDER
+// THIS LICENSE OR COPYRIGHT LAW IS PROHIBITED.
+//
+// $Revision: 39101 $
+// $Date: 2013-05-03 17:35:27 +0800 (Fri, 03 May 2013) $
+//
+// Purpose : Define diag shell commands for trunk.
+//
+// Feature : The file have include the following module and sub-modules
+//           1) acl commands.
+//
+
+//ACL configuration
+//show rule configuration
+acl show 
+
+//ACL configuration
+//clear rule configuration
+acl clear 
+
+//ACL configuration
+//add configuration
+//entry configuration
+//entry index, <0~63>
+acl add entry <UINT:entry> 
+
+//ACL configuration
+//add configuration
+//entry configuration
+//entry index, <0~63>
+//rule
+//action data
+//action control bits
+acl add entry <UINT:entry> ( rule | action-data | action-control ) 
+
+
+//ACL configuration
+//delete configuration
+//entry configuration
+//entry index, <0~63>
+acl del entry <UINT:entry> 
+
+//ACL configuration
+//delete configuration
+//entry configuration
+//all
+acl del entry all 
+
+//ACL configuration
+//get configuation
+//entry configuration
+//entry index, <0~63>
+acl get entry <UINT:entry> 
+
+//ACL configuration
+//set configuration
+//rule configuration
+//mode configuration
+//64 entries mode
+//128 entries mode
+acl set rule mode ( 64-entries | 128-entries )
+
+//ACL configuration
+//set configuration
+//rule configuration
+//dmac configuration
+//smac configuration
+//data configuration
+//mac address data, A:B:C:D:E:F
+//mask configuration
+//mac address mask, A:B:C:D:E:F
+acl set rule ( dmac | smac ) data <MACADDR:mac_data> mask <MACADDR:mac_mask>
+
+//ACL configuration
+//set configuration
+//rule configuration
+//dmac configuration
+//smac configuration
+//data configuration
+//mac address data, A:B:C:D:E:F
+acl set rule ( dmac | smac ) data <MACADDR:mac_data> 
+
+//ACL configuration
+//set configuration
+//rule configuration
+//sip configuration
+//dip configuration
+//data configuration
+//ip data
+//mask configuration
+//ip mask
+acl set rule ( sip | dip ) data <IPV4ADDR:ip_data> mask <IPV4ADDR:ip_mask>
+
+//ACL configuration
+//set configuration
+//rule configuration
+//sip configuration
+//dip configuration
+//data configuration
+//ip data
+acl set rule ( sip | dip ) data <IPV4ADDR:ip_data>
+
+//ACL configuration
+//set configuration
+//rule configuration
+//sipv6 configuration
+//dipv6 configuration
+//data configuration
+//ip data, 1234::ABCD
+//mask configuration
+//ip mask, 1234::ABCD
+acl set rule ( sipv6 | dipv6 ) data <IPV6ADDR:ip_data> mask <IPV6ADDR:ip_mask>
+
+//ACL configuration
+//set configuration
+//rule configuration
+//sipv6 configuration
+//dipv6 configuration
+//data configuration
+//ip data, 1234::ABCD
+//mask configuration
+//ip mask, 1234::ABCD
+acl set rule ( sipv6 | dipv6 ) data <IPV6ADDR:ip_data> 
+
+//ACL configuration
+//set configuration
+//rule configuration
+//ethertype configuration
+//llid or gem index configuration
+//ipv6 next header
+//data configuration
+//data, 0x1234
+//mask configuration
+//mask, 0x1234
+acl set rule ( ethertype | gemidx-llidx | ip6-nh ) data <UINT:data> mask <UINT:mask>
+
+
+//ACL configuration
+//set configuration
+//rule configuration
+//ethertype configuration
+//gem or llid index configuration
+//ipv6 next header
+//data configuration
+//data, 0x1234
+acl set rule ( ethertype | gemidx-llidx | ip6-nh ) data <UINT:data> 
+
+//ACL configuration
+//set configuration
+//rule configuration
+//l4 port range configuration
+//care range configuration
+//range items, <0-15>
+acl set rule range-l4port care-range <MASK_LIST:list> 
+
+//ACL configuration
+//set configuration
+//rule configuration
+//l4 port range configuration
+//data configuration
+//data, 0x1234
+acl set rule range-l4port data <UINT:data> 
+
+//ACL configuration
+//set configuration
+//rule configuration
+//l4 port range configuration
+//data configuration
+//data, 0x1234
+//mask configuration
+//mask, 0x1234
+acl set rule range-l4port data <UINT:data> mask <UINT:mask>
+
+//ACL configuration
+//set configuration
+//rule configuration
+//vid range configuration
+//ip range configuration
+//packet length range configuration
+//care range configuration
+//range items, <0-7>
+acl set rule ( range-vid | range-ip | range-len ) care-range <MASK_LIST:list> 
+
+
+//ACL configuration
+//set configuration
+//rule configuration
+//vid range configuration
+//ip range configuration
+//packet length range configuration
+//data configuration
+//data, 0x1234
+acl set rule ( range-vid | range-ip | range-len ) data <UINT:data> 
+
+//ACL configuration
+//set configuration
+//rule configuration
+//vid range configuration
+//ip range configuration
+//packet length range configuration
+//data configuration
+//data, 0x1234
+//mask configuration
+//mask, 0x1234
+acl set rule ( range-vid | range-ip | range-len ) data <UINT:data> mask <UINT:mask>
+
+//ACL configuration
+//set configuration
+//rule configuration
+//ctag configuration
+//data configuration
+//data, 0x1234
+acl set rule ctag data <UINT:data> 
+
+//ACL configuration
+//set configuration
+//rule configuration
+//ctag configuration
+//data configuration
+//data, 0x1234
+//mask configuration
+//mask, 0x1234
+acl set rule ctag data <UINT:data> mask <UINT:mask>
+
+//ACL configuration
+//set configuration
+//rule configuration
+//ctag configuration
+//data configuration
+//vid configuration
+//vid, <0~4095>
+//priority configuration
+//pirority, <0~7>
+//cfi configuration
+//0
+//1
+acl set rule ctag data vid <UINT:vid> priority <UINT:priority> cfi ( 0 | 1 ) 
+
+//ACL configuration
+//set configuration
+//rule configuration
+//ctag configuration
+//data configuration
+//vid configuration
+//vid, <0~4095>
+//priority configuration
+//pirority, <0~7>
+//cfi configuration
+//0
+//1
+//mask configuration
+//vid configuration
+//vid, <0~4095>
+//priority configuration
+//pirority, <0~7>
+//cfi configuration
+//0
+//1
+acl set rule ctag data vid <UINT:vid> priority <UINT:priority> cfi ( 0 | 1 ) mask vid <UINT:vid_mask> priority <UINT:priority_mask> cfi ( 0 | 1 )
+
+//ACL configuration
+//set configuration
+//rule configuration
+//stag configuration
+//data configuration
+//data, 0x1234
+acl set rule stag data <UINT:data> 
+
+//ACL configuration
+//set configuration
+//rule configuration
+//stag configuration
+//data configuration
+//data, 0x1234
+//mask configuration
+//mask, 0x1234
+acl set rule stag data <UINT:data> mask <UINT:mask>
+
+//ACL configuration
+//set configuration
+//rule configuration
+//stag configuration
+//data configuration
+//vid configuration
+//vid, <0~4095>
+//priority configuration
+//pirority, <0~7>
+//dei configuration
+//0
+//1
+acl set rule stag data vid <UINT:vid> priority <UINT:priority> dei ( 0 | 1 ) 
+
+//ACL configuration
+//set configuration
+//rule configuration
+//stag configuration
+//data configuration
+//vid configuration
+//vid, <0~4095>
+//priority configuration
+//pirority, <0~7>
+//dei configuration
+//0
+//1
+//mask configuration
+//vid configuration
+//vid, <0~4095>
+//priority configuration
+//pirority, <0~7>
+//dei configuration
+//0
+//1
+acl set rule stag data vid <UINT:vid> priority <UINT:priority> dei ( 0 | 1 ) mask vid <UINT:vid_mask> priority <UINT:priority_mask> dei ( 0 | 1 )
+
+
+//ACL configuration
+//set configuration
+//rule configuration
+//field selector configuration
+//selector index, 0~15
+//data configuration
+//data, 0x1234
+//mask configuration
+//mask, 0x1234
+acl set rule user-field <UINT:index> data <UINT:data> mask <UINT:mask>
+
+//ACL configuration
+//set configuration
+//rule configuration
+//field selector configuration
+//selector index, 0~15
+//data configuration
+//data, 0x1234
+acl set rule user-field <UINT:index> data <UINT:data>
+
+//ACL configuration
+//set configuration
+//rule configuration
+//care tags configuration
+//ctag exist
+//ipv4 exist
+//ipv6 exist
+//pppoe exist
+//stag exist
+//tcp exist
+//udp exist
+acl set rule care-tags { ctag } { ipv4 } { ipv6 } { pppoe } { stag } { tcp } { udp } 
+
+//ACL configuration
+//set configuration
+//rule configuration
+//active port configuartion 
+//port list, <0-6>
+//all
+//none
+acl set rule port ( <PORT_LIST:port> | all | none )
+
+//ACL configuration
+//set configuration
+//rule configuration
+//template configuration
+//index configuration
+//index, <0~3>
+acl set rule template index <UINT:index>
+
+//ACL configuration
+//set configuration
+//rule configuration
+//operation configuration
+//hit
+//not
+acl set rule operation ( hit | not ) 
+
+//ACL configuration
+//set configuration
+//rule configuration
+//valid
+//invalid
+acl set rule ( valid | invalid ) 
+
+
+//ACL configuration
+//set configuration
+//entry configuration
+//entry index, <0~63>
+//opeartion configuration
+//hit
+//not hit
+acl set entry <UINT:entry> operation ( hit | not )
+
+//ACL configuration
+//get configuration
+//entry configuration
+//entry index, <0~63>
+//opeartion configuration
+acl get entry <UINT:entry> operation 
+
+//ACL configuration
+//set configuration
+//entry configuration
+//entry index, <0~63>
+//valid
+//invalid
+acl set entry <UINT:entry> ( valid | invalid )
+
+//ACL configuration
+//get configuration
+//entry configuration
+//entry index, <0~63>
+//action configuration
+acl get entry <UINT:entry> action
+
+
+//ACL configuration
+//get configuration
+//vid range configuration
+//index configuration
+//index, 0~7
+acl get range-vid index <UINT:index>
+
+
+//ACL configuration
+//set configuration
+//vid range configuration
+//index configuration
+//index, 0~7
+//invalid
+acl set range-vid index <UINT:index> invalid
+
+//ACL configuration
+//set configuration
+//vid range configuration
+//index configuration
+//index, 0~7
+//svid type
+//cvid type
+//lower vid configuation
+//vid, 0~4095
+//upper vid configuation
+//vid, 0~4095
+acl set range-vid index <UINT:index> ( svid | cvid ) low-bound <UINT:vid_lower> up-bound <UINT:vid_upper>
+
+//ACL configuration
+//get configuration
+//ip range configuration
+//index configuration
+//index, 0~7
+acl get range-ip index <UINT:index>
+
+
+//ACL configuration
+//set configuration
+//ip range configuration
+//index configuration
+//index, 0~7
+//invalid
+acl set range-ip index <UINT:index> invalid
+
+//ACL configuration
+//set configuration
+//vid range configuration
+//index configuration
+//index, 0~7
+//ipv4 sip 
+//ipv4 dip
+//ipv6 sip lsb 32-bits[31:0]
+//ipv6 dip lsb 32-bits[31:0]
+//lower ip address configuation
+//ip address
+//upper ip address configuation
+//ip address
+acl set range-ip index <UINT:index> ( sip | dip | sipv6 | dipv6 ) low-bound <IPV4ADDR:ip_lower> up-bound <IPV4ADDR:ip_upper>
+
+//ACL configuration
+//get configuration
+//l4 port range configuration
+//index configuration
+//index, 0~15
+acl get range-l4port index <UINT:index>
+
+
+//ACL configuration
+//set configuration
+//l4 port range configuration
+//index configuration
+//index, 0~15
+//invalid
+acl set range-l4port index <UINT:index> invalid
+
+//ACL configuration
+//set configuration
+//l4 port range configuration
+//index configuration
+//index, 0~15
+//source port configuration
+//destination port configuration
+//range lower port configuration
+//l4 port, 0~65535
+//range upper port configuration
+//l4 port, 0~65535 
+acl set range-l4port index <UINT:index> ( src-port | dest-port ) low-bound <UINT:port_lower> up-bound <UINT:port_upper>
+
+//ACL configuration
+//get configuration
+//packet length range configuration
+//index configuration
+//index, 0~7
+acl get range-len index <UINT:index>
+
+//ACL configuration
+//set configuration
+//packet length range configuration
+//index configuration
+//index, 0~7
+//range lower packet length configuration
+//packet length, 0~16383
+//range upper packet length configuration
+//packet length, 0~16383
+//reverse compare result
+acl set range-len index <UINT:index> low-bound <UINT:len_lower> up-bound <UINT:len_upper> { reverse }
+
+//ACL configuration
+//set configuration
+//packet length range configuration
+//index configuration
+//index, 0~7
+//invalid
+acl set range-len index <UINT:index> invalid
+
+
+//ACL configuration
+//get configuration
+//port configuration
+//port list, <0-6>
+//all
+//state configuration
+acl get port ( <PORT_LIST:port> | all ) state
+
+//ACL configuration
+//set configuration
+//port configuration
+//port list, <0-6>
+//all
+//state configuration
+//enable ACL function
+//disable ACL function
+acl set port ( <PORT_LIST:port> | all ) state ( enable | disable )
+
+//ACL configuration
+//get configuration
+//port configuration
+//port list, <0-6>
+//all
+//permit configuration
+acl get port ( <PORT_LIST:port> | all ) permit
+
+//ACL configuration
+//set configuration
+//port configuration
+//port list, <0-6>
+//all
+//permit configuration
+//enable permit function
+//disable permit function
+acl set port ( <PORT_LIST:port> | all ) permit ( enable | disable )
+
+//ACL configuration
+//set configuration
+//action configuration
+//cvlan action
+//ingress vlan action 
+//vlan member configuation
+//index, 0~31
+acl set action cvlan ingress cvidx <UINT:cvidx>
+
+//ACL configuration
+//set configuration
+//action configuration
+//cvlan action
+//egress vlan action 
+//vlan member configuation
+//index, 0~31
+acl set action cvlan egress cvidx <UINT:cvidx>
+
+//ACL configuration
+//set configuration
+//action configuration
+//cvlan action
+//using svid 
+acl set action cvlan using-svid
+
+//ACL configuration
+//set configuration
+//action configuration
+//cvlan action
+//policing
+//meter configuration
+//index, 0~31
+acl set action cvlan policing meter <UINT:meter_idx> 
+
+//ACL configuration
+//set configuration
+//action configuration
+//cvlan action
+//logging
+//acl mib configuration
+//index, 0~31
+acl set action cvlan logging acl-mib <UINT:mib_idx> 
+
+
+//ACL configuration
+//set configuration
+//action configuration
+//cvlan action
+//1p remarking configuration
+//priority configuration
+//priority, 0~7
+acl set action cvlan dot1p-remark priority <UINT:pri>
+
+
+//ACL configuration
+//set configuration
+//action configuration
+//svlan action
+//ingress vlan action 
+//svlan member configuation index 
+//svidx, 0~63
+acl set action svlan ingress svidx <UINT:svidx>
+
+//ACL configuration
+//set configuration
+//action configuration
+//svlan action
+//egress vlan action 
+//svlan member configuation index 
+//svidx, 0~63
+acl set action svlan egress svidx <UINT:svidx>
+
+//ACL configuration
+//set configuration
+//action configuration
+//svlan action
+//using cvid 
+acl set action svlan using-cvid
+
+//ACL configuration
+//set configuration
+//action configuration
+//svlan action
+//policing
+//meter configuration
+//index, 0~31
+acl set action svlan policing meter <UINT:meter_idx> 
+
+//ACL configuration
+//set configuration
+//action configuration
+//svlan action
+//logging
+//acl mib configuration
+//index, 0~31
+acl set action svlan logging acl-mib <UINT:mib_idx> 
+
+//ACL configuration
+//set configuration
+//action configuration
+//svlan action
+//dscp remarking configuration
+//dscp configuration
+//dscp, 0~63
+acl set action svlan dscp-remark dscp <UINT:dscp>
+
+//ACL configuration
+//set configuration
+//action configuration
+//svlan action
+//1p remarking configuration
+//priority configuration
+//priority, 0~7
+acl set action svlan dot1p-remark priority <UINT:pri>
+
+//ACL configuration
+//set configuration
+//action configuration
+//priority action
+//acl priority assignment
+//priority configuration
+//priority, 0~7
+acl set action priority pri-assign priority <UINT:pri>
+
+//ACL configuration
+//set configuration
+//action configuration
+//priority action
+//dscp remarking configuration
+//dscp configuration
+//dscp, 0~63
+acl set action priority dscp-remark dscp <UINT:dscp>
+
+//ACL configuration
+//set configuration
+//action configuration
+//priority action
+//1p remarking configuration
+//priority configuration
+//priority, 0~7
+acl set action priority dot1p-remark priority <UINT:pri>
+
+//ACL configuration
+//set configuration
+//action configuration
+//priority action
+//policing
+//meter configuration
+//index, 0~31
+acl set action priority policing meter <UINT:meter_idx> 
+
+//ACL configuration
+//set configuration
+//action configuration
+//priority action
+//logging
+//acl mib configuration
+//index, 0~31
+acl set action priority logging acl-mib <UINT:mib_idx> 
+
+//ACL configuration
+//set configuration
+//action configuration
+//policing action
+//meter configuration
+//index, 0~31
+acl set action policing meter <UINT:meter_idx> 
+
+//ACL configuration
+//set configuration
+//action configuration
+//logging action
+//acl mib configuration
+//index, 0~31
+acl set action logging acl-mib <UINT:mib_idx> 
+
+//ACL configuration
+//set configuration
+//action configuration
+//trap to CPU
+acl set action trap-to-cpu
+
+//ACL configuration
+//set configuration
+//action configuration
+//copy frame configuration
+//port configuration
+//port list, <0-6>
+//all
+acl set action copy port ( <PORT_LIST:port> | all ) 
+
+//ACL configuration
+//set configuration
+//action configuration
+//direct frame configuration
+//port configuration
+//port list, <0-6>
+//all
+//none
+acl set action redirect port ( <PORT_LIST:port> | all | none ) 
+
+//ACL configuration
+//set configuration
+//action configuration
+//mirror frame configuration
+//port configuration
+//port list, <0-6>
+//all
+acl set action mirror port ( <PORT_LIST:port> | all ) 
+
+//ACL configuration
+//set configuration
+//action configuration
+//interrupt
+acl set action interrupt
+
+//ACL configuration
+//set configuration
+//action configuration
+//classify function
+//none
+acl set action classify none 
+
+//ACL configuration
+//set configuration
+//action configuration
+//classify function
+//sid configuration
+//sid, <0~127>
+acl set action classify sid <UINT:sid> 
+
+//ACL configuration
+//set configuration
+//action configuration
+//classify function
+//llid configuration
+//llid, <0~7>
+acl set action classify llid <UINT:llid> 
+
+//ACL configuration
+//set configuration
+//action configuration
+//classify function
+//ext or dsl configuration
+//vidx, <0~31>
+acl set action classify ext-dsl <UINT:vidx> 
+
+//ACL configuration
+//set configuration
+//action configuration
+//none, 
+acl set action none
+
+//ACL configuration
+//show configuration
+//action configuration
+acl show action 
+
+//ACL configuration
+//clear configuration
+//action configuration
+acl clear action 
+
+//ACL configuration
+//show template configuration
+//template configuration
+acl show template
+
+//ACL configuration
+//clear configuration
+//template configuration
+acl clear template
+
+//ACL configuration
+//set configuration
+//template configuration
+//stag configuration
+//ctag configuration
+//ethertype configuration
+//gem or llid index configuration
+//ipv6 next header
+//unknown
+//ip range configuration
+acl set template ( stag | ctag | ethertype | gemidx-llidx | ip6-nh | unknown | range-ip )
+
+//ACL configuration
+//set configuration
+//template configuration
+//dip configuration
+//sip configuration
+//packet length range configuration
+acl set template ( dip | sip | range-len )
+
+//ACL configuration
+//set configuration
+//template configuration
+//smac configuration
+//dmac configuration
+//l4 port range configuration
+acl set template ( smac | dmac | range-l4port )
+
+//ACL configuration
+//set configuration
+//template configuration
+//sipv6 configuration
+//dipv6 configuration
+//vid range configuration
+acl set template ( sipv6 | dipv6 | range-vid )
+
+//ACL configuration
+//set configuration
+//template configuration
+//field selector configuration
+//selector index, 0~15
+acl set template user-field <UINT:index> 
+
+//ACL configuration
+//add configuration
+//delete configuration
+//get configuration
+//template configuration
+//index configuration
+//index, <0~3>
+acl ( add | del | get ) template index <UINT:index>
+
+//ACL configuration
+//add configuration
+//template configuration
+//index configuration
+//index, <0~3>
+//for msb rule
+//for lsb rule
+acl add template index <UINT:index> ( msb-rule | lsb-rule )
+
+
+//ACL configuration
+//set configuration
+//mode configuration
+//64 entries mode
+//128 entries mode
+acl set mode ( 64-entries | 128-entries )
+
+//ACL configuration
+//get configuration
+//mode configuration
+acl get mode 
+
+

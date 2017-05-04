@@ -1,0 +1,31 @@
+# /etc/inittab init(8) configuration for BusyBox
+#
+# Format for each entry: <id>:<runlevels>:<action>:<process>
+#
+# <id>: The id field is used by BusyBox init to specify the controlling tty for
+#	the specified process to run on. There is no need for this field to 
+#	be unique, although if it isn't you may have strange results.
+#
+# <runlevels>: The runlevels field is completely ignored.
+#	       ( If you want runlevels, use sysvinit.)
+#
+# <action>: Valid actions include: sysinit, respawn, askfirst, wait, once,
+#                                  restart, ctrlaltdel, and shutdown.
+#
+# <process>: Specifies the process to be executed and it's command line.
+#
+#
+# Boot-time system configuration/initialization script.
+# This is run first except when booting in single-user mode.
+#
+#
+# Boot-time system configuration/initialization script.
+# This is run first except when booting in single-user mode.
+#
+::sysinit:/etc/init.d/rcS
+
+# Stuff to do when restarting the init proces
+::restart:/sbin/init
+
+# Below here we append init action by each process Makefile
+# 

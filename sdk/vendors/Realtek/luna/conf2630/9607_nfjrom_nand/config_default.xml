@@ -1,0 +1,5 @@
+<Config Name="ROOT">
+ <Dir Name="MIB_TABLE">
+   <Value Name="SSID" Value="dual-linux"/>
+ </Dir>
+</Config>

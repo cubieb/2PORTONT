@@ -1,0 +1,4 @@
+unsigned int @arg_name@_given ;	/**< @@brief Whether @long_opt@ was given.  */
+@IF@ group @THEN@
+  int @arg_name@_group ; /**< @@brief Whether @long_opt@'s was updated.  */
+@ENDIF@

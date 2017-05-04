@@ -1,0 +1,81 @@
+include ../.linux_config
+include ../Makefile.rcm
+
+ifeq ($(OPENWRT_BUILD), 1)
+CFLAGS += -DOPENWRT_BUILD -I$(STAGING_DIR)/usr/include -L$(STAGING_DIR)/usr/lib  $(TARGET_CFLAGS) -Wl,-rpath-link=$(STAGING_DIR)/usr/lib -luci -fPIC -g -Wall -I../includes
+OBJS = voip_uci.o voip_flash_client.o
+
+LIBS = libvoip_flash_client.a
+
+DEPENDENCY	= $(OBJS:.o=.d)
+
+all: $(LIBS)
+
+$(LIBS): $(OBJS)
+	$(AR) rcs $@ $(OBJS)
+
+%.o: %.c
+	$(CC) -c -o $@ $(CFLAGS) $< 
+	$(CC) -M $(CFLAGS) $< | sed -e "s#^$(*F).o[ :]*#$(@D)\/$(*F).o : #" > $(@:.o=.d)
+
+-include $(DEPENDENCY)
+	
+else
+
+
+OBJS = voip_flash_client.o
+ifdef RCM_SIMULATION
+OBJS = voip_flash_client.o voip_flash_tool.o voip_flash_mib.o
+endif
+LIBS = libvoip_flash_client.a
+
+CFLAGS = -g -Wall -I../includes -I../ui/include -I../../boa/apmib -fPIC
+ifeq ($(CONFIG_RTK_VOIP_PACKAGE_867X), y)
+CFLAGS += -I../../boa/src/LINUX
+endif
+LDFLAGS = --static
+
+ifdef RCM_SIMULATION
+CFLAGS += -DRCM_SIMULATION
+endif
+
+ifneq ($(BUILD_DIALPLAN), 0)
+CFLAGS += -DCONFIG_RTK_VOIP_DIALPLAN
+endif
+DEPENDENCY	= $(OBJS:.o=.d)
+
+all: $(LIBS) 
+
+ifdef RCM_SIMULATION
+$(LIBS): $(OBJS)
+	$(AR) rcs $@ $(OBJS)
+
+%.o: %.c
+	$(CC) -c -o $@ $(CFLAGS) $<
+	$(CC) -M $(CFLAGS) $< | sed -e "s#^$(*F).o[ :]*#$(@D)\/$(*F).o : #" > $(@:.o=.d)
+	cp -f  ./cvvoip  ../cmsim/tools/
+
+else
+$(LIBS): $(OBJS)
+	$(AR) rcs $@ $<
+
+%.o: %.c
+	$(CC) -c -o $@ $(CFLAGS) $<
+	$(CC) -M $(CFLAGS) $< | sed -e "s#^$(*F).o[ :]*#$(@D)\/$(*F).o : #" > $(@:.o=.d)
+
+endif
+
+ifdef RCM_SIMULATION
+
+clean:
+	rm -f $(LIBS) $(OBJS) *.d ../cmsim/tools/cvvoip
+
+else
+
+clean:
+	rm -f $(LIBS) $(OBJS) *.d
+
+endif
+
+-include $(DEPENDENCY)
+endif

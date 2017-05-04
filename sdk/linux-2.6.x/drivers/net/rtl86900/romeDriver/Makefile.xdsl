@@ -1,0 +1,123 @@
+
+
+srctree=$(KDIR)
+EXTRA_CFLAGS += -Wall -Werror
+ifeq ($(CONFIG_OPENWRT_RG),y)
+EXTRA_CFLAGS += -I$(DIR_LINUX)/drivers/net/ethernet/realtek/rtl86900/sdk/system/include
+EXTRA_CFLAGS += -I$(DIR_LINUX)/drivers/net/ethernet/realtek/rtl86900/sdk/include
+EXTRA_CFLAGS += -I$(DIR_LINUX)/drivers/net/ethernet/realtek/rtl86900/romeDriver
+EXTRA_CFLAGS += -I$(DIR_LINUX)/drivers/net/ethernet/realtek/rtl86900
+EXTRA_CFLAGS += -I$(DIR_LINUX)/drivers/net/ethernet/realtek/rtl819x
+EXTRA_CFLAGS += -I$(DIR_LINUX)/drivers/net/ethernet/realtek
+else
+EXTRA_CFLAGS += -I$(DIR_LINUX)/drivers/net/rtl86900/sdk/system/include
+EXTRA_CFLAGS += -I$(DIR_LINUX)/drivers/net/rtl86900/sdk/include
+EXTRA_CFLAGS += -I$(DIR_LINUX)/drivers/net/rtl819x/romeDriver
+EXTRA_CFLAGS += -I$(DIR_LINUX)/drivers/net/rtl819x
+endif
+EXTRA_CFLAGS += -I$(DIR_LINUX)/drivers/net
+EXTRA_CFLAGS += -DCONFIG_SDK_KERNEL_LINUX
+
+## CONFIG_MODULE_BUILD_IN==n
+
+ifeq ($(CONFIG_MODULE_BUILD_IN),y)
+obj-$(CONFIG_XDSL_NEW_HWNAT_DRIVER) += rtk_rg_liteRomeDriver.o
+#obj-$(CONFIG_XDSL_NEW_HWNAT_DRIVER) += rtk_rg_xdsl_liteRomeDriver.o
+#obj-$(CONFIG_XDSL_NEW_HWNAT_DRIVER) += rtk_rg_apollo_liteRomeDriver.o
+obj-$(CONFIG_XDSL_NEW_HWNAT_DRIVER) += rtk_rg_acl_xdsl.o
+obj-$(CONFIG_XDSL_NEW_HWNAT_DRIVER) += rtk_rg_xdsl_extAPI.o
+obj-$(CONFIG_XDSL_NEW_HWNAT_DRIVER) += rtk_rg_profile.o
+##liteRomeDriver extern HW API
+obj-$(CONFIG_XDSL_NEW_HWNAT_DRIVER) += rtk_rg_xdsl_exterbAPI.o 
+obj-$(CONFIG_XDSL_NEW_HWNAT_DRIVER) += rtk_rg_internal.o
+obj-$(CONFIG_XDSL_NEW_HWNAT_DRIVER) += rtk_rg_mappingAPI.o
+#obj-$(CONFIG_XDSL_ROMEDRIVER) += rtk_rg_xdsl_fwdEngine.o
+obj-$(CONFIG_XDSL_ROMEDRIVER) += rtk_rg_fwdEngine.o
+obj-$(CONFIG_RG_IGMP_SNOOPING) += rtk_rg_igmpsnooping.o
+#obj-$(CONFIG_RG_DEBUG) += rtk_rg_debug.o
+obj-$(CONFIG_XDSL_NEW_HWNAT_DRIVER) += rtk_rg_debug.o
+obj-$(CONFIG_RG_CALLBACK) += rtk_rg_callback.o
+
+obj-$(CONFIG_XDSL_ROMEDRIVER) += rtk_rg_alg_tool.o
+obj-$(CONFIG_XDSL_ROMEDRIVER) += rtk_rg_h323.o
+obj-$(CONFIG_XDSL_ROMEDRIVER) += rtk_rg_sip.o
+obj-$(CONFIG_XDSL_ROMEDRIVER) += rtk_rg_rtsp.o
+obj-$(CONFIG_XDSL_ROMEDRIVER) += rtk_rg_l2tp.o
+obj-$(CONFIG_XDSL_ROMEDRIVER) += rtk_rg_ipsec.o
+obj-$(CONFIG_XDSL_ROMEDRIVER) += rtk_rg_ftp.o
+obj-$(CONFIG_XDSL_ROMEDRIVER) += rtk_rg_pptp.o
+obj-$(CONFIG_RG_WMUX_SUPPORT) += rtk_rg_wmux.o
+
+
+
+all:
+
+install:
+
+else
+
+MODULE_NAME=liteRomeDriver
+obj-m := $(MODULE_NAME).o
+$(MODULE_NAME)-objs:= \
+			rtk_rg_internal.o \
+			rtk_rg_mappingAPI.o \
+			rtk_rg_liteRomeDriver.o \
+			rtk_rg_apollo_liteRomeDriver.o\
+			rtk_rg_xdsl_extAPI.o\
+			rtk_rg_acl_xdsl.o\
+			rtk_rg_profile.o
+
+#ifeq ($(CONFIG_RG_DEBUG),y)
+ifeq ($(CONFIG_XDSL_NEW_HWNAT_DRIVER),y)
+$(MODULE_NAME)-objs +=  rtk_rg_debug.o
+endif
+			
+ifeq ($(CONFIG_RG_CALLBACK),y)
+MODULE_FLAG+=-DRTK_RG_CALLBACK
+$(MODULE_NAME)-objs +=  rtk_rg_callback.o
+endif
+
+
+ifeq ($(CONFIG_XDSL_ROMEDRIVER),y)
+FWD_MODULE_NAME=fwdEngine
+obj-y += $(FWD_MODULE_NAME).o
+$(FWD_MODULE_NAME)-objs:= \
+                        rtk_rg_fwdEngine.o \
+                        rtk_rg_igmpsnooping.o \
+			rtk_rg_alg_tool.o\
+			rtk_rg_h323.o\
+			rtk_rg_sip.o\
+			rtk_rg_rtsp.o\
+			rtk_rg_l2tp.o\
+			rtk_rg_ipsec.o\
+			rtk_rg_ftp.o\
+			rtk_rg_pptp.o
+
+obj-$(CONFIG_RG_WMUX_SUPPORT) += rtk_rg_wmux.o
+
+endif
+
+
+##<--tyhuang: to add "rtk_rg_xdsl_liteRomeDriver" to build-in.o
+LUNAR_SVN_VERSION=$(shell drivers/net/rtl86900/romeDriver/getSvnVersion.sh ..)
+SWITCH_SVN_VERSION=$(shell drivers/net/rtl86900/romeDriver/getSvnVersion.sh ./drivers/net/rtl86900/sdk)
+DIAG_SVN_VERSION=$(shell drivers/net/rtl86900/romeDriver/getSvnVersion.sh ./drivers/net/rtl86900/sdk/src/app/diag_rtk)
+ROMEDRIVER_SVN_VERSION=$(shell drivers/net/rtl86900/romeDriver/getSvnVersion.sh ./drivers/net/rtl86900/romeDriver)
+USER_SVN_VERSION=$(shell drivers/net/rtl86900/romeDriver/getSvnVersion.sh ../user)
+EXTRA_CFLAGS +=  -DLUNAR_SVN_VERSION="\""$(LUNAR_SVN_VERSION)"\""
+EXTRA_CFLAGS +=  -DSWITCH_SVN_VERSION="\""$(SWITCH_SVN_VERSION)"\""
+EXTRA_CFLAGS +=  -DDIAG_SVN_VERSION="\""$(DIAG_SVN_VERSION)"\""
+EXTRA_CFLAGS +=  -DROMEDRIVER_SVN_VERSION="\""$(ROMEDRIVER_SVN_VERSION)"\""
+EXTRA_CFLAGS +=  -DUSER_SVN_VERSION="\""$(USER_SVN_VERSION)"\""
+obj-y +=$(MODULE_NAME).o
+##-->
+all:
+	$(MAKE) -C $(MODULE_FLAG) $(KDIR) M=./romeDriver ARCH=rlx CROSS_COMPILE=$(CROSS_COMPILE)
+
+install:
+	cp -af $(MODULE_NAME).ko $(ROMFSDIR)/lib/modules
+	if [ -f $(FWD_MODULE_NAME).ko ] ; then cp -af $(FWD_MODULE_NAME).ko $(ROMFSDIR)/lib/modules; fi
+
+clean:
+	rm -rf *.o *~ core .depend .*.cmd *.mod.c .tmp_versions *.symvers *.ko
+endif

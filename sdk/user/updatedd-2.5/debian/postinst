@@ -1,0 +1,6 @@
+#!/bin/sh
+
+#DEBHELPER#
+
+chown root:root /etc/updatedd-wrapper.conf
+chmod 600 /etc/updatedd-wrapper.conf

@@ -1,0 +1,16 @@
+# Regression tests fonsmcd configuration file template
+# $Id: fonsmcd.conf.in,v 1.1 2012/09/20 03:49:56 paula Exp $
+suffix .sm.fon.com
+rsapath "BUILDDIR/testcfg/public_sm_rsa_key.pem"
+aespath "BUILDDIR/testcfg/aes_key"
+period_online 10
+period_offline 1
+host 127.0.0.1 53 UDP
+# host strategos 53 UDP
+timeout 3000
+retries 5
+trigger 1 "BUILDDIR/testcfg/thinclient config 'DATA'"
+trigger 2 "BUILDDIR/testcfg/thinclient upgrade 'DATA'"
+trigger online "BUILDDIR/testcfg/hotspot on"
+trigger offline "BUILDDIR/testcfg/hostspot off"
+

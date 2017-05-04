@@ -1,0 +1,70 @@
+@c Generator: GNU source-highlight, by Lorenzo Bettini, http://www.gnu.org/software/src-highlite
+@example
+@r{@i{/* main1.cc */}}
+@r{@i{/* we try to use gengetopt generated file in a C++ program */}}
+@r{@i{/* we don't use autoconf and automake vars */}}
+
+@b{#include} @t{<iostream>}
+@b{#include} @t{"stdlib.h"}
+
+@b{#include} @t{"cmdline1.h"}
+
+@b{using} std::cout;
+@b{using} std::endl;
+
+@b{int}
+main (@b{int} argc, @b{char} **argv)
+@{
+  gengetopt_args_info args_info;
+
+  cout << @t{"This one is from a C++ program"} << endl ;
+  cout << @t{"Try to launch me with some options"} << endl ;
+  cout << @t{"(type sample1 --help for the complete list)"} << endl ;
+  cout << @t{"For example: ./sample1 *.* --funct-opt"} << endl ;
+
+  @r{@i{/* let's call our cmdline parser */}}
+  @b{if} (cmdline_parser (argc, argv, &args_info) != 0)
+    exit(1) ;
+
+  cout << @t{"Here are the options you passed..."} << endl;
+
+  @b{for} ( @b{unsigned} i = 0 ; i < args_info.inputs_num ; ++i )
+    cout << @t{"file: "} << args_info.inputs[i] << endl ;
+
+  @b{if} ( args_info.funct_opt_given )
+    cout << @t{"You chose --funct-opt or -F."} << endl ;
+
+  @b{if} ( args_info.str_opt_given )
+    cout << @t{"You inserted "} << args_info.str_opt_arg << @t{" for "} <<
+      @t{"--str-opt option."} << endl ;
+
+  @b{if} ( args_info.int_opt_given )
+    cout << @t{"This is the integer you input: "} << 
+      args_info.int_opt_arg << @t{"."} << endl;
+
+  @b{if} (args_info.flag_opt_given)
+    cout << @t{"The flag option was given!"} << endl;
+
+  cout << @t{"The flag is "} << ( args_info.flag_opt_flag ? @t{"on"} : @t{"off"} ) <<
+    @t{"."} << endl ;
+
+  @b{if} (args_info.enum_opt_given) @{
+    cout << @t{"enum-opt value: "} << args_info.enum_opt_arg << endl;
+    cout << @t{"enum-opt (original specified) value: "} 
+        << args_info.enum_opt_orig << endl;
+  @}
+
+  @b{if} (args_info.secret_given)
+    cout << @t{"Secret option was specified: "} << args_info.secret_arg
+        << endl;
+
+  cout << args_info.def_opt_arg << @t{"! "};
+
+  cout << @t{"Have a nice day! :-)"} << endl ;
+
+  cmdline_parser_free (&args_info); @r{@i{/* release allocated memory */}}
+
+  @b{return} 0;
+@}
+
+@end example

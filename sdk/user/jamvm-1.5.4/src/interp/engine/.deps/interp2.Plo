@@ -1,0 +1,3 @@
+interp2.lo .libs/interp2.o: interp2.c ../../../src/config.h
+
+../../../src/config.h:

@@ -1,0 +1,9 @@
+# cmdline.ggo
+
+# test default values
+
+#package "default_values"
+version "1.0"
+
+option  "foo"        f "foo option" int default="15000" no
+option  "bar"        b "bar option" string default="this is a default" no

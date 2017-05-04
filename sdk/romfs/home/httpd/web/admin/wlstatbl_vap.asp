@@ -1,0 +1,1 @@
+/home/httpd/web/wlstatbl_vap.asp

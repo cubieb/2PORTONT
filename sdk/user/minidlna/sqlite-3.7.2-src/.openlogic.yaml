@@ -1,0 +1,19 @@
+--- 
+name: SQLite 3.7.2 Source
+platform_id: all
+platform_version: all
+distribution_file_uuid_string: openlogic-sqlite-3.7.2-all-src-1
+platform_vendor: all
+version_visibility: public
+description: SQLite 3.7.2 Source
+platform_arch: all
+distribution_file_uuid: 1acaeed0a578061b21f6375711e882e5f155a25015b45f09b1778014fb53768e
+distribution_version: 1
+distribution_flavor: ""
+distribution_raw_file: 3.7.2/sqlite-amalgamation-3.7.2.tar.gz
+notify: "yes"
+package_version: 3.7.2
+package_id: sqlite
+release_date: "2010-08-25"
+distribution_notes: ""
+distribution_type: src

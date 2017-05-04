@@ -1,0 +1,2 @@
+wrong_dep.ggo:6: option depends on undefined option
+wrong_dep.ggo:7: option depends on itself

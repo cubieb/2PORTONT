@@ -1,0 +1,23 @@
+// ============================================================
+
+/**
+ * @page QoS TOS and DSCP
+ * @ingroup TAPI_NETWORK_QOS
+ * The Type of Service (TOS) field in the IP header was originally defined in RFC 791.<br>
+ * It defined a mechanism for assigning a priority to each IP packet as well as a mechanism
+ * to request specific treatment such as high throughput, high reliability or low latency.<br><br>
+ * In RFC 2474 the definition of this entire field was changed. <br>
+ * It is now called the "DS" (Differentiated Services) field and 
+ * the upper 6 bits contain a value called the "DSCP" (Differentiated Services Code Point). <br>
+ * Since RFC 3168, the remaining two bits (the two least siginficant bits) are used for Explicit Congestion Notification. <br>
+  * \htmlonly <br> <p align="center"> <b>Figure TOS and DSCP</b> </p>  \endhtmlonly 
+ * @image html TAPI_NETWORK_QOS.JPG
+ * <b> rtk_SetRtpTos rtk_SetRtpDscp </b><br>
+ * The two API provide the ability to set up the TOS/DSCP value of RTP packet in VoIP session.<br><br>
+ * <b>rtk_SetSipTos rtk_SetSipDscp </b><br>
+ * TOS/DSCP of SIP packet is often set when socket is established. <br>
+ * The two API provide the ability to inform kernel the TOS/DSCP of SIP packet.<br><br>
+ * <b>rtk_QosSetDscpPriority rtk_qos_reset_dscp_priority </b><br>
+ * Swcore of RTK supports DSCP-based QoS: packets marked with different DSCP value have different processing sequence.<br>
+ * The two API provide the ability to set the priority of packete marked with special dscp value.<br>
+ */

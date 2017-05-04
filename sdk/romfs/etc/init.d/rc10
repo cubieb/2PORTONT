@@ -1,0 +1,6 @@
+echo 200 > /proc/sys/net/core/netdev_max_backlog
+echo 600 > /proc/sys/net/ipv4/netfilter/ip_conntrack_tcp_timeout_established
+echo 10 > /proc/sys/net/ipv4/tcp_keepalive_intvl
+echo 3 > /proc/sys/net/ipv4/tcp_keepalive_probes
+echo 10 > /proc/sys/net/ipv4/tcp_keepalive_time
+echo 60 > /proc/sys/net/netfilter/nf_conntrack_tcp_timeout_time_wait

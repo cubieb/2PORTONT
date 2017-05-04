@@ -1,0 +1,55 @@
+#!/usr/bin/perl -w
+#!/usr/local/bin/perl -w
+#
+# Copyright (C) 2004 Philipp Benner
+#
+# This file is part of UpdateDD - http://updatedd.philipp-benner.de.
+#
+# UpdateDD is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# any later version.
+#
+# UpdateDD is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with UpdateDD; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+                                                                                                                            
+use strict;
+
+# This is a very simple rc script for the ppp daemon.
+# You should use this only when your ip address changes every
+# time pppd connects to the internet, because this
+# script doesn't use cache files. Otherwise you should
+# use updatedd-wrapper to execute updatedd.
+
+####################### Configuration #########################
+
+my $service	= "dyndns";
+
+my $login	= "test:test";
+my $hostnames	= "test.dyndns.org test2.dyndns.org";
+my $ip_addr	= $ARGV[0];
+my $retries	= 5;
+
+###############################################################
+
+$ENV{LOGIN} = $login;
+my $ret;
+foreach my $hostname (split /[\s,]/, $hostnames) {
+    my $n = $retries;
+    while($n != 0) {
+	$ret = system("updatedd", "-Y", $service, "--", "-4", $ip_addr, $hostname);
+	if($ret != 1) {
+	    $n = 0;
+	} elsif($ret == 1) {
+	    $n--;
+	}
+    }
+}
+
+exit($ret);

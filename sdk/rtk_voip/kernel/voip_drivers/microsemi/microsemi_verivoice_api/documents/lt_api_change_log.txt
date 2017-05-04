@@ -1,0 +1,241 @@
+This file describes changes to the Line Test application programmer interface
+that may cause backward-compatability problems or otherwise affect
+current users. Please review this file first before using the LT-API.
+Please refer to the "Line Test API User's Guide" for details about each of the
+changes.
+
+================================================================================
+LT Production Release 1.15.0 -- Jul 24 2014
+================================================================================
+--------------------------------------------------------------------------------
+
+No interface or application assumption changes
+
+================================================================================
+LT Production Release 1.14.0 -- Sep  3 2013
+================================================================================
+--------------------------------------------------------------------------------
+
+Requires VP-API 2.22.0 or higher when used with ZL880 devices.
+
+================================================================================
+LT Production Release 1.13.0 -- Apr 12 2013
+================================================================================
+--------------------------------------------------------------------------------
+
+Requires VP-API 2.21.0 or higher when used with ZL880 devices.
+
+================================================================================
+LT Production Release 1.12.0 -- Dec 11 2012
+================================================================================
+--------------------------------------------------------------------------------
+
+No interface or application assumption changes
+
+================================================================================
+LT Production Release 1.11.0 -- Aug  2 2012
+================================================================================
+--------------------------------------------------------------------------------
+
+Adding Support for VP-API-II VP_CC_886_SERIES
+
+================================================================================
+LT Production Release 1.10.0 -- Apr 28 2011
+================================================================================
+--------------------------------------------------------------------------------
+
+No interface or application assumption changes
+
+================================================================================
+LT Production Release 1.9.0 -- Jul 23 2010
+================================================================================
+--------------------------------------------------------------------------------
+
+New test:        Master Socket Test
+Description:     Detects the presence of a master socket.
+
+New test:        Cross Connect Detection Test
+Description:     Detects the presence of a cross connected FXS line.
+
+Affected tests:  Loop Back Test
+Description:     Added additional loop back points.
+--------------------------------------------------------------------------------
+
+================================================================================
+LT Production Release 1.8.0 -- Feb 26, 2010
+================================================================================
+--------------------------------------------------------------------------------
+
+New test:        Capacitance Test
+Description:     Measures capacitance on the tip lead to ground, ring lead to
+                 ground and between tip and ring leads. See LT-API User's
+                 Guide for test details.
+
+--------------------------------------------------------------------------------
+
+================================================================================
+LT Production Release 1.7.2 -- Jan 15, 2010
+================================================================================
+--------------------------------------------------------------------------------
+
+No interface or application assumption changes
+--------------------------------------------------------------------------------
+
+================================================================================
+LT Production Release 1.7.1 -- Nov 05, 2009
+================================================================================
+--------------------------------------------------------------------------------
+
+Affected tests:  DC FEED Self Test
+Description:     Prevent test from running in VP-API ringing or disconnect 
+                 line states.
+
+--------------------------------------------------------------------------------
+
+================================================================================
+LT Production Release 1.7.0 -- Aug 21, 2009
+================================================================================
+--------------------------------------------------------------------------------
+
+Affected tests:  All
+Description:     LT-API now processes the VP_LINE_EVID_ABORT event from the
+                 VP-API.
+
+--------------------------------------------------------------------------------
+
+================================================================================
+LT Production Release 1.6.0 -- Mar 09, 2009
+================================================================================
+--------------------------------------------------------------------------------
+
+Affected tests:  Resistive Faults
+Description:     Added support for the 880 Series Low Power Termination.
+
+Affected tests:  Fault Discrimination
+Description:     Initial Release
+
+--------------------------------------------------------------------------------
+
+================================================================================
+LT Production Release 1.3.2 -- May 02, 2008
+================================================================================
+--------------------------------------------------------------------------------
+
+Affected tests:  Loopback, DC Voltage, DC Feed St, On/Off Hook St, Read Battery
+Description:     Added support for the 880 Series Low Power Termination. The 
+                 effected tests will take slightly longer to run due to the
+                 time required to transition the device out of the low power
+                 mode.
+
+--------------------------------------------------------------------------------
+
+================================================================================
+LT Production Release 1.3.1 -- Apr 08, 2008
+================================================================================
+--------------------------------------------------------------------------------
+
+No interface or application assumption changes
+--------------------------------------------------------------------------------
+
+================================================================================
+LT Production Release 1.3.0 -- Jan 15, 2008
+================================================================================
+--------------------------------------------------------------------------------
+
+Affected tests:  All
+Description:     Changed name and location of lt_api_temp_data.h. This file
+                 has 880 Series specific temporary structures defined. The
+                 LT-API is ment to support multiple families of devices at the
+                 same time. So the file has been renamed to lt_api_vp880_int.h
+                 and moved to the vp880_lt folder. This change should only
+                 affect the make process.
+
+NOTICE:
+Affected tests: Resistive faults, Ringers (electronic and regular).
+Description:    Two additional devices have been added to the 880 Series
+                family. These two devices have a slight gain difference when
+                making measurements using the ringing SLIC state. Preliminary
+                validation results have shown that the gain difference has
+                shifted the Resistive Faults and Ringers results.
+
+                The problem is well understood and will be fixed in the next
+                release.
+
+
+================================================================================
+LT Production Release 1.2.1 -- Apr 25, 2007
+================================================================================
+--------------------------------------------------------------------------------
+
+No interface or application assumption changes
+
+--------------------------------------------------------------------------------
+================================================================================
+LT Production Release 1.2.0 -- Dec 20, 2006
+================================================================================
+--------------------------------------------------------------------------------
+
+Affected test:  Ringing Self Test
+Description:    Replaced the LtRingingSTInputType struct member
+                pRingingProfileAferTest with pDcProfileForTest.
+
+--------------------------------------------------------------------------------
+
+================================================================================
+LT Production Release 1.1.1 -- October 4, 2006
+================================================================================
+--------------------------------------------------------------------------------
+
+Affected test:  Ringers and GR-909
+Description:    Added 2 new member variables to the LtRingersInputType struct.
+
+Affected test:  GR-909
+Description:    Changed the sub test order and abort condtions.
+
+--------------------------------------------------------------------------------
+
+================================================================================
+LT Production Release 1.0.2 -- June 31, 2006
+================================================================================
+--------------------------------------------------------------------------------
+
+Affected test:  ALL TESTS
+Description:    Added 4 new member variables to the LtVp880TestTopologyType.
+                struct.
+
+Affected test:  Ringers
+Description:    Added 3 new member variables to the LtRingersResultType struct.
+
+Affected test:  Ringers
+Description:    Added 2 new elements to the LtRingerTestType enum.
+
+--------------------------------------------------------------------------------
+
+
+================================================================================
+LT Production Release 1.0.1 -- March 31, 2006
+================================================================================
+--------------------------------------------------------------------------------
+
+No interface or application assumption changes
+
+--------------------------------------------------------------------------------
+
+================================================================================
+LT Production Release 1.0.0 -- December 23, 2005
+================================================================================
+--------------------------------------------------------------------------------
+
+Affected test:  Ringer
+Description:    LtRingerInputType member vRingerTest has been changed from
+                mVrms to mVpk.
+
+Affected test:  Ringing Self Test
+Description:    Extended the LtRingingSTBitType to include additional values.
+
+Affected test:  DCFeed Self Test
+Description:    Added the lineState member to the LtDcFeedSTInputType.
+--------------------------------------------------------------------------------
+
+
+

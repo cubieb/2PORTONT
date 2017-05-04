@@ -1,0 +1,145 @@
+// ============================================================
+
+/*!@page RTK_VOIP_Intro Introduction to Realtek VoIP 
+ *  - @subpage VoIP_INTRO_1 
+ *  - @subpage VoIP_INTRO_2
+ *  - @subpage VoIP_INTRO_3 
+ *  - @subpage VoIP_INTRO_4
+ *
+ * @page VoIP_INTRO_1 Overview
+ * The Realtek VoIP SDK provides comprehensive voice codec support including G.711, G.729, G.723, G.726, iLBC and GSM.
+ * All these codecs are tested and measured with Digital Line Speech Analyzer.  <br>
+ * The wideband codec, for example G.722, is being developed and will be released in no time. <br>
+ * The Table 1 shows the voice codecs information of RTK VoIP SDK. <br>  
+ *  \htmlonly <br>
+ * <p align="center"> <b>Table 1. VoIP Codec for VoIP SDK</b>
+ * <table border=1 width=45% style="border-collapse:collapse;" borderColor=black > 
+ * <td align=center><b>Codec Name</b></td> <td align=center><b>Bit rate</b></td> <td align=center><b>Fidelity</b></td> <td align=center><b>Avg. Quality <br>(PESQ-LQ)</b></td>  <tr>   
+ * <td align=center>G.711 u-law</td> <td align=center>64 kbps</td> <td align=center>Narrowband</td> <td align=center>4.33</td><tr> 
+ * <td align=center>G.711 a-law</td> <td align=center>64 kbps</td> <td align=center>Narrowband</td> <td align=center>4.33</td><tr> 
+ * <td align=center>G.729/AB</td> <td align=center>8 kbps</td> <td align=center>Narrowband</td> <td align=center>3.90</td><tr> 
+ * <td align=center>G.722</td> <td align=center>64 kbps</td> <td align=center>Wideband</td> <td align=center>4.36</td><tr> 
+ * <td align=center>G.723 5.3k</td> <td align=center>5.3 kbps</td> <td align=center>Narrowband</td> <td align=center>3.67</td><tr> 
+ * <td align=center>G.723 6.3k</td> <td align=center>6.3 kbps</td> <td align=center>Narrowband</td> <td align=center>3.82</td><tr> 
+ * <td align=center>G.723 32k</td> <td align=center>32 kbps</td> <td align=center>Narrowband</td> <td align=center>4.09</td><tr> 
+ * <td align=center>G.726 16K</td> <td align=center>16 kbps</td> <td align=center>Narrowband</td> <td align=center>2.94</td><tr> 
+ * <td align=center>G.726 24K</td> <td align=center>24 kbps</td> <td align=center>Narrowband</td> <td align=center>3.72</td><tr> 
+ * <td align=center>G.726 40K</td> <td align=center>40 kbps</td> <td align=center>Narrowband</td> <td align=center>4.19</td><tr> 
+ * <td align=center>GSM-FR</td> <td align=center>13.2 kbps</td> <td align=center>Narrowband</td> <td align=center>3.72</td><tr> 
+ * <td align=center>iLBC</td> <td align=center>20ms</td> <td align=center>Narrowband</td> <td align=center>3.87</td><tr>  
+ * </table> \endhtmlonly 
+ * <br>
+ * @note The value of PESQ-LQ depends on platform. The above table refers to the test report of RTL8186. <br>
+ * Some codecs are available depending on platform. 
+ *
+ * @page VoIP_INTRO_2 Call features for VoIP SDK
+ * The VoIP call features can be accomplished by using the powerful VoIP Interface APIs. 
+ * The VoIP Interfaces APIs provide various functions to control the DSP and network interface. <br>
+ * The Table 2 shows the call features supported in RTK VoIP SDK.
+ *  \htmlonly <br> <p align="left"> <b>Table 2 Call features for VoIP SDK</b>  
+ * <table border=1 width=45% style="border-collapse:collapse;" borderColor=black >
+ * <td align=center><b>Type of Feature</b></td> <td align=center><b>Call Feature</b></td> <tr>   
+ * <td rowspan=2 align=left>REGISTER</td> 
+ * <td align=left>Multi-Proxy REGISTER</td> <tr>  <td align=left>Single-Proxy REGISTER</td> <tr>	
+ * <td align=left>Non-REGISTER</td> <td align=left>Direct IP CALL</td> <tr>
+ * <td rowspan=2 align=left>Incoming Call</td> 
+ * <td align=left>Answer call</td> <tr>  <td align=left>Drop call</td> <tr>	 
+ * <td rowspan=2 align=left>Outing Call</td> 
+ * <td align=left>Cancel Call</td> <tr>  <td align=left>Drop call</td> <tr> 	
+ * <td rowspan=3 align=left>Call Waiting</td> 
+ * <td align=left>Call waiting tone</td> <tr>  <td align=left>Call waiting caller ID</td> <tr> <td align=left>Alternate call after call waiting</td> <tr>	
+ * <td rowspan=2 align=left>Hold</td> 
+ * <td align=left>Hold/Resume call</td> <tr>  <td align=left>Consultation call</td> <tr> 
+ * <td rowspan=3 align=left>Call Forwarding</td> 
+ * <td align=left>Immediate Forward</td> <tr>  <td align=left>Busy Forward</td> <tr> <td align=left>No Answer Forward</td> <tr>     
+ * <td rowspan=2 align=left>Transfer Call</td> 
+ * <td align=left>Blind Transfer call</td> <tr>  <td align=left>Attended Transfer call</td> <tr>  
+ * <td align=left>Conference</td> <td align=left>3-way Conference</td>  <tr>
+ * <td rowspan=10 align=left>Miscellaneous</td> 
+ * <td align=left>Speed Dial</td> <tr>  <td align=left>Auto Dial</td> <tr>  <td align=left>Off-hook Alarm</td> <tr>  
+ * <td align=left>Flash Hook Time</td> <tr>  <td align=left>Hot Line</td> <tr>  <td align=left>DND</td> <tr>  
+ * <td align=left>Off-hook Password-FXS</td> <tr>  <td align=left>Off-hook Password-FXO</td> <tr>  
+ * <td align=left>PSTN Routing Prefix</td> <tr>  <td align=left>Reject Direct IP Call</td> <tr>   
+ * <td rowspan=2 align=left>NAT Traversal</td> 
+ * <td align=left>Outbound Proxy</td> <tr>  <td align=left>Stun</td> <tr>  
+ * <td rowspan=2 align=left>VoIP Security</td> 
+ * <td align=left>SRTP</td> <tr>  <td align=left>SIP Over TLS</td> <tr> 
+ * </table> \endhtmlonly 
+ *
+ * @page VoIP_INTRO_3 Realtek VoIP Architecture 
+ *  \htmlonly <br> <p align="center"> <b>Figure 1 VoIP Architecture</b>  \endhtmlonly  
+ * @image html Content_Intro_Voip_Architecture.jpg
+ * <br> The Realtek VoIP architecture includes several components. These components can be classified into two categories, 
+ * the user space components and kernel space components. <br>
+ * The user space component, for example sipua, can control the kernel space components through I/O control and system call. <br>
+ * However, the developer should know about the detail of operation of kernel space components. 
+ * This is too complex and time consuming for user to understand the detail of the operations. 
+ * Owning this, VoIP interface APIs are developed. Infect, these APIs are conceptual layer for developers who can just concern about 
+ * the input parameters and return values of the APIs. Most of the VoIP features can be achieved by calling the VoIP interface APIs. <br>
+ * The Figure 1 shows the main components of VoIP architecture.
+ * @section VoIP_INTRO_2_1 Application
+ * The sipua generates SIP message according to RFC3261. As a caller, it sends the SIP request and receives SIP response over TCP/IP stacks. <br>
+ * On the other hands, it receives SIP request and sends response to caller as it acts as callee. The other application for VoIP is web. 
+ * Infact main purpose of the web is the interface that allows user to input the VoIP parameters of the device. The parameters then are saved in flash memory.
+ * @section VoIP_INTRO_2_2 VoIP interface
+ * The user space application, sipua for example, controls the kernel space components through VoIP interface APIs. 
+ * Including VLAN, DSP, RTP and phone functions, the VoIP interface APIs is the basic components for setting up the VoIP function.
+ * @subsection VoIP_INTRO_2_3 Manager interface
+ * This interface accepting the VoIP interface command controls the VoIP kernel components.
+ * @section VoIP_INTRO_2_4 VoIP network interface
+ * This interface accepts the data of RTP set by VoIP interface. There may be different network interfaces for different platform. <br>
+ * For example, the 8186 platform includes static IP, DHCP, PPPoE, PPTP and L2TP.
+ * @section VoIP_INTRO_2_5 Network driver
+ * The RTP packet different form SIP packet is sent by kernel space module. So the VoIP packets will be set as higher priority in queue. 
+ * The network driver sends the VoIP data through wire.
+ * @section VoIP_INTRO_2_6 VoIP middleware
+ * This is the core component for VoIP SDK. This DSP toolbox includes codec, jitter buffer, AEC, LEC, tone detection, DTMF detection etc.
+ * @section VoIP_INTRO_2_7 PCM driver
+ * This module accepts the data of VoIP middleware and converts the data for generating the VoIP packet.
+ * @section VoIP_INTRO_2_8 SLIC driver
+ *  This module imitates the SPI to control the SLIC.
+ *
+ * @page VoIP_INTRO_4 The TAPI reference components  
+ *  \htmlonly <br> <p align="center"> <b>Table 3 The VoIP TAPI reference components</b> 
+ * <table border=1 width=55% style="border-collapse:collapse;" borderColor=black > 
+ * <td align=left><b>Components</b></td> <td align=left><b>Module Name</b></td> <td align=left><b>Corresponding Location in SDK</b></td> <tr>  
+ * <td align=left>Application</td> <td align=left>Solar, solar monitor</td> <td align=left>users/rtk_voip/src</td> <tr>  
+ * <td align=left>Application</td> <td align=left>Webs</td> <td align=left>users/goahead-2.1.1/LINUX</td> <tr>  
+ * <td align=left>VoIP Interface</td> <td align=left>VoIP interface</td> <td align=left>users/rtk_voip/voip_manager</td> <tr>  
+ * </table> \endhtmlonly  
+ *
+ * @section VoIP_INTRO_5 Flash Setting for VoIP Parameters
+ * The VoIP parameters such as proxy server IP, phone number and login name etc are stored in flash of the system. <br>
+ * These parameters can be set or shown in web pages. However, there is another interface for setting and getting these parameters. 
+ * By inputting the command in the console, the VoIP parameters can be extracted. <br>
+ * The Figure 2 command will show the all parameters of VoIP in the flash. <br>The Figure 3 command will show the single parameter of the VoIP parameter.<br> 
+ * The Figure 4 command will set the definite value to the VoIP parameter. 
+ *  \htmlonly <br> <p align="left"> <b>Figure 2. Dump the VoIP parameters in the flash</b> <br> 
+ *  <font color=#FF0000> #flash voip  </font> <br> 
+ *  <br> <p align="left"> <b>Figure 3. Dump the single VoIP parameter</b> <br> 
+ *  <font color=#FF0000> #flash voip get <parameter name>  </font> <br>
+ *  <br> <p align="left"> <b>Figure 4. Set the VoIP parameter to the definite value</b> <br> 
+ *  <font color=#FF0000> #flash voip set <parameter name> <value>  </font> <br><br>
+ * \endhtmlonly 
+ * The flash layout is divided into 3 sections. They are the current setting, the default setting and the hardware setting. 
+ * The current setting section contains the user settings from the web pages. The default setting section contains the settings of factory reset. 
+ * The hardware setting section contains the hardware information such as MAC address of Ethernet. <br>
+ * The file with the path "VoIP-ATA/AP/rtk_voip/includes/voip_flash.h" contains the structure of VoIP configure parameters . 
+ * The corresponding file "VoIP-ATA/AP/rtk_voip/flash/voip_flash.c" contains the default setting of the VoIP parameters and the flash read/write functions. <br>
+ * The flash read sample codes are shown in Figure 5 while the flash write sample codes are shown in Figure 6. 
+ *  \htmlonly <br> <p align="left"> <b>Figure 5. Flash read for VoIP parameters</b>   
+ * <font color=#0000A0> <pre> 
+ * voipCfgParam_t *pVoIPCfg; 
+ * if (voip_flash_get(&pVoIPCfg) != 0)
+ *      return -1; 
+ * </pre> </font> 
+ * <br> <p align="left"> <b>Figure 6. Flash set for VoIP parameters</b>
+ * <font color=#0000A0> <pre> 
+ * voipCfgParam_t *pVoIPCfg; 
+ * /*do setting */
+ * ...
+ * voip_flash_set(pVoIPCfg);
+ * </pre> </font> 
+ * \endhtmlonly 
+ */
+

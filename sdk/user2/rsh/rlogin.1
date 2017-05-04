@@ -1,0 +1,43 @@
+.Dd Sun, 13 Apr 2003 00:24:32 +0200
+.Dt RLOGIN 1
+.Sh NAME
+.Nm rlogin
+.Nd remote login
+.Sh SYNOPSIS
+.Nm
+.Op Fl 46v
+.Op Fl l Ar user
+.Op Fl p Ar port
+.Op Ar user Ns Li @ Ns
+.Ar host
+.Sh DESCRIPTION
+.Nm
+makes a connection to the remote login daemon running on
+.Ar host .
+After the connection is made the user can log in.
+All input is transmitted to the remote machine and all
+output on the remote machine is sent back to the
+.Nm
+client on the local machine,
+the user has a full controlling terminal on the remote host.
+.Sh OPTIONS
+.Bl -tag -width flag
+.It Fl 4
+Use only IPv4 to connect to the remote host.
+.It Fl 6
+Use only IPv6 to connect to the remote host.
+.It Fl v
+Be verbose.
+.It Fl l Ar user
+Connect to the remote machine as a different user than on the local machine.
+.It Fl p Ar port
+Connect to a different port than the default one for
+.Nm .
+.El
+.Sh SEE ALSO
+.Xr rsh 1 ,
+.Xr rshd 8 ,
+.Xr rlogind 8 ,
+.Xr rcp 1 ,
+.Xr rhosts 5 ,
+RFC 1282.

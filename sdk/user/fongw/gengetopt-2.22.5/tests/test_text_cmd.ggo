@@ -1,0 +1,17 @@
+# text after options
+
+section         "Section 1" 
+
+option          "str-opt"   s "A string option, for a filename"
+	optional 
+	string typestr="filename"
+
+text            "      explain more about the string option"
+
+section         "Section 2" 
+
+text            "      some text after section 2"
+
+option          "int-opt"   i "A int option"  int optional 
+
+text            "      some final text"

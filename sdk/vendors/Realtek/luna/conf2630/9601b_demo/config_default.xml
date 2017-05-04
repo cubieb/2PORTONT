@@ -1,0 +1,7 @@
+<Config Name="ROOT">
+	<Dir Name="MIB_TABLE">
+		<Value Name="SNMP_SYS_NAME" Value="PON Bridge"/>
+		<Value Name="DEVICE_TYPE" Value="0"/>
+		<Value Name="RTK_IGMP_DROPV1" Value="1" />
+	</Dir>
+</Config>

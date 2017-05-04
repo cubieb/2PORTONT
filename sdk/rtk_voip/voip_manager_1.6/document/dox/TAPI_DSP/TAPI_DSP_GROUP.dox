@@ -1,0 +1,40 @@
+// ============================================================
+
+/**
+ * @page VOIP_DSP_JITTER Jitter Buffer
+ * @ingroup TAPI_DSP_GROUP 
+ * Jitter buffer parameters is a part of this struture. There are nJitterDelay, 
+ * nMaxDelay and nJitterFactor. <p>
+ * Jitter buffers is used to counter jitter introduced by queuing in packet 
+ * switched networks so that a continuous playout of audio (or video) 
+ * transmitted over the network can be ensured. The maximum jitter that can 
+ * be countered by a jitter buffer is equal to the buffering delay introduced 
+ * before starting the play-out of the mediastream. <p> 
+ * Jitter buffer is space for storing the arriving packets temporarily. In order 
+ * to make the voice to be sounded more smoothly, a jitter buffer is needed to 
+ * minimize the delay variations. 
+ * The minimum delay can be set at the range of 40ms to 100ms. The recommended 
+ * value is 40ms. The maximum delay can be set at the range starts from 130ms 
+ * to 300ms and the recommended value is 130ms.
+ * The optimization factor is the value for adjusting the quality of the voice. This is shown in Figure 10. 
+ * The higher value of optimization means the better quality but more delay. 
+ * Valild value are 0 to 13. The medium value 7 is recommended. 
+ * Value 0 and 13 are fix delay(FIFO). value 0 is for low buffering application. 
+ * value 13 is for FAX or modem only. <p>
+ * These three values can be set to structure of RTP configuration, \ref TstVoipMgrRtpCfg as shown in Figure 11. <br>
+ *  \htmlonly <br> <p align="center"> <b>Figure 10 The optimization factor for jitter buffer</b>   </p>
+ * \endhtmlonly
+ * @image html TAPI_DSP_GROUP_JitterBuffer.jpg
+ *  \htmlonly <br> <p align="left"> <b>Figure 11 jetter buffer parameters setting</b>   
+ * <font color=#0000A0> <pre>
+ * rtypedef struct 
+ * {
+ * 	...
+ * 	Tuint32 nJitterDelay;
+ * 	Tuint32 nMaxDelay;
+ * 	Tuint32 nJitterFactor;
+ * 	... 
+ * } TstVoipMgrRtpCfg;
+ *   </pre></font> \endhtmlonly 	
+ */ 
+ 

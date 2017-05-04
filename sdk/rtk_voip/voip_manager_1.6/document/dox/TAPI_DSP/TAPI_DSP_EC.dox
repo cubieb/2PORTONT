@@ -1,0 +1,15 @@
+// ============================================================
+
+/**
+ * @page VOIP_DSP_EC LEC
+ * @ingroup TAPI_DSP_EC 
+ * The Line Echo Cancellation (LEC) is used to remove the echo caused by the delay of the telephone network line. <br>
+ * The tail length can be set as 2ms, 4ms, 8ms, 16ms and 32ms. The higher value of tail length requires more computation time. <br>
+ * The following example shows the sample code for setting the channel 0 for 2ms tail length.
+ *  \htmlonly <br> <p align="left"> Set the channel 0 for 2ms tail length for LEC: 
+ * <font color=#0000A0> <pre> 
+ * rtk_Set_echoTail(0, 2);
+ * </pre>  </font> \endhtmlonly     
+ * \htmlonly <br> <p align="center"> <b>Line echo canceller integration flow chart</b>   \endhtmlonly 
+ * @image html TAPI_DSP_EC_LEC.JPG
+ */ 

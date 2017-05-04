@@ -1,0 +1,85 @@
+#!/usr/bin/make -f
+
+# Copyright (C) 2002, 2003, 2004, 2005  Philipp Benner
+#
+# This file is part of UpdateDD - http://updatedd.philipp-benner.de.
+#
+# UpdateDD is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# any later version.
+#
+# UpdateDD is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with UpdateDD; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+SHELL		= /bin/sh
+PWD		:= $(shell pwd)
+INSTALLDIR	= $(PWD)/debian/tmp
+HOST_ARCH	:= $(shell dpkg-architecture -qDEB_HOST_ARCH)
+
+build: build-stamp
+build-stamp:
+	./configure \
+		--host=$(HOST_ARCH) \
+		--prefix=/usr \
+		--sysconfdir=$(INSTALLDIR)/etc \
+		--mandir=$(INSTALLDIR)/usr/share/man \
+		CFLAGS="-O2 -fomit-frame-pointer -fno-strict-aliasing -fno-common"
+	$(MAKE) all
+
+install:
+	dh_testdir
+	dh_testroot
+
+	dh_installdirs
+	$(MAKE) install prefix=$(INSTALLDIR)/usr
+
+	dh_movefiles -pupdatedd-doc
+
+clean:
+	dh_testdir
+	dh_testroot
+
+	dh_clean
+
+	@if test -f Makefile; then	\
+		make distclean;		\
+	fi
+
+binary-indep: build install
+	dh_testdir
+	dh_testroot
+
+	dh_installdocs -i
+	dh_installchangelogs -i
+	dh_fixperms -i
+	dh_compress -i
+	dh_gencontrol -i
+	dh_md5sums -i
+	dh_installdeb -i
+	dh_builddeb -i
+
+binary-arch: build install
+	dh_testdir
+	dh_testroot
+
+	dh_installdocs -a
+	dh_installchangelogs -a
+	dh_fixperms -a
+	dh_compress -a
+	dh_strip -a
+	dh_shlibdeps -a
+	dh_gencontrol -a
+	dh_md5sums -a
+	dh_installdeb -a
+	dh_builddeb -a
+
+binary: binary-indep binary-arch
+
+.PHONY: build install clean binary-indep binary-arch binary

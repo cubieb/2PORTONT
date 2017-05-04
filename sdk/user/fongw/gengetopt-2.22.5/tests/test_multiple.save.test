@@ -1,0 +1,34 @@
+string="\"foo\""
+string="bar"
+string="hello"
+string="world"
+int="100"
+int="200"
+longlong="1234567890"
+longlong="234567890"
+longlong="34567890"
+limited="1"
+limited="2"
+limited="3"
+limited-interval="1"
+limited-open-right="1"
+limited-open-right="2"
+limited-open-right="3"
+no-short-opt="check"
+no-short-opt="this out"
+no-short-opt="first"
+no-short-opt="second"
+no-short-opt="third"
+no-short-opt="fourth"
+no-short-opt="fifth"
+noarg
+noarg
+noarg
+noarg-noshort
+noarg-noshort
+optarg
+optarg="first arg for optarg"
+optarg="second arg for optarg"
+optarg-noshort="second arg for optarg"
+optarg-noshort
+file-save="test_multiple.save"

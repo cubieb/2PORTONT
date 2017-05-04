@@ -1,0 +1,4 @@
+# test for error when trying redefining help
+
+option "depok"       - "option depends on opt1" dependon="opt1" string no
+option "version"   H "my version redefined" optional

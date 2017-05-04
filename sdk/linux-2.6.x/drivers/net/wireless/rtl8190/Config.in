@@ -1,0 +1,51 @@
+#
+# Wireless LAN device configuration
+#
+
+tristate '  RTL8190 802.11a/b/g/n support' CONFIG_RTL8190
+
+if [ "$CONFIG_RTL8190" = "y" ]; then
+   define_bool CONFIG_NET_WIRELESS_AGN y
+fi
+
+if [ "$CONFIG_RTL8190" = "m" ]; then
+   define_bool CONFIG_NET_WIRELESS_AGN y
+fi
+
+if [ "$CONFIG_RTL8190" != "n" ]; then
+	bool '  Private skb buffer management' CONFIG_RTL8190_PRIV_SKB
+	bool '   Exchange WLAN LED Config' CONFIG_RTL8190_LED_EXCHANGE
+fi
+
+if [ "$CONFIG_RTL8190" = "n" ]; then
+
+tristate '  RTL8192E 802.11b/g/n support' CONFIG_RTL8192E
+
+if [ "$CONFIG_RTL8192E" = "y" ]; then
+	define_bool CONFIG_NET_WIRELESS_AGN y
+fi
+
+if [ "$CONFIG_RTL8192E" = "m" ]; then
+   define_bool CONFIG_NET_WIRELESS_AGN y
+fi
+
+if [ "$CONFIG_RTL8192E" != "n" ]; then
+        bool '    Private skb buffer management' CONFIG_RTL8190_PRIV_SKB
+fi
+
+fi
+
+tristate '  RTL8192SE 802.11b/g/n support' CONFIG_RTL8192SE
+
+if [ "$CONFIG_RTL8192SE" = "y" ]; then
+   define_bool CONFIG_NET_WIRELESS_AGN y
+fi
+
+if [ "$CONFIG_RTL8192SE" = "m" ]; then
+   define_bool CONFIG_NET_WIRELESS_AGN y
+fi
+
+if [ "$CONFIG_RTL8192SE" != "n" ]; then
+        bool '    Private skb buffer management' CONFIG_RTL8190_PRIV_SKB
+fi
+

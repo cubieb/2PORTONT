@@ -1,0 +1,11 @@
+The files in this directory is for library stripping.
+"list_dynamic_symbol" is the dynamic symbol retrieving excution file.
+"list_dynamic_symbol.c" is the source file for dynamic symbol retrieving.
+The usage of "list_dynamic_symbol" is
+$ list_dynamic_symbol <elf_file_name>
+"libstrip" is the script file for lib strip,
+and the path in that script file is relative to directory "uClinux-dist"
+Please run that script file in directory "uClinux-dist".
+For example, 
+[jenny@LinuxDSL uClinux-dist]$./tools/libstrip/libstrip
+

@@ -1,0 +1,54 @@
+# test_all_opts_cmd.ggo
+
+# test all kinds of options
+
+package "test_all_opts"
+version "1.0"
+purpose "This is just a gengetopt's test file"
+description "This is just a test file
+
+to test all possible
+command line type options.
+
+In ggo files comments start with # and end at EOL"
+
+# this empty text will simply add a line break in the help output
+text ""
+option "string"      s " string option" string optional
+option "int"         i "int option" int optional
+option "short"       S "short option" short optional
+option "long"        l "long option" long optional
+option "float"       f "float option" float optional
+option "double"      d "double option" double optional
+option "longdouble"  D "longdouble option" longdouble optional
+option "longlong"    L "longlong option" longlong optional
+option "flag"        F "flag option" flag on
+option "function"    u "function option" optional
+  details="\na `function' option is basically an option with no argument.  It can be used, e.g., to specify a specific behavior for a program.
+
+Well, this further explanation is quite useless, but it's only to show an example of an option with details, which will be printed only when --detailed-help is given at the command line.\n"
+option "no-short"    - "no short option" optional
+option "opt-arg"     - "option with optional arg" 
+        argoptional string optional 
+option "opt-arg-short"     o "option with optional arg (short)" 
+        optional string argoptional
+option "required"    r "required option" string yes
+      details="NOTICE: This option is required, so, unless you specify (-h)--help or (-V)--version, you must always specify this option (and its argument) at command line."
+text "\nBefore the dependant option there is a hidden option, \
+so it shouldn't be visible in the output of --help, \
+but it will be visible in the output of --full-help.\n"
+option "hidden"      H "hidden option" int optional hidden
+option "dependant"   A "option that depends on opt-arg" 
+        string optional dependon="opt-arg"
+text "\nThis is a text line just to write something in the \
+output\n\nNotice that a text line can contain line breaks, \
+just like this very text, and that, just like all the other texts, \
+it is wrapped by gengetopt automatically if it's too long.\n"
+text "\nMoreover, text can be specified more than once in the input file.\n"
+option "very-very-long-option" - "the name of this option is long \
+enough to make this description begin on a new line" string optional
+option "assume-multimeth-virtual" y "the name of this option is just \
+as long as the maximum allowed, so this description begin on a new line" 
+        optional
+option "file-save"   - "save the passed options into a file" string optional
+text "\nA text after all options."

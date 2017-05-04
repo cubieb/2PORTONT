@@ -1,0 +1,1 @@
+echo 2 > /proc/sys/net/ipv6/conf/default/accept_dad

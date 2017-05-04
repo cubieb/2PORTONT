@@ -1,0 +1,393 @@
+//
+// Copyright (C) 2011 Realtek Semiconductor Corp.
+// All Rights Reserved.
+//
+// This program is the proprietary software of Realtek Semiconductor
+// Corporation and/or its licensors, and only be used, duplicated,
+// modified or distributed under the authorized license from Realtek.
+//
+// ANY USE OF THE SOFTWARE OTHER THAN AS AUTHORIZED UNDER
+// THIS LICENSE OR COPYRIGHT LAW IS PROHIBITED.
+//
+// Purpose : Define diag shell commands for Port.
+//
+// Feature : The file have include the following module and sub-modules
+//           1) port commands.
+//
+ 
+
+//port configuration
+//dump configuration
+//traffic isolation configuration
+port dump isolation
+
+
+//port configuration
+//get configuration
+//auto negotiation configuration
+//port configuration
+//port list, <0-6>
+//all port
+//ability
+port get auto-nego port ( <PORT_LIST:port> | all ) ability 
+
+#ifdef CMD_PORT_GET_AUTO_NEGO_PORT_PORT_ALL_STATE
+//port configuration
+//get configuration
+//auto negotiation configuration
+//port configuration
+//port list, <0-6>
+//all port
+//state
+port get auto-nego port ( <PORT_LIST:port> | all ) state 
+#endif
+
+//port configuration
+//get configuration
+//port based efid configuarion
+//port configuration
+//port list, <0-6>
+//all port
+port get enhanced-fid port ( <PORT_LIST:src_port> | all )
+
+//port configuration
+//get configuration
+//force mode configuration
+//port configuration
+//port list, <0-6>
+//all port
+//state
+//port configuration
+//get configuration
+//force mode configuration
+//port configuration
+//port list, <0-6>
+//all port
+port get force port ( <PORT_LIST:port> | all )
+
+//port configuration
+//get configuration
+//force-dmp configuration
+//port configuration
+//port list, <0-6>
+//all port
+port get force-dmp port ( <PORT_LIST:port> | all )
+
+//port configuration
+//get configuration
+//force-dmp configuration
+port get force-dmp
+
+//port configuration
+//get configuration
+//traffic isolation configuration
+//dsl configuration
+//dsl vc list, <0-15>
+//all
+port get isolation dsl ( <PORT_LIST:dsl> | dsl_all )
+
+//port configuration
+//get configuration
+//traffic isolation configuration
+//ext configuration
+//ext port list, <1-5>
+port get isolation ext <PORT_LIST:ext>
+
+//port configuration
+//get configuration
+//traffic isolation configuration
+//ext_l34 configuration
+//ext port list, <1-5>
+port get isolation ext_l34 <PORT_LIST:ext>
+
+//port configuration
+//get configuration
+//traffic isolation configuration
+//port configuration
+//port list, <0-6>
+//all ports
+port get isolation port ( <PORT_LIST:src_port> | all )
+
+//port configuration
+//get configuration
+//traffic isolation configuration
+//port_l34 configuration
+//port list, <0-6>
+//all ports
+port get isolation port_l34 ( <PORT_LIST:src_port> | all )
+
+//port configuration
+//get configuration
+//local packet configuration
+//port configuration
+//port list, <0-6>
+//all port
+port get local-packet port ( <PORT_LIST:port> | all )
+
+#ifdef CMD_PORT_GET_MASTER_SLAVE_PORT_PORT_ALL
+//port configuration
+//get configuration
+//master slave mode configuration
+//port configuration
+//port list, <0-6>
+//all port
+port get master-slave port ( <PORT_LIST:port> | all )
+#endif
+
+//port configuration
+//get configuration
+//phy register configuration
+//phy configuration
+//port list, <0-6>
+//all port
+//page configuration
+//page, <0~31>
+//register configuration
+//register address, <0~31>
+port get phy-reg phy ( <PORT_LIST:phy> | all ) page <UINT:page> register <UINT:register>
+
+//port configuration
+//get configuration
+//RTCT configuration
+//port list
+//all ports
+port get rtct ( <PORT_LIST:port> | all )
+
+#ifdef CMD_PORT_SET_AUTO_NEGO_PORT_PORT_ALL_ABILITY_10H_10F_100H_100F_1000F_FLOW_CONTROL_ASY_FLOW_CONTROL
+//port configuration
+//set configuration
+//auto negotiation configuration
+//port configuration
+//port list, <0-6>
+//all port
+//ability
+//10M half
+//10M full
+//100M half
+//100M full
+//1000M full
+//flow control
+//asynchronism flow control
+port set auto-nego port ( <PORT_LIST:port> | all ) ability { 10h } { 10f } { 100h } { 100f } { 1000f } { flow-control } { asy-flow-control }
+#endif
+
+#ifdef CMD_PORT_SET_AUTO_NEGO_PORT_PORT_ALL_STATE_DISABLE_ENABLE
+//port configuration
+//set configuration
+//auto negotiation configuration
+//port configuration
+//port list, <0-6>
+//all port
+//state configuration
+//disable function
+//enable function
+port set auto-nego port ( <PORT_LIST:port> | all ) state ( disable | enable )
+#endif
+
+//port configuration
+//set configuration
+//port based efid configuarion
+//port configuration
+//port list, <0-6>
+//all port
+//enhance fid configuration
+//efid, <0~7>
+port set enhanced-fid port ( <PORT_LIST:src_port> | all ) efid <UINT:efid>
+
+//port configuration
+//set configuration
+//force mode configuration
+//port configuration
+//port list, <0-6>
+//all port
+//ability
+//10M half
+//10M full
+//100M half
+//100M full
+//1000M full
+//flow control
+//disable function
+//enable function
+port set force port ( <PORT_LIST:port> | all ) ability ( 10h | 10f | 100h | 100f | 1000f ) flow-control ( disable | enable )
+
+//port configuration
+//set configuration
+//force-dmp configuration
+//port configuration
+//port list, <0-6>
+//all port
+//port_mask
+//port mask, <0-6>
+port set force-dmp port ( <PORT_LIST:port> | all ) port_mask ( <PORT_LIST:port_mask> | all )
+
+//port configuration
+//set configuration
+//force-dmp configuration
+//state configuration
+//disable function
+//enable function
+port set force-dmp state ( disable | enable ) 
+
+//port configuration
+//set configuration
+//traffic isolation configuration
+//dsl configuration
+//dsl vc list, <0-15>
+//all
+//vidx configuration
+//vlan mbr index, <0~31>
+port set isolation dsl ( <PORT_LIST:dsl> | dsl_all ) vidx <UINT:vidx>
+
+//port configuration
+//set configuration
+//traffic isolation configuration
+//ext configuration
+//ext port list, <1-5>
+//vidx configuration
+//vlan mbr index, <0~31>
+port set isolation ext <PORT_LIST:ext> vidx <UINT:vidx>
+
+//port configuration
+//set configuration
+//traffic isolation configuration
+//ext_l34 configuration
+//ext port list, <1-5>
+//vidx configuration
+//vlan mbr index, <0~31>
+port set isolation ext_l34 <PORT_LIST:ext> vidx <UINT:vidx>
+
+//port configuration
+//set configuration
+//traffic isolation configuration
+//port configuration
+//port list, <0-6>
+//all port
+//vidx configuration
+//vlan mbr index, <0~31>
+port set isolation port ( <PORT_LIST:src_port> | all ) vidx <UINT:vidx>
+
+//port configuration
+//set configuration
+//traffic isolation configuration
+//port_l34 configuration
+//port list, <0-6>
+//all port
+//vidx configuration
+//vlan mbr index, <0~31>
+port set isolation port_l34 ( <PORT_LIST:src_port> | all ) vidx <UINT:vidx>
+
+//port configuration
+//set configuration
+//local packet configuration
+//port configuration
+//port list, <0-6>
+//all port
+//action configuration
+//forward
+//drop
+port set local-packet port ( <PORT_LIST:port> | all ) action ( forward | drop )
+
+#ifdef CMD_PORT_SET_MASTER_SLAVE_PORT_PORT_ALL_MASTER_SLAVE
+//port configuration
+//set configuration
+//master slave mode configuration
+//port configuration
+//port list, <0-6>
+//all port
+//master mode
+//slave mode
+port set master-slave port ( <PORT_LIST:port> | all ) ( master | slave )
+#endif
+
+//port configuration
+//set configuration
+//phy register configuration
+//phy configuration
+//port list, <0-6>
+//all
+//page configuration
+//page, <0~31>
+//register configuration
+//register address, <0~31>
+//data configuration
+//data value(example 0x1234)
+port set phy-reg phy ( <PORT_LIST:phy> | all ) page <UINT:page> register <UINT:register> data <UINT:data>
+
+//port configuration
+//set configuration
+//RTCT configuration
+//port list
+//all ports
+//start test
+port set rtct ( <PORT_LIST:port> | all ) start
+
+//port configuration
+//get configuration
+//phy register configuration
+//phy configuration
+//port list, <0-6>
+//all port
+//register configuration
+//register address, <0~31>
+port get phy-reg phy ( <PORT_LIST:phy> | all ) register <UINT:register>
+
+//port configuration
+//set configuration
+//phy register configuration
+//phy configuration
+//port list, <0-6>
+//all
+//register configuration
+//register address, <0~31>
+//data configuration
+//data value(example 0x1234)
+port set phy-reg phy ( <PORT_LIST:phy> | all ) register <UINT:register> data <UINT:data>
+
+//port configuration
+//set configuration
+//force mode configuration
+//port configuration
+//port list, <0-6>
+//all port
+//100M lpi
+//Giaga lpi
+//disable function
+//enable function
+port set force port ( <PORT_LIST:port> | all ) ( lpi-100M | lpi-giga ) ( disable | enable )
+
+//port configuration
+//set configuration
+//force mode configuration
+//port configuration
+//port list, <0-6>
+//all port
+//link state
+//link down
+//link up
+port set force port ( <PORT_LIST:port> | all ) link-state ( link-down | link-up )
+
+
+//port configuration
+//set configuration
+//traffic isolation configuration
+//leaky configuration
+//ip multicast
+//port configuration
+//ports, <0-6>
+//all ports
+//state of vlan transparent
+//enable vlan transparent function
+//disable vlan transparent function
+port set isolation leaky ip-mcast port ( <PORT_LIST:ports> | all ) state ( enable | disable )
+
+//port configuration
+//get configuration
+//traffic isolation configuration
+//leaky configuration
+//ip multicast
+//port configuration
+//ports, <0-6>
+//all ports
+//state of vlan transparent
+port get isolation leaky ip-mcast port ( <PORT_LIST:ports> | all ) state

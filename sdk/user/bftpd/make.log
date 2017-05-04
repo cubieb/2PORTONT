@@ -1,0 +1,13 @@
+gcc -g -O2 -DHAVE_CONFIG_H -Wall -I. -DVERSION=\"1.6.6\" -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE    -c -o bftpdutmp.o bftpdutmp.c
+gcc -g -O2 -DHAVE_CONFIG_H -Wall -I. -DVERSION=\"1.6.6\" -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE    -c -o commands.o commands.c
+gcc -g -O2 -DHAVE_CONFIG_H -Wall -I. -DVERSION=\"1.6.6\" -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE    -c -o commands_admin.o commands_admin.c
+gcc -g -O2 -DHAVE_CONFIG_H -Wall -I. -DVERSION=\"1.6.6\" -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE    -c -o cwd.o cwd.c
+gcc -g -O2 -DHAVE_CONFIG_H -Wall -I. -DVERSION=\"1.6.6\" -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE    -c -o dirlist.o dirlist.c
+gcc -g -O2 -DHAVE_CONFIG_H -Wall -I. -DVERSION=\"1.6.6\" -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE    -c -o list.o list.c
+gcc -g -O2 -DHAVE_CONFIG_H -Wall -I. -DVERSION=\"1.6.6\" -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE    -c -o login.o login.c
+gcc -g -O2 -DHAVE_CONFIG_H -Wall -I. -DVERSION=\"1.6.6\" -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE    -c -o logging.o logging.c
+gcc -g -O2 -DHAVE_CONFIG_H -Wall -I. -DVERSION=\"1.6.6\" -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE    -c -o main.o main.c
+gcc -g -O2 -DHAVE_CONFIG_H -Wall -I. -DVERSION=\"1.6.6\" -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE    -c -o mystring.o mystring.c
+gcc -g -O2 -DHAVE_CONFIG_H -Wall -I. -DVERSION=\"1.6.6\" -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE    -c -o options.o options.c
+./mksources 
+gcc bftpdutmp.o commands.o commands_admin.o cwd.o dirlist.o list.o login.o logging.o main.o mystring.o options.o   -lcrypt -o bftpd

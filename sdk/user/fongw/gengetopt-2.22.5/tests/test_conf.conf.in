@@ -1,0 +1,24 @@
+  # the # may not be the first char in a line
+
+# required option
+
+required "this is a test"
+
+float = 3.14
+
+no-short
+
+multi-string="first"
+
+string another
+
+# multiple options
+M "second"
+
+include "test_conf_inc.conf"
+
+n
+
+include "@srcdir@/test_conf_inc2.conf"
+
+noarg-noshort

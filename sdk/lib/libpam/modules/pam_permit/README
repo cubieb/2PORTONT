@@ -1,0 +1,4 @@
+# $Id: README,v 1.1.1.1 2003/08/18 05:39:42 kaohj Exp $
+#
+
+this module always returns PAM_SUCCESS, it ignores all options.

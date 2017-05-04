@@ -1,0 +1,28 @@
+echo "run Dsp wait, Solar Script..."
+
+if [ -x "/bin/voip_def_init" ]; then
+	voip_def_init
+fi
+
+if [ -x "/bin/dns_task" ]; then
+	echo "dns_task staring..."
+	dns_task &
+fi
+
+#if [ -x "/bin/wait_dsp" ]; then
+#	wait_dsp
+#else
+#	echo "no wait_dsp, so force to sleep 5 seconds..."
+#	sleep 5
+#fi
+
+if [ -x "/bin/solar_monitor" ]; then
+	echo "solar monitor staring..."
+	solar_monitor&
+fi
+
+if [ -x "/bin/solar" ]; then
+	echo "solar staring..."
+	solar&
+fi
+

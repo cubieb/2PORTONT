@@ -1,0 +1,11 @@
+
+# Realtek TR-142 Module configuration
+#
+
+config TR142_MODULE
+	bool "RTK TR-142 Module"
+	depends on GPON_FEATURE && RTK_L34_ENABLE
+	default n
+	help
+	    Say Y if you want to enable RTK TR-142 Module.
+

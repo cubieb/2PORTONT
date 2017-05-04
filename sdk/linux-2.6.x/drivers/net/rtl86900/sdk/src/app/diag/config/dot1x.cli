@@ -1,0 +1,237 @@
+//
+// Copyright (C) 2011 Realtek Semiconductor Corp.
+// All Rights Reserved.
+//
+// This program is the proprietary software of Realtek Semiconductor
+// Corporation and/or its licensors, and only be used, duplicated,
+// modified or distributed under the authorized license from Realtek.
+//
+// ANY USE OF THE SOFTWARE OTHER THAN AS AUTHORIZED UNDER
+// THIS LICENSE OR COPYRIGHT LAW IS PROHIBITED.
+//
+// Purpose : Define diag shell commands for dot1x.
+//
+// Feature : The file have include the following module and sub-modules
+//           1) dot1x commands.
+//
+
+//dot1x configuration
+//add dot1x auth MAC
+//delete dot1x auth MAC
+//authenticated MAC configuration
+//port configuration
+//port, <0-6>
+//svl mode
+//filter id configuration
+//fid, <0~15>
+//MAC address configuration
+//MAC address, A:B:C:D:E:F
+dot1x ( add | del ) auth-mac port <UINT:port> svl fid <UINT:fid> mac <MACADDR:mac>
+
+//dot1x configuration
+//add dot1x auth MAC
+//delete dot1x auth MAC
+//authenticated MAC configuration
+//port configuration
+//port, <0-6>
+//svl mode
+//filter id configuration
+//fid, <0~15>
+//MAC address configuration
+//MAC address, A:B:C:D:E:F
+//extension filter id configuration
+//EFID, <0~7>
+dot1x ( add | del ) auth-mac port <UINT:port> svl fid <UINT:fid> mac <MACADDR:mac> extension-filter-id <UINT:efid>
+
+//dot1x configuration
+//add dot1x auth MAC
+//delete dot1x auth MAC
+//authenticated MAC configuration
+//port configuration
+//port, <0-6>
+//vlan configuration
+//vlan id, <0~4095> 
+//Mac address configuration
+//MAC address, A:B:C:D:E:F
+dot1x ( add | del ) auth-mac port <UINT:port> vid <UINT:vid> mac <MACADDR:mac>
+
+//dot1x configuration
+//add dot1x auth MAC
+//delete dot1x auth MAC
+//authenticated MAC configuration
+//port configuration
+//port, <0-6>
+//vlan configuration
+//vlan id , <0~4095> 
+//Mac address configuration
+//MAC address, A:B:C:D:E:F
+//extension filter id configuration
+//EFID, <0~7>
+dot1x ( add | del ) auth-mac port <UINT:port> vid <UINT:vid> mac <MACADDR:mac> extension-filter-id <UINT:efid>
+
+//dot1x configuration
+//get configuration
+//all authenticated MAC configuration
+dot1x get auth-mac  
+
+//dot1x configuration
+//get configuration
+//authenticated MAC configuration
+//MAC address configuration
+//MAC address, A:B:C:D:E:F
+//svl mode
+//filter id configuration
+//fid, <0~15>
+dot1x get auth-mac mac <MACADDR:mac> svl fid <UINT:fid> 
+
+//dot1x configuration
+//get configuration
+//authenticated MAC configuration
+//MAC address configuration
+//MAC address, A:B:C:D:E:F
+//svl mode
+//filter id configuration
+//fid, <0~15>
+//extension filter id configuration
+//EFID, <0~7>
+dot1x get auth-mac mac <MACADDR:mac> svl fid <UINT:fid> extension-filter-id  <UINT:efid> 
+
+//dot1x configuration
+//get configuration
+//authenticated MAC configuration
+//MAC address configuration
+//MAC address, A:B:C:D:E:F
+//vlan configuration
+//vlan id, <0~4095>
+//extension filter id configuration
+//EFID, <0~7>
+dot1x get auth-mac mac <MACADDR:mac> vid <UINT:vid>
+
+//dot1x configuration
+//get configuration
+//authenticated MAC configuration
+//MAC address configuration
+//MAC address, A:B:C:D:E:F
+//vlan configuration
+//vlan id, <0~4095>
+//extension filter id configuration
+//EFID, <0~7> 
+dot1x get auth-mac mac <MACADDR:mac> vid <UINT:vid> extension-filter-id <UINT:efid>
+
+//dot1x configuration
+//get configuration
+//guest VLAN configuration
+dot1x get guest-vlan
+
+//dot1x configuration
+//get configuration
+//mac-based configuration
+//port-based configuration
+dot1x get ( mac-based | port-based )
+
+//dot1x configuration
+//get configuration
+//mac-based configuration
+//port-based configuration
+//port configuration
+//port list, <0-6>
+//all ports
+dot1x get ( mac-based | port-based ) port ( <PORT_LIST:port> | all )
+
+//dot1x configuration
+//get configuration
+//trap priority
+dot1x get trap
+
+//dot1x configuration
+//get configuration
+//action of unauthorized packet
+//port configuration
+//port list, <0-6>
+//all ports
+dot1x get unauth-packet port ( <PORT_LIST:port> | all )
+
+//dot1x configuration
+//set configuration
+//guest VLAN configuration
+//to authorized DA
+//allow
+//not allow
+dot1x set guest-vlan to-auth-da ( allow | disallow )
+
+//dot1x configuration
+//set configuration
+//guest VLAN configuration
+//VLAN index configuration
+//VLAN index, <0~31>
+dot1x set guest-vlan vidx <UINT:vidx>
+
+//dot1x configuration
+//set configuration
+//mac-based configuration
+//direction configuration
+//both direction
+//ingress direction
+dot1x set mac-based direction ( both | in )
+
+//dot1x configuration
+//set configuration
+//mac-based configuration
+//port configuration
+//port list, <0-6>
+//all ports
+//state configuration
+//disable function
+//enable function
+dot1x set mac-based port ( <PORT_LIST:port> | all ) state ( disable | enable )
+
+//dot1x configuration
+//set configuration
+//port-based configuration
+//port configuration
+//port list, <0-6>
+//all ports
+//state configuration
+//disable function
+//enable function
+dot1x set port-based port ( <PORT_LIST:port> | all ) state ( disable | enable )
+
+
+//dot1x configuration
+//set configuration
+//port-based configuration
+//port configuration
+//port list, <0-6>
+//all ports
+//authentication
+//un-authentication
+dot1x set port-based port ( <PORT_LIST:port> | all ) ( auth | unauth )
+
+//dot1x configuration
+//set configuration
+//port-based configuration
+//port configuration
+//port list
+//all ports, <0-6>
+//direction configuration
+//both direction
+//ingress direction
+dot1x set port-based port ( <PORT_LIST:port> | all ) direction ( both | in )
+
+//dot1x configuration
+//set configuration
+//trap priority configuration
+//priority value, <0~7>
+dot1x set trap-priority <UINT:priority>
+
+//dot1x configuration
+//set configuration
+//action of unauthorized packet
+//port configuration
+//port list, <0-6>
+//all ports
+//drop packet
+//forward to guest VLAN
+//trap packet to CPU
+dot1x set unauth-packet port ( <PORT_LIST:port> | all ) ( drop | guest-vlan | trap-to-cpu )
+

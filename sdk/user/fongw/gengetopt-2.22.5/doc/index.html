@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html><head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <title>GNU Gengetopt - GNU Project - Free Software Foundation (FSF)</title></head>
+
+<body style="background-color: rgb(255, 255, 255);">
+
+<h1>GNU Gengetopt
+2.22.5</h1>
+
+
+<p>This program generates a C function that uses <i>getopt_long</i>
+function to parse the command line options, to validate them and fills
+a <i>struct</i>
+. </p>
+
+<p>Thus your program can now handle options such as: </p>
+
+<pre>myprog --input foo.c -o foo.o --no-tabs -i 100 *.class</pre>
+
+And both long options (those that start with --) and short options
+(start with - and consist of only one character) can be handled. For
+standards about short and long options you may want to take a look at
+the <a href="http://www.gnu.org/prep/standards_toc.html">GNU
+Coding
+Standards</a> .
+<p>Gengetopt can also generate a function to save the command
+line options
+into a file, and a function to read the command
+line options from a file. Of course,
+these two kinds of files are compliant.</p>
+<p>Generated code is commented with 
+<a href="http://www.doxygen.org">Doxygen</a> comments.</p>
+
+<p>gengetopt is <b><font color="#009900">free
+software</font></b>.
+Please see the file <a href="LICENSE">LICENSE</a>
+and <a href="COPYING">COPYING</a>
+for details. <br>
+
+Notice that: Use of gengetopt <u>does not impose any particular
+license on the generated code: the code generated is not under any
+license</u>. </p>
+
+<p>For documentation, please read this file. </p>
+
+<p>gengetopt is perfect if you don't want to write
+all
+stuff required to call getopt_long, and when you have a program and wish it took options. </p>
+
+<p>Generated code works if you use <i>GNU Autoconf</i>
+or <i>GNU
+Automake</i>.</p>
+
+<p>Gengetopt has originally been written by <b>Roberto
+Arturo Tena
+Sanchez</b>&nbsp;
+and currently maintained by <b>Lorenzo Bettini </b><a href="http://www.lorenzobettini.it">http://www.lorenzobettini.it</a>.
+</p>
+
+<p>Gengetopt is a <a href="http://www.gnu.org">GNU</a>
+program and its
+main home page is at GNU site: <br>
+
+<a href="http://www.gnu.org/software/gengetopt/">http://www.gnu.org/software/gengetopt</a><br>
+
+</p>
+
+<h2>Download</h2>
+
+You can download it from GNU's ftp site: <br>
+
+<a href="ftp://ftp.gnu.org/gnu/gengetopt/">ftp://ftp.gnu.org/gnu/gengetopt/</a>
+or from one of its mirrors (see <a href="http://www.gnu.org/prep/ftp.html">http://www.gnu.org/prep/ftp.html</a>
+).
+<p>I do not distribute Windows binaries anymore; since, they can
+be
+easily built by using <b>Cygwin C/C++</b> compiler,
+available at <a href="http://www.cygwin.com/">http://www.cygwin.com/</a>.
+However, if
+you don't feel like downloading such compiler, you can request such
+binaries directly to me, by e-mail (please find my e-mail address at my
+home page) and I can send them to you.<br>
+
+</p>
+
+<h3>1.2 Anonymous Git Checkout</h3>
+
+<p>This project's git repository can be checked out through the following
+clone instruction:
+
+<pre>     git clone git://git.savannah.gnu.org/gengetopt.git
+</pre>
+   <p>Further instructions can be found at the address:
+
+   <p><a href="http://savannah.gnu.org/projects/gengetopt">http://savannah.gnu.org/projects/gengetopt</a>.
+
+   <p>And the git repository can also browsed on-line at
+
+   <p><a href="http://git.savannah.gnu.org/cgit/gengetopt.git">http://git.savannah.gnu.org/cgit/gengetopt.git</a>.
+
+<p>
+<i>Since version 2.22.4 of Gengetopt the
+CVS repository was dismissed in favor of Git
+(<a href="http://git-scm.com/">http://git-scm.com/</a>).</i>
+
+   <p>Please note that this way you will get the latest development sources
+of Gengetopt, which may also be unstable.  This solution is the
+best if you intend to correct/extend this program: you should send me
+patches against the latest git repository sources.
+
+   <p>If, on the contrary, you want to get the sources of a given release,
+through git, say, e.g., version X.Y.Z, you must specify the tag
+<code>rel_X_Y_Z</code>.
+
+   <p>When you compile the sources that you get from the git repository,
+before running the <code>configure</code> and <code>make</code> commands, for the
+first time, you must run the command:
+
+<pre>     autoreconf -i
+</pre>
+   <p>This will run the autotools commands in the correct order, and also copy
+possibly missing files.  You should have installed recent versions of
+<code>automake</code>, <code>autoconf</code> and <code>libtool</code> in order for this to
+succeed.
+
+<h2>Bugs</h2>
+
+If you find a bug in <samp><span class="command">gengetopt</span></samp>, please use the Savannah web
+interface
+
+   <p><a href="http://savannah.gnu.org/bugs/?group=gengetopt">http://savannah.gnu.org/bugs/?group=gengetopt</a>
+
+
+<h2>Changes in this
+release</h2>
+
+<ul>
+
+  <li> see <a href="NEWS">NEWS</a> file for a
+summary of new features
+in
+this release and</li>
+
+  <li> see ChangeLog for the complete list of
+changes sources</li>
+
+</ul>
+
+You can also find details about new features on my blog, in this area: <a href="http://tronprog.blogspot.com/search/label/gengetopt">http://tronprog.blogspot.com/search/label/gengetopt</a>.
+<h2><a href="gengetopt.html">On-line Manual</a><br>
+
+</h2>
+
+<hr>
+<p>Return to <a href="/home.html">GNU's home page</a>.
+</p>
+
+<p>Please send FSF &amp; GNU inquiries &amp; questions to
+<i><a href="mailto:gnu@gnu.org">gnu@gnu.org</a>
+</i>. There are also <a href="http://www.gnu.org/home.html#ContactInfo">other ways
+to contact</a>
+the FSF. </p>
+
+<p>Please send comments on these web pages to <i><a href="mailto:webmasters@gnu.org">webmasters@gnu.org</a>
+</i>, send
+other questions to <i><a href="mailto:gnu@gnu.org">gnu@gnu.org</a>
+</i>.</p>
+
+<p>Copyright (C) 2001 Free Software Foundation, Inc., 59 Temple
+Place -
+Suite 330, Boston, MA 02111, USA </p>
+
+<p>Verbatim copying and distribution of this entire article is
+permitted in any medium, provided this notice is preserved. </p>
+
+<p>Updated:<!-- hhmts start -->9 Jan 2001 mhw<!-- hhmts end -->
+<br>
+
+</p>
+
+<hr> <br>
+
+</body></html>

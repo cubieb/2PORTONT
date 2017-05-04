@@ -1,0 +1,1 @@
+cmd_arch/rlx/lib/lib.a := rm -f arch/rlx/lib/lib.a; /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/rsdk-linux-ar rcs arch/rlx/lib/lib.a arch/rlx/lib/csum_partial.o arch/rlx/lib/delay.o arch/rlx/lib/memcpy-inatomic.o arch/rlx/lib/memcpy.o arch/rlx/lib/memset.o arch/rlx/lib/strlen_user.o arch/rlx/lib/strncpy_user.o arch/rlx/lib/strnlen_user.o arch/rlx/lib/uncached.o

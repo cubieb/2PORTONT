@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  RTK xDSL device type instance document wiht traceroute profiles. (Based on Device:2.2)
+
+  Summary:
+    RTK xDSL device type instance. Profiles included TraceRoute:1.
+  
+  Version History:
+    *2013-08-30: Initial version. Generate using report.pl with some modifications.
+-->
+<dt:document xmlns:dt="urn:broadband-forum-org:cwmp:devicetype-1-0"
+             xmlns:dmr="urn:broadband-forum-org:cwmp:datamodel-report-0-1"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="urn:broadband-forum-org:cwmp:devicetype-1-0 http://www.broadband-forum.org/cwmp/cwmp-devicetype-1-0.xsd urn:broadband-forum-org:cwmp:datamodel-report-0-1 http://www.broadband-forum.org/cwmp/cwmp-datamodel-report.xsd"
+             deviceType="urn:rtk-xdsl:device-1-0-0">
+  <import file="tr-181-2-2-0.xml" spec="urn:broadband-forum-org:tr-181-2-2-0">
+    <model name="Device:2.2"/>
+  </import>
+  <model ref="Device:2.2">
+    <object ref="Device." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+    </object>
+    <object ref="Device.Services." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0"/>
+    <object ref="Device.IP.Diagnostics.TraceRoute." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <parameter ref="DiagnosticsState" access="readWrite" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="Interface" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Host" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="NumberOfTries" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Timeout" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="DataBlockSize" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="DSCP" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="MaxHopCount" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="ResponseTime" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="RouteHopsNumberOfEntries" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.IP.Diagnostics.TraceRoute.RouteHops.{i}." access="readOnly" minEntries="0" maxEntries="unbounded" dmr:version="2.0" dmr:noUniqueKeys="true">
+      <parameter ref="Host" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="HostAddress" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="ErrorCode" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="RTTimes" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+    </object>
+  </model>
+</dt:document>

@@ -1,0 +1,8 @@
+# test_only_flags_cmd.ggo
+
+# This test an input file with only flag option
+
+package "test_only_flags"
+version "1.0"
+
+option  "foo"        f "foo option" flag on

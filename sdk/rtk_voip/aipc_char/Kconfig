@@ -1,0 +1,335 @@
+
+menu "RTL8686 IPC"
+
+# ---------------------------------------------------------------------
+# IPC ASIC or FPGA config
+
+comment "IPC ASIC or FPGA config"
+
+menu "RTL8686 ASIC or FPGA"
+choice 
+	prompt "RTL8686 Chip Type"
+	default y
+
+config RTL8686_ASIC
+	bool  "Support for RTL8686_ASIC"
+	default y
+
+config RTL8686_FPGA
+	bool  "Support for RTL8686_FPGA"
+	default n
+
+endchoice
+
+menu "RTL8686 Test IP"
+
+config RTL8686_TEST_IP
+	bool "RTL8686 TEST IP"
+	default n
+
+config RTL8686_ASIC_TEST_IP
+	bool  "Support for RTL8686_ASIC_TEST_IP"
+	depends on RTL8686_TEST_IP
+	default n
+
+config RTL8686_FPGA_TEST_IP
+	bool  "Support for RTL8686_FPGA_TEST_IP"
+	depends on RTL8686_TEST_IP
+	default n
+
+endmenu
+
+endmenu
+
+# ---------------------------------------------------------------------
+# IPC Main Function
+
+comment "IPC Main Function"
+
+menu "RTL8686 IPC interface"
+config RTL8686_IPC_DEV
+	bool "RTL8686 IPC interface"
+	default n
+
+config RTL8686_IPC_PROCESSOR
+    int "RTL8686 IPC processor"
+    default 0
+    depends on RTL8686_IPC_DEV
+
+config RTL8686_IPC_SINGLE_CPU
+    bool "RTL8686 IPC Single CPU "
+    default n
+    depends on RTL8686_IPC_DEV
+
+config RTL8686_IPC_DUAL_LINUX
+    bool "RTL8686 Dual Linux"
+    default n
+    depends on RTL8686_IPC_DEV
+#   depends on RTL8686_IPC_DEV && LUNA_DUAL_LINUX
+
+config RTL8686_IPC_DEBUG_MESSAGE
+    bool "RTL8686 IPC debug message"
+	depends on RTL8686_IPC_DEV
+	default y
+
+# config RTL8686_SHM_NOTIFY
+# 	bool  "RTL8686 Shared memory notify"
+# 	depends on RTL8686_IPC_DEV 
+# 	default n
+
+config RTL8686_IPC_INT_NOTIFY_CPU2DSP
+	bool  "RTL8686 IPC Interrupt Notify CPU to DSP"
+	depends on RTL8686_IPC_DEV && RTL8686_IPC_PROCESSOR = 0
+	default n
+
+# ---------------------------------------------------------------------
+# IPC Shared Memory Setting
+#
+#comment "RTL8686 IPC Shared Memory Setting"
+#depends on RTL8686_IPC_DEV && RTL8686_IPC_PROCESSOR = 1
+#
+#menu "RTL8686 SHM Setting"
+#depends on RTL8686_IPC_DEV && RTL8686_IPC_PROCESSOR = 1
+#
+#config RTL8686_SHM_SETTING
+#	bool "RTL8686 SHM Setting"
+#	depends on RTL8686_IPC_DEV && RTL8686_IPC_PROCESSOR = 1
+#	default y
+#
+#config RTL8686_CPU_MEM_BASE
+#	hex  "RTL8686 CPU MEM Base"
+#	depends on RTL8686_SHM_SETTING
+#	default 0x00000000
+#
+#config RTL8686_CPU_MEM_SIZE
+#	hex  "RTL8686 CPU MEM Size"
+#	depends on RTL8686_SHM_SETTING && RTL8686_IPC_PROCESSOR = 1
+#	default 0x03800000
+#
+#config RTL8686_IPC_MEM_BASE
+#	hex  "RTL8686 IPC MEM Base"
+#	depends on RTL8686_SHM_SETTING && RTL8686_IPC_PROCESSOR = 1
+#	default 0x03800000
+#
+#config RTL8686_IPC_MEM_SIZE
+#	hex  "RTL8686 IPC MEM Size"
+#	depends on RTL8686_SHM_SETTING && RTL8686_IPC_PROCESSOR = 1
+#	default 0x00100000
+#
+#config RTL8686_DSP_MEM_BASE
+#	hex  "RTL8686 DSP MEM Base"
+#	depends on RTL8686_SHM_SETTING && RTL8686_IPC_PROCESSOR = 1
+#	default 0x03900000
+#
+#config RTL8686_DSP_MEM_SIZE
+#	hex  "RTL8686 DSP MEM Size"
+#	depends on RTL8686_SHM_SETTING && RTL8686_IPC_PROCESSOR = 1
+#	default 0x00700000
+#
+#endmenu
+
+# # ---------------------------------------------------------------------
+# # UART1 Enable/Disable
+# 
+# comment "UART1 Enable/Disable"
+# 
+# config RTL8686_IPC_UART1_ENABLE
+# 	bool "RTL8686 IPC UART1 Enable"
+# 	depends on RTL8686_IPC_DEV && RTL8686_IPC_PROCESSOR = 0
+# 	default n
+# 	help
+# 		Enable UART1 for DSP access
+
+# # ---------------------------------------------------------------------
+# # CPU1 UART Selection
+# 
+# comment "CPU1 UART Selection"
+# config CPU1_DSP_SELECTION
+# choice
+# 	prompt "CPU1 UART Selection"
+# 	default CPU1_DIS_UART
+# 	help
+# 		CPU1 UART Selection
+# config CPU1_UART0
+#         bool "Use UART0"
+#         help
+#                 CPU1 Use UART0
+# config CPU1_UART1
+# 	bool "Use UART1"
+# 	help
+#                 CPU1 Use UART1
+# config CPU1_UART2
+#         bool "Use UART2"
+#         help
+#                 CPU1 Using UART2
+# config CPU1_UART3
+# 	bool "Use UART3"
+# 	help
+# 		CPU1 Use UART3
+# config CPU1_DIS_UART
+#         bool "Disable"
+#         help
+# 		CPU1 Disable UART
+# endchoice
+# 
+# config CPU1_UART_BASE_ADDR
+# 	hex
+# 	default 0xB8002000 if CPU1_UART0
+# 	default 0xB8002100 if CPU1_UART1
+# 	default 0xB8002200 if CPU1_UART2
+# 	default 0xB8002300 if CPU1_UART3
+# 	default 0          if CPU1_DIS_UART
+# ---------------------------------------------------------------------
+# SLIC Reset 
+
+comment "RTL8686 SLIC Reset"
+
+config RTL8686_SLIC_RESET
+	bool "RTL8686 SLIC RESET"
+	depends on RTL8686_IPC_DEV && RTL8686_IPC_PROCESSOR = 0
+	default n
+
+config RTL8686_SLIC_RESET_GPIO_NUM
+	int "RTL8686 SLIC RESET GPIO NUM"
+	depends on RTL8686_SLIC_RESET
+	default 17
+	range 0 64
+
+
+# ---------------------------------------------------------------------
+# DSP Console
+
+comment "DSP Console"
+
+config RTL8686_IPC_DSP_CONSOLE
+	bool "RTL8686 IPC DSP Console"
+	depends on RTL8686_IPC_DEV
+	default y
+	help
+		Access DSP Console in CPU side. 
+
+# ---------------------------------------------------------------------
+# IPC Index Use SRAM or DRAM
+
+comment "IPC Index use SRAM or DRAM"
+	depends on RTL8686_IPC_DEV
+
+config RTL8686_IPC_IDX_USE_DRAM
+	bool "RTL8686 IPC Index Use DRAM"
+	depends on RTL8686_IPC_DEV
+	default y
+
+config RTL8686_IPC_IDX_USE_SRAM
+	bool "RTL8686 IPC Index Use SRAM"
+	depends on RTL8686_IPC_DEV && !RTL8686_IPC_IDX_USE_DRAM
+	default n
+
+config RTL8686_IPC_DSP_BOOTING_ADDRESS
+	hex  "RTL8686 IPC DSP Booting Address"
+	depends on RTL8686_IPC_IDX_USE_DRAM || RTL8686_IPC_IDX_USE_SRAM
+	default 0x88000000
+	help
+		Suggest value
+			Use DRAM 0x88000000
+			Use SRAM 0xbf100000
+
+
+# ---------------------------------------------------------------------
+# IPC DSP Setting
+
+comment "IPC DSP Config"
+	depends on RTL8686_IPC_DEV
+
+config RTL8686_IPC_DSP_CONFIG
+	bool "RTL8686 IPC DSP Config"
+	depends on RTL8686_IPC_DEV
+	default y
+
+config RTL8686_IPC_DSP_CONFIG_CON_CH_NUM
+	int "RTL8686 IPC DSP Control Channel Number"
+	depends on RTL8686_IPC_DEV && RTL8686_IPC_PROCESSOR = 0 && RTL8686_IPC_DSP_CONFIG
+	default 2
+	range 1 3 
+
+config RTL8686_IPC_DSP_CONFIG_MIRROR_SLIC_NR
+	int "RTL8686 IPC DSP Mirror SLIC Number"
+	depends on RTL8686_IPC_DEV && RTL8686_IPC_PROCESSOR = 0 && RTL8686_IPC_DSP_CONFIG
+	default 2
+	range 1 2
+
+# ---------------------------------------------------------------------
+# DSL IPC
+
+comment "DSL IPC"
+	depends on RTL8686_IPC_DEV
+
+config RTL8686_IPC_DSL_IPC
+	bool "RTL8686 IPC DSL IPC"
+	depends on RTL8686_IPC_DEV && RTL8686_IPC_DUAL_LINUX
+	default n
+
+# ---------------------------------------------------------------------
+# IPC Debug  
+
+comment "IPC Debug"
+
+config RTL8686_IPC_RECORD_DSP_LOG
+	bool "RTL8686 IPC Record DSP log"
+	depends on RTL8686_IPC_DEV
+	default y
+	help
+		Get DSP console logs from CPU side. 
+
+# ---------------------------------------------------------------------
+# IPC Test Codes
+
+comment "IPC Test Codes"
+
+config RTL8686_IPC_TEST_THREAD
+    bool "RTL8686 IPC test thread"
+    default n
+    depends on RTL8686_IPC_DEV
+
+config RTL8686_IPC_TEST_THREAD_2
+    bool "RTL8686 IPC test thread 2"
+    default n
+    depends on RTL8686_IPC_TEST_THREAD
+
+config RTL8686_IPC_TEST_THREAD_3
+    bool "RTL8686 IPC test thread 3"
+    default n
+    depends on RTL8686_IPC_TEST_THREAD_2
+
+
+comment "RTL8686 DSP LED Test"
+	depends on RTL8686_IPC_DEV
+	#depends on RTL8686_IPC_DEV && (RTL8686_IPC_PROCESSOR != 0)
+
+config RTL8686_DSP_LED_TEST
+	bool "RTL8686 DSP LED Test"
+	depends on RTL8686_IPC_DEV
+	default n
+
+config RTL8686_DSP_LED_GPIO_NUM
+	int "RTL8686 DSP LED GPIO NUM"
+	depends on RTL8686_DSP_LED_TEST
+	default 34
+	range 0 64
+
+
+comment "RTL8686 IPC DSL IPC Test Codes"
+	depends on RTL8686_IPC_DSL_IPC
+
+config RTL8686_IPC_DSL_IPC_TEST
+    bool "RTL8686 IPC test"
+    default n
+    depends on RTL8686_IPC_DSL_IPC
+
+#config RTL8686_IPC_DSL_IPC_TEST_THREAD
+#    bool "RTL8686 IPC test thread"
+#    default n
+#    depends on RTL8686_IPC_DSL_IPC_TEST
+
+endmenu
+
+endmenu

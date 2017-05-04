@@ -1,0 +1,7 @@
+startup&
+mkdir -p /var/cups/
+mkdir -p /var/cups/conf/
+mkdir -p /var/cups/requests/
+mkdir -p /var/cups/filter/
+mkdir -p /var/cups/jobs/
+cp /etc/cups/conf/* /var/cups/conf/

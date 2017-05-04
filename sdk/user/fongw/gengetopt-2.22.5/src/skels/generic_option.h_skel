@@ -1,0 +1,60 @@
+@IF@ has_short_option @THEN@
+case '@short_option@':	/* @option_comment@.  */
+@IF@ short_option:string = "?" @then@
+  if (optopt) /* '?' represents an unrecognized option */
+    goto failure;
+@ENDIF@
+@ELSE@
+/* @option_comment@.  */
+@gen_else@if (strcmp (long_options[option_index].name, "@long_option@") == 0)
+{
+@ENDIF@
+@IF@ option_has_mode @THEN@
+  args_info->@group_var_name@_mode_counter += 1;
+@endif@
+@IF@ multiple @THEN@
+@IF@ option_has_type @THEN@
+  if (update_multiple_arg_temp(&@structure@, 
+      &(local_args_info.@option_var_name@_given), optarg, @possible_values@, @default_value@, @arg_type@,
+      "@long_option@", '@short_option@',
+      additional_error))
+    goto failure;
+@ELSE@
+  local_args_info.@option_var_name@_given++;
+@ENDIF@
+@IF@ option_has_group @THEN@
+  if (!args_info->@option_var_name@_group)
+    {
+      args_info->@option_var_name@_group = 1;
+      args_info->@group_var_name@_group_counter += 1;
+    }
+@ENDIF@
+@ELSE@
+@IF@ option_has_group @THEN@
+  if (args_info->@group_var_name@_group_counter && override)
+    reset_group_@group_var_name@ (args_info);
+  args_info->@group_var_name@_group_counter += 1;
+@endif@
+@IF@ arg_type:string = "ARG_FLAG" @THEN@
+  if (update_arg((void *)&(args_info->@option_var_name@_flag), 0, &(args_info->@option_var_name@_given),
+      &(local_args_info.@option_var_name@_given), optarg, 0, 0, @arg_type@,
+      check_ambiguity, override, 1, 0, "@long_option@", '@short_option@',
+      additional_error))
+    goto failure;
+@ELSE@
+  if (update_arg(@if@ arg_type:string = "ARG_NO" @then@ 0 @else@ (void *)&(args_info->@option_var_name@_arg)@endif@, 
+      @if@ arg_type:string = "ARG_NO" @then@ 0 @else@ &(args_info->@option_var_name@_orig)@endif@, &(args_info->@option_var_name@_given),
+      &(local_args_info.@option_var_name@_given), optarg, @possible_values@, @default_value@, @arg_type@,
+      check_ambiguity, override, 0, 0,
+      "@long_option@", '@short_option@',
+      additional_error))
+    goto failure;
+@ENDIF@
+@IF@ final_instructions:string != "" @THEN@
+  @final_instructions@
+@ENDIF@
+@ENDIF@
+  @IF@ has_short_option @then@
+  break;@else@
+}
+@ENDIF@

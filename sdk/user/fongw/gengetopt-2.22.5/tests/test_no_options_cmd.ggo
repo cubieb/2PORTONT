@@ -1,0 +1,7 @@
+# test_no_options_cmd.ggo
+
+# test when no option is specified in the .ggo file
+
+package "test_no_options"
+version "1.0"
+purpose "This is a program with no option but the default ones"

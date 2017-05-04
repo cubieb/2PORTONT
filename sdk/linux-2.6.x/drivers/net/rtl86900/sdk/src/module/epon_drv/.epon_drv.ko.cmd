@@ -1,0 +1,1 @@
+cmd_drivers/net/rtl86900/sdk/src/module/epon_drv/epon_drv.ko := /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/rsdk-linux-ld -r  -m elf32btsmip  --build-id -o drivers/net/rtl86900/sdk/src/module/epon_drv/epon_drv.ko drivers/net/rtl86900/sdk/src/module/epon_drv/epon_drv.o drivers/net/rtl86900/sdk/src/module/epon_drv/epon_drv.mod.o

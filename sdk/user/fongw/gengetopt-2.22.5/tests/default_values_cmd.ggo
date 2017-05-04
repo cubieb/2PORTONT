@@ -1,0 +1,15 @@
+# default_values_cmd.ggo
+
+# test default values
+
+package "default_values"
+version "1.0"
+
+option  "foo"        f "foo option" int default="15000" no
+option  "bar"        b "bar option" string default="this is a default" no
+option  "foo-opt"        F "foo option with optional arg" int default="15000" no argoptional
+option  "bar-opt"        B "bar option with optional arg" string default="this is a default" no argoptional
+option  "foofloat"        - "foo float option" float default="15000" no
+option  "foodouble"        - "foo double option" double default="15000" no
+option  "pi"        p "PI option" double default="3.1415926536" no
+option "timeout"     s "number of seconds after the scanning is cancelled if no progress is shown at all." int typestr="123456789012" default="120" no

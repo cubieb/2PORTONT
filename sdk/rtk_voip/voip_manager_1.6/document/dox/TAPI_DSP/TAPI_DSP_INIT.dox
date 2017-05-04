@@ -1,0 +1,25 @@
+// ============================================================
+
+/**
+ * @page VOIP_DSP_Feature VoIP Feature
+ * @ingroup TAPI_DSP_INIT 
+ * The variable \ref g_VoIP_Feature contain the VoIP features that the user selects from menu-configure in kernel directory. <br>
+ * The initial value for this variable is 0. <br>The function rtk_Get_VoIP_Feature() must be called first to retrieve the VoIP feature value. <br>
+ * The Figure 7 shows the sample codes for VoIP features extraction. 
+ * The function of rtk_InitDSP must be called before any use of manipulative function of voice.
+ *  \htmlonly <br> <p align="left"> <b>Figure 7. The extraction of the VoIP features</b>   
+ * <font color=#0000A0> <pre> 
+ * rtk_Get_VoIP_Feature();
+ * if ((g_VoIP_Feature & DAA_TYPE_MASK) == NO_DAA)
+ * 	fxo_type = FXO_NO_DAA;
+ * </pre>  </font>
+ * <p align="left"> <b>Figure 8. Calling rtk_InitDSP before calling voice manipulative function</b>   
+ * <font color=#0000A0> <pre> 
+ * // init dsp
+ * rtk_InitDSP(0);
+ * rtk_Set_Voice_Gain(0, 0, 0);    // 0db
+ * rtk_Set_echoTail(0, 4);         // 4ms
+ * </pre> </font>
+ * \endhtmlonly 	
+ */ 
+

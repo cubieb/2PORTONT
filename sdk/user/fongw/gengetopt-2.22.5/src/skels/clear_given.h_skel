@@ -1,0 +1,3 @@
+@arg_struct@->@var_arg@_given = 0 ;@IF@ group @THEN@
+ @arg_struct@->@var_arg@_group = 0 ;@ENDIF@
+

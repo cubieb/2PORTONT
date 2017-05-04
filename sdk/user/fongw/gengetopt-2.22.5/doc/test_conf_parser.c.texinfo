@@ -1,0 +1,91 @@
+@c Generator: GNU source-highlight, by Lorenzo Bettini, http://www.gnu.org/software/src-highlite
+@example
+@r{@i{/* test_conf_parser.c test */}}
+
+@r{@i{/* test all kinds of options and the conf file parser */}}
+
+@b{#include} @t{<stdlib.h>}
+@b{#include} @t{<stdio.h>}
+
+@b{#include} @t{"test_conf_parser_cmd.h"}
+
+@b{static} @b{struct} my_args_info args_info;
+
+@b{int}
+main (@b{int} argc, @b{char} **argv)
+@{  
+  @b{unsigned} @b{int} i;
+  @b{int} result = 0;
+
+  @b{struct} test_conf_parser_cmd_parser_params *params;
+  
+  @r{@i{/* initialize the parameters structure */}}
+  params = test_conf_parser_cmd_parser_params_create();
+
+  @r{@i{/* call the command line parser */}}
+  @b{if} (test_conf_parser_cmd_parser (argc, argv, &args_info) != 0) @{
+    result = 1;
+    @b{goto} stop;
+  @}
+
+  @r{@i{/* }}
+@r{@i{     override command line options,}}
+@r{@i{     but do not initialize args_info, check for required options.}}
+@r{@i{     NOTICE: we must NOT skip the 0 assignment to initialize,}}
+@r{@i{     since its default value is 1 and override defaults to 0}}
+@r{@i{     while check_required is already set to its default value, 1}}
+@r{@i{  */}}
+  params->initialize = 0;
+  params->override = 1;
+
+  @r{@i{/* call the config file parser */}}
+  @b{if} (test_conf_parser_cmd_parser_config_file
+      (args_info.conf_file_arg, &args_info, params) != 0) 
+    @{
+      result = 1;
+      @b{goto} stop;
+    @}
+
+  printf (@t{"value of required: %s}\n@t{"}, args_info.required_arg);
+  printf (@t{"value of string: %s}\n@t{"}, args_info.string_arg);
+  printf (@t{"value of no-short_given: %d}\n@t{"}, args_info.no_short_given);
+  printf (@t{"value of int: %d}\n@t{"}, args_info.int_arg);
+  printf (@t{"value of float: %f}\n@t{"}, args_info.float_arg);
+
+  printf (@t{"value of multi-string_given: %d}\n@t{"}, args_info.multi_string_given);
+  @b{for} (i = 0; i < args_info.multi_string_given; i++)
+    printf (@t{"  value of multi-string: %s}\n@t{"}, args_info.multi_string_arg [i]);
+
+  printf (@t{"value of multi-string-def_given: %d}\n@t{"},
+          args_info.multi_string_def_given);
+  @b{for} (i = 0; i < args_info.multi_string_def_given; ++i)
+    printf (@t{"  value of multi-string-def: %s}\n@t{"},
+            args_info.multi_string_def_arg [i]);
+  @b{if} (!args_info.multi_string_def_given && args_info.multi_string_def_arg [0])
+    printf (@t{"default value of multi-string-def: %s}\n@t{"},
+            args_info.multi_string_def_arg [0]);
+
+  printf (@t{"value of opta: %s}\n@t{"}, args_info.opta_arg);
+
+  printf (@t{"noarg given %d times}\n@t{"}, args_info.noarg_given);
+  printf (@t{"noarg_noshort given %d times}\n@t{"}, args_info.noarg_noshort_given);
+
+  printf (@t{"opt-arg given: %d}\n@t{"}, args_info.opt_arg_given);
+  printf (@t{"opt-arg value: %s}\n@t{"}, (args_info.opt_arg_arg ? args_info.opt_arg_arg : @t{"not given"}));
+
+  @b{if} (args_info.file_save_given) @{
+    @b{if} (test_conf_parser_cmd_parser_file_save (args_info.file_save_arg, &args_info) == EXIT_FAILURE)
+      result = 1;
+    @b{else}
+      printf (@t{"saved configuration file %s}\n@t{"}, args_info.file_save_arg);
+  @}
+
+@b{ stop:}
+  @r{@i{/* deallocate structures */}}
+  test_conf_parser_cmd_parser_free (&args_info);
+  free (params);
+
+  @b{return} result;
+@}
+
+@end example

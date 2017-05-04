@@ -1,0 +1,22 @@
+opta="FOO"
+string="another"
+int="100"
+float="3.14"
+no-short
+required="this is a test"
+conf-file="./test_conf.conf"
+multi-string="-1"
+multi-string="zero"
+multi-string="first"
+multi-string="second"
+multi-string="third"
+multi-string="fourth"
+multi-string="fifth"
+multi-string="sixth"
+noarg
+noarg
+noarg
+noarg-noshort
+noarg-noshort
+opt-arg
+file-save="test_conf_parser.save"

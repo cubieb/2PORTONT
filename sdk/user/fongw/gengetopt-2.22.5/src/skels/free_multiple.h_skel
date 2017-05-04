@@ -1,0 +1,6 @@
+@IF@ has_string_type @THEN@
+free_multiple_string_field (@structure@->@opt_var@_given, &(@structure@->@opt_var@_arg), &(@structure@->@opt_var@_orig));
+@ELSE@
+free_multiple_field (@structure@->@opt_var@_given, (void *)(@structure@->@opt_var@_arg), &(@structure@->@opt_var@_orig));
+@structure@->@opt_var@_arg = 0;
+@ENDIF@

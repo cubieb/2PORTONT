@@ -1,0 +1,5 @@
+0,aborted,9001,1000,Outgoing,40,40
+1,success,9001,9009,Outgoing,235,242
+2,success,9001,1000,Outgoing,390,394
+3,missed,1000,9001,Incoming,406,406
+4,success,1000,9001,Incoming,424,430

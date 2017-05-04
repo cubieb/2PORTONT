@@ -1,0 +1,11 @@
+#!/bin/sh
+ifconfig $interface 0.0.0.0
+
+#20141107LUKE: use to clear ip settings in hwnat when DHCP lease timeout.
+TMP_FILE=/tmp/diag_file
+TMP=$(echo $interface | sed 's/.*_//g')
+rm -f $TMP_FILE
+echo "rg set dhcpClientInfo stauts 1 ip-version 0 napt_enable 0 ip_addr 0.0.0.0 ip_network_mask 0.0.0.0 ipv4_default_gateway_on 0 gateway_ipv4_addr 0.0.0.0 mtu 1500 gw_mac_auto_learn_for_ipv4 1 gateway_mac_addr_for_ipv4 00:00:00:00:00:00" > $TMP_FILE
+echo "rg add dhcpClientInfo wan_intf_idx $TMP" >> $TMP_FILE
+echo "exit" >> $TMP_FILE
+cat $TMP_FILE | diag > /dev/null 2>&1

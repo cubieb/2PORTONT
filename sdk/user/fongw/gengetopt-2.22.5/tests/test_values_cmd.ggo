@@ -1,0 +1,35 @@
+# test_values_cmd.ggo
+
+# test values options
+
+package "test_values"
+version "1.0"
+purpose "This is just a test file
+to test options
+with the list of acceptable values"
+
+defgroup "group1"
+
+option "string-values"      s "string option with values" values="foo","foa","bar","foobar","barfoo" no
+option "string-values-plus"      - "string option with values containing + and -" values="+foo","-foo","bar","foobar","barfoo","+foobar","-barfoo" no
+option "string-values-def"      - "string option with values and default" values="foo","bar","foobar","barfoo" default="bar" no
+option "string-values-def-argopt"      - "string option with values and default and optional argument" values="foo","bar","foobar","barfoo" default="foobar" optional argoptional
+option "string-values-no-short"      - "string option with values no short" values="foo","bar","foobar","barfoo" no
+option "multistring-values"      S "multiple string option with values" values="foo","bar" no multiple
+option "multistring-values-def"      - "multiple string option with values and default" values="foo","bar" no multiple default="foo" argoptional
+option "multistring-values-no-short"      - "multiple string option with values no-short" typestr="BAR" values="foo","bar" no multiple
+
+groupoption "string-values-group"      - "group string option with values and default" typestr="FOO" values="foo","bar","foobar","barfoo" default="bar" group="group1"
+
+option "int-values"      i "int option with values" values="90","180","270","360" int optional
+option "int-values-m"      I "multiple int option with values" values="900","1800","2700","3600" int optional multiple
+option "int-values-def"      - "int option with values and default" values="90","180","270","360" default="180" int optional
+
+option "values-first-enums"   e "option with values and enums 1" values="FOO","BAR","ANOTHER","SOMETHING" enum optional
+option "values-first-enums-plus"   E "option with values and enums with plus and minus 1" values="+foo","+bar","-foo","-bar","all" enum optional
+option "values-second-enums"   - "option with values and enums 2 with default" values="90","180","270","360" enum optional default="180"
+option "values-multiple-enums"   W "multiple option with values and enums" values="FIRST","SECOND","THIRD","FOURTH" enum optional multiple default="FOURTH"
+
+option "values-unspecified-enums"   N "option with values that will not be specified on the command line" values="FOO","BAR","ANOTHER","SOMETHING" enum optional
+
+option "file-save"   - "save the passed options into a file" string no

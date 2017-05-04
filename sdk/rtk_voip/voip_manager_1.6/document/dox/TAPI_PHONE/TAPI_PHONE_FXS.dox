@@ -1,0 +1,16 @@
+// ============================================================
+
+/**
+ * @page VOIP_PHONE_FXS FXS-Ring
+ * @ingroup TAPI_PHONE_FXS 
+ * As a caller, an FXS device initials a call by passing ring voltage over the line to the attached FXO device. 
+ * As a callee, an FXS device receives a call by detecting the line that has been seized. <br>
+ * The function of \ref rtk_SetRingFxs sets the FXS to ring. The parameter of bRinging is either 0 or 1 (silence or ring). <br>
+ * The function of \ref rtk_SetSlicRingCadence sets the period of cadence on and period of cadence off. 
+ * This function should use with the function \ref rtk_SetRingFxs.
+ * \htmlonly <br> <p align="left"> <b>Figure 13. Set the cadence and ring the phone</b>  
+ * <font color=#0000A0> <pre> 
+ * rtk_SetSlicRingCadence(0, 2000, 4000);  // 2 sec ON, 4 sec OFF
+ * rtk_SetRingFXS(0, 1);  	// enable ring
+ * </pre>  </font> \endhtmlonly    	 
+ */ 

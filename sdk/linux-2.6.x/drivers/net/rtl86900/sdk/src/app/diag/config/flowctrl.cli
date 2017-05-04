@@ -1,0 +1,609 @@
+//
+// Copyright (C) 2011 Realtek Semiconductor Corp.
+// All Rights Reserved.
+//
+// This program is the proprietary software of Realtek Semiconductor
+// Corporation and/or its licensors, and only be used, duplicated,
+// modified or distributed under the authorized license from Realtek.
+//
+// ANY USE OF THE SOFTWARE OTHER THAN AS AUTHORIZED UNDER
+// THIS LICENSE OR COPYRIGHT LAW IS PROHIBITED.
+//
+// $Revision: 39101 $
+// $Date: 2013-05-03 17:35:27 +0800 (Fri, 03 May 2013) $
+//
+// Purpose : Define diag shell commands for flow control.
+//
+// Feature : The file have include the following module and sub-modules
+//           1) flow control commands.
+//
+
+//flowctrl configuration
+//dump flow control configuration
+//threshold configuration
+//switch threshold
+//pon threshold
+flowctrl dump threshold ( switch | pon )
+
+//flowctrl configuration
+//dump flow control configuration
+//used page count configuration
+//switch used page count
+//pon used page count
+flowctrl dump used-page ( switch | pon )
+
+//flowctrl configuration
+//set configuration
+//flow control type
+//ingress flow control
+//egress flow control
+flowctrl set type ( ingress | egress )
+
+//flowctrl configuration
+//get configuration
+//flow control type
+flowctrl get type 
+
+//flowctrl configuration
+//set configuration
+//flow control for jumbo frame
+//jumbo frame mode
+//enable jumbo mode
+//disable jumbo mode
+flowctrl set jumbo mode ( enable | disable )
+
+//flowctrl configuration
+//get configuration
+//flow control for jumbo frame
+//jumbo frame mode
+flowctrl get jumbo mode 
+
+//flowctrl configuration
+//set configuration
+//flow control for jumbo frame
+//jumbo frame size
+//3K bytes
+//4K bytes
+//6K bytes
+//maximum (>8960 bytes)
+flowctrl set jumbo size ( 3k | 4k | 6k | max )
+
+//flowctrl configuration
+//get configuration
+//flow control for jumbo frame
+//jumbo frame size
+flowctrl get jumbo size
+
+
+//flowctrl configuration
+//set configuration
+//drop all threshold
+//threshold
+flowctrl set drop-all <UINT:thresh>
+
+//flowctrl configuration
+//get configuration
+//drop all threshold
+flowctrl get drop-all
+
+//flowctrl configuration
+//set configuration
+//pause all threshold
+//threshold
+flowctrl set pause-all <UINT:thresh>
+
+//flowctrl configuration
+//get configuration
+//pause all threshold
+flowctrl get pause-all
+
+//flowctrl configuration
+//set configuration
+//ingress configuration
+//global configuration
+//flowctrl off threshold
+//flowctrl on threshold
+//high threshold off
+//high threshold on
+//low threshold off
+//low threshold on
+//threshold
+flowctrl set ingress global ( fc-off-thresh | fc-on-thresh ) ( high-off | high-on | low-off | low-on ) <UINT:thresh>
+
+//flowctrl configuration
+//get configuration
+//ingress configuration
+//global configuration
+//flowctrl off threshold
+//flowctrl on threshold
+//high threshold off
+//high threshold on
+//low threshold off
+//low threshold on
+flowctrl get ingress global ( fc-off-thresh | fc-on-thresh ) ( high-off | high-on | low-off | low-on )
+
+//flowctrl configuration
+//set configuration
+//ingress configuration
+//port configuration
+//flowctrl off threshold
+//flowctrl on threshold
+//high threshold off
+//high threshold on
+//low threshold off
+//low threshold on
+//threshold
+flowctrl set ingress port ( fc-off-thresh | fc-on-thresh ) ( high-off | high-on | low-off | low-on ) <UINT:thresh>
+
+//flowctrl configuration
+//set configuration
+//ingress configuration
+//port configuration
+//flowctrl off threshold
+//flowctrl on threshold
+//high threshold off
+//high threshold on
+//low threshold off
+//low threshold on
+flowctrl get ingress port ( fc-off-thresh | fc-on-thresh ) ( high-off | high-on | low-off | low-on )
+
+//flowctrl configuration
+//set configuration
+//ingress configuration
+//global configuration for jumbo frame
+//high threshold off
+//high threshold on
+//low threshold off
+//low threshold on
+//threshold
+flowctrl set ingress jumbo-global ( high-off | high-on | low-off | low-on ) <UINT:thresh>
+
+//flowctrl configuration
+//get configuration
+//ingress configuration
+//global configuration for jumbo frame
+//high threshold off
+//high threshold on
+//low threshold off
+//low threshold on
+flowctrl get ingress jumbo-global ( high-off | high-on | low-off | low-on )
+
+//flowctrl configuration
+//set configuration
+//ingress configuration
+//port configuration for jumbo frame
+//high threshold off
+//high threshold on
+//low threshold off
+//low threshold on
+//threshold
+flowctrl set ingress jumbo-port ( high-off | high-on | low-off | low-on ) <UINT:thresh>
+
+//flowctrl configuration
+//get configuration
+//ingress configuration
+//port configuration for jumbo frame
+//high threshold off
+//high threshold on
+//low threshold off
+//low threshold on
+flowctrl get ingress jumbo-port ( high-off | high-on | low-off | low-on )
+
+//flowctrl configuration
+//set configuration
+//ingress configuration
+//egress drop threshold
+//port configuration
+//port list , <0-6>
+//all ports
+//threshold
+flowctrl set ingress egress-drop port ( <PORT_LIST:ports> | all ) <UINT:thresh>
+
+//flowctrl configuration
+//get configuration
+//ingress configuration
+//egress drop threshold
+//port configuration
+//port list , <0-6>
+//all ports
+//drop threshold 
+flowctrl get ingress egress-drop port ( <PORT_LIST:ports> | all ) drop-thresh
+
+//flowctrl configuration
+//set configuration
+//ingress configuration
+//egress drop threshold
+//queue configuration
+//queue list , <0-7>
+//all queues
+//threshold
+flowctrl set ingress egress-drop queue ( <PORT_LIST:queues> | all ) <UINT:thresh>
+
+//flowctrl configuration
+//get configuration
+//ingress configuration
+//egress drop threshold
+//queue configuration
+//queue list , <0-7>
+//all queues
+//drop threshold 
+flowctrl get ingress egress-drop queue ( <PORT_LIST:queues> | all ) drop-thresh
+
+//flowctrl configuration
+//set configuration
+//ingress configuration
+//egress drop threshold
+//port gap
+//queue gap
+//threshold
+flowctrl set ingress egress-drop ( port-gap | queue-gap ) <UINT:thresh>
+
+//flowctrl configuration
+//get configuration
+//ingress configuration
+//egress drop threshold
+//port gap
+//queue gap
+//drop threshold 
+flowctrl get ingress egress-drop ( port-gap | queue-gap ) drop-thresh
+
+//flowctrl configuration
+//set configuration
+//ingress configuration
+//egress drop threshold
+//port
+//port list , <0-6>
+//all ports
+//queue
+//queue list , <0-7>
+//all queues
+//egress drop enable
+//enable
+//disable
+flowctrl set ingress egress-drop port ( <PORT_LIST:ports> | all ) queue ( <PORT_LIST:queues> | all ) drop ( enable | disable )
+
+//flowctrl configuration
+//get configuration
+//ingress configuration
+//egress drop threshold
+//port
+//port list , <0-6>
+//all ports
+//queue
+//queue list , <0-7>
+//all queues
+//egress drop enable
+flowctrl get ingress egress-drop port ( <PORT_LIST:ports> | all ) queue ( <PORT_LIST:queues> | all ) drop
+
+//flowctrl configuration
+//set configuration
+//ingress configuration
+//pon interface
+//global configuration
+//high threshold off
+//high threshold on
+//low threshold off
+//low threshold on
+//threshold
+flowctrl set ingress pon global ( high-off | high-on | low-off | low-on ) <UINT:thresh>
+
+//flowctrl configuration
+//get configuration
+//ingress configuration
+//pon interface
+//global configuration
+//high threshold off
+//high threshold on
+//low threshold off
+//low threshold on
+flowctrl get ingress pon global ( high-off | high-on | low-off | low-on )
+
+//flowctrl configuration
+//set configuration
+//ingress configuration
+//pon interface
+//port configuration
+//high threshold off
+//high threshold on
+//low threshold off
+//low threshold on
+//threshold
+flowctrl set ingress pon port ( high-off | high-on | low-off | low-on ) <UINT:thresh>
+
+//flowctrl configuration
+//set configuration
+//ingress configuration
+//pon interface
+//port configuration
+//high threshold off
+//high threshold on
+//low threshold off
+//low threshold on
+flowctrl get ingress pon port ( high-off | high-on | low-off | low-on )
+
+//flowctrl configuration
+//set configuration
+//ingress configuration
+//pon interface
+//egress drop threshold
+//queue configuration
+//queue list , <0-127>
+//all queues
+//drop threshold index
+//index, <0~7>
+flowctrl set ingress pon egress-drop queue ( <PORT_LIST:queues> | all ) thresh-idx <UINT:idx> 
+
+//flowctrl configuration
+//get configuration
+//ingress configuration
+//pon interface
+//egress drop threshold
+//queue configuration
+//queue list , <0-127>
+//all queues
+flowctrl get ingress pon egress-drop queue ( <PORT_LIST:queues> | all )
+
+//flowctrl configuration
+//set configuration
+//ingress configuration
+//pon interface
+//egress drop threshold
+//queue threshold index
+//index list , <0-7>
+//all index
+//threshold
+flowctrl set ingress pon egress-drop queue-thresh-idx ( <PORT_LIST:idx> | all ) <UINT:thresh>
+
+//flowctrl configuration
+//get configuration
+//ingress configuration
+//pon interface
+//egress drop threshold
+//queue threshold index
+//index list , <0-7>
+//all index
+flowctrl get ingress pon egress-drop queue-thresh-idx ( <PORT_LIST:idx> | all )
+
+
+//flowctrl configuration
+//set configuration
+//ingress configuration
+//pon interface
+//egress drop threshold
+//queue gap
+//threshold
+flowctrl set ingress pon egress-drop queue-gap <UINT:thresh>
+
+//flowctrl configuration
+//get configuration
+//ingress configuration
+//pon interface
+//egress drop threshold
+//queue gap
+flowctrl get ingress pon egress-drop queue-gap
+
+//flowctrl configuration
+//set configuration
+//maximum page clear
+//egress port
+//port list
+//all ports
+flowctrl set max-page-clear egress-port ( <PORT_LIST:ports> | all )
+
+//flowctrl configuration
+//set configuration
+//total packet count clear
+flowctrl set total-pktcnt-clear
+
+//flowctrl configuration
+//set configuration
+//maximum page clear
+//used page
+flowctrl set max-page-clear used-page
+
+//flowctrl configuration
+//set configuration
+//maximum page clear
+//egress queue
+//port configuration
+//port list
+//all ports
+//queue configuration
+//queue list
+//all queues
+flowctrl set max-page-clear egress-queue port ( <PORT_LIST:ports> | all ) queue ( <MASK_LIST:queues> | all ) 
+
+//flowctrl configuration
+//get configuration
+//used page count
+//ingress page count
+//egress page count
+//port configuration
+//port list
+//all ports
+flowctrl get used-page-cnt ( ingress | egress ) port ( <PORT_LIST:ports> | all )
+
+//flowctrl configuration
+//get configuration
+//used page count
+//egress queue
+//port configuration 0-3:UTP, 4:EXT MAC, 5:CPU MAC
+//port list <0-5>
+//all ports
+//queue id
+//queue list
+//all ports
+flowctrl get used-page-cnt egress-queue port ( <PORT_LIST:ports> | all ) queue ( <PORT_LIST:queues> | all ) 
+
+//flowctrl configuration
+//get configuration
+//total page count
+flowctrl get total-page-cnt
+
+//flowctrl configuration
+//get configuration
+//used page count
+//total used page count
+//public used page count
+//public flow control off used page count
+//public jumbo frame used page count
+flowctrl get used-page-cnt ( total | public | public-off | public-jumbo )
+
+//flowctrl configuration
+//get configuration
+//used page count
+//used page count of this receiving packet
+//port list <0-6>
+//all ports
+flowctrl get used-page-cnt packet ( <PORT_LIST:ports> | all )
+
+//flowctrl configuration
+//get configuration
+//used page count
+//pon interface
+//queue <0-127>
+//queue list <0-127>
+//all queues
+flowctrl get used-page-cnt pon queue ( <PORT_LIST:queues> | all )
+
+//flowctrl configuration
+//set configuration
+//used page count
+//pon interface
+//queue
+//queue id, <0~127>
+flowctrl set max-page-clear pon queue <UINT:qid>
+
+//flowctrl configuration
+//set configuration
+//prefetch
+//threshold
+flowctrl set prefetch <UINT:thresh>
+
+//flowctrl configuration
+//get configuration
+//prefetch
+flowctrl get prefetch
+
+//flowctrl configuration
+//set configuration
+//low queue threshold for EEE usage
+//threshold
+flowctrl set low-queue <UINT:thresh>
+
+//flowctrl configuration
+//get configuration
+//low queue threshold for EEE usage
+flowctrl get low-queue
+
+//flowctrl configuration
+//set configuration
+//egress configuration
+//global configuration
+//flow control on
+//flow control off
+//high threshold off
+//high threshold on
+//low threshold off
+//low threshold on
+//threshold
+flowctrl set egress global ( fc-on | fc-off ) ( high-off | high-on | low-off | low-on ) <UINT:thresh>
+
+//flowctrl configuration
+//get configuration
+//egress configuration
+//global configuration
+//flow control on
+//flow control off
+//high threshold off
+//high threshold on
+//low threshold off
+//low threshold on
+flowctrl get egress global ( fc-on | fc-off ) ( high-off | high-on | low-off | low-on )
+
+//flowctrl configuration
+//set configuration
+//egress configuration
+//queue configuration
+//queue list , <0-7>
+//all queues
+//threshold
+flowctrl set egress queue ( <PORT_LIST:queues> | all ) <UINT:thresh> 
+
+//flowctrl configuration
+//get configuration
+//egress configuration
+//queue configuration
+//queue list , <0-7>
+//all queues
+flowctrl get egress queue ( <PORT_LIST:queues> | all )
+
+//flowctrl configuration
+//set configuration
+//egress configuration
+//port configuration
+//port list , <0-6>
+//all ports
+//threshold
+flowctrl set egress port ( <PORT_LIST:ports> | all ) <UINT:thresh> 
+
+//flowctrl configuration
+//get configuration
+//egress configuration
+//port configuration
+//port list , <0-6>
+//all ports
+flowctrl get egress port ( <PORT_LIST:ports> | all )
+
+//flowctrl configuration
+//set configuration
+//egress configuration
+//port gap configuration
+//threshold
+flowctrl set egress port-gap <UINT:thresh>
+
+//flowctrl configuration
+//get configuration
+//egress configuration
+//port gap configuration
+flowctrl get egress port-gap
+
+//flowctrl configuration
+//set configuration
+//egress configuration
+//queue gap configuration
+//threshold
+flowctrl set egress queue-gap <UINT:thresh>
+
+//flowctrl configuration
+//get configuration
+//egress configuration
+//queue gap configuration
+flowctrl get egress queue-gap
+
+//flowctrl configuration
+//set configuration
+//high queue mask
+//port configuration
+//port list , <0-6>
+//all ports
+//queue mask configuration
+//queue list , <0-7>
+//all queues
+flowctrl set high-queue port ( <PORT_LIST:port> | all ) queue-mask ( <PORT_LIST:queue> | all )
+
+//flowctrl configuration
+//get configuration
+//high queue mask
+//port configuration
+//port list , <0-6>
+//all ports
+flowctrl get high-queue port ( <PORT_LIST:port> | all )
+
+//flowctrl configuration
+//set configuration
+//patch parameters
+//3.5Mb for GPON mode
+//3.5Mb for Fiber mode
+//2.0Mb mode
+flowctrl set patch ( gpon-35m | fiber-35m | 20m )

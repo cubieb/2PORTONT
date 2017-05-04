@@ -1,0 +1,9 @@
+@IF@ handle_error @THEN@
+if (result == EXIT_FAILURE)
+  {
+    @parser_name@_free (args_info);
+    exit (EXIT_FAILURE);
+  }
+
+@ENDIF@
+return result;

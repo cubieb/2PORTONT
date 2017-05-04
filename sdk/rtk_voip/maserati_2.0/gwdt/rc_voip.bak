@@ -1,0 +1,2 @@
+echo "start watch dog"
+/bin/voip_gwdt /etc/app.gwdt &

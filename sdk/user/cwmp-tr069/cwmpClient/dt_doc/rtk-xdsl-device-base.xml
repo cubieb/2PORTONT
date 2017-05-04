@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  RTK xDSL device type instance document wiht base profiles. (Based on Device:2.2)
+
+  Summary:
+    RTK xDSL device base profiles. Profiles included Baseline:2, SupportedDataModel:1, Time:1, VendorLogFiles:1, IPPing:1, CaptivePortal:1, IPInterface:2, EthernetInterface:1, EthernetLink:1, Bridge:1, PPPInterface:1, Download:1, DownloadTCP:1, Upload:1, UploadTCP:1, UDPEcho:1, UDPEchoPlus:1, DHCPv4Client:1, NAT:1, Routing:1, DHCPServer:1, DHCPv4CondServing:1, DHCPv4Realay:1.
+  
+  Version History:
+    *2013-08-30: Initial version. Generate using report.pl with some modifications.
+-->
+<dt:document xmlns:dt="urn:broadband-forum-org:cwmp:devicetype-1-0"
+             xmlns:dmr="urn:broadband-forum-org:cwmp:datamodel-report-0-1"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="urn:broadband-forum-org:cwmp:devicetype-1-0 http://www.broadband-forum.org/cwmp/cwmp-devicetype-1-0.xsd urn:broadband-forum-org:cwmp:datamodel-report-0-1 http://www.broadband-forum.org/cwmp/cwmp-datamodel-report.xsd"
+             deviceType="urn:rtk-xdsl:device-1-0-0">
+  <import file="tr-181-2-2-0.xml" spec="urn:broadband-forum-org:tr-181-2-2-0">
+    <model name="Device:2.2"/>
+  </import>
+  <model ref="Device:2.2">
+    <object ref="Device." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <parameter ref="InterfaceStackNumberOfEntries" access="readOnly" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.Services." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0"/>
+    <object ref="Device.DeviceInfo." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <parameter ref="Manufacturer" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="ManufacturerOUI" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="ModelName" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="Description" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="SerialNumber" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="HardwareVersion" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="SoftwareVersion" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="ProvisioningCode" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="UpTime" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="SupportedDataModelNumberOfEntries" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="VendorLogFileNumberOfEntries" access="readOnly" dmr:version="2.1"/>
+    </object>
+    <object ref="Device.DeviceInfo.SupportedDataModel.{i}." access="readOnly" minEntries="0" maxEntries="unbounded" dmr:version="2.0">
+      <parameter ref="URL" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="URN" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="Features" access="readOnly" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.DeviceInfo.VendorLogFile.{i}." access="readOnly" minEntries="0" maxEntries="unbounded" dmr:version="2.1">
+      <parameter ref="Name" access="readOnly" dmr:version="2.1"/>
+      <parameter ref="MaximumSize" access="readOnly" dmr:version="2.1"/>
+      <parameter ref="Persistent" access="readOnly" dmr:version="2.1"/>
+    </object>
+    <object ref="Device.ManagementServer." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <parameter ref="URL" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Username" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Password" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="PeriodicInformEnable" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="PeriodicInformInterval" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="PeriodicInformTime" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="ParameterKey" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="ConnectionRequestURL" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="ConnectionRequestUsername" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="ConnectionRequestPassword" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="UpgradesManaged" access="readWrite" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.Time." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <parameter ref="Enable" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Status" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="NTPServer1" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="NTPServer2" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="CurrentLocalTime" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="LocalTimeZone" access="readWrite" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.InterfaceStack.{i}." access="readOnly" minEntries="0" maxEntries="unbounded" dmr:version="2.0">
+      <parameter ref="HigherLayer" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="LowerLayer" access="readOnly" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.Ethernet." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <parameter ref="InterfaceNumberOfEntries" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="LinkNumberOfEntries" access="readOnly" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.Ethernet.Interface.{i}." access="readOnly" minEntries="0" maxEntries="unbounded" dmr:version="2.0" dmr:fixedObject="true">
+      <parameter ref="Enable" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Status" access="readOnly" dmr:version="2.0"/>
+      <!--parameter ref="Alias" access="readWrite" dmr:version="2.0"/-->
+      <parameter ref="Name" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="LastChange" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="Upstream" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="MACAddress" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="MaxBitRate" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="DuplexMode" access="readWrite" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.Ethernet.Interface.{i}.Stats." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <parameter ref="BytesSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="BytesReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="PacketsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="PacketsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="ErrorsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="ErrorsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="UnicastPacketsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="UnicastPacketsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="DiscardPacketsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="DiscardPacketsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="MulticastPacketsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="MulticastPacketsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="BroadcastPacketsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="BroadcastPacketsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="UnknownProtoPacketsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.Ethernet.Link.{i}." access="readOnly" minEntries="0" maxEntries="unbounded" dmr:version="2.0">
+      <parameter ref="Enable" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Status" access="readOnly" dmr:version="2.0"/>
+      <!--parameter ref="Alias" access="readWrite" dmr:version="2.0"/-->
+      <parameter ref="Name" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="LastChange" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="LowerLayers" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="MACAddress" access="readOnly" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.Ethernet.Link.{i}.Stats." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <parameter ref="BytesSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="BytesReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="PacketsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="PacketsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="ErrorsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="ErrorsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="UnicastPacketsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="UnicastPacketsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="DiscardPacketsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="DiscardPacketsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="MulticastPacketsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="MulticastPacketsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="BroadcastPacketsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="BroadcastPacketsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="UnknownProtoPacketsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.Bridging." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <parameter ref="MaxBridgeEntries" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="MaxDBridgeEntries" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="BridgeNumberOfEntries" access="readOnly" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.Bridging.Bridge.{i}." access="readOnly" minEntries="0" maxEntries="unbounded" dmr:version="2.0">
+      <parameter ref="Enable" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Status" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="PortNumberOfEntries" access="readOnly" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.Bridging.Bridge.{i}.Port.{i}." access="readOnly" minEntries="0" maxEntries="unbounded" dmr:version="2.0">
+      <parameter ref="Enable" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Status" access="readOnly" dmr:version="2.0"/>
+      <!--parameter ref="Alias" access="readWrite" dmr:version="2.0"/-->
+      <parameter ref="Name" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="LastChange" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="LowerLayers" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="ManagementPort" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="PortState" access="readOnly" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.Bridging.Bridge.{i}.Port.{i}.Stats." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <parameter ref="BytesSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="BytesReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="PacketsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="PacketsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="ErrorsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="ErrorsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="UnicastPacketsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="UnicastPacketsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="DiscardPacketsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="DiscardPacketsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="MulticastPacketsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="MulticastPacketsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="BroadcastPacketsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="BroadcastPacketsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="UnknownProtoPacketsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.PPP." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <parameter ref="InterfaceNumberOfEntries" access="readOnly" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.PPP.Interface.{i}." access="readOnly" minEntries="0" maxEntries="unbounded" dmr:version="2.0">
+      <parameter ref="Enable" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Status" access="readOnly" dmr:version="2.0"/>
+      <!--parameter ref="Alias" access="readWrite" dmr:version="2.0"/-->
+      <parameter ref="Name" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="LastChange" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="LowerLayers" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Reset" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Username" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Password" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="ConnectionTrigger" access="readWrite" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.PPP.Interface.{i}.PPPoE." access="readOnly" minEntries="0" maxEntries="1" dmr:version="2.0">
+      <parameter ref="SessionID" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="ACName" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="ServiceName" access="readWrite" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.PPP.Interface.{i}.Stats." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <parameter ref="BytesSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="BytesReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="PacketsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="PacketsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="ErrorsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="ErrorsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="UnicastPacketsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="UnicastPacketsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="DiscardPacketsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="DiscardPacketsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="MulticastPacketsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="MulticastPacketsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="BroadcastPacketsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="BroadcastPacketsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="UnknownProtoPacketsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.IP." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <parameter ref="IPv4Enable" access="readWrite" dmr:version="2.2"/>
+      <parameter ref="IPv4Status" access="readOnly" dmr:version="2.2"/>
+      <parameter ref="InterfaceNumberOfEntries" access="readOnly" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.IP.Interface.{i}." access="readOnly" minEntries="0" maxEntries="unbounded" dmr:version="2.0">
+      <parameter ref="Enable" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="IPv4Enable" access="readWrite" dmr:version="2.2"/>
+      <parameter ref="Status" access="readOnly" dmr:version="2.0"/>
+      <!--parameter ref="Alias" access="readWrite" dmr:version="2.0"/-->
+      <parameter ref="Name" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="LastChange" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="LowerLayers" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Reset" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Type" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="IPv4AddressNumberOfEntries" access="readOnly" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.IP.Interface.{i}.IPv4Address.{i}." access="readOnly" minEntries="0" maxEntries="unbounded" dmr:version="2.0">
+      <parameter ref="Enable" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Status" access="readOnly" dmr:version="2.2"/>
+      <parameter ref="IPAddress" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="SubnetMask" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="AddressingType" access="readOnly" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.IP.Interface.{i}.Stats." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <parameter ref="BytesSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="BytesReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="PacketsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="PacketsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="ErrorsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="ErrorsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="UnicastPacketsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="UnicastPacketsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="DiscardPacketsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="DiscardPacketsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="MulticastPacketsSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="MulticastPacketsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="BroadcastPacketsSent" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="BroadcastPacketsReceived" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="UnknownProtoPacketsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.IP.Diagnostics.IPPing." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <parameter ref="DiagnosticsState" access="readWrite" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="Interface" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Host" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="NumberOfRepetitions" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Timeout" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="DataBlockSize" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="DSCP" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="SuccessCount" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="FailureCount" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="AverageResponseTime" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="MinimumResponseTime" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="MaximumResponseTime" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.IP.Diagnostics.DownloadDiagnostics." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <parameter ref="DiagnosticsState" access="readWrite" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="Interface" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="DownloadURL" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="DownloadTransports" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="DSCP" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="EthernetPriority" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="ROMTime" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="BOMTime" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="EOMTime" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="TestBytesReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="TotalBytesReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="TCPOpenRequestTime" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="TCPOpenResponseTime" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.IP.Diagnostics.UploadDiagnostics." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <parameter ref="DiagnosticsState" access="readWrite" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="Interface" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="UploadURL" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="UploadTransports" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="DSCP" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="EthernetPriority" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="TestFileLength" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="ROMTime" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="BOMTime" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="EOMTime" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="TotalBytesSent" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="TCPOpenRequestTime" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="TCPOpenResponseTime" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.IP.Diagnostics.UDPEchoConfig." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <parameter ref="Enable" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Interface" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="SourceIPAddress" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="UDPPort" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="EchoPlusEnabled" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="EchoPlusSupported" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="PacketsReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="PacketsResponded" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="BytesReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="BytesResponded" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="TimeFirstPacketReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="TimeLastPacketReceived" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.CaptivePortal." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <parameter ref="Enable" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Status" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="AllowedList" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="URL" access="readWrite" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.Routing." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <parameter ref="RouterNumberOfEntries" access="readOnly" dmr:version="2.0"/>
+    </object>
+    <!--object ref="Device.Routing.Router.{i}." access="createDelete" minEntries="0" maxEntries="unbounded" dmr:version="2.0"-->
+    <object ref="Device.Routing.Router.{i}." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <!--parameter ref="Enable" access="readWrite" dmr:version="2.0"/-->
+      <parameter ref="Enable" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="Status" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="IPv4ForwardingNumberOfEntries" access="readOnly" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.Routing.Router.{i}.IPv4Forwarding.{i}." access="createDelete" minEntries="0" maxEntries="unbounded" dmr:version="2.0">
+      <parameter ref="Enable" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Status" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="StaticRoute" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="DestIPAddress" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="DestSubnetMask" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="GatewayIPAddress" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Interface" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="ForwardingMetric" access="readWrite" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.Routing.RIP." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <parameter ref="Enable" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="SupportedModes" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="InterfaceSettingNumberOfEntries" access="readOnly" dmr:version="2.0"/>
+    </object>
+    <!--object ref="Device.Routing.RIP.InterfaceSetting.{i}." access="createDelete" minEntries="0" maxEntries="unbounded" dmr:version="2.0"-->
+    <object ref="Device.Routing.RIP.InterfaceSetting.{i}." access="readOnly" minEntries="0" maxEntries="unbounded" dmr:version="2.0">
+      <parameter ref="Enable" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Status" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="Interface" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Version" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="AcceptRA" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="SendRA" access="readWrite" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.LANConfigSecurity." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <parameter ref="ConfigPassword" access="readWrite" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.DNS." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <parameter ref="SupportedRecordTypes" access="readOnly" dmr:version="2.2"/>
+    </object>
+    <object ref="Device.DNS.Client." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <parameter ref="Enable" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Status" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="ServerNumberOfEntries" access="readOnly" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.DNS.Client.Server.{i}." access="createDelete" minEntries="0" maxEntries="unbounded" dmr:version="2.0">
+      <parameter ref="Enable" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Status" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="DNSServer" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Interface" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Type" access="readOnly" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.NAT." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <parameter ref="InterfaceSettingNumberOfEntries" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="PortMappingNumberOfEntries" access="readOnly" dmr:version="2.0"/>
+    </object>
+    <!--object ref="Device.NAT.InterfaceSetting.{i}." access="createDelete" minEntries="0" maxEntries="unbounded" dmr:version="2.0"-->
+    <object ref="Device.NAT.InterfaceSetting.{i}." access="readOnly" minEntries="0" maxEntries="unbounded" dmr:version="2.0">
+      <parameter ref="Enable" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Status" access="readOnly" dmr:version="2.0"/>
+      <!--parameter ref="Interface" access="readWrite" dmr:version="2.0"/-->
+      <parameter ref="Interface" access="readOnly" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.NAT.PortMapping.{i}." access="createDelete" minEntries="0" maxEntries="unbounded" dmr:version="2.0">
+      <parameter ref="Enable" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Status" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="Interface" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="AllInterfaces" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="LeaseDuration" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="RemoteHost" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="ExternalPort" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="ExternalPortEndRange" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="InternalPort" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Protocol" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="InternalClient" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Description" access="readWrite" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.DHCPv4." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <parameter ref="ClientNumberOfEntries" access="readOnly" dmr:version="2.0"/>
+    </object>
+    <!--object ref="Device.DHCPv4.Client.{i}." access="createDelete" minEntries="1" maxEntries="unbounded" dmr:version="2.0"-->
+    <object ref="Device.DHCPv4.Client.{i}." access="readOnly" minEntries="1" maxEntries="unbounded" dmr:version="2.0">
+      <parameter ref="Enable" access="readWrite" dmr:version="2.0"/>
+      <!--parameter ref="Interface" access="readWrite" dmr:version="2.0"/-->
+      <parameter ref="Interface" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="Status" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="Renew" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="IPAddress" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="SubnetMask" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="IPRouters" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="DNSServers" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="LeaseTimeRemaining" access="readOnly" activeNotify="willDeny" dmr:version="2.0"/>
+      <parameter ref="DHCPServer" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="SentOptionNumberOfEntries" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="ReqOptionNumberOfEntries" access="readOnly" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.DHCPv4.Client.{i}.SentOption.{i}." access="createDelete" minEntries="0" maxEntries="unbounded" dmr:version="2.0">
+      <parameter ref="Enable" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Tag" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Value" access="readWrite" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.DHCPv4.Client.{i}.ReqOption.{i}." access="createDelete" minEntries="0" maxEntries="unbounded" dmr:version="2.0">
+      <parameter ref="Enable" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Order" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Tag" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Value" access="readOnly" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.DHCPv4.Server." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <parameter ref="Enable" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="PoolNumberOfEntries" access="readOnly" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.DHCPv4.Server.Pool.{i}." access="createDelete" minEntries="0" maxEntries="unbounded" dmr:version="2.0">
+      <parameter ref="Enable" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Status" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="Order" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Interface" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="VendorClassID" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="VendorClassIDExclude" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="VendorClassIDMode" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="ClientID" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="ClientIDExclude" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="UserClassID" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="UserClassIDExclude" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Chaddr" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="ChaddrMask" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="ChaddrMaskExclude" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="MinAddress" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="MaxAddress" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="ReservedAddresses" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="SubnetMask" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="DNSServers" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="DomainName" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="IPRouters" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="LeaseTime" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="OptionNumberOfEntries" access="readOnly" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.DHCPv4.Server.Pool.{i}.Option.{i}." access="createDelete" minEntries="0" maxEntries="unbounded" dmr:version="2.0">
+      <parameter ref="Enable" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Tag" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Value" access="readWrite" dmr:version="2.0"/>
+    </object>
+    <object ref="Device.DHCPv4.Relay." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <parameter ref="Enable" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="ForwardingNumberOfEntries" access="readOnly" dmr:version="2.0"/>
+    </object>
+    <!--object ref="Device.DHCPv4.Relay.Forwarding.{i}." access="createDelete" minEntries="0" maxEntries="unbounded" dmr:version="2.0"-->
+    <object ref="Device.DHCPv4.Relay.Forwarding.{i}." access="readOnly" minEntries="1" maxEntries="1" dmr:version="2.0">
+      <parameter ref="Enable" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Status" access="readOnly" dmr:version="2.0"/>
+      <!--parameter ref="Order" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Interface" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="VendorClassID" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="ClientID" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="UserClassID" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="Chaddr" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="ChaddrMask" access="readWrite" dmr:version="2.0"/>
+      <parameter ref="LocallyServed" access="readWrite" dmr:version="2.0"/-->
+      <parameter ref="Order" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="Interface" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="VendorClassID" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="ClientID" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="UserClassID" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="Chaddr" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="ChaddrMask" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="LocallyServed" access="readOnly" dmr:version="2.0"/>
+      <parameter ref="DHCPServerIPAddress" access="readWrite" dmr:version="2.0"/>
+    </object>
+  </model>
+</dt:document>

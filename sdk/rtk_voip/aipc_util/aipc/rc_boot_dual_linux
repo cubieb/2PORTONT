@@ -1,0 +1,14 @@
+#!/bin/sh
+aipc_util -B
+aipc_util -e
+aipc_util -w -d 0xb0000000  -i /image/luna_slave.img
+aipc_util -b
+if [ -x "/bin/wait_dsp" ]; then
+	wait_dsp
+else
+	echo "no wait_dsp, so force to sleep 5 seconds..."
+	sleep 5
+fi
+
+aipc_util -M 0x0
+

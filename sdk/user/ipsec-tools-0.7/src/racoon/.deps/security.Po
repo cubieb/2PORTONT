@@ -1,0 +1,72 @@
+security.o: security.c ../.././src/include-glibc/glibc-bugs.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/features.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/uClibc_config.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/uClibc_arch_features.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/sys/cdefs.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/sys/types.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/types.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/wordsize.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/gcc/stddef.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/kernel_types.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/typesizes.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/pthreadtypes.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/sched.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/time.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/endian.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/endian.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/byteswap.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/byteswap.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/sys/select.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/select.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/sigset.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/time.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/sys/sysmacros.h \
+ ../../src/include-glibc/glibc-bugs.h
+
+../.././src/include-glibc/glibc-bugs.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/features.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/uClibc_config.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/uClibc_arch_features.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/sys/cdefs.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/sys/types.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/types.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/wordsize.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/gcc/stddef.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/kernel_types.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/typesizes.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/pthreadtypes.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/sched.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/time.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/endian.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/endian.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/byteswap.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/byteswap.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/sys/select.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/select.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/sigset.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/time.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/sys/sysmacros.h:
+
+../../src/include-glibc/glibc-bugs.h:

@@ -1,0 +1,6 @@
+# test for multiple parsers, this is the main file
+
+version "1.0"
+
+option "first-cmd" F "the first command line to parse" required typestr="first command" string multiple
+option "second-cmd" S "the second command line to parse" required typestr="second command" string multiple

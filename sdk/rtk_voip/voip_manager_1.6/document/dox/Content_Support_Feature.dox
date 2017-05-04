@@ -1,0 +1,56 @@
+// ============================================================
+
+ 
+/*! @page RTK_VOIP_Support_Feature Supported Features 
+ *  \htmlonly <br>
+ * <table border=1 width=62% style="border-collapse:collapse;" borderColor=black > 
+ * <td align=left><b>Feature</b></td> <td align=left><b>Details</b></td> <td align=left><b>Remark</b></td> <tr>   
+ * <td rowspan=9 align=left>POTS</td> 
+ * <td align=left>Hook Detection</td> <td></td><tr>  <td align=left>Ringing</td> <td></td><tr>	 
+ * <td align=left>DTMF Generation</td> <td></td><tr>
+ * <td align=left>DTMF Detection</td> <td></td><tr>  <td align=left>VMWI</td> <td></td><tr>
+ * <td align=left>Bellcore/BT/ETSI/NTT FSK Type I Generation</td> <td></td><tr>
+ * <td align=left>Bellcore/BT/ETSI/NTT FSK Type I Detection</td> <td></td><tr>
+ * <td align=left>Bellcore/BT/ETSI/NTT FSK Type II Generation</td> <td></td><tr>
+ * <td align=left>Bellcore/BT/ETSI/NTT FSK Type II Detection</td> <td></td><tr>
+ * <td rowspan=6 align=left>Tone/Signal</td> 
+ * <td align=left>DTMF Tone Generation</td> <td></td><tr>  <td align=left>DTMF Tone Detection</td> <td></td><tr> 
+ * <td align=left>Call Progress Tone Generation</td> <td></td><tr>
+ * <td align=left>Call Progress Tone Detection</td> <td></td><tr>  <td align=left>FAX/Modem Signal Generation</td> <td></td><tr> 
+ * <td align=left>FAX/Modem Signal Detection</td> <td></td><tr>
+ * <td rowspan=8 align=left>Voice Codec</td> 
+ * <td align=left>ITU G.711</td> <td>64 kbps,(A-law and u-law form) <br>Appendix I, II for VAD/CNG/PLC</td><tr>
+ * <td align=left>ITU G.723.1</td> <td>5.3/6.3 kbps<br>Annex A for VAD/CNG/PLC</td><tr>
+ * <td align=left>ITU G.726</td> <td>16/24/32/40 kbps<br> Support RFC3551 byte packing order<br> Use G.711 Appendix I, II for VAD/CNG/PLC</td><tr>  
+ * <td align=left>ITU G.729AB</td> <td>8 kbps CS-ACELP<br>Annex B for VAD/CNG/PLC</td><tr> 
+ * <td align=left>ITU G.722</td> <td>64 kbps<br>Appendix III A high-quality PLC algorithm</td><tr>
+ * <td align=left>GSM-FR</td> <td>GSM 06.10 Full Rate Vocoder</td><tr> 
+ * <td align=left>GSM-AMR</td> <td>GSM 06.90 Adaptive Multi-Rate Vocoder - Narrow Band</td><tr> 
+ * <td align=left>iLBC</td> <td>20/30ms Frame size</td><tr> 
+ * <td rowspan=7 align=left>Voice Processing</td>  
+ * <td align=left>LEC</td> <td>G.168, Tail Length 2~128ms</td><tr>
+ * <td align=left>Gain Control</td> <td></td><tr> <td align=left>Auto Gain Control</td> <td></td><tr>
+ * <td align=left>PLC</td> <td></td><tr> <td align=left>Adaptive Jitter Buffer</td> <td></td><tr> 
+ * <td align=left>VAD/CNG/DTX</td> <td></td><tr>  <td align=left>3-Way Conference</td> <td></td><tr> 
+ * <td rowspan=6 align=left>Packetization</td>  
+ * <td align=left>RTP</td> <td></td><tr>  <td align=left>RTP Redundancy</td> <td>Compliance to RFC 3611</td><tr> 
+ * <td align=left>RTCP / RTCP-XR</td> <td></td><tr>  <td align=left>SRTP</td> <td></td><tr> 
+ * <td align=left>DTMF RFC2833</td> <td></td><tr>  <td align=left>FAX/Modem RFC2833</td> <td></td><tr>  
+ * <td rowspan=3 align=left>FAX / Modem</td>   
+ * <td align=left>FAX / Modem Pass-through over G.711(VBD)</td> <td></td><tr>  
+ * <td align=left>T.38 FAX Relay</td> <td></td><tr>  <td align=left>V.152</td> <td></td><tr>  
+ * <td rowspan=6 align=left>System Driver</td>
+ * <td align=left>PCM Driver</td> <td></td><tr>  <td align=left>I2S Driver</td> <td></td><tr>  
+ * <td align=left>SPI Driver</td> <td>GPIO pins simulated</td><tr>  
+ * <td align=left>SLIC Driver</td> <td>SI3226/SI3227/SI3217x<br>LE88221/LE89116/LE89316/LE88266</td><tr>   
+ * <td align=left>DAA Driver</td> <td>SI3050</td><tr>   <td align=left>Ethernet DSP</td> <td></td><tr>   
+ * <td rowspan=8 align=left>SIP UA (Demo Purpose Only)</td>
+ * <td align=left>RFC3261</td> <td></td><tr>  <td align=left>Multi Domain</td> <td>Proxy</td><tr>	
+ * <td align=left>Call Function</td> <td>Call Hold/Waiting/Transfer/Forwarding</td><tr>  
+ * <td align=left>3-Way Conference</td> <td></td><tr> <td align=left>Dial Plan</td> <td></td><tr>
+ * <td align=left>IVR</td> <td></td><tr> <td align=left>DND</td> <td></td><tr>  <td align=left>Hotline</td> <td></td><tr> 
+ * </table>\endhtmlonly 
+ * <br>
+ * @note Please refer to the appropriate SDK Release Note document for details on supported features
+ * 
+ */

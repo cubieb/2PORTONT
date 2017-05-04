@@ -1,0 +1,31 @@
+#!/bin/sh
+RESOLV_CONF="/var/udhcpc/resolv.conf"
+GETMIB="flash get"
+
+[ "$broadcast" ] && BROADCAST="broadcast $broadcast"
+[ "$subnet" ] && NETMASK="netmask $subnet"
+
+ifconfig $interface $ip $BROADCAST $NETMASK -pointopoint
+
+if [ "$router" ]; then
+    while route del -net default gw 0.0.0.0 dev $interface
+    do :
+    done
+
+    for i in $router
+    do
+    ifconfig $interface pointopoint $i
+    route add -net default gw $i dev $interface
+    done
+    ifconfig $interface -pointopoint
+fi
+
+if [ "$dns" ]; then
+    rm $RESOLV_CONF
+    for i in $dns
+    do
+    echo 'DNS=' $i
+    echo nameserver $i >> $RESOLV_CONF
+    done
+fi
+

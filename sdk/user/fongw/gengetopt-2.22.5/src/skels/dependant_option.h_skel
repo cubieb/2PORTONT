@@ -1,0 +1,5 @@
+if (args_info->@option_var_name@_given && ! args_info->@dep_option@_given)
+  {
+    fprintf (stderr, "%s: @option_descr@ option depends on option '@dep_option_descr@'%s\n", @package_var_name@, (additional_error ? additional_error : ""));
+    error = 1;
+  }

@@ -1,0 +1,8 @@
+// ============================================================
+
+/**
+ * @page VOIP_PHONE_PCM Pulse-code modulation(PCM)
+ * @ingroup TAPI_PHONE_PCM
+ * The PCM group TAPI is to set the Realtek in-house PCM controller. It supports up to 8 ~ 16 PCM channels which support 8/16K sampling rate, and 
+ * 32 PCM time slots are provided. A-law, mu-law 8-bit companding and 16-bit linear mode are supported.<br>
+ */ 

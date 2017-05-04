@@ -1,0 +1,182 @@
+#! /bin/sh
+# zonap start/stop script
+### BEGIN INIT INFO
+# Provides:          zonap
+# Required-Start:    $remote_fs $syslog $network
+# Required-Stop:     $remote_fs $syslog $network
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start daemon at boot time
+# Description:       Enable service provided by daemon.
+### END INIT INFO
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+DAEMON=/usr/sbin/chilli
+RADCONFIG=/usr/sbin/chilli_radconfig
+NAME=chilli
+DESC=chilli
+CONFFILE=/etc/chilli.conf
+TEMPORAL_CONFFILE=/tmp/chilli.conf
+NASID=00-18-84-D0-0E-C9
+RADIUSSERVER1=radconfig01.fon.com
+RADIUSSERVER2=radconfig02.fon.com
+RADIUSSECRET=garrafon
+DEVICE=$(cat /etc/fon_device)
+VERSION=$(cat /etc/fon_version)
+REVISION=$(cat /etc/fon_revision)
+#RADIUSADMUSR=FONGW-fonera20-2.1.0.1
+RADIUSADMUSR=FON02-${DEVICE}-${VERSION}.${REVISION}
+RADIUSADMPWD=chillispot 
+LANIP=192.168.182.1
+
+START_CHILLI=0
+WHITELIST=/etc/fon/whitelist.dnsmasq
+
+if [ -f /etc/default/chilli ] ; then
+   . /etc/default/chilli
+fi
+# get the mac address used for this FONGW
+if [ -f /etc/fon_mac ] ; then
+   NASID=`cat /etc/fon_mac`
+fi
+
+
+OPTS="--dns1=$LANIP --dns2=$LANIP \
+--radiusnasid=$NASID --dhcpif $DHCPIF --papalwaysok \
+--localusers=/etc/fon/localusers --wwwbin=/bin/true \
+--ipup=/bin/true --ipdown=/bin/true --conup=/bin/true \
+--condown=/bin/true --pidfile /var/run/$NAME.pid"
+
+if [ "$START_CHILLI" != "1" ] ; then
+   echo "Chilli default off. Look at /etc/default/chilli"
+   exit 0
+fi
+
+test -f $DAEMON || exit 0
+test -f $CONFFILE || exit 0
+
+# . /etc/chilli/functions
+
+# check_required
+
+parse_whitelist() {
+        if [ -s $TEMPORAL_CONFFILE ]; then
+                awk '/newdomain/ { print $2 }' $TEMPORAL_CONFFILE |
+                awk -F. '/[a-zA-Z0-9\-\_]/ { print }' |
+                sed s/,/\\n/g > $WHITELIST
+		# Remove IPs that may have skipped the validation
+		cat $WHITELIST | grep -v [0-9]$ > $WHITELIST
+
+                sed /^newdomain/d -i $TEMPORAL_CONFFILE
+        fi
+}
+
+radiusconfig() {
+        rm -rf $TEMPORAL_CONFFILE
+        $RADCONFIG -c /dev/null \
+		--radiusserver1="$RADIUSSERVER1" \
+                --radiusserver2="$RADIUSSERVER2" \
+                --radiussecret="$RADIUSSECRET" \
+                --adminuser="$RADIUSADMUSR" \
+                --adminpasswd="$RADIUSADMPWD" \
+                --radiusnasid="$NASID" \
+                --dhcpif $DHCPIF \
+                --wwwbin=/bin/true \
+                --ipup=/bin/true \
+                --ipdown=/bin/true \
+                > $TEMPORAL_CONFFILE
+
+	parse_whitelist
+
+	# Strip some options that this version of chilli
+	# will not understand (fix with profiles)
+	diff $TEMPORAL_CONFFILE $CONFFILE > /dev/null
+	return $?
+}
+
+RETVAL=0
+prog="chilli"
+
+
+case "$1" in
+  start)
+	echo -n "Starting $DESC: "
+   /sbin/modprobe tun >/dev/null 2>&1
+   echo 1 > /proc/sys/net/ipv4/ip_forward
+   iptables -t nat -I POSTROUTING -j MASQUERADE
+   iptables -A FORWARD -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu
+
+if [ "$DEBUG" != "1" ] ; then
+   start-stop-daemon --start --quiet --pidfile /var/run/$NAME.pid --exec $DAEMON -- $OPTS 
+else
+   $DAEMON $OPTS --debug --fg
+fi
+   RETVAL=$?
+	echo "$NAME."
+	;;
+   
+   checkrunning)
+      check=`start-stop-daemon --start --exec $DAEMON --test`
+      if [ x"$check" != x"$DAEMON already running." ] ; then
+         $0 start
+      fi
+   ;;
+
+   radconfig)
+#      [ -e $MAIN_CONF ] || writeconfig
+      radiusconfig
+      if [ ! $? -eq 0 ]; then
+	  [ -s $TEMPORAL_CONFFILE ] && cp $TEMPORAL_CONFFILE $CONFFILE
+	$0 restart
+      fi
+   ;;
+
+   restart)
+      $0 stop
+      sleep 2
+      $0 start
+      RETVAL=$?
+   ;;
+
+  stop)
+	echo -n "Stopping $DESC: "
+        # crontab -l 2>&- | grep -v $0 | crontab -
+	start-stop-daemon --oknodo --stop --quiet --pidfile /var/run/$NAME.pid --exec $DAEMON
+        iptables -t nat -D POSTROUTING 1
+        iptables -D FORWARD 1
+
+	echo "$NAME."
+	;;
+
+  reload)
+	$0 restart
+	;;
+
+  force-reload)
+	$0 restart
+	;;
+  condrestart)
+	check=`start-stop-daemon --start --exec $DAEMON --test`
+	if [ x"$check" != x"$DAEMON already running." ] ; then
+		$0 restart
+		RETVAL=$?
+	fi
+	;;
+
+  status)
+	# status chilli
+	check=`start-stop-daemon --start --exec $DAEMON --test`
+	if [ x"$check" == x"$DAEMON already running." ] ; then
+		RETVAL=1
+	fi
+	RETVAL=0
+	;;
+
+  *)
+	N=/etc/init.d/$NAME
+	echo "Usage: $N {start|stop|restart|condrestart|status|reload|radconfig}" >&2
+	exit 1
+	;;
+esac
+
+exit 0
+

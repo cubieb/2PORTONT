@@ -1,0 +1,42 @@
+#### Si3226 ####
+obj-$(CONFIG_RTK_VOIP_DRIVERS_SLIC_SI3226) += si3226_QCUK_constants.o
+
+#### Si3226x ####
+obj-$(CONFIG_RTK_VOIP_DRIVERS_SLIC_SI3226x_FB) += si3226x_FLBK_constants.o
+obj-$(CONFIG_RTK_VOIP_DRIVERS_SLIC_SI3226x_QCUK) += si3226x_QCUK_constants.o
+obj-$(CONFIG_RTK_VOIP_DRIVERS_SLIC_SI3226x_PBB) += si3226x_PBB_VDC_4P5_16P0_constants.o
+
+#### Si3217x ####
+obj-$(CONFIG_RTK_VOIP_DRIVERS_SLIC_SI3217x_BB) += si3217x_BKBT_constants.o
+#obj-$(CONFIG_RTK_VOIP_DRIVERS_SLIC_SI3217x_FB) += si3217x_FLBK_GDRV_constants.o
+obj-$(CONFIG_RTK_VOIP_DRIVERS_SLIC_SI3217x_FB) += si3217x_FLBK_NO_GDRV_constants.o
+#obj-$(CONFIG_RTK_VOIP_DRIVERS_SLIC_SI3217x_PBB) += si3217x_PBB_VDC_3P0_6P0_GDRV_constants.o
+#obj-$(CONFIG_RTK_VOIP_DRIVERS_SLIC_SI3217x_PBB) += si3217x_PBB_VDC_9P0_24P0_GDRV_constants.o
+#obj-$(CONFIG_RTK_VOIP_DRIVERS_SLIC_SI3217x_PBB) += si3217x_PBB_VDC_3P0_6P0_NO_GDRV_constants.o
+obj-$(CONFIG_RTK_VOIP_DRIVERS_SLIC_SI3217x_PBB) += si3217x_PBB_VDC_9P0_24P0_NO_GDRV_constants.o
+
+#### Si3050 ####
+ifeq ($(CONFIG_RTK_VOIP_DRIVERS_FXO),y)
+ifeq ($(CONFIG_RTK_VOIP_DRIVERS_SI3050),y)
+obj-y += vdaa_constants.o
+endif
+endif
+
+EXTRA_CFLAGS += -I$(DIR_VOIP)/include
+EXTRA_CFLAGS += -I$(DIR_VOIP)/voip_drivers
+EXTRA_CFLAGS += -I$(DIR_VOIP)/voip_drivers/proslic_api/inc
+EXTRA_CFLAGS += -I$(DIR_VOIP)/voip_drivers/proslic_api/config_inc
+EXTRA_CFLAGS += -I$(DIR_VOIP)/voip_drivers/proslic_api/config_src
+
+EXTRA_CFLAGS += -DREALTEK_PATCH_FOR_SILAB
+ifeq "$(CONFIG_RTK_VOIP_DRIVERS_SLIC_SI3217x)" "y"
+EXTRA_CFLAGS += -DSI3217X
+endif
+ifeq "$(CONFIG_RTK_VOIP_DRIVERS_SLIC_SI3226)" "y"
+EXTRA_CFLAGS += -DSI322X
+endif
+ifeq "$(CONFIG_RTK_VOIP_DRIVERS_SLIC_SI3226x)" "y"
+EXTRA_CFLAGS += -DSI3226X
+endif
+
+include $(DIR_VOIP)/rules.mak

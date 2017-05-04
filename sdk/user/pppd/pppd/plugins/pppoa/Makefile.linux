@@ -1,0 +1,35 @@
+
+all: pppoa.so
+
+CFLAGS += -I../..
+PLUGINDIR = $(LIBDIR)/plugins
+PLUGINSRCS= pppoatm.c ans.c text2atm.c text2qos.c misc.c
+
+#
+# include dependancies if present and backup if as a header file
+ifeq (.depend,$(wildcard .depend))
+include .depend
+endif
+
+pppoatm.o: pppoatm.c
+ans.o: ans.c
+text2atm.o: text2atm.c
+text2qos.o: text2qos.c
+pppoa.so: pppoatm.o ans.o text2atm.o text2qos.o misc.o
+	$(CC) -o $@ $(LDFLAGS) $^
+
+libpppoa.a: pppoatm.o ans.o text2atm.o text2qos.o misc.o
+	$(AR) -rc $@ $^
+
+%.so: %.c
+	$(CC) -o $@ $(LDFLAGS) $(CFLAGS) $^
+
+clean: 
+	rm -f *.o *.so *.a
+
+
+$(PLUGINDIR):
+	$(INSTALL) -d -m 755 $@
+
+depend:
+	$(CPP) -M $(CFLAGS) $(PLUGINSRCS) >.depend

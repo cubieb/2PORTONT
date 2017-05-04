@@ -1,0 +1,9 @@
+@IF@ short_opt @THEN@
+case 'V':	/* Print version and exit.  */
+@ELSE@
+if (strcmp (long_options[option_index].name, "version") == 0) {
+@ENDIF@
+  @parser_name@_print_version ();
+  @parser_name@_free (&local_args_info);
+  exit (EXIT_SUCCESS);@IF@ (not short_opt) @then@
+}@ENDIF@

@@ -1,0 +1,7 @@
+interface br0
+{
+	AdvSendAdvert on;
+	#MaxRtrAdvInterval 5;
+	#MinRtrAdvInterval 3.75;
+	# using default values to all the other arguments
+};

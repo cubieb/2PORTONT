@@ -1,0 +1,1419 @@
+//
+// Copyright (C) 2011 Realtek Semiconductor Corp.
+// All Rights Reserved.
+//
+// This program is the proprietary software of Realtek Semiconductor
+// Corporation and/or its licensors, and only be used, duplicated,
+// modified or distributed under the authorized license from Realtek.
+//
+// ANY USE OF THE SOFTWARE OTHER THAN AS AUTHORIZED UNDER
+// THIS LICENSE OR COPYRIGHT LAW IS PROHIBITED.
+//
+// Purpose : Define diag shell commands for L34.
+//
+// Feature : The file have include the following module and sub-modules
+//           1) L34 commands.
+//
+
+//
+// acl-filter
+//
+
+//rg configuration
+//clear configuration
+//acl-filter configuration
+rg show acl-filter
+
+//rg configuration
+//clear configuration
+//acl-filter configuration
+rg clear acl-filter
+
+//rg configuration
+//add configuration
+//acl-filter configuration
+//entry configuration
+rg add acl-filter entry
+
+//rg configuration
+//get configuration
+//acl-filter configuration
+//entry configuration
+//entry_index
+rg get acl-filter entry <UINT:entry_index>
+
+//rg configuration
+//del configuration
+//acl-filter configuration
+//entry configuration
+//entry_index
+rg del acl-filter entry <UINT:entry_index>
+
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//fwding_type_and_direction configuration
+//fwding_type_and_direction, 0:ingress all packet 1:L34 upstream drop 2:L34 downstream drop 3:L34 upstream assign sid+cvlan+svlan 4:L34 downstream assign cvlan+svlan
+rg set acl-filter fwding_type_and_direction <UINT:fwding_type_and_direction>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//acl_weight configuration
+//acl_weight
+rg set acl-filter acl_weight <UINT:acl_weight>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//ingress_port_mask configuration
+//portmask, <0x000-0xfff>
+rg set acl-filter pattern ingress_port_mask <HEX:portmask>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//ingress_dscp configuration
+//dscp, <0-63>
+rg set acl-filter pattern ingress_dscp <UINT:dscp>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//ingress_ipv6_dscp configuration
+//dscp, <0-63>
+rg set acl-filter pattern ingress_ipv6_dscp <UINT:dscp>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//ingress_intf_idx configuration
+//igr_intf
+rg set acl-filter pattern ingress_intf_idx <UINT:igr_intf>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//egress_intf_idx configuration
+//egr_intf
+rg set acl-filter pattern egress_intf_idx <UINT:egr_intf>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//ingress_stream_id configuration
+//stream_id
+rg set acl-filter pattern ingress_stream_id <UINT:stream_id>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//ingress_ipv4_tagif configuration
+//ingress_ipv4_tagif
+rg set acl-filter pattern ingress_ipv4_tagif <UINT:ingress_ipv4_tagif>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//ingress_ipv6_tagif configuration
+//ingress_ipv6_tagif
+rg set acl-filter pattern ingress_ipv6_tagif <UINT:ingress_ipv6_tagif>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//ingress_ethertype configuration
+//ethtype, 0x0800
+rg set acl-filter pattern ingress_ethertype <HEX:ethtype>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//ingress_ctag_vid configuration
+//vid, <0-4095>
+rg set acl-filter pattern ingress_ctag_vid <UINT:vid>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//ingress_ctag_pri configuration
+//pri, <0-7>
+rg set acl-filter pattern ingress_ctag_pri <UINT:pri>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//ingress_ctag_cfi configuration
+//cfi, <0-1>
+rg set acl-filter pattern ingress_ctag_cfi <UINT:cfi>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//egress_ctag_vid configuration
+//vid, <0-4095>
+rg set acl-filter pattern egress_ctag_vid <UINT:vid>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//egress_ctag_vid_mask configuration
+//vid_mask
+rg set acl-filter pattern egress_ctag_vid_mask <HEX:vid_mask>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//egress_ctag_pri configuration
+//pri, <0-7>
+rg set acl-filter pattern egress_ctag_pri <UINT:pri>
+
+
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//egress_ip4mc_if configuration
+//egress_ip4mc_if, 0:must not be IP4MC  1:must not be IP4MC(not include IGMP)
+rg set acl-filter pattern egress_ip4mc_if <UINT:egress_ip4mc_if>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//egress_ip6mc_if configuration
+//egress_ip6mc_if, 0:must not be IP6MC  1:must not be IP6MC(not include IGMP)
+rg set acl-filter pattern egress_ip6mc_if <UINT:egress_ip6mc_if>
+
+
+
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//ingress_smac configuration
+//smac, A:B:C:D:E:F
+rg set acl-filter pattern ingress_smac <MACADDR:smac>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//ingress_dmac configuration
+//dmac, A:B:C:D:E:F
+rg set acl-filter pattern ingress_dmac <MACADDR:dmac>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//ingress_src_ipv4_addr_start configuration
+//source ip low bound 
+//ingress_src_ipv4_addr_end configuration
+//source ip up bound
+rg set acl-filter pattern ingress_src_ipv4_addr_start <IPV4ADDR:igr_sip_low_bound> ingress_src_ipv4_addr_end <IPV4ADDR:igr_sip_up_bound>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//ingress_dest_ipv4_addr_start configuration
+//destination ip low bound 
+//ingress_dest_ipv4_addr_end configuration
+//destination ip up bound 
+rg set acl-filter pattern ingress_dest_ipv4_addr_start  <IPV4ADDR:igr_dip_low_bound> ingress_dest_ipv4_addr_end  <IPV4ADDR:igr_dip_up_bound>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//ingress_src_ipv6_addr_start configuration
+//source ipv6 low bound 
+//ingress_src_ipv6_addr_end configuration
+//source ipv6 up bound
+rg set acl-filter pattern ingress_src_ipv6_addr_start  <IPV6ADDR:igr_sip6_low_bound> ingress_src_ipv6_addr_end <IPV6ADDR:igr_sip6_up_bound> 
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//ingress_src_ipv6_addr configuration
+//ingress_src_ipv6_addr
+rg set acl-filter pattern ingress_src_ipv6_addr  <IPV6ADDR:ingress_src_ipv6_addr> 
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//ingress_src_ipv6_addr_mask configuration
+//ingress_src_ipv6_addr_mask
+rg set acl-filter pattern ingress_src_ipv6_addr_mask  <IPV6ADDR:ingress_src_ipv6_addr_mask> 
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//ingress_dest_ipv6_addr_start configuration
+//destination ipv6 low bound 
+//ingress_dest_ipv6_addr_end configuration
+//destination ipv6 up bound 
+rg set acl-filter pattern ingress_dest_ipv6_addr_start <IPV6ADDR:igr_dip6_low_bound> ingress_dest_ipv6_addr_end <IPV6ADDR:igr_sip6_up_bound> 
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//ingress_dest_ipv6_addr configuration
+//ingress_dest_ipv6_addr
+rg set acl-filter pattern ingress_dest_ipv6_addr  <IPV6ADDR:ingress_dest_ipv6_addr> 
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//ingress_dest_ipv6_addr_mask configuration
+//ingress_dest_ipv6_addr_mask
+rg set acl-filter pattern ingress_dest_ipv6_addr_mask  <IPV6ADDR:ingress_dest_ipv6_addr_mask> 
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//ingress_src_l4_port_start configuration
+//layer4 source port low bound, 0~65535
+//ingress_src_l4_port_end configuration
+//layer4 source port up bound, 0~65535
+rg set acl-filter pattern ingress_src_l4_port_start <UINT:igr_l4sport_low_bound> ingress_src_l4_port_end <UINT:igr_l4sport_up_bound>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//ingress_dest_l4_port_start configuration
+//layer4 destination port low bound, 0~65535
+//ingress_dest_l4_port_end configuration
+//layer4 destination port up bound, 0~65535
+rg set acl-filter pattern ingress_dest_l4_port_start <UINT:igr_l4dport_low_bound> ingress_dest_l4_port_end <UINT:igr_l4dport_up_bound>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//egress_src_ipv4_addr_start configuration
+//source ip low bound 
+//egress_src_ipv4_addr_end configuration
+//source ip up bound 
+rg set acl-filter pattern egress_src_ipv4_addr_start <IPV4ADDR:egr_sip_low_bound> egress_src_ipv4_addr_end <IPV4ADDR:egr_sip_up_bound>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//egress_dest_ipv4_addr_start configuration
+//destination ip low bound 
+//egress_dest_ipv4_addr_end configuration
+//destination ip up bound 
+rg set acl-filter pattern egress_dest_ipv4_addr_start <IPV4ADDR:egr_dip_low_bound> egress_dest_ipv4_addr_end <IPV4ADDR:egr_dip_up_bound>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//egress_src_l4_port_start configuration
+//layer4 source port low bound, 0~65535
+//egress_src_l4_port_end configuration
+//layer4 source port up bound, 0~65535
+rg set acl-filter pattern egress_src_l4_port_start <UINT:egr_l4sport_low_bound> egress_src_l4_port_end <UINT:egr_l4sport_up_bound>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//egress_dest_l4_port_start configuration
+//layer4 destination port low bound, 0~65535
+//egress_dest_l4_port_end configuration
+//layer4 destination port up bound, 0~65535
+rg set acl-filter pattern egress_dest_l4_port_start <UINT:egr_l4dport_low_bound> egress_dest_l4_port_end <UINT:igr_l4dport_up_bound>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//ingress_l4_protocal
+//protocal, 0:UDP 1:TCP 2:ICMP
+rg set acl-filter pattern ingress_l4_protocal <UINT:protocal>
+
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//ingress_l4_protocal_value
+//protocal_value, ex: 1(icmp) 2(igmp) 6(tcp) 17(udp)
+rg set acl-filter pattern ingress_l4_protocal_value <HEX:protocal>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//ingress_port_idx configuration(upstream only)
+//ingress_port_idx, 0~7	(upstream only)
+rg set acl-filter pattern ingress_port_idx <UINT:ingress_port_idx>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//egress_port_idx configuration(downstream only)
+//egress_port_idx, 0~7 (downstream only; in L34 mode, assign CPU port)
+rg set acl-filter pattern egress_port_idx <UINT:egress_port_idx>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//internal_pri configuration
+//internal_pri, 0~7 
+rg set acl-filter pattern internal_pri <UINT:internal_pri>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//ingress_stag_vid configuration
+//ingress_stag_vid
+rg set acl-filter pattern ingress_stag_vid <UINT:ingress_stag_vid>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//ingress_stag_pri configuration
+//ingress_stag_pri, 0~7
+rg set acl-filter pattern ingress_stag_pri <UINT:ingress_stag_pri>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//ingress_stag_dei configuration
+//ingress_stag_dei, 0~1
+rg set acl-filter pattern ingress_stag_dei <UINT:ingress_stag_dei>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//ingress_stagIf configuration
+//ingress_stagIf, 0:must not have stag  1:must have stag
+rg set acl-filter pattern ingress_stagIf <UINT:ingress_stagIf>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//ingress_ctagIf configuration
+//ingress_ctagIf, 0:must not have ctag  1:must have ctag
+rg set acl-filter pattern ingress_ctagIf <UINT:ingress_ctagIf>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//ingress_wlanDevMask configuration
+//ingress_wlanDevMask, //0:root, 1:~4:vap 5~12:wps
+rg set acl-filter pattern ingress_wlanDevMask <UINT:ingress_wlanDevMask>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//ingress_smac_mask configuration
+//smac_mask, ex FF:FF:FF:FF:FF:FF
+rg set acl-filter pattern ingress_smac_mask <MACADDR:smac_mask>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//ingress_dmac_mask configuration
+//dmac_mask, ex FF:FF:FF:FF:FF:FF
+rg set acl-filter pattern ingress_dmac_mask <MACADDR:dmac_mask>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//ingress_ethertype_mask configuration
+//ethtype_mask, ex 0xffff
+rg set acl-filter pattern ingress_ethertype_mask <HEX:ethtype_mask>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//ingress_stream_id_mask configuration
+//stream_id_mask, ex 0xffff
+rg set acl-filter pattern ingress_stream_id_mask <HEX:stream_id_mask>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//ingress_port_idx_mask configuration
+//ingress_port_idx_mask, ex 0xffff
+rg set acl-filter pattern ingress_port_idx_mask <HEX:ingress_port_idx_mask>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//pattern configuration
+//egress_port_idx_mask configuration
+//egress_port_idx_mask, ex 0xffff
+rg set acl-filter pattern egress_port_idx_mask <HEX:egress_port_idx_mask>
+
+
+
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//action configuration
+//action_type configuration
+//actiontype, 0:DROP 1:PERMIT 2:TRAP TO CPU 3:QOS/CVLAN/SVLAN/StreamID 4:TRAP_TO_PS 5:POLICY_ROUTE
+rg set acl-filter action action_type <UINT:actiontype>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//action configuration
+//policy-route configuration
+//egress_intf_idx configuration
+//egress_intf_index, <0-7>
+rg set acl-filter action policy-route egress_intf_idx <UINT:egr_intf>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//action configuration
+//qos configuration
+//action_dot1p_remarking_pri
+//dot1p_remarking_pri, <0-7>
+rg set acl-filter action qos action_dot1p_remarking_pri <UINT:dot1p_remarking_pri>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//action configuration
+//qos configuration
+//action_ip_precedence_remarking_pri
+//ip_precedence_remarking_pri, <0-7>
+rg set acl-filter action qos action_ip_precedence_remarking_pri  <UINT:ip_precedence_remarking_pri>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//action configuration
+//qos configuration
+//action_dscp_remarking_pri
+//dscp_remarking_pri, <0-63>
+rg set acl-filter action qos action_dscp_remarking_pri <UINT:dscp_remarking_pri>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//action configuration
+//qos configuration
+//action_queue_id
+//queue_id, <0-7>
+rg set acl-filter action qos action_queue_id <UINT:queue_id>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//action configuration
+//qos configuration
+//action_egress_internal_priority
+//egress_internal_priority, <0-7>
+rg set acl-filter action qos action_egress_internal_priority <UINT:egress_internal_priority>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//action configuration
+//qos configuration
+//qos configuration
+//action_share_meter
+//share_meter
+rg set acl-filter action qos action_share_meter <UINT:share_meter>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//action configuration
+//qos configuration
+//action_stream_id
+//stream_id
+rg set acl-filter action qos action_stream_id <UINT:stream_id>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//action configuration
+//qos configuration
+//action_acl_priority
+//priority, <0-7>
+rg set acl-filter action qos action_acl_priority <UINT:priority>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//action configuration
+//qos configuration
+//action_redirect
+//redirect_portmask
+rg set acl-filter action qos action_redirect <UINT:redirect_portmask>
+
+
+///*9602C CF ACTIONS*/
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//action configuration
+//qos configuration
+//action_stag configuration
+//tagDecision
+//tagDecision, 0:nop, 1:tag with TPID, 2,tag with TPID2, 3untag, 4:transparent, 5:tag with original-stag-TPID
+//svidDecision configuration
+//svidDecision, 0:nop, 1:assign, 2:from 1st tag, 3:from 2nd tag
+//spriDecision configuration
+//spriDecision, 0:nop, 1:assign, 2:from 1st tag, 3:from 2nd tag, 4:from internal 
+//svid configuration
+//svid
+//spri configuration
+//spri
+rg set acl-filter action qos action_stag tagDecision <UINT:tagDecision> svidDecision <UINT:svidDecision> spriDecision <UINT:spriDecision> svid <UINT:svid> spri <UINT:spri>
+
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//action configuration
+//qos configuration
+//action_ctag configuration
+//tagDecision
+//tagDecision, 0:nop, 1:tag, 2:untag, 3:transparent
+//cvidDecision configuration
+//cvidDecision, 0:nop, 1:Assign, 2:from 1st Tag, 3:from 2nd Tag, 4:from internal
+//cpriDecision configuration
+//cpriDecision, 0:nop, 1:Assign, 2:from 1st Tag, 3:from 2nd Tag, 4:from internal
+//cvid configuration
+//cvid
+//cpri configuration
+//cpri
+rg set acl-filter action qos action_ctag tagDecision <UINT:tagDecision> cvidDecision <UINT:cvidDecision> cpriDecision <UINT:cpriDecision> cvid <UINT:cvid> cpri <UINT:cpri>
+
+///*9602C CF ACTIONS END*/
+
+
+///*RTL96000 SERIES CF ACTIONS*/
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//action configuration
+//qos configuration
+//action_stag configuration
+//tagWithTPID
+//svidDecision configuration
+//svidDecision, 0:Assign 1:From 1st Tag 2:From 2nd Tag 3:Nop
+//spriDecision configuration
+//spriDecision, 0;Assign 1:From 1st 2:From 2nd 3:From Internal 4:Nop
+//svid configuration
+//svid
+//spri configuration
+//spri
+rg set acl-filter action qos action_stag tagWithTPID svidDecision <UINT:svidDecision> spriDecision <UINT:spriDecision> svid <UINT:svid> spri <UINT:spri>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//action configuration
+//qos configuration
+//action_stag configuration
+//tagWith8100
+//svidDecision configuration
+//svidDecision, 0:Assign 1:From 1st Tag 2:From 2nd Tag 3:Nop
+//spriDecision configuration
+//spriDecision, 0;Assign 1:From 1st 2:From 2nd 3:From Internal 4:Nop
+//svid configuration
+//svid
+//spri configuration
+//spri
+rg set acl-filter action qos action_stag tagWith8100 svidDecision <UINT:svidDecision> spriDecision <UINT:spriDecision> svid <UINT:svid> spri <UINT:spri>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//action configuration
+//qos configuration
+//action_stag configuration
+//tagWithSP2C
+rg set acl-filter action qos action_stag tagWithSP2C 
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//action configuration
+//qos configuration
+//action_stag configuration
+//untag
+rg set acl-filter action qos action_stag untag 
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//action configuration
+//qos configuration
+//action_stag configuration
+//transparent
+rg set acl-filter action qos action_stag transparent 
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//action configuration
+//qos configuration
+//action_stag configuration
+//nop
+rg set acl-filter action qos action_stag nop
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//action configuration
+//qos configuration
+//action_ctag configuration
+//tagging
+//cvidDecision configuration
+//cvidDecision, 0:Assign 1:From 1st Tag 2:From 2nd Tag 3:From Internal 4:DMAC2CVID 5:Nop 
+//cpriDecision configuration
+//cpriDecision, 0:Assign 1:From 1st Tag 2:From 2nd Tag 3:From Internal 4:Nop
+//cvid configuration
+//cvid
+//cpri configuration
+//cpri
+rg set acl-filter action qos action_ctag tagging cvidDecision <UINT:cvidDecision> cpriDecision <UINT:cpriDecision> cvid <UINT:cvid> cpri <UINT:cpri>
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//action configuration
+//qos configuration
+//action_ctag configuration
+//tagWithC2S
+rg set acl-filter action qos action_ctag tagWithC2S 
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//action configuration
+//qos configuration
+//action_ctag configuration
+//tagWithSP2C
+rg set acl-filter action qos action_ctag tagWithSP2C 
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//action configuration
+//qos configuration
+//action_ctag configuration
+//untag
+rg set acl-filter action qos action_ctag untag 
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//action configuration
+//qos configuration
+//action_ctag configuration
+//transparent
+rg set acl-filter action qos action_ctag transparent 
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//action configuration
+//qos configuration
+//action_ctag configuration
+//nop
+rg set acl-filter action qos action_ctag nop
+
+///*RTL96000 SERIES CF ACTIONS END*/
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//action configuration
+//qos configuration
+//action_ingress_vid configuration
+//ingress_vid
+rg set acl-filter action qos action_ingress_vid <UINT:ingress_vid> 
+
+
+//rg configuration
+//set configuration
+//acl-filter configuration
+//action configuration
+//qos configuration
+//action_downstream_uni_portmask configuration
+//portmask
+rg set acl-filter action qos action_downstream_uni_portmask portmask <HEX:portmask>
+
+//
+// classify-filter
+//
+
+//rg configuration
+//clear configuration
+//classify-filter configuration
+rg show classify-filter
+
+//rg configuration
+//clear configuration
+//classify-filter configuration
+rg clear classify-filter
+
+//rg configuration
+//add configuration
+//classify-filter configuration
+//entry configuration
+rg add classify-filter entry
+
+//rg configuration
+//get configuration
+//classify-filter configuration
+//entry configuration
+//index
+rg get classify-filter entry <UINT:index>
+
+//rg configuration
+//del configuration
+//classify-filter configuration
+//entry configuration
+//index
+rg del classify-filter entry <UINT:index>
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//entry configuration
+//index
+rg set classify-filter entry <UINT:index>
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//pattern configuration
+//etherType configuration
+//etherType
+rg set classify-filter pattern etherType <HEX:etherType>
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//pattern configuration
+//gemidx configuration
+//gemidx
+rg set classify-filter pattern gemidx <UINT:gemidx>
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//pattern configuration
+//llid configuration
+//llid
+rg set classify-filter pattern llid <UINT:llid>
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//pattern configuration
+//outterTagVid configuration
+//outterTagVid
+rg set classify-filter pattern outterTagVid <UINT:outterTagVid>
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//pattern configuration
+//outterTagPri configuration
+//outterTagPri
+rg set classify-filter pattern outterTagPri <UINT:outterTagPri>
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//pattern configuration
+//internalPri configuration
+//internalPri
+rg set classify-filter pattern internalPri <UINT:internalPri>
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//pattern configuration
+//stagIf configuration
+//stagIf
+rg set classify-filter pattern stagIf <UINT:stagIf>
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//pattern configuration
+//ctagIf configuration
+//ctagIf
+rg set classify-filter pattern ctagIf <UINT:ctagIf>
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//pattern configuration
+//uni configuration
+//uni
+rg set classify-filter pattern uni <UINT:uni>
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//pattern configuration
+//etherType_mask configuration
+//etherType_mask, ex: 0xFFFF(16-bits)
+rg set classify-filter pattern etherType_mask <HEX:etherType_mask>
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//pattern configuration
+//gemidx_mask configuration
+//gemidx_mask, ex: 0xFF(8-bits)
+rg set classify-filter pattern gemidx_mask <HEX:gemidx_mask>
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//pattern configuration
+//uni_mask configuration
+//uni_mask, ex: 0x7 (3-bits)
+rg set classify-filter pattern uni_mask <UINT:uni_mask>
+
+
+///*9602C CF ACTIONS*/
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//action configuration
+//direction configuration
+//upstream
+//action_stag configuration
+//tagDecision
+//tagDecision, 0:nop, 1:tag with TPID, 2,tag with TPID2, 3untag, 4:transparent, 5:tag with original-stag-TPID
+//svidDecision configuration
+//svidDecision, 0:nop, 1:assign, 2:from 1st tag, 3:from 2nd tag
+//spriDecision configuration
+//spriDecision, 0:nop, 1:assign, 2:from 1st tag, 3:from 2nd tag, 4:from internal 
+//svid configuration
+//svid
+//spri configuration
+//spri
+rg set classify-filter action direction upstream action_stag tagDecision <UINT:tagDecision> svidDecision <UINT:svidDecision> spriDecision <UINT:spriDecision> svid <UINT:svid> spri <UINT:spri>
+
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//action configuration
+//direction configuration
+//upstream
+//action_ctag configuration
+//tagDecision
+//tagDecision, 0:nop, 1:tag, 2:untag, 3:transparent
+//cvidDecision configuration
+//cvidDecision, 0:nop, 1:Assign, 2:from 1st Tag, 3:from 2nd Tag, 4:from internal
+//cpriDecision configuration
+//cpriDecision, 0:nop, 1:Assign, 2:from 1st Tag, 3:from 2nd Tag, 4:from internal
+//cvid configuration
+//cvid
+//cpri configuration
+//cpri
+rg set classify-filter action direction upstream action_ctag tagDecision <UINT:tagDecision> cvidDecision <UINT:cvidDecision> cpriDecision <UINT:cpriDecision> cvid <UINT:cvid> cpri <UINT:cpri>
+
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//action configuration
+//direction configuration
+//upstream
+//action_fwd configuration
+//fwdDecision configuration
+//fwdDecision, 0:nop, 1:drop, 2:trap, 3:drop to pon
+rg set classify-filter action direction upstream action_fwd fwdDecision <UINT:fwdDecision>
+
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//action configuration
+//direction configuration
+//upstream
+//action_cfpri configuration
+//cfpriDecision configuration
+//cfpriDecision, 0:assign 1:nop
+//cfpri configuration
+//cfpri
+rg set classify-filter action direction upstream action_cfpri cfpriDecision <UINT:cfpriDecision> cfpri <UINT:cfpri>
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//action configuration
+//direction configuration
+//upstream
+//action_dscp configuration
+//dscpDecision configuration
+//dscpDecision, 0:assign 1:nop
+//dscp configuration
+//dscp
+rg set classify-filter action direction upstream action_dscp dscpDecision <UINT:dscpDecision> dscp <UINT:dscp>
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//action configuration
+//direction configuration
+//upstream
+//action_sid
+//sidDecision configuration
+//sidDecision, 0:assign 1:nop
+//sid configuration
+//sid
+rg set classify-filter action direction upstream action_sid sidDecision <UINT:sidDecision> sid <UINT:sid>
+
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//action configuration
+//direction configuration
+//downstream
+//action_stag configuration
+//tagDecision
+//tagDecision, 0:nop, 1:tag with TPID, 2,tag with TPID2, 3untag, 4:transparent, 5:tag with original-stag-TPID
+//svidDecision configuration
+//svidDecision, 0:nop, 1:assign, 2:from 1st tag, 3:from 2nd tag,
+//spriDecision configuration
+//spriDecision, 0:nop, 1:assign, 2:from 1st tag, 3:from 2nd tag, 4:from internal
+//svid configuration
+//svid
+//spri configuration
+//spri
+rg set classify-filter action direction downstream action_stag tagDecision <UINT:tagDecision> svidDecision <UINT:svidDecision> spriDecision <UINT:spriDecision> svid <UINT:svid> spri <UINT:spri>
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//action configuration
+//direction configuration
+//downstream
+//action_ctag configuration
+//tagDecision
+//tagDecision, 0:nop, 1:tag, 2:untag, 3:transparent
+//cvidDecision configuration
+//cvidDecision, 0:nop, 1:Assign, 2:from 1st Tag, 3:from 2nd Tag
+//cpriDecision configuration
+//cpriDecision, 0:nop, 1:Assign, 2:from 1st Tag, 3:from 2nd Tag, 4:from internal
+//cvid configuration
+//cvid
+//cpri configuration
+//cpri
+rg set classify-filter action direction downstream action_ctag tagDecision <UINT:tagDecision> cvidDecision <UINT:cvidDecision> cpriDecision <UINT:cpriDecision> cvid <UINT:cvid> cpri <UINT:cpri>
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//action configuration
+//direction configuration
+//downstream
+//action_fwd configuration
+//fwdDecision configuration
+//fwdDecision, 0:filter by porrmask, 1:force to portmask, 2:trap, 3:nop
+//fwdportmask configuration
+//fwdportmask
+rg set classify-filter action direction downstream action_fwd fwdDecision <UINT:fwdDecision> fwdportmask <HEX:fwdportmask>
+
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//action configuration
+//direction configuration
+//downstream
+//action_cfpri configuration
+//cfpriDecision configuration
+//cfpriDecision, 0:assign 1:nop 
+//cfpri configuration
+//cfpri
+rg set classify-filter action direction downstream action_cfpri cfpriDecision <UINT:cfpriDecision> cfpri <UINT:cfpri>
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//action configuration
+//direction configuration
+//downstream
+//action_dscp configuration
+//dscpDecision configuration
+//dscpDecision, 0:assign 1:nop
+//dscp configuration
+//dscp
+rg set classify-filter action direction downstream action_dscp dscpDecision <UINT:dscpDecision> dscp <UINT:dscp>
+
+///*9602C CF ACTIONS END*/
+
+
+///*9600SERIES CF ACTIONS*/
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//action configuration
+//direction configuration
+//upstream
+//action_drop
+rg set classify-filter action direction upstream action_drop 
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//action configuration
+//direction configuration
+//upstream
+//action_sid
+//sid
+rg set classify-filter action direction upstream action_sid <UINT:sid>
+
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//action configuration
+//direction configuration
+//downstream
+//action_drop
+rg set classify-filter action direction downstream action_drop 
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//action configuration
+//direction configuration
+//upstream
+//action_stag configuration
+//tagWithTPID
+//svidDecision configuration
+//svidDecision, 0:Assign 1:From 1st Tag 2:From 2nd Tag 3:Nop
+//spriDecision configuration
+//spriDecision, 0;Assign 1:From 1st 2:From 2nd 3:From Internal 4:Nop
+//svid configuration
+//svid
+//spri configuration
+//spri
+rg set classify-filter action direction upstream action_stag tagWithTPID svidDecision <UINT:svidDecision> spriDecision <UINT:spriDecision> svid <UINT:svid> spri <UINT:spri>
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//action configuration
+//direction configuration
+//upstream
+//action_stag configuration
+//tagWith8100
+//svidDecision configuration
+//svidDecision, 0:Assign 1:From 1st Tag 2:From 2nd Tag 3:Nop
+//spriDecision configuration
+//spriDecision, 0;Assign 1:From 1st 2:From 2nd 3:From Internal 4:Nop
+//svid configuration
+//svid
+//spri configuration
+//spri
+rg set classify-filter action direction upstream action_stag tagWith8100 svidDecision <UINT:svidDecision> spriDecision <UINT:spriDecision> svid <UINT:svid> spri <UINT:spri>
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//action configuration
+//direction configuration
+//upstream
+//action_stag configuration
+//unTag
+rg set classify-filter action direction upstream action_stag unTag
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//action configuration
+//direction configuration
+//upstream
+//action_stag configuration
+//transparent
+rg set classify-filter action direction upstream action_stag transparent
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//action configuration
+//direction configuration
+//upstream
+//action_ctag configuration
+//tagging
+//cvidDecision configuration
+//cvidDecision, 0:Assign 1:From 1st Tag 2:From 2nd Tag 3:From Internal 4:DMAC2CVID 5:Nop
+//cpriDecision configuration
+//cpriDecision, 0:Assign 1:From 1st Tag 2:From 2nd Tag 3:From Internal 4:Nop
+//cvid configuration
+//cvid
+//cpri configuration
+//cpri
+rg set classify-filter action direction upstream action_ctag tagging cvidDecision <UINT:cvidDecision> cpriDecision <UINT:cpriDecision> cvid <UINT:cvid> cpri <UINT:cpri>
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//action configuration
+//direction configuration
+//upstream
+//action_ctag configuration
+//tagWithC2S
+rg set classify-filter action direction upstream action_ctag tagWithC2S
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//action configuration
+//direction configuration
+//upstream
+//action_ctag configuration
+//unTag
+rg set classify-filter action direction upstream action_ctag unTag
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//action configuration
+//direction configuration
+//upstream
+//action_ctag configuration
+//transparent
+rg set classify-filter action direction upstream action_ctag transparent
+
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//action configuration
+//direction configuration
+//upstream
+//action_cfpri configuration
+//cfpri
+rg set classify-filter action direction upstream action_cfpri <UINT:cfpri>
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//action configuration
+//direction configuration
+//upstream
+//action_dscp configuration
+//dscp
+rg set classify-filter action direction upstream action_dscp <UINT:dscp>
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//action configuration
+//direction configuration
+//upstream
+//action_log configuration
+//cntIdx
+rg set classify-filter action direction upstream action_log <UINT:cntIdx>
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//action configuration
+//direction configuration
+//downstream
+//action_stag configuration
+//tagWithTPID
+//svidDecision configuration
+//svidDecision, 0:Assign 1:From 1st Tag 2:From 2nd Tag 3:Nop
+//spriDecision configuration
+//spriDecision, 0;Assign 1:From 1st 2:From 2nd 3:From Internal 4:Nop
+//svid configuration
+//svid
+//spri configuration
+//spri
+rg set classify-filter action direction downstream action_stag tagWithTPID svidDecision <UINT:svidDecision> spriDecision <UINT:spriDecision> svid <UINT:svid> spri <UINT:spri>
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//action configuration
+//direction configuration
+//downstream
+//action_stag configuration
+//tagWith8100
+//svidDecision configuration
+//svidDecision, 0:Assign 1:From 1st Tag 2:From 2nd Tag 3:Nop
+//spriDecision configuration
+//spriDecision, 0;Assign 1:From 1st 2:From 2nd 3:From Internal 4:Nop
+//svid configuration
+//svid
+//spri configuration
+//spri
+rg set classify-filter action direction downstream action_stag tagWith8100 svidDecision <UINT:svidDecision> spriDecision <UINT:spriDecision> svid <UINT:svid> spri <UINT:spri>
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//action configuration
+//direction configuration
+//downstream
+//action_stag configuration
+//tagWithSP2C
+rg set classify-filter action direction downstream action_stag tagWithSP2C
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//action configuration
+//direction configuration
+//downstream
+//action_stag configuration
+//unTag
+rg set classify-filter action direction downstream action_stag unTag
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//action configuration
+//direction configuration
+//downstream
+//action_stag configuration
+//transparent
+rg set classify-filter action direction downstream action_stag transparent
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//action configuration
+//direction configuration
+//downstream
+//action_ctag configuration
+//tagging
+//cvidDecision configuration
+//cvidDecision, 0:Assign 1:From 1st Tag 2:From 2nd Tag 3:From Internal 4:DMAC2CVID 5:Nop
+//cpriDecision configuration
+//cpriDecision, 0:Assign 1:From 1st Tag 2:From 2nd Tag 3:From Internal 4:Nop
+//cvid configuration
+//cvid
+//cpri configuration
+//cpri
+rg set classify-filter action direction downstream action_ctag tagging cvidDecision <UINT:cvidDecision> cpriDecision <UINT:cpriDecision> cvid <UINT:cvid> cpri <UINT:cpri>
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//action configuration
+//direction configuration
+//downstream
+//action_ctag configuration
+//tagWithSP2C
+rg set classify-filter action direction downstream action_ctag tagWithSP2C
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//action configuration
+//direction configuration
+//downstream
+//action_ctag configuration
+//unTag
+rg set classify-filter action direction downstream action_ctag unTag
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//action configuration
+//direction configuration
+//downstream
+//action_ctag configuration
+//transparent
+rg set classify-filter action direction downstream action_ctag transparent
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//action configuration
+//direction configuration
+//downstream
+//action_cfpri configuration
+//cfpri
+rg set classify-filter action direction downstream action_cfpri <UINT:cfpri>
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//action configuration
+//direction configuration
+//downstream
+//action_dscp configuration
+//dscp
+rg set classify-filter action direction downstream action_dscp <UINT:dscp>
+
+//rg configuration
+//set configuration
+//classify-filter configuration
+//action configuration
+//direction configuration
+//downstream
+//uniDecision configuration
+//uniDecision 0:Copy to portMask 1:Force to portmask
+//portmask configuration
+//portmask
+rg set classify-filter action direction downstream action_uni uniDecision <UINT:uniDecision> portmask <HEX:portmask>
+
+///*9600SERIES CF ACTIONS END*/
+

@@ -1,0 +1,92 @@
+//
+// Copyright (C) 2011 Realtek Semiconductor Corp.
+// All Rights Reserved.
+//
+// This program is the proprietary software of Realtek Semiconductor
+// Corporation and/or its licensors, and only be used, duplicated,
+// modified or distributed under the authorized license from Realtek.
+//
+// ANY USE OF THE SOFTWARE OTHER THAN AS AUTHORIZED UNDER
+// THIS LICENSE OR COPYRIGHT LAW IS PROHIBITED.
+//
+// $Revision: 39101 $
+// $Date: 2013-05-03 17:35:27 +0800 (Fri, 03 May 2013) $
+//
+// Purpose : Define diag shell commands for EEE.
+//
+// Feature : The file have include the following module and sub-modules
+//           1) EEE commands.
+//
+
+//EEE configuration
+//get configuration
+//port configuration
+//port list
+//all ports
+eee get port ( <PORT_LIST:port> | all )
+
+//EEE configuration
+//set configuration
+//port configuration
+//port list
+//all ports
+//state configuration
+//disable function
+//enable function
+eee set port ( <PORT_LIST:port> | all ) state ( disable | enable )
+
+//EEE configuration
+//get configuration
+//lldp configuration
+//state configuration
+eee get lldp state
+
+//EEE configuration
+//set configuration
+//lldp configuration
+//state configuration
+//disable function
+//enable function
+eee set lldp state ( disable | enable )
+
+//EEE configuration
+//get configuration
+//lldp configuration
+//trap configuration
+//state configuration
+eee get lldp trap state
+
+//EEE configuration
+//set configuration
+//lldp configuration
+//trap configuration
+//state configuration
+//disable function
+//enable function
+eee set lldp trap state ( disable | enable )
+
+//EEE configuration
+//set configuration
+//lldp configuration
+//trap priority configuration
+//priority, <0~7>
+eee set lldp trap-priority <UINT:priority>
+
+//EEE configuration
+//get configuration
+//lldp configuration
+//trap priority configuration
+eee get lldp trap-priority
+
+//EEE configuration
+//set configuration
+//lldp configuration
+//sub-type configuration
+//sub-type, <0x00~0xFF>
+eee set lldp sub-type <UINT:subtype>
+
+//EEE configuration
+//get configuration
+//lldp configuration
+//sub-type configuration
+eee get lldp sub-type

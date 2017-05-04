@@ -1,0 +1,17 @@
+#! @SHELL@
+
+# the next program must exit with error
+
+if $* ./test_multiple -i 100 -s "foo" -s; then 
+	false; 
+else 
+	if $* ./test_multiple -L1 -L2 -L3 -L4 --limited-open-right=1 --limited-interval=1 --limited-interval=1 --limited-interval=1 --limited-interval=1; then 
+		false; 
+	else 
+		if $* ./test_multiple --limited-open-left=1 --limited-open-left==2 --limited-open-left=3 --limited-open-left=toomuch; then 
+			false; 
+		else 
+			true; 
+		fi
+	fi
+fi

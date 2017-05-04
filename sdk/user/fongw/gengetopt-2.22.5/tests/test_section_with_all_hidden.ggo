@@ -1,0 +1,14 @@
+# this contains only hidden options in a section
+
+package "only_hidden"
+version "0.1"
+
+section "First section.  This contains non hidden options"
+
+option "nonhidden" - "non hidden" string
+option "nonhidden2" - "non hidden2" string
+
+section "Hidden section.  This contains only hidden options"
+
+option "hidden" - "hidden" string hidden
+option "hidden2" - "hidden2" string hidden

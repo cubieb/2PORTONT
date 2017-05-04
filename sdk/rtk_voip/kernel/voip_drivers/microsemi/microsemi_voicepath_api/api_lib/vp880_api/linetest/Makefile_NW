@@ -1,0 +1,25 @@
+
+obj-y	:=	vp_3ele_cap.o \
+			vp_3ele_res_hg.o \
+			vp_3ele_res_lg.o \
+			vp_ac_rloop.o \
+			vp_api_testline.o \
+			vp_calibrate.o \
+			vp_conclude.o \
+			vp_cross_connect.o \
+			vp_dc_rloop.o \
+			vp_flt_dscrm.o \
+			vp_loopback.o \
+			vp_loop_conditions.o \
+			vp_met_ramp.o \
+			vp_met_ramp_int.o \
+			vp_msocket.o \
+			vp_open_vxc.o \
+			vp_test_timer.o
+
+EXTRA_CFLAGS += -I$(DIR_VOIP)/voip_drivers/$(MICROSEMI_LIB)/includes/
+EXTRA_CFLAGS += -I$(DIR_VOIP)/include/
+EXTRA_CFLAGS += -I$(DIR_VOIP)/voip_drivers/microsemi/microsemi_voicepath_api/arch/rtl89xxb/
+EXTRA_CFLAGS += -I$(DIR_VOIP)/voip_drivers/$(MICROSEMI_LIB)/vp880_api/linetest/
+
+include $(DIR_VOIP)/rules.mak

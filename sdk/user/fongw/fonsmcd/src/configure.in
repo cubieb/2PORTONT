@@ -1,0 +1,68 @@
+# 
+# FONUCS configure template
+#
+# This file is part of FONUCS. Copyright (C) 2006, 2007 FON Wireless Ltd.
+#
+# Created: 20060627 Pablo Martin <pablo@fon.com>
+#
+# $Id: configure.in,v 1.1 2012/09/20 03:49:35 paula Exp $
+#
+# Process this file with autoconf to produce a configure script.
+AC_INIT([client/fonsmcd/fonsmcd.c])
+# AC_CANONICAL_SYSTEM
+AC_CONFIG_AUX_DIR(.configaux)
+version=sinclude(version)
+AM_INIT_AUTOMAKE(fonsmcd, $version)
+if test -f client/fonsmcd/fonsmcd.c; then
+	echo
+	echo "Configuration and building of this project is not supported from the source"
+	echo "directory. Please, create a build directory and run ../configure from there:"
+	echo ' mkdir -p build && cd build && ../configure'
+	echo
+	exit 1
+fi
+AM_CONFIG_HEADER(config.h)
+# Checks for programs.
+AC_PROG_CC
+AC_PROG_CXX
+AC_PROG_LIBTOOL
+
+if test x$debug = xtrue; then
+        CPPFLAGS="$CPPFLAGS -DDEBUG"
+        OLEVEL=0
+        GLEVEL=3
+	GOPT="-ggdb$GLEVEL"
+	OOPT=""
+else
+        CPPFLAGS="$CPPFLAGS -DNDEBUG"
+	GLEVEL=0
+	OOPT="-O$OLEVEL -fexpensive-optimizations -funroll-loops"
+fi
+AM_CONDITIONAL(DEBUG, test x$debug = xtrue)
+#prefix=`cat $PROFILE | grep ^PREFIX | cut -d' ' -f 2`
+#if test "$prefix" = ""; then
+#	echo "set PREFIX in profile $PROFILE"
+#	exit 1
+#fi
+
+AC_SUBST(configdir)
+AC_SUBST(testsuitedir)
+AC_SUBST(binarydir)
+AC_SUBST(repositorydir)
+AC_SUBST(profile)
+
+AC_SUBST(CFLAGS)
+AC_SUBST(CPPFLAGS)
+AC_SUBST(LDFLAGS)
+
+# Checks for header files.
+# Checks for typedefs, structures, and compiler characteristics.
+# Checks for library functions.
+AC_OUTPUT(Makefile)
+echo "--------------------------------------------------------"
+echo "Configured. build=${build} host=${host} target=${target}"
+echo "CFLAGS $CFLAGS"
+echo "CXXFLAGS $CXXFLAGS"
+echo "--------------------------------------------------------"
+
+

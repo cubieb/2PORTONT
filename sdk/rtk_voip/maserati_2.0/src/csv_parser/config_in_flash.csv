@@ -1,0 +1,4 @@
+0x0001,"/var/config/contact.csv",10
+0x0002,"/var/config/call_log.csv",20
+0x0003,"/var/config/wakeup_call.csv",10
+0x0004,"/var/config/ringing_schedule.csv",10

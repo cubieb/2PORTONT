@@ -1,0 +1,24 @@
+Source: updatedd
+Section: net
+Priority: optional
+Maintainer: Philipp Benner <mail@philipp-benner.de>
+Standards-Version: 3.6.1.1
+Build-Depends: debhelper (>= 4.0.0), gcc (>= 3.3.4-2), libc6-dev (>= 2.2.5-11.5), make (>= 3.79.1-14)
+
+Package: updatedd
+Architecture: any
+Depends: ${shlibs:Depends}, perl
+Suggests: updatedd-doc, ppp | cron
+Description: A client to update a dynamic dns record
+ It supports web-based ip-detection, ip-caching and configuration
+ files with c-like syntax.
+ Supported services: changeip.com, dyndns.org, eurodyndns.org
+ hn.org, no-ip.com, ods.org, ovh.com, regfish.com, tzo.com.
+ .
+ See the documentation distributed by updatedd-doc for installation
+ notes.
+
+Package: updatedd-doc
+Architecture: all
+Description: Documentation for updatedd
+ This packages distributes documentation about updatedd.

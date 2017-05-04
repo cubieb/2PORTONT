@@ -1,0 +1,204 @@
+This file contains any messages produced by compilers while
+running configure, to aid debugging if configure makes a mistake.
+
+configure:616: checking for mawk
+configure:648: checking for gcc
+configure:761: checking whether the C compiler (/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/rsdk-linux-gcc  -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -DUSE_LIBMD5 -I/home/gangadhar/2PORTONT/sdk/include -I/home/gangadhar/2PORTONT/sdk/lib/libmd5 -Dlinux -D__linux__ -Dunix -DEMBED -D_USE_RSDK_WRAPPER_ -D_LINUX_2_6_ -D_LINUX_2_6_30_ -include linux/config.h -I/home/gangadhar/2PORTONT/sdk -include /home/gangadhar/2PORTONT/sdk/autoconf.h -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/system/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/romeDriver -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/tr142/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/src/app/omci_v1/API  -L/home/gangadhar/2PORTONT/sdk/lib/librtk -L/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/object/src/app/lib) works
+configure:777: /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/rsdk-linux-gcc  -o conftest -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -DUSE_LIBMD5 -I/home/gangadhar/2PORTONT/sdk/include -I/home/gangadhar/2PORTONT/sdk/lib/libmd5 -Dlinux -D__linux__ -Dunix -DEMBED -D_USE_RSDK_WRAPPER_ -D_LINUX_2_6_ -D_LINUX_2_6_30_ -include linux/config.h -I/home/gangadhar/2PORTONT/sdk -include /home/gangadhar/2PORTONT/sdk/autoconf.h -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/system/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/romeDriver -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/tr142/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/src/app/omci_v1/API   -L/home/gangadhar/2PORTONT/sdk/lib/librtk -L/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/object/src/app/lib conftest.c  1>&5
+configure:803: checking whether the C compiler (/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/rsdk-linux-gcc  -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -DUSE_LIBMD5 -I/home/gangadhar/2PORTONT/sdk/include -I/home/gangadhar/2PORTONT/sdk/lib/libmd5 -Dlinux -D__linux__ -Dunix -DEMBED -D_USE_RSDK_WRAPPER_ -D_LINUX_2_6_ -D_LINUX_2_6_30_ -include linux/config.h -I/home/gangadhar/2PORTONT/sdk -include /home/gangadhar/2PORTONT/sdk/autoconf.h -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/system/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/romeDriver -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/tr142/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/src/app/omci_v1/API  -L/home/gangadhar/2PORTONT/sdk/lib/librtk -L/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/object/src/app/lib) is a cross-compiler
+configure:808: checking whether we are using GNU C
+configure:817: /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/rsdk-linux-gcc  -E conftest.c
+configure:836: checking whether /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/rsdk-linux-gcc  accepts -g
+configure:868: checking how to run the C preprocessor
+configure:889: /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/rsdk-linux-gcc  -E  conftest.c >/dev/null 2>conftest.out
+configure:950: checking for ranlib
+configure:980: checking for ar
+configure:1015: checking for chmod
+configure:1050: checking for cp
+configure:1085: checking for mv
+configure:1120: checking for nroff
+configure:1197: checking for htmldoc
+configure:1232: checking for mkdir
+configure:1267: checking for pack
+configure:1303: checking for gzip
+configure:1350: checking for rm
+configure:1385: checking for sed
+configure:1419: checking whether byte ordering is bigendian
+configure:1437: /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/rsdk-linux-gcc  -c -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -DUSE_LIBMD5 -I/home/gangadhar/2PORTONT/sdk/include -I/home/gangadhar/2PORTONT/sdk/lib/libmd5 -Dlinux -D__linux__ -Dunix -DEMBED -D_USE_RSDK_WRAPPER_ -D_LINUX_2_6_ -D_LINUX_2_6_30_ -include linux/config.h -I/home/gangadhar/2PORTONT/sdk -include /home/gangadhar/2PORTONT/sdk/autoconf.h -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/system/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/romeDriver -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/tr142/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/src/app/omci_v1/API  conftest.c 1>&5
+configure:1452: /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/rsdk-linux-gcc  -c -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -DUSE_LIBMD5 -I/home/gangadhar/2PORTONT/sdk/include -I/home/gangadhar/2PORTONT/sdk/lib/libmd5 -Dlinux -D__linux__ -Dunix -DEMBED -D_USE_RSDK_WRAPPER_ -D_LINUX_2_6_ -D_LINUX_2_6_30_ -include linux/config.h -I/home/gangadhar/2PORTONT/sdk -include /home/gangadhar/2PORTONT/sdk/autoconf.h -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/system/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/romeDriver -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/tr142/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/src/app/omci_v1/API  conftest.c 1>&5
+configure:1510: checking for crypt in -lc
+configure:1529: /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/rsdk-linux-gcc  -o conftest -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -DUSE_LIBMD5 -I/home/gangadhar/2PORTONT/sdk/include -I/home/gangadhar/2PORTONT/sdk/lib/libmd5 -Dlinux -D__linux__ -Dunix -DEMBED -D_USE_RSDK_WRAPPER_ -D_LINUX_2_6_ -D_LINUX_2_6_30_ -include linux/config.h -I/home/gangadhar/2PORTONT/sdk -include /home/gangadhar/2PORTONT/sdk/autoconf.h -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/system/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/romeDriver -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/tr142/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/src/app/omci_v1/API   -L/home/gangadhar/2PORTONT/sdk/lib/librtk -L/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/object/src/app/lib conftest.c -lc   1>&5
+/tmp/ccg1O3KE.o: In function `main':
+conftest.c:(.text+0x1c): undefined reference to `crypt'
+collect2: ld returned 1 exit status
+configure: failed program was:
+#line 1518 "configure"
+#include "confdefs.h"
+/* Override any gcc2 internal prototype to avoid an error.  */
+/* We use char because int might match the return type of a gcc2
+    builtin and then its argument prototype would still apply.  */
+char crypt();
+
+int main() {
+crypt()
+; return 0; }
+configure:1548: checking for crypt in -lcrypt
+configure:1567: /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/rsdk-linux-gcc  -o conftest -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -DUSE_LIBMD5 -I/home/gangadhar/2PORTONT/sdk/include -I/home/gangadhar/2PORTONT/sdk/lib/libmd5 -Dlinux -D__linux__ -Dunix -DEMBED -D_USE_RSDK_WRAPPER_ -D_LINUX_2_6_ -D_LINUX_2_6_30_ -include linux/config.h -I/home/gangadhar/2PORTONT/sdk -include /home/gangadhar/2PORTONT/sdk/autoconf.h -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/system/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/romeDriver -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/tr142/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/src/app/omci_v1/API   -L/home/gangadhar/2PORTONT/sdk/lib/librtk -L/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/object/src/app/lib conftest.c -lcrypt   1>&5
+configure:1598: checking for crypt.h
+configure:1608: /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/rsdk-linux-gcc  -E  conftest.c >/dev/null 2>conftest.out
+configure:1633: checking for getspent in -lsec
+configure:1652: /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/rsdk-linux-gcc  -o conftest -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -DUSE_LIBMD5 -I/home/gangadhar/2PORTONT/sdk/include -I/home/gangadhar/2PORTONT/sdk/lib/libmd5 -Dlinux -D__linux__ -Dunix -DEMBED -D_USE_RSDK_WRAPPER_ -D_LINUX_2_6_ -D_LINUX_2_6_30_ -include linux/config.h -I/home/gangadhar/2PORTONT/sdk -include /home/gangadhar/2PORTONT/sdk/autoconf.h -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/system/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/romeDriver -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/tr142/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/src/app/omci_v1/API   -L/home/gangadhar/2PORTONT/sdk/lib/librtk -L/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/object/src/app/lib conftest.c -lsec  -lcrypt  1>&5
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/../lib/gcc/mips-linux/4.4.6/../../../../mips-linux/bin/ld: cannot find -lsec
+collect2: ld returned 1 exit status
+configure: failed program was:
+#line 1641 "configure"
+#include "confdefs.h"
+/* Override any gcc2 internal prototype to avoid an error.  */
+/* We use char because int might match the return type of a gcc2
+    builtin and then its argument prototype would still apply.  */
+char getspent();
+
+int main() {
+getspent()
+; return 0; }
+configure:1681: checking for dlopen in -ldl
+configure:1700: /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/rsdk-linux-gcc  -o conftest -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -DUSE_LIBMD5 -I/home/gangadhar/2PORTONT/sdk/include -I/home/gangadhar/2PORTONT/sdk/lib/libmd5 -Dlinux -D__linux__ -Dunix -DEMBED -D_USE_RSDK_WRAPPER_ -D_LINUX_2_6_ -D_LINUX_2_6_30_ -include linux/config.h -I/home/gangadhar/2PORTONT/sdk -include /home/gangadhar/2PORTONT/sdk/autoconf.h -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/system/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/romeDriver -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/tr142/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/src/app/omci_v1/API   -L/home/gangadhar/2PORTONT/sdk/lib/librtk -L/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/object/src/app/lib conftest.c -ldl  -lcrypt  1>&5
+configure:1728: checking for pam_start in -lpam
+configure:1747: /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/rsdk-linux-gcc  -o conftest -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -DUSE_LIBMD5 -I/home/gangadhar/2PORTONT/sdk/include -I/home/gangadhar/2PORTONT/sdk/lib/libmd5 -Dlinux -D__linux__ -Dunix -DEMBED -D_USE_RSDK_WRAPPER_ -D_LINUX_2_6_ -D_LINUX_2_6_30_ -include linux/config.h -I/home/gangadhar/2PORTONT/sdk -include /home/gangadhar/2PORTONT/sdk/autoconf.h -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/system/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/romeDriver -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/tr142/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/src/app/omci_v1/API   -L/home/gangadhar/2PORTONT/sdk/lib/librtk -L/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/object/src/app/lib conftest.c -lpam  -ldl -lcrypt  1>&5
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/../lib/gcc/mips-linux/4.4.6/../../../../mips-linux/bin/ld: cannot find -lpam
+collect2: ld returned 1 exit status
+configure: failed program was:
+#line 1736 "configure"
+#include "confdefs.h"
+/* Override any gcc2 internal prototype to avoid an error.  */
+/* We use char because int might match the return type of a gcc2
+    builtin and then its argument prototype would still apply.  */
+char pam_start();
+
+int main() {
+pam_start()
+; return 0; }
+configure:1779: checking for socket in -lsocket
+configure:1798: /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/rsdk-linux-gcc  -o conftest -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -DUSE_LIBMD5 -I/home/gangadhar/2PORTONT/sdk/include -I/home/gangadhar/2PORTONT/sdk/lib/libmd5 -Dlinux -D__linux__ -Dunix -DEMBED -D_USE_RSDK_WRAPPER_ -D_LINUX_2_6_ -D_LINUX_2_6_30_ -include linux/config.h -I/home/gangadhar/2PORTONT/sdk -include /home/gangadhar/2PORTONT/sdk/autoconf.h -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/system/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/romeDriver -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/tr142/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/src/app/omci_v1/API   -L/home/gangadhar/2PORTONT/sdk/lib/librtk -L/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/object/src/app/lib conftest.c -lsocket  -ldl -lcrypt  1>&5
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/../lib/gcc/mips-linux/4.4.6/../../../../mips-linux/bin/ld: cannot find -lsocket
+collect2: ld returned 1 exit status
+configure: failed program was:
+#line 1787 "configure"
+#include "confdefs.h"
+/* Override any gcc2 internal prototype to avoid an error.  */
+/* We use char because int might match the return type of a gcc2
+    builtin and then its argument prototype would still apply.  */
+char socket();
+
+int main() {
+socket()
+; return 0; }
+configure:1823: checking for gethostbyaddr in -lnsl
+configure:1842: /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/rsdk-linux-gcc  -o conftest -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -DUSE_LIBMD5 -I/home/gangadhar/2PORTONT/sdk/include -I/home/gangadhar/2PORTONT/sdk/lib/libmd5 -Dlinux -D__linux__ -Dunix -DEMBED -D_USE_RSDK_WRAPPER_ -D_LINUX_2_6_ -D_LINUX_2_6_30_ -include linux/config.h -I/home/gangadhar/2PORTONT/sdk -include /home/gangadhar/2PORTONT/sdk/autoconf.h -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/system/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/romeDriver -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/tr142/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/src/app/omci_v1/API   -L/home/gangadhar/2PORTONT/sdk/lib/librtk -L/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/object/src/app/lib conftest.c -lnsl  -ldl -lcrypt  1>&5
+configure:1880: checking for jpeg_destroy_decompress in -ljpeg
+configure:1899: /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/rsdk-linux-gcc  -o conftest -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -DUSE_LIBMD5 -I/home/gangadhar/2PORTONT/sdk/include -I/home/gangadhar/2PORTONT/sdk/lib/libmd5 -Dlinux -D__linux__ -Dunix -DEMBED -D_USE_RSDK_WRAPPER_ -D_LINUX_2_6_ -D_LINUX_2_6_30_ -include linux/config.h -I/home/gangadhar/2PORTONT/sdk -include /home/gangadhar/2PORTONT/sdk/autoconf.h -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/system/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/romeDriver -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/tr142/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/src/app/omci_v1/API   -L/home/gangadhar/2PORTONT/sdk/lib/librtk -L/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/object/src/app/lib conftest.c -ljpeg  -ldl -lcrypt  1>&5
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/../lib/gcc/mips-linux/4.4.6/../../../../mips-linux/bin/ld: cannot find -ljpeg
+collect2: ld returned 1 exit status
+configure: failed program was:
+#line 1888 "configure"
+#include "confdefs.h"
+/* Override any gcc2 internal prototype to avoid an error.  */
+/* We use char because int might match the return type of a gcc2
+    builtin and then its argument prototype would still apply.  */
+char jpeg_destroy_decompress();
+
+int main() {
+jpeg_destroy_decompress()
+; return 0; }
+configure:1926: checking for deflate in -lz
+configure:1945: /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/rsdk-linux-gcc  -o conftest -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -DUSE_LIBMD5 -I/home/gangadhar/2PORTONT/sdk/include -I/home/gangadhar/2PORTONT/sdk/lib/libmd5 -Dlinux -D__linux__ -Dunix -DEMBED -D_USE_RSDK_WRAPPER_ -D_LINUX_2_6_ -D_LINUX_2_6_30_ -include linux/config.h -I/home/gangadhar/2PORTONT/sdk -include /home/gangadhar/2PORTONT/sdk/autoconf.h -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/system/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/romeDriver -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/tr142/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/src/app/omci_v1/API   -L/home/gangadhar/2PORTONT/sdk/lib/librtk -L/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/object/src/app/lib conftest.c -lz  -ldl -lcrypt  1>&5
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/../lib/gcc/mips-linux/4.4.6/../../../../mips-linux/bin/ld: cannot find -lz
+collect2: ld returned 1 exit status
+configure: failed program was:
+#line 1934 "configure"
+#include "confdefs.h"
+/* Override any gcc2 internal prototype to avoid an error.  */
+/* We use char because int might match the return type of a gcc2
+    builtin and then its argument prototype would still apply.  */
+char deflate();
+
+int main() {
+deflate()
+; return 0; }
+configure:1972: checking for pow in -lm
+configure:1991: /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/rsdk-linux-gcc  -o conftest -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -DUSE_LIBMD5 -I/home/gangadhar/2PORTONT/sdk/include -I/home/gangadhar/2PORTONT/sdk/lib/libmd5 -Dlinux -D__linux__ -Dunix -DEMBED -D_USE_RSDK_WRAPPER_ -D_LINUX_2_6_ -D_LINUX_2_6_30_ -include linux/config.h -I/home/gangadhar/2PORTONT/sdk -include /home/gangadhar/2PORTONT/sdk/autoconf.h -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/system/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/romeDriver -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/tr142/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/src/app/omci_v1/API   -L/home/gangadhar/2PORTONT/sdk/lib/librtk -L/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/object/src/app/lib conftest.c -lm  -ldl -lcrypt  1>&5
+configure:1984: warning: conflicting types for built-in function 'pow'
+configure:2020: checking for png_read_info in -lpng
+configure:2039: /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/rsdk-linux-gcc  -o conftest -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -DUSE_LIBMD5 -I/home/gangadhar/2PORTONT/sdk/include -I/home/gangadhar/2PORTONT/sdk/lib/libmd5 -Dlinux -D__linux__ -Dunix -DEMBED -D_USE_RSDK_WRAPPER_ -D_LINUX_2_6_ -D_LINUX_2_6_30_ -include linux/config.h -I/home/gangadhar/2PORTONT/sdk -include /home/gangadhar/2PORTONT/sdk/autoconf.h -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/system/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/romeDriver -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/tr142/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/src/app/omci_v1/API   -L/home/gangadhar/2PORTONT/sdk/lib/librtk -L/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/object/src/app/lib conftest.c -lpng  -lm -ldl -lcrypt  1>&5
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/../lib/gcc/mips-linux/4.4.6/../../../../mips-linux/bin/ld: cannot find -lpng
+collect2: ld returned 1 exit status
+configure: failed program was:
+#line 2028 "configure"
+#include "confdefs.h"
+/* Override any gcc2 internal prototype to avoid an error.  */
+/* We use char because int might match the return type of a gcc2
+    builtin and then its argument prototype would still apply.  */
+char png_read_info();
+
+int main() {
+png_read_info()
+; return 0; }
+configure:2065: checking for TIFFReadScanline in -ltiff
+configure:2084: /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/rsdk-linux-gcc  -o conftest -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -DUSE_LIBMD5 -I/home/gangadhar/2PORTONT/sdk/include -I/home/gangadhar/2PORTONT/sdk/lib/libmd5 -Dlinux -D__linux__ -Dunix -DEMBED -D_USE_RSDK_WRAPPER_ -D_LINUX_2_6_ -D_LINUX_2_6_30_ -include linux/config.h -I/home/gangadhar/2PORTONT/sdk -include /home/gangadhar/2PORTONT/sdk/autoconf.h -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/system/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/romeDriver -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/tr142/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/src/app/omci_v1/API   -L/home/gangadhar/2PORTONT/sdk/lib/librtk -L/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/object/src/app/lib conftest.c -ltiff  -lm -ldl -lcrypt  1>&5
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/../lib/gcc/mips-linux/4.4.6/../../../../mips-linux/bin/ld: cannot find -ltiff
+collect2: ld returned 1 exit status
+configure: failed program was:
+#line 2073 "configure"
+#include "confdefs.h"
+/* Override any gcc2 internal prototype to avoid an error.  */
+/* We use char because int might match the return type of a gcc2
+    builtin and then its argument prototype would still apply.  */
+char TIFFReadScanline();
+
+int main() {
+TIFFReadScanline()
+; return 0; }
+configure:2112: checking for ANSI C header files
+configure:2125: /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/rsdk-linux-gcc  -E  conftest.c >/dev/null 2>conftest.out
+configure:2220: checking for dirent.h that defines DIR
+configure:2233: /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/rsdk-linux-gcc  -c -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -DUSE_LIBMD5 -I/home/gangadhar/2PORTONT/sdk/include -I/home/gangadhar/2PORTONT/sdk/lib/libmd5 -Dlinux -D__linux__ -Dunix -DEMBED -D_USE_RSDK_WRAPPER_ -D_LINUX_2_6_ -D_LINUX_2_6_30_ -include linux/config.h -I/home/gangadhar/2PORTONT/sdk -include /home/gangadhar/2PORTONT/sdk/autoconf.h -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/system/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/romeDriver -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/tr142/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/src/app/omci_v1/API  conftest.c 1>&5
+configure:2258: checking for opendir in -ldir
+configure:2277: /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/rsdk-linux-gcc  -o conftest -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -DUSE_LIBMD5 -I/home/gangadhar/2PORTONT/sdk/include -I/home/gangadhar/2PORTONT/sdk/lib/libmd5 -Dlinux -D__linux__ -Dunix -DEMBED -D_USE_RSDK_WRAPPER_ -D_LINUX_2_6_ -D_LINUX_2_6_30_ -include linux/config.h -I/home/gangadhar/2PORTONT/sdk -include /home/gangadhar/2PORTONT/sdk/autoconf.h -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/system/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/romeDriver -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/tr142/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/src/app/omci_v1/API   -L/home/gangadhar/2PORTONT/sdk/lib/librtk -L/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/object/src/app/lib conftest.c -ldir  -ldl -lcrypt  1>&5
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/../lib/gcc/mips-linux/4.4.6/../../../../mips-linux/bin/ld: cannot find -ldir
+collect2: ld returned 1 exit status
+configure: failed program was:
+#line 2266 "configure"
+#include "confdefs.h"
+/* Override any gcc2 internal prototype to avoid an error.  */
+/* We use char because int might match the return type of a gcc2
+    builtin and then its argument prototype would still apply.  */
+char opendir();
+
+int main() {
+opendir()
+; return 0; }
+configure:2342: checking for shadow.h
+configure:2352: /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/rsdk-linux-gcc  -E  conftest.c >/dev/null 2>conftest.out
+configure:2380: checking for strdup
+configure:2408: /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/rsdk-linux-gcc  -o conftest -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -DUSE_LIBMD5 -I/home/gangadhar/2PORTONT/sdk/include -I/home/gangadhar/2PORTONT/sdk/lib/libmd5 -Dlinux -D__linux__ -Dunix -DEMBED -D_USE_RSDK_WRAPPER_ -D_LINUX_2_6_ -D_LINUX_2_6_30_ -include linux/config.h -I/home/gangadhar/2PORTONT/sdk -include /home/gangadhar/2PORTONT/sdk/autoconf.h -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/system/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/romeDriver -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/tr142/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/src/app/omci_v1/API   -L/home/gangadhar/2PORTONT/sdk/lib/librtk -L/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/object/src/app/lib conftest.c -ldl -lcrypt  1>&5
+configure:2392: warning: conflicting types for built-in function 'strdup'
+configure:2435: checking for strcasecmp
+configure:2463: /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/rsdk-linux-gcc  -o conftest -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -DUSE_LIBMD5 -I/home/gangadhar/2PORTONT/sdk/include -I/home/gangadhar/2PORTONT/sdk/lib/libmd5 -Dlinux -D__linux__ -Dunix -DEMBED -D_USE_RSDK_WRAPPER_ -D_LINUX_2_6_ -D_LINUX_2_6_30_ -include linux/config.h -I/home/gangadhar/2PORTONT/sdk -include /home/gangadhar/2PORTONT/sdk/autoconf.h -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/system/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/romeDriver -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/tr142/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/src/app/omci_v1/API   -L/home/gangadhar/2PORTONT/sdk/lib/librtk -L/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/object/src/app/lib conftest.c -ldl -lcrypt  1>&5
+configure:2447: warning: conflicting types for built-in function 'strcasecmp'
+configure:2490: checking for strncasecmp
+configure:2518: /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/rsdk-linux-gcc  -o conftest -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -DUSE_LIBMD5 -I/home/gangadhar/2PORTONT/sdk/include -I/home/gangadhar/2PORTONT/sdk/lib/libmd5 -Dlinux -D__linux__ -Dunix -DEMBED -D_USE_RSDK_WRAPPER_ -D_LINUX_2_6_ -D_LINUX_2_6_30_ -include linux/config.h -I/home/gangadhar/2PORTONT/sdk -include /home/gangadhar/2PORTONT/sdk/autoconf.h -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/system/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/romeDriver -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/tr142/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/src/app/omci_v1/API   -L/home/gangadhar/2PORTONT/sdk/lib/librtk -L/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/object/src/app/lib conftest.c -ldl -lcrypt  1>&5
+configure:2502: warning: conflicting types for built-in function 'strncasecmp'
+configure:2545: checking for snprintf
+configure:2573: /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/rsdk-linux-gcc  -o conftest -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -DUSE_LIBMD5 -I/home/gangadhar/2PORTONT/sdk/include -I/home/gangadhar/2PORTONT/sdk/lib/libmd5 -Dlinux -D__linux__ -Dunix -DEMBED -D_USE_RSDK_WRAPPER_ -D_LINUX_2_6_ -D_LINUX_2_6_30_ -include linux/config.h -I/home/gangadhar/2PORTONT/sdk -include /home/gangadhar/2PORTONT/sdk/autoconf.h -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/system/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/romeDriver -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/tr142/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/src/app/omci_v1/API   -L/home/gangadhar/2PORTONT/sdk/lib/librtk -L/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/object/src/app/lib conftest.c -ldl -lcrypt  1>&5
+configure:2557: warning: conflicting types for built-in function 'snprintf'
+configure:2600: checking for vsnprintf
+configure:2628: /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/rsdk-linux-gcc  -o conftest -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -DUSE_LIBMD5 -I/home/gangadhar/2PORTONT/sdk/include -I/home/gangadhar/2PORTONT/sdk/lib/libmd5 -Dlinux -D__linux__ -Dunix -DEMBED -D_USE_RSDK_WRAPPER_ -D_LINUX_2_6_ -D_LINUX_2_6_30_ -include linux/config.h -I/home/gangadhar/2PORTONT/sdk -include /home/gangadhar/2PORTONT/sdk/autoconf.h -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/system/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/romeDriver -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/tr142/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/src/app/omci_v1/API   -L/home/gangadhar/2PORTONT/sdk/lib/librtk -L/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/object/src/app/lib conftest.c -ldl -lcrypt  1>&5
+configure:2612: warning: conflicting types for built-in function 'vsnprintf'
+configure:2656: checking for sigset
+configure:2684: /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/rsdk-linux-gcc  -o conftest -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -DUSE_LIBMD5 -I/home/gangadhar/2PORTONT/sdk/include -I/home/gangadhar/2PORTONT/sdk/lib/libmd5 -Dlinux -D__linux__ -Dunix -DEMBED -D_USE_RSDK_WRAPPER_ -D_LINUX_2_6_ -D_LINUX_2_6_30_ -include linux/config.h -I/home/gangadhar/2PORTONT/sdk -include /home/gangadhar/2PORTONT/sdk/autoconf.h -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/system/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/romeDriver -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/tr142/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/src/app/omci_v1/API   -L/home/gangadhar/2PORTONT/sdk/lib/librtk -L/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/object/src/app/lib conftest.c -ldl -lcrypt  1>&5
+configure:2711: checking for sigaction
+configure:2739: /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/rsdk-linux-gcc  -o conftest -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -DUSE_LIBMD5 -I/home/gangadhar/2PORTONT/sdk/include -I/home/gangadhar/2PORTONT/sdk/lib/libmd5 -Dlinux -D__linux__ -Dunix -DEMBED -D_USE_RSDK_WRAPPER_ -D_LINUX_2_6_ -D_LINUX_2_6_30_ -include linux/config.h -I/home/gangadhar/2PORTONT/sdk -include /home/gangadhar/2PORTONT/sdk/autoconf.h -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/system/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/romeDriver -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/tr142/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/src/app/omci_v1/API   -L/home/gangadhar/2PORTONT/sdk/lib/librtk -L/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/object/src/app/lib conftest.c -ldl -lcrypt  1>&5
+configure:2767: checking for waitpid
+configure:2795: /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/rsdk-linux-gcc  -o conftest -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -DUSE_LIBMD5 -I/home/gangadhar/2PORTONT/sdk/include -I/home/gangadhar/2PORTONT/sdk/lib/libmd5 -Dlinux -D__linux__ -Dunix -DEMBED -D_USE_RSDK_WRAPPER_ -D_LINUX_2_6_ -D_LINUX_2_6_30_ -include linux/config.h -I/home/gangadhar/2PORTONT/sdk -include /home/gangadhar/2PORTONT/sdk/autoconf.h -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/system/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/romeDriver -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/tr142/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/src/app/omci_v1/API   -L/home/gangadhar/2PORTONT/sdk/lib/librtk -L/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/object/src/app/lib conftest.c -ldl -lcrypt  1>&5
+configure:2822: checking for wait3
+configure:2850: /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/rsdk-linux-gcc  -o conftest -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -DUSE_LIBMD5 -I/home/gangadhar/2PORTONT/sdk/include -I/home/gangadhar/2PORTONT/sdk/lib/libmd5 -Dlinux -D__linux__ -Dunix -DEMBED -D_USE_RSDK_WRAPPER_ -D_LINUX_2_6_ -D_LINUX_2_6_30_ -include linux/config.h -I/home/gangadhar/2PORTONT/sdk -include /home/gangadhar/2PORTONT/sdk/autoconf.h -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/system/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/romeDriver -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/tr142/include -I/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/sdk/src/app/omci_v1/API   -L/home/gangadhar/2PORTONT/sdk/lib/librtk -L/home/gangadhar/2PORTONT/sdk/linux-2.6.x/drivers/net/rtl86900/object/src/app/lib conftest.c -ldl -lcrypt  1>&5

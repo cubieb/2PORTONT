@@ -1,0 +1,330 @@
+
+# RTL86900 SDK configuration
+#
+
+config	MODULE_BUILD_IN
+	tristate "Realtek RTL86900 SDK"
+	default y
+	help
+
+	   To compile it as a module, choose M here.  If unsure, say N.
+
+config SDK_MODULES
+	bool "Support RTK Apollo Modules"
+	help
+	   Say Y if you want to enable RTK Apollo modules.
+
+config GPON_FEATURE
+        bool "Support RTK GPON"
+        depends on SDK_MODULES
+        help
+          Say Y if your machine has pon phy port.
+
+config RTK_OMCI_V1
+        bool "Support RTK OMCI V1"
+        depends on GPON_FEATURE
+        help
+          Choice for enable RTK OMCI V1.
+
+config GPON_ROGUE_SELF_DETECT
+        bool "Support GPON rogue ONU self detect"
+        depends on GPON_FEATURE
+	default n
+        help
+          Choice for enable GPON rogue self detection.
+
+config RTK_IGMP
+		bool "Support RTK IGMP"
+		depends on SDK_MODULES
+        help
+          Say Y if you want to enable RTK IGMP.
+
+config RLDP_FEATURE
+    	bool "Support RTK RLDP"
+    	depends on SDK_MODULES
+        help
+          Say Y if you want to enable RTK RLDP.
+
+config OE_RESET_AFTER_TX_DIS_OFF
+        bool "Reset OE module"
+        depends on GPON_FEATURE
+        default n
+        help
+          Choice for enable mechanism for reset OE module after turn off tx_disable.
+
+config EPON_FEATURE
+    	bool "Support RTK EPON"
+    	depends on SDK_MODULES
+        help
+          Say Y if your machine has EPON phy ports.
+
+config RTK_OAM_V1
+	bool "Support RTK OAM V1"
+        depends on EPON_FEATURE
+	default y
+	help
+	  Choice for enable RTK OAM V1
+
+config EPON_LOS_RECOVER
+		bool "Support EPON LOS recover"
+		depends on RTK_OAM_V1
+		default n
+
+config EPON_OAM_DUMMY_MODE
+		bool "Support EPON OAM dummy mode"
+		depends on RTK_OAM_V1
+		default n
+
+config PON_DETECT_FEATURE
+    	bool "Support GPON/EPON detect"
+    	depends on GPON_FEATURE && EPON_FEATURE
+        default y
+        help
+          Say Y if your machine has GPON/EPON detect function.
+
+config PON_AUTO_SELECT_FEATURE
+    	bool "Support GPON/EPON auto selection"
+    	depends on PON_DETECT_FEATURE
+        default n
+        help
+          Say Y if your machine has GPON/EPON auto selection function.
+
+config FIBER_FEATURE
+        bool "Support RTK FIBER"
+        depends on SDK_MODULES
+        help
+          Say Y if your machine has FIBER phy ports.
+
+choice
+	prompt "Fiber speed AN/force mode for force 1G, force 100M or auto detect"
+	depends on FIBER_FEATURE
+	default FIBER_SPEED_AUTO
+
+config FIBER_SPEED_1G
+	bool "AN 1G only"
+
+config FIBER_SPEED_100M
+	bool "AN 100M only"
+
+config FIBER_SPEED_AUTO
+	bool "Auto 100M/1G"
+
+config FIBER_SPEED_FORCE_1G
+	bool "Force 1G"
+
+config FIBER_SPEED_FORCE_100M
+	bool "Force 100M"
+
+config FIBER_SW_AUTO_DETECT
+	bool "Software detect"
+
+endchoice
+
+choice
+	prompt "Fiber module detection method, SD output level or fiber signal"
+	depends on FIBER_FEATURE
+	default FIBER_DETECT_SD
+
+config FIBER_DETECT_OOBS
+	bool "OOBS"
+
+config FIBER_DETECT_SD
+	bool "SD"
+endchoice
+
+choice
+	prompt "Fiber module output signal detect(SD) or loss"
+	depends on FIBER_FEATURE && FIBER_DETECT_SD
+	default FIBER_MODULE_LOSS
+
+config FIBER_MODULE_LOSS
+	bool "Loss"
+
+config FIBER_MODULE_SD
+	bool "SD"
+endchoice
+
+config DYING_GASP_FEATURE
+        bool "Support RTK DYING GASP of ETHER or FIBER"
+        depends on SDK_MODULES && !(GPON_FEATURE || EPON_FEATURE)
+        help
+          Say Y if your machine want dying gasp in fiber or ether WAN.
+
+config PBO_MEM_USAGE
+	int "DRAM size in MB for PBO usage"
+	range 0 8
+	depends on RTL9601B_SERIES
+	default "8"
+	help
+	  Causion! this value will correlate with the memory size and the kernel memory in CONFIG_CMDLINE
+
+config TX_DISABLE_GPIO_PIN
+	int "gpio pin for disable tx"
+	range 0 71
+	depends on SDK_MODULES
+	default "34"
+	help
+	      the GPIO pin for disable tx
+
+config TX_POWER_TURN_ON_FEATURE
+    	bool "Support GPON/EPON Turn On TX Power"
+    	depends on GPON_FEATURE && EPON_FEATURE
+        default n
+        help
+          Say Y if your board is default turn off TX power and want GPON/EPON turn on TX power in intial state.
+
+config TX_POWER_GPO_PIN
+	int "gpio pin for TX power"
+	range 0 71
+	depends on TX_POWER_TURN_ON_FEATURE
+	default "0"
+	help
+	      the GPIO pin for TX power
+
+config RTK_L34_DEMO
+        tristate "Support RTK L34 Lite Auto Learning"
+        depends on SDK_MODULES && !RTK_L34_ENABLE
+        default m
+	help
+          Choice for enable L34 Lite Auto Learning mechanism.
+
+config RTK_FT2_MODULE
+        bool "Support RTK FT2 module"
+        depends on SDK_MODULES
+        help
+          Choice for enable Factory Test module.
+
+config EUROPA
+        tristate "Support Europa module"
+        depends on SDK_MODULES
+	default n
+  	help
+          Choice for enable Europa module.          
+choice
+	prompt "Support EUROPA control using I2C port 0 or port 1"
+	depends on EUROPA
+	default EUROPA_I2C_PORT_0
+
+config EUROPA_I2C_PORT_0
+	bool "I2C port 0"
+
+config EUROPA_I2C_PORT_1
+	bool "I2C port 1"
+endchoice                  
+ 
+config EUROPA_FEATURE
+        bool "Support EUROPA driver and diagshell"
+        depends on EUROPA
+	default n
+        help
+          Choice for enable EUROPA feature.
+
+config EUROPA_INTERRUPT
+        bool "Support EUROPA interrupt"
+        depends on EUROPA_FEATURE
+	default n
+        help
+          Choice for enable EUROPA interrupt.
+
+config EUROPA_INTERRUPT_GPIO_PIN
+	int "gpio pin for Europa interrupt"
+	range 0 71
+	depends on EUROPA_INTERRUPT
+	default "13"
+	help
+          GPIO pinf for interrup.
+
+config EXTERNAL_PHY_POLLING
+	bool "Support Switch External PHY Polling using asic mdc/mdio"
+	default n
+	help
+          Choice for enable external phy polling with asic mdc/mdio.
+
+config EXTERNAL_PHY_POLLING_USING_GPIO
+	bool "Support Switch External PHY Polling using GPIO"
+	default n
+        depends on !EXTERNAL_PHY_POLLING
+        default n
+	help
+          Choice for enable external phy polling with GPIO emulation mdc/mdio.
+
+config EXTERNAL_PHY_MII_CLOCK_GPIO_PIN
+	int "gpio pin for MII clock"
+	range 0 71
+	depends on EXTERNAL_PHY_POLLING_USING_GPIO
+	default "60"
+	help
+	      the GPIO pin for external phy MII clock pin
+
+config EXTERNAL_PHY_MII_DATA_GPIO_PIN
+	int "gpio pin for MII data"
+	range 0 71
+	depends on EXTERNAL_PHY_POLLING_USING_GPIO
+	default "61"
+	help
+	      the GPIO pin for external phy MII data pin
+
+choice
+        prompt "Select the target board profile for LED display"
+        depends on FIBER_FEATURE || GPON_FEATURE || EPON_FEATURE
+        default PON_LED_PROFILE_DEMO_RTL9607
+
+config PON_LED_PROFILE_DEMO_RTL9607
+	bool "RTL9607 demo board"
+
+config PON_LED_PROFILE_DEMO_RTL9607_IAD_V00
+	bool "RTL9607 demo board for IAD v0.0"
+
+config PON_LED_PROFILE_DEMO_RTL9601
+	bool "RTL9601 demo board"
+
+config PON_LED_PROFILE_DEMO_RTL9601B
+	bool "RTL9601B demo board"
+
+config PON_LED_PROFILE_DEMO_RTL9602B
+	bool "RTL9602B demo board"
+
+config PON_LED_PROFILE_DEMO_RTL9602C
+	bool "RTL9602C demo board"
+
+config PON_LED_PROFILE_DEMO_RTL9607P
+	bool "RTL9607P demo board"
+
+config PON_LED_PROFILE_001
+	bool "Board profile #001"
+
+endchoice
+
+config SWITCH_INIT_LINKDOWN
+    bool "switch init default link down"
+ 	default n
+    help
+        Say Y if switch driver will linkdown switch port by default.
+
+config REDUCED_DIAG
+        bool "Reduce some diag shell command for specific condition"
+	default n
+        depends on SDK_MODULES
+        help
+          Say Y if you would like to use reduced diag shell, most of the case this SHOULD NOT be selected
+
+config LAN_SDS_FEATURE
+	bool "Support LAN serdes feature"
+	default n
+	depends on RTL9601B_SERIES
+	help
+	  Say Y if you would like to use LAN serdes feature 
+
+config SFP_APPLICATION
+	bool "Support SFP application"
+	default n
+	depends on LAN_SDS_FEATURE
+	help
+	  Say Y if you would like to run the SFP demo application
+
+config FORCE_SDK_RTL9602B
+	bool "Force chip subtype to RTL9602B"
+	default n
+	depends on RTL9600_SERIES
+	help
+	  Say Y if you would like to force asic to RTL9602B

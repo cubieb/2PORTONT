@@ -1,0 +1,7 @@
+#! @SHELL@
+
+# the next program must exit with error
+
+$* ./test_all_opts -r "foo" --opt-arg -o
+$* ./test_all_opts -r "foo" --opt-arg="bar" -o"foobar"
+if $* ./test_all_opts -r "foo" -H10; then true; else false; fi

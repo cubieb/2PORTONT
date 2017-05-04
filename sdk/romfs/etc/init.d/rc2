@@ -1,0 +1,22 @@
+/bin/mount -t proc proc /proc
+/bin/mount -t ramfs ramfs /var
+/bin/mount -t sysfs sysfs /sys
+/bin/echo /sbin/mdev > /proc/sys/kernel/hotplug
+/bin/mount -t tmpfs mdev /dev
+mdev -s
+mkdir /var/tmp
+mkdir /var/log
+mkdir /var/run
+mkdir /var/lock
+mkdir /var/ppp
+mkdir /var/config
+/etc/scripts/mnt_cfgfs.sh "-t yaffs2 -o tags-ecc-off" "config" "/var/config" || /etc/scripts/mnt_cfgfs.sh "-t yaffs2 -o tags-ecc-off" "rootfs3" "/var/config"
+mkdir /var/udhcpd
+mkdir /var/udhcpc
+mkdir /var/mnt
+mkdir /var/ct
+mkdir /var/ct/tmp
+ifconfig lo 127.0.0.1
+route add -net 127.0.0.0 netmask 255.255.255.0 lo
+PATH=.:PATH
+cd /etc/scripts

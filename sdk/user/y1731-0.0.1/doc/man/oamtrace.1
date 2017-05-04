@@ -1,0 +1,65 @@
+.\" Process this file with
+.\" groff -man -Tascii mepd.1
+.\"
+.TH OAMPING 1 "MAR 2012" Linux "User Manuals"
+.SH NAME
+oamtrace \- ITU-T Y.1731 stand-alone LBM pinger.
+.SH SYNOPSIS
+.B oamtrace [--mac
+.I MAC
+.B ] 
+.B [--ttl
+.I TTL
+.B ] 
+.B [--mel
+.I MEG level
+.B ] 
+.B [--iifindex
+.I IF index
+.B ] 
+
+.SH DESCRIPTION
+ 
+Primary function of Y.1731 OAM protocol is to provide fault detection
+services for Ethernet networks, such as loss of connectivity, bit
+errors, or timing deviations. Y.1731 pro-actively verifies the
+connectivity by monitoring OAM messages coming from remote entities in
+the network. Upon an error an alarm is raised.
+
+Y.1731 can perform in-service and out-of-service tests in order to
+diagnose the network. In-service tests can be used to verify the path
+integrity and for the identification of the on-path forwarding
+entities. Out-of-service tests can be used for tasks such as measuring
+the throughput of an unloaded path
+
+Y.1731 can measure the loss, one-way delay, two-way delay, delay
+variation, and throughput.
+
+.SH OPTIONS
+.IP "--mac"
+MAC address of the target.
+.IP "--ttl"
+TTL.
+.IP "--mel"
+MEL level of the target.
+.IP "--iifindex" 
+The IF index used for sending.
+
+.SH EXAMPLE
+
+.B oamping --mac 11:22:33:44:55:66 --ttl 5 --mel 7 --iifindex 2
+
+Would send ten LTM toward 11:22::33:44:55:66 on with TTl of 5 on MEG
+level 7.
+
+.SH BUGS
+See details about the current bugs from the tracker in URL
+https://vcs.hiit.fi/trac/GoodNet/
+
+.SH AUTHOR
+Samu Varjonen <samu dot varjonen at hiit dot fi>
+
+.SH "SEE ALSO"
+.BR oamd (1),
+.BR oamtool (1)
+.BR oamping (1)

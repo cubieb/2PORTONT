@@ -1,0 +1,32 @@
+# test_all_opts_cmd.ggo
+
+# test all kinds of options
+
+package "test_conf_parser"
+version "1.0"
+
+defgroup "my grp2"
+defgroup "grp1" groupdesc="an option of this group is required" yes
+groupoption "opta" a "string a" string group="grp1"
+groupoption "optb" b "string b" string group="grp1"
+groupoption "optc" - "string c" group="my grp2"
+groupoption "optd" C "string d" group="my grp2"
+option "string"      s "string option" string no
+option "int"         i "int option" int no
+option "short"       S "short option" short no
+option "long"        l "long option" long no
+option "float"       f "float option" float no
+option "double"      d "double option" double no
+option "longdouble"  D "longdouble option" longdouble no
+option "longlong"    L "longlong option" longlong no
+option "flag"        F "flag option" flag on
+option "function"    u "function option" no
+option "no-short"    - "no short option" no
+option "required"    r "required option" string yes
+option "conf-file"   c "config file" string default="test_conf.conf" no
+option "multi-string"   M   "multiple string option" string no multiple
+option "multi-string-def"   -   "multiple string option with default" string default="this default" no multiple
+option "noarg"       n "multiple option with no arg" no multiple
+option "noarg-noshort"       - "multiple option with no arg and no short" no multiple
+option "opt-arg"     - "option with optional arg" string no argoptional
+option "file-save"   - "save the passed options into a file" string no

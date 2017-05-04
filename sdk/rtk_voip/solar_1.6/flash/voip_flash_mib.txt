@@ -1,0 +1,6724 @@
+# 1 "voip_flash_mib.c"
+# 1 "/home/darren_shiue/source_code/apollo/CIG/20120824-cig_prepare/Apollo_Common_GPON_SFU_VOIP/soc/uClinux-dist/user/rtk_voip-sdk/flash//"
+# 1 "<built-in>"
+# 1 "<command-line>"
+# 1 "voip_flash_mib.c"
+
+
+
+
+
+
+
+# 1 "/usr/include/ctype.h" 1 3 4
+# 27 "/usr/include/ctype.h" 3 4
+# 1 "/usr/include/features.h" 1 3 4
+# 313 "/usr/include/features.h" 3 4
+# 1 "/usr/include/bits/predefs.h" 1 3 4
+# 314 "/usr/include/features.h" 2 3 4
+# 346 "/usr/include/features.h" 3 4
+# 1 "/usr/include/sys/cdefs.h" 1 3 4
+# 353 "/usr/include/sys/cdefs.h" 3 4
+# 1 "/usr/include/bits/wordsize.h" 1 3 4
+# 354 "/usr/include/sys/cdefs.h" 2 3 4
+# 347 "/usr/include/features.h" 2 3 4
+# 378 "/usr/include/features.h" 3 4
+# 1 "/usr/include/gnu/stubs.h" 1 3 4
+
+
+
+# 1 "/usr/include/bits/wordsize.h" 1 3 4
+# 5 "/usr/include/gnu/stubs.h" 2 3 4
+
+
+
+
+# 1 "/usr/include/gnu/stubs-64.h" 1 3 4
+# 10 "/usr/include/gnu/stubs.h" 2 3 4
+# 379 "/usr/include/features.h" 2 3 4
+# 28 "/usr/include/ctype.h" 2 3 4
+# 1 "/usr/include/bits/types.h" 1 3 4
+# 28 "/usr/include/bits/types.h" 3 4
+# 1 "/usr/include/bits/wordsize.h" 1 3 4
+# 29 "/usr/include/bits/types.h" 2 3 4
+
+
+typedef unsigned char __u_char;
+typedef unsigned short int __u_short;
+typedef unsigned int __u_int;
+typedef unsigned long int __u_long;
+
+
+typedef signed char __int8_t;
+typedef unsigned char __uint8_t;
+typedef signed short int __int16_t;
+typedef unsigned short int __uint16_t;
+typedef signed int __int32_t;
+typedef unsigned int __uint32_t;
+
+typedef signed long int __int64_t;
+typedef unsigned long int __uint64_t;
+
+
+
+
+
+
+
+typedef long int __quad_t;
+typedef unsigned long int __u_quad_t;
+# 131 "/usr/include/bits/types.h" 3 4
+# 1 "/usr/include/bits/typesizes.h" 1 3 4
+# 132 "/usr/include/bits/types.h" 2 3 4
+
+
+typedef unsigned long int __dev_t;
+typedef unsigned int __uid_t;
+typedef unsigned int __gid_t;
+typedef unsigned long int __ino_t;
+typedef unsigned long int __ino64_t;
+typedef unsigned int __mode_t;
+typedef unsigned long int __nlink_t;
+typedef long int __off_t;
+typedef long int __off64_t;
+typedef int __pid_t;
+typedef struct { int __val[2]; } __fsid_t;
+typedef long int __clock_t;
+typedef unsigned long int __rlim_t;
+typedef unsigned long int __rlim64_t;
+typedef unsigned int __id_t;
+typedef long int __time_t;
+typedef unsigned int __useconds_t;
+typedef long int __suseconds_t;
+
+typedef int __daddr_t;
+typedef long int __swblk_t;
+typedef int __key_t;
+
+
+typedef int __clockid_t;
+
+
+typedef void * __timer_t;
+
+
+typedef long int __blksize_t;
+
+
+
+
+typedef long int __blkcnt_t;
+typedef long int __blkcnt64_t;
+
+
+typedef unsigned long int __fsblkcnt_t;
+typedef unsigned long int __fsblkcnt64_t;
+
+
+typedef unsigned long int __fsfilcnt_t;
+typedef unsigned long int __fsfilcnt64_t;
+
+typedef long int __ssize_t;
+
+
+
+typedef __off64_t __loff_t;
+typedef __quad_t *__qaddr_t;
+typedef char *__caddr_t;
+
+
+typedef long int __intptr_t;
+
+
+typedef unsigned int __socklen_t;
+# 29 "/usr/include/ctype.h" 2 3 4
+
+
+# 41 "/usr/include/ctype.h" 3 4
+# 1 "/usr/include/endian.h" 1 3 4
+# 37 "/usr/include/endian.h" 3 4
+# 1 "/usr/include/bits/endian.h" 1 3 4
+# 38 "/usr/include/endian.h" 2 3 4
+# 61 "/usr/include/endian.h" 3 4
+# 1 "/usr/include/bits/byteswap.h" 1 3 4
+# 28 "/usr/include/bits/byteswap.h" 3 4
+# 1 "/usr/include/bits/wordsize.h" 1 3 4
+# 29 "/usr/include/bits/byteswap.h" 2 3 4
+# 62 "/usr/include/endian.h" 2 3 4
+# 42 "/usr/include/ctype.h" 2 3 4
+
+
+
+
+
+
+enum
+{
+  _ISupper = ((0) < 8 ? ((1 << (0)) << 8) : ((1 << (0)) >> 8)),
+  _ISlower = ((1) < 8 ? ((1 << (1)) << 8) : ((1 << (1)) >> 8)),
+  _ISalpha = ((2) < 8 ? ((1 << (2)) << 8) : ((1 << (2)) >> 8)),
+  _ISdigit = ((3) < 8 ? ((1 << (3)) << 8) : ((1 << (3)) >> 8)),
+  _ISxdigit = ((4) < 8 ? ((1 << (4)) << 8) : ((1 << (4)) >> 8)),
+  _ISspace = ((5) < 8 ? ((1 << (5)) << 8) : ((1 << (5)) >> 8)),
+  _ISprint = ((6) < 8 ? ((1 << (6)) << 8) : ((1 << (6)) >> 8)),
+  _ISgraph = ((7) < 8 ? ((1 << (7)) << 8) : ((1 << (7)) >> 8)),
+  _ISblank = ((8) < 8 ? ((1 << (8)) << 8) : ((1 << (8)) >> 8)),
+  _IScntrl = ((9) < 8 ? ((1 << (9)) << 8) : ((1 << (9)) >> 8)),
+  _ISpunct = ((10) < 8 ? ((1 << (10)) << 8) : ((1 << (10)) >> 8)),
+  _ISalnum = ((11) < 8 ? ((1 << (11)) << 8) : ((1 << (11)) >> 8))
+};
+# 81 "/usr/include/ctype.h" 3 4
+extern __const unsigned short int **__ctype_b_loc (void)
+     __attribute__ ((__nothrow__)) __attribute__ ((__const));
+extern __const __int32_t **__ctype_tolower_loc (void)
+     __attribute__ ((__nothrow__)) __attribute__ ((__const));
+extern __const __int32_t **__ctype_toupper_loc (void)
+     __attribute__ ((__nothrow__)) __attribute__ ((__const));
+# 96 "/usr/include/ctype.h" 3 4
+
+
+
+
+
+
+extern int isalnum (int) __attribute__ ((__nothrow__));
+extern int isalpha (int) __attribute__ ((__nothrow__));
+extern int iscntrl (int) __attribute__ ((__nothrow__));
+extern int isdigit (int) __attribute__ ((__nothrow__));
+extern int islower (int) __attribute__ ((__nothrow__));
+extern int isgraph (int) __attribute__ ((__nothrow__));
+extern int isprint (int) __attribute__ ((__nothrow__));
+extern int ispunct (int) __attribute__ ((__nothrow__));
+extern int isspace (int) __attribute__ ((__nothrow__));
+extern int isupper (int) __attribute__ ((__nothrow__));
+extern int isxdigit (int) __attribute__ ((__nothrow__));
+
+
+
+extern int tolower (int __c) __attribute__ ((__nothrow__));
+
+
+extern int toupper (int __c) __attribute__ ((__nothrow__));
+
+
+
+
+
+
+
+
+extern int isblank (int) __attribute__ ((__nothrow__));
+
+
+# 142 "/usr/include/ctype.h" 3 4
+extern int isascii (int __c) __attribute__ ((__nothrow__));
+
+
+
+extern int toascii (int __c) __attribute__ ((__nothrow__));
+
+
+
+extern int _toupper (int) __attribute__ ((__nothrow__));
+extern int _tolower (int) __attribute__ ((__nothrow__));
+# 233 "/usr/include/ctype.h" 3 4
+# 1 "/usr/include/xlocale.h" 1 3 4
+# 28 "/usr/include/xlocale.h" 3 4
+typedef struct __locale_struct
+{
+
+  struct locale_data *__locales[13];
+
+
+  const unsigned short int *__ctype_b;
+  const int *__ctype_tolower;
+  const int *__ctype_toupper;
+
+
+  const char *__names[13];
+} *__locale_t;
+
+
+typedef __locale_t locale_t;
+# 234 "/usr/include/ctype.h" 2 3 4
+# 247 "/usr/include/ctype.h" 3 4
+extern int isalnum_l (int, __locale_t) __attribute__ ((__nothrow__));
+extern int isalpha_l (int, __locale_t) __attribute__ ((__nothrow__));
+extern int iscntrl_l (int, __locale_t) __attribute__ ((__nothrow__));
+extern int isdigit_l (int, __locale_t) __attribute__ ((__nothrow__));
+extern int islower_l (int, __locale_t) __attribute__ ((__nothrow__));
+extern int isgraph_l (int, __locale_t) __attribute__ ((__nothrow__));
+extern int isprint_l (int, __locale_t) __attribute__ ((__nothrow__));
+extern int ispunct_l (int, __locale_t) __attribute__ ((__nothrow__));
+extern int isspace_l (int, __locale_t) __attribute__ ((__nothrow__));
+extern int isupper_l (int, __locale_t) __attribute__ ((__nothrow__));
+extern int isxdigit_l (int, __locale_t) __attribute__ ((__nothrow__));
+
+extern int isblank_l (int, __locale_t) __attribute__ ((__nothrow__));
+
+
+
+extern int __tolower_l (int __c, __locale_t __l) __attribute__ ((__nothrow__));
+extern int tolower_l (int __c, __locale_t __l) __attribute__ ((__nothrow__));
+
+
+extern int __toupper_l (int __c, __locale_t __l) __attribute__ ((__nothrow__));
+extern int toupper_l (int __c, __locale_t __l) __attribute__ ((__nothrow__));
+# 323 "/usr/include/ctype.h" 3 4
+
+# 9 "voip_flash_mib.c" 2
+# 1 "/usr/include/stdio.h" 1 3 4
+# 30 "/usr/include/stdio.h" 3 4
+
+
+
+
+# 1 "/usr/lib/gcc/x86_64-linux-gnu/4.4.3/include/stddef.h" 1 3 4
+# 211 "/usr/lib/gcc/x86_64-linux-gnu/4.4.3/include/stddef.h" 3 4
+typedef long unsigned int size_t;
+# 35 "/usr/include/stdio.h" 2 3 4
+# 45 "/usr/include/stdio.h" 3 4
+struct _IO_FILE;
+
+
+
+typedef struct _IO_FILE FILE;
+
+
+
+
+
+# 65 "/usr/include/stdio.h" 3 4
+typedef struct _IO_FILE __FILE;
+# 75 "/usr/include/stdio.h" 3 4
+# 1 "/usr/include/libio.h" 1 3 4
+# 32 "/usr/include/libio.h" 3 4
+# 1 "/usr/include/_G_config.h" 1 3 4
+# 15 "/usr/include/_G_config.h" 3 4
+# 1 "/usr/lib/gcc/x86_64-linux-gnu/4.4.3/include/stddef.h" 1 3 4
+# 16 "/usr/include/_G_config.h" 2 3 4
+
+
+
+
+# 1 "/usr/include/wchar.h" 1 3 4
+# 83 "/usr/include/wchar.h" 3 4
+typedef struct
+{
+  int __count;
+  union
+  {
+
+    unsigned int __wch;
+
+
+
+    char __wchb[4];
+  } __value;
+} __mbstate_t;
+# 21 "/usr/include/_G_config.h" 2 3 4
+
+typedef struct
+{
+  __off_t __pos;
+  __mbstate_t __state;
+} _G_fpos_t;
+typedef struct
+{
+  __off64_t __pos;
+  __mbstate_t __state;
+} _G_fpos64_t;
+# 53 "/usr/include/_G_config.h" 3 4
+typedef int _G_int16_t __attribute__ ((__mode__ (__HI__)));
+typedef int _G_int32_t __attribute__ ((__mode__ (__SI__)));
+typedef unsigned int _G_uint16_t __attribute__ ((__mode__ (__HI__)));
+typedef unsigned int _G_uint32_t __attribute__ ((__mode__ (__SI__)));
+# 33 "/usr/include/libio.h" 2 3 4
+# 53 "/usr/include/libio.h" 3 4
+# 1 "/usr/lib/gcc/x86_64-linux-gnu/4.4.3/include/stdarg.h" 1 3 4
+# 40 "/usr/lib/gcc/x86_64-linux-gnu/4.4.3/include/stdarg.h" 3 4
+typedef __builtin_va_list __gnuc_va_list;
+# 54 "/usr/include/libio.h" 2 3 4
+# 170 "/usr/include/libio.h" 3 4
+struct _IO_jump_t; struct _IO_FILE;
+# 180 "/usr/include/libio.h" 3 4
+typedef void _IO_lock_t;
+
+
+
+
+
+struct _IO_marker {
+  struct _IO_marker *_next;
+  struct _IO_FILE *_sbuf;
+
+
+
+  int _pos;
+# 203 "/usr/include/libio.h" 3 4
+};
+
+
+enum __codecvt_result
+{
+  __codecvt_ok,
+  __codecvt_partial,
+  __codecvt_error,
+  __codecvt_noconv
+};
+# 271 "/usr/include/libio.h" 3 4
+struct _IO_FILE {
+  int _flags;
+
+
+
+
+  char* _IO_read_ptr;
+  char* _IO_read_end;
+  char* _IO_read_base;
+  char* _IO_write_base;
+  char* _IO_write_ptr;
+  char* _IO_write_end;
+  char* _IO_buf_base;
+  char* _IO_buf_end;
+
+  char *_IO_save_base;
+  char *_IO_backup_base;
+  char *_IO_save_end;
+
+  struct _IO_marker *_markers;
+
+  struct _IO_FILE *_chain;
+
+  int _fileno;
+
+
+
+  int _flags2;
+
+  __off_t _old_offset;
+
+
+
+  unsigned short _cur_column;
+  signed char _vtable_offset;
+  char _shortbuf[1];
+
+
+
+  _IO_lock_t *_lock;
+# 319 "/usr/include/libio.h" 3 4
+  __off64_t _offset;
+# 328 "/usr/include/libio.h" 3 4
+  void *__pad1;
+  void *__pad2;
+  void *__pad3;
+  void *__pad4;
+  size_t __pad5;
+
+  int _mode;
+
+  char _unused2[15 * sizeof (int) - 4 * sizeof (void *) - sizeof (size_t)];
+
+};
+
+
+typedef struct _IO_FILE _IO_FILE;
+
+
+struct _IO_FILE_plus;
+
+extern struct _IO_FILE_plus _IO_2_1_stdin_;
+extern struct _IO_FILE_plus _IO_2_1_stdout_;
+extern struct _IO_FILE_plus _IO_2_1_stderr_;
+# 364 "/usr/include/libio.h" 3 4
+typedef __ssize_t __io_read_fn (void *__cookie, char *__buf, size_t __nbytes);
+
+
+
+
+
+
+
+typedef __ssize_t __io_write_fn (void *__cookie, __const char *__buf,
+     size_t __n);
+
+
+
+
+
+
+
+typedef int __io_seek_fn (void *__cookie, __off64_t *__pos, int __w);
+
+
+typedef int __io_close_fn (void *__cookie);
+# 416 "/usr/include/libio.h" 3 4
+extern int __underflow (_IO_FILE *);
+extern int __uflow (_IO_FILE *);
+extern int __overflow (_IO_FILE *, int);
+# 460 "/usr/include/libio.h" 3 4
+extern int _IO_getc (_IO_FILE *__fp);
+extern int _IO_putc (int __c, _IO_FILE *__fp);
+extern int _IO_feof (_IO_FILE *__fp) __attribute__ ((__nothrow__));
+extern int _IO_ferror (_IO_FILE *__fp) __attribute__ ((__nothrow__));
+
+extern int _IO_peekc_locked (_IO_FILE *__fp);
+
+
+
+
+
+extern void _IO_flockfile (_IO_FILE *) __attribute__ ((__nothrow__));
+extern void _IO_funlockfile (_IO_FILE *) __attribute__ ((__nothrow__));
+extern int _IO_ftrylockfile (_IO_FILE *) __attribute__ ((__nothrow__));
+# 490 "/usr/include/libio.h" 3 4
+extern int _IO_vfscanf (_IO_FILE * __restrict, const char * __restrict,
+   __gnuc_va_list, int *__restrict);
+extern int _IO_vfprintf (_IO_FILE *__restrict, const char *__restrict,
+    __gnuc_va_list);
+extern __ssize_t _IO_padn (_IO_FILE *, int, __ssize_t);
+extern size_t _IO_sgetn (_IO_FILE *, void *, size_t);
+
+extern __off64_t _IO_seekoff (_IO_FILE *, __off64_t, int, int);
+extern __off64_t _IO_seekpos (_IO_FILE *, __off64_t, int);
+
+extern void _IO_free_backup_area (_IO_FILE *) __attribute__ ((__nothrow__));
+# 76 "/usr/include/stdio.h" 2 3 4
+# 89 "/usr/include/stdio.h" 3 4
+
+
+typedef _G_fpos_t fpos_t;
+
+
+
+
+# 141 "/usr/include/stdio.h" 3 4
+# 1 "/usr/include/bits/stdio_lim.h" 1 3 4
+# 142 "/usr/include/stdio.h" 2 3 4
+
+
+
+extern struct _IO_FILE *stdin;
+extern struct _IO_FILE *stdout;
+extern struct _IO_FILE *stderr;
+
+
+
+
+
+
+
+extern int remove (__const char *__filename) __attribute__ ((__nothrow__));
+
+extern int rename (__const char *__old, __const char *__new) __attribute__ ((__nothrow__));
+
+
+
+
+extern int renameat (int __oldfd, __const char *__old, int __newfd,
+       __const char *__new) __attribute__ ((__nothrow__));
+
+
+
+
+
+
+
+
+extern FILE *tmpfile (void) ;
+# 186 "/usr/include/stdio.h" 3 4
+extern char *tmpnam (char *__s) __attribute__ ((__nothrow__)) ;
+
+
+
+
+
+extern char *tmpnam_r (char *__s) __attribute__ ((__nothrow__)) ;
+# 204 "/usr/include/stdio.h" 3 4
+extern char *tempnam (__const char *__dir, __const char *__pfx)
+     __attribute__ ((__nothrow__)) __attribute__ ((__malloc__)) ;
+
+
+
+
+
+
+
+
+extern int fclose (FILE *__stream);
+
+
+
+
+extern int fflush (FILE *__stream);
+
+# 229 "/usr/include/stdio.h" 3 4
+extern int fflush_unlocked (FILE *__stream);
+# 243 "/usr/include/stdio.h" 3 4
+
+
+
+
+
+
+extern FILE *fopen (__const char *__restrict __filename,
+      __const char *__restrict __modes) ;
+
+
+
+
+extern FILE *freopen (__const char *__restrict __filename,
+        __const char *__restrict __modes,
+        FILE *__restrict __stream) ;
+# 272 "/usr/include/stdio.h" 3 4
+
+# 283 "/usr/include/stdio.h" 3 4
+extern FILE *fdopen (int __fd, __const char *__modes) __attribute__ ((__nothrow__)) ;
+# 296 "/usr/include/stdio.h" 3 4
+extern FILE *fmemopen (void *__s, size_t __len, __const char *__modes)
+  __attribute__ ((__nothrow__)) ;
+
+
+
+
+extern FILE *open_memstream (char **__bufloc, size_t *__sizeloc) __attribute__ ((__nothrow__)) ;
+
+
+
+
+
+
+extern void setbuf (FILE *__restrict __stream, char *__restrict __buf) __attribute__ ((__nothrow__));
+
+
+
+extern int setvbuf (FILE *__restrict __stream, char *__restrict __buf,
+      int __modes, size_t __n) __attribute__ ((__nothrow__));
+
+
+
+
+
+extern void setbuffer (FILE *__restrict __stream, char *__restrict __buf,
+         size_t __size) __attribute__ ((__nothrow__));
+
+
+extern void setlinebuf (FILE *__stream) __attribute__ ((__nothrow__));
+
+
+
+
+
+
+
+
+extern int fprintf (FILE *__restrict __stream,
+      __const char *__restrict __format, ...);
+
+
+
+
+extern int printf (__const char *__restrict __format, ...);
+
+extern int sprintf (char *__restrict __s,
+      __const char *__restrict __format, ...) __attribute__ ((__nothrow__));
+
+
+
+
+
+extern int vfprintf (FILE *__restrict __s, __const char *__restrict __format,
+       __gnuc_va_list __arg);
+
+
+
+
+extern int vprintf (__const char *__restrict __format, __gnuc_va_list __arg);
+
+extern int vsprintf (char *__restrict __s, __const char *__restrict __format,
+       __gnuc_va_list __arg) __attribute__ ((__nothrow__));
+
+
+
+
+
+extern int snprintf (char *__restrict __s, size_t __maxlen,
+       __const char *__restrict __format, ...)
+     __attribute__ ((__nothrow__)) __attribute__ ((__format__ (__printf__, 3, 4)));
+
+extern int vsnprintf (char *__restrict __s, size_t __maxlen,
+        __const char *__restrict __format, __gnuc_va_list __arg)
+     __attribute__ ((__nothrow__)) __attribute__ ((__format__ (__printf__, 3, 0)));
+
+# 394 "/usr/include/stdio.h" 3 4
+extern int vdprintf (int __fd, __const char *__restrict __fmt,
+       __gnuc_va_list __arg)
+     __attribute__ ((__format__ (__printf__, 2, 0)));
+extern int dprintf (int __fd, __const char *__restrict __fmt, ...)
+     __attribute__ ((__format__ (__printf__, 2, 3)));
+
+
+
+
+
+
+
+
+extern int fscanf (FILE *__restrict __stream,
+     __const char *__restrict __format, ...) ;
+
+
+
+
+extern int scanf (__const char *__restrict __format, ...) ;
+
+extern int sscanf (__const char *__restrict __s,
+     __const char *__restrict __format, ...) __attribute__ ((__nothrow__));
+# 425 "/usr/include/stdio.h" 3 4
+extern int fscanf (FILE *__restrict __stream, __const char *__restrict __format, ...) __asm__ ("" "__isoc99_fscanf") ;
+
+
+extern int scanf (__const char *__restrict __format, ...) __asm__ ("" "__isoc99_scanf") ;
+
+extern int sscanf (__const char *__restrict __s, __const char *__restrict __format, ...) __asm__ ("" "__isoc99_sscanf") __attribute__ ((__nothrow__));
+# 445 "/usr/include/stdio.h" 3 4
+
+
+
+
+
+
+
+
+extern int vfscanf (FILE *__restrict __s, __const char *__restrict __format,
+      __gnuc_va_list __arg)
+     __attribute__ ((__format__ (__scanf__, 2, 0))) ;
+
+
+
+
+
+extern int vscanf (__const char *__restrict __format, __gnuc_va_list __arg)
+     __attribute__ ((__format__ (__scanf__, 1, 0))) ;
+
+
+extern int vsscanf (__const char *__restrict __s,
+      __const char *__restrict __format, __gnuc_va_list __arg)
+     __attribute__ ((__nothrow__)) __attribute__ ((__format__ (__scanf__, 2, 0)));
+# 476 "/usr/include/stdio.h" 3 4
+extern int vfscanf (FILE *__restrict __s, __const char *__restrict __format, __gnuc_va_list __arg) __asm__ ("" "__isoc99_vfscanf")
+
+
+
+     __attribute__ ((__format__ (__scanf__, 2, 0))) ;
+extern int vscanf (__const char *__restrict __format, __gnuc_va_list __arg) __asm__ ("" "__isoc99_vscanf")
+
+     __attribute__ ((__format__ (__scanf__, 1, 0))) ;
+extern int vsscanf (__const char *__restrict __s, __const char *__restrict __format, __gnuc_va_list __arg) __asm__ ("" "__isoc99_vsscanf")
+
+
+
+     __attribute__ ((__nothrow__)) __attribute__ ((__format__ (__scanf__, 2, 0)));
+# 504 "/usr/include/stdio.h" 3 4
+
+
+
+
+
+
+
+
+
+extern int fgetc (FILE *__stream);
+extern int getc (FILE *__stream);
+
+
+
+
+
+extern int getchar (void);
+
+# 532 "/usr/include/stdio.h" 3 4
+extern int getc_unlocked (FILE *__stream);
+extern int getchar_unlocked (void);
+# 543 "/usr/include/stdio.h" 3 4
+extern int fgetc_unlocked (FILE *__stream);
+
+
+
+
+
+
+
+
+
+
+
+extern int fputc (int __c, FILE *__stream);
+extern int putc (int __c, FILE *__stream);
+
+
+
+
+
+extern int putchar (int __c);
+
+# 576 "/usr/include/stdio.h" 3 4
+extern int fputc_unlocked (int __c, FILE *__stream);
+
+
+
+
+
+
+
+extern int putc_unlocked (int __c, FILE *__stream);
+extern int putchar_unlocked (int __c);
+
+
+
+
+
+
+extern int getw (FILE *__stream);
+
+
+extern int putw (int __w, FILE *__stream);
+
+
+
+
+
+
+
+
+extern char *fgets (char *__restrict __s, int __n, FILE *__restrict __stream)
+     ;
+
+
+
+
+
+
+extern char *gets (char *__s) ;
+
+# 638 "/usr/include/stdio.h" 3 4
+extern __ssize_t __getdelim (char **__restrict __lineptr,
+          size_t *__restrict __n, int __delimiter,
+          FILE *__restrict __stream) ;
+extern __ssize_t getdelim (char **__restrict __lineptr,
+        size_t *__restrict __n, int __delimiter,
+        FILE *__restrict __stream) ;
+
+
+
+
+
+
+
+extern __ssize_t getline (char **__restrict __lineptr,
+       size_t *__restrict __n,
+       FILE *__restrict __stream) ;
+
+
+
+
+
+
+
+
+extern int fputs (__const char *__restrict __s, FILE *__restrict __stream);
+
+
+
+
+
+extern int puts (__const char *__s);
+
+
+
+
+
+
+extern int ungetc (int __c, FILE *__stream);
+
+
+
+
+
+
+extern size_t fread (void *__restrict __ptr, size_t __size,
+       size_t __n, FILE *__restrict __stream) ;
+
+
+
+
+extern size_t fwrite (__const void *__restrict __ptr, size_t __size,
+        size_t __n, FILE *__restrict __s);
+
+# 710 "/usr/include/stdio.h" 3 4
+extern size_t fread_unlocked (void *__restrict __ptr, size_t __size,
+         size_t __n, FILE *__restrict __stream) ;
+extern size_t fwrite_unlocked (__const void *__restrict __ptr, size_t __size,
+          size_t __n, FILE *__restrict __stream);
+
+
+
+
+
+
+
+
+extern int fseek (FILE *__stream, long int __off, int __whence);
+
+
+
+
+extern long int ftell (FILE *__stream) ;
+
+
+
+
+extern void rewind (FILE *__stream);
+
+# 746 "/usr/include/stdio.h" 3 4
+extern int fseeko (FILE *__stream, __off_t __off, int __whence);
+
+
+
+
+extern __off_t ftello (FILE *__stream) ;
+# 765 "/usr/include/stdio.h" 3 4
+
+
+
+
+
+
+extern int fgetpos (FILE *__restrict __stream, fpos_t *__restrict __pos);
+
+
+
+
+extern int fsetpos (FILE *__stream, __const fpos_t *__pos);
+# 788 "/usr/include/stdio.h" 3 4
+
+# 797 "/usr/include/stdio.h" 3 4
+
+
+extern void clearerr (FILE *__stream) __attribute__ ((__nothrow__));
+
+extern int feof (FILE *__stream) __attribute__ ((__nothrow__)) ;
+
+extern int ferror (FILE *__stream) __attribute__ ((__nothrow__)) ;
+
+
+
+
+extern void clearerr_unlocked (FILE *__stream) __attribute__ ((__nothrow__));
+extern int feof_unlocked (FILE *__stream) __attribute__ ((__nothrow__)) ;
+extern int ferror_unlocked (FILE *__stream) __attribute__ ((__nothrow__)) ;
+
+
+
+
+
+
+
+
+extern void perror (__const char *__s);
+
+
+
+
+
+
+# 1 "/usr/include/bits/sys_errlist.h" 1 3 4
+# 27 "/usr/include/bits/sys_errlist.h" 3 4
+extern int sys_nerr;
+extern __const char *__const sys_errlist[];
+# 827 "/usr/include/stdio.h" 2 3 4
+
+
+
+
+extern int fileno (FILE *__stream) __attribute__ ((__nothrow__)) ;
+
+
+
+
+extern int fileno_unlocked (FILE *__stream) __attribute__ ((__nothrow__)) ;
+# 846 "/usr/include/stdio.h" 3 4
+extern FILE *popen (__const char *__command, __const char *__modes) ;
+
+
+
+
+
+extern int pclose (FILE *__stream);
+
+
+
+
+
+extern char *ctermid (char *__s) __attribute__ ((__nothrow__));
+# 886 "/usr/include/stdio.h" 3 4
+extern void flockfile (FILE *__stream) __attribute__ ((__nothrow__));
+
+
+
+extern int ftrylockfile (FILE *__stream) __attribute__ ((__nothrow__)) ;
+
+
+extern void funlockfile (FILE *__stream) __attribute__ ((__nothrow__));
+# 916 "/usr/include/stdio.h" 3 4
+
+# 10 "voip_flash_mib.c" 2
+# 1 "/usr/include/stdlib.h" 1 3 4
+# 33 "/usr/include/stdlib.h" 3 4
+# 1 "/usr/lib/gcc/x86_64-linux-gnu/4.4.3/include/stddef.h" 1 3 4
+# 323 "/usr/lib/gcc/x86_64-linux-gnu/4.4.3/include/stddef.h" 3 4
+typedef int wchar_t;
+# 34 "/usr/include/stdlib.h" 2 3 4
+
+
+# 96 "/usr/include/stdlib.h" 3 4
+
+
+typedef struct
+  {
+    int quot;
+    int rem;
+  } div_t;
+
+
+
+typedef struct
+  {
+    long int quot;
+    long int rem;
+  } ldiv_t;
+
+
+
+
+
+
+
+__extension__ typedef struct
+  {
+    long long int quot;
+    long long int rem;
+  } lldiv_t;
+
+
+# 140 "/usr/include/stdlib.h" 3 4
+extern size_t __ctype_get_mb_cur_max (void) __attribute__ ((__nothrow__)) ;
+
+
+
+
+extern double atof (__const char *__nptr)
+     __attribute__ ((__nothrow__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1))) ;
+
+extern int atoi (__const char *__nptr)
+     __attribute__ ((__nothrow__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1))) ;
+
+extern long int atol (__const char *__nptr)
+     __attribute__ ((__nothrow__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1))) ;
+
+
+
+
+
+__extension__ extern long long int atoll (__const char *__nptr)
+     __attribute__ ((__nothrow__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1))) ;
+
+
+
+
+
+extern double strtod (__const char *__restrict __nptr,
+        char **__restrict __endptr)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1))) ;
+
+
+
+
+
+extern float strtof (__const char *__restrict __nptr,
+       char **__restrict __endptr) __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1))) ;
+
+extern long double strtold (__const char *__restrict __nptr,
+       char **__restrict __endptr)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1))) ;
+
+
+
+
+
+extern long int strtol (__const char *__restrict __nptr,
+   char **__restrict __endptr, int __base)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1))) ;
+
+extern unsigned long int strtoul (__const char *__restrict __nptr,
+      char **__restrict __endptr, int __base)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1))) ;
+
+
+
+
+__extension__
+extern long long int strtoq (__const char *__restrict __nptr,
+        char **__restrict __endptr, int __base)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1))) ;
+
+__extension__
+extern unsigned long long int strtouq (__const char *__restrict __nptr,
+           char **__restrict __endptr, int __base)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1))) ;
+
+
+
+
+
+__extension__
+extern long long int strtoll (__const char *__restrict __nptr,
+         char **__restrict __endptr, int __base)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1))) ;
+
+__extension__
+extern unsigned long long int strtoull (__const char *__restrict __nptr,
+     char **__restrict __endptr, int __base)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1))) ;
+
+# 311 "/usr/include/stdlib.h" 3 4
+extern char *l64a (long int __n) __attribute__ ((__nothrow__)) ;
+
+
+extern long int a64l (__const char *__s)
+     __attribute__ ((__nothrow__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1))) ;
+
+
+
+
+# 1 "/usr/include/sys/types.h" 1 3 4
+# 29 "/usr/include/sys/types.h" 3 4
+
+
+
+
+
+
+typedef __u_char u_char;
+typedef __u_short u_short;
+typedef __u_int u_int;
+typedef __u_long u_long;
+typedef __quad_t quad_t;
+typedef __u_quad_t u_quad_t;
+typedef __fsid_t fsid_t;
+
+
+
+
+typedef __loff_t loff_t;
+
+
+
+typedef __ino_t ino_t;
+# 62 "/usr/include/sys/types.h" 3 4
+typedef __dev_t dev_t;
+
+
+
+
+typedef __gid_t gid_t;
+
+
+
+
+typedef __mode_t mode_t;
+
+
+
+
+typedef __nlink_t nlink_t;
+
+
+
+
+typedef __uid_t uid_t;
+
+
+
+
+
+typedef __off_t off_t;
+# 100 "/usr/include/sys/types.h" 3 4
+typedef __pid_t pid_t;
+
+
+
+
+typedef __id_t id_t;
+
+
+
+
+typedef __ssize_t ssize_t;
+
+
+
+
+
+typedef __daddr_t daddr_t;
+typedef __caddr_t caddr_t;
+
+
+
+
+
+typedef __key_t key_t;
+# 133 "/usr/include/sys/types.h" 3 4
+# 1 "/usr/include/time.h" 1 3 4
+# 74 "/usr/include/time.h" 3 4
+
+
+typedef __time_t time_t;
+
+
+
+# 92 "/usr/include/time.h" 3 4
+typedef __clockid_t clockid_t;
+# 104 "/usr/include/time.h" 3 4
+typedef __timer_t timer_t;
+# 134 "/usr/include/sys/types.h" 2 3 4
+# 147 "/usr/include/sys/types.h" 3 4
+# 1 "/usr/lib/gcc/x86_64-linux-gnu/4.4.3/include/stddef.h" 1 3 4
+# 148 "/usr/include/sys/types.h" 2 3 4
+
+
+
+typedef unsigned long int ulong;
+typedef unsigned short int ushort;
+typedef unsigned int uint;
+# 195 "/usr/include/sys/types.h" 3 4
+typedef int int8_t __attribute__ ((__mode__ (__QI__)));
+typedef int int16_t __attribute__ ((__mode__ (__HI__)));
+typedef int int32_t __attribute__ ((__mode__ (__SI__)));
+typedef int int64_t __attribute__ ((__mode__ (__DI__)));
+
+
+typedef unsigned int u_int8_t __attribute__ ((__mode__ (__QI__)));
+typedef unsigned int u_int16_t __attribute__ ((__mode__ (__HI__)));
+typedef unsigned int u_int32_t __attribute__ ((__mode__ (__SI__)));
+typedef unsigned int u_int64_t __attribute__ ((__mode__ (__DI__)));
+
+typedef int register_t __attribute__ ((__mode__ (__word__)));
+# 220 "/usr/include/sys/types.h" 3 4
+# 1 "/usr/include/sys/select.h" 1 3 4
+# 31 "/usr/include/sys/select.h" 3 4
+# 1 "/usr/include/bits/select.h" 1 3 4
+# 23 "/usr/include/bits/select.h" 3 4
+# 1 "/usr/include/bits/wordsize.h" 1 3 4
+# 24 "/usr/include/bits/select.h" 2 3 4
+# 32 "/usr/include/sys/select.h" 2 3 4
+
+
+# 1 "/usr/include/bits/sigset.h" 1 3 4
+# 24 "/usr/include/bits/sigset.h" 3 4
+typedef int __sig_atomic_t;
+
+
+
+
+typedef struct
+  {
+    unsigned long int __val[(1024 / (8 * sizeof (unsigned long int)))];
+  } __sigset_t;
+# 35 "/usr/include/sys/select.h" 2 3 4
+
+
+
+typedef __sigset_t sigset_t;
+
+
+
+
+
+# 1 "/usr/include/time.h" 1 3 4
+# 120 "/usr/include/time.h" 3 4
+struct timespec
+  {
+    __time_t tv_sec;
+    long int tv_nsec;
+  };
+# 45 "/usr/include/sys/select.h" 2 3 4
+
+# 1 "/usr/include/bits/time.h" 1 3 4
+# 69 "/usr/include/bits/time.h" 3 4
+struct timeval
+  {
+    __time_t tv_sec;
+    __suseconds_t tv_usec;
+  };
+# 47 "/usr/include/sys/select.h" 2 3 4
+
+
+typedef __suseconds_t suseconds_t;
+
+
+
+
+
+typedef long int __fd_mask;
+# 67 "/usr/include/sys/select.h" 3 4
+typedef struct
+  {
+
+
+
+
+
+
+    __fd_mask __fds_bits[1024 / (8 * (int) sizeof (__fd_mask))];
+
+
+  } fd_set;
+
+
+
+
+
+
+typedef __fd_mask fd_mask;
+# 99 "/usr/include/sys/select.h" 3 4
+
+# 109 "/usr/include/sys/select.h" 3 4
+extern int select (int __nfds, fd_set *__restrict __readfds,
+     fd_set *__restrict __writefds,
+     fd_set *__restrict __exceptfds,
+     struct timeval *__restrict __timeout);
+# 121 "/usr/include/sys/select.h" 3 4
+extern int pselect (int __nfds, fd_set *__restrict __readfds,
+      fd_set *__restrict __writefds,
+      fd_set *__restrict __exceptfds,
+      const struct timespec *__restrict __timeout,
+      const __sigset_t *__restrict __sigmask);
+
+
+
+# 221 "/usr/include/sys/types.h" 2 3 4
+
+
+# 1 "/usr/include/sys/sysmacros.h" 1 3 4
+# 30 "/usr/include/sys/sysmacros.h" 3 4
+__extension__
+extern unsigned int gnu_dev_major (unsigned long long int __dev)
+     __attribute__ ((__nothrow__));
+__extension__
+extern unsigned int gnu_dev_minor (unsigned long long int __dev)
+     __attribute__ ((__nothrow__));
+__extension__
+extern unsigned long long int gnu_dev_makedev (unsigned int __major,
+            unsigned int __minor)
+     __attribute__ ((__nothrow__));
+# 224 "/usr/include/sys/types.h" 2 3 4
+# 235 "/usr/include/sys/types.h" 3 4
+typedef __blkcnt_t blkcnt_t;
+
+
+
+typedef __fsblkcnt_t fsblkcnt_t;
+
+
+
+typedef __fsfilcnt_t fsfilcnt_t;
+# 270 "/usr/include/sys/types.h" 3 4
+# 1 "/usr/include/bits/pthreadtypes.h" 1 3 4
+# 23 "/usr/include/bits/pthreadtypes.h" 3 4
+# 1 "/usr/include/bits/wordsize.h" 1 3 4
+# 24 "/usr/include/bits/pthreadtypes.h" 2 3 4
+# 50 "/usr/include/bits/pthreadtypes.h" 3 4
+typedef unsigned long int pthread_t;
+
+
+typedef union
+{
+  char __size[56];
+  long int __align;
+} pthread_attr_t;
+
+
+
+typedef struct __pthread_internal_list
+{
+  struct __pthread_internal_list *__prev;
+  struct __pthread_internal_list *__next;
+} __pthread_list_t;
+# 76 "/usr/include/bits/pthreadtypes.h" 3 4
+typedef union
+{
+  struct __pthread_mutex_s
+  {
+    int __lock;
+    unsigned int __count;
+    int __owner;
+
+    unsigned int __nusers;
+
+
+
+    int __kind;
+
+    int __spins;
+    __pthread_list_t __list;
+# 101 "/usr/include/bits/pthreadtypes.h" 3 4
+  } __data;
+  char __size[40];
+  long int __align;
+} pthread_mutex_t;
+
+typedef union
+{
+  char __size[4];
+  int __align;
+} pthread_mutexattr_t;
+
+
+
+
+typedef union
+{
+  struct
+  {
+    int __lock;
+    unsigned int __futex;
+    __extension__ unsigned long long int __total_seq;
+    __extension__ unsigned long long int __wakeup_seq;
+    __extension__ unsigned long long int __woken_seq;
+    void *__mutex;
+    unsigned int __nwaiters;
+    unsigned int __broadcast_seq;
+  } __data;
+  char __size[48];
+  __extension__ long long int __align;
+} pthread_cond_t;
+
+typedef union
+{
+  char __size[4];
+  int __align;
+} pthread_condattr_t;
+
+
+
+typedef unsigned int pthread_key_t;
+
+
+
+typedef int pthread_once_t;
+
+
+
+
+
+typedef union
+{
+
+  struct
+  {
+    int __lock;
+    unsigned int __nr_readers;
+    unsigned int __readers_wakeup;
+    unsigned int __writer_wakeup;
+    unsigned int __nr_readers_queued;
+    unsigned int __nr_writers_queued;
+    int __writer;
+    int __shared;
+    unsigned long int __pad1;
+    unsigned long int __pad2;
+
+
+    unsigned int __flags;
+  } __data;
+# 187 "/usr/include/bits/pthreadtypes.h" 3 4
+  char __size[56];
+  long int __align;
+} pthread_rwlock_t;
+
+typedef union
+{
+  char __size[8];
+  long int __align;
+} pthread_rwlockattr_t;
+
+
+
+
+
+typedef volatile int pthread_spinlock_t;
+
+
+
+
+typedef union
+{
+  char __size[32];
+  long int __align;
+} pthread_barrier_t;
+
+typedef union
+{
+  char __size[4];
+  int __align;
+} pthread_barrierattr_t;
+# 271 "/usr/include/sys/types.h" 2 3 4
+
+
+
+# 321 "/usr/include/stdlib.h" 2 3 4
+
+
+
+
+
+
+extern long int random (void) __attribute__ ((__nothrow__));
+
+
+extern void srandom (unsigned int __seed) __attribute__ ((__nothrow__));
+
+
+
+
+
+extern char *initstate (unsigned int __seed, char *__statebuf,
+   size_t __statelen) __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (2)));
+
+
+
+extern char *setstate (char *__statebuf) __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+
+
+
+struct random_data
+  {
+    int32_t *fptr;
+    int32_t *rptr;
+    int32_t *state;
+    int rand_type;
+    int rand_deg;
+    int rand_sep;
+    int32_t *end_ptr;
+  };
+
+extern int random_r (struct random_data *__restrict __buf,
+       int32_t *__restrict __result) __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1, 2)));
+
+extern int srandom_r (unsigned int __seed, struct random_data *__buf)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (2)));
+
+extern int initstate_r (unsigned int __seed, char *__restrict __statebuf,
+   size_t __statelen,
+   struct random_data *__restrict __buf)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (2, 4)));
+
+extern int setstate_r (char *__restrict __statebuf,
+         struct random_data *__restrict __buf)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1, 2)));
+
+
+
+
+
+
+extern int rand (void) __attribute__ ((__nothrow__));
+
+extern void srand (unsigned int __seed) __attribute__ ((__nothrow__));
+
+
+
+
+extern int rand_r (unsigned int *__seed) __attribute__ ((__nothrow__));
+
+
+
+
+
+
+
+extern double drand48 (void) __attribute__ ((__nothrow__));
+extern double erand48 (unsigned short int __xsubi[3]) __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1)));
+
+
+extern long int lrand48 (void) __attribute__ ((__nothrow__));
+extern long int nrand48 (unsigned short int __xsubi[3])
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1)));
+
+
+extern long int mrand48 (void) __attribute__ ((__nothrow__));
+extern long int jrand48 (unsigned short int __xsubi[3])
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1)));
+
+
+extern void srand48 (long int __seedval) __attribute__ ((__nothrow__));
+extern unsigned short int *seed48 (unsigned short int __seed16v[3])
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1)));
+extern void lcong48 (unsigned short int __param[7]) __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+
+struct drand48_data
+  {
+    unsigned short int __x[3];
+    unsigned short int __old_x[3];
+    unsigned short int __c;
+    unsigned short int __init;
+    unsigned long long int __a;
+  };
+
+
+extern int drand48_r (struct drand48_data *__restrict __buffer,
+        double *__restrict __result) __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1, 2)));
+extern int erand48_r (unsigned short int __xsubi[3],
+        struct drand48_data *__restrict __buffer,
+        double *__restrict __result) __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern int lrand48_r (struct drand48_data *__restrict __buffer,
+        long int *__restrict __result)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1, 2)));
+extern int nrand48_r (unsigned short int __xsubi[3],
+        struct drand48_data *__restrict __buffer,
+        long int *__restrict __result)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern int mrand48_r (struct drand48_data *__restrict __buffer,
+        long int *__restrict __result)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1, 2)));
+extern int jrand48_r (unsigned short int __xsubi[3],
+        struct drand48_data *__restrict __buffer,
+        long int *__restrict __result)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern int srand48_r (long int __seedval, struct drand48_data *__buffer)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (2)));
+
+extern int seed48_r (unsigned short int __seed16v[3],
+       struct drand48_data *__buffer) __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1, 2)));
+
+extern int lcong48_r (unsigned short int __param[7],
+        struct drand48_data *__buffer)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1, 2)));
+
+
+
+
+
+
+
+
+
+extern void *malloc (size_t __size) __attribute__ ((__nothrow__)) __attribute__ ((__malloc__)) ;
+
+extern void *calloc (size_t __nmemb, size_t __size)
+     __attribute__ ((__nothrow__)) __attribute__ ((__malloc__)) ;
+
+
+
+
+
+
+
+
+
+
+extern void *realloc (void *__ptr, size_t __size)
+     __attribute__ ((__nothrow__)) __attribute__ ((__warn_unused_result__));
+
+extern void free (void *__ptr) __attribute__ ((__nothrow__));
+
+
+
+
+extern void cfree (void *__ptr) __attribute__ ((__nothrow__));
+
+
+
+# 1 "/usr/include/alloca.h" 1 3 4
+# 25 "/usr/include/alloca.h" 3 4
+# 1 "/usr/lib/gcc/x86_64-linux-gnu/4.4.3/include/stddef.h" 1 3 4
+# 26 "/usr/include/alloca.h" 2 3 4
+
+
+
+
+
+
+
+extern void *alloca (size_t __size) __attribute__ ((__nothrow__));
+
+
+
+
+
+
+# 498 "/usr/include/stdlib.h" 2 3 4
+
+
+
+
+extern void *valloc (size_t __size) __attribute__ ((__nothrow__)) __attribute__ ((__malloc__)) ;
+
+
+
+
+extern int posix_memalign (void **__memptr, size_t __alignment, size_t __size)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1))) ;
+
+
+
+
+extern void abort (void) __attribute__ ((__nothrow__)) __attribute__ ((__noreturn__));
+
+
+
+extern int atexit (void (*__func) (void)) __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1)));
+# 530 "/usr/include/stdlib.h" 3 4
+
+
+
+
+
+extern int on_exit (void (*__func) (int __status, void *__arg), void *__arg)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+
+
+extern void exit (int __status) __attribute__ ((__nothrow__)) __attribute__ ((__noreturn__));
+# 553 "/usr/include/stdlib.h" 3 4
+
+
+
+
+
+
+extern void _Exit (int __status) __attribute__ ((__nothrow__)) __attribute__ ((__noreturn__));
+
+
+
+
+
+
+extern char *getenv (__const char *__name) __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1))) ;
+
+
+
+
+extern char *__secure_getenv (__const char *__name)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1))) ;
+
+
+
+
+
+extern int putenv (char *__string) __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+
+extern int setenv (__const char *__name, __const char *__value, int __replace)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (2)));
+
+
+extern int unsetenv (__const char *__name) __attribute__ ((__nothrow__));
+
+
+
+
+
+
+extern int clearenv (void) __attribute__ ((__nothrow__));
+# 604 "/usr/include/stdlib.h" 3 4
+extern char *mktemp (char *__template) __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1))) ;
+# 615 "/usr/include/stdlib.h" 3 4
+extern int mkstemp (char *__template) __attribute__ ((__nonnull__ (1))) ;
+# 637 "/usr/include/stdlib.h" 3 4
+extern int mkstemps (char *__template, int __suffixlen) __attribute__ ((__nonnull__ (1))) ;
+# 658 "/usr/include/stdlib.h" 3 4
+extern char *mkdtemp (char *__template) __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1))) ;
+# 707 "/usr/include/stdlib.h" 3 4
+
+
+
+
+
+extern int system (__const char *__command) ;
+
+# 729 "/usr/include/stdlib.h" 3 4
+extern char *realpath (__const char *__restrict __name,
+         char *__restrict __resolved) __attribute__ ((__nothrow__)) ;
+
+
+
+
+
+
+typedef int (*__compar_fn_t) (__const void *, __const void *);
+# 747 "/usr/include/stdlib.h" 3 4
+
+
+
+extern void *bsearch (__const void *__key, __const void *__base,
+        size_t __nmemb, size_t __size, __compar_fn_t __compar)
+     __attribute__ ((__nonnull__ (1, 2, 5))) ;
+
+
+
+extern void qsort (void *__base, size_t __nmemb, size_t __size,
+     __compar_fn_t __compar) __attribute__ ((__nonnull__ (1, 4)));
+# 766 "/usr/include/stdlib.h" 3 4
+extern int abs (int __x) __attribute__ ((__nothrow__)) __attribute__ ((__const__)) ;
+extern long int labs (long int __x) __attribute__ ((__nothrow__)) __attribute__ ((__const__)) ;
+
+
+
+__extension__ extern long long int llabs (long long int __x)
+     __attribute__ ((__nothrow__)) __attribute__ ((__const__)) ;
+
+
+
+
+
+
+
+extern div_t div (int __numer, int __denom)
+     __attribute__ ((__nothrow__)) __attribute__ ((__const__)) ;
+extern ldiv_t ldiv (long int __numer, long int __denom)
+     __attribute__ ((__nothrow__)) __attribute__ ((__const__)) ;
+
+
+
+
+__extension__ extern lldiv_t lldiv (long long int __numer,
+        long long int __denom)
+     __attribute__ ((__nothrow__)) __attribute__ ((__const__)) ;
+
+# 802 "/usr/include/stdlib.h" 3 4
+extern char *ecvt (double __value, int __ndigit, int *__restrict __decpt,
+     int *__restrict __sign) __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (3, 4))) ;
+
+
+
+
+extern char *fcvt (double __value, int __ndigit, int *__restrict __decpt,
+     int *__restrict __sign) __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (3, 4))) ;
+
+
+
+
+extern char *gcvt (double __value, int __ndigit, char *__buf)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (3))) ;
+
+
+
+
+extern char *qecvt (long double __value, int __ndigit,
+      int *__restrict __decpt, int *__restrict __sign)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (3, 4))) ;
+extern char *qfcvt (long double __value, int __ndigit,
+      int *__restrict __decpt, int *__restrict __sign)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (3, 4))) ;
+extern char *qgcvt (long double __value, int __ndigit, char *__buf)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (3))) ;
+
+
+
+
+extern int ecvt_r (double __value, int __ndigit, int *__restrict __decpt,
+     int *__restrict __sign, char *__restrict __buf,
+     size_t __len) __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (3, 4, 5)));
+extern int fcvt_r (double __value, int __ndigit, int *__restrict __decpt,
+     int *__restrict __sign, char *__restrict __buf,
+     size_t __len) __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (3, 4, 5)));
+
+extern int qecvt_r (long double __value, int __ndigit,
+      int *__restrict __decpt, int *__restrict __sign,
+      char *__restrict __buf, size_t __len)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (3, 4, 5)));
+extern int qfcvt_r (long double __value, int __ndigit,
+      int *__restrict __decpt, int *__restrict __sign,
+      char *__restrict __buf, size_t __len)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (3, 4, 5)));
+
+
+
+
+
+
+
+extern int mblen (__const char *__s, size_t __n) __attribute__ ((__nothrow__)) ;
+
+
+extern int mbtowc (wchar_t *__restrict __pwc,
+     __const char *__restrict __s, size_t __n) __attribute__ ((__nothrow__)) ;
+
+
+extern int wctomb (char *__s, wchar_t __wchar) __attribute__ ((__nothrow__)) ;
+
+
+
+extern size_t mbstowcs (wchar_t *__restrict __pwcs,
+   __const char *__restrict __s, size_t __n) __attribute__ ((__nothrow__));
+
+extern size_t wcstombs (char *__restrict __s,
+   __const wchar_t *__restrict __pwcs, size_t __n)
+     __attribute__ ((__nothrow__));
+
+
+
+
+
+
+
+
+extern int rpmatch (__const char *__response) __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1))) ;
+# 907 "/usr/include/stdlib.h" 3 4
+extern int posix_openpt (int __oflag) ;
+# 942 "/usr/include/stdlib.h" 3 4
+extern int getloadavg (double __loadavg[], int __nelem)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1)));
+# 958 "/usr/include/stdlib.h" 3 4
+
+# 11 "voip_flash_mib.c" 2
+# 1 "/usr/include/string.h" 1 3 4
+# 28 "/usr/include/string.h" 3 4
+
+
+
+
+
+# 1 "/usr/lib/gcc/x86_64-linux-gnu/4.4.3/include/stddef.h" 1 3 4
+# 34 "/usr/include/string.h" 2 3 4
+
+
+
+
+
+
+
+
+
+extern void *memcpy (void *__restrict __dest,
+       __const void *__restrict __src, size_t __n)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern void *memmove (void *__dest, __const void *__src, size_t __n)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1, 2)));
+
+
+
+
+
+
+extern void *memccpy (void *__restrict __dest, __const void *__restrict __src,
+        int __c, size_t __n)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1, 2)));
+
+
+
+
+
+extern void *memset (void *__s, int __c, size_t __n) __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1)));
+
+
+extern int memcmp (__const void *__s1, __const void *__s2, size_t __n)
+     __attribute__ ((__nothrow__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+# 94 "/usr/include/string.h" 3 4
+extern void *memchr (__const void *__s, int __c, size_t __n)
+      __attribute__ ((__nothrow__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+
+
+# 125 "/usr/include/string.h" 3 4
+
+
+extern char *strcpy (char *__restrict __dest, __const char *__restrict __src)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1, 2)));
+
+extern char *strncpy (char *__restrict __dest,
+        __const char *__restrict __src, size_t __n)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern char *strcat (char *__restrict __dest, __const char *__restrict __src)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1, 2)));
+
+extern char *strncat (char *__restrict __dest, __const char *__restrict __src,
+        size_t __n) __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern int strcmp (__const char *__s1, __const char *__s2)
+     __attribute__ ((__nothrow__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+
+extern int strncmp (__const char *__s1, __const char *__s2, size_t __n)
+     __attribute__ ((__nothrow__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern int strcoll (__const char *__s1, __const char *__s2)
+     __attribute__ ((__nothrow__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+
+extern size_t strxfrm (char *__restrict __dest,
+         __const char *__restrict __src, size_t __n)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (2)));
+
+# 164 "/usr/include/string.h" 3 4
+extern int strcoll_l (__const char *__s1, __const char *__s2, __locale_t __l)
+     __attribute__ ((__nothrow__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2, 3)));
+
+extern size_t strxfrm_l (char *__dest, __const char *__src, size_t __n,
+    __locale_t __l) __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (2, 4)));
+
+
+
+
+extern char *strdup (__const char *__s)
+     __attribute__ ((__nothrow__)) __attribute__ ((__malloc__)) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+
+
+extern char *strndup (__const char *__string, size_t __n)
+     __attribute__ ((__nothrow__)) __attribute__ ((__malloc__)) __attribute__ ((__nonnull__ (1)));
+# 208 "/usr/include/string.h" 3 4
+
+# 233 "/usr/include/string.h" 3 4
+extern char *strchr (__const char *__s, int __c)
+     __attribute__ ((__nothrow__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+# 260 "/usr/include/string.h" 3 4
+extern char *strrchr (__const char *__s, int __c)
+     __attribute__ ((__nothrow__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+
+
+# 279 "/usr/include/string.h" 3 4
+
+
+
+extern size_t strcspn (__const char *__s, __const char *__reject)
+     __attribute__ ((__nothrow__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern size_t strspn (__const char *__s, __const char *__accept)
+     __attribute__ ((__nothrow__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+# 312 "/usr/include/string.h" 3 4
+extern char *strpbrk (__const char *__s, __const char *__accept)
+     __attribute__ ((__nothrow__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+# 340 "/usr/include/string.h" 3 4
+extern char *strstr (__const char *__haystack, __const char *__needle)
+     __attribute__ ((__nothrow__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+
+
+
+
+extern char *strtok (char *__restrict __s, __const char *__restrict __delim)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (2)));
+
+
+
+
+extern char *__strtok_r (char *__restrict __s,
+    __const char *__restrict __delim,
+    char **__restrict __save_ptr)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (2, 3)));
+
+extern char *strtok_r (char *__restrict __s, __const char *__restrict __delim,
+         char **__restrict __save_ptr)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (2, 3)));
+# 395 "/usr/include/string.h" 3 4
+
+
+extern size_t strlen (__const char *__s)
+     __attribute__ ((__nothrow__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+
+extern size_t strnlen (__const char *__string, size_t __maxlen)
+     __attribute__ ((__nothrow__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+
+extern char *strerror (int __errnum) __attribute__ ((__nothrow__));
+
+# 425 "/usr/include/string.h" 3 4
+extern int strerror_r (int __errnum, char *__buf, size_t __buflen) __asm__ ("" "__xpg_strerror_r") __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (2)));
+# 443 "/usr/include/string.h" 3 4
+extern char *strerror_l (int __errnum, __locale_t __l) __attribute__ ((__nothrow__));
+
+
+
+
+
+extern void __bzero (void *__s, size_t __n) __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1)));
+
+
+
+extern void bcopy (__const void *__src, void *__dest, size_t __n)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern void bzero (void *__s, size_t __n) __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1)));
+
+
+extern int bcmp (__const void *__s1, __const void *__s2, size_t __n)
+     __attribute__ ((__nothrow__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+# 487 "/usr/include/string.h" 3 4
+extern char *index (__const char *__s, int __c)
+     __attribute__ ((__nothrow__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+# 515 "/usr/include/string.h" 3 4
+extern char *rindex (__const char *__s, int __c)
+     __attribute__ ((__nothrow__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+extern int ffs (int __i) __attribute__ ((__nothrow__)) __attribute__ ((__const__));
+# 534 "/usr/include/string.h" 3 4
+extern int strcasecmp (__const char *__s1, __const char *__s2)
+     __attribute__ ((__nothrow__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern int strncasecmp (__const char *__s1, __const char *__s2, size_t __n)
+     __attribute__ ((__nothrow__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+# 557 "/usr/include/string.h" 3 4
+extern char *strsep (char **__restrict __stringp,
+       __const char *__restrict __delim)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1, 2)));
+
+
+
+
+extern char *strsignal (int __sig) __attribute__ ((__nothrow__));
+
+
+extern char *__stpcpy (char *__restrict __dest, __const char *__restrict __src)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1, 2)));
+extern char *stpcpy (char *__restrict __dest, __const char *__restrict __src)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1, 2)));
+
+
+
+extern char *__stpncpy (char *__restrict __dest,
+   __const char *__restrict __src, size_t __n)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1, 2)));
+extern char *stpncpy (char *__restrict __dest,
+        __const char *__restrict __src, size_t __n)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1, 2)));
+# 644 "/usr/include/string.h" 3 4
+
+# 12 "voip_flash_mib.c" 2
+
+
+
+
+
+# 1 "/usr/include/unistd.h" 1 3 4
+# 28 "/usr/include/unistd.h" 3 4
+
+# 203 "/usr/include/unistd.h" 3 4
+# 1 "/usr/include/bits/posix_opt.h" 1 3 4
+# 204 "/usr/include/unistd.h" 2 3 4
+# 227 "/usr/include/unistd.h" 3 4
+# 1 "/usr/lib/gcc/x86_64-linux-gnu/4.4.3/include/stddef.h" 1 3 4
+# 228 "/usr/include/unistd.h" 2 3 4
+# 256 "/usr/include/unistd.h" 3 4
+typedef __useconds_t useconds_t;
+# 268 "/usr/include/unistd.h" 3 4
+typedef __intptr_t intptr_t;
+
+
+
+
+
+
+typedef __socklen_t socklen_t;
+# 288 "/usr/include/unistd.h" 3 4
+extern int access (__const char *__name, int __type) __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1)));
+# 305 "/usr/include/unistd.h" 3 4
+extern int faccessat (int __fd, __const char *__file, int __type, int __flag)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (2))) ;
+# 331 "/usr/include/unistd.h" 3 4
+extern __off_t lseek (int __fd, __off_t __offset, int __whence) __attribute__ ((__nothrow__));
+# 350 "/usr/include/unistd.h" 3 4
+extern int close (int __fd);
+
+
+
+
+
+
+extern ssize_t read (int __fd, void *__buf, size_t __nbytes) ;
+
+
+
+
+
+extern ssize_t write (int __fd, __const void *__buf, size_t __n) ;
+# 414 "/usr/include/unistd.h" 3 4
+extern int pipe (int __pipedes[2]) __attribute__ ((__nothrow__)) ;
+# 429 "/usr/include/unistd.h" 3 4
+extern unsigned int alarm (unsigned int __seconds) __attribute__ ((__nothrow__));
+# 441 "/usr/include/unistd.h" 3 4
+extern unsigned int sleep (unsigned int __seconds);
+
+
+
+
+
+
+extern __useconds_t ualarm (__useconds_t __value, __useconds_t __interval)
+     __attribute__ ((__nothrow__));
+
+
+
+
+
+
+extern int usleep (__useconds_t __useconds);
+# 465 "/usr/include/unistd.h" 3 4
+extern int pause (void);
+
+
+
+extern int chown (__const char *__file, __uid_t __owner, __gid_t __group)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1))) ;
+
+
+
+extern int fchown (int __fd, __uid_t __owner, __gid_t __group) __attribute__ ((__nothrow__)) ;
+
+
+
+
+extern int lchown (__const char *__file, __uid_t __owner, __gid_t __group)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1))) ;
+
+
+
+
+
+
+extern int fchownat (int __fd, __const char *__file, __uid_t __owner,
+       __gid_t __group, int __flag)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (2))) ;
+
+
+
+extern int chdir (__const char *__path) __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1))) ;
+
+
+
+extern int fchdir (int __fd) __attribute__ ((__nothrow__)) ;
+# 507 "/usr/include/unistd.h" 3 4
+extern char *getcwd (char *__buf, size_t __size) __attribute__ ((__nothrow__)) ;
+# 520 "/usr/include/unistd.h" 3 4
+extern char *getwd (char *__buf)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1))) __attribute__ ((__deprecated__)) ;
+
+
+
+
+extern int dup (int __fd) __attribute__ ((__nothrow__)) ;
+
+
+extern int dup2 (int __fd, int __fd2) __attribute__ ((__nothrow__));
+# 538 "/usr/include/unistd.h" 3 4
+extern char **__environ;
+
+
+
+
+
+
+
+extern int execve (__const char *__path, char *__const __argv[],
+     char *__const __envp[]) __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+extern int fexecve (int __fd, char *__const __argv[], char *__const __envp[])
+     __attribute__ ((__nothrow__));
+
+
+
+
+extern int execv (__const char *__path, char *__const __argv[])
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1)));
+
+
+
+extern int execle (__const char *__path, __const char *__arg, ...)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1)));
+
+
+
+extern int execl (__const char *__path, __const char *__arg, ...)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1)));
+
+
+
+extern int execvp (__const char *__file, char *__const __argv[])
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+extern int execlp (__const char *__file, __const char *__arg, ...)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1)));
+# 593 "/usr/include/unistd.h" 3 4
+extern int nice (int __inc) __attribute__ ((__nothrow__)) ;
+
+
+
+
+extern void _exit (int __status) __attribute__ ((__noreturn__));
+
+
+
+
+
+# 1 "/usr/include/bits/confname.h" 1 3 4
+# 26 "/usr/include/bits/confname.h" 3 4
+enum
+  {
+    _PC_LINK_MAX,
+
+    _PC_MAX_CANON,
+
+    _PC_MAX_INPUT,
+
+    _PC_NAME_MAX,
+
+    _PC_PATH_MAX,
+
+    _PC_PIPE_BUF,
+
+    _PC_CHOWN_RESTRICTED,
+
+    _PC_NO_TRUNC,
+
+    _PC_VDISABLE,
+
+    _PC_SYNC_IO,
+
+    _PC_ASYNC_IO,
+
+    _PC_PRIO_IO,
+
+    _PC_SOCK_MAXBUF,
+
+    _PC_FILESIZEBITS,
+
+    _PC_REC_INCR_XFER_SIZE,
+
+    _PC_REC_MAX_XFER_SIZE,
+
+    _PC_REC_MIN_XFER_SIZE,
+
+    _PC_REC_XFER_ALIGN,
+
+    _PC_ALLOC_SIZE_MIN,
+
+    _PC_SYMLINK_MAX,
+
+    _PC_2_SYMLINKS
+
+  };
+
+
+enum
+  {
+    _SC_ARG_MAX,
+
+    _SC_CHILD_MAX,
+
+    _SC_CLK_TCK,
+
+    _SC_NGROUPS_MAX,
+
+    _SC_OPEN_MAX,
+
+    _SC_STREAM_MAX,
+
+    _SC_TZNAME_MAX,
+
+    _SC_JOB_CONTROL,
+
+    _SC_SAVED_IDS,
+
+    _SC_REALTIME_SIGNALS,
+
+    _SC_PRIORITY_SCHEDULING,
+
+    _SC_TIMERS,
+
+    _SC_ASYNCHRONOUS_IO,
+
+    _SC_PRIORITIZED_IO,
+
+    _SC_SYNCHRONIZED_IO,
+
+    _SC_FSYNC,
+
+    _SC_MAPPED_FILES,
+
+    _SC_MEMLOCK,
+
+    _SC_MEMLOCK_RANGE,
+
+    _SC_MEMORY_PROTECTION,
+
+    _SC_MESSAGE_PASSING,
+
+    _SC_SEMAPHORES,
+
+    _SC_SHARED_MEMORY_OBJECTS,
+
+    _SC_AIO_LISTIO_MAX,
+
+    _SC_AIO_MAX,
+
+    _SC_AIO_PRIO_DELTA_MAX,
+
+    _SC_DELAYTIMER_MAX,
+
+    _SC_MQ_OPEN_MAX,
+
+    _SC_MQ_PRIO_MAX,
+
+    _SC_VERSION,
+
+    _SC_PAGESIZE,
+
+
+    _SC_RTSIG_MAX,
+
+    _SC_SEM_NSEMS_MAX,
+
+    _SC_SEM_VALUE_MAX,
+
+    _SC_SIGQUEUE_MAX,
+
+    _SC_TIMER_MAX,
+
+
+
+
+    _SC_BC_BASE_MAX,
+
+    _SC_BC_DIM_MAX,
+
+    _SC_BC_SCALE_MAX,
+
+    _SC_BC_STRING_MAX,
+
+    _SC_COLL_WEIGHTS_MAX,
+
+    _SC_EQUIV_CLASS_MAX,
+
+    _SC_EXPR_NEST_MAX,
+
+    _SC_LINE_MAX,
+
+    _SC_RE_DUP_MAX,
+
+    _SC_CHARCLASS_NAME_MAX,
+
+
+    _SC_2_VERSION,
+
+    _SC_2_C_BIND,
+
+    _SC_2_C_DEV,
+
+    _SC_2_FORT_DEV,
+
+    _SC_2_FORT_RUN,
+
+    _SC_2_SW_DEV,
+
+    _SC_2_LOCALEDEF,
+
+
+    _SC_PII,
+
+    _SC_PII_XTI,
+
+    _SC_PII_SOCKET,
+
+    _SC_PII_INTERNET,
+
+    _SC_PII_OSI,
+
+    _SC_POLL,
+
+    _SC_SELECT,
+
+    _SC_UIO_MAXIOV,
+
+    _SC_IOV_MAX = _SC_UIO_MAXIOV,
+
+    _SC_PII_INTERNET_STREAM,
+
+    _SC_PII_INTERNET_DGRAM,
+
+    _SC_PII_OSI_COTS,
+
+    _SC_PII_OSI_CLTS,
+
+    _SC_PII_OSI_M,
+
+    _SC_T_IOV_MAX,
+
+
+
+    _SC_THREADS,
+
+    _SC_THREAD_SAFE_FUNCTIONS,
+
+    _SC_GETGR_R_SIZE_MAX,
+
+    _SC_GETPW_R_SIZE_MAX,
+
+    _SC_LOGIN_NAME_MAX,
+
+    _SC_TTY_NAME_MAX,
+
+    _SC_THREAD_DESTRUCTOR_ITERATIONS,
+
+    _SC_THREAD_KEYS_MAX,
+
+    _SC_THREAD_STACK_MIN,
+
+    _SC_THREAD_THREADS_MAX,
+
+    _SC_THREAD_ATTR_STACKADDR,
+
+    _SC_THREAD_ATTR_STACKSIZE,
+
+    _SC_THREAD_PRIORITY_SCHEDULING,
+
+    _SC_THREAD_PRIO_INHERIT,
+
+    _SC_THREAD_PRIO_PROTECT,
+
+    _SC_THREAD_PROCESS_SHARED,
+
+
+    _SC_NPROCESSORS_CONF,
+
+    _SC_NPROCESSORS_ONLN,
+
+    _SC_PHYS_PAGES,
+
+    _SC_AVPHYS_PAGES,
+
+    _SC_ATEXIT_MAX,
+
+    _SC_PASS_MAX,
+
+
+    _SC_XOPEN_VERSION,
+
+    _SC_XOPEN_XCU_VERSION,
+
+    _SC_XOPEN_UNIX,
+
+    _SC_XOPEN_CRYPT,
+
+    _SC_XOPEN_ENH_I18N,
+
+    _SC_XOPEN_SHM,
+
+
+    _SC_2_CHAR_TERM,
+
+    _SC_2_C_VERSION,
+
+    _SC_2_UPE,
+
+
+    _SC_XOPEN_XPG2,
+
+    _SC_XOPEN_XPG3,
+
+    _SC_XOPEN_XPG4,
+
+
+    _SC_CHAR_BIT,
+
+    _SC_CHAR_MAX,
+
+    _SC_CHAR_MIN,
+
+    _SC_INT_MAX,
+
+    _SC_INT_MIN,
+
+    _SC_LONG_BIT,
+
+    _SC_WORD_BIT,
+
+    _SC_MB_LEN_MAX,
+
+    _SC_NZERO,
+
+    _SC_SSIZE_MAX,
+
+    _SC_SCHAR_MAX,
+
+    _SC_SCHAR_MIN,
+
+    _SC_SHRT_MAX,
+
+    _SC_SHRT_MIN,
+
+    _SC_UCHAR_MAX,
+
+    _SC_UINT_MAX,
+
+    _SC_ULONG_MAX,
+
+    _SC_USHRT_MAX,
+
+
+    _SC_NL_ARGMAX,
+
+    _SC_NL_LANGMAX,
+
+    _SC_NL_MSGMAX,
+
+    _SC_NL_NMAX,
+
+    _SC_NL_SETMAX,
+
+    _SC_NL_TEXTMAX,
+
+
+    _SC_XBS5_ILP32_OFF32,
+
+    _SC_XBS5_ILP32_OFFBIG,
+
+    _SC_XBS5_LP64_OFF64,
+
+    _SC_XBS5_LPBIG_OFFBIG,
+
+
+    _SC_XOPEN_LEGACY,
+
+    _SC_XOPEN_REALTIME,
+
+    _SC_XOPEN_REALTIME_THREADS,
+
+
+    _SC_ADVISORY_INFO,
+
+    _SC_BARRIERS,
+
+    _SC_BASE,
+
+    _SC_C_LANG_SUPPORT,
+
+    _SC_C_LANG_SUPPORT_R,
+
+    _SC_CLOCK_SELECTION,
+
+    _SC_CPUTIME,
+
+    _SC_THREAD_CPUTIME,
+
+    _SC_DEVICE_IO,
+
+    _SC_DEVICE_SPECIFIC,
+
+    _SC_DEVICE_SPECIFIC_R,
+
+    _SC_FD_MGMT,
+
+    _SC_FIFO,
+
+    _SC_PIPE,
+
+    _SC_FILE_ATTRIBUTES,
+
+    _SC_FILE_LOCKING,
+
+    _SC_FILE_SYSTEM,
+
+    _SC_MONOTONIC_CLOCK,
+
+    _SC_MULTI_PROCESS,
+
+    _SC_SINGLE_PROCESS,
+
+    _SC_NETWORKING,
+
+    _SC_READER_WRITER_LOCKS,
+
+    _SC_SPIN_LOCKS,
+
+    _SC_REGEXP,
+
+    _SC_REGEX_VERSION,
+
+    _SC_SHELL,
+
+    _SC_SIGNALS,
+
+    _SC_SPAWN,
+
+    _SC_SPORADIC_SERVER,
+
+    _SC_THREAD_SPORADIC_SERVER,
+
+    _SC_SYSTEM_DATABASE,
+
+    _SC_SYSTEM_DATABASE_R,
+
+    _SC_TIMEOUTS,
+
+    _SC_TYPED_MEMORY_OBJECTS,
+
+    _SC_USER_GROUPS,
+
+    _SC_USER_GROUPS_R,
+
+    _SC_2_PBS,
+
+    _SC_2_PBS_ACCOUNTING,
+
+    _SC_2_PBS_LOCATE,
+
+    _SC_2_PBS_MESSAGE,
+
+    _SC_2_PBS_TRACK,
+
+    _SC_SYMLOOP_MAX,
+
+    _SC_STREAMS,
+
+    _SC_2_PBS_CHECKPOINT,
+
+
+    _SC_V6_ILP32_OFF32,
+
+    _SC_V6_ILP32_OFFBIG,
+
+    _SC_V6_LP64_OFF64,
+
+    _SC_V6_LPBIG_OFFBIG,
+
+
+    _SC_HOST_NAME_MAX,
+
+    _SC_TRACE,
+
+    _SC_TRACE_EVENT_FILTER,
+
+    _SC_TRACE_INHERIT,
+
+    _SC_TRACE_LOG,
+
+
+    _SC_LEVEL1_ICACHE_SIZE,
+
+    _SC_LEVEL1_ICACHE_ASSOC,
+
+    _SC_LEVEL1_ICACHE_LINESIZE,
+
+    _SC_LEVEL1_DCACHE_SIZE,
+
+    _SC_LEVEL1_DCACHE_ASSOC,
+
+    _SC_LEVEL1_DCACHE_LINESIZE,
+
+    _SC_LEVEL2_CACHE_SIZE,
+
+    _SC_LEVEL2_CACHE_ASSOC,
+
+    _SC_LEVEL2_CACHE_LINESIZE,
+
+    _SC_LEVEL3_CACHE_SIZE,
+
+    _SC_LEVEL3_CACHE_ASSOC,
+
+    _SC_LEVEL3_CACHE_LINESIZE,
+
+    _SC_LEVEL4_CACHE_SIZE,
+
+    _SC_LEVEL4_CACHE_ASSOC,
+
+    _SC_LEVEL4_CACHE_LINESIZE,
+
+
+
+    _SC_IPV6 = _SC_LEVEL1_ICACHE_SIZE + 50,
+
+    _SC_RAW_SOCKETS,
+
+
+    _SC_V7_ILP32_OFF32,
+
+    _SC_V7_ILP32_OFFBIG,
+
+    _SC_V7_LP64_OFF64,
+
+    _SC_V7_LPBIG_OFFBIG,
+
+
+    _SC_SS_REPL_MAX,
+
+
+    _SC_TRACE_EVENT_NAME_MAX,
+
+    _SC_TRACE_NAME_MAX,
+
+    _SC_TRACE_SYS_MAX,
+
+    _SC_TRACE_USER_EVENT_MAX,
+
+
+    _SC_XOPEN_STREAMS,
+
+
+    _SC_THREAD_ROBUST_PRIO_INHERIT,
+
+    _SC_THREAD_ROBUST_PRIO_PROTECT
+
+  };
+
+
+enum
+  {
+    _CS_PATH,
+
+
+    _CS_V6_WIDTH_RESTRICTED_ENVS,
+
+
+
+    _CS_GNU_LIBC_VERSION,
+
+    _CS_GNU_LIBPTHREAD_VERSION,
+
+
+    _CS_V5_WIDTH_RESTRICTED_ENVS,
+
+
+
+    _CS_V7_WIDTH_RESTRICTED_ENVS,
+
+
+
+    _CS_LFS_CFLAGS = 1000,
+
+    _CS_LFS_LDFLAGS,
+
+    _CS_LFS_LIBS,
+
+    _CS_LFS_LINTFLAGS,
+
+    _CS_LFS64_CFLAGS,
+
+    _CS_LFS64_LDFLAGS,
+
+    _CS_LFS64_LIBS,
+
+    _CS_LFS64_LINTFLAGS,
+
+
+    _CS_XBS5_ILP32_OFF32_CFLAGS = 1100,
+
+    _CS_XBS5_ILP32_OFF32_LDFLAGS,
+
+    _CS_XBS5_ILP32_OFF32_LIBS,
+
+    _CS_XBS5_ILP32_OFF32_LINTFLAGS,
+
+    _CS_XBS5_ILP32_OFFBIG_CFLAGS,
+
+    _CS_XBS5_ILP32_OFFBIG_LDFLAGS,
+
+    _CS_XBS5_ILP32_OFFBIG_LIBS,
+
+    _CS_XBS5_ILP32_OFFBIG_LINTFLAGS,
+
+    _CS_XBS5_LP64_OFF64_CFLAGS,
+
+    _CS_XBS5_LP64_OFF64_LDFLAGS,
+
+    _CS_XBS5_LP64_OFF64_LIBS,
+
+    _CS_XBS5_LP64_OFF64_LINTFLAGS,
+
+    _CS_XBS5_LPBIG_OFFBIG_CFLAGS,
+
+    _CS_XBS5_LPBIG_OFFBIG_LDFLAGS,
+
+    _CS_XBS5_LPBIG_OFFBIG_LIBS,
+
+    _CS_XBS5_LPBIG_OFFBIG_LINTFLAGS,
+
+
+    _CS_POSIX_V6_ILP32_OFF32_CFLAGS,
+
+    _CS_POSIX_V6_ILP32_OFF32_LDFLAGS,
+
+    _CS_POSIX_V6_ILP32_OFF32_LIBS,
+
+    _CS_POSIX_V6_ILP32_OFF32_LINTFLAGS,
+
+    _CS_POSIX_V6_ILP32_OFFBIG_CFLAGS,
+
+    _CS_POSIX_V6_ILP32_OFFBIG_LDFLAGS,
+
+    _CS_POSIX_V6_ILP32_OFFBIG_LIBS,
+
+    _CS_POSIX_V6_ILP32_OFFBIG_LINTFLAGS,
+
+    _CS_POSIX_V6_LP64_OFF64_CFLAGS,
+
+    _CS_POSIX_V6_LP64_OFF64_LDFLAGS,
+
+    _CS_POSIX_V6_LP64_OFF64_LIBS,
+
+    _CS_POSIX_V6_LP64_OFF64_LINTFLAGS,
+
+    _CS_POSIX_V6_LPBIG_OFFBIG_CFLAGS,
+
+    _CS_POSIX_V6_LPBIG_OFFBIG_LDFLAGS,
+
+    _CS_POSIX_V6_LPBIG_OFFBIG_LIBS,
+
+    _CS_POSIX_V6_LPBIG_OFFBIG_LINTFLAGS,
+
+
+    _CS_POSIX_V7_ILP32_OFF32_CFLAGS,
+
+    _CS_POSIX_V7_ILP32_OFF32_LDFLAGS,
+
+    _CS_POSIX_V7_ILP32_OFF32_LIBS,
+
+    _CS_POSIX_V7_ILP32_OFF32_LINTFLAGS,
+
+    _CS_POSIX_V7_ILP32_OFFBIG_CFLAGS,
+
+    _CS_POSIX_V7_ILP32_OFFBIG_LDFLAGS,
+
+    _CS_POSIX_V7_ILP32_OFFBIG_LIBS,
+
+    _CS_POSIX_V7_ILP32_OFFBIG_LINTFLAGS,
+
+    _CS_POSIX_V7_LP64_OFF64_CFLAGS,
+
+    _CS_POSIX_V7_LP64_OFF64_LDFLAGS,
+
+    _CS_POSIX_V7_LP64_OFF64_LIBS,
+
+    _CS_POSIX_V7_LP64_OFF64_LINTFLAGS,
+
+    _CS_POSIX_V7_LPBIG_OFFBIG_CFLAGS,
+
+    _CS_POSIX_V7_LPBIG_OFFBIG_LDFLAGS,
+
+    _CS_POSIX_V7_LPBIG_OFFBIG_LIBS,
+
+    _CS_POSIX_V7_LPBIG_OFFBIG_LINTFLAGS
+
+  };
+# 605 "/usr/include/unistd.h" 2 3 4
+
+
+extern long int pathconf (__const char *__path, int __name)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1)));
+
+
+extern long int fpathconf (int __fd, int __name) __attribute__ ((__nothrow__));
+
+
+extern long int sysconf (int __name) __attribute__ ((__nothrow__));
+
+
+
+extern size_t confstr (int __name, char *__buf, size_t __len) __attribute__ ((__nothrow__));
+
+
+
+
+extern __pid_t getpid (void) __attribute__ ((__nothrow__));
+
+
+extern __pid_t getppid (void) __attribute__ ((__nothrow__));
+
+
+
+
+extern __pid_t getpgrp (void) __attribute__ ((__nothrow__));
+# 641 "/usr/include/unistd.h" 3 4
+extern __pid_t __getpgid (__pid_t __pid) __attribute__ ((__nothrow__));
+# 650 "/usr/include/unistd.h" 3 4
+extern int setpgid (__pid_t __pid, __pid_t __pgid) __attribute__ ((__nothrow__));
+# 667 "/usr/include/unistd.h" 3 4
+extern int setpgrp (void) __attribute__ ((__nothrow__));
+# 684 "/usr/include/unistd.h" 3 4
+extern __pid_t setsid (void) __attribute__ ((__nothrow__));
+
+
+
+
+
+
+
+extern __uid_t getuid (void) __attribute__ ((__nothrow__));
+
+
+extern __uid_t geteuid (void) __attribute__ ((__nothrow__));
+
+
+extern __gid_t getgid (void) __attribute__ ((__nothrow__));
+
+
+extern __gid_t getegid (void) __attribute__ ((__nothrow__));
+
+
+
+
+extern int getgroups (int __size, __gid_t __list[]) __attribute__ ((__nothrow__)) ;
+# 717 "/usr/include/unistd.h" 3 4
+extern int setuid (__uid_t __uid) __attribute__ ((__nothrow__));
+
+
+
+
+extern int setreuid (__uid_t __ruid, __uid_t __euid) __attribute__ ((__nothrow__));
+
+
+
+
+extern int seteuid (__uid_t __uid) __attribute__ ((__nothrow__));
+
+
+
+
+
+
+extern int setgid (__gid_t __gid) __attribute__ ((__nothrow__));
+
+
+
+
+extern int setregid (__gid_t __rgid, __gid_t __egid) __attribute__ ((__nothrow__));
+
+
+
+
+extern int setegid (__gid_t __gid) __attribute__ ((__nothrow__));
+# 773 "/usr/include/unistd.h" 3 4
+extern __pid_t fork (void) __attribute__ ((__nothrow__));
+
+
+
+
+
+
+extern __pid_t vfork (void) __attribute__ ((__nothrow__));
+
+
+
+
+
+extern char *ttyname (int __fd) __attribute__ ((__nothrow__));
+
+
+
+extern int ttyname_r (int __fd, char *__buf, size_t __buflen)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (2))) ;
+
+
+
+extern int isatty (int __fd) __attribute__ ((__nothrow__));
+
+
+
+
+
+extern int ttyslot (void) __attribute__ ((__nothrow__));
+
+
+
+
+extern int link (__const char *__from, __const char *__to)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1, 2))) ;
+
+
+
+
+extern int linkat (int __fromfd, __const char *__from, int __tofd,
+     __const char *__to, int __flags)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (2, 4))) ;
+
+
+
+
+extern int symlink (__const char *__from, __const char *__to)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1, 2))) ;
+
+
+
+
+extern ssize_t readlink (__const char *__restrict __path,
+    char *__restrict __buf, size_t __len)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1, 2))) ;
+
+
+
+
+extern int symlinkat (__const char *__from, int __tofd,
+        __const char *__to) __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1, 3))) ;
+
+
+extern ssize_t readlinkat (int __fd, __const char *__restrict __path,
+      char *__restrict __buf, size_t __len)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (2, 3))) ;
+
+
+
+extern int unlink (__const char *__name) __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1)));
+
+
+
+extern int unlinkat (int __fd, __const char *__name, int __flag)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (2)));
+
+
+
+extern int rmdir (__const char *__path) __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1)));
+
+
+
+extern __pid_t tcgetpgrp (int __fd) __attribute__ ((__nothrow__));
+
+
+extern int tcsetpgrp (int __fd, __pid_t __pgrp_id) __attribute__ ((__nothrow__));
+
+
+
+
+
+
+extern char *getlogin (void);
+
+
+
+
+
+
+
+extern int getlogin_r (char *__name, size_t __name_len) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+extern int setlogin (__const char *__name) __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1)));
+# 887 "/usr/include/unistd.h" 3 4
+# 1 "/usr/include/getopt.h" 1 3 4
+# 59 "/usr/include/getopt.h" 3 4
+extern char *optarg;
+# 73 "/usr/include/getopt.h" 3 4
+extern int optind;
+
+
+
+
+extern int opterr;
+
+
+
+extern int optopt;
+# 152 "/usr/include/getopt.h" 3 4
+extern int getopt (int ___argc, char *const *___argv, const char *__shortopts)
+       __attribute__ ((__nothrow__));
+# 888 "/usr/include/unistd.h" 2 3 4
+
+
+
+
+
+
+
+extern int gethostname (char *__name, size_t __len) __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+
+
+extern int sethostname (__const char *__name, size_t __len)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1))) ;
+
+
+
+extern int sethostid (long int __id) __attribute__ ((__nothrow__)) ;
+
+
+
+
+
+extern int getdomainname (char *__name, size_t __len)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1))) ;
+extern int setdomainname (__const char *__name, size_t __len)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1))) ;
+
+
+
+
+
+extern int vhangup (void) __attribute__ ((__nothrow__));
+
+
+extern int revoke (__const char *__file) __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1))) ;
+
+
+
+
+
+
+
+extern int profil (unsigned short int *__sample_buffer, size_t __size,
+     size_t __offset, unsigned int __scale)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+
+extern int acct (__const char *__name) __attribute__ ((__nothrow__));
+
+
+
+extern char *getusershell (void) __attribute__ ((__nothrow__));
+extern void endusershell (void) __attribute__ ((__nothrow__));
+extern void setusershell (void) __attribute__ ((__nothrow__));
+
+
+
+
+
+extern int daemon (int __nochdir, int __noclose) __attribute__ ((__nothrow__)) ;
+
+
+
+
+
+
+extern int chroot (__const char *__path) __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1))) ;
+
+
+
+extern char *getpass (__const char *__prompt) __attribute__ ((__nonnull__ (1)));
+# 973 "/usr/include/unistd.h" 3 4
+extern int fsync (int __fd);
+
+
+
+
+
+
+extern long int gethostid (void);
+
+
+extern void sync (void) __attribute__ ((__nothrow__));
+
+
+
+
+extern int getpagesize (void) __attribute__ ((__nothrow__)) __attribute__ ((__const__));
+
+
+
+
+extern int getdtablesize (void) __attribute__ ((__nothrow__));
+
+
+
+
+extern int truncate (__const char *__file, __off_t __length)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1))) ;
+# 1020 "/usr/include/unistd.h" 3 4
+extern int ftruncate (int __fd, __off_t __length) __attribute__ ((__nothrow__)) ;
+# 1040 "/usr/include/unistd.h" 3 4
+extern int brk (void *__addr) __attribute__ ((__nothrow__)) ;
+
+
+
+
+
+extern void *sbrk (intptr_t __delta) __attribute__ ((__nothrow__));
+# 1061 "/usr/include/unistd.h" 3 4
+extern long int syscall (long int __sysno, ...) __attribute__ ((__nothrow__));
+# 1084 "/usr/include/unistd.h" 3 4
+extern int lockf (int __fd, int __cmd, __off_t __len) ;
+# 1115 "/usr/include/unistd.h" 3 4
+extern int fdatasync (int __fildes);
+# 1153 "/usr/include/unistd.h" 3 4
+
+# 18 "voip_flash_mib.c" 2
+# 1 "/usr/include/sys/socket.h" 1 3 4
+# 26 "/usr/include/sys/socket.h" 3 4
+
+
+# 1 "/usr/include/sys/uio.h" 1 3 4
+# 26 "/usr/include/sys/uio.h" 3 4
+
+
+
+# 1 "/usr/include/bits/uio.h" 1 3 4
+# 44 "/usr/include/bits/uio.h" 3 4
+struct iovec
+  {
+    void *iov_base;
+    size_t iov_len;
+  };
+# 30 "/usr/include/sys/uio.h" 2 3 4
+# 40 "/usr/include/sys/uio.h" 3 4
+extern ssize_t readv (int __fd, __const struct iovec *__iovec, int __count)
+  ;
+# 51 "/usr/include/sys/uio.h" 3 4
+extern ssize_t writev (int __fd, __const struct iovec *__iovec, int __count)
+  ;
+# 66 "/usr/include/sys/uio.h" 3 4
+extern ssize_t preadv (int __fd, __const struct iovec *__iovec, int __count,
+         __off_t __offset) ;
+# 78 "/usr/include/sys/uio.h" 3 4
+extern ssize_t pwritev (int __fd, __const struct iovec *__iovec, int __count,
+   __off_t __offset) ;
+# 121 "/usr/include/sys/uio.h" 3 4
+
+# 29 "/usr/include/sys/socket.h" 2 3 4
+
+# 1 "/usr/lib/gcc/x86_64-linux-gnu/4.4.3/include/stddef.h" 1 3 4
+# 31 "/usr/include/sys/socket.h" 2 3 4
+# 40 "/usr/include/sys/socket.h" 3 4
+# 1 "/usr/include/bits/socket.h" 1 3 4
+# 29 "/usr/include/bits/socket.h" 3 4
+# 1 "/usr/lib/gcc/x86_64-linux-gnu/4.4.3/include/stddef.h" 1 3 4
+# 30 "/usr/include/bits/socket.h" 2 3 4
+# 40 "/usr/include/bits/socket.h" 3 4
+enum __socket_type
+{
+  SOCK_STREAM = 1,
+
+
+  SOCK_DGRAM = 2,
+
+
+  SOCK_RAW = 3,
+
+  SOCK_RDM = 4,
+
+  SOCK_SEQPACKET = 5,
+
+
+  SOCK_DCCP = 6,
+
+  SOCK_PACKET = 10,
+
+
+
+
+
+
+
+  SOCK_CLOEXEC = 02000000,
+
+
+  SOCK_NONBLOCK = 04000
+
+
+};
+# 171 "/usr/include/bits/socket.h" 3 4
+# 1 "/usr/include/bits/sockaddr.h" 1 3 4
+# 29 "/usr/include/bits/sockaddr.h" 3 4
+typedef unsigned short int sa_family_t;
+# 172 "/usr/include/bits/socket.h" 2 3 4
+
+
+struct sockaddr
+  {
+    sa_family_t sa_family;
+    char sa_data[14];
+  };
+# 187 "/usr/include/bits/socket.h" 3 4
+struct sockaddr_storage
+  {
+    sa_family_t ss_family;
+    unsigned long int __ss_align;
+    char __ss_padding[(128 - (2 * sizeof (unsigned long int)))];
+  };
+
+
+
+enum
+  {
+    MSG_OOB = 0x01,
+
+    MSG_PEEK = 0x02,
+
+    MSG_DONTROUTE = 0x04,
+
+
+
+
+
+
+    MSG_CTRUNC = 0x08,
+
+    MSG_PROXY = 0x10,
+
+    MSG_TRUNC = 0x20,
+
+    MSG_DONTWAIT = 0x40,
+
+    MSG_EOR = 0x80,
+
+    MSG_WAITALL = 0x100,
+
+    MSG_FIN = 0x200,
+
+    MSG_SYN = 0x400,
+
+    MSG_CONFIRM = 0x800,
+
+    MSG_RST = 0x1000,
+
+    MSG_ERRQUEUE = 0x2000,
+
+    MSG_NOSIGNAL = 0x4000,
+
+    MSG_MORE = 0x8000,
+
+
+    MSG_CMSG_CLOEXEC = 0x40000000
+
+
+
+  };
+
+
+
+
+struct msghdr
+  {
+    void *msg_name;
+    socklen_t msg_namelen;
+
+    struct iovec *msg_iov;
+    size_t msg_iovlen;
+
+    void *msg_control;
+    size_t msg_controllen;
+
+
+
+
+    int msg_flags;
+  };
+
+
+struct cmsghdr
+  {
+    size_t cmsg_len;
+
+
+
+
+    int cmsg_level;
+    int cmsg_type;
+
+    __extension__ unsigned char __cmsg_data [];
+
+  };
+# 293 "/usr/include/bits/socket.h" 3 4
+extern struct cmsghdr *__cmsg_nxthdr (struct msghdr *__mhdr,
+          struct cmsghdr *__cmsg) __attribute__ ((__nothrow__));
+# 320 "/usr/include/bits/socket.h" 3 4
+enum
+  {
+    SCM_RIGHTS = 0x01
+
+
+
+
+
+  };
+# 366 "/usr/include/bits/socket.h" 3 4
+# 1 "/usr/include/asm/socket.h" 1 3 4
+# 1 "/usr/include/asm-generic/socket.h" 1 3 4
+
+
+
+# 1 "/usr/include/asm/sockios.h" 1 3 4
+# 1 "/usr/include/asm-generic/sockios.h" 1 3 4
+# 1 "/usr/include/asm/sockios.h" 2 3 4
+# 5 "/usr/include/asm-generic/socket.h" 2 3 4
+# 1 "/usr/include/asm/socket.h" 2 3 4
+# 367 "/usr/include/bits/socket.h" 2 3 4
+# 400 "/usr/include/bits/socket.h" 3 4
+struct linger
+  {
+    int l_onoff;
+    int l_linger;
+  };
+# 41 "/usr/include/sys/socket.h" 2 3 4
+
+
+
+
+struct osockaddr
+  {
+    unsigned short int sa_family;
+    unsigned char sa_data[14];
+  };
+
+
+
+
+enum
+{
+  SHUT_RD = 0,
+
+  SHUT_WR,
+
+  SHUT_RDWR
+
+};
+# 105 "/usr/include/sys/socket.h" 3 4
+extern int socket (int __domain, int __type, int __protocol) __attribute__ ((__nothrow__));
+
+
+
+
+
+extern int socketpair (int __domain, int __type, int __protocol,
+         int __fds[2]) __attribute__ ((__nothrow__));
+
+
+extern int bind (int __fd, __const struct sockaddr * __addr, socklen_t __len)
+     __attribute__ ((__nothrow__));
+
+
+extern int getsockname (int __fd, struct sockaddr *__restrict __addr,
+   socklen_t *__restrict __len) __attribute__ ((__nothrow__));
+# 129 "/usr/include/sys/socket.h" 3 4
+extern int connect (int __fd, __const struct sockaddr * __addr, socklen_t __len);
+
+
+
+extern int getpeername (int __fd, struct sockaddr *__restrict __addr,
+   socklen_t *__restrict __len) __attribute__ ((__nothrow__));
+
+
+
+
+
+
+extern ssize_t send (int __fd, __const void *__buf, size_t __n, int __flags);
+
+
+
+
+
+
+extern ssize_t recv (int __fd, void *__buf, size_t __n, int __flags);
+
+
+
+
+
+
+extern ssize_t sendto (int __fd, __const void *__buf, size_t __n,
+         int __flags, __const struct sockaddr * __addr,
+         socklen_t __addr_len);
+# 166 "/usr/include/sys/socket.h" 3 4
+extern ssize_t recvfrom (int __fd, void *__restrict __buf, size_t __n,
+    int __flags, struct sockaddr *__restrict __addr,
+    socklen_t *__restrict __addr_len);
+
+
+
+
+
+
+
+extern ssize_t sendmsg (int __fd, __const struct msghdr *__message,
+   int __flags);
+
+
+
+
+
+
+extern ssize_t recvmsg (int __fd, struct msghdr *__message, int __flags);
+
+
+
+
+
+extern int getsockopt (int __fd, int __level, int __optname,
+         void *__restrict __optval,
+         socklen_t *__restrict __optlen) __attribute__ ((__nothrow__));
+
+
+
+
+extern int setsockopt (int __fd, int __level, int __optname,
+         __const void *__optval, socklen_t __optlen) __attribute__ ((__nothrow__));
+
+
+
+
+
+extern int listen (int __fd, int __n) __attribute__ ((__nothrow__));
+# 214 "/usr/include/sys/socket.h" 3 4
+extern int accept (int __fd, struct sockaddr *__restrict __addr,
+     socklen_t *__restrict __addr_len);
+# 232 "/usr/include/sys/socket.h" 3 4
+extern int shutdown (int __fd, int __how) __attribute__ ((__nothrow__));
+
+
+
+
+extern int sockatmark (int __fd) __attribute__ ((__nothrow__));
+
+
+
+
+
+
+
+extern int isfdtype (int __fd, int __fdtype) __attribute__ ((__nothrow__));
+# 254 "/usr/include/sys/socket.h" 3 4
+
+# 19 "voip_flash_mib.c" 2
+# 1 "/usr/include/netinet/in.h" 1 3 4
+# 24 "/usr/include/netinet/in.h" 3 4
+# 1 "/usr/include/stdint.h" 1 3 4
+# 27 "/usr/include/stdint.h" 3 4
+# 1 "/usr/include/bits/wchar.h" 1 3 4
+# 28 "/usr/include/stdint.h" 2 3 4
+# 1 "/usr/include/bits/wordsize.h" 1 3 4
+# 29 "/usr/include/stdint.h" 2 3 4
+# 49 "/usr/include/stdint.h" 3 4
+typedef unsigned char uint8_t;
+typedef unsigned short int uint16_t;
+
+typedef unsigned int uint32_t;
+
+
+
+typedef unsigned long int uint64_t;
+# 66 "/usr/include/stdint.h" 3 4
+typedef signed char int_least8_t;
+typedef short int int_least16_t;
+typedef int int_least32_t;
+
+typedef long int int_least64_t;
+
+
+
+
+
+
+typedef unsigned char uint_least8_t;
+typedef unsigned short int uint_least16_t;
+typedef unsigned int uint_least32_t;
+
+typedef unsigned long int uint_least64_t;
+# 91 "/usr/include/stdint.h" 3 4
+typedef signed char int_fast8_t;
+
+typedef long int int_fast16_t;
+typedef long int int_fast32_t;
+typedef long int int_fast64_t;
+# 104 "/usr/include/stdint.h" 3 4
+typedef unsigned char uint_fast8_t;
+
+typedef unsigned long int uint_fast16_t;
+typedef unsigned long int uint_fast32_t;
+typedef unsigned long int uint_fast64_t;
+# 123 "/usr/include/stdint.h" 3 4
+typedef unsigned long int uintptr_t;
+# 135 "/usr/include/stdint.h" 3 4
+typedef long int intmax_t;
+typedef unsigned long int uintmax_t;
+# 25 "/usr/include/netinet/in.h" 2 3 4
+
+
+
+
+
+
+
+enum
+  {
+    IPPROTO_IP = 0,
+
+    IPPROTO_HOPOPTS = 0,
+
+    IPPROTO_ICMP = 1,
+
+    IPPROTO_IGMP = 2,
+
+    IPPROTO_IPIP = 4,
+
+    IPPROTO_TCP = 6,
+
+    IPPROTO_EGP = 8,
+
+    IPPROTO_PUP = 12,
+
+    IPPROTO_UDP = 17,
+
+    IPPROTO_IDP = 22,
+
+    IPPROTO_TP = 29,
+
+    IPPROTO_DCCP = 33,
+
+    IPPROTO_IPV6 = 41,
+
+    IPPROTO_ROUTING = 43,
+
+    IPPROTO_FRAGMENT = 44,
+
+    IPPROTO_RSVP = 46,
+
+    IPPROTO_GRE = 47,
+
+    IPPROTO_ESP = 50,
+
+    IPPROTO_AH = 51,
+
+    IPPROTO_ICMPV6 = 58,
+
+    IPPROTO_NONE = 59,
+
+    IPPROTO_DSTOPTS = 60,
+
+    IPPROTO_MTP = 92,
+
+    IPPROTO_ENCAP = 98,
+
+    IPPROTO_PIM = 103,
+
+    IPPROTO_COMP = 108,
+
+    IPPROTO_SCTP = 132,
+
+    IPPROTO_UDPLITE = 136,
+
+    IPPROTO_RAW = 255,
+
+    IPPROTO_MAX
+  };
+
+
+
+typedef uint16_t in_port_t;
+
+
+enum
+  {
+    IPPORT_ECHO = 7,
+    IPPORT_DISCARD = 9,
+    IPPORT_SYSTAT = 11,
+    IPPORT_DAYTIME = 13,
+    IPPORT_NETSTAT = 15,
+    IPPORT_FTP = 21,
+    IPPORT_TELNET = 23,
+    IPPORT_SMTP = 25,
+    IPPORT_TIMESERVER = 37,
+    IPPORT_NAMESERVER = 42,
+    IPPORT_WHOIS = 43,
+    IPPORT_MTP = 57,
+
+    IPPORT_TFTP = 69,
+    IPPORT_RJE = 77,
+    IPPORT_FINGER = 79,
+    IPPORT_TTYLINK = 87,
+    IPPORT_SUPDUP = 95,
+
+
+    IPPORT_EXECSERVER = 512,
+    IPPORT_LOGINSERVER = 513,
+    IPPORT_CMDSERVER = 514,
+    IPPORT_EFSSERVER = 520,
+
+
+    IPPORT_BIFFUDP = 512,
+    IPPORT_WHOSERVER = 513,
+    IPPORT_ROUTESERVER = 520,
+
+
+    IPPORT_RESERVED = 1024,
+
+
+    IPPORT_USERRESERVED = 5000
+  };
+
+
+
+typedef uint32_t in_addr_t;
+struct in_addr
+  {
+    in_addr_t s_addr;
+  };
+# 198 "/usr/include/netinet/in.h" 3 4
+struct in6_addr
+  {
+    union
+      {
+ uint8_t __u6_addr8[16];
+
+ uint16_t __u6_addr16[8];
+ uint32_t __u6_addr32[4];
+
+      } __in6_u;
+
+
+
+
+
+  };
+
+extern const struct in6_addr in6addr_any;
+extern const struct in6_addr in6addr_loopback;
+# 225 "/usr/include/netinet/in.h" 3 4
+struct sockaddr_in
+  {
+    sa_family_t sin_family;
+    in_port_t sin_port;
+    struct in_addr sin_addr;
+
+
+    unsigned char sin_zero[sizeof (struct sockaddr) -
+      (sizeof (unsigned short int)) -
+      sizeof (in_port_t) -
+      sizeof (struct in_addr)];
+  };
+
+
+struct sockaddr_in6
+  {
+    sa_family_t sin6_family;
+    in_port_t sin6_port;
+    uint32_t sin6_flowinfo;
+    struct in6_addr sin6_addr;
+    uint32_t sin6_scope_id;
+  };
+
+
+
+
+struct ip_mreq
+  {
+
+    struct in_addr imr_multiaddr;
+
+
+    struct in_addr imr_interface;
+  };
+
+struct ip_mreq_source
+  {
+
+    struct in_addr imr_multiaddr;
+
+
+    struct in_addr imr_interface;
+
+
+    struct in_addr imr_sourceaddr;
+  };
+
+
+
+
+struct ipv6_mreq
+  {
+
+    struct in6_addr ipv6mr_multiaddr;
+
+
+    unsigned int ipv6mr_interface;
+  };
+
+
+
+
+struct group_req
+  {
+
+    uint32_t gr_interface;
+
+
+    struct sockaddr_storage gr_group;
+  };
+
+struct group_source_req
+  {
+
+    uint32_t gsr_interface;
+
+
+    struct sockaddr_storage gsr_group;
+
+
+    struct sockaddr_storage gsr_source;
+  };
+
+
+
+struct ip_msfilter
+  {
+
+    struct in_addr imsf_multiaddr;
+
+
+    struct in_addr imsf_interface;
+
+
+    uint32_t imsf_fmode;
+
+
+    uint32_t imsf_numsrc;
+
+    struct in_addr imsf_slist[1];
+  };
+
+
+
+
+
+struct group_filter
+  {
+
+    uint32_t gf_interface;
+
+
+    struct sockaddr_storage gf_group;
+
+
+    uint32_t gf_fmode;
+
+
+    uint32_t gf_numsrc;
+
+    struct sockaddr_storage gf_slist[1];
+};
+# 356 "/usr/include/netinet/in.h" 3 4
+# 1 "/usr/include/bits/in.h" 1 3 4
+# 86 "/usr/include/bits/in.h" 3 4
+struct ip_opts
+  {
+    struct in_addr ip_dst;
+    char ip_opts[40];
+  };
+
+
+struct ip_mreqn
+  {
+    struct in_addr imr_multiaddr;
+    struct in_addr imr_address;
+    int imr_ifindex;
+  };
+
+
+struct in_pktinfo
+  {
+    int ipi_ifindex;
+    struct in_addr ipi_spec_dst;
+    struct in_addr ipi_addr;
+  };
+# 357 "/usr/include/netinet/in.h" 2 3 4
+# 365 "/usr/include/netinet/in.h" 3 4
+extern uint32_t ntohl (uint32_t __netlong) __attribute__ ((__nothrow__)) __attribute__ ((__const__));
+extern uint16_t ntohs (uint16_t __netshort)
+     __attribute__ ((__nothrow__)) __attribute__ ((__const__));
+extern uint32_t htonl (uint32_t __hostlong)
+     __attribute__ ((__nothrow__)) __attribute__ ((__const__));
+extern uint16_t htons (uint16_t __hostshort)
+     __attribute__ ((__nothrow__)) __attribute__ ((__const__));
+
+
+
+
+# 1 "/usr/include/bits/byteswap.h" 1 3 4
+# 377 "/usr/include/netinet/in.h" 2 3 4
+# 440 "/usr/include/netinet/in.h" 3 4
+extern int bindresvport (int __sockfd, struct sockaddr_in *__sock_in) __attribute__ ((__nothrow__));
+
+
+extern int bindresvport6 (int __sockfd, struct sockaddr_in6 *__sock_in)
+     __attribute__ ((__nothrow__));
+# 565 "/usr/include/netinet/in.h" 3 4
+
+# 20 "voip_flash_mib.c" 2
+# 1 "/usr/include/arpa/inet.h" 1 3 4
+# 31 "/usr/include/arpa/inet.h" 3 4
+
+
+
+
+extern in_addr_t inet_addr (__const char *__cp) __attribute__ ((__nothrow__));
+
+
+extern in_addr_t inet_lnaof (struct in_addr __in) __attribute__ ((__nothrow__));
+
+
+
+extern struct in_addr inet_makeaddr (in_addr_t __net, in_addr_t __host)
+     __attribute__ ((__nothrow__));
+
+
+extern in_addr_t inet_netof (struct in_addr __in) __attribute__ ((__nothrow__));
+
+
+
+extern in_addr_t inet_network (__const char *__cp) __attribute__ ((__nothrow__));
+
+
+
+extern char *inet_ntoa (struct in_addr __in) __attribute__ ((__nothrow__));
+
+
+
+
+extern int inet_pton (int __af, __const char *__restrict __cp,
+        void *__restrict __buf) __attribute__ ((__nothrow__));
+
+
+
+
+extern __const char *inet_ntop (int __af, __const void *__restrict __cp,
+    char *__restrict __buf, socklen_t __len)
+     __attribute__ ((__nothrow__));
+
+
+
+
+
+
+extern int inet_aton (__const char *__cp, struct in_addr *__inp) __attribute__ ((__nothrow__));
+
+
+
+extern char *inet_neta (in_addr_t __net, char *__buf, size_t __len) __attribute__ ((__nothrow__));
+
+
+
+
+extern char *inet_net_ntop (int __af, __const void *__cp, int __bits,
+       char *__buf, size_t __len) __attribute__ ((__nothrow__));
+
+
+
+
+extern int inet_net_pton (int __af, __const char *__cp,
+     void *__buf, size_t __len) __attribute__ ((__nothrow__));
+
+
+
+
+extern unsigned int inet_nsap_addr (__const char *__cp,
+        unsigned char *__buf, int __len) __attribute__ ((__nothrow__));
+
+
+
+extern char *inet_nsap_ntoa (int __len, __const unsigned char *__cp,
+        char *__buf) __attribute__ ((__nothrow__));
+
+
+
+# 21 "voip_flash_mib.c" 2
+
+
+# 1 "../includes/voip_flash.h" 1
+# 11 "../includes/voip_flash.h"
+# 1 "../includes/kernel_config.h" 1
+# 12 "../includes/voip_flash.h" 2
+# 1 "../includes/rtk_voip.h" 1
+# 494 "../includes/rtk_voip.h"
+# 1 "../includes/voip_debug.h" 1
+# 82 "../includes/voip_debug.h"
+enum {
+ RTK_DBG_ERROR = 0,
+ RTK_DBG_WARNING,
+ RTK_DBG_INFO,
+ RTK_DBG_TRACE,
+ RTK_DBG_MAX
+};
+# 97 "../includes/voip_debug.h"
+typedef struct {
+ int level;
+ char module[8];
+ char msg[1024];
+ int ret_val;
+} rtk_print_cfg;
+
+
+typedef struct {
+
+ char cp3_counter1;
+ char cp3_counter2;
+ char cp3_counter3;
+ char cp3_counter4;
+ int cp3_dump_period;
+ int bCp3Count_PCM_ISR;
+ int bCp3Count_PCM_RX;
+ int bCp3Count_PCM_HANDLER;
+ int bCp3Count_LEC;
+ int bCp3Count_G711Enc;
+ int bCp3Count_G711Dec;
+ int bCp3Count_G729Enc;
+ int bCp3Count_G729Dec;
+ int bCp3Count_G7231Enc;
+ int bCp3Count_G7231Dec;
+ int bCp3Count_G726Enc;
+ int bCp3Count_G726Dec;
+ int bCp3Count_G722Enc;
+ int bCp3Count_G722Dec;
+ int bCp3Count_GSMFREnc;
+ int bCp3Count_GSMFRDec;
+ int bCp3Count_iLBC20Enc;
+ int bCp3Count_iLBC20Dec;
+ int bCp3Count_iLBC30Enc;
+ int bCp3Count_iLBC30Dec;
+ int bCp3Count_T38Enc;
+ int bCp3Count_T38Dec;
+ int bCp3Count_AMRNBEnc;
+ int bCp3Count_AMRNBDec;
+ int bCp3Count_SpeexNBEnc;
+ int bCp3Count_SpeexNBDec;
+ int bCp3Count_G7111NBEnc;
+ int bCp3Count_G7111NBDec;
+ int bCp3Count_G7111WBEnc;
+ int bCp3Count_G7111WBDec;
+ int bCp3Count_Temp200;
+ int bCp3Count_Temp201;
+ int bCp3Count_Temp202;
+ int bCp3Count_Temp203;
+ int bCp3Count_Temp204;
+ int bCp3Count_Temp205;
+ int bCp3Count_Temp206;
+ int bCp3Count_Temp207;
+ int bCp3Count_Temp208;
+ int bCp3Count_Temp209;
+ int bCp3Count_Temp210;
+ int bCp3Count_Temp211;
+ int bCp3Count_Temp212;
+ int bCp3Count_Temp213;
+ int bCp3Count_Temp214;
+ int bCp3Count_Temp215;
+ int bCp3Count_Temp216;
+ int bCp3Count_Temp217;
+ int bCp3Count_Temp218;
+ int bCp3Count_Temp219;
+
+} st_CP3_VoIP_param;
+
+extern int rtk_dbg_level;
+# 495 "../includes/rtk_voip.h" 2
+# 13 "../includes/voip_flash.h" 2
+# 1 "../includes/voip_feature.h" 1
+
+
+
+
+# 1 "../includes/voip_types.h" 1
+# 15 "../includes/voip_types.h"
+typedef uint64_t uint64;
+typedef int64_t int64;
+
+
+typedef uint32_t uint32;
+
+typedef int32_t int32;
+typedef uint16_t uint16;
+typedef int16_t int16;
+typedef uint8_t uint8;
+typedef int8_t int8;
+# 6 "../includes/voip_feature.h" 2
+# 24 "../includes/voip_feature.h"
+typedef uint64 VoipFeature_t;
+
+
+
+
+extern VoipFeature_t g_VoIP_Feature;
+# 14 "../includes/voip_flash.h" 2
+# 228 "../includes/voip_flash.h"
+enum __PROXY_ENABLE__
+{
+ PROXY_DISABLED = 0,
+ PROXY_ENABLED = 0x0001,
+ PROXY_NORTEL = 0x0002,
+};
+
+
+
+
+
+enum __CODEC_TYPE__
+{
+ _CODEC_NOTSUPPORT = -1,
+ _CODEC_G711U = 0,
+ _CODEC_G711A,
+ _CODEC_G729,
+ _CODEC_G723,
+ _CODEC_G726_16,
+ _CODEC_G726_24,
+ _CODEC_G726_32,
+ _CODEC_G726_40,
+ _CODEC_GSMFR,
+ _CODEC_ILBC,
+ _CODEC_G722,
+ _CODEC_SPEEX_NB,
+ _CODEC_G711U_WB,
+ _CODEC_G711A_WB,
+ _CODEC_MAX
+};
+
+enum
+{
+ SUPPORTED_CODEC_G711U = 0,
+ SUPPORTED_CODEC_G711A,
+
+ SUPPORTED_CODEC_G729,
+
+
+ SUPPORTED_CODEC_G723,
+
+
+ SUPPORTED_CODEC_G726_16,
+ SUPPORTED_CODEC_G726_24,
+ SUPPORTED_CODEC_G726_32,
+ SUPPORTED_CODEC_G726_40,
+
+
+ SUPPORTED_CODEC_GSMFR,
+
+
+ SUPPORTED_CODEC_ILBC,
+
+
+ SUPPORTED_CODEC_G722,
+# 291 "../includes/voip_flash.h"
+ SUPPORTED_CODEC_MAX
+};
+
+
+
+
+
+enum __G7231_RATE__
+{
+ G7231_RATE63 = 0,
+ G7231_RATE53,
+};
+
+
+
+
+
+enum __G726_PACKING__
+{
+ G726_PACK_NONE = 0,
+ G726_PACK_LEFT,
+ G726_PACK_RIGHT,
+ G726_PACK_MAX
+};
+
+
+
+
+
+enum __ILBC_MODE_
+{
+ ILBC_30MS = 0,
+ ILBC_20MS
+};
+
+
+
+
+
+enum __SPEEX_NB_RATE__
+{
+ SPEEX_RATE2P15 = 0,
+ SPEEX_RATE5P95,
+ SPEEX_RATE8,
+ SPEEX_RATE11,
+ SPEEX_RATE15,
+ SPEEX_RATE18P2,
+ SPEEX_RATE24P6,
+ SPEEX_RATE3P95
+};
+
+
+
+
+
+enum __G7111_MODE__
+{
+ G7111_R1 = 1,
+ G7111_R2A,
+ G7111_R2B,
+ G7111_R3,
+ G7111_MODES = G7111_R3
+};
+
+
+
+
+
+enum __DTMF_TYPE__
+{
+ DTMF_RFC2833 = 0,
+ DTMF_SIPINFO,
+ DTMF_INBAND,
+ DTMF_DELETE,
+ DTMF_MAX
+};
+
+
+
+
+
+enum _CID_AREA_
+{
+    CID_FSK_BELLCORE = 0,
+    CID_FSK_ETSI,
+    CID_FSK_BT,
+    CID_FSK_NTT,
+    CID_DTMF,
+    CID_MAX
+};
+
+
+
+
+
+enum _CID_DTMF_
+{
+    CID_DTMF_A = 0,
+    CID_DTMF_B,
+    CID_DTMF_C,
+    CID_DTMF_D,
+    CID_DTMF_MAX
+};
+
+enum _FAX_MODEM_DET_CFG_
+{
+ FAX_MODEM_DET_AUTO = 0,
+ FAX_MODEM_DET_FAX,
+ FAX_MODEM_DET_MODEM,
+ FAX_MODEM_DET_AUTO2,
+ FAX_MODEM_DET_MAX
+};
+
+
+
+
+
+enum _TONE_COUNTRY_
+{
+    TONE_USA = 0,
+    TONE_UK,
+    TONE_AUSTRALIA,
+    TONE_HK,
+    TONE_JAPAN,
+    TONE_SWEDEN,
+    TONE_GERMANY,
+    TONE_FRANCE,
+
+
+
+    TONE_TW,
+
+    TONE_BELGIUM,
+    TONE_FINLAND,
+    TONE_ITALY,
+    TONE_CHINA,
+    TONE_EXT1,
+    TONE_EXT2,
+    TONE_EXT3,
+    TONE_EXT4,
+
+
+
+    TONE_CUSTOMER,
+    TONE_MAX
+};
+
+
+
+
+
+enum _TONE_TYPE_
+{
+    TONE_TYPE_ADDITIVE = 0,
+    TONE_TYPE_MODULATED,
+    TONE_TYPE_SUCC,
+
+    TONE_TYPE_MAX
+};
+
+
+
+
+
+enum _TONE_CYCLE_
+{
+    TONE_CYCLE_CONTINUOUS = 0,
+    TONE_CYCLE_BURST,
+    TONE_CYCLE_CADENCE,
+    TONE_CYCLE_MAX
+};
+
+
+
+
+
+enum _TONE_CUSTOMER_
+{
+    TONE_CUSTOMER_1 = 0,
+    TONE_CUSTOMER_2,
+    TONE_CUSTOMER_3,
+    TONE_CUSTOMER_4,
+    TONE_CUSTOMER_5,
+    TONE_CUSTOMER_6,
+    TONE_CUSTOMER_7,
+    TONE_CUSTOMER_8,
+    TONE_CUSTOMER_MAX
+};
+
+
+
+
+
+
+enum _DIS_CONNECT_TONE_NUM_
+{
+    DIS_CONNECT_TONE_0 = 0,
+    DIS_CONNECT_TONE_1,
+    DIS_CONNECT_TONE_2,
+    DIS_CONNECT_TONE_MAX
+};
+
+
+
+
+
+enum _DIS_CONNECT_TONE_FREQ_NUM_
+{
+    DIS_CONNECT_TONE_FREQ_0 = 0,
+    DIS_CONNECT_TONE_FREQ_1,
+    DIS_CONNECT_TONE_FREQ_2,
+    DIS_CONNECT_TONE_FREQ_MAX
+};
+
+
+
+
+
+
+enum _RING_GROUP_
+{
+    RING_GROUP_1 = 0,
+    RING_GROUP_2,
+    RING_GROUP_3,
+    RING_GROUP_4,
+    RING_GROUP_MAX
+};
+
+
+
+
+
+
+enum _RING_CADENCE_
+{
+    RING_CADENCE_1 = 0,
+    RING_CADENCE_2,
+    RING_CADENCE_3,
+    RING_CADENCE_4,
+    RING_CADENCE_5,
+    RING_CADENCE_6,
+    RING_CADENCE_7,
+    RING_CADENCE_8,
+    RING_CADENCE_MAX
+};
+
+
+
+
+
+enum _PULSE_GEN_PPS_
+{
+    PULSE_GEN_PPS_10 = 0,
+    PULSE_GEN_PPS_20,
+    PULSE_GEN_PPS_MAX
+};
+
+
+
+
+
+enum _PULSE_GEN_MAKE_
+{
+    PULSE_GEN_MAKE_10MSEC = 0,
+    PULSE_GEN_MAKE_20MSEC,
+    PULSE_GEN_MAKE_30MSEC,
+    PULSE_GEN_MAKE_40MSEC,
+    PULSE_GEN_MAKE_50MSEC,
+    PULSE_GEN_MAKE_60MSEC,
+    PULSE_GEN_MAKE_70MSEC,
+    PULSE_GEN_MAKE_80MSEC,
+    PULSE_GEN_MAKE_90MSEC,
+    PULSE_GEN_MAKE_MAX
+};
+
+typedef enum {
+ NET_DHCP_DISABLED = 0,
+ NET_DHCP_CLIENT
+} net_dhcp_t;
+
+typedef enum {
+ NET_CFG_DHCP,
+ NET_CFG_IP,
+ NET_CFG_NETMASK,
+ NET_CFG_GATEWAY,
+ NET_CFG_DNS,
+} net_cfg_t;
+
+
+
+
+
+enum _DSCP_CS_
+{
+    DSCP_CS0 = 0,
+    DSCP_CS1,
+    DSCP_CS2,
+    DSCP_CS3,
+    DSCP_CS4,
+    DSCP_CS5,
+    DSCP_CS6,
+    DSCP_CS7,
+    DSCP_EF,
+    DSCP_MAX
+};
+
+
+
+
+
+
+enum {
+ AUTO_DIAL_DISABLE = 0x0000,
+ AUTO_DIAL_TIME = 0x000f,
+ AUTO_DIAL_ALWAYS = 0x0010
+};
+
+
+
+enum{
+ KEY_EXCHANGE_SDES,
+ KEY_EXCHANGE_MIKEY
+};
+
+
+
+
+
+
+enum {
+ AUTO_BYPASS_RELAY_ENABLE = 0x01,
+ AUTO_BYPASS_WARNING_ENABLE = 0x10
+};
+
+#pragma pack(push, 1)
+
+typedef struct ToneCfgParam st_ToneCfgParam;
+typedef struct SpeedDialCfg_s SpeedDialCfg_t;
+typedef struct voipCfgProxy_s voipCfgProxy_t;
+typedef struct voipCfgPortParam_s voipCfgPortParam_t;
+typedef struct voipCfgParam_s voipCfgParam_t;
+
+
+
+
+
+
+struct ToneCfgParam
+{
+
+
+# 1 "../includes/voip_mibdef.h" 1
+# 13 "../includes/voip_mibdef.h"
+unsigned long toneType ;
+unsigned short cycle ;
+unsigned short cadNUM ;
+
+unsigned long CadOn0 ;
+unsigned long CadOn1 ;
+unsigned long CadOn2 ;
+unsigned long CadOn3 ;
+unsigned long CadOff0 ;
+unsigned long CadOff1 ;
+unsigned long CadOff2 ;
+unsigned long CadOff3 ;
+
+unsigned long PatternOff ;
+unsigned long ToneNUM ;
+
+unsigned long Freq1 ;
+unsigned long Freq2 ;
+unsigned long Freq3 ;
+unsigned long Freq4 ;
+
+long Gain1 ;
+long Gain2 ;
+long Gain3 ;
+long Gain4 ;
+# 643 "../includes/voip_flash.h" 2
+# 673 "../includes/voip_flash.h"
+};
+
+struct SpeedDialCfg_s
+{
+
+
+# 1 "../includes/voip_mibdef.h" 1
+# 45 "../includes/voip_mibdef.h"
+char name [11];
+
+char url [61];
+# 680 "../includes/voip_flash.h" 2
+
+
+
+
+
+};
+
+
+
+
+
+typedef struct ui_falsh_layout1_s {
+ unsigned long test;
+} ui_falsh_layout1_t;
+
+
+
+
+
+struct voipCfgProxy_s
+{
+
+
+# 1 "../includes/voip_mibdef.h" 1
+# 56 "../includes/voip_mibdef.h"
+char display_name [40];
+char number [40];
+char login_id [40];
+char password [40];
+
+
+unsigned short enable ;
+char addr [40];
+unsigned short port ;
+char domain_name [40];
+unsigned int reg_expire ;
+
+
+unsigned short outbound_enable ;
+char outbound_addr [40];
+unsigned short outbound_port ;
+
+
+unsigned short siptls_enable ;
+# 704 "../includes/voip_flash.h" 2
+# 724 "../includes/voip_flash.h"
+};
+
+
+
+
+
+typedef struct abbrDialCfg_s {
+
+
+# 1 "../includes/voip_mibdef.h" 1
+# 81 "../includes/voip_mibdef.h"
+char name [5];
+
+char url [61];
+# 734 "../includes/voip_flash.h" 2
+
+
+
+
+
+} abbrDialCfg_t;
+
+
+
+
+
+struct voipCfgPortParam_s
+{
+
+
+# 1 "../includes/voip_mibdef.h" 1
+# 92 "../includes/voip_mibdef.h"
+voipCfgProxy_t proxies [2];
+
+
+unsigned char default_proxy ;
+
+
+unsigned char stun_enable ;
+char stun_addr [40];
+
+unsigned short stun_port ;
+
+
+unsigned short sip_port ;
+unsigned short media_port ;
+unsigned char dtmf_mode ;
+
+unsigned short dtmf_2833_pt ;
+
+
+unsigned short dtmf_2833_pi ;
+
+
+unsigned char fax_modem_2833_pt_same_dtmf ;
+
+
+unsigned short fax_modem_2833_pt ;
+
+
+unsigned short fax_modem_2833_pi ;
+
+
+unsigned short sip_info_duration ;
+unsigned char call_waiting_enable ;
+unsigned char direct_ip_call ;
+
+
+unsigned char uc_forward_enable ;
+char uc_forward [40];
+
+
+unsigned char busy_forward_enable ;
+char busy_forward [40];
+
+unsigned char na_forward_enable ;
+char na_forward [40];
+
+unsigned short na_forward_time ;
+
+
+SpeedDialCfg_t speed_dial [10];
+
+
+
+unsigned char replace_rule_option ;
+unsigned char replace_rule_source [80];
+
+unsigned char replace_rule_target [10];
+
+unsigned char dialplan [80];
+
+unsigned char auto_prefix [5];
+
+unsigned char prefix_unset_plan [80];
+
+
+
+unsigned char frame_size [_CODEC_MAX];
+unsigned char precedence [_CODEC_MAX];
+unsigned char vad ;
+unsigned char vad_thr ;
+unsigned char cng ;
+unsigned char cng_thr ;
+unsigned char sid_gainmode ;
+unsigned char sid_noiselevel ;
+signed char sid_noisegain ;
+unsigned char PLC ;
+unsigned char RTCP_Interval ;
+unsigned char RTCP_XR ;
+unsigned char g7231_rate ;
+unsigned char iLBC_mode ;
+unsigned char speex_nb_rate ;
+unsigned char g726_packing ;
+unsigned char g7111_precedence [G7111_MODES];
+
+
+
+unsigned char rtp_redundant_payload_type ;
+
+signed char rtp_redundant_codec ;
+
+
+
+unsigned char slic_txVolumne ;
+unsigned char slic_rxVolumne ;
+unsigned char jitter_delay ;
+unsigned char maxDelay ;
+unsigned char jitter_factor ;
+
+unsigned char lec ;
+unsigned char nlp ;
+unsigned char echoTail ;
+unsigned char caller_id_mode ;
+unsigned char call_waiting_cid ;
+
+unsigned char cid_dtmf_mode ;
+unsigned char speaker_agc ;
+unsigned char spk_agc_lvl ;
+unsigned char spk_agc_gu ;
+unsigned char spk_agc_gd ;
+
+unsigned char mic_agc ;
+unsigned char mic_agc_lvl ;
+unsigned char mic_agc_gu ;
+unsigned char mic_agc_gd ;
+unsigned char cid_fsk_gen_mode ;
+
+signed char spk_voice_gain ;
+signed char mic_voice_gain ;
+unsigned int anstone ;
+unsigned char faxmodem_rfc2833 ;
+
+
+unsigned char voice_qos ;
+
+
+unsigned char useT38 ;
+unsigned short T38_port ;
+unsigned char fax_modem_det ;
+
+unsigned char T38ParamEnable ;
+unsigned short T38MaxBuffer ;
+unsigned char T38RateMgt ;
+unsigned char T38MaxRate ;
+unsigned char T38EnableECM ;
+unsigned char T38ECCSignal ;
+unsigned char T38ECCData ;
+unsigned char T38EnableSpoof ;
+unsigned char T38DuplicateNum ;
+
+
+unsigned char useV152 ;
+unsigned char v152_payload_type ;
+unsigned char v152_codec_type ;
+
+
+unsigned char hotline_enable ;
+char hotline_number [40];
+
+
+unsigned char dnd_mode ;
+unsigned char dnd_from_hour ;
+unsigned char dnd_from_min ;
+unsigned char dnd_to_hour ;
+unsigned char dnd_to_min ;
+
+
+unsigned short flash_hook_time ;
+unsigned short flash_hook_time_min ;
+
+
+unsigned char security_enable ;
+unsigned char key_exchange_mode ;
+
+
+
+char offhook_passwd [10];
+
+
+
+
+abbrDialCfg_t abbr_dial [5];
+
+
+unsigned char alarm_enable ;
+unsigned char alarm_time_hh ;
+unsigned char alarm_time_mm ;
+
+unsigned char PSTN_routing_prefix [128];
+# 750 "../includes/voip_flash.h" 2
+# 908 "../includes/voip_flash.h"
+};
+
+struct voipCfgParam_s {
+
+
+
+# 1 "../includes/voip_mibdef.h" 1
+# 278 "../includes/voip_mibdef.h"
+unsigned long signature ;
+unsigned short version ;
+unsigned long feature ;
+unsigned long extend_feature ;
+unsigned short mib_version ;
+
+
+unsigned int rfc_flags ;
+
+
+unsigned char tone_of_country ;
+unsigned char tone_of_custdial ;
+unsigned char tone_of_custring ;
+unsigned char tone_of_custbusy ;
+unsigned char tone_of_custwaiting ;
+unsigned char tone_of_customize ;
+
+
+st_ToneCfgParam cust_tone_para [TONE_CUSTOMER_MAX];
+
+
+
+unsigned char distone_num ;
+unsigned char d1freqnum ;
+unsigned short d1Freq1 ;
+unsigned short d1Freq2 ;
+unsigned char d1Accur ;
+unsigned short d1Level ;
+unsigned short d1ONup ;
+unsigned short d1ONlow ;
+unsigned short d1OFFup ;
+unsigned short d1OFFlow ;
+unsigned char d2freqnum ;
+unsigned short d2Freq1 ;
+unsigned short d2Freq2 ;
+unsigned char d2Accur ;
+unsigned short d2Level ;
+unsigned short d2ONup ;
+unsigned short d2ONlow ;
+unsigned short d2OFFup ;
+unsigned short d2OFFlow ;
+
+
+unsigned char ring_cad ;
+unsigned char ring_group ;
+unsigned int ring_phone_num [RING_GROUP_MAX];
+
+unsigned char ring_cadence_use [RING_GROUP_MAX];
+
+unsigned char ring_cadence_sel ;
+unsigned short ring_cadon [RING_CADENCE_MAX];
+
+unsigned short ring_cadoff [RING_CADENCE_MAX];
+
+
+
+char funckey_pstn [3];
+
+char funckey_transfer [3];
+
+
+
+unsigned short auto_dial ;
+unsigned short off_hook_alarm ;
+unsigned short cid_auto_det_select ;
+
+unsigned short caller_id_det_mode ;
+unsigned char one_stage_dial ;
+unsigned char two_stage_dial ;
+unsigned char auto_bypass_relay ;
+
+
+unsigned char pulse_dial_gen ;
+unsigned char pulse_gen_pps ;
+unsigned char pulse_gen_make_time ;
+unsigned short pulse_gen_interdigit_pause ;
+
+unsigned char pulse_dial_det ;
+unsigned short pulse_det_pause ;
+
+
+unsigned short auto_cfg_ver ;
+unsigned char auto_cfg_mode ;
+char auto_cfg_http_addr [40];
+unsigned short auto_cfg_http_port ;
+char auto_cfg_tftp_addr [40];
+char auto_cfg_ftp_addr [40];
+char auto_cfg_ftp_user [20];
+char auto_cfg_ftp_passwd [20];
+char auto_cfg_file_path [61];
+
+unsigned short auto_cfg_expire ;
+unsigned char fw_update_mode ;
+char fw_update_tftp_addr [40];
+char fw_update_http_addr [40];
+unsigned short fw_update_http_port ;
+char fw_update_ftp_addr [40];
+char fw_update_ftp_user [20];
+
+char fw_update_ftp_passwd [20];
+
+char fw_update_file_path [61];
+
+unsigned char fw_update_power_on ;
+unsigned short fw_update_scheduling_day ;
+
+unsigned char fw_update_scheduling_time ;
+
+unsigned char fw_update_auto ;
+
+char fw_update_file_prefix [61];
+
+unsigned long fw_update_next_time ;
+
+char fw_update_fw_version [20];
+
+
+
+unsigned char wanVlanEnable ;
+
+
+unsigned short wanVlanIdVoice ;
+unsigned char wanVlanPriorityVoice ;
+
+unsigned char wanVlanCfiVoice ;
+
+
+
+unsigned short wanVlanIdData ;
+
+unsigned char wanVlanPriorityData ;
+
+unsigned char wanVlanCfiData ;
+
+
+
+unsigned short wanVlanIdVideo ;
+
+unsigned char wanVlanPriorityVideo ;
+
+unsigned char wanVlanCfiVideo ;
+
+
+unsigned char vlan_enable ;
+unsigned short vlan_tag ;
+unsigned char vlan_bridge_enable ;
+unsigned short vlan_bridge_tag ;
+unsigned short vlan_bridge_port ;
+
+unsigned char vlan_bridge_multicast_enable ;
+
+
+unsigned short vlan_bridge_multicast_tag ;
+
+
+unsigned char vlan_host_enable ;
+unsigned short vlan_host_tag ;
+unsigned short vlan_host_pri ;
+unsigned char vlan_wifi_enable ;
+unsigned short vlan_wifi_tag ;
+unsigned short vlan_wifi_pri ;
+
+unsigned char vlan_wifi_vap0_enable ;
+
+
+unsigned short vlan_wifi_vap0_tag ;
+unsigned short vlan_wifi_vap0_pri ;
+unsigned char vlan_wifi_vap1_enable ;
+
+unsigned short vlan_wifi_vap1_tag ;
+unsigned short vlan_wifi_vap1_pri ;
+unsigned char vlan_wifi_vap2_enable ;
+
+unsigned short vlan_wifi_vap2_tag ;
+unsigned short vlan_wifi_vap2_pri ;
+unsigned char vlan_wifi_vap3_enable ;
+
+unsigned short vlan_wifi_vap3_tag ;
+unsigned short vlan_wifi_vap3_pri ;
+
+
+unsigned char hwnat_enable ;
+
+
+unsigned short bandwidth_LANPort0_Egress ;
+
+unsigned short bandwidth_LANPort1_Egress ;
+
+unsigned short bandwidth_LANPort2_Egress ;
+
+unsigned short bandwidth_LANPort3_Egress ;
+
+unsigned short bandwidth_WANPort_Egress ;
+
+
+unsigned short bandwidth_LANPort0_Ingress ;
+
+unsigned short bandwidth_LANPort1_Ingress ;
+
+unsigned short bandwidth_LANPort2_Ingress ;
+
+unsigned short bandwidth_LANPort3_Ingress ;
+
+unsigned short bandwidth_WANPort_Ingress ;
+
+
+
+unsigned char daa_txVolumne ;
+unsigned char daa_rxVolumne ;
+
+
+unsigned char rtpDscp ;
+unsigned char sipDscp ;
+
+voipCfgPortParam_t ports [2];
+# 915 "../includes/voip_flash.h" 2
+# 1114 "../includes/voip_flash.h"
+};
+# 1133 "../includes/voip_flash.h"
+typedef struct VOIP_CFG_HEADER_S VOIP_CFG_HEADER;
+
+struct VOIP_CFG_HEADER_S {
+    unsigned long signature;
+ unsigned short len;
+};
+
+typedef struct flash_netcfg_s {
+ int dhcp;
+ unsigned long ip;
+ unsigned long netmask;
+ unsigned long gateway;
+ unsigned long dns;
+ int ivr_lan;
+ char ivr_interface[10];
+ char ivr_lan_interface[ 10 ];
+} flash_netcfg_t;
+
+typedef struct voip_flash_share_s {
+ flash_netcfg_t net_cfg;
+ voipCfgParam_t voip_cfg;
+} voip_flash_share_t;
+
+typedef struct {
+ int mode;
+ voipCfgParam_t current_setting;
+ voipCfgParam_t default_setting;
+} voipCfgAll_t;
+
+#pragma pack(pop)
+
+
+
+
+typedef enum {
+ VOIP_FLASH_WRITE_CLIENT_IPPHONE,
+ VOIP_FLASH_WRITE_CLIENT_TR104,
+
+
+
+
+ MAX_VOIP_FLASH_WRITE_CLIENT,
+
+ VOIP_FLASH_WRITE_CLIENT_SOLAR = MAX_VOIP_FLASH_WRITE_CLIENT,
+ VOIP_FLASH_WRITE_CLIENT_IVRSERVER = MAX_VOIP_FLASH_WRITE_CLIENT,
+ VOIP_FLASH_WRITE_CLIENT_FWUPDATE = MAX_VOIP_FLASH_WRITE_CLIENT,
+} cid_t;
+
+
+
+
+
+int flash_voip_default(voipCfgParam_t *pVoIPCfg);
+
+int flash_voip_check(voipCfgParam_t *pVoIPCfg);
+
+int flash_voip_cmd(int param_cnt, char *param_var[]);
+# 1198 "../includes/voip_flash.h"
+int voip_flash_read(voipCfgAll_t *cfg_all, int mode);
+
+
+
+
+
+
+
+int voip_flash_write(voipCfgAll_t *cfg_all);
+# 1215 "../includes/voip_flash.h"
+int voip_flash_get(voipCfgParam_t **ppVoIPCfg);
+int voip_flash_get_default(voipCfgParam_t **ppVoIPCfg);
+
+
+
+
+
+
+
+int voip_flash_set(voipCfgParam_t *pVoIPCfg);
+
+int voip_flash_server_read(voip_flash_share_t *pVoIPShare);
+int voip_flash_server_write(voip_flash_share_t *pVoIPShare);
+
+int voip_flash_server_start(void);
+void voip_flash_server_stop(void);
+int voip_flash_server_update(void);
+
+int voip_flash_client_init(voip_flash_share_t **ppVoIPShare, cid_t cid);
+void voip_flash_client_close(void);
+int voip_flash_client_update(void);
+
+extern unsigned char GetDhcpValueToSetFixedIP( void );
+extern int net_cfg_flash_read( net_cfg_t cfg, void *pCfgData );
+extern int GetGatewayOperationMode( void );
+
+
+
+
+
+extern voipCfgParam_t voipCfgParamDefault;
+
+extern voipCfgParam_t VoipEntry;
+# 24 "voip_flash_mib.c" 2
+# 1 "../includes/voip_flash_mib.h" 1
+# 429 "../includes/voip_flash_mib.h"
+enum {
+ V_INT = 0,
+ V_UINT,
+
+ V_CHAR,
+ V_BYTE,
+
+ V_SHORT,
+ V_WORD,
+
+ V_LONG,
+ V_DWORD,
+
+ V_IP4,
+ V_MAC6,
+ V_MIB,
+
+
+
+ V_STRING,
+ V_BYTE_ARRAY,
+
+
+
+ V_INT_LIST,
+ V_UINT_LIST,
+ V_CHAR_LIST,
+ V_BYTE_LIST,
+ V_SHORT_LIST,
+ V_WORD_LIST,
+ V_LONG_LIST,
+ V_DWORD_LIST,
+ V_IP4_LIST,
+ V_MAC6_LIST,
+ V_MIB_LIST,
+ V_END
+};
+
+typedef struct voipMibEntry_S voipMibEntry_T;
+
+struct voipMibEntry_S {
+ int id;
+ char name[32];
+ int type;
+ int offset;
+ int total_size;
+ int unit_size;
+ voipMibEntry_T *next_mib_table;
+    const unsigned char *default_value;
+};
+# 546 "../includes/voip_flash_mib.h"
+int voip_mibtbl_check(int *size);
+
+int voip_mibtbl_write(const void *data, int fd, int mode);
+
+int voip_mibtbl_read_line(voipCfgAll_t *cfg_all, char *line);
+
+int voip_mibtbl_get(const char *mib_name, voipCfgAll_t *cfg_all, int fd);
+
+int voip_mibtbl_set(const char *mib_name, const char *mib_value, voipCfgAll_t *cfg_all, int fd);
+
+int voip_mibtbl_swap_value(void *data);
+
+
+int voip_mibline_to(char *line, const char *name, const char *value);
+int voip_mibline_from(const char *line, char *name, char *value);
+int voip_mib_from(const voipMibEntry_T *mib_tbl, const char *name,
+ const voipMibEntry_T **ppmib, int *offset);
+int voip_mib_read(void *data, const char *name, const char *value);
+
+
+
+
+
+
+
+extern voipMibEntry_T mibtbl_voip[];
+# 25 "voip_flash_mib.c" 2
+# 1 "../includes/voip_flash_tool.h" 1
+# 15 "../includes/voip_flash_tool.h"
+int flash_voip_import_text(voipCfgAll_t *cfg_all, char *text, int text_len);
+
+int flash_voip_import_check(voipCfgParam_t *pVoIPCfg);
+
+int flash_voip_import_fix(voipCfgParam_t *pVoIPCfg, const voipCfgParam_t *pVoIPCfg_Old);
+
+int flash_voip_import(voipCfgAll_t *cfg_all, char *buf, int buf_len);
+
+int flash_voip_import_from_file(voipCfgAll_t *cfg_all, const char *filename);
+
+int flash_voip_export(const voipCfgAll_t *cfg_all, char **buf, int *buf_len, int mode);
+
+int flash_voip_export_to_file(const voipCfgAll_t *cfg_all, const char *filename, const int mode);
+
+int flash_voip_write_file(const char *filename, const char *buf, const int buf_len);
+
+int flash_voip_read_file(const char *filename, char **buf, int *buf_len);
+
+int flash_voip_encode(const char *text, const int text_len, char **buf, int *buf_len);
+
+int flash_voip_decode(char *buf, int buf_len, char **text, int *text_len);
+# 26 "voip_flash_mib.c" 2
+# 49 "voip_flash_mib.c"
+typedef struct {
+ char name[16];
+ int size;
+} V_TYPE_INFO;
+
+const V_TYPE_INFO v_types[V_END] = {
+ {"V_INT", sizeof(int)},
+ {"V_UINT", sizeof(int)},
+
+ {"V_CHAR", sizeof(char)},
+ {"V_BYTE", sizeof(char)},
+
+ {"V_SHORT", sizeof(short)},
+ {"V_WORD", sizeof(short)},
+
+ {"V_LONG", sizeof(long)},
+ {"V_DWORD", sizeof(long)},
+
+ {"V_IP4", 4},
+ {"V_MAC6", 6},
+ {"V_MIB", 0},
+
+ {"V_STRING", sizeof(char)},
+ {"V_BYTE_ARRAY", sizeof(char)},
+
+ {"V_INT_LIST", sizeof(int)},
+ {"V_UINT_LIST", sizeof(int)},
+ {"V_CHAR_LIST", sizeof(char)},
+ {"V_BYTE_LIST", sizeof(char)},
+ {"V_SHORT_LIST", sizeof(short)},
+ {"V_WORD_LIST", sizeof(short)},
+ {"V_LONG_LIST", sizeof(long)},
+ {"V_DWORD_LIST", sizeof(long)},
+ {"V_IP4_LIST", 4},
+ {"V_MAC6_LIST", 6},
+ {"V_MIB_LIST", 0}
+};
+# 107 "voip_flash_mib.c"
+voipMibEntry_T mibtbl_speed_dial[] = {
+# 125 "voip_flash_mib.c"
+# 1 "../includes/voip_mibdef.h" 1
+# 45 "../includes/voip_mibdef.h"
+{34, "SPEED_DIAL_NAME", V_STRING, ((int)((unsigned long)(long *)&(((SpeedDialCfg_t *)0)->name))), sizeof(((SpeedDialCfg_t *)0)->name), sizeof(((SpeedDialCfg_t *)0)->name[0]), ((void *)0), 0 },
+
+{35, "SPEED_DIAL_URL", V_STRING, ((int)((unsigned long)(long *)&(((SpeedDialCfg_t *)0)->url))), sizeof(((SpeedDialCfg_t *)0)->url), sizeof(((SpeedDialCfg_t *)0)->url[0]), ((void *)0), 0 },
+# 126 "voip_flash_mib.c" 2
+
+
+
+
+
+
+ {0}
+};
+
+voipMibEntry_T mibtbl_proxies[] = {
+# 154 "voip_flash_mib.c"
+# 1 "../includes/voip_mibdef.h" 1
+# 56 "../includes/voip_mibdef.h"
+{6, "PROXY_DISPLAY_NAME", V_STRING, ((int)((unsigned long)(long *)&(((voipCfgProxy_t *)0)->display_name))), sizeof(((voipCfgProxy_t *)0)->display_name), sizeof(((voipCfgProxy_t *)0)->display_name[0]), ((void *)0), 0 },
+{7, "PROXY_NUMBER", V_STRING, ((int)((unsigned long)(long *)&(((voipCfgProxy_t *)0)->number))), sizeof(((voipCfgProxy_t *)0)->number), sizeof(((voipCfgProxy_t *)0)->number[0]), ((void *)0), 0 },
+{8, "PROXY_LOGIN_ID", V_STRING, ((int)((unsigned long)(long *)&(((voipCfgProxy_t *)0)->login_id))), sizeof(((voipCfgProxy_t *)0)->login_id), sizeof(((voipCfgProxy_t *)0)->login_id[0]), ((void *)0), 0 },
+{9, "PROXY_PASSWORD", V_STRING, ((int)((unsigned long)(long *)&(((voipCfgProxy_t *)0)->password))), sizeof(((voipCfgProxy_t *)0)->password), sizeof(((voipCfgProxy_t *)0)->password[0]), ((void *)0), 0 },
+
+
+{10, "PROXY_ENABLE", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgProxy_t *)0)->enable))), sizeof(((voipCfgProxy_t *)0)->enable), 0, ((void *)0), 0 },
+{11, "PROXY_ADDR", V_STRING, ((int)((unsigned long)(long *)&(((voipCfgProxy_t *)0)->addr))), sizeof(((voipCfgProxy_t *)0)->addr), sizeof(((voipCfgProxy_t *)0)->addr[0]), ((void *)0), 0 },
+{12, "PROXY_PORT", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgProxy_t *)0)->port))), sizeof(((voipCfgProxy_t *)0)->port), 0, ((void *)0), 0 },
+{13, "PROXY_DOMAIN_NAME", V_STRING, ((int)((unsigned long)(long *)&(((voipCfgProxy_t *)0)->domain_name))), sizeof(((voipCfgProxy_t *)0)->domain_name), sizeof(((voipCfgProxy_t *)0)->domain_name[0]), ((void *)0), 0 },
+{14, "PROXY_REG_EXPIRE", V_UINT, ((int)((unsigned long)(long *)&(((voipCfgProxy_t *)0)->reg_expire))), sizeof(((voipCfgProxy_t *)0)->reg_expire), 0, ((void *)0), 0 },
+
+
+{15, "PROXY_OUTBOUND_ENABLE", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgProxy_t *)0)->outbound_enable))), sizeof(((voipCfgProxy_t *)0)->outbound_enable), 0, ((void *)0), 0 },
+{16, "PROXY_OUTBOUND_ADDR", V_STRING, ((int)((unsigned long)(long *)&(((voipCfgProxy_t *)0)->outbound_addr))), sizeof(((voipCfgProxy_t *)0)->outbound_addr), sizeof(((voipCfgProxy_t *)0)->outbound_addr[0]), ((void *)0), 0 },
+{17, "PROXY_OUTBOUND_PORT", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgProxy_t *)0)->outbound_port))), sizeof(((voipCfgProxy_t *)0)->outbound_port), 0, ((void *)0), 0 },
+
+
+{146, "TLS_ENABLE", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgProxy_t *)0)->siptls_enable))), sizeof(((voipCfgProxy_t *)0)->siptls_enable), 0, ((void *)0), 0 },
+# 155 "voip_flash_mib.c" 2
+# 176 "voip_flash_mib.c"
+ {0}
+};
+
+voipMibEntry_T mibtbl_abbreviated_dial[] = {
+# 197 "voip_flash_mib.c"
+# 1 "../includes/voip_mibdef.h" 1
+# 81 "../includes/voip_mibdef.h"
+{158, "ABBREVIATED_DIAL_NAME", V_STRING, ((int)((unsigned long)(long *)&(((abbrDialCfg_t *)0)->name))), sizeof(((abbrDialCfg_t *)0)->name), sizeof(((abbrDialCfg_t *)0)->name[0]), ((void *)0), 0 },
+
+{159, "ABBREVIATED_DIAL_URL", V_STRING, ((int)((unsigned long)(long *)&(((abbrDialCfg_t *)0)->url))), sizeof(((abbrDialCfg_t *)0)->url), sizeof(((abbrDialCfg_t *)0)->url[0]), ((void *)0), 0 },
+# 198 "voip_flash_mib.c" 2
+
+
+
+
+
+
+ {0}
+};
+
+voipMibEntry_T mibtbl_voip_port[] = {
+# 231 "voip_flash_mib.c"
+# 1 "../includes/voip_mibdef.h" 1
+# 92 "../includes/voip_mibdef.h"
+{(143|0x0), "PROXIES", V_MIB_LIST, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->proxies))), sizeof(((voipCfgPortParam_t *)0)->proxies), sizeof(((voipCfgPortParam_t *)0)->proxies[0]), mibtbl_proxies, 0 },
+
+
+{144, "DEFAULT_PROXY", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->default_proxy))), sizeof(((voipCfgPortParam_t *)0)->default_proxy), 0, ((void *)0), 0 },
+
+
+{18, "STUN_ENABLE", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->stun_enable))), sizeof(((voipCfgPortParam_t *)0)->stun_enable), 0, ((void *)0), 0 },
+{19, "STUN_ADDR", V_STRING, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->stun_addr))), sizeof(((voipCfgPortParam_t *)0)->stun_addr), sizeof(((voipCfgPortParam_t *)0)->stun_addr[0]), ((void *)0), 0 },
+
+{20, "STUN_PORT", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->stun_port))), sizeof(((voipCfgPortParam_t *)0)->stun_port), 0, ((void *)0), 0 },
+
+
+{21, "SIP_PORT", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->sip_port))), sizeof(((voipCfgPortParam_t *)0)->sip_port), 0, ((void *)0), 0 },
+{22, "MEDIA_PORT", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->media_port))), sizeof(((voipCfgPortParam_t *)0)->media_port), 0, ((void *)0), 0 },
+{23, "DTMF_MODE", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->dtmf_mode))), sizeof(((voipCfgPortParam_t *)0)->dtmf_mode), 0, ((void *)0), 0 },
+
+{24, "DTMF_RFC2833_PAYLOAD_TYPE", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->dtmf_2833_pt))), sizeof(((voipCfgPortParam_t *)0)->dtmf_2833_pt), 0, ((void *)0), 0 },
+
+
+{291, "FAXMODEM_RFC2833_PT", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->dtmf_2833_pi))), sizeof(((voipCfgPortParam_t *)0)->dtmf_2833_pi), 0, ((void *)0), 0 },
+
+
+{292, "DTMF_RFC2833_PI", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->fax_modem_2833_pt_same_dtmf))), sizeof(((voipCfgPortParam_t *)0)->fax_modem_2833_pt_same_dtmf), 0, ((void *)0), 0 },
+
+
+{293, "FAXMODEM_RFC2833_PI", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->fax_modem_2833_pt))), sizeof(((voipCfgPortParam_t *)0)->fax_modem_2833_pt), 0, ((void *)0), 0 },
+
+
+{294, "FAXMODEM_RFC2833_PT_SAME_DTMF", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->fax_modem_2833_pi))), sizeof(((voipCfgPortParam_t *)0)->fax_modem_2833_pi), 0, ((void *)0), 0 },
+
+
+{106, "SIP_INFO_DURATION", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->sip_info_duration))), sizeof(((voipCfgPortParam_t *)0)->sip_info_duration), 0, ((void *)0), 0 },
+{25, "CALL_WAITING_ENABLE", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->call_waiting_enable))), sizeof(((voipCfgPortParam_t *)0)->call_waiting_enable), 0, ((void *)0), 0 },
+{206, "DIRECT_IP_CALL", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->direct_ip_call))), sizeof(((voipCfgPortParam_t *)0)->direct_ip_call), 0, ((void *)0), 0 },
+
+
+{26, "UC_FORWARD_ENABLE", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->uc_forward_enable))), sizeof(((voipCfgPortParam_t *)0)->uc_forward_enable), 0, ((void *)0), 0 },
+{27, "UC_FORWARD", V_STRING, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->uc_forward))), sizeof(((voipCfgPortParam_t *)0)->uc_forward), sizeof(((voipCfgPortParam_t *)0)->uc_forward[0]), ((void *)0), 0 },
+
+
+{28, "BUSY_FORWARD_ENABLE", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->busy_forward_enable))), sizeof(((voipCfgPortParam_t *)0)->busy_forward_enable), 0, ((void *)0), 0 },
+{29, "BUSY_FORWARD", V_STRING, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->busy_forward))), sizeof(((voipCfgPortParam_t *)0)->busy_forward), sizeof(((voipCfgPortParam_t *)0)->busy_forward[0]), ((void *)0), 0 },
+
+{30, "NA_FORWARD_ENABLE", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->na_forward_enable))), sizeof(((voipCfgPortParam_t *)0)->na_forward_enable), 0, ((void *)0), 0 },
+{31, "NA_FORWARD", V_STRING, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->na_forward))), sizeof(((voipCfgPortParam_t *)0)->na_forward), sizeof(((voipCfgPortParam_t *)0)->na_forward[0]), ((void *)0), 0 },
+
+{32, "NA_FORWARD_TIME", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->na_forward_time))), sizeof(((voipCfgPortParam_t *)0)->na_forward_time), 0, ((void *)0), 0 },
+
+
+{(33|0x0), "SPEED_DIAL", V_MIB_LIST, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->speed_dial))), sizeof(((voipCfgPortParam_t *)0)->speed_dial), sizeof(((voipCfgPortParam_t *)0)->speed_dial[0]), mibtbl_speed_dial, 0 },
+
+
+
+{100, "REPLACE_RULE_OPTION", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->replace_rule_option))), sizeof(((voipCfgPortParam_t *)0)->replace_rule_option), 0, ((void *)0), 0 },
+{101, "REPLACE_RULE_SOURCE", V_STRING, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->replace_rule_source))), sizeof(((voipCfgPortParam_t *)0)->replace_rule_source), sizeof(((voipCfgPortParam_t *)0)->replace_rule_source[0]), ((void *)0), 0 },
+
+{102, "REPLACE_RULE_TARGET", V_STRING, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->replace_rule_target))), sizeof(((voipCfgPortParam_t *)0)->replace_rule_target), sizeof(((voipCfgPortParam_t *)0)->replace_rule_target[0]), ((void *)0), 0 },
+
+{103, "DIAL_PLAN", V_STRING, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->dialplan))), sizeof(((voipCfgPortParam_t *)0)->dialplan), sizeof(((voipCfgPortParam_t *)0)->dialplan[0]), ((void *)0), 0 },
+
+{104, "AUTO_PREFIX", V_STRING, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->auto_prefix))), sizeof(((voipCfgPortParam_t *)0)->auto_prefix), sizeof(((voipCfgPortParam_t *)0)->auto_prefix[0]), ((void *)0), 0 },
+
+{105, "PREFIX_UNSET_PLAN", V_STRING, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->prefix_unset_plan))), sizeof(((voipCfgPortParam_t *)0)->prefix_unset_plan), sizeof(((voipCfgPortParam_t *)0)->prefix_unset_plan[0]), ((void *)0), 0 },
+
+
+
+{36, "FRAME_SIZE", V_BYTE_LIST, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->frame_size))), sizeof(((voipCfgPortParam_t *)0)->frame_size), sizeof(((voipCfgPortParam_t *)0)->frame_size[0]), ((void *)0), 0 },
+{37, "PRECEDENCE", V_BYTE_LIST, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->precedence))), sizeof(((voipCfgPortParam_t *)0)->precedence), sizeof(((voipCfgPortParam_t *)0)->precedence[0]), ((void *)0), 0 },
+{38, "VAD", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->vad))), sizeof(((voipCfgPortParam_t *)0)->vad), 0, ((void *)0), 0 },
+{282, "VAD_THRESHOLD", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->vad_thr))), sizeof(((voipCfgPortParam_t *)0)->vad_thr), 0, ((void *)0), 0 },
+{283, "CNG", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->cng))), sizeof(((voipCfgPortParam_t *)0)->cng), 0, ((void *)0), 0 },
+{284, "CNG_THRESHOLD", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->cng_thr))), sizeof(((voipCfgPortParam_t *)0)->cng_thr), 0, ((void *)0), 0 },
+{286, "SID_MODE", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->sid_gainmode))), sizeof(((voipCfgPortParam_t *)0)->sid_gainmode), 0, ((void *)0), 0 },
+{287, "SID_LEVEL", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->sid_noiselevel))), sizeof(((voipCfgPortParam_t *)0)->sid_noiselevel), 0, ((void *)0), 0 },
+{288, "SID_GAIN", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->sid_noisegain))), sizeof(((voipCfgPortParam_t *)0)->sid_noisegain), 0, ((void *)0), 0 },
+{278, "PLC", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->PLC))), sizeof(((voipCfgPortParam_t *)0)->PLC), 0, ((void *)0), 0 },
+{290, "RTCP_INTERVAL", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->RTCP_Interval))), sizeof(((voipCfgPortParam_t *)0)->RTCP_Interval), 0, ((void *)0), 0 },
+{279, "RTCPXR", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->RTCP_XR))), sizeof(((voipCfgPortParam_t *)0)->RTCP_XR), 0, ((void *)0), 0 },
+{39, "G7231_RATE", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->g7231_rate))), sizeof(((voipCfgPortParam_t *)0)->g7231_rate), 0, ((void *)0), 0 },
+{142, "ILBC_MODE", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->iLBC_mode))), sizeof(((voipCfgPortParam_t *)0)->iLBC_mode), 0, ((void *)0), 0 },
+{222, "SPEEX_NB_RATE", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->speex_nb_rate))), sizeof(((voipCfgPortParam_t *)0)->speex_nb_rate), 0, ((void *)0), 0 },
+{211, "G726_PACK", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->g726_packing))), sizeof(((voipCfgPortParam_t *)0)->g726_packing), 0, ((void *)0), 0 },
+{285, "G7111_PRECEDENCE", V_BYTE_LIST, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->g7111_precedence))), sizeof(((voipCfgPortParam_t *)0)->g7111_precedence), sizeof(((voipCfgPortParam_t *)0)->g7111_precedence[0]), ((void *)0), 0 },
+
+
+
+{227, "RTP_RED_PAYLOAD_TYPE", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->rtp_redundant_payload_type))), sizeof(((voipCfgPortParam_t *)0)->rtp_redundant_payload_type), 0, ((void *)0), 0 },
+
+{228, "RTP_RED_CODEC", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->rtp_redundant_codec))), sizeof(((voipCfgPortParam_t *)0)->rtp_redundant_codec), 0, ((void *)0), 0 },
+
+
+
+{40, "SLIC_TX_VOLUME", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->slic_txVolumne))), sizeof(((voipCfgPortParam_t *)0)->slic_txVolumne), 0, ((void *)0), 0 },
+{41, "SLIC_RX_VOLUME", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->slic_rxVolumne))), sizeof(((voipCfgPortParam_t *)0)->slic_rxVolumne), 0, ((void *)0), 0 },
+{96, "JITTER_DELAY", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->jitter_delay))), sizeof(((voipCfgPortParam_t *)0)->jitter_delay), 0, ((void *)0), 0 },
+{44, "MAX_DELAY", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->maxDelay))), sizeof(((voipCfgPortParam_t *)0)->maxDelay), 0, ((void *)0), 0 },
+{141, "JITTER_FACTOR", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->jitter_factor))), sizeof(((voipCfgPortParam_t *)0)->jitter_factor), 0, ((void *)0), 0 },
+
+{270, "ECHO_LEC", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->lec))), sizeof(((voipCfgPortParam_t *)0)->lec), 0, ((void *)0), 0 },
+{281, "ECHO_NLP", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->nlp))), sizeof(((voipCfgPortParam_t *)0)->nlp), 0, ((void *)0), 0 },
+{45, "ECHO_TAIL", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->echoTail))), sizeof(((voipCfgPortParam_t *)0)->echoTail), 0, ((void *)0), 0 },
+{46, "CALLER_ID_MODE", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->caller_id_mode))), sizeof(((voipCfgPortParam_t *)0)->caller_id_mode), 0, ((void *)0), 0 },
+{47, "CALL_WAITING_CID", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->call_waiting_cid))), sizeof(((voipCfgPortParam_t *)0)->call_waiting_cid), 0, ((void *)0), 0 },
+
+{99, "CID_DTMF_MODE", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->cid_dtmf_mode))), sizeof(((voipCfgPortParam_t *)0)->cid_dtmf_mode), 0, ((void *)0), 0 },
+{107, "SPEAKERAGC", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->speaker_agc))), sizeof(((voipCfgPortParam_t *)0)->speaker_agc), 0, ((void *)0), 0 },
+{108, "SPK_AGC_LVL", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->spk_agc_lvl))), sizeof(((voipCfgPortParam_t *)0)->spk_agc_lvl), 0, ((void *)0), 0 },
+{109, "SPK_AGC_GU", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->spk_agc_gu))), sizeof(((voipCfgPortParam_t *)0)->spk_agc_gu), 0, ((void *)0), 0 },
+{110, "SPK_AGC_GD", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->spk_agc_gd))), sizeof(((voipCfgPortParam_t *)0)->spk_agc_gd), 0, ((void *)0), 0 },
+
+{111, "MICAGC", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->mic_agc))), sizeof(((voipCfgPortParam_t *)0)->mic_agc), 0, ((void *)0), 0 },
+{112, "MIC_AGC_LVL", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->mic_agc_lvl))), sizeof(((voipCfgPortParam_t *)0)->mic_agc_lvl), 0, ((void *)0), 0 },
+{113, "MIC_AGC_GU", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->mic_agc_gu))), sizeof(((voipCfgPortParam_t *)0)->mic_agc_gu), 0, ((void *)0), 0 },
+{114, "MIC_AGC_GD", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->mic_agc_gd))), sizeof(((voipCfgPortParam_t *)0)->mic_agc_gd), 0, ((void *)0), 0 },
+{121, "FSK_GEN_MODE", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->cid_fsk_gen_mode))), sizeof(((voipCfgPortParam_t *)0)->cid_fsk_gen_mode), 0, ((void *)0), 0 },
+
+{124, "SPK_VOICE_GAIN", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->spk_voice_gain))), sizeof(((voipCfgPortParam_t *)0)->spk_voice_gain), 0, ((void *)0), 0 },
+{125, "MIC_VOICE_GAIN", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->mic_voice_gain))), sizeof(((voipCfgPortParam_t *)0)->mic_voice_gain), 0, ((void *)0), 0 },
+{280, "ANSTONE", V_UINT, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->anstone))), sizeof(((voipCfgPortParam_t *)0)->anstone), 0, ((void *)0), 0 },
+{289, "FAX_MODEM_RFC2833", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->faxmodem_rfc2833))), sizeof(((voipCfgPortParam_t *)0)->faxmodem_rfc2833), 0, ((void *)0), 0 },
+
+
+{97, "VOICE_QOS", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->voice_qos))), sizeof(((voipCfgPortParam_t *)0)->voice_qos), 0, ((void *)0), 0 },
+
+
+{122, "T38_USET38", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->useT38))), sizeof(((voipCfgPortParam_t *)0)->useT38), 0, ((void *)0), 0 },
+{123, "T38_PORT", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->T38_port))), sizeof(((voipCfgPortParam_t *)0)->T38_port), 0, ((void *)0), 0 },
+{154, "FAX_MODEM_DET", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->fax_modem_det))), sizeof(((voipCfgPortParam_t *)0)->fax_modem_det), 0, ((void *)0), 0 },
+
+{271, "T38_PARAM_ENABLE", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->T38ParamEnable))), sizeof(((voipCfgPortParam_t *)0)->T38ParamEnable), 0, ((void *)0), 0 },
+{272, "T38_MAX_BUFFER", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->T38MaxBuffer))), sizeof(((voipCfgPortParam_t *)0)->T38MaxBuffer), 0, ((void *)0), 0 },
+{273, "T38_RATE_MGT", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->T38RateMgt))), sizeof(((voipCfgPortParam_t *)0)->T38RateMgt), 0, ((void *)0), 0 },
+{274, "T38_MAX_RATE", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->T38MaxRate))), sizeof(((voipCfgPortParam_t *)0)->T38MaxRate), 0, ((void *)0), 0 },
+{275, "T38_ENABLE_ECM", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->T38EnableECM))), sizeof(((voipCfgPortParam_t *)0)->T38EnableECM), 0, ((void *)0), 0 },
+{276, "T38_ECC_SIGNAL", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->T38ECCSignal))), sizeof(((voipCfgPortParam_t *)0)->T38ECCSignal), 0, ((void *)0), 0 },
+{277, "T38_ECC_DATA", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->T38ECCData))), sizeof(((voipCfgPortParam_t *)0)->T38ECCData), 0, ((void *)0), 0 },
+{295, "T38_ENABLE_SPOOF", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->T38EnableSpoof))), sizeof(((voipCfgPortParam_t *)0)->T38EnableSpoof), 0, ((void *)0), 0 },
+{296, "T38_DUPLICATE_NUM", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->T38DuplicateNum))), sizeof(((voipCfgPortParam_t *)0)->T38DuplicateNum), 0, ((void *)0), 0 },
+
+
+{224, "USE_V152", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->useV152))), sizeof(((voipCfgPortParam_t *)0)->useV152), 0, ((void *)0), 0 },
+{225, "V152_PAYLOAD_TYPE", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->v152_payload_type))), sizeof(((voipCfgPortParam_t *)0)->v152_payload_type), 0, ((void *)0), 0 },
+{226, "V152_CODEC_TYPE", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->v152_codec_type))), sizeof(((voipCfgPortParam_t *)0)->v152_codec_type), 0, ((void *)0), 0 },
+
+
+{128, "HOTLINE_ENABLE", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->hotline_enable))), sizeof(((voipCfgPortParam_t *)0)->hotline_enable), 0, ((void *)0), 0 },
+{129, "HOTLINE_NUMBER", V_STRING, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->hotline_number))), sizeof(((voipCfgPortParam_t *)0)->hotline_number), sizeof(((voipCfgPortParam_t *)0)->hotline_number[0]), ((void *)0), 0 },
+
+
+{130, "DND_MODE", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->dnd_mode))), sizeof(((voipCfgPortParam_t *)0)->dnd_mode), 0, ((void *)0), 0 },
+{131, "DND_FROM_HOUR", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->dnd_from_hour))), sizeof(((voipCfgPortParam_t *)0)->dnd_from_hour), 0, ((void *)0), 0 },
+{132, "DND_FROM_MIN", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->dnd_from_min))), sizeof(((voipCfgPortParam_t *)0)->dnd_from_min), 0, ((void *)0), 0 },
+{133, "DND_TO_HOUR", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->dnd_to_hour))), sizeof(((voipCfgPortParam_t *)0)->dnd_to_hour), 0, ((void *)0), 0 },
+{134, "DND_TO_MIN", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->dnd_to_min))), sizeof(((voipCfgPortParam_t *)0)->dnd_to_min), 0, ((void *)0), 0 },
+
+
+{48, "FLASH_HOOK_TIME", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->flash_hook_time))), sizeof(((voipCfgPortParam_t *)0)->flash_hook_time), 0, ((void *)0), 0 },
+{98, "FLASH_HOOK_TIME_MIN", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->flash_hook_time_min))), sizeof(((voipCfgPortParam_t *)0)->flash_hook_time_min), 0, ((void *)0), 0 },
+
+
+{145, "SECURITY_ENABLE", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->security_enable))), sizeof(((voipCfgPortParam_t *)0)->security_enable), 0, ((void *)0), 0 },
+{147, "KEY_EXCHANGE_MODE", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->key_exchange_mode))), sizeof(((voipCfgPortParam_t *)0)->key_exchange_mode), 0, ((void *)0), 0 },
+
+
+
+{155, "OFFHOOK_PASSWD", V_STRING, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->offhook_passwd))), sizeof(((voipCfgPortParam_t *)0)->offhook_passwd), sizeof(((voipCfgPortParam_t *)0)->offhook_passwd[0]), ((void *)0), 0 },
+
+
+
+
+{(157|0x0), "ABBREVIATED_DIAL", V_MIB_LIST, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->abbr_dial))), sizeof(((voipCfgPortParam_t *)0)->abbr_dial), sizeof(((voipCfgPortParam_t *)0)->abbr_dial[0]), mibtbl_abbreviated_dial, 0 },
+
+
+{160, "ALARM_ENABLE", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->alarm_enable))), sizeof(((voipCfgPortParam_t *)0)->alarm_enable), 0, ((void *)0), 0 },
+{161, "ALARM_TIME_HH", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->alarm_time_hh))), sizeof(((voipCfgPortParam_t *)0)->alarm_time_hh), 0, ((void *)0), 0 },
+{162, "ALARM_TIME_MM", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->alarm_time_mm))), sizeof(((voipCfgPortParam_t *)0)->alarm_time_mm), 0, ((void *)0), 0 },
+
+{188, "PSTN_ROUTING_PREFIX", V_STRING, ((int)((unsigned long)(long *)&(((voipCfgPortParam_t *)0)->PSTN_routing_prefix))), sizeof(((voipCfgPortParam_t *)0)->PSTN_routing_prefix), sizeof(((voipCfgPortParam_t *)0)->PSTN_routing_prefix[0]), ((void *)0), 0 },
+# 232 "voip_flash_mib.c" 2
+# 392 "voip_flash_mib.c"
+ {0}
+};
+
+voipMibEntry_T mibtbl_cust_tone[] = {
+# 413 "voip_flash_mib.c"
+# 1 "../includes/voip_mibdef.h" 1
+# 13 "../includes/voip_mibdef.h"
+{57, "CUST_TONE_TYPE", V_DWORD, ((int)((unsigned long)(long *)&(((st_ToneCfgParam *)0)->toneType))), sizeof(((st_ToneCfgParam *)0)->toneType), 0, ((void *)0), 0 },
+{58, "CUST_TONE_CYCLE", V_WORD, ((int)((unsigned long)(long *)&(((st_ToneCfgParam *)0)->cycle))), sizeof(((st_ToneCfgParam *)0)->cycle), 0, ((void *)0), 0 },
+{59, "CUST_TONE_CAD_NUM", V_WORD, ((int)((unsigned long)(long *)&(((st_ToneCfgParam *)0)->cadNUM))), sizeof(((st_ToneCfgParam *)0)->cadNUM), 0, ((void *)0), 0 },
+
+{60, "CUST_TONE_CAD_ON0", V_DWORD, ((int)((unsigned long)(long *)&(((st_ToneCfgParam *)0)->CadOn0))), sizeof(((st_ToneCfgParam *)0)->CadOn0), 0, ((void *)0), 0 },
+{61, "CUST_TONE_CAD_ON1", V_DWORD, ((int)((unsigned long)(long *)&(((st_ToneCfgParam *)0)->CadOn1))), sizeof(((st_ToneCfgParam *)0)->CadOn1), 0, ((void *)0), 0 },
+{62, "CUST_TONE_CAD_ON2", V_DWORD, ((int)((unsigned long)(long *)&(((st_ToneCfgParam *)0)->CadOn2))), sizeof(((st_ToneCfgParam *)0)->CadOn2), 0, ((void *)0), 0 },
+{63, "CUST_TONE_CAD_ON3", V_DWORD, ((int)((unsigned long)(long *)&(((st_ToneCfgParam *)0)->CadOn3))), sizeof(((st_ToneCfgParam *)0)->CadOn3), 0, ((void *)0), 0 },
+{64, "CUST_TONE_CAD_OFF0", V_DWORD, ((int)((unsigned long)(long *)&(((st_ToneCfgParam *)0)->CadOff0))), sizeof(((st_ToneCfgParam *)0)->CadOff0), 0, ((void *)0), 0 },
+{65, "CUST_TONE_CAD_OFF1", V_DWORD, ((int)((unsigned long)(long *)&(((st_ToneCfgParam *)0)->CadOff1))), sizeof(((st_ToneCfgParam *)0)->CadOff1), 0, ((void *)0), 0 },
+{66, "CUST_TONE_CAD_OFF2", V_DWORD, ((int)((unsigned long)(long *)&(((st_ToneCfgParam *)0)->CadOff2))), sizeof(((st_ToneCfgParam *)0)->CadOff2), 0, ((void *)0), 0 },
+{67, "CUST_TONE_CAD_OFF3", V_DWORD, ((int)((unsigned long)(long *)&(((st_ToneCfgParam *)0)->CadOff3))), sizeof(((st_ToneCfgParam *)0)->CadOff3), 0, ((void *)0), 0 },
+
+{68, "CUST_TONE_PATTERN_OFF", V_DWORD, ((int)((unsigned long)(long *)&(((st_ToneCfgParam *)0)->PatternOff))), sizeof(((st_ToneCfgParam *)0)->PatternOff), 0, ((void *)0), 0 },
+{69, "CUST_TONE_NUM", V_DWORD, ((int)((unsigned long)(long *)&(((st_ToneCfgParam *)0)->ToneNUM))), sizeof(((st_ToneCfgParam *)0)->ToneNUM), 0, ((void *)0), 0 },
+
+{70, "CUST_TONE_FREQ1", V_DWORD, ((int)((unsigned long)(long *)&(((st_ToneCfgParam *)0)->Freq1))), sizeof(((st_ToneCfgParam *)0)->Freq1), 0, ((void *)0), 0 },
+{71, "CUST_TONE_FREQ2", V_DWORD, ((int)((unsigned long)(long *)&(((st_ToneCfgParam *)0)->Freq2))), sizeof(((st_ToneCfgParam *)0)->Freq2), 0, ((void *)0), 0 },
+{72, "CUST_TONE_FREQ3", V_DWORD, ((int)((unsigned long)(long *)&(((st_ToneCfgParam *)0)->Freq3))), sizeof(((st_ToneCfgParam *)0)->Freq3), 0, ((void *)0), 0 },
+{73, "CUST_TONE_FREQ4", V_DWORD, ((int)((unsigned long)(long *)&(((st_ToneCfgParam *)0)->Freq4))), sizeof(((st_ToneCfgParam *)0)->Freq4), 0, ((void *)0), 0 },
+
+{74, "CUST_TONE_GAIN1", V_DWORD, ((int)((unsigned long)(long *)&(((st_ToneCfgParam *)0)->Gain1))), sizeof(((st_ToneCfgParam *)0)->Gain1), 0, ((void *)0), 0 },
+{75, "CUST_TONE_GAIN2", V_DWORD, ((int)((unsigned long)(long *)&(((st_ToneCfgParam *)0)->Gain2))), sizeof(((st_ToneCfgParam *)0)->Gain2), 0, ((void *)0), 0 },
+{76, "CUST_TONE_GAIN3", V_DWORD, ((int)((unsigned long)(long *)&(((st_ToneCfgParam *)0)->Gain3))), sizeof(((st_ToneCfgParam *)0)->Gain3), 0, ((void *)0), 0 },
+{77, "CUST_TONE_GAIN4", V_DWORD, ((int)((unsigned long)(long *)&(((st_ToneCfgParam *)0)->Gain4))), sizeof(((st_ToneCfgParam *)0)->Gain4), 0, ((void *)0), 0 },
+# 414 "voip_flash_mib.c" 2
+# 440 "voip_flash_mib.c"
+ {0}
+};
+
+voipMibEntry_T mibtbl_voip[] = {
+# 467 "voip_flash_mib.c"
+# 1 "../includes/voip_mibdef.h" 1
+# 278 "../includes/voip_mibdef.h"
+{1, "SIGNATURE", V_DWORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->signature))), sizeof(((voipCfgParam_t *)0)->signature), 0, ((void *)0), 0 },
+{2, "VERSION", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->version))), sizeof(((voipCfgParam_t *)0)->version), 0, ((void *)0), 0 },
+{3, "FEATURE", V_DWORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->feature))), sizeof(((voipCfgParam_t *)0)->feature), 0, ((void *)0), 0 },
+{4, "EXTEND_FEATURE", V_DWORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->extend_feature))), sizeof(((voipCfgParam_t *)0)->extend_feature), 0, ((void *)0), 0 },
+{89, "MIB_VERSION", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->mib_version))), sizeof(((voipCfgParam_t *)0)->mib_version), 0, ((void *)0), 0 },
+
+
+{49, "RFC_FLAGS", V_UINT, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->rfc_flags))), sizeof(((voipCfgParam_t *)0)->rfc_flags), 0, ((void *)0), 0 },
+
+
+{50, "TONE_OF_COUNTRY", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->tone_of_country))), sizeof(((voipCfgParam_t *)0)->tone_of_country), 0, ((void *)0), 0 },
+{51, "TONE_OF_CUSTDIAL", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->tone_of_custdial))), sizeof(((voipCfgParam_t *)0)->tone_of_custdial), 0, ((void *)0), 0 },
+{52, "TONE_OF_CUSTRING", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->tone_of_custring))), sizeof(((voipCfgParam_t *)0)->tone_of_custring), 0, ((void *)0), 0 },
+{53, "TONE_OF_CUSTBUSY", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->tone_of_custbusy))), sizeof(((voipCfgParam_t *)0)->tone_of_custbusy), 0, ((void *)0), 0 },
+{54, "TONE_OF_CUSTWAITING", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->tone_of_custwaiting))), sizeof(((voipCfgParam_t *)0)->tone_of_custwaiting), 0, ((void *)0), 0 },
+{55, "TONE_OF_CUSTOMIZE", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->tone_of_customize))), sizeof(((voipCfgParam_t *)0)->tone_of_customize), 0, ((void *)0), 0 },
+
+
+{(56|0x0), "CUST_TONE", V_MIB_LIST, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->cust_tone_para))), sizeof(((voipCfgParam_t *)0)->cust_tone_para), sizeof(((voipCfgParam_t *)0)->cust_tone_para[0]), mibtbl_cust_tone, 0 },
+
+
+
+{166, "DISTONE_NUM", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->distone_num))), sizeof(((voipCfgParam_t *)0)->distone_num), 0, ((void *)0), 0 },
+{167, "D1FREQNUM", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->d1freqnum))), sizeof(((voipCfgParam_t *)0)->d1freqnum), 0, ((void *)0), 0 },
+{168, "D1FREQ1", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->d1Freq1))), sizeof(((voipCfgParam_t *)0)->d1Freq1), 0, ((void *)0), 0 },
+{169, "D1FREQ2", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->d1Freq2))), sizeof(((voipCfgParam_t *)0)->d1Freq2), 0, ((void *)0), 0 },
+{170, "D1ACCUR", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->d1Accur))), sizeof(((voipCfgParam_t *)0)->d1Accur), 0, ((void *)0), 0 },
+{171, "D1LEVEL", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->d1Level))), sizeof(((voipCfgParam_t *)0)->d1Level), 0, ((void *)0), 0 },
+{172, "D1ONUP", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->d1ONup))), sizeof(((voipCfgParam_t *)0)->d1ONup), 0, ((void *)0), 0 },
+{173, "D1ONLOW", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->d1ONlow))), sizeof(((voipCfgParam_t *)0)->d1ONlow), 0, ((void *)0), 0 },
+{174, "D1OFFUP", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->d1OFFup))), sizeof(((voipCfgParam_t *)0)->d1OFFup), 0, ((void *)0), 0 },
+{175, "D1OFFLOW", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->d1OFFlow))), sizeof(((voipCfgParam_t *)0)->d1OFFlow), 0, ((void *)0), 0 },
+{176, "D2FREQNUM", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->d2freqnum))), sizeof(((voipCfgParam_t *)0)->d2freqnum), 0, ((void *)0), 0 },
+{177, "D2FREQ1", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->d2Freq1))), sizeof(((voipCfgParam_t *)0)->d2Freq1), 0, ((void *)0), 0 },
+{178, "D2FREQ2", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->d2Freq2))), sizeof(((voipCfgParam_t *)0)->d2Freq2), 0, ((void *)0), 0 },
+{179, "D2ACCUR", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->d2Accur))), sizeof(((voipCfgParam_t *)0)->d2Accur), 0, ((void *)0), 0 },
+{180, "D2LEVEL", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->d2Level))), sizeof(((voipCfgParam_t *)0)->d2Level), 0, ((void *)0), 0 },
+{181, "D2ONUP", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->d2ONup))), sizeof(((voipCfgParam_t *)0)->d2ONup), 0, ((void *)0), 0 },
+{182, "D2ONLOW", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->d2ONlow))), sizeof(((voipCfgParam_t *)0)->d2ONlow), 0, ((void *)0), 0 },
+{183, "D2OFFUP", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->d2OFFup))), sizeof(((voipCfgParam_t *)0)->d2OFFup), 0, ((void *)0), 0 },
+{184, "D2OFFLOW", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->d2OFFlow))), sizeof(((voipCfgParam_t *)0)->d2OFFlow), 0, ((void *)0), 0 },
+
+
+{78, "RING_CAD", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->ring_cad))), sizeof(((voipCfgParam_t *)0)->ring_cad), 0, ((void *)0), 0 },
+{79, "RING_GROUP", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->ring_group))), sizeof(((voipCfgParam_t *)0)->ring_group), 0, ((void *)0), 0 },
+{80, "RING_PHONE_NUM", V_UINT_LIST, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->ring_phone_num))), sizeof(((voipCfgParam_t *)0)->ring_phone_num), sizeof(((voipCfgParam_t *)0)->ring_phone_num[0]), ((void *)0), 0 },
+
+{81, "RING_CADENCE_USE", V_BYTE_LIST, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->ring_cadence_use))), sizeof(((voipCfgParam_t *)0)->ring_cadence_use), sizeof(((voipCfgParam_t *)0)->ring_cadence_use[0]), ((void *)0), 0 },
+
+{82, "RING_CADENCE_SEL", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->ring_cadence_sel))), sizeof(((voipCfgParam_t *)0)->ring_cadence_sel), 0, ((void *)0), 0 },
+{83, "RING_CAD_ON", V_WORD_LIST, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->ring_cadon))), sizeof(((voipCfgParam_t *)0)->ring_cadon), sizeof(((voipCfgParam_t *)0)->ring_cadon[0]), ((void *)0), 0 },
+
+{84, "RING_CAD_OFF", V_WORD_LIST, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->ring_cadoff))), sizeof(((voipCfgParam_t *)0)->ring_cadoff), sizeof(((voipCfgParam_t *)0)->ring_cadoff[0]), ((void *)0), 0 },
+
+
+
+{85, "FUNCKEY_PSTN", V_STRING, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->funckey_pstn))), sizeof(((voipCfgParam_t *)0)->funckey_pstn), sizeof(((voipCfgParam_t *)0)->funckey_pstn[0]), ((void *)0), 0 },
+
+{86, "FUNCKEY_TRANSFER", V_STRING, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->funckey_transfer))), sizeof(((voipCfgParam_t *)0)->funckey_transfer), sizeof(((voipCfgParam_t *)0)->funckey_transfer[0]), ((void *)0), 0 },
+
+
+
+{87, "AUTO_DIAL", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->auto_dial))), sizeof(((voipCfgParam_t *)0)->auto_dial), 0, ((void *)0), 0 },
+{88, "OFF_HOOK_ALARM", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->off_hook_alarm))), sizeof(((voipCfgParam_t *)0)->off_hook_alarm), 0, ((void *)0), 0 },
+{116, "CALLER_ID_AUTO_DET_SELECT", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->cid_auto_det_select))), sizeof(((voipCfgParam_t *)0)->cid_auto_det_select), 0, ((void *)0), 0 },
+
+{115, "CALLER_ID_DET_MODE", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->caller_id_det_mode))), sizeof(((voipCfgParam_t *)0)->caller_id_det_mode), 0, ((void *)0), 0 },
+{156, "ONE_STAGE_DIAL", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->one_stage_dial))), sizeof(((voipCfgParam_t *)0)->one_stage_dial), 0, ((void *)0), 0 },
+{205, "TWO_STAGE_DIAL", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->two_stage_dial))), sizeof(((voipCfgParam_t *)0)->two_stage_dial), 0, ((void *)0), 0 },
+{204, "AUTO_BYPASS_RELAY", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->auto_bypass_relay))), sizeof(((voipCfgParam_t *)0)->auto_bypass_relay), 0, ((void *)0), 0 },
+
+
+{148, "PULSE_DIAL_GENERATE", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->pulse_dial_gen))), sizeof(((voipCfgParam_t *)0)->pulse_dial_gen), 0, ((void *)0), 0 },
+{149, "PULSE_GEN_PPS", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->pulse_gen_pps))), sizeof(((voipCfgParam_t *)0)->pulse_gen_pps), 0, ((void *)0), 0 },
+{150, "PULSE_GEN_MAKE_TIME", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->pulse_gen_make_time))), sizeof(((voipCfgParam_t *)0)->pulse_gen_make_time), 0, ((void *)0), 0 },
+{151, "PULSE_GEN_INTERDIGIT_PAUSE", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->pulse_gen_interdigit_pause))), sizeof(((voipCfgParam_t *)0)->pulse_gen_interdigit_pause), 0, ((void *)0), 0 },
+
+{152, "PULSE_DIAL_DETECT", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->pulse_dial_det))), sizeof(((voipCfgParam_t *)0)->pulse_dial_det), 0, ((void *)0), 0 },
+{153, "PULSE_DET_PAUSE", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->pulse_det_pause))), sizeof(((voipCfgParam_t *)0)->pulse_det_pause), 0, ((void *)0), 0 },
+
+
+{90, "AUTO_CFG_VER", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->auto_cfg_ver))), sizeof(((voipCfgParam_t *)0)->auto_cfg_ver), 0, ((void *)0), 0 },
+{91, "AUTO_CFG_MODE", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->auto_cfg_mode))), sizeof(((voipCfgParam_t *)0)->auto_cfg_mode), 0, ((void *)0), 0 },
+{92, "AUTO_CFG_HTTP_ADDR", V_STRING, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->auto_cfg_http_addr))), sizeof(((voipCfgParam_t *)0)->auto_cfg_http_addr), sizeof(((voipCfgParam_t *)0)->auto_cfg_http_addr[0]), ((void *)0), 0 },
+{93, "AUTO_CFG_HTTP_PORT", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->auto_cfg_http_port))), sizeof(((voipCfgParam_t *)0)->auto_cfg_http_port), 0, ((void *)0), 0 },
+{207, "AUTO_CFG_TFTP_ADDR", V_STRING, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->auto_cfg_tftp_addr))), sizeof(((voipCfgParam_t *)0)->auto_cfg_tftp_addr), sizeof(((voipCfgParam_t *)0)->auto_cfg_tftp_addr[0]), ((void *)0), 0 },
+{208, "AUTO_CFG_FTP_ADDR", V_STRING, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->auto_cfg_ftp_addr))), sizeof(((voipCfgParam_t *)0)->auto_cfg_ftp_addr), sizeof(((voipCfgParam_t *)0)->auto_cfg_ftp_addr[0]), ((void *)0), 0 },
+{209, "AUTO_CFG_FTP_USER", V_STRING, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->auto_cfg_ftp_user))), sizeof(((voipCfgParam_t *)0)->auto_cfg_ftp_user), sizeof(((voipCfgParam_t *)0)->auto_cfg_ftp_user[0]), ((void *)0), 0 },
+{210, "AUTO_CFG_FTP_PASSWD", V_STRING, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->auto_cfg_ftp_passwd))), sizeof(((voipCfgParam_t *)0)->auto_cfg_ftp_passwd), sizeof(((voipCfgParam_t *)0)->auto_cfg_ftp_passwd[0]), ((void *)0), 0 },
+{94, "AUTO_CFG_FILE_PATH", V_STRING, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->auto_cfg_file_path))), sizeof(((voipCfgParam_t *)0)->auto_cfg_file_path), sizeof(((voipCfgParam_t *)0)->auto_cfg_file_path[0]), ((void *)0), 0 },
+
+{95, "AUTO_CFG_EXPIRE", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->auto_cfg_expire))), sizeof(((voipCfgParam_t *)0)->auto_cfg_expire), 0, ((void *)0), 0 },
+{189, "FW_UPDATE_MODE", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->fw_update_mode))), sizeof(((voipCfgParam_t *)0)->fw_update_mode), 0, ((void *)0), 0 },
+{190, "FW_UPDATE_TFTP_ADDR", V_STRING, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->fw_update_tftp_addr))), sizeof(((voipCfgParam_t *)0)->fw_update_tftp_addr), sizeof(((voipCfgParam_t *)0)->fw_update_tftp_addr[0]), ((void *)0), 0 },
+{191, "FW_UPDATE_HTTP_ADDR", V_STRING, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->fw_update_http_addr))), sizeof(((voipCfgParam_t *)0)->fw_update_http_addr), sizeof(((voipCfgParam_t *)0)->fw_update_http_addr[0]), ((void *)0), 0 },
+{192, "FW_UPDATE_HTTP_PORT", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->fw_update_http_port))), sizeof(((voipCfgParam_t *)0)->fw_update_http_port), 0, ((void *)0), 0 },
+{193, "FW_UPDATE_FTP_ADDR", V_STRING, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->fw_update_ftp_addr))), sizeof(((voipCfgParam_t *)0)->fw_update_ftp_addr), sizeof(((voipCfgParam_t *)0)->fw_update_ftp_addr[0]), ((void *)0), 0 },
+{194, "FW_UPDATE_FTP_USER", V_STRING, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->fw_update_ftp_user))), sizeof(((voipCfgParam_t *)0)->fw_update_ftp_user), sizeof(((voipCfgParam_t *)0)->fw_update_ftp_user[0]), ((void *)0), 0 },
+
+{195, "FW_UPDATE_FTP_PASSWD", V_STRING, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->fw_update_ftp_passwd))), sizeof(((voipCfgParam_t *)0)->fw_update_ftp_passwd), sizeof(((voipCfgParam_t *)0)->fw_update_ftp_passwd[0]), ((void *)0), 0 },
+
+{196, "FW_UPDATE_FILE_PATH", V_STRING, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->fw_update_file_path))), sizeof(((voipCfgParam_t *)0)->fw_update_file_path), sizeof(((voipCfgParam_t *)0)->fw_update_file_path[0]), ((void *)0), 0 },
+
+{197, "FW_UPDATE_POWER_ON", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->fw_update_power_on))), sizeof(((voipCfgParam_t *)0)->fw_update_power_on), 0, ((void *)0), 0 },
+{198, "FW_UPDATE_SCHEDULING_DAY", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->fw_update_scheduling_day))), sizeof(((voipCfgParam_t *)0)->fw_update_scheduling_day), 0, ((void *)0), 0 },
+
+{199, "FW_UPDATE_SCHEDULING_TIME", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->fw_update_scheduling_time))), sizeof(((voipCfgParam_t *)0)->fw_update_scheduling_time), 0, ((void *)0), 0 },
+
+{200, "FW_UPDATE_AUTO", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->fw_update_auto))), sizeof(((voipCfgParam_t *)0)->fw_update_auto), 0, ((void *)0), 0 },
+
+{201, "FW_UPDATE_FILE_PREFIX", V_STRING, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->fw_update_file_prefix))), sizeof(((voipCfgParam_t *)0)->fw_update_file_prefix), sizeof(((voipCfgParam_t *)0)->fw_update_file_prefix[0]), ((void *)0), 0 },
+
+{202, "FW_UPDATE_NEXT_TIME", V_DWORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->fw_update_next_time))), sizeof(((voipCfgParam_t *)0)->fw_update_next_time), 0, ((void *)0), 0 },
+
+{203, "FW_UPDATE_FW_VERSION", V_STRING, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->fw_update_fw_version))), sizeof(((voipCfgParam_t *)0)->fw_update_fw_version), sizeof(((voipCfgParam_t *)0)->fw_update_fw_version[0]), ((void *)0), 0 },
+
+
+
+{117, "WAN_VLAN_ENABLE", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->wanVlanEnable))), sizeof(((voipCfgParam_t *)0)->wanVlanEnable), 0, ((void *)0), 0 },
+
+
+{118, "WAN_VLAN_ID_VOICE", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->wanVlanIdVoice))), sizeof(((voipCfgParam_t *)0)->wanVlanIdVoice), 0, ((void *)0), 0 },
+{119, "WAN_VLAN_PRIORITY_VOICE", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->wanVlanPriorityVoice))), sizeof(((voipCfgParam_t *)0)->wanVlanPriorityVoice), 0, ((void *)0), 0 },
+
+{120, "WAN_VLAN_CFI_VOICE", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->wanVlanCfiVoice))), sizeof(((voipCfgParam_t *)0)->wanVlanCfiVoice), 0, ((void *)0), 0 },
+
+
+
+{135, "WAN_VLAN_ID_DATA", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->wanVlanIdData))), sizeof(((voipCfgParam_t *)0)->wanVlanIdData), 0, ((void *)0), 0 },
+
+{136, "WAN_VLAN_PRIORITY_DATA", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->wanVlanPriorityData))), sizeof(((voipCfgParam_t *)0)->wanVlanPriorityData), 0, ((void *)0), 0 },
+
+{137, "WAN_VLAN_CFI_DATA", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->wanVlanCfiData))), sizeof(((voipCfgParam_t *)0)->wanVlanCfiData), 0, ((void *)0), 0 },
+
+
+
+{138, "WAN_VLAN_ID_VIDEO", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->wanVlanIdVideo))), sizeof(((voipCfgParam_t *)0)->wanVlanIdVideo), 0, ((void *)0), 0 },
+
+{139, "WAN_VLAN_PRIORITY_VIDEO", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->wanVlanPriorityVideo))), sizeof(((voipCfgParam_t *)0)->wanVlanPriorityVideo), 0, ((void *)0), 0 },
+
+{140, "WAN_VLAN_CFI_VIDEO", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->wanVlanCfiVideo))), sizeof(((voipCfgParam_t *)0)->wanVlanCfiVideo), 0, ((void *)0), 0 },
+
+
+{229, "VLAN_ENABLE", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->vlan_enable))), sizeof(((voipCfgParam_t *)0)->vlan_enable), 0, ((void *)0), 0 },
+{230, "VLAN_TAG", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->vlan_tag))), sizeof(((voipCfgParam_t *)0)->vlan_tag), 0, ((void *)0), 0 },
+{231, "VLAN_BRIDGE_ENABLE", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->vlan_bridge_enable))), sizeof(((voipCfgParam_t *)0)->vlan_bridge_enable), 0, ((void *)0), 0 },
+{232, "VLAN_BRIDGE_TAG", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->vlan_bridge_tag))), sizeof(((voipCfgParam_t *)0)->vlan_bridge_tag), 0, ((void *)0), 0 },
+{233, "VLAN_BRIDGE_PORT", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->vlan_bridge_port))), sizeof(((voipCfgParam_t *)0)->vlan_bridge_port), 0, ((void *)0), 0 },
+
+{234, "VLAN_BRIDGE_MULTICAST_ENABLE", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->vlan_bridge_multicast_enable))), sizeof(((voipCfgParam_t *)0)->vlan_bridge_multicast_enable), 0, ((void *)0), 0 },
+
+
+{235, "VLAN_BRIDGE_MULTICAST_TAG", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->vlan_bridge_multicast_tag))), sizeof(((voipCfgParam_t *)0)->vlan_bridge_multicast_tag), 0, ((void *)0), 0 },
+
+
+{236, "VLAN_HOST_ENABLE", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->vlan_host_enable))), sizeof(((voipCfgParam_t *)0)->vlan_host_enable), 0, ((void *)0), 0 },
+{237, "VLAN_HOST_TAG", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->vlan_host_tag))), sizeof(((voipCfgParam_t *)0)->vlan_host_tag), 0, ((void *)0), 0 },
+{238, "VLAN_HOST_PRI", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->vlan_host_pri))), sizeof(((voipCfgParam_t *)0)->vlan_host_pri), 0, ((void *)0), 0 },
+{239, "VLAN_WIFI_ENABLE", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->vlan_wifi_enable))), sizeof(((voipCfgParam_t *)0)->vlan_wifi_enable), 0, ((void *)0), 0 },
+{240, "VLAN_WIFI_TAG", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->vlan_wifi_tag))), sizeof(((voipCfgParam_t *)0)->vlan_wifi_tag), 0, ((void *)0), 0 },
+{241, "VLAN_WIFI_PRI", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->vlan_wifi_pri))), sizeof(((voipCfgParam_t *)0)->vlan_wifi_pri), 0, ((void *)0), 0 },
+
+{242, "VLAN_WIFI_VAP0_ENABLE", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->vlan_wifi_vap0_enable))), sizeof(((voipCfgParam_t *)0)->vlan_wifi_vap0_enable), 0, ((void *)0), 0 },
+
+
+{243, "VLAN_WIFI_VAP0_TAG", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->vlan_wifi_vap0_tag))), sizeof(((voipCfgParam_t *)0)->vlan_wifi_vap0_tag), 0, ((void *)0), 0 },
+{244, "VLAN_WIFI_VAP0_PRI", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->vlan_wifi_vap0_pri))), sizeof(((voipCfgParam_t *)0)->vlan_wifi_vap0_pri), 0, ((void *)0), 0 },
+{245, "VLAN_WIFI_VAP1_ENABLE", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->vlan_wifi_vap1_enable))), sizeof(((voipCfgParam_t *)0)->vlan_wifi_vap1_enable), 0, ((void *)0), 0 },
+
+{246, "VLAN_WIFI_VAP1_TAG", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->vlan_wifi_vap1_tag))), sizeof(((voipCfgParam_t *)0)->vlan_wifi_vap1_tag), 0, ((void *)0), 0 },
+{247, "VLAN_WIFI_VAP1_PRI", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->vlan_wifi_vap1_pri))), sizeof(((voipCfgParam_t *)0)->vlan_wifi_vap1_pri), 0, ((void *)0), 0 },
+{248, "VLAN_WIFI_VAP2_ENABLE", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->vlan_wifi_vap2_enable))), sizeof(((voipCfgParam_t *)0)->vlan_wifi_vap2_enable), 0, ((void *)0), 0 },
+
+{249, "VLAN_WIFI_VAP2_TAG", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->vlan_wifi_vap2_tag))), sizeof(((voipCfgParam_t *)0)->vlan_wifi_vap2_tag), 0, ((void *)0), 0 },
+{250, "VLAN_WIFI_VAP2_PRI", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->vlan_wifi_vap2_pri))), sizeof(((voipCfgParam_t *)0)->vlan_wifi_vap2_pri), 0, ((void *)0), 0 },
+{251, "VLAN_WIFI_VAP3_ENABLE", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->vlan_wifi_vap3_enable))), sizeof(((voipCfgParam_t *)0)->vlan_wifi_vap3_enable), 0, ((void *)0), 0 },
+
+{252, "VLAN_WIFI_VAP3_TAG", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->vlan_wifi_vap3_tag))), sizeof(((voipCfgParam_t *)0)->vlan_wifi_vap3_tag), 0, ((void *)0), 0 },
+{253, "VLAN_WIFI_VAP3_PRI", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->vlan_wifi_vap3_pri))), sizeof(((voipCfgParam_t *)0)->vlan_wifi_vap3_pri), 0, ((void *)0), 0 },
+
+
+{185, "HWNAT_ENABLE", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->hwnat_enable))), sizeof(((voipCfgParam_t *)0)->hwnat_enable), 0, ((void *)0), 0 },
+
+
+{212, "BANDWIDTH_LANPORT0_EGRESS", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->bandwidth_LANPort0_Egress))), sizeof(((voipCfgParam_t *)0)->bandwidth_LANPort0_Egress), 0, ((void *)0), 0 },
+
+{213, "BANDWIDTH_LANPORT1_EGRESS", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->bandwidth_LANPort1_Egress))), sizeof(((voipCfgParam_t *)0)->bandwidth_LANPort1_Egress), 0, ((void *)0), 0 },
+
+{214, "BANDWIDTH_LANPORT2_EGRESS", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->bandwidth_LANPort2_Egress))), sizeof(((voipCfgParam_t *)0)->bandwidth_LANPort2_Egress), 0, ((void *)0), 0 },
+
+{215, "BANDWIDTH_LANPORT3_EGRESS", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->bandwidth_LANPort3_Egress))), sizeof(((voipCfgParam_t *)0)->bandwidth_LANPort3_Egress), 0, ((void *)0), 0 },
+
+{216, "BANDWIDTH_WANPORT_EGRESS", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->bandwidth_WANPort_Egress))), sizeof(((voipCfgParam_t *)0)->bandwidth_WANPort_Egress), 0, ((void *)0), 0 },
+
+
+{217, "BANDWIDTH_LANPORT0_INGRESS", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->bandwidth_LANPort0_Ingress))), sizeof(((voipCfgParam_t *)0)->bandwidth_LANPort0_Ingress), 0, ((void *)0), 0 },
+
+{218, "BANDWIDTH_LANPORT1_INGRESS", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->bandwidth_LANPort1_Ingress))), sizeof(((voipCfgParam_t *)0)->bandwidth_LANPort1_Ingress), 0, ((void *)0), 0 },
+
+{219, "BANDWIDTH_LANPORT2_INGRESS", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->bandwidth_LANPort2_Ingress))), sizeof(((voipCfgParam_t *)0)->bandwidth_LANPort2_Ingress), 0, ((void *)0), 0 },
+
+{220, "BANDWIDTH_LANPORT3_INGRESS", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->bandwidth_LANPort3_Ingress))), sizeof(((voipCfgParam_t *)0)->bandwidth_LANPort3_Ingress), 0, ((void *)0), 0 },
+
+{221, "BANDWIDTH_WANPORT_INGRESS", V_WORD, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->bandwidth_WANPort_Ingress))), sizeof(((voipCfgParam_t *)0)->bandwidth_WANPort_Ingress), 0, ((void *)0), 0 },
+
+
+
+{42, "DAA_TX_VOLUME", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->daa_txVolumne))), sizeof(((voipCfgParam_t *)0)->daa_txVolumne), 0, ((void *)0), 0 },
+{43, "DAA_RX_VOLUME", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->daa_rxVolumne))), sizeof(((voipCfgParam_t *)0)->daa_rxVolumne), 0, ((void *)0), 0 },
+
+
+{126, "RTP_DSCP", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->rtpDscp))), sizeof(((voipCfgParam_t *)0)->rtpDscp), 0, ((void *)0), 0 },
+{127, "SIP_DSCP", V_BYTE, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->sipDscp))), sizeof(((voipCfgParam_t *)0)->sipDscp), 0, ((void *)0), 0 },
+
+{(5|0x0), "PORT", V_MIB_LIST, ((int)((unsigned long)(long *)&(((voipCfgParam_t *)0)->ports))), sizeof(((voipCfgParam_t *)0)->ports), sizeof(((voipCfgParam_t *)0)->ports[0]), mibtbl_voip_port, 0 },
+# 468 "voip_flash_mib.c" 2
+# 674 "voip_flash_mib.c"
+ {0}
+};
+
+static int voip_mibname_check(const char *mib_name)
+{
+ int i, j;
+ char mib_name_reserved[] = {
+  '-', '_',
+  0
+ };
+
+ for (i=0; mib_name[i]; i++)
+ {
+
+  if (i == 0 && !((*__ctype_b_loc ())[(int) ((mib_name[i]))] & (unsigned short int) _ISalpha))
+   return -1;
+
+  if (!((*__ctype_b_loc ())[(int) ((mib_name[i]))] & (unsigned short int) _ISalnum))
+  {
+   for (j=0; j<mib_name_reserved[j]; j++)
+   {
+    if (mib_name[i] == mib_name_reserved[j])
+     break;
+   }
+
+   if (mib_name_reserved[j] == 0)
+   {
+    return -1;
+   }
+  }
+ }
+
+ return 0;
+}
+
+static int _voip_mibtbl_check(const voipMibEntry_T *mib_tbl, int *size);
+
+static int voip_mibentry_check(const voipMibEntry_T *mib)
+{
+ int size, mib_size;
+
+ if (mib->type < V_INT || mib->type >= V_END)
+ {
+  fprintf(stderr, "VoIP MIB Error: unknown type %d in %s\n",
+   mib->type, mib->name);
+  return -1;
+ }
+
+ if (mib->type >= V_INT && mib->type < V_STRING)
+ {
+
+  if (mib->unit_size)
+  {
+   fprintf(stderr, "VoIP MIB (%s, %d, %d) Error: entry size should be zero\n",
+    mib->name, mib->total_size, mib->unit_size);
+   return -1;
+  }
+
+  mib_size = mib->total_size;
+ }
+ else
+ {
+
+  if (mib->unit_size == 0)
+  {
+   fprintf(stderr, "VoIP MIB (%s, %d, %d) Error: entry size should not be zero\n",
+    mib->name, mib->total_size, mib->unit_size);
+   return -1;
+  }
+
+  mib_size = mib->unit_size;
+ }
+
+ if (mib->type == V_MIB || mib->type == V_MIB_LIST)
+ {
+
+  if (_voip_mibtbl_check(mib->next_mib_table, &size) != 0)
+  {
+   fprintf(stderr, "VoIP MIB (%s, %d, %d) Error: check mib_tbl failed\n",
+    mib->name, mib->total_size, mib->unit_size);
+   return -1;
+  }
+ }
+ else
+ {
+
+  size = v_types[mib->type].size;
+ }
+
+ if (mib_size != size)
+ {
+  fprintf(stderr, "VoIP MIB (%s, %d, %d) Error: size not match %d\n",
+   mib->name, mib->total_size, mib->unit_size, size);
+  return -1;
+ }
+
+ if (voip_mibname_check(mib->name) != 0)
+ {
+  fprintf(stderr, "VoIP MIB (%s, %d, %d) Error: mib name is incorrect\n",
+   mib->name, mib->total_size, mib->unit_size);
+  return -1;
+ }
+
+ return 0;
+}
+
+static int _voip_mibtbl_check(const voipMibEntry_T *mib_tbl, int *size)
+{
+ int i, j;
+
+ *size = 0;
+ for (i=0; mib_tbl[i].id; i++)
+ {
+  if (voip_mibentry_check(&mib_tbl[i]) != 0)
+   return -1;
+
+  *size += mib_tbl[i].total_size;
+
+  for (j=i+1; mib_tbl[j].id; j++)
+  {
+   if (mib_tbl[i].id == mib_tbl[j].id)
+   {
+    fprintf(stderr, "VoIP MIB Error: %s detect duplicate id in %s\n",
+     mib_tbl[i].name, mib_tbl[j].name);
+    return -1;
+   }
+
+   if (strcmp(mib_tbl[i].name, mib_tbl[j].name) == 0)
+   {
+    fprintf(stderr, "VoIP MIB Error: detect duplicate name in id%d and id%d\n",
+     mib_tbl[i].id, mib_tbl[j].id);
+    return -1;
+   }
+  }
+ }
+
+ return 0;
+}
+
+int voip_mibtbl_check(int *size)
+{
+ int i;
+
+ for (i=V_INT; i<V_END; i++)
+ {
+
+  if (((i == V_MIB || i == V_MIB_LIST) && v_types[i].size) ||
+   ((i != V_MIB && i != V_MIB_LIST) && v_types[i].size == 0))
+   break;
+ }
+
+ if (i != V_END)
+ {
+  fprintf(stderr, "VoIP MIB Type (%s, %d) Error: size not match\n",
+   v_types[i].name, v_types[i].size);
+  return -1;
+ }
+
+ return _voip_mibtbl_check(mibtbl_voip, size);
+}
+
+int bin2hex(const unsigned char *bin, char *hex, const int len)
+{
+ int i, idx;
+ char hex_char[] = "0123456789ABCDEF";
+
+ for (i=0, idx=0; i<len; i++)
+ {
+  hex[idx++] = hex_char[(bin[i] & 0xf0) >> 4];
+  hex[idx++] = hex_char[bin[i] & 0x0f];
+ }
+
+ hex[idx] = 0;
+ return 0;
+}
+
+int hex2bin(const char *hex, unsigned char *bin, const int len)
+{
+ int i, idx;
+ unsigned char bytes[2];
+
+ for (i=0, idx=0; hex[i]; i++)
+ {
+  if (hex[i & 0x01] == 0)
+   return -1;
+
+  if (hex[i] >= '0' && hex[i] <= '9')
+   bytes[i & 0x01] = hex[i] - '0';
+  else if (hex[i] >= 'A' && hex[i] <= 'F')
+   bytes[i & 0x01] = hex[i] - 'A' + 10;
+  else if (hex[i] >= 'a' && hex[i] <= 'f')
+   bytes[i & 0x01] = hex[i] - 'a' + 10;
+  else
+   return -1;
+
+  if (i & 0x01)
+  {
+   if (idx >= len)
+    return -1;
+
+   bin[idx++] = (bytes[0] << 4) | bytes[1];
+  }
+ }
+
+ return 0;
+}
+
+
+
+
+int voip_mibline_to(char *line, const char *name, const char *value)
+{
+ sprintf(line, "%s=%s\n", name, value);
+ return 0;
+}
+
+int voip_mibline_from(const char *line, char *name, char *value)
+{
+ int i, idx;
+ int mode;
+
+ if (line[0] == ';')
+ {
+  name[0] = 0;
+  return 1;
+ }
+
+
+ for (i=0; line[i]!='=' && line[i] && line[i]!='\n' && line[i]!='\r'; i++);
+
+ mode = 0;
+ if (i && line[i] == '=')
+ {
+  if (strncmp(line, "VOIP.", 5) == 0)
+  {
+   memcpy(name, &line[5], i - 5);
+   name[i - 5] = 0;
+   mode = 1;
+  }
+  else if (strncmp(line, "DEF_VOIP.", 9) == 0)
+  {
+   memcpy(name, &line[9], i - 9);
+   name[i - 9] = 0;
+   mode = 2;
+  }
+  else
+  {
+   return 0;
+  }
+ }
+ else
+ {
+
+  return 0;
+ }
+
+
+ i++;
+ for (idx = 0; line[i] && line[i]!='\n' && line[i]!='\r'; i++)
+  value[idx++] = line[i];
+ value[idx] = 0;
+
+ return mode;
+}
+
+static int voip_mibentry_to(const voipMibEntry_T *mib, const void *data, char *to)
+{
+ char *pChar;
+ short vShort;
+ int vInt;
+ char *pBuf;
+ char mac_str[13];
+ char ip_str[32];
+
+ switch (mib->type)
+ {
+ case V_INT:
+ case V_LONG:
+ case V_INT_LIST:
+ case V_LONG_LIST:
+  memcpy(&vInt, data, sizeof(vInt));
+  sprintf(to, "%d", vInt);
+  break;
+ case V_UINT:
+ case V_DWORD:
+ case V_UINT_LIST:
+ case V_DWORD_LIST:
+  memcpy(&vInt, data, sizeof(vInt));
+  sprintf(to, "%u", (unsigned int) vInt);
+  break;
+ case V_CHAR:
+ case V_CHAR_LIST:
+  pChar = (char *) data;
+  sprintf(to, "%d", *pChar);
+  break;
+ case V_BYTE:
+ case V_BYTE_LIST:
+  pChar = (char *) data;
+  sprintf(to, "%u", (unsigned char) *pChar);
+  break;
+ case V_SHORT:
+ case V_SHORT_LIST:
+  memcpy(&vShort, data, sizeof(vShort));
+  sprintf(to, "%d", vShort);
+  break;
+ case V_WORD:
+ case V_WORD_LIST:
+  memcpy(&vShort, data, sizeof(vShort));
+  sprintf(to, "%u", (unsigned short) vShort);
+  break;
+ case V_IP4:
+ case V_IP4_LIST:
+  if (inet_ntop(2, data, ip_str, sizeof(ip_str)) == ((void *)0))
+  {
+   fprintf(stderr, "VoIP MIB Convert Error: inet_ntop failed.\n");
+   return -1;
+  }
+  sprintf(to, "%s", ip_str);
+  break;
+ case V_MAC6:
+ case V_MAC6_LIST:
+  pChar = (char *) data;
+  bin2hex(((unsigned char *) pChar), (mac_str), 6);
+  sprintf(to, "%s", mac_str);
+  break;
+ case V_STRING:
+  pChar = (char *) data;
+  sprintf(to, "%s", pChar);
+  break;
+ case V_BYTE_ARRAY:
+  pChar = (char *) data;
+  pBuf = malloc(mib->total_size * 2 + 1);
+  if (pBuf == ((void *)0))
+  {
+   fprintf(stderr, "VoIP MIB Convert Error: malloc %d failed\n", mib->total_size * 2 + 1);
+   return -1;
+  }
+  bin2hex((unsigned char *) pChar, pBuf, mib->total_size);
+  sprintf(to, "%s", pBuf);
+  free(pBuf);
+  break;
+ default:
+  fprintf(stderr, "VoIP MIB Convert Error: Type %s is not support\n",
+   v_types[mib->type].name);
+  return -1;
+ }
+
+ return 0;
+
+
+
+
+
+
+
+}
+
+static int voip_mibentry_from(const voipMibEntry_T *mib, void *data, const char *from)
+{
+ char *pChar;
+ short vShort;
+ int vInt;
+
+ switch (mib->type)
+ {
+ case V_INT:
+ case V_LONG:
+ case V_INT_LIST:
+ case V_LONG_LIST:
+  if (sscanf(from, "%d", &vInt) != 1)
+   goto voip_mibentry_from_failed;
+  memcpy(data, &vInt, sizeof(vInt));
+  break;
+ case V_UINT:
+ case V_DWORD:
+ case V_UINT_LIST:
+ case V_DWORD_LIST:
+  if (sscanf(from, "%u", &vInt) != 1)
+   goto voip_mibentry_from_failed;
+  memcpy(data, &vInt, sizeof(vInt));
+  break;
+ case V_CHAR:
+ case V_CHAR_LIST:
+  if (sscanf(from, "%d", &vInt) != 1)
+   goto voip_mibentry_from_failed;
+  *(char *) data = (char) vInt;
+  break;
+ case V_BYTE:
+ case V_BYTE_LIST:
+  if (sscanf(from, "%u", &vInt) != 1)
+   goto voip_mibentry_from_failed;
+  *(char *) data = (char) vInt;
+  break;
+ case V_SHORT:
+ case V_SHORT_LIST:
+  if (sscanf(from, "%d", &vInt) != 1)
+   goto voip_mibentry_from_failed;
+  vShort = (short) vInt;
+  memcpy(data, &vShort, sizeof(vShort));
+  break;
+ case V_WORD:
+ case V_WORD_LIST:
+  if (sscanf(from, "%u", &vInt) != 1)
+   goto voip_mibentry_from_failed;
+  vShort = (short) vInt;
+  memcpy(data, &vShort, sizeof(vShort));
+  break;
+ case V_IP4:
+ case V_IP4_LIST:
+  if (inet_pton(2, from, data) <= 0)
+   goto voip_mibentry_from_failed;
+  break;
+ case V_MAC6:
+ case V_MAC6_LIST:
+  pChar = (char *) data;
+  if (hex2bin((from), ((unsigned char *) pChar), 6) != 0)
+   goto voip_mibentry_from_failed;
+  break;
+ case V_STRING:
+  pChar = (char *) data;
+
+
+
+  strncpy(pChar, from, mib->total_size - 1);
+  pChar[mib->total_size - 1] = 0;
+  break;
+ case V_BYTE_ARRAY:
+  pChar = (char *) data;
+  if (hex2bin(from, (unsigned char *) pChar, mib->total_size) != 0)
+   goto voip_mibentry_from_failed;
+  break;
+ default:
+  fprintf(stderr, "VoIP MIB Convert Error: Type %s is not support\n",
+   v_types[mib->type].name);
+  return -1;
+ }
+
+ return 0;
+
+voip_mibentry_from_failed:
+ fprintf(stderr, "VoIP MIB Convert Error: %s can't be convert to %s\n",
+  from, v_types[mib->type].name);
+ return -1;
+}
+
+static int _voip_mib_from(const voipMibEntry_T *mib_tbl, const char *name,
+ const voipMibEntry_T **ppmib, int *offset)
+{
+ int i, j, idx;
+ char *ptr;
+ const voipMibEntry_T *mib;
+
+ j = 0;
+ for (i=0; mib_tbl[i].id; i++)
+ {
+  for (j=0; mib_tbl[i].name[j]; j++)
+   if (name[j] != mib_tbl[i].name[j])
+    break;
+
+  if ((mib_tbl[i].name[j] == 0) &&
+   (name[j] == 0 || name[j] == '[' || name[j] == '.'))
+   break;
+ }
+
+ if (mib_tbl[i].id == 0)
+  return -1;
+
+ mib = &mib_tbl[i];
+ if (name[j] == '[')
+ {
+  if (mib->type < V_INT_LIST || mib->type > V_MIB_LIST)
+   return -1;
+
+  j++;
+  for (i=j; name[j]!=']' && name[j] && name[j]!= '.'; j++);
+
+  if (name[j] != ']')
+   return -1;
+
+  idx = strtol(&name[i], &ptr, 10);
+  if (ptr[0] != ']')
+   return -1;
+
+  if (idx < 0 || idx >= (mib->total_size / mib->unit_size))
+   return -1;
+
+  j++;
+  if (name[j] != 0 && name[j] != '.')
+   return -1;
+
+  *offset += mib->offset + mib->unit_size * idx;
+ }
+ else
+ {
+  if (mib->type >= V_INT_LIST && mib->type <= V_MIB_LIST)
+   return -1;
+
+  *offset += mib->offset;
+ }
+
+ if (name[j] == '.')
+ {
+  if (mib->type != V_MIB &&
+   mib->type != V_MIB_LIST)
+   return -1;
+
+  return _voip_mib_from(mib->next_mib_table, &name[j + 1], ppmib, offset);
+ }
+ else
+ {
+  if (mib->type == V_MIB ||
+   mib->type == V_MIB_LIST)
+   return -1;
+
+  *ppmib = mib;
+  return 0;
+ }
+}
+
+int voip_mib_from(const voipMibEntry_T *mib_tbl, const char *name,
+ const voipMibEntry_T **ppmib, int *offset)
+{
+ *offset = 0;
+ return _voip_mib_from(mib_tbl, name, ppmib, offset);
+}
+
+int voip_mib_read(void *data, const char *name, const char *value)
+{
+ const voipMibEntry_T *mib;
+ int offset;
+
+
+ if (voip_mib_from(mibtbl_voip, name, &mib, &offset) != 0)
+ {
+  fprintf(stderr, "VoIP MIB Read Error: couldn't find %s in mib table\n", name);
+  return -1;
+ }
+
+
+ if (voip_mibentry_from(mib, (void *)((int) data + offset), value) != 0)
+ {
+  fprintf(stderr, "VoIP MIB Read Error: read %s failed in mib %s\n", value, name);
+  return -1;
+ }
+
+ return 0;
+}
+
+int voip_mibtbl_read_line(voipCfgAll_t *cfg_all, char *line)
+{
+ int mode;
+ char name[200];
+ char value[200];
+
+
+ mode = voip_mibline_from(line, name, value);
+ if (mode == 1)
+ {
+  if (name[0] == 0) return 0;
+  if (voip_mib_read(&cfg_all->current_setting, name, value) == 0)
+  {
+   cfg_all->mode |= 1;
+   return 0;
+  }
+ }
+ else if (mode == 2)
+ {
+  if (voip_mib_read(&cfg_all->default_setting, name, value) == 0)
+  {
+   cfg_all->mode |= 2;
+   return 0;
+  }
+ }
+
+ fprintf(stderr, "VoIP MIB Read Error: parse \"%s\" failed\n", line);
+ return -1;
+}
+
+static int voip_mib_to(const voipMibEntry_T *mib, const void *data, const char *name,
+ const int offset, FILE *fp)
+{
+ char line[600];
+ char value[200];
+
+ if (voip_mibentry_to(mib, (void *)((int) data + offset), value) != 0)
+ {
+  fprintf(stderr, "VoIP MIB Write Error: write failed in mib %s\n", name);
+  return -1;
+ }
+
+ if (voip_mibline_to(line, name, value) != 0)
+ {
+  fprintf(stderr, "VoIP MIB Write Error: write %s failed in %s\n", value, name);
+  return -1;
+ }
+
+ fputs(line, fp);
+ return 0;
+}
+
+
+static int _voip_mibtbl_write(const voipMibEntry_T *mib_tbl, const void *data,
+ char *prefix, char *name, const int offset, FILE *fp)
+{
+ int i, j;
+ const voipMibEntry_T *mib;
+ char new_prefix[200];
+ int new_offset;
+
+
+ for (i=0; mib_tbl[i].id; i++)
+ {
+  mib = &mib_tbl[i];
+  new_offset = offset + mib->offset;
+  if (mib->type >= V_INT_LIST && mib->type <= V_MIB_LIST)
+  {
+   for (j=0; j<(mib->total_size / mib->unit_size); j++)
+   {
+    sprintf(name, "%s.%s[%d]", prefix, mib->name, j);
+    if (mib->type == V_MIB_LIST)
+    {
+     strcpy(new_prefix, name);
+     _voip_mibtbl_write(mib->next_mib_table, data, new_prefix, name, new_offset, fp);
+    }
+    else
+    {
+     voip_mib_to(mib, data, name, new_offset, fp);
+    }
+
+    new_offset += mib->unit_size;
+   }
+  }
+  else if (mib->type == V_MIB)
+  {
+   sprintf(name, "%s.%s", prefix, mib->name);
+   strcpy(new_prefix, name);
+   _voip_mibtbl_write(mib->next_mib_table, data, new_prefix, name, new_offset, fp);
+  }
+  else
+  {
+   sprintf(name, "%s.%s", prefix, mib->name);
+   voip_mib_to(mib, data, name, new_offset, fp);
+  }
+ }
+
+ return 0;
+}
+
+
+int voip_mibtbl_write(const void *data, int fd, int mode)
+{
+ FILE *fp;
+ char name[200];
+ int err;
+
+ fp = fdopen(dup(fd), "w");
+ if (fp == ((void *)0))
+ {
+  fprintf(stderr, "VoIP MIB Dump Error: fdopen failed\n");
+  return -1;
+ }
+
+ err = 0;
+ if (mode == 1)
+  err = _voip_mibtbl_write(mibtbl_voip, data, "VOIP", name, 0, fp);
+ else if (mode == 2)
+  err = _voip_mibtbl_write(mibtbl_voip, data, "DEF_VOIP", name, 0, fp);
+
+ fclose(fp);
+ return err;
+}
+
+int voip_mibtbl_get(const char *mib_name, voipCfgAll_t *cfg_all, int fd)
+{
+ FILE *fp;
+ const voipMibEntry_T *mib;
+ int offset;
+ const char *pname;
+ void *data;
+
+ fp = fdopen(dup(fd), "w");
+ if (fp == ((void *)0))
+ {
+  fprintf(stderr, "VoIP MIB Get Error: fdopen failed\n");
+  return -1;
+ }
+
+ if ((cfg_all->mode & 1) &&
+  (strncmp(mib_name, "VOIP.", 5) == 0))
+ {
+  pname = &mib_name[5];
+  data = &cfg_all->current_setting;
+ }
+ else if ((cfg_all->mode & 2) &&
+  (strncmp(mib_name, "DEF_VOIP.", 9) == 0))
+ {
+  pname = &mib_name[9];
+  data = &cfg_all->default_setting;
+ }
+ else
+ {
+  pname = ((void *)0);
+  data = ((void *)0);
+ }
+
+
+ offset = 0;
+ if ((data == ((void *)0)) || (voip_mib_from(mibtbl_voip, pname, &mib, &offset) != 0))
+ {
+  fprintf(stderr, "VoIP MIB Get Error: couldn't find %s in mib table\n", mib_name);
+  fclose(fp);
+  return -1;
+ }
+
+
+ if (voip_mib_to(mib, data, mib_name, offset, fp) != 0)
+ {
+  fprintf(stderr, "VoIP MIB Get Error: convert %s failed\n", mib_name);
+  fclose(fp);
+  return -1;
+ }
+
+ fclose(fp);
+ return 0;
+}
+
+int voip_mibtbl_set(const char *mib_name, const char *mib_value, voipCfgAll_t *cfg_all, int fd)
+{
+ FILE *fp;
+ const voipMibEntry_T *mib;
+ int offset;
+ const char *pname;
+ void *data;
+
+ fp = fdopen(dup(fd), "w");
+ if (fp == ((void *)0))
+ {
+  fprintf(stderr, "VoIP MIB Set Error: fdopen failed\n");
+  return -1;
+ }
+
+ if ((cfg_all->mode & 1) &&
+  (strncmp(mib_name, "VOIP.", 5) == 0))
+ {
+  pname = &mib_name[5];
+  data = &cfg_all->current_setting;
+ }
+ else if ((cfg_all->mode & 2) &&
+  (strncmp(mib_name, "DEF_VOIP.", 9) == 0))
+ {
+  pname = &mib_name[9];
+  data = &cfg_all->default_setting;
+ }
+ else
+ {
+  pname = ((void *)0);
+  data = ((void *)0);
+ }
+
+
+ offset = 0;
+ if ((data == ((void *)0)) || (voip_mib_from(mibtbl_voip, pname, &mib, &offset) != 0))
+ {
+  fprintf(stderr, "VoIP MIB Set Error: couldn't find %s in mib table\n", mib_name);
+  fclose(fp);
+  return -1;
+ }
+
+
+ if (voip_mibentry_from(mib, (void *)((int) data + offset), mib_value) != 0)
+ {
+  fprintf(stderr, "VoIP MIB Set Error: write %s failed in mib %s\n", mib_value, mib_name);
+  fclose(fp);
+  return -1;
+ }
+
+ fclose(fp);
+ return 0;
+}
+
+int voip_mib_swap_value(const voipMibEntry_T *mib, void *data)
+{
+ short *pShort;
+ int *pInt;
+
+ switch (mib->type)
+ {
+ case V_INT:
+ case V_LONG:
+ case V_INT_LIST:
+ case V_LONG_LIST:
+ case V_UINT:
+ case V_DWORD:
+ case V_UINT_LIST:
+ case V_DWORD_LIST:
+  pInt = (int *) data;
+  *pInt = htonl(*pInt);
+  break;
+ case V_SHORT:
+ case V_SHORT_LIST:
+ case V_WORD:
+ case V_WORD_LIST:
+  pShort = (short *) data;
+  *pShort = htons(*pShort);
+  break;
+ }
+
+ return 0;
+}
+
+int _voip_mibtbl_swap_value(const voipMibEntry_T *mib_tbl, void *data, int offset)
+{
+ int i, j;
+ const voipMibEntry_T *mib;
+ int new_offset;
+
+ for (i=0; mib_tbl[i].id; i++)
+ {
+  mib = &mib_tbl[i];
+  new_offset = offset + mib->offset;
+  if (mib->type >= V_INT_LIST && mib->type <= V_MIB_LIST)
+  {
+   for (j=0; j<(mib->total_size / mib->unit_size); j++)
+   {
+    if (mib->type == V_MIB_LIST)
+    {
+     _voip_mibtbl_swap_value(mib->next_mib_table, data, new_offset);
+    }
+    else
+    {
+     voip_mib_swap_value(mib, (void *)((int) data + new_offset));
+    }
+    new_offset += mib->unit_size;
+   }
+  }
+  else if (mib->type == V_MIB)
+  {
+   _voip_mibtbl_swap_value(mib->next_mib_table, data, new_offset);
+  }
+  else
+  {
+   voip_mib_swap_value(mib, (void *)((int) data + new_offset));
+  }
+ }
+
+ return 0;
+}
+
+int voip_mibtbl_swap_value(void *data)
+{
+ return _voip_mibtbl_swap_value(mibtbl_voip, data, 0);
+}

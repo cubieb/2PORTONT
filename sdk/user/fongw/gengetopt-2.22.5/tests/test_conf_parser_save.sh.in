@@ -1,0 +1,5 @@
+#! @SHELL@
+
+# reads the configuration file that was previously saved by test_conf_parser.sh
+
+if $* ./test_conf_parser_file_save --conf-file="test_conf_parser.save"; then true; else false; fi

@@ -1,0 +1,32 @@
+#!/bin/sh /etc/rc.common
+
+START=50
+
+disable() {
+	name="$(basename "${initscript}")"
+	rm -f "$IPKG_INSTROOT"/etc/rc[12].d/[KS]??$name
+}
+
+enable() {
+	name="$(basename "${initscript}")"
+	disable
+	ln -s "/etc/init.d/$name" "$IPKG_INSTROOT/etc/rc1.d/S${START}${name##S[0-9][0-9]}"
+}
+
+stop() {
+	/usr/sbin/fonsmcd --kill 
+}
+		
+start() {
+	/usr/sbin/fonsmcd
+}
+
+reload() {
+	/usr/sbin/fonsmcd --reload 
+}
+
+check() {
+	/usr/sbin/fonsmcd --check
+}
+
+cmds="check) check;;"

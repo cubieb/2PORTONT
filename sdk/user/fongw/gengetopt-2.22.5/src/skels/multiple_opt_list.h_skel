@@ -1,0 +1,1 @@
+struct generic_list * @arg_name@_list = NULL;

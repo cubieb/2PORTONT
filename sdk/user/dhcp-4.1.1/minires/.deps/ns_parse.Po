@@ -1,0 +1,194 @@
+ns_parse.o: ns_parse.c \
+ /home/gangadhar/2PORTONT/sdk/include/linux/config.h \
+ /home/gangadhar/2PORTONT/sdk/include/linux/autoconf.h \
+ /home/gangadhar/2PORTONT/sdk/autoconf.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/sys/types.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/features.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/uClibc_config.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/uClibc_arch_features.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/sys/cdefs.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/types.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/wordsize.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/gcc/stddef.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/kernel_types.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/typesizes.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/pthreadtypes.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/sched.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/time.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/endian.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/endian.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/byteswap.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/byteswap.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/sys/select.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/select.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/sigset.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/time.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/sys/sysmacros.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/netinet/in.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/stdint.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/wchar.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/sys/socket.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/sys/uio.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/uio.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/socket.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/limits.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/gcc/limits.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/posix1_lim.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/local_lim.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/linux/limits.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/uClibc_local_lim.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/posix2_lim.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/sockaddr.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/asm/socket.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/asm/sockios.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/asm/ioctl.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/asm-generic/ioctl.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/in.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/errno.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/errno.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/linux/errno.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/asm/errno.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/asm-generic/errno-base.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/string.h \
+ ../includes/minires/minires.h ../includes/cdefs.h ../includes/osdep.h \
+ ../includes/site.h ../includes/config.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/inttypes.h \
+ ../includes/minires/resolv.h ../includes/minires/res_update.h \
+ ../includes/arpa/nameser.h ../includes/arpa/nameser_compat.h \
+ ../includes/isc-dhcp/list.h ../includes/isc-dhcp/result.h \
+ ../includes/isc-dhcp/boolean.h ../includes/isc-dhcp/lang.h \
+ ../includes/isc-dhcp/types.h ../includes/isc-dhcp/int.h
+
+/home/gangadhar/2PORTONT/sdk/include/linux/config.h:
+
+/home/gangadhar/2PORTONT/sdk/include/linux/autoconf.h:
+
+/home/gangadhar/2PORTONT/sdk/autoconf.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/sys/types.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/features.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/uClibc_config.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/uClibc_arch_features.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/sys/cdefs.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/types.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/wordsize.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/gcc/stddef.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/kernel_types.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/typesizes.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/pthreadtypes.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/sched.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/time.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/endian.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/endian.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/byteswap.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/byteswap.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/sys/select.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/select.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/sigset.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/time.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/sys/sysmacros.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/netinet/in.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/stdint.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/wchar.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/sys/socket.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/sys/uio.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/uio.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/socket.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/limits.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/gcc/limits.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/posix1_lim.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/local_lim.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/linux/limits.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/uClibc_local_lim.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/posix2_lim.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/sockaddr.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/asm/socket.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/asm/sockios.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/asm/ioctl.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/asm-generic/ioctl.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/in.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/errno.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/bits/errno.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/linux/errno.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/asm/errno.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/asm-generic/errno-base.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/string.h:
+
+../includes/minires/minires.h:
+
+../includes/cdefs.h:
+
+../includes/osdep.h:
+
+../includes/site.h:
+
+../includes/config.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/include/inttypes.h:
+
+../includes/minires/resolv.h:
+
+../includes/minires/res_update.h:
+
+../includes/arpa/nameser.h:
+
+../includes/arpa/nameser_compat.h:
+
+../includes/isc-dhcp/list.h:
+
+../includes/isc-dhcp/result.h:
+
+../includes/isc-dhcp/boolean.h:
+
+../includes/isc-dhcp/lang.h:
+
+../includes/isc-dhcp/types.h:
+
+../includes/isc-dhcp/int.h:

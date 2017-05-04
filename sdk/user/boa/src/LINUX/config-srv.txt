@@ -1,0 +1,231 @@
+Using System V message IPC to request service to the Configuration Server
+============================================================================
+
+Introduction to the Configuration Server -- configuration provisioning part
+----------------------------------------------------------------------------
+The configuration server mentioned here is hosted in the web server which
+manages both the user configuration interface and configuration provisioning.
+This document will focus on the configuration provisioning service that the
+web server provided.
+
+The configuration provisioning provides an alternative method of providing the
+kind of information nomally placed in mib configuration files to xDSL
+applications. It is contacted over a System V message queue whenever a
+configuration channel is created (by the configuration server on system
+startup). This server also provide some other command to manipulate the
+mib configuation files or/and the flash data actually stored. Here are the
+request commands that the client process can be used to contact with the
+configuration server:
+
+. get DATA_FIELD		: get the data field
+. set DATA_FIELD DATA_VALUE	: set the data field
+. reload MIB_TYPE		: reload the configuration files from flash
+
+DATA_FIELD can be found in the entry name of mib_table in mibtbl.c. When
+getting data field, the client process should casting the response data
+value into its actually data type (also, can be found in mibtbl.c). When
+setting data field, the client process should put the DATA_VALUE as its string
+represented.
+
+The MIB_TYPE can be ds (default setting), cs (current setting) or hs
+(hardware setting).
+
+On system startup, the web server will create a message queue using key value
+obtained by key=ftok("/bin/init", 'k'). Client process must use the same key
+value to obtain this message queue id in order to gain access to the message
+queue. The server hereafter keeps listening on the message queue to receive
+request messages from other processes.
+
+Data Structure
+---------------
+/* message buffer for msgsnd and msgrcv calls */
+struct mymsgbuf {
+        long mtype;			// Message type
+        long request;			// Request ID/Status code
+        char mtext[MAX_SEND_SIZE];	// Client/server information
+};
+
+mtype 
+	The message type, represented in a positive number.
+	This must be a positive number! The message type must be unique for
+	each client process to send request in the multiple processes
+	environment. So, it is recommended to use the client pid for client
+	to send message to server process.
+
+request
+	The client process could be assigned a request magic number, which
+	could be used as the message type for messages sent from a server
+	process. The server itself could use some other number, which clients
+	could use to send messages to it. In contrast, the server process
+	could use this field as the status code when replying to the client's
+	request.
+		
+mtext 
+	The message data itself.
+
+
+Client implementation
+----------------------
+The client must use a pre-defined message type, the server pid, to send request messages
+to server. In this case, the request value of the message buffer should be
+assigned an unique magic number from that of other client processes. The client pid
+is recommended for this number. After sending a request message, the client should
+be waiting for a response message from server on the request number. We now
+take the server pid as spid and client pid as cpid for example,
+the request/response scenario would be:
+
+	Client Process						Server Process
+	(Listening on mtype=cpid)				(Listening on mtype=spid)
+			mtyp=spid, request=cpid, request data
+			----------------------------------->	
+			
+			mtype=cpid, request(status code)=SUCCESS,
+			response data
+			<--------------------------------------
+			
+			or
+			
+			mtype=cpid, request(status code)=FAIL
+			<--------------------------------------
+			
+The server pid can be read from /var/run/webs.pid. The following is the example
+client implementation:
+
+************************************************************************************
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <sys/types.h>
+#include <sys/ipc.h>
+#include <sys/msg.h>
+#include <errno.h>
+
+#define MAX_SEND_SIZE	80
+#define MSG_SUCC	0
+#define MSG_FAIL	1
+#define SERVER_RUNFILE	"/var/run/webs.pid"
+
+struct mymsgbuf {
+        long mtype;			// Message type
+        long request;			// Request ID/Status code
+        char mtext[MAX_SEND_SIZE];	// Client/server information
+};
+
+void send_message(int qid, long type, long req, char *text);
+void read_message(int qid, struct mymsgbuf *qbuf, long type);
+
+int main(int argc, char **argv)
+{
+	key_t key;
+	int   qid, cpid, spid;
+        struct mymsgbuf qbuf;
+        unsigned int uInt;
+	FILE *spidfile;
+	
+	/* Create unique key via call to ftok() */
+	key = ftok("/bin/init", 'k');
+	
+	if((qid = msgget( key, 0660 )) == -1)
+	{
+		printf("get qid failed\n");
+		/*
+		switch (errno) {
+			case E2BIG   :
+				printf("E2BIG    \n");
+				break;
+			case EACCES :
+				printf("EACCES  \n");
+				break;
+			case EFAULT   :
+				printf("EFAULT   \n");
+				break;
+			case EIDRM  :
+				printf("EIDRM  \n");
+				break;
+			case EINTR    :
+				printf("EINTR    \n");
+				break;
+			case EINVAL   :
+				printf("EINVAL   \n");
+				break;
+			case ENOMSG   :
+				printf("ENOMSG   \n");
+				break;
+			default:
+				printf("unknown\n");
+		}
+		*/
+		return(-1);
+	}
+	
+	// get client pid
+	cpid = (int)getpid();
+	
+	// get server pid
+	if ((spidfile = fopen(SERVER_RUNFILE, "r"))) {
+		fscanf(spidfile, "%d\n", &spid);
+		fclose(spidfile);
+	}
+	else {
+		printf("server pidfile not exists\n");
+		return -1;
+	}
+	
+	send_message(qid, spid, cpid, argv[1]);
+	read_message(qid, &qbuf, cpid);
+	
+	if (qbuf.request == MSG_FAIL) {
+		printf("request failed\n");
+		return -1;
+	}
+	
+	switch (*argv[2]) {
+		case '0':	// byte
+			uInt = (unsigned int)(*(unsigned char *)qbuf.mtext);
+			printf("value=%d\n", uInt);
+			break;
+		case '1':	// short
+			uInt = (unsigned int)(*(unsigned short *) qbuf.mtext);
+			printf("value=%d\n", uInt);
+			break;
+		case '2':	// long
+			uInt = (unsigned int)(*(unsigned int *) qbuf.mtext);
+			printf("value=%d\n", uInt);
+			break;
+		case '3':	// string
+			printf("value=%s\n", qbuf.mtext);
+			break;
+		default:
+			printf("unknow data type\n");
+	}
+	
+	return 0;
+}
+
+void send_message(int qid, long type, long req, char *text)
+{
+	struct mymsgbuf qbuf;
+	
+	/* Send a message to the queue */
+	//printf("Sending a message ...\n");
+	qbuf.mtype = type;
+	qbuf.request = req;
+	strcpy(qbuf.mtext, text);
+	
+	if((msgsnd(qid, &qbuf, sizeof(struct mymsgbuf)-sizeof(long), 0)) == -1)
+	{
+		perror("msgsnd");
+		exit(1);
+	}
+	return;
+}
+
+void read_message(int qid, struct mymsgbuf *qbuf, long type)
+{
+	/* Read a message from the queue */
+	//printf("Reading a message ...\n");
+	qbuf->mtype = type;
+	msgrcv(qid, (struct msgbuf *)qbuf, sizeof(struct mymsgbuf)-sizeof(long), type, 0);
+}
+

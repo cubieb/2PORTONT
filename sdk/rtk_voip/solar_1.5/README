@@ -1,0 +1,39 @@
+rtk_voip/includes:
+	* voip_flash.h:
+		- comes from the VoIP part of goahead-2.1.1/LINUX/apmib.h
+		- add voip_flash_xxx
+	* voip_manager.h:
+		- comes from ata/sip_interface.h
+	* voip_types.h
+		- comes from ata/sip_interface.h
+
+rtk_voip/platform/rtl8186/flash:
+	* voip_flash.c:
+		- comes from the VoIP part of goahead-2.1.1/LINUX/flash.c
+		- add voip_flash_xxx
+	* It is used for create libflashlib.so in goahead-2.1.1/LINUX
+	* The libflashlib.so is used for VoIP and WEB app
+
+rtk_voip/platform/rtl8186/voip_manager:
+	* voip_manager.c:
+		- comes from ata/sip_interface.c
+	* It will create libvoip_manager.a for VoIP app
+
+rtk_voip/platform/rtl8186/web:
+	* web_voip.c:
+		- comes from the VoIP part of goahead-2.1.1/LINUX/main.c
+		- add asp_voip_xxx_menu
+	* web_voip.h:
+		- comes from the VoIP part of goahead-2.1.1/LINUX/apform.h
+		- add asp_voip_xxx_menu
+	* web_voip_general.c:
+		- comes from goahead-2.1.1/LINUX/fmsip.c
+	* voip_general.asp:
+		- comes from goahead-2.1.1/web-xxx/sip.asp
+	* voip_script.js:
+		- comes from goahead-2.1.1/web-xxx/gnet.asp
+	* It will create libvoip_web.a for WEB app
+
+rtk_voip/src: 
+	* comes from ata/voip
+	* It will create the VoIP app

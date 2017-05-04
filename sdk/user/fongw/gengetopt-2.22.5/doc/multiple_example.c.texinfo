@@ -1,0 +1,29 @@
+@c Generator: GNU source-highlight, by Lorenzo Bettini, http://www.gnu.org/software/src-highlite
+@example
+@r{@i{/* test options that can be given more than once */}}
+
+@b{#include} @t{<stdlib.h>}
+@b{#include} @t{<stdio.h>}
+
+@b{#include} @t{"test_multiple_cmd.h"}
+
+@b{static} @b{struct} gengetopt_args_info args_info;
+
+@b{int}
+main (@b{int} argc, @b{char} **argv)
+@{ 
+  @b{int} i = 0;
+ 
+  @b{if} (test_multiple_cmd_parser (argc, argv, &args_info) != 0)
+    exit(1) ;
+
+  @b{for} (i = 0; i < args_info.string_given; ++i)
+    printf (@t{"passed string: %s}\n@t{"}, args_info.string_arg[i]);
+
+  @b{for} (i = 0; i < args_info.int_given; ++i)
+    printf (@t{"passed int: %d}\n@t{"}, args_info.int_arg[i]);
+
+  @b{return} 0;
+@}
+
+@end example

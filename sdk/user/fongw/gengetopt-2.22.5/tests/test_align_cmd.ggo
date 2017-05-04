@@ -1,0 +1,16 @@
+package "test align"
+version "1.0"
+
+purpose "this is just a test to check that the output of --help and --full-help are aligned just the same"
+
+option "hidden-option"   m
+	"This is the hidden option that is printed only with --full-help; thanks to its long description we force a possible different alignment for --full-help"
+	optional
+	hidden
+
+
+section "Operation modes and settings" sectiondesc="\nNon-absolute pathnames are relative to the executable's directory.\n"
+defmode "standalone"
+
+modeoption  "non-hidden"    y "non-hidden option" optional mode="standalone"
+

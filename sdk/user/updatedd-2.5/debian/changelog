@@ -1,0 +1,82 @@
+updatedd (2.5) unstable; urgency=low
+
+  * makefiles cross-compile compatible
+  * implemented gnu makefile conventions
+
+ -- Philipp Benner <mail@philipp-benner.de>  Thu, 12 May 2005 21:22:32 +0200
+
+updatedd (2.4) unstable; urgency=low
+
+  * create $(bindir) when it doesn't exist
+  * use $(DESTDIR) when installing updatedd
+  * changing the cache file of upatedd-wrapper didn't work
+  * ported the source to Darwin
+
+ -- Philipp Benner <mail@philipp-benner.de>  Tue, 08 Feb 2005 20:07:25 +0100
+
+updatedd (2.3) unstable; urgency=low
+
+  * check for error.h
+
+ -- Philipp Benner <mail@philipp-benner.de>  Sun, 10 Oct 2004 15:58:55 +0100
+
+updatedd (2.2-1) unstable; urgency=low
+
+  * buggy Makefile fixed
+  * corrected some mistakes in the documentation
+
+ -- Philipp Benner <mail@philipp-benner.de>  Wed, 11 Aug 2004 18:06:27 +0100
+
+updatedd (2.1-1) unstable; urgency=low
+
+  * minor bugfixes
+
+ -- Philipp Benner <mail@philipp-benner.de>  Sat, 01 May 2004 13:40:45 +0100
+
+updatedd (2.0-1) unstable; urgency=medium
+
+  * coded updatedd from scratch
+  * new application: updatedd-wrapper
+  * config file support
+  * new cache file support
+  * support for new services
+  * support for various check-ip servers
+
+ -- Philipp Benner <mail@philipp-benner.de>  Fri, 14 Feb 2004 15:13:30 +0100
+
+updatedd (1.9-2) unstable; urgency=low
+
+  * dyndns.org update
+
+ -- Philipp Benner <mail@philipp-benner.de>  Fri, 13 Feb 2004 15:13:30 +0100
+
+updatedd (1.9-1) unstable; urgency=low
+
+  * support for regfish.com
+  * new return codes
+  * new scripts
+  * french documentation
+
+ -- Philipp Benner <mail@philipp-benner.de>  Sun, 08 Feb 2004 10:35:01 +0100
+
+updatedd (1.9pre1-1) unstable; urgency=low
+
+  * removed loop which caused extra traffic
+  * bug fix in noip.c
+
+ -- Philipp Benner <mail@philipp-benner.de>  Tue, 22 Oct 2003 09:41:25 +0100
+
+updatedd (1.8-1) unstable; urgency=low
+
+  * dyndns checkip bug fixed
+  * new code structure
+  * implementation of getopt_long() for *BSD
+  * new rc scripts
+
+ -- Philipp Benner <mail@philipp-benner.de>  Tue, 14 Oct 2003 09:41:25 +0100
+
+updatedd (1.7-1) unstable; urgency=low
+
+  * dyndns checkip bug fixed
+
+ -- Philipp Benner <mail@philipp-benner.de>  Fri, 3 Oct 2003 23:22:32 +0100

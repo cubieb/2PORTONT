@@ -1,0 +1,15 @@
+<!--############################################################################# 
+ |	$Id: AUTHOR,v 1.1.1.1 2009/05/07 11:14:42 jiunming Exp $
+ |- #############################################################################
+ |	$Author: jiunming $
+ |														
+ |   PURPOSE:
+ + ############################################################################## -->
+
+Ramon Casellas <casellas@aist.enst.fr>, <casellas@infres.enst.fr>
+	* Project manager and Developer.
+	* with the help of many other people <xref linkend="thanks"/> :)
+
+James Devenish <j-devenish@users.sourceforge.net> 
+	* Project manager and Developer.
+	* Patches and improvements. 

@@ -1,0 +1,217 @@
+? .8190n_file.o.cmd
+? .8190n_hw.o.cmd
+? .8190n_ioctl.o.cmd
+? .8190n_osdep.o.cmd
+? .8190n_proc.o.cmd
+? .8190n_rx.o.cmd
+? .8190n_tx.o.cmd
+? .8190n_util.o.cmd
+? .beacon.o.cmd
+? .built-in.o.cmd
+? .rtl8192se.o.cmd
+? .tx.o.cmd
+? Kconfig
+? cscope.in.out
+? cscope.out
+? cscope.po.out
+? cvs_diff
+? modules.order
+? rtl8192Pci
+cvs server: Diffing .
+Index: 8190n.h
+===================================================================
+RCS file: /cvs/AP/NewMac80211Drv/8190n.h,v
+retrieving revision 1.3
+diff -r1.3 8190n.h
+29c29
+< #include "./8190n_cfg.h"
+---
+> #include "8190n_cfg.h"
+32c32
+< #include "./8190n_hw.h"
+---
+> #include "8190n_hw.h"
+Index: 8190n_cfg.h
+===================================================================
+RCS file: /cvs/AP/NewMac80211Drv/8190n_cfg.h,v
+retrieving revision 1.4
+diff -r1.4 8190n_cfg.h
+179c179
+< #define CLIENT_MODE
+---
+> //#define CLIENT_MODE
+309c309
+< #define MBSSID
+---
+> //#define MBSSID
+1018c1018
+< 	#error "Define flag error, MP_TEST is not defined!\n"
+---
+> //	#error "Define flag error, MP_TEST is not defined!\n"
+1023c1023
+< 	#error "Define flag error, CLIENT_MODE is not defined!\n"
+---
+> //	#error "Define flag error, CLIENT_MODE is not defined!\n"
+Index: 8190n_hw.c
+===================================================================
+RCS file: /cvs/AP/NewMac80211Drv/8190n_hw.c,v
+retrieving revision 1.6
+diff -r1.6 8190n_hw.c
+838c838
+< 	extern ssize_t sys_read(unsigned int fd, char * buf, size_t count);
+---
+> 	extern long sys_read(unsigned int fd, char * buf, size_t count);
+1116c1116
+< 	extern ssize_t sys_read(unsigned int fd, char * buf, size_t count);
+---
+> 	extern long sys_read(unsigned int fd, char * buf, size_t count);
+1209c1209
+< 	extern ssize_t sys_read(unsigned int fd, char * buf, size_t count);
+---
+> 	extern long sys_read(unsigned int fd, char * buf, size_t count);
+2247c2247
+< 		extern ssize_t sys_read(unsigned int fd, char * buf, size_t count);
+---
+> 		extern long sys_read(unsigned int fd, char * buf, size_t count);
+3900a3901
+> #if 0	//brian move to 
+3938a3940
+> #endif
+Index: 8190n_osdep.c
+===================================================================
+RCS file: /cvs/AP/NewMac80211Drv/8190n_osdep.c,v
+retrieving revision 1.12
+diff -r1.12 8190n_osdep.c
+221a222,225
+> 	case NL80211_IFTYPE_ADHOC:
+> 		DEBUG_INFO("Adhoc-mode enabled...\n");
+> 		//RTL_W16(BCNTCFG, 0x000a);  brian reference AP 
+> 		RTL_W8(MSR, MSR_ADHOC);
+535,536d538
+< 
+< 
+715c717
+< MODULE_DEVICE_TABLE(usb, rtl8192s_usb_table);
+---
+> //MODULE_DEVICE_TABLE(usb, rtl8192s_usb_table);
+1151c1153
+< 	unsigned char hwaddr[6] = {0x00, 0x00, 0x00, 0x00, 0x0a, 0x02};
+---
+> 	unsigned char hwaddr[6] = {0x00, 0xa9, 0x87, 0x65, 0x43, 0x21};
+1355c1357
+< MODULE_DEVICE_TABLE(pci, rtl8190_pci_tbl);
+---
+> //MODULE_DEVICE_TABLE(pci, rtl8190_pci_tbl);
+1414,1417c1416,1419
+< MODULE_AUTHOR("Realtek");
+< MODULE_DESCRIPTION("Support for Realtek 802.11n wireless LAN PCI/USB cards.");
+< MODULE_SUPPORTED_DEVICE("Realtek 802.11n WLAN PCI/USB cards");
+< MODULE_LICENSE("GPL");
+---
+> //MODULE_AUTHOR("Realtek");
+> //MODULE_DESCRIPTION("Support for Realtek 802.11n wireless LAN PCI/USB cards.");
+> //MODULE_SUPPORTED_DEVICE("Realtek 802.11n WLAN PCI/USB cards");
+> //MODULE_LICENSE("GPL");
+Index: 8190n_rx.c
+===================================================================
+RCS file: /cvs/AP/NewMac80211Drv/8190n_rx.c,v
+retrieving revision 1.5
+diff -r1.5 8190n_rx.c
+341d340
+< 	
+412d410
+< 
+457,459c455
+< 
+< 			pskb->len = pfrinfo->pktlen;
+< 			
+---
+> 		
+472a469
+> 			
+Index: 8190n_tx.c
+===================================================================
+RCS file: /cvs/AP/NewMac80211Drv/8190n_tx.c,v
+retrieving revision 1.5
+diff -r1.5 8190n_tx.c
+14c14
+< #include <linux/module.h>
+---
+> //#include <linux/module.h>
+16,20c16,20
+< #include "./8190n_cfg.h"
+< #include "./8190n.h"
+< #include "./8190n_hw.h"
+< #include "./8190n_headers.h"
+< #include "./8190n_debug.h"
+---
+> #include "8190n_cfg.h"
+> #include "8190n.h"
+> #include "8190n_hw.h"
+> #include "8190n_headers.h"
+> #include "8190n_debug.h"
+24c24
+< #include "./rtl80211.h"
+---
+> #include "rtl80211.h"
+212c212
+< 				
+---
+> 
+317a318
+> 
+325a327,328
+> 	int hdrlen, padsize;
+> 
+399d401
+< 
+401a404
+> 	//brian--->
+Index: Makefile
+===================================================================
+RCS file: /cvs/AP/NewMac80211Drv/Makefile,v
+retrieving revision 1.3
+diff -r1.3 Makefile
+1c1,5
+< rtl8192se-y +=	8190n_tx.o \
+---
+> DIR_RTLASIC = $(DIR_LINUX)/drivers/net/rtl819x/
+> 
+> #subdir-y      += rtl8192Pci
+> 
+> rtl8192se-objs += 8190n_tx.o \
+12c16,18
+< obj-m += rtl8192se.o
+---
+> #obj-m += rtl8192se.o
+> #obj-y         += rtl8192Pci/built-in.o
+> obj-y += rtl8192se.o
+14c20,22
+< EXTRA_CFLAGS:= -DCONFIG_RTL8192SE -DCONFIG_RTL8196B -D__KERNEL__
+---
+> #EXTRA_CFLAGS:= -DCONFIG_RTL8192SE -DCONFIG_RTL8196B -D__KERNEL__
+> EXTRA_CFLAGS := -I$(DIR_RTLASIC) -I$(DIR_BOARD) -DRTL865X_OVER_KERNEL -DRTL865X_OVER_LINUX -DCONFIG_RTL8192SE
+> EXTRA_CFLAGS += -G 0
+16,17c24,25
+< all:
+< 	make -C /lib/modules/$(shell uname -r)/build M=$(shell pwd) modules
+---
+> #all:
+> #	make -C /lib/modules/$(shell uname -r)/build M=$(shell pwd) modules
+19,20c27,28
+< clean:
+< 	make -C /lib/modules/$(shell uname -r)/build M=$(shell pwd) clean
+---
+> #clean:
+> #	make -C /lib/modules/$(shell uname -r)/build M=$(shell pwd) clean
+Index: rtl80211.h
+===================================================================
+RCS file: /cvs/AP/NewMac80211Drv/rtl80211.h,v
+retrieving revision 1.8
+diff -r1.8 rtl80211.h
+1,2c1,2
+< #include "./8190n_cfg.h"
+< #include "./8190n.h"
+---
+> #include "8190n_cfg.h"
+> #include "8190n.h"

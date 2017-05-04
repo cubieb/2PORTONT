@@ -1,0 +1,202 @@
+//
+// Copyright (C) 2011 Realtek Semiconductor Corp.
+// All Rights Reserved.
+//
+// This program is the proprietary software of Realtek Semiconductor
+// Corporation and/or its licensors, and only be used, duplicated,
+// modified or distributed under the authorized license from Realtek.
+//
+// ANY USE OF THE SOFTWARE OTHER THAN AS AUTHORIZED UNDER
+// THIS LICENSE OR COPYRIGHT LAW IS PROHIBITED.
+//
+// $Revision: 39101 $
+// $Date: 2013-05-03 17:35:27 +0800 (Fri, 03 May 2013) $
+//
+// Purpose : Define diag shell commands for layer2.
+//
+// Feature : The file have include the following module and sub-modules
+//           1) PON MAC commands.
+//
+
+//PON MAC configuration
+//set configuration
+//egress rate
+//egress rate unit 8Kbps
+pon_mac set egress-rate <UINT:rate>
+
+//PON MAC configuration
+//get configuration
+//egress rate
+//egress rate unit 8Kbps
+pon_mac get egress-rate
+
+
+//PON MAC configuration
+//set configuration
+//PON scheduling drain out control
+//queue configuration
+//queue id <0~127>
+pon_mac set drain-out queue <UINT:qid>
+
+
+//PON MAC configuration
+//set configuration
+//PON scheduling drain out control
+//T-CONT configuration
+//t-CONT id <0~31>
+pon_mac set drain-out t-cont <UINT:tcont>
+
+
+//PON MAC configuration
+//set configuration
+//PON scheduling drain out control
+//drain out status
+pon_mac get drain-out status
+
+
+
+//PON MAC configuration
+//set configuration
+//stream id scheduling packet queueing ID mapping
+//stream id configuration
+//stream id <0-127>
+//queue configuration
+//queue id <0~128>
+pon_mac set stream-to-queue-mapping stream <MASK_LIST:stream_id> queue <UINT:qid>  
+
+//PON MAC configuration
+//get configuration
+//stream id scheduling packet queueing ID mapping
+//stream id configuration
+//stream id <0-127>
+pon_mac get stream-to-queue-mapping stream <MASK_LIST:stream_id>
+
+
+
+//PON MAC configuration
+//set configuration
+//per-queue PIR/APR rate configuration
+//queue configuration
+//queue id <0-128>
+//rate configuration
+//rate, unit 64Kbps
+pon_mac set PIR queue <MASK_LIST:qid> rate <UINT:rate>  
+
+//PON MAC configuration
+//get configuration
+//per-queue PIR/APR rate configuration
+//queue configuration
+//queue id <0-128>
+//rate configuration
+pon_mac get PIR queue <MASK_LIST:qid> rate 
+
+//PON MAC configuration
+//set configuration
+//per-queue CIR rate configuration
+//queue configuration
+//queue id <0-128>
+//rate configuration
+//rate, unit 64Kbps
+pon_mac set CIR queue <MASK_LIST:qid> rate <UINT:rate>  
+
+//PON MAC configuration
+//get configuration
+//per-queue CIR rate configuration
+//queue configuration
+//queue id <0-128>
+//rate configuration
+pon_mac get CIR queue <MASK_LIST:qid> rate
+
+//PON MAC configuration
+//set configuration
+//T-CONT scheduling queue usage mapping
+//T-CONT configuration
+//T-CONT id <0-31>
+//queue mapping mask
+//mask, 32bits mask
+pon_mac set t-cont-schedule-mapping t-cont <MASK_LIST:tcont> queue_mask <UINT:mask>  
+
+//PON MAC configuration
+//get configuration
+//T-CONT scheduling queue usage mapping
+//T-CONT configuration
+//T-CONT id <0-31>
+pon_mac get t-cont-schedule-mapping t-cont <MASK_LIST:tcont> 
+
+
+
+//PON MAC configuration
+//set configuration
+//queue scheduling
+//scheduling algorithm
+//queue id configuration
+//qid, <0-127>
+//strict
+//wfq
+pon_mac set scheduling algorithm queue-id <MASK_LIST:qid> ( strict | wfq )  
+
+
+//PON MAC configuration
+//get configuration
+//queue scheduling
+//scheduling algorithm
+//queue id configuration
+//qid, <0-127>
+pon_mac get scheduling algorithm queue-id <MASK_LIST:qid>
+
+//PON MAC configuration
+//set configuration
+//queue scheduling
+//queue weight
+//queue id configuration
+//qid, <0-127>
+//queue weight configuration
+//queue weight, <0~65535>
+pon_mac set scheduling queue-weight queue-id <MASK_LIST:qid> weight <UINT:weight>
+
+//PON MAC configuration
+//get configuration
+//queue scheduling
+//queue weight
+//queue id configuration
+//qid, <0-127>
+pon_mac get scheduling queue-weight queue-id <MASK_LIST:qid>
+
+//PON MAC configuration
+//set configuration
+//egress drop configuration
+//queue id configuration
+//qid, <0-127>
+//state configuration
+//enable function
+//disable function
+pon_mac set egress-drop queue-id <MASK_LIST:qid> state ( enable | disable )
+
+//PON MAC configuration
+//get configuration
+//egress drop configuration
+//queue id configuration
+//qid, <0-127>
+//state configuration
+pon_mac get egress-drop queue-id <MASK_LIST:qid> state
+
+//PON MAC configuration
+//set configuration
+//T-CONT scheduling
+//T-CONT configuration
+//T-CONT id <0-31>
+//state configuration
+//enable function
+//disable function
+pon_mac set scheduling t-cont <MASK_LIST:tcont> state ( enable | disable ) 
+
+
+//PON MAC configuration
+//get configuration
+//T-CONT scheduling
+//T-CONT configuration
+//T-CONT id <0-31>
+//state configuration
+pon_mac get scheduling t-cont <MASK_LIST:tcont> state
+
+

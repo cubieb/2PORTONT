@@ -1,0 +1,12 @@
+@IF@ checkrange @THEN@
+if (@mode_condition@check_multiple_option_occurrences(@package_var_name@, args_info->@option_var_name@_given, args_info->@option_var_name@_min, args_info->@option_var_name@_max, "@option_descr@"))
+   error = 1;
+
+@ELSE@
+if (@mode_condition@! args_info->@option_var_name@_given)
+  {
+    fprintf (stderr, "%s: @option_descr@ option required%s\n", @package_var_name@, (additional_error ? additional_error : ""));
+    error = 1;
+  }
+
+@ENDIF@

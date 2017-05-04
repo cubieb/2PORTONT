@@ -1,0 +1,172 @@
+str2val.o: str2val.c ../.././src/include-glibc/glibc-bugs.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/features.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/uClibc_config.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/uClibc_arch_features.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/sys/cdefs.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/sys/types.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/types.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/wordsize.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/gcc/stddef.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/kernel_types.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/typesizes.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/pthreadtypes.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/sched.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/time.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/endian.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/endian.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/byteswap.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/byteswap.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/sys/select.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/select.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/sigset.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/time.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/sys/sysmacros.h \
+ ../../src/include-glibc/glibc-bugs.h ../../config.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/sys/param.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/limits.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/gcc/limits.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/posix1_lim.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/local_lim.h \
+ ../../src/include-glibc/linux/limits.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/uClibc_local_lim.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/posix2_lim.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/xopen_lim.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/stdio_lim.h \
+ ../../src/include-glibc/linux/param.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/asm/param.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/ctype.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/uClibc_touplow.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/stdlib.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/waitflags.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/waitstatus.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/alloca.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/stdio.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/uClibc_stdio.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/wchar.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/wchar.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/uClibc_mutex.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/pthread.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/sched.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/uClibc_clk_tck.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/signal.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/initspin.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/sigthread.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/uClibc_pthread.h \
+ /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/gcc/stdarg.h \
+ str2val.h gcmalloc.h
+
+../.././src/include-glibc/glibc-bugs.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/features.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/uClibc_config.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/uClibc_arch_features.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/sys/cdefs.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/sys/types.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/types.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/wordsize.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/gcc/stddef.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/kernel_types.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/typesizes.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/pthreadtypes.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/sched.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/time.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/endian.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/endian.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/byteswap.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/byteswap.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/sys/select.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/select.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/sigset.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/time.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/sys/sysmacros.h:
+
+../../src/include-glibc/glibc-bugs.h:
+
+../../config.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/sys/param.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/limits.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/gcc/limits.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/posix1_lim.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/local_lim.h:
+
+../../src/include-glibc/linux/limits.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/uClibc_local_lim.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/posix2_lim.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/xopen_lim.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/stdio_lim.h:
+
+../../src/include-glibc/linux/param.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/asm/param.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/ctype.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/uClibc_touplow.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/stdlib.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/waitflags.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/waitstatus.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/alloca.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/stdio.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/uClibc_stdio.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/wchar.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/wchar.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/uClibc_mutex.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/pthread.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/sched.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/uClibc_clk_tck.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/signal.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/initspin.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/sigthread.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/bits/uClibc_pthread.h:
+
+/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/include/gcc/stdarg.h:
+
+str2val.h:
+
+gcmalloc.h:

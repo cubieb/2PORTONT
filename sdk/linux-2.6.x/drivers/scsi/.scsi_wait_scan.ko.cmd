@@ -1,0 +1,1 @@
+cmd_drivers/scsi/scsi_wait_scan.ko := /rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105/bin/rsdk-linux-ld -r  -m elf32btsmip  --build-id -o drivers/scsi/scsi_wait_scan.ko drivers/scsi/scsi_wait_scan.o drivers/scsi/scsi_wait_scan.mod.o
