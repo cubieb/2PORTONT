@@ -1,0 +1,1 @@
+platform/nor_spi/nor_spif_mxic_3b_mode.c

@@ -1,0 +1,3 @@
+template_name := 9601b
+FILTER_OUT_OBJS := 
+mirror := $(template_name)

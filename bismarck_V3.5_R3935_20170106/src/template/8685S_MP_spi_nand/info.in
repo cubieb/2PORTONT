@@ -1,0 +1,30 @@
+platform_name := 8685S
+OTTO_ENTRY := $(OTTO_SPI_NAND_PLR_ENTRY)
+OTTO_DRAM_GEN3 := 1
+OTTO_LMA_BASE := 0
+
+TLB_PAGE_SHIFT  := 12
+TLB_PAGE_SIZE := (1 << $(TLB_PAGE_SHIFT))
+TLB_PAGE_MASK := ($(TLB_PAGE_SIZE) - 1)
+TLB_NUM_TLB_ENTRY := 64
+TLB_NUM_TLB_MASK := 0x3f
+
+OTTO_LDS := "./src/lds/spi_nand_with_lplr.lds"
+OTTO_STARTUP := "./src/lib/startup/startup_nand_with_lplr.S"
+
+# mmu related setting
+MMU_PHY_SIZE := $(OTTO_SRAM_SIZE)
+MMU_VM_SIZE := 0x40000
+MMU_PHY_BASE_ADDR := $(OTTO_SRAM_START)
+MMU_CHECK_INETRNAL_ERROR := 1
+
+# mips16
+##MIPS16_OBJS := ab_mmu_drv.o
+
+# gpopt
+USE_CC_GPOPT := 1
+CC_GPOPT := -mgpopt -mlocal-sdata -mextern-sdata -G 4
+
+# Recycle section check
+IS_RECYCLE_SECTION_EXIST := 
+

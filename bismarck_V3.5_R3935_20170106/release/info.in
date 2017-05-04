@@ -1,0 +1,4 @@
+# this file is generated automatcally, don't edit it.
+include src/platform/9602C/info.in
+include src/template/9602C_spi_nand/info.in
+include project/9602C_MP_spi_nand_demo/info.in

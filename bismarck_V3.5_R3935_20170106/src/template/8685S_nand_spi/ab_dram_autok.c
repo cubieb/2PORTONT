@@ -1,0 +1,1 @@
+platform/dram/autok/dram_autok.c

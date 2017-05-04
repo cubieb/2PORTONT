@@ -1,0 +1,1 @@
+#define SNOFG3_HAS_EXT_4B_ADDR_EN_FUNC 1

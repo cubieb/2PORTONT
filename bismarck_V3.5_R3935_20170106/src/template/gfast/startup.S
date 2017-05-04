@@ -1,0 +1,1 @@
+../../lib/startup/plr_nor_startup.S

@@ -1,0 +1,18 @@
+#
+# Format of this file: description<nl>variable<nl>  helptext<nl>...<nl><nl>.
+# If the question being documented is of type "choice", we list
+# only the first occurring config variable. The help texts
+# must not contain empty lines. No variable should occur twice; if it
+# does, only the first occurrence will be used by Configure. The lines
+# in a help text should be indented two positions. Lines starting with
+# `#' are ignored. To be nice to menuconfig, limit your lines to 70
+# characters. Use emacs' kfill.el to edit this file or you lose.
+#
+CONFIG_SYS_TEXT_BASE
+	User may need to change the U-Boot bootup location based on the DRAM size.
+	Suggestions:
+	dram_size=  8MB, U-Boot Text Base=80700000
+	dram_size= 16MB, U-Boot Text Base=80F00000
+	dram_size= 32MB, U-Boot Text Base=81F00000
+	dram_size= 64MB, U-Boot Text Base=83F00000
+	dram_size=128MB, U-Boot Text Base=87F00000

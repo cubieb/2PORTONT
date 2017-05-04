@@ -1,0 +1,8 @@
+crc16.o: crc16.c \
+ /home/gangadhar/2PORTONT/bismarck_V3.5_R3935_20170106/uboot/include/crc.h \
+ /home/gangadhar/2PORTONT/bismarck_V3.5_R3935_20170106/uboot/include/linux/types.h \
+ /home/gangadhar/2PORTONT/bismarck_V3.5_R3935_20170106/uboot/include/linux/config.h \
+ /home/gangadhar/2PORTONT/bismarck_V3.5_R3935_20170106/uboot/include/linux/posix_types.h \
+ /home/gangadhar/2PORTONT/bismarck_V3.5_R3935_20170106/uboot/include/linux/stddef.h \
+ /home/gangadhar/2PORTONT/bismarck_V3.5_R3935_20170106/uboot/include/asm/posix_types.h \
+ /home/gangadhar/2PORTONT/bismarck_V3.5_R3935_20170106/uboot/include/asm/types.h

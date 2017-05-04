@@ -1,0 +1,31 @@
+include src/platform/9602C/info.in
+include release/info2.in
+src/platform/9602C/info.in release/info2.in release/Makefile.info: ;
+release/info.h:
+	@echo "#define project_name $(project_name)" >> release/info.h
+	@echo "#define platform_name $(platform_name)" >> release/info.h
+	@echo "#define OTTO_ENTRY $(OTTO_ENTRY)" >> release/info.h
+	@echo "#define OTTO_DRAM_GEN3 $(OTTO_DRAM_GEN3)" >> release/info.h
+	@echo "#define OTTO_LMA_BASE $(OTTO_LMA_BASE)" >> release/info.h
+	@echo "#define TLB_PAGE_SHIFT $(TLB_PAGE_SHIFT)" >> release/info.h
+	@echo "#define TLB_PAGE_SIZE $(TLB_PAGE_SIZE)" >> release/info.h
+	@echo "#define TLB_PAGE_MASK $(TLB_PAGE_MASK)" >> release/info.h
+	@echo "#define TLB_NUM_TLB_ENTRY $(TLB_NUM_TLB_ENTRY)" >> release/info.h
+	@echo "#define TLB_NUM_TLB_MASK $(TLB_NUM_TLB_MASK)" >> release/info.h
+	@echo "#define OTTO_LDS $(OTTO_LDS)" >> release/info.h
+	@echo "#define OTTO_STARTUP $(OTTO_STARTUP)" >> release/info.h
+	@echo "#define MMU_PHY_SIZE $(MMU_PHY_SIZE)" >> release/info.h
+	@echo "#define MMU_VM_SIZE $(MMU_VM_SIZE)" >> release/info.h
+	@echo "#define MMU_PHY_BASE_ADDR $(MMU_PHY_BASE_ADDR)" >> release/info.h
+	@echo "#define MMU_CHECK_INETRNAL_ERROR $(MMU_CHECK_INETRNAL_ERROR)" >> release/info.h
+	@echo "#define USE_CC_GPOPT $(USE_CC_GPOPT)" >> release/info.h
+	@echo "#define CC_GPOPT $(CC_GPOPT)" >> release/info.h
+	@echo "#define IS_RECYCLE_SECTION_EXIST $(IS_RECYCLE_SECTION_EXIST)" >> release/info.h
+	@echo "#define template_name $(template_name)" >> release/info.h
+	@echo "#define name_of_project $(name_of_project)" >> release/info.h
+	@echo "#define OTTO_FLASH_SPI_NAND $(OTTO_FLASH_SPI_NAND)" >> release/info.h
+	@echo "#define OTTO_NUM_DRAM_PARA $(OTTO_NUM_DRAM_PARA)" >> release/info.h
+	@echo "#define OTTO_NUM_FLASH_PARA $(OTTO_NUM_FLASH_PARA)" >> release/info.h
+	@echo "#define FILTER_OUT_OBJS $(FILTER_OUT_OBJS)" >> release/info.h
+	@echo "#define spi_nand_path_prefix $(spi_nand_path_prefix)" >> release/info.h
+	@echo "#define NSU_USING_SYMBOL_TABLE_FUNCTION $(NSU_USING_SYMBOL_TABLE_FUNCTION)" >> release/info.h

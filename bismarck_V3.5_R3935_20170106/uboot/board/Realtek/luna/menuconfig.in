@@ -1,0 +1,223 @@
+
+define_bool CONFIG_DRAM_BUS_WIDTH_8BIT y
+define_bool CONFIG_DRAM_CHIP_NUM_ONE y
+define_bool CONFIG_ONE_DRAM_CHIP_SIZE_64MB y
+define_hex  CONFIG_ONE_DRAM_CHIP_SIZE 0x4000000
+define_bool CONFIG_ZQ_AUTO_CALI y
+define_bool CONFIG_DIGITAL_DELAY_LINE y
+define_bool CONFIG_AUTO_DRAM_TIMING_SETTING y
+define_int  CONFIG_DRAM_WR_NS 15
+define_int  CONFIG_DRAM_RTP_NS 8
+define_int  CONFIG_DRAM_WTR_NS 8
+define_int  CONFIG_DRAM_REFI_NS 7800
+define_int  CONFIG_DRAM_RP_NS 15
+define_int  CONFIG_DRAM_RCD_NS 15
+define_int  CONFIG_DRAM_RRD_NS 10
+define_int  CONFIG_DRAM_FAWG_NS 50
+define_int  CONFIG_DRAM_RFC_NS 328
+define_int  CONFIG_DRAM_RAS_NS 45
+define_int  CONFIG_DRAM_REFI_MS 64
+define_bool CONFIG_FLASH_SPI y
+define_int  CONFIG_FLASH_SPI_MAXCLK 50
+define_bool CONFIG_FLASH_SPI_OP_QIO y
+
+#mainmenu_option next_comment
+#comment 'Memory configuration'
+#	comment 'DRAM Configuration'
+#		bool 'DRAM Size Auto-Detectoin' CONFIG_DRAM_AUTO_SIZE_DETECTION n
+#		if [ "$CONFIG_DRAM_AUTO_SIZE_DETECTION" = "n" ]; then
+#			bool 'Force DCR value' CONFIG_DRAM_FROCE_DCR_VALUE n
+#			if [ "$CONFIG_DRAM_FROCE_DCR_VALUE" = "n" ]; then
+#				choice 'Bus width'  \
+#					"8bit CONFIG_DRAM_BUS_WIDTH_8BIT \
+#				 	 16bit CONFIG_DRAM_BUS_WIDTH_16BIT"  8bit
+#	
+#				choice 'Chip number'  \
+#					"one CONFIG_DRAM_CHIP_NUM_ONE \
+#				 	 two CONFIG_DRAM_CHIP_NUM_TWO"  one
+#
+#				choice 'Chip size'  \
+#					"32MB CONFIG_ONE_DRAM_CHIP_SIZE_32MB \
+#					 64MB CONFIG_ONE_DRAM_CHIP_SIZE_64MB \
+#					128MB CONFIG_ONE_DRAM_CHIP_SIZE_128MB \
+#					256MB CONFIG_ONE_DRAM_CHIP_SIZE_256MB \
+#				 	512MB CONFIG_ONE_DRAM_CHIP_SIZE_512MB"  64MB
+#
+#				if [ "$CONFIG_ONE_DRAM_CHIP_SIZE_32MB" = "y" ]; then
+#					define_hex CONFIG_ONE_DRAM_CHIP_SIZE 0x2000000
+#				fi
+#				if [ "$CONFIG_ONE_DRAM_CHIP_SIZE_64MB" = "y" ]; then
+#					define_hex CONFIG_ONE_DRAM_CHIP_SIZE 0x4000000
+#				fi
+#				if [ "$CONFIG_ONE_DRAM_CHIP_SIZE_128MB" = "y" ]; then
+#					define_hex CONFIG_ONE_DRAM_CHIP_SIZE 0x8000000
+#				fi
+#				if [ "$CONFIG_ONE_DRAM_CHIP_SIZE_256MB" = "y" ]; then
+#					define_hex CONFIG_ONE_DRAM_CHIP_SIZE 0x10000000
+#				fi
+#				if [ "$CONFIG_ONE_DRAM_CHIP_SIZE_512MB" = "y" ]; then
+#					define_hex CONFIG_ONE_DRAM_CHIP_SIZE 0x20000000
+#				fi
+#			
+#			else
+#				hex 'DCR value' CONFIG_DRAM_DCR 0x11220000
+#			fi 
+#		fi
+#	#bool 'ZQ Auto-Calibration' CONFIG_ZQ_AUTO_CALI n
+#	#bool 'Digital Delay line ' CONFIG_DIGITAL_DELAY_LINE y
+#	#bool 'Auto DRAM Timing Setting' CONFIG_AUTO_DRAM_TIMING_SETTING n
+#	define_bool CONFIG_ZQ_AUTO_CALI y
+#	define_bool CONFIG_DIGITAL_DELAY_LINE y
+#	define_bool CONFIG_AUTO_DRAM_TIMING_SETTING y
+#	comment '*****************************'
+#	if [ "$CONFIG_AUTO_DRAM_TIMING_SETTING" = "y" ]; then
+#		int '  tWR(ns)' CONFIG_DRAM_WR_NS 15
+#		int '  tRTP(ns)' CONFIG_DRAM_RTP_NS 8
+#		int '  tWTR(ns)' CONFIG_DRAM_WTR_NS 8
+#		int '  tREFI(ns)' CONFIG_DRAM_REFI_NS 7800
+#		int '  tRP(ns)' CONFIG_DRAM_RP_NS 15
+#		int '  tRCD(ns)' CONFIG_DRAM_RCD_NS 15
+#		int '  tRRD(ns)' CONFIG_DRAM_RRD_NS 10
+#		int '  tFAWG(ns)' CONFIG_DRAM_FAWG_NS 50
+#		int '  tRFC(ns)' CONFIG_DRAM_RFC_NS 328
+#		int '  tRAS(ns)' CONFIG_DRAM_RAS_NS 45
+#		define_int CONFIG_DRAM_REFI_MS 64
+#	else
+#		hex 'DTR0' CONFIG_DRAM_DTR0 0x55488b00
+#		hex 'DTR1' CONFIG_DRAM_DTR1 0x06060313
+#		hex 'DTR2' CONFIG_DRAM_DTR2 0x04321000
+#		define_int CONFIG_DRAM_WR_NS 15
+#		define_int CONFIG_DRAM_RTP_NS 8
+#		define_int CONFIG_DRAM_WTR_NS 9
+#		define_int CONFIG_DRAM_REFI_MS 64
+#		define_int CONFIG_DRAM_RP_NS 15
+#		define_int CONFIG_DRAM_RCD_NS 15
+#		define_int CONFIG_DRAM_RRD_NS 10
+#		define_int CONFIG_DRAM_FAWG_NS 50
+#		define_int CONFIG_DRAM_RFC_NS 328
+#		define_int CONFIG_DRAM_RAS_NS 45
+#	fi
+#	comment '*****************************'
+#
+#	comment 'SPI Flash Configuration'
+#	define_bool CONFIG_FLASH_SPI y
+#	int '  MAX. SPI Clock' CONFIG_FLASH_SPI_MAXCLK 50
+#	choice 'IO Operaton Mode'  \
+#			"Serial_IO CONFIG_FLASH_SPI_OP_SIO \
+#			 Dual_IO CONFIG_FLASH_SPI_OP_DIO \
+#		 	 Quad_IO CONFIG_FLASH_SPI_OP_QIO"  Quad_IO
+#endmenu
+
+mainmenu_option next_comment
+comment 'Command Configuration'
+	#bool 'DRAM Test' CONFIG_CMD_DRAM_TEST y
+	#bool 'DRAM Diagnose' CONFIG_CMD_DRAM_DIG y
+	define_bool CONFIG_CMD_DRAM_TEST y
+	define_bool CONFIG_CMD_DRAM_DIG y
+	bool 'GDMA Test' CONFIG_CMD_GDMA_TEST
+	bool 'SRAM Test' CONFIG_CMD_SRAM_TEST
+	bool 'IDMEM Test' CONFIG_CMD_IDMEM_TEST
+	bool 'CONCURENT Test' CONFIG_CMD_CONCURENT_TEST
+	bool 'FOREVER Test' CONFIG_CMD_FOREVER_TEST
+	bool 'Boot Bin' CONFIG_CMD_BOOT_BIN
+	bool 'Boot DSP' CONFIG_CMD_BOOT_DSP
+	bool 'Next FREQ' CONFIG_CMD_NEXT_FREQ
+	bool 'DRAM AC DC Test' CONFIG_CMD_DRAM_AC_TEST
+	bool 'Booting Up Dialog' CONFIG_SYS_BOOTING_DIALOG
+	bool 'CPU Clock Measurement' CONFIG_CMD_MEASURE_CPU_CLK
+endmenu
+
+mainmenu_option next_comment
+comment 'Flash Type Configuration'
+	bool 'SPI nor flash' CONFIG_SPINOR_FLASH
+	bool 'Nand Flash' CONFIG_CMD_NAND
+endmenu
+
+mainmenu_option next_comment
+comment 'File system support Configuration'
+	bool 'YAFFS2' CONFIG_YAFFS2
+	bool 'JFFS2' CONFIG_CMD_JFFS2
+	if [ "$CONFIG_CMD_JFFS2" = "y" ]; then
+		choice 'Partition in Flash Layout for JFFS2'  \
+			"OPT1  CONFIG_JFFS2_OPT1_ADDR \
+			OPT2  CONFIG_JFFS2_OPT2_ADDR \
+			OPT3  CONFIG_JFFS2_OPT3_ADDR \
+			OPT4  CONFIG_JFFS2_OPT4_ADDR"  OPT1
+	fi	
+	bool 'Cramfs' CONFIG_CMD_CRAMFS
+
+endmenu
+
+mainmenu_option next_comment
+comment 'Kernel Uncomporess type'
+	bool 'LZMA' CONFIG_LZMA
+	bool 'GZIP' CONFIG_GZIP
+endmenu
+
+# mainmenu_option next_comment
+# comment 'luna multi boot support'
+# endmenu
+
+define_int  CFG_DCACHE_SIZE 32768
+define_int  CFG_ICACHE_SIZE 32768
+define_int  CFG_CACHELINE_SIZE  32
+define_hex  CONFIG_SRAM_START 02000000
+define_hex  CFG_SRAM_SIZE      0x00008000 #32KB
+define_hex  CFG_SRAM_SIZE_SET 0x00000008 #32KB
+define_int  CONFIG_CONS_INDEX 1
+define_bool CFG_NS16550 y
+define_bool CFG_NS16550_SERIAL y
+define_int  CFG_NS16550_REG_SIZE -4
+define_hex  CFG_NS16550_COM1 0xB8002000
+define_bool CONFIG_SERIAL_SOFTWARE_FIFO n
+define_int  CFG_SDRAM_BASE 0x80000000
+define_int  CONFIG_SYS_TEMP_SRAM_ADDR 0x90000000
+define_int  CONFIG_SYS_TEMP_SRAM_SIZE 0x8000
+#define_hex  CONFIG_ENV_OFFSET 0x80000
+if [ "$CONFIG_SPINOR_FLASH" = "y" ]; then
+define_string CONFIG_EXTRA_ENV_SETTINGS \
+  "upb=tftp 80000000 loader.img;sf erase 0 +\${pfl_boot_sz};sf write \${fileaddr} 0 \${filesize}\0\
+   upk=tftp 80000000 uImage;sf erase \${pfl_kernel1} +\${pfl_kernel1_sz};sf write \${fileaddr} \${pfl_kernel1} \${filesize}\0\
+   upr=tftp 80000000 rootfs;sf erase \${pfl_rootfs1} +\${pfl_rootfs1_sz};sf write \${fileaddr} \${pfl_rootfs1} \${filesize}\0\
+   erase_env=sf erase \${pfl_env} +\${pfl_env_sz}\0\
+   erase_cfgfs=sf erase \${pfl_opt1} +\${pfl_opt1_sz}\0"
+
+if [ "$CONFIG_OTTO_FL_TO_MTDPARTS" = "y" ]; then
+if [ "$CONFIG_LUNA_MULTI_BOOT" = "y" ]; then
+define_bool CONFIG_SYS_HUSH_PARSER y
+define_string CONFIG_EXTRA_ENV_SETTINGS_1 \
+  "upk1=tftp 80000000 uImage;sf erase \${pfl_kernel2} +\${pfl_kernel2_sz};sf write \${fileaddr} \${pfl_kernel2} \${filesize}\0\
+   upr1=tftp 80000000 rootfs;sf erase \${pfl_rootfs2} +\${pfl_rootfs2_sz};sf write \${fileaddr} \${pfl_rootfs2} \${filesize}\0\
+   sw_tryactive=2\0\
+   sw_commit=0\0\
+   sw_active=0\0\
+   sw_version0=0\0\
+   sw_version1=0\0\
+   bootargs_base=console=ttyS0,115200\0\
+   b0=setenv bootargs \${bootargs_base} \${mtdparts0} && bootm \${img0_kernel}\0\
+   b1=setenv bootargs \${bootargs_base} \${mtdparts1} && bootm \${img1_kernel}\0\
+   set_act0=if itest.s \${sw_active} != 0;then setenv sw_active 0;saveenv;fi\0\
+   set_act1=if itest.s \${sw_active} != 1;then setenv sw_active 1;saveenv;fi\0\
+   boot_by_commit=if itest.s \${sw_commit} == 0;then run set_act0;run b0;else run set_act1;run b1;fi\0\
+   en_wdt=mw b8003268 e7c00000\0\
+   boot_by_tryactive=if itest.s \${sw_tryactive} == 0;then setenv sw_tryactive 2;setenv sw_active 0;saveenv;run en_wdt;run b0;else setenv sw_tryactive 2;setenv sw_active 1;saveenv;run en_wdt;run b1;fi\0\
+   bootcmd=if itest.s \${sw_tryactive} == 2; then run boot_by_commit;else run boot_by_tryactive;fi\0"
+else
+define_string CONFIG_EXTRA_ENV_SETTINGS_1 \
+  "bootargs_base=console=ttyS0,115200\0\
+   bootcmd=setenv bootargs \${bootargs_base} \${mtdparts0};bootm\0"
+fi ###if [ "$CONFIG_LUNA_MULTI_BOOT" = "y" ]; then
+fi ###if [ "$CONFIG_OTTO_FL_TO_MTDPARTS" = "y" ]; then
+ 
+elif [ "$CONFIG_CMD_NAND" = "y" ]; then
+define_string CONFIG_EXTRA_ENV_SETTINGS \
+  "upbn=tftp 0x81ff0000 loader.img;nand erase 0x0 0x80000;nand write.raw 0x81ff0000 0x0 \${filesize}\0\
+   upkn=tftp 0x81ff0000 uImage;nand erase 0x180000 0x600000;nand write 0x81ff0000 0x180000 \${filesize}\0\
+   uprn=tftp 0x81ff0000 rootfs;nand erase 0xa00000 0xa00000;nand write 0x81ff0000 0xa00000 \${filesize}\0\
+   bootcmd=nand read 0x82000000 0x180000 0x300000;bootm 0x82000000\0\
+   erase_env=nand erase 0xa0000 0x40000\0\
+   erase_cfgfs=nand erase 0x1d00000 0xa00000\0\
+   upb=run upbn\0\
+   upk=run upkn\0\
+   upr=run uprn\0"
+fi

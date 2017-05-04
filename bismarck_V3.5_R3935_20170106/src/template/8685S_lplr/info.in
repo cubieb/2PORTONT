@@ -1,0 +1,19 @@
+platform_name := 8685S
+OTTO_ENTRY := $(OTTO_LPLR_ENTRY)
+TARGET_OUT := release/lplr.out
+OTTO_ENTRY_SYMB := lplr_S_entry
+OTTO_FLASH_NAND_SPI := 1
+MAX_LPLR_CHUNK := 128
+
+
+EXPORT_SYMB_PROTO_PRINTF := 1
+EXPORT_SYMB_CACHE_OP := 1
+__MIPS16_C_SRC_FILE = $(addprefix $(template_dir)/, ab_proto_printf.c ab_nand_spi_*.c ab_ecc_ctrl.c ab_LzmaDec.c)
+MIPS16_OBJS += $(patsubst $(template_dir)/%.c, %.o, $(shell ls -U $(__MIPS16_C_SRC_FILE) 2> /dev/null))
+
+# initial memory layout; which used before running preloader
+# because preloader will change the address of those buffers (include stack)
+OTTO_LPLR_SPI_NAND_ECC_BUFFER := ( $(OTTO_SRAM_START) + $(OTTO_SRAM_SIZE) - $(MAX_ECC_BUF_SIZE) )
+OTTO_LPLR_SPI_NAND_OOB_BUFFER := ( $(OTTO_LPLR_SPI_NAND_ECC_BUFFER) - $(MAX_OOB_BUF_SIZE) )
+OTTO_LPLR_SPI_NAND_CHUNK_BUFFER := ( $(OTTO_LPLR_SPI_NAND_OOB_BUFFER) - $(MAX_CHUNK_BUF_SIZE) )
+OTTO_LPLR_SPI_NAND_STACK_DEF := ( $(OTTO_LPLR_SPI_NAND_CHUNK_BUFFER) - 4 )

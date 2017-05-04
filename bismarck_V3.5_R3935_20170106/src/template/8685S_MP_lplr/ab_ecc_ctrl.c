@@ -1,0 +1,1 @@
+platform/ecc/ecc_ctrl.c

@@ -1,0 +1,3 @@
+otto_sym.o: otto_sym.c \
+ /home/gangadhar/2PORTONT/bismarck_V3.5_R3935_20170106/uboot/include/asm/arch/soc.h \
+ /home/gangadhar/2PORTONT/bismarck_V3.5_R3935_20170106/uboot/include/asm/symb_define.h

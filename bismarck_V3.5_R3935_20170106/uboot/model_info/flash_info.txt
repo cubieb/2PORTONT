@@ -1,0 +1,21 @@
+/* 	flash_info.txt																				  *
+ *	This document is used to record the information about capability of flash chips in model_info */
+
+/*	Abbreviated Name Introduced
+ *
+ *	En4BCmd:	Enter 4Byte Command
+ *	4BCmdSet:	4Byte Command Set
+ *	ExAddrReg:	Extened Address Register
+ *	4BAddrOnly:	4Byte Address Only, means 3Byte Command + 4Byte Address
+ */
+ 
+Name				Company		Size	I/O		Address_Mode	4Byte_Method						Note
+-------------------------------------------------------------------------------------------------------------------------------
+MX25L12835F			MXIC		16MB	QIO		3-Byte			not support							-
+MX25L12845E			MXIC		16MB	QIO		3-Byte			not support							-
+MX25L25635F			MXIC		32MB	QIO		3/4-Byte		En4BCmd,4BCmdSet,ExAddrReg			-
+MX25L25735E			MXIC		32MB	QIO		4-Byte			4BAddrOnly							-
+W25Q128FV			WINBOND		16MB	QIO		3-Byte			not support							-
+W25Q64FVSFIG		WINBOND		8MB		QIO		3-Byte			not support							-
+EN25Q64				EON			8MB		QIO		3-Byte			not support							-
+N25Q256A13ESF40G	MICRON		32MB	QIO		3/4-Byte		En4BCmd,ExAddrReg					4BCmdSet only for READ

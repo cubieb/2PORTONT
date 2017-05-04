@@ -1,0 +1,51 @@
+mainmenu_name "U-Boot Configuration"
+
+mainmenu_option next_comment
+comment 'Board'
+
+define_bool CONFIG_RTL838XS n
+define_bool CONFIG_RTL839XS n
+define_int  CONFIG_EXCEPTION_BASE CONFIG_SYS_TEXT_BASE
+choice 'Realtek' "RTL838x    CONFIG_RTL838X
+                  RTL839x    CONFIG_RTL839X
+                  LUNA       CONFIG_LUNA
+                  RTL9601B   CONFIG_RTL9601B
+                  RTL9601C   CONFIG_RTL9601C
+                  RTL9602C   CONFIG_RTL9602C
+                  G.FAST     CONFIG_GFAST
+                  RTL8685S   CONFIG_RTL8685S
+                  RTL9300    CONFIG_RTL9300"
+
+if [ "$CONFIG_LUNA" = "y" ]; then
+	choice 'Console' "UART0 CONFIG_UART0
+	                  UART1 CONFIG_UART1" UART0
+fi
+
+comment 'U-Boot Location'
+hex 'U-Boot Text Base' CONFIG_SYS_TEXT_BASE  	0x80F00000
+
+endmenu
+
+if [ "$CONFIG_RTL838X" = "y" ] || [ "$CONFIG_RTL838XS" = "y" ]; then
+	source ./board/Realtek/rtl838x/menuconfig.in
+elif [ "$CONFIG_RTL839X" = "y" ] || [ "$CONFIG_RTL839XS" = "y" ]; then
+	source ./board/Realtek/rtl839x/menuconfig.in
+elif [ "$CONFIG_LUNA" = "y" ] || [ "$CONFIG_LUNAS" = "y" ]; then
+	source ./board/Realtek/luna/menuconfig.in
+elif [ "$CONFIG_RTL9601B" = "y" ]; then
+	source ./board/Realtek/rtl9601b/menuconfig.in
+elif [ "$CONFIG_RTL9601C" = "y" ]; then
+	source ./board/Realtek/rtl9601C/menuconfig.in
+elif [ "$CONFIG_RTL9602C" = "y" ]; then
+	source ./board/Realtek/rtl9602C/menuconfig.in
+elif [ "$CONFIG_RTL8685S" = "y" ]; then
+	source ./board/Realtek/rtl8685s/menuconfig.in
+elif [ "$CONFIG_GFAST" = "y" ]; then
+	source ./board/Realtek/gfast/menuconfig.in
+elif [ "$CONFIG_RTL9300" = "y" ]; then
+	source ./board/Realtek/rtl9300/menuconfig.in
+fi
+
+if [ "$CONFIG_SPI_NOR_FLASH" = "y" ]; then
+	source ./arch/otto/lib/nor_spif_vendors.in
+fi

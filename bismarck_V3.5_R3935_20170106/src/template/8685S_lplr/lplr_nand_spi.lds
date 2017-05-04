@@ -1,0 +1,1 @@
+../../lds/lplr_nand_spi.lds

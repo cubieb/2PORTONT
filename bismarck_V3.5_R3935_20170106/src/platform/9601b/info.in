@@ -1,0 +1,3 @@
+OTTO_HEADER_OFFSET := 0x20
+CC_PLAT_FLAGS := -march=5281 -mtune=5281 -Wno-unused-result
+AS_PLAT_FLAGS := -march=5281 -mtune=5281

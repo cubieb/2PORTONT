@@ -1,0 +1,10 @@
+--- bismarck_V3.5_R3935_20170106/src/template/9602C_lplr/ab_spi_nand_common.c	2017-04-27 14:44:45.429454548 +0530
++++ bismarck_V3.5_R3935_20170106_old/src/template/9602C_lplr/ab_spi_nand_common.c	2017-04-27 09:37:16.034508292 +0530
+@@ -8,6 +8,7 @@
+ 
+ 
+ 
++
+ SECTION_SPI_NAND_DATA
+ spi_nand_cmd_info_t nsc_sio_cmd_info = {
+     .w_cmd = PROGRAM_LOAD_OP,
