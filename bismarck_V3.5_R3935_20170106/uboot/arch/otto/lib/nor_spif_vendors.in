@@ -1,9 +1,0 @@
-mainmenu_option next_comment
-comment 'NOR SPI-F Supported Vendors'
-
-#bool 'Micron'  CONFIG_SNOF_MICRON
-bool 'MXIC'    CONFIG_SNOF_MXIC
-#bool 'GD'      CONFIG_SNOF_GD
-bool 'WINBOND' CONFIG_SNOF_WINBOND
-
-endmenu

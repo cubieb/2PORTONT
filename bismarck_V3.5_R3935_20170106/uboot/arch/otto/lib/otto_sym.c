@@ -1,1 +1,0 @@
-../../../../src/lib/misc/symb_access.c

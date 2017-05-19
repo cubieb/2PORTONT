@@ -1,1 +1,0 @@
-platform/nand_spi/nand_spi_micron.c

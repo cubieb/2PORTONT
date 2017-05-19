@@ -1,1 +1,0 @@
-../../../otto/cpu/rlx5281/config.mk

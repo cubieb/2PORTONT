@@ -1,1 +1,0 @@
-platform/efuse/efuse_setup.c

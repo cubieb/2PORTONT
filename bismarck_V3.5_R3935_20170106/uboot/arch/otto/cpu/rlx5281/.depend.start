@@ -1,5 +1,0 @@
-start.o: start.S \
- /home/gangadhar/2PORTONT/bismarck_V3.5_R3935_20170106/uboot/include/asm/regdef.h \
- /home/gangadhar/Bismarck/bismarck_V3.5_R3935_20170106/uboot/include/asm/sgidefs.h \
- /home/gangadhar/2PORTONT/bismarck_V3.5_R3935_20170106/uboot/include/configs/autoconf.h \
- soc_init.H

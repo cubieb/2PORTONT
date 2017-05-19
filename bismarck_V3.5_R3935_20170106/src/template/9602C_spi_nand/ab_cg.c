@@ -1,1 +1,0 @@
-platform/cg/cg.c

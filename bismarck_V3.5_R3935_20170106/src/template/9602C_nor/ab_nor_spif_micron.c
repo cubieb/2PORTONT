@@ -1,1 +1,0 @@
-platform/nor_spi/nor_spif_micron_rev.c

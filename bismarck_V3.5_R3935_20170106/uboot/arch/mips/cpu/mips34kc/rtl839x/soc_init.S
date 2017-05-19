@@ -1,1 +1,0 @@
-../../../soc-generic/soc_init.S

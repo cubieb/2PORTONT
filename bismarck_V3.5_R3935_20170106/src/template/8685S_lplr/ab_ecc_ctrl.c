@@ -1,1 +1,0 @@
-platform/nand_spi/ecc_ctrl.c

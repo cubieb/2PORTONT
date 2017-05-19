@@ -1,1 +1,0 @@
-../../../otto/cpu/mips4kec/Makefile

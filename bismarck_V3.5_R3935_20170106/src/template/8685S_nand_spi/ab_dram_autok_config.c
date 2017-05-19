@@ -1,1 +1,0 @@
-platform/dram/autok/dram_autok_config.c

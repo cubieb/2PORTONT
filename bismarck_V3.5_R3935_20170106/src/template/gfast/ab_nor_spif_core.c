@@ -1,1 +1,0 @@
-../../soc/nor_spi_gen2/nor_spif_core.c

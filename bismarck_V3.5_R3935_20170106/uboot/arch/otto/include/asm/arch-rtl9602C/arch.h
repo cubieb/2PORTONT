@@ -1,1 +1,0 @@
-../../../../../../src/template/9602C_spi_nand/arch.h

@@ -1,6 +1,0 @@
-ashldi3.o: ashldi3.c libgcc.h \
- /home/gangadhar/2PORTONT/bismarck_V3.5_R3935_20170106/uboot/include/asm/byteorder.h \
- /home/gangadhar/2PORTONT/bismarck_V3.5_R3935_20170106/uboot/include/asm/types.h \
- /home/gangadhar/2PORTONT/bismarck_V3.5_R3935_20170106/uboot/include/linux/byteorder/big_endian.h \
- /home/gangadhar/2PORTONT/bismarck_V3.5_R3935_20170106/uboot/include/linux/byteorder/swab.h \
- /home/gangadhar/2PORTONT/bismarck_V3.5_R3935_20170106/uboot/include/linux/byteorder/generic.h

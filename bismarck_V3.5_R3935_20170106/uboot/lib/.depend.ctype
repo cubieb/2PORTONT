@@ -1,2 +1,0 @@
-ctype.o: ctype.c \
- /home/gangadhar/2PORTONT/bismarck_V3.5_R3935_20170106/uboot/include/linux/ctype.h

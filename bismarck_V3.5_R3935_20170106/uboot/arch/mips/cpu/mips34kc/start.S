@@ -1,1 +1,0 @@
-../../../otto/cpu/mips34kc/start.S

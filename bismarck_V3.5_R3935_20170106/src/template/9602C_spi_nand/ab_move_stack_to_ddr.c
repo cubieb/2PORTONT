@@ -1,1 +1,0 @@
-platform/misc/move_stack_to_ddr.c
